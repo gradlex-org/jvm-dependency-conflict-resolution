@@ -36,7 +36,7 @@ In your convention plugin, apply the plugin.
 ```
 plugins {
     ...
-    id("de.jjohannes.java-ecosystem-capabilities")
+    id("de.jjohannes.gradle.java-ecosystem-capabilities")
 }
 ```
 
