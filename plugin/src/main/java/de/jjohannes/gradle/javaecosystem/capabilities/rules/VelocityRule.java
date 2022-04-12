@@ -7,10 +7,11 @@ import org.gradle.api.artifacts.ComponentMetadataRule;
 @CacheableRule
 public abstract class VelocityRule implements ComponentMetadataRule {
 
-    public static final String CAPABILITY_GROUP = "org.apache.velocity";
+    public static final String CAPABILITY_GROUP = "velocity";
     public static final String CAPABILITY_NAME = "velocity";
 
     public static final String[] MODULES = {
+            "org.apache.velocity:velocity",
             "org.apache.velocity:velocity-engine-core"
     };
 

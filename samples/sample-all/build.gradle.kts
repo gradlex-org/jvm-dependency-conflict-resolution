@@ -67,6 +67,7 @@ dependencies {
     implementation("org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.1_spec:2.0.2.Final")
     implementation("org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_3.0_spec:1.0.1.Final")
     implementation("stax:stax-api:1.0")
+    implementation("velocity:velocity:1.4")
     implementation("woodstox:wstx-asl:2.9.3")
     implementation("xml-apis:xml-apis:2.0.2")
 
