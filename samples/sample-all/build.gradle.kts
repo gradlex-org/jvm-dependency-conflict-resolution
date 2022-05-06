@@ -4,7 +4,6 @@ plugins {
 }
 
 dependencies {
-    implementation("org.ow2.asm:asm:9.2")
     implementation("asm:asm:3.3.1")
     implementation("c3p0:c3p0:0.9.1.2")
     implementation("cglib:cglib-nodep:3.2.12")
@@ -17,6 +16,7 @@ dependencies {
     implementation("jakarta.annotation:jakarta.annotation-api:2.1.0")
     implementation("jakarta.ejb:jakarta.ejb-api:4.0.0")
     implementation("jakarta.el:jakarta.el-api:4.0.0")
+    implementation("jakarta.inject:jakarta.inject-api:1.0.5")
     implementation("jakarta.jws:jakarta.jws-api:3.0.0")
     implementation("jakarta.persistence:jakarta.persistence-api:3.0.0")
     implementation("jakarta.servlet:jakarta.servlet-api:5.0.0")
@@ -33,6 +33,7 @@ dependencies {
     implementation("javax.ejb:javax.ejb-api:3.2.2")
     implementation("javax.el:el-api:2.2")
     implementation("javax.el:javax.el-api:3.0.0")
+    implementation("javax.inject:javax.inject:1")
     implementation("javax.jws:javax.jws-api:1.1")
     implementation("javax.mail:mail:1.4.7")
     implementation("javax.persistence:javax.persistence-api:2.2")
@@ -66,11 +67,11 @@ dependencies {
     implementation("org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.0_spec:1.0.1.Final")
     implementation("org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.1_spec:2.0.2.Final")
     implementation("org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_3.0_spec:1.0.1.Final")
+    implementation("org.ow2.asm:asm:9.2")
     implementation("stax:stax-api:1.0")
     implementation("velocity:velocity:1.4")
     implementation("woodstox:wstx-asl:2.9.3")
     implementation("xml-apis:xml-apis:2.0.2")
-
     // implementation("woodstox:wstx-lgpl:3.2.7") - has no POM file
 }
 repositories {

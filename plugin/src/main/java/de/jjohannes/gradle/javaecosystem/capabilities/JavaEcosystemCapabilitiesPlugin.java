@@ -34,6 +34,7 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
         for (String module : JakartaAnnotationApiRule.MODULES) { components.withModule(module, JakartaAnnotationApiRule.class); }
         for (String module : JakartaEjbApiRule.MODULES) { components.withModule(module, JakartaEjbApiRule.class); }
         for (String module : JakartaElApiRule.MODULES) { components.withModule(module, JakartaElApiRule.class); }
+        for (String module : JakartaInjectApiRule.MODULES) { components.withModule(module, JakartaInjectApiRule.class); }
         for (String module : JakartaJwsApisRule.MODULES) { components.withModule(module, JakartaJwsApisRule.class); }
         for (String module : JakartaMailApiRule.MODULES) { components.withModule(module, JakartaMailApiRule.class); }
         for (String module : JakartaPersistenceApiRule.MODULES) { components.withModule(module, JakartaPersistenceApiRule.class); }
@@ -58,6 +59,7 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
         selectHighestVersion(resolution, JakartaAnnotationApiRule.CAPABILITY_GROUP, JakartaAnnotationApiRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, JakartaEjbApiRule.CAPABILITY_GROUP, JakartaEjbApiRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, JakartaElApiRule.CAPABILITY_GROUP, JakartaElApiRule.CAPABILITY_NAME);
+        selectHighestVersion(resolution, JakartaInjectApiRule.CAPABILITY_GROUP, JakartaInjectApiRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, JakartaJwsApisRule.CAPABILITY_GROUP, JakartaJwsApisRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, JakartaMailApiRule.CAPABILITY_GROUP, JakartaMailApiRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, JakartaPersistenceApiRule.CAPABILITY_GROUP, JakartaPersistenceApiRule.CAPABILITY_NAME);

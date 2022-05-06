@@ -111,6 +111,8 @@ Each Capability's GA coordinates correspond to the GA coordinates of the Compone
 * [javax.el:el-api](https://mvnrepository.com/artifact/javax.el/el-api) ([JakartaElApiRule](plugin/src/main/java/de/jjohannes/gradle/javaecosystem/capabilities/rules/JakartaElApiRule.java))
   * [jakarta.el:jakarta.el-api](https://mvnrepository.com/artifact/jakarta.el/jakarta.el-api)
   * [javax.el:javax.el-api](https://mvnrepository.com/artifact/javax.el/javax.el-api)
+* [javax.inject:javax.inject](https://mvnrepository.com/artifact/javax.inject/javax.inject) ([JakartaInjectApiRule](plugin/src/main/java/de/jjohannes/gradle/javaecosystem/capabilities/rules/JakartaInjectApiRule.java))
+  * [jakarta.inject:jakarta.inject-api](https://mvnrepository.com/artifact/jakarta.inject/jakarta.inject-api)
 * [javax.jws:javax.jws-api](https://mvnrepository.com/artifact/javax.jws/javax.jws-api) ([JakartaJwsApisRule](plugin/src/main/java/de/jjohannes/gradle/javaecosystem/capabilities/rules/JakartaJwsApisRule.java))
   * [jakarta.jws:jakarta.jws-api](https://mvnrepository.com/artifact/jakarta.jws/jakarta.jws-api)
 * [javax.mail:mail](https://mvnrepository.com/artifact/javax.mail/mail) ([JakartaMailApiRule](plugin/src/main/java/de/jjohannes/gradle/javaecosystem/capabilities/rules/JakartaMailApiRule.java))
