@@ -11,7 +11,8 @@ public abstract class JakartaActivationApiRule implements ComponentMetadataRule 
     public static final String CAPABILITY_NAME = "activation";
 
     public static final String[] MODULES = {
-            "jakarta.activation:jakarta.activation-api"
+            "jakarta.activation:jakarta.activation-api",
+            "com.sun.activation:jakarta.activation"
     };
 
     @Override

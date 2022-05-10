@@ -25,7 +25,7 @@ Add this to the build file of your convention plugin's build
 
 ```
 dependencies {
-    implementation("de.jjohannes.gradle:java-ecosystem-capabilities:0.2")
+    implementation("de.jjohannes.gradle:java-ecosystem-capabilities:0.3")
 }
 ```
 
@@ -101,6 +101,7 @@ Each Capability's GA coordinates correspond to the GA coordinates of the Compone
   * [org.dom4j:dom4j](https://mvnrepository.com/artifact/org.dom4j/dom4j)
 * [javax.activation:activation](https://mvnrepository.com/artifact/javax.activation/activation) ([JakartaActivationApiRule](plugin/src/main/java/de/jjohannes/gradle/javaecosystem/capabilities/rules/JakartaActivationApiRule.java))
   * [jakarta.activation:jakarta.activation-api](https://mvnrepository.com/artifact/jakarta.activation/jakarta.activation-api)
+  * [com.sun.activation:jakarta.activation](https://mvnrepository.com/artifact/com.sun.activation/jakarta.activation)
 * [javax.annotation:jsr250-api](https://mvnrepository.com/artifact/javax.annotation/jsr250-api) ([JakartaAnnotationApiRule](plugin/src/main/java/de/jjohannes/gradle/javaecosystem/capabilities/rules/JakartaAnnotationApiRule.java))
   * [jakarta.annotation:jakarta.annotation-api](https://mvnrepository.com/artifact/jakarta.annotation/jakarta.annotation-api)
   * [javax.annotation:javax.annotation-api](https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api)
