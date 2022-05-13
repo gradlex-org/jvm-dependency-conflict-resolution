@@ -71,7 +71,6 @@ dependencies {
     implementation("stax:stax-api:1.0")
     implementation("velocity:velocity:1.4")
     implementation("woodstox:wstx-asl:2.9.3")
-    implementation("xml-apis:xml-apis:2.0.2")
     implementation("com.sun.activation:jakarta.activation:2.0.1")
     // implementation("woodstox:wstx-lgpl:3.2.7") - has no POM file
 }

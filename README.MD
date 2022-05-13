@@ -139,6 +139,8 @@ Each Capability's GA coordinates correspond to the GA coordinates of the Compone
   * [org.jboss.resteasy:jaxrs-api](https://mvnrepository.com/artifact/org.jboss.resteasy/jaxrs-api)
   * [jakarta.ws.rs:jakarta.ws.rs-api](https://mvnrepository.com/artifact/jakarta.ws.rs/jakarta.ws.rs-api)
   * [javax.ws.rs:javax.ws.rs-api](https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api)
+* [javax.xml.bind:jaxb-api](https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api) ([JakartaXmlBindApisRule](plugin/src/main/java/de/jjohannes/gradle/javaecosystem/capabilities/rules/JakartaXmlBindApisRule.java))
+  * [jakarta.xml.bind:jakarta.xml.bind-api](https://mvnrepository.com/artifact/jakarta.xml.bind/jakarta.xml.bind-api)
 * [javax.xml.soap:javax.xml.soap-api](https://mvnrepository.com/artifact/javax.xml.soap/javax.xml.soap-api) ([JakartaSoapApisRule](plugin/src/main/java/de/jjohannes/gradle/javaecosystem/capabilities/rules/JakartaSoapApisRule.java))
   * [jakarta.xml.soap:jakarta.xml.soap-api](https://mvnrepository.com/artifact/jakarta.xml.soap/jakarta.xml.soap-api)
 * [javax.xml.ws:jaxws-api](https://mvnrepository.com/artifact/javax.xml.ws/jaxws-api) ([JakartaXmlWsApisRule](plugin/src/main/java/de/jjohannes/gradle/javaecosystem/capabilities/rules/JakartaXmlWsApisRule.java))
@@ -157,9 +159,6 @@ Each Capability's GA coordinates correspond to the GA coordinates of the Compone
 * [woodstox:wstx-lgpl](https://mvnrepository.com/artifact/woodstox/wstx-lgpl) ([WoodstoxLgplRule](plugin/src/main/java/de/jjohannes/gradle/javaecosystem/capabilities/rules/WoodstoxLgplRule.java))
   * [org.codehaus.woodstox:wstx-lgpl](https://mvnrepository.com/artifact/org.codehaus.woodstox/wstx-lgpl)
   * [org.codehaus.woodstox:woodstox-core-lgpl](https://mvnrepository.com/artifact/org.codehaus.woodstox/woodstox-core-lgpl)
-* [xml-apis:xml-apis](https://mvnrepository.com/artifact/xml-apis/xml-apis) ([JakartaXmlApisRule](plugin/src/main/java/de/jjohannes/gradle/javaecosystem/capabilities/rules/JakartaXmlApisRule.java))
-  * [jakarta.xml.bind:jakarta.xml.bind-api](https://mvnrepository.com/artifact/jakarta.xml.bind/jakarta.xml.bind-api)
-  * [javax.xml.bind:jaxb-api](https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api)
 
 <!-- END_GENERATED -->
 

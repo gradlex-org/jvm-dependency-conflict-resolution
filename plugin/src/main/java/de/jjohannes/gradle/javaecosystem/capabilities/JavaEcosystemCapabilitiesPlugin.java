@@ -42,7 +42,7 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
         for (String module : JakartaSoapApisRule.MODULES) { components.withModule(module, JakartaSoapApisRule.class); }
         for (String module : JakartaValidationAPIRule.MODULES) { components.withModule(module, JakartaValidationAPIRule.class); }
         for (String module : JakartaWsRsApisRule.MODULES) { components.withModule(module, JakartaWsRsApisRule.class); }
-        for (String module : JakartaXmlApisRule.MODULES) { components.withModule(module, JakartaXmlApisRule.class); }
+        for (String module : JakartaXmlBindApisRule.MODULES) { components.withModule(module, JakartaXmlBindApisRule.class); }
         for (String module : JakartaXmlWsApisRule.MODULES) { components.withModule(module, JakartaXmlWsApisRule.class); }
         for (String module : StaxApiRule.MODULES) { components.withModule(module, StaxApiRule.class); }
         for (String module : VelocityRule.MODULES) { components.withModule(module, VelocityRule.class); }
@@ -67,7 +67,7 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
         selectHighestVersion(resolution, JakartaSoapApisRule.CAPABILITY_GROUP, JakartaSoapApisRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, JakartaValidationAPIRule.CAPABILITY_GROUP, JakartaValidationAPIRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, JakartaWsRsApisRule.CAPABILITY_GROUP, JakartaWsRsApisRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, JakartaXmlApisRule.CAPABILITY_GROUP, JakartaXmlApisRule.CAPABILITY_NAME);
+        selectHighestVersion(resolution, JakartaXmlBindApisRule.CAPABILITY_GROUP, JakartaXmlBindApisRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, JakartaXmlWsApisRule.CAPABILITY_GROUP, JakartaXmlWsApisRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, StaxApiRule.CAPABILITY_GROUP, StaxApiRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, VelocityRule.CAPABILITY_GROUP, VelocityRule.CAPABILITY_NAME);
