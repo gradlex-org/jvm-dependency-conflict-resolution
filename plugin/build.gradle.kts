@@ -4,11 +4,11 @@ plugins {
 }
 
 group = "de.jjohannes.gradle"
-version = "0.3"
+version = "0.4"
 
 gradlePlugin {
     plugins.create(project.name) {
-        id = "${project.group}.${project.name}"
+        id = "de.jjohannes.${project.name}"
         implementationClass = "${project.group}.javaecosystem.capabilities.JavaEcosystemCapabilitiesPlugin"
         displayName = "Adds Capabilities to well-known Components hosted on Maven Central."
         description = "Adds Capabilities to well-known Components hosted on Maven Central."

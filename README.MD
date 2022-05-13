@@ -25,7 +25,7 @@ Add this to the build file of your convention plugin's build
 
 ```
 dependencies {
-    implementation("de.jjohannes.gradle:java-ecosystem-capabilities:0.3")
+    implementation("de.jjohannes.gradle:java-ecosystem-capabilities:0.4")
 }
 ```
 
@@ -36,7 +36,7 @@ In your convention plugin, apply the plugin.
 ```
 plugins {
     ...
-    id("de.jjohannes.gradle.java-ecosystem-capabilities")
+    id("de.jjohannes.java-ecosystem-capabilities")
 }
 ```
 

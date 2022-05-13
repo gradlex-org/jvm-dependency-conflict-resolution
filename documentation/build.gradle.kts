@@ -1,5 +1,5 @@
 plugins {
-    id("de.jjohannes.gradle.java-ecosystem-capabilities")
+    id("de.jjohannes.java-ecosystem-capabilities")
 }
 
 buildscript {
