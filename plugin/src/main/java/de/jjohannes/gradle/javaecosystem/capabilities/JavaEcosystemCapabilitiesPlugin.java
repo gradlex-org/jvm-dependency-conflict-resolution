@@ -29,6 +29,7 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
         for (String module : C3p0Rule.MODULES) { components.withModule(module, C3p0Rule.class); }
         for (String module : CGlibRule.MODULES) { components.withModule(module, CGlibRule.class); }
         for (String module : Dom4jRule.MODULES) { components.withModule(module, Dom4jRule.class); }
+        for (String module : GuavaRule.MODULES) { components.withModule(module, GuavaRule.class); }
         for (String module : HamcrestRule.MODULES) { components.withModule(module, HamcrestRule.class); }
         for (String module : JakartaActivationApiRule.MODULES) { components.withModule(module, JakartaActivationApiRule.class); }
         for (String module : JakartaAnnotationApiRule.MODULES) { components.withModule(module, JakartaAnnotationApiRule.class); }
@@ -44,6 +45,11 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
         for (String module : JakartaWsRsApisRule.MODULES) { components.withModule(module, JakartaWsRsApisRule.class); }
         for (String module : JakartaXmlBindApisRule.MODULES) { components.withModule(module, JakartaXmlBindApisRule.class); }
         for (String module : JakartaXmlWsApisRule.MODULES) { components.withModule(module, JakartaXmlWsApisRule.class); }
+        for (String module : JavaAssistJbossRule.MODULES) { components.withModule(module, JavaAssistJbossRule.class); }
+        for (String module : JavaAssistRule.MODULES) { components.withModule(module, JavaAssistRule.class); }
+        for (String module : JtsCoreRule.MODULES) { components.withModule(module, JtsCoreRule.class); }
+        for (String module : JtsRule.MODULES) { components.withModule(module, JtsRule.class); }
+        for (String module : PostgresqlRule.MODULES) { components.withModule(module, PostgresqlRule.class); }
         for (String module : StaxApiRule.MODULES) { components.withModule(module, StaxApiRule.class); }
         for (String module : VelocityRule.MODULES) { components.withModule(module, VelocityRule.class); }
         for (String module : WoodstoxAslRule.MODULES) { components.withModule(module, WoodstoxAslRule.class); }
@@ -56,6 +62,7 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
         selectHighestVersion(resolution, CGlibRule.CAPABILITY_GROUP, CGlibRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, Dom4jRule.CAPABILITY_GROUP, Dom4jRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, JakartaActivationApiRule.CAPABILITY_GROUP, JakartaActivationApiRule.CAPABILITY_NAME);
+        selectHighestVersion(resolution, GuavaRule.CAPABILITY_GROUP, GuavaRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, JakartaAnnotationApiRule.CAPABILITY_GROUP, JakartaAnnotationApiRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, JakartaEjbApiRule.CAPABILITY_GROUP, JakartaEjbApiRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, JakartaElApiRule.CAPABILITY_GROUP, JakartaElApiRule.CAPABILITY_NAME);
@@ -69,6 +76,11 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
         selectHighestVersion(resolution, JakartaWsRsApisRule.CAPABILITY_GROUP, JakartaWsRsApisRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, JakartaXmlBindApisRule.CAPABILITY_GROUP, JakartaXmlBindApisRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, JakartaXmlWsApisRule.CAPABILITY_GROUP, JakartaXmlWsApisRule.CAPABILITY_NAME);
+        selectHighestVersion(resolution, JavaAssistJbossRule.CAPABILITY_GROUP, JavaAssistJbossRule.CAPABILITY_NAME);
+        selectHighestVersion(resolution, JavaAssistRule.CAPABILITY_GROUP, JavaAssistRule.CAPABILITY_NAME);
+        selectHighestVersion(resolution, JtsCoreRule.CAPABILITY_GROUP, JtsCoreRule.CAPABILITY_NAME);
+        selectHighestVersion(resolution, JtsRule.CAPABILITY_GROUP, JtsRule.CAPABILITY_NAME);
+        selectHighestVersion(resolution, PostgresqlRule.CAPABILITY_GROUP, PostgresqlRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, StaxApiRule.CAPABILITY_GROUP, StaxApiRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, VelocityRule.CAPABILITY_GROUP, VelocityRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, WoodstoxAslRule.CAPABILITY_GROUP, WoodstoxAslRule.CAPABILITY_NAME);
