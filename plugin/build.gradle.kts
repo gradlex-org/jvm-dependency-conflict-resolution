@@ -1,10 +1,10 @@
 plugins {
     id("java-gradle-plugin")
-    id("com.gradle.plugin-publish") version "1.0.0-rc-1"
+    id("com.gradle.plugin-publish") version "1.0.0"
 }
 
 group = "de.jjohannes.gradle"
-version = "0.4"
+version = "0.5"
 
 gradlePlugin {
     plugins.create(project.name) {
