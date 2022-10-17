@@ -6,8 +6,7 @@ pluginManagement {
 }
 
 plugins {
-    id("com.gradle.enterprise") version "3.10"
-    id("com.gradle.common-custom-user-data-gradle-plugin") version "1.6.3"
+    id("com.gradle.enterprise") version "3.11.2"
 }
 
 gradleEnterprise {
