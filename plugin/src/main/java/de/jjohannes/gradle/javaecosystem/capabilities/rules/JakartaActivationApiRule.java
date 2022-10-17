@@ -12,6 +12,7 @@ public abstract class JakartaActivationApiRule implements ComponentMetadataRule 
 
     public static final String[] MODULES = {
             "jakarta.activation:jakarta.activation-api",
+            "com.sun.activation:javax.activation",
             "com.sun.activation:jakarta.activation"
     };
 
