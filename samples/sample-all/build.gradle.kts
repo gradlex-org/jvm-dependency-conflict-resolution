@@ -11,6 +11,7 @@ dependencies {
     implementation("com.google.guava:guava-jdk5:17.0")
     implementation("com.google.guava:guava:31.1-jre")
     implementation("com.mchange:c3p0:0.9.5.5")
+    implementation("com.sun.activation:jakarta.activation:2.0.1") // triggers bug: https://github.com/gradle/gradle/issues/14220
     implementation("com.sun.activation:javax.activation:1.2.0")
     implementation("com.sun.mail:jakarta.mail:2.0.1")
     implementation("com.sun.mail:javax.mail:1.6.2")
@@ -86,7 +87,6 @@ dependencies {
     implementation("stax:stax-api:1.0")
     implementation("velocity:velocity:1.4")
     implementation("woodstox:wstx-asl:2.9.3")
-    implementation("com.sun.activation:jakarta.activation:2.0.1") // down here due to bug: https://github.com/gradle/gradle/issues/14220
     // implementation("woodstox:wstx-lgpl:3.2.7") - has no POM file
 }
 repositories {
