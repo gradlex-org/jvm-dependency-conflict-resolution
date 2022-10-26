@@ -11,9 +11,13 @@ public abstract class JakartaMailApiRule implements ComponentMetadataRule {
     public static final String CAPABILITY_NAME = "mail";
 
     public static final String[] MODULES = {
+            // API only
+            "com.sun.mail:mailapi",
+            "jakarta.mail:jakarta.mail-api",
+            // API + Implementation
             "com.sun.mail:javax.mail",
             "com.sun.mail:jakarta.mail",
-            "com.sun.mail:mailapi"
+            "org.eclipse.angus:jakarta.mail"
     };
 
     @Override

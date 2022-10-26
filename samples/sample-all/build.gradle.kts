@@ -11,7 +11,6 @@ dependencies {
     implementation("com.google.guava:guava-jdk5:17.0")
     implementation("com.google.guava:guava:31.1-jre")
     implementation("com.mchange:c3p0:0.9.5.5")
-    implementation("com.sun.activation:jakarta.activation:2.0.1")
     implementation("com.sun.activation:javax.activation:1.2.0")
     implementation("com.sun.mail:jakarta.mail:2.0.1")
     implementation("com.sun.mail:javax.mail:1.6.2")
@@ -25,6 +24,7 @@ dependencies {
     implementation("jakarta.el:jakarta.el-api:4.0.0")
     implementation("jakarta.inject:jakarta.inject-api:1.0.5")
     implementation("jakarta.jws:jakarta.jws-api:3.0.0")
+    implementation("jakarta.mail:jakarta.mail-api:2.1.0")
     implementation("jakarta.persistence:jakarta.persistence-api:3.0.0")
     implementation("jakarta.servlet:jakarta.servlet-api:5.0.0")
     implementation("jakarta.validation:jakarta.validation-api:2.0.1")
@@ -66,6 +66,7 @@ dependencies {
     implementation("org.codehaus.woodstox:wstx-asl:4.0.6")
     implementation("org.codehaus.woodstox:wstx-lgpl:3.2.9")
     implementation("org.dom4j:dom4j:2.1.3")
+    implementation("org.eclipse.angus:jakarta.mail:1.0.0")
     implementation("org.hamcrest:hamcrest-core:2.2")
     implementation("org.hamcrest:hamcrest-library:2.2")
     implementation("org.hamcrest:hamcrest:2.2")
@@ -85,6 +86,7 @@ dependencies {
     implementation("stax:stax-api:1.0")
     implementation("velocity:velocity:1.4")
     implementation("woodstox:wstx-asl:2.9.3")
+    implementation("com.sun.activation:jakarta.activation:2.0.1") // down here due to bug: https://github.com/gradle/gradle/issues/14220
     // implementation("woodstox:wstx-lgpl:3.2.7") - has no POM file
 }
 repositories {
