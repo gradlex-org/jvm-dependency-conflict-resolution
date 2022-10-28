@@ -162,6 +162,8 @@ Each Capability's GA coordinates correspond to the GA coordinates of the Compone
   * [org.javassist:javassist](https://mvnrepository.com/artifact/org.javassist/javassist)
 * [junit:junit](https://mvnrepository.com/artifact/junit/junit) ([JunitRule](plugin/src/main/java/de/jjohannes/gradle/javaecosystem/capabilities/rules/JunitRule.java))
   * [junit:junit-dep](https://mvnrepository.com/artifact/junit/junit-dep)
+* [org.apache.commons:commons-io](https://mvnrepository.com/artifact/org.apache.commons/commons-io) ([CommonsIoRule](plugin/src/main/java/de/jjohannes/gradle/javaecosystem/capabilities/rules/CommonsIoRule.java))
+  * [commons-io:commons-io](https://mvnrepository.com/artifact/commons-io/commons-io)
 * [org.hamcrest:hamcrest-core](https://mvnrepository.com/artifact/org.hamcrest/hamcrest-core) / [org.hamcrest:hamcrest-library](https://mvnrepository.com/artifact/org.hamcrest/hamcrest-library) ([HamcrestRule](plugin/src/main/java/de/jjohannes/gradle/javaecosystem/capabilities/rules/HamcrestRule.java))
   * [org.hamcrest:hamcrest](https://mvnrepository.com/artifact/org.hamcrest/hamcrest)
 * [postgresql:postgresql](https://mvnrepository.com/artifact/postgresql/postgresql) ([PostgresqlRule](plugin/src/main/java/de/jjohannes/gradle/javaecosystem/capabilities/rules/PostgresqlRule.java))

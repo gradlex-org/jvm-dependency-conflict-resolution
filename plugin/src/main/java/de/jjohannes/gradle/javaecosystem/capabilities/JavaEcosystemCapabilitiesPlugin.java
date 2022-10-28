@@ -28,6 +28,7 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
         for (String module : AsmRule.MODULES) { components.withModule(module, AsmRule.class); }
         for (String module : C3p0Rule.MODULES) { components.withModule(module, C3p0Rule.class); }
         for (String module : CGlibRule.MODULES) { components.withModule(module, CGlibRule.class); }
+        for (String module : CommonsIoRule.MODULES) { components.withModule(module, CommonsIoRule.class); }
         for (String module : Dom4jRule.MODULES) { components.withModule(module, Dom4jRule.class); }
         for (String module : GuavaRule.MODULES) { components.withModule(module, GuavaRule.class); }
         for (String module : HamcrestRule.MODULES) { components.withModule(module, HamcrestRule.class); }
@@ -61,6 +62,7 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
         selectHighestVersion(resolution, AsmRule.CAPABILITY_GROUP, AsmRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, C3p0Rule.CAPABILITY_GROUP, C3p0Rule.CAPABILITY_NAME);
         selectHighestVersion(resolution, CGlibRule.CAPABILITY_GROUP, CGlibRule.CAPABILITY_NAME);
+        selectHighestVersion(resolution, CommonsIoRule.CAPABILITY_GROUP, CommonsIoRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, Dom4jRule.CAPABILITY_GROUP, Dom4jRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, JakartaActivationApiRule.CAPABILITY_GROUP, JakartaActivationApiRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, GuavaRule.CAPABILITY_GROUP, GuavaRule.CAPABILITY_NAME);
