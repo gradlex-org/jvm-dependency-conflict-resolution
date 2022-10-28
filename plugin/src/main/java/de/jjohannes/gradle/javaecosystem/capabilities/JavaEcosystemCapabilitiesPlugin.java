@@ -49,6 +49,7 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
         for (String module : JavaAssistRule.MODULES) { components.withModule(module, JavaAssistRule.class); }
         for (String module : JtsCoreRule.MODULES) { components.withModule(module, JtsCoreRule.class); }
         for (String module : JtsRule.MODULES) { components.withModule(module, JtsRule.class); }
+        for (String module : JunitRule.MODULES) { components.withModule(module, JunitRule.class); }
         for (String module : PostgresqlRule.MODULES) { components.withModule(module, PostgresqlRule.class); }
         for (String module : StaxApiRule.MODULES) { components.withModule(module, StaxApiRule.class); }
         for (String module : VelocityRule.MODULES) { components.withModule(module, VelocityRule.class); }
@@ -80,6 +81,7 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
         selectHighestVersion(resolution, JavaAssistRule.CAPABILITY_GROUP, JavaAssistRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, JtsCoreRule.CAPABILITY_GROUP, JtsCoreRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, JtsRule.CAPABILITY_GROUP, JtsRule.CAPABILITY_NAME);
+        selectHighestVersion(resolution, JunitRule.CAPABILITY_GROUP, JunitRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, PostgresqlRule.CAPABILITY_GROUP, PostgresqlRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, StaxApiRule.CAPABILITY_GROUP, StaxApiRule.CAPABILITY_NAME);
         selectHighestVersion(resolution, VelocityRule.CAPABILITY_GROUP, VelocityRule.CAPABILITY_NAME);

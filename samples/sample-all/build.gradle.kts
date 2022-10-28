@@ -55,6 +55,8 @@ dependencies {
     implementation("javax.xml.stream:stax-api:1.0")
     implementation("javax.xml.ws:jaxws-api:2.3.1")
     implementation("jboss:javassist:3.8.0.GA")
+    implementation("junit:junit-dep:4.8")
+    implementation("junit:junit:4.12")
     implementation("org.apache.tomcat:servlet-api:6.0.53")
     implementation("org.apache.tomcat:tomcat-annotations-api:9.0.1")
     implementation("org.apache.tomcat:tomcat-servlet-api:9.0.1")
