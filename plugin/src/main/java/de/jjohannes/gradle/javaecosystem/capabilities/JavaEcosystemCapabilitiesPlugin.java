@@ -12,6 +12,8 @@ import org.gradle.api.artifacts.ComponentMetadataRule;
 import org.gradle.api.artifacts.ComponentVariantIdentifier;
 import org.gradle.api.artifacts.component.ModuleComponentIdentifier;
 import org.gradle.api.artifacts.dsl.ComponentMetadataHandler;
+import org.gradle.api.initialization.Settings;
+import org.gradle.api.plugins.ExtensionAware;
 import org.gradle.util.GradleVersion;
 
 import javax.annotation.Nullable;
@@ -24,9 +26,10 @@ import java.util.TreeSet;
 
 @SuppressWarnings("unused")
 @NonNullApi
-public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project> {
+public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<ExtensionAware> {
 
     private static final GradleVersion MINIMUM_SUPPORTED_VERSION = GradleVersion.version("6.0");
+    private static final GradleVersion MINIMUM_SUPPORTED_VERSION_SETTINGS = GradleVersion.version("6.8");
 
     /**
      * Map: Capability -> Default Module to resolve to (or 'null' if resolve to the highest version)
@@ -34,20 +37,35 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
     private final Map<String, String> standardResolutionStrategy = new HashMap<>();
 
     @Override
-    public void apply(Project project) {
+    public void apply(ExtensionAware projectOrSettings) {
         if (GradleVersion.current().compareTo(MINIMUM_SUPPORTED_VERSION) < 0) {
-            throw new IllegalStateException("Plugin requires at least Gradle 6.0");
+            throw new IllegalStateException("Plugin requires at least Gradle " + MINIMUM_SUPPORTED_VERSION.getVersion());
         }
 
         Set<String> allCapabilities = new TreeSet<>();
-        JavaEcosystemCapabilitiesExtension javaEcosystemCapabilities =
-                project.getExtensions().create("javaEcosystemCapabilities", JavaEcosystemCapabilitiesExtension.class, allCapabilities);
-        
-        registerCapabilityRules(project.getDependencies().getComponents(), allCapabilities);
-        registerComponentRules(project.getDependencies().getComponents());
-        
-        project.getConfigurations().all(configuration ->
-                defineStrategies(javaEcosystemCapabilities, configuration.getResolutionStrategy().getCapabilitiesResolution()));
+
+        ComponentMetadataHandler components;
+        if (projectOrSettings instanceof Project) {
+            components = ((Project) projectOrSettings).getDependencies().getComponents();
+        } else if (projectOrSettings instanceof Settings) {
+            if (GradleVersion.current().compareTo(MINIMUM_SUPPORTED_VERSION_SETTINGS) < 0) {
+                throw new IllegalStateException("Using this plugin in settings.gradle requires at least Gradle " + MINIMUM_SUPPORTED_VERSION_SETTINGS.getVersion());
+            }
+            //noinspection UnstableApiUsage
+            components = ((Settings) projectOrSettings).getDependencyResolutionManagement().getComponents();
+        } else {
+            throw new IllegalStateException("Cannot apply plugin to: " + projectOrSettings.getClass().getName());
+        }
+
+        registerCapabilityRules(components, allCapabilities);
+        registerComponentRules(components);
+
+        if (projectOrSettings instanceof Project) {
+            JavaEcosystemCapabilitiesExtension javaEcosystemCapabilities =
+                    projectOrSettings.getExtensions().create("javaEcosystemCapabilities", JavaEcosystemCapabilitiesExtension.class, allCapabilities);
+            ((Project) projectOrSettings).getConfigurations().all(configuration ->
+                    defineStrategies(javaEcosystemCapabilities, configuration.getResolutionStrategy().getCapabilitiesResolution()));
+        }
     }
 
     private void registerCapabilityRules(ComponentMetadataHandler components, Set<String> allCapabilities) {
