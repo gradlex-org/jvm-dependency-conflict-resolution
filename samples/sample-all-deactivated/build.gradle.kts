@@ -3,6 +3,10 @@ plugins {
     id("java-library")
 }
 
+javaEcosystemCapabilities {
+    deactivatedResolutionStrategies.addAll(allCapabilities)
+}
+
 dependencies {
     implementation("asm:asm:3.3.1")
     implementation("c3p0:c3p0:0.9.1.2")

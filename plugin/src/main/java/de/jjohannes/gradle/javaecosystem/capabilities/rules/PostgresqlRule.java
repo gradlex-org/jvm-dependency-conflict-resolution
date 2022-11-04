@@ -1,10 +1,12 @@
 package de.jjohannes.gradle.javaecosystem.capabilities.rules;
 
+import org.gradle.api.NonNullApi;
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataRule;
 
 @CacheableRule
+@NonNullApi
 public abstract class PostgresqlRule implements ComponentMetadataRule {
 
     public static final String CAPABILITY_GROUP = "postgresql";

@@ -6,126 +6,127 @@ import org.gradle.api.NonNullApi;
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;
 import org.gradle.api.artifacts.CapabilitiesResolution;
+import org.gradle.api.artifacts.CapabilityResolutionDetails;
+import org.gradle.api.artifacts.ComponentMetadataRule;
 import org.gradle.api.artifacts.ComponentVariantIdentifier;
 import org.gradle.api.artifacts.component.ModuleComponentIdentifier;
 import org.gradle.api.artifacts.dsl.ComponentMetadataHandler;
 
 import javax.annotation.Nullable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
+import java.util.TreeSet;
 
 @SuppressWarnings("unused")
 @NonNullApi
 public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project> {
 
+    /**
+     * Map: Capability -> Default Module to resolve to (or 'null' if resolve to the highest version)
+     */
+    private final Map<String, String> standardResolutionStrategy = new HashMap<>();
+
     @Override
     public void apply(Project project) {
-        registerRules(project.getDependencies().getComponents());
-        project.getConfigurations().all(configuration -> defineStrategies(configuration.getResolutionStrategy().getCapabilitiesResolution()));
+        Set<String> allCapabilities = new TreeSet<>();
+        JavaEcosystemCapabilitiesExtension javaEcosystemCapabilities =
+                project.getExtensions().create("javaEcosystemCapabilities", JavaEcosystemCapabilitiesExtension.class, allCapabilities);
+        registerRules(project.getDependencies().getComponents(), javaEcosystemCapabilities, allCapabilities);
+        project.getConfigurations().all(configuration ->
+                defineStrategies(javaEcosystemCapabilities, configuration.getResolutionStrategy().getCapabilitiesResolution()));
     }
 
-    private void registerRules(ComponentMetadataHandler components) {
-        for (String module : AsmRule.MODULES) { components.withModule(module, AsmRule.class); }
-        for (String module : C3p0Rule.MODULES) { components.withModule(module, C3p0Rule.class); }
-        for (String module : CGlibRule.MODULES) { components.withModule(module, CGlibRule.class); }
-        for (String module : CommonsIoRule.MODULES) { components.withModule(module, CommonsIoRule.class); }
-        for (String module : Dom4jRule.MODULES) { components.withModule(module, Dom4jRule.class); }
-        for (String module : GuavaRule.MODULES) { components.withModule(module, GuavaRule.class); }
-        for (String module : HamcrestCoreRule.MODULES) { components.withModule(module, HamcrestCoreRule.class); }
-        for (String module : HamcrestLibraryRule.MODULES) { components.withModule(module, HamcrestLibraryRule.class); }
-        for (String module : JakartaActivationApiRule.MODULES) { components.withModule(module, JakartaActivationApiRule.class); }
-        for (String module : JakartaAnnotationApiRule.MODULES) { components.withModule(module, JakartaAnnotationApiRule.class); }
-        for (String module : JakartaEjbApiRule.MODULES) { components.withModule(module, JakartaEjbApiRule.class); }
-        for (String module : JakartaElApiRule.MODULES) { components.withModule(module, JakartaElApiRule.class); }
-        for (String module : JakartaInjectApiRule.MODULES) { components.withModule(module, JakartaInjectApiRule.class); }
-        for (String module : JakartaJwsApisRule.MODULES) { components.withModule(module, JakartaJwsApisRule.class); }
-        for (String module : JakartaMailApiRule.MODULES) { components.withModule(module, JakartaMailApiRule.class); }
-        for (String module : JakartaPersistenceApiRule.MODULES) { components.withModule(module, JakartaPersistenceApiRule.class); }
-        for (String module : JakartaServletApiRule.MODULES) { components.withModule(module, JakartaServletApiRule.class); }
-        for (String module : JakartaSoapApisRule.MODULES) { components.withModule(module, JakartaSoapApisRule.class); }
-        for (String module : JakartaValidationAPIRule.MODULES) { components.withModule(module, JakartaValidationAPIRule.class); }
-        for (String module : JakartaWsRsApisRule.MODULES) { components.withModule(module, JakartaWsRsApisRule.class); }
-        for (String module : JakartaXmlBindApisRule.MODULES) { components.withModule(module, JakartaXmlBindApisRule.class); }
-        for (String module : JakartaXmlWsApisRule.MODULES) { components.withModule(module, JakartaXmlWsApisRule.class); }
-        for (String module : JavaAssistJbossRule.MODULES) { components.withModule(module, JavaAssistJbossRule.class); }
-        for (String module : JavaAssistRule.MODULES) { components.withModule(module, JavaAssistRule.class); }
-        for (String module : JtsCoreRule.MODULES) { components.withModule(module, JtsCoreRule.class); }
-        for (String module : JtsRule.MODULES) { components.withModule(module, JtsRule.class); }
-        for (String module : JunitRule.MODULES) { components.withModule(module, JunitRule.class); }
-        for (String module : PostgresqlRule.MODULES) { components.withModule(module, PostgresqlRule.class); }
-        for (String module : StaxApiRule.MODULES) { components.withModule(module, StaxApiRule.class); }
-        for (String module : VelocityRule.MODULES) { components.withModule(module, VelocityRule.class); }
-        for (String module : WoodstoxAslRule.MODULES) { components.withModule(module, WoodstoxAslRule.class); }
-        for (String module : WoodstoxLgplRule.MODULES) { components.withModule(module, WoodstoxLgplRule.class); }
+    private void registerRules(ComponentMetadataHandler components, JavaEcosystemCapabilitiesExtension javaEcosystemCapabilities, Set<String> allCapabilities) {
+        registerRule(AsmRule.CAPABILITY, AsmRule.MODULES, AsmRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(C3p0Rule.CAPABILITY, C3p0Rule.MODULES, C3p0Rule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(CGlibRule.CAPABILITY, CGlibRule.MODULES, CGlibRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(CommonsIoRule.CAPABILITY, CommonsIoRule.MODULES, CommonsIoRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(Dom4jRule.CAPABILITY, Dom4jRule.MODULES, Dom4jRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(GuavaRule.CAPABILITY, GuavaRule.MODULES, GuavaRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(HamcrestCoreRule.CAPABILITY, HamcrestCoreRule.MODULES, HamcrestCoreRule.class, HamcrestCoreRule.MODULES[0], javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(HamcrestLibraryRule.CAPABILITY, HamcrestLibraryRule.MODULES, HamcrestLibraryRule.class, HamcrestLibraryRule.MODULES[0], javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(JakartaActivationApiRule.CAPABILITY, JakartaActivationApiRule.MODULES, JakartaActivationApiRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(JakartaAnnotationApiRule.CAPABILITY, JakartaAnnotationApiRule.MODULES, JakartaAnnotationApiRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(JakartaEjbApiRule.CAPABILITY, JakartaEjbApiRule.MODULES, JakartaEjbApiRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(JakartaElApiRule.CAPABILITY, JakartaElApiRule.MODULES, JakartaElApiRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(JakartaInjectApiRule.CAPABILITY, JakartaInjectApiRule.MODULES, JakartaInjectApiRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(JakartaJwsApisRule.CAPABILITY, JakartaJwsApisRule.MODULES, JakartaJwsApisRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(JakartaMailApiRule.CAPABILITY, JakartaMailApiRule.MODULES, JakartaMailApiRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(JakartaPersistenceApiRule.CAPABILITY, JakartaPersistenceApiRule.MODULES, JakartaPersistenceApiRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(JakartaServletApiRule.CAPABILITY, JakartaServletApiRule.MODULES, JakartaServletApiRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(JakartaSoapApisRule.CAPABILITY, JakartaSoapApisRule.MODULES, JakartaSoapApisRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(JakartaValidationAPIRule.CAPABILITY, JakartaValidationAPIRule.MODULES, JakartaValidationAPIRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(JakartaWsRsApisRule.CAPABILITY, JakartaWsRsApisRule.MODULES, JakartaWsRsApisRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(JakartaXmlBindApisRule.CAPABILITY, JakartaXmlBindApisRule.MODULES, JakartaXmlBindApisRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(JakartaXmlWsApisRule.CAPABILITY, JakartaXmlWsApisRule.MODULES, JakartaXmlWsApisRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(JavaAssistRule.CAPABILITY, JavaAssistRule.MODULES, JavaAssistRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(JtsCoreRule.CAPABILITY, JtsCoreRule.MODULES, JtsCoreRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(JtsRule.CAPABILITY, JtsRule.MODULES, JtsRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(JunitRule.CAPABILITY, JunitRule.MODULES, JunitRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(PostgresqlRule.CAPABILITY, PostgresqlRule.MODULES, PostgresqlRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(StaxApiRule.CAPABILITY, StaxApiRule.MODULES, StaxApiRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(VelocityRule.CAPABILITY, VelocityRule.MODULES, VelocityRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(WoodstoxAslRule.CAPABILITY, WoodstoxAslRule.MODULES, WoodstoxAslRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+        registerRule(WoodstoxLgplRule.CAPABILITY, WoodstoxLgplRule.MODULES, WoodstoxLgplRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
     }
 
-    private void defineStrategies(CapabilitiesResolution resolution) {
-        selectHighestVersion(resolution, AsmRule.CAPABILITY);
-        selectHighestVersion(resolution, C3p0Rule.CAPABILITY);
-        selectHighestVersion(resolution, CGlibRule.CAPABILITY);
-        selectHighestVersion(resolution, CommonsIoRule.CAPABILITY);
-        selectHighestVersion(resolution, Dom4jRule.CAPABILITY);
-        selectHighestVersion(resolution, JakartaActivationApiRule.CAPABILITY);
-        selectHighestVersion(resolution, GuavaRule.CAPABILITY);
-        selectHighestVersion(resolution, JakartaAnnotationApiRule.CAPABILITY);
-        selectHighestVersion(resolution, JakartaEjbApiRule.CAPABILITY);
-        selectHighestVersion(resolution, JakartaElApiRule.CAPABILITY);
-        selectHighestVersion(resolution, JakartaInjectApiRule.CAPABILITY);
-        selectHighestVersion(resolution, JakartaJwsApisRule.CAPABILITY);
-        selectHighestVersion(resolution, JakartaMailApiRule.CAPABILITY);
-        selectHighestVersion(resolution, JakartaPersistenceApiRule.CAPABILITY);
-        selectHighestVersion(resolution, JakartaServletApiRule.CAPABILITY);
-        selectHighestVersion(resolution, JakartaSoapApisRule.CAPABILITY);
-        selectHighestVersion(resolution, JakartaValidationAPIRule.CAPABILITY);
-        selectHighestVersion(resolution, JakartaWsRsApisRule.CAPABILITY);
-        selectHighestVersion(resolution, JakartaXmlBindApisRule.CAPABILITY);
-        selectHighestVersion(resolution, JakartaXmlWsApisRule.CAPABILITY);
-        selectHighestVersion(resolution, JavaAssistJbossRule.CAPABILITY);
-        selectHighestVersion(resolution, JavaAssistRule.CAPABILITY);
-        selectHighestVersion(resolution, JtsCoreRule.CAPABILITY);
-        selectHighestVersion(resolution, JtsRule.CAPABILITY);
-        selectHighestVersion(resolution, JunitRule.CAPABILITY);
-        selectHighestVersion(resolution, PostgresqlRule.CAPABILITY);
-        selectHighestVersion(resolution, StaxApiRule.CAPABILITY);
-        selectHighestVersion(resolution, VelocityRule.CAPABILITY);
-        selectHighestVersion(resolution, WoodstoxAslRule.CAPABILITY);
-        selectHighestVersion(resolution, WoodstoxLgplRule.CAPABILITY);
+    private void registerRule(
+            String capability,
+            String[] modules,
+            Class<? extends ComponentMetadataRule> rule,
+            @Nullable String resolveToModule,
+            JavaEcosystemCapabilitiesExtension javaEcosystemCapabilities,
+            ComponentMetadataHandler components,
+            Set<String> allCapabilities) {
 
-        select(resolution, HamcrestCoreRule.CAPABILITY, HamcrestCoreRule.MODULES);
-        select(resolution, HamcrestLibraryRule.CAPABILITY, HamcrestLibraryRule.MODULES);
+        allCapabilities.add(capability);
+        standardResolutionStrategy.put(capability, resolveToModule);
+
+        for (String module : modules) {
+            components.withModule(module, rule); //TODO remove param!
+        }
     }
 
-    private void selectHighestVersion(CapabilitiesResolution resolution, String capability) {
-        resolution.withCapability(capability, details -> {
-            // Do not use 'details.selectHighestVersion()' because it does not stack well when build authors
-            // needs to register another resolution strategy to select a specific modules.
-            // See: https://github.com/gradle/gradle/issues/20348
-            // 'findHighestVersionCandidate()' here acts as a fallback/default strategy.
-            // Note: Our implementation uses the versions of the module candidates, while selectHighestVersion() uses the capability's versions.
-            ComponentVariantIdentifier candidate = findHighestVersionCandidate(details.getCandidates());
-            if (candidate != null) {
-                details.select(candidate);
-                details.because("latest version of " + details.getCapability().getGroup() + ":" + details.getCapability().getName());
-            }
-        });
-    }
-
-    private void select(CapabilitiesResolution resolution, String capability, String[] moduleGAs) {
-        resolution.withCapability(capability, details -> {
-            for (String moduleGA : moduleGAs) {
-                Optional<ComponentVariantIdentifier> module = details.getCandidates().stream().filter(c -> {
-                    if (c.getId() instanceof ModuleComponentIdentifier) {
-                        return ((ModuleComponentIdentifier) c.getId()).getModuleIdentifier().toString().equals(moduleGA);
+    private void defineStrategies(JavaEcosystemCapabilitiesExtension javaEcosystemCapabilities, CapabilitiesResolution resolution) {
+        for (String capability : javaEcosystemCapabilities.getAllCapabilities()) {
+            String strategy = standardResolutionStrategy.get(capability);
+            resolution.withCapability(capability, details -> {
+                if (!javaEcosystemCapabilities.getDeactivatedResolutionStrategies().get().contains(capability)) {
+                    if (strategy == null) {
+                        selectHighestVersion(details);
+                    } else {
+                        select(details, strategy);
                     }
-                    return false;
-                }).findFirst();
-
-                if (module.isPresent()) {
-                    details.select(module.get());
-                    return;
                 }
+            });
+        }
+    }
+
+    private void selectHighestVersion(CapabilityResolutionDetails details) {
+        // Do not use 'details.selectHighestVersion()' because it does not stack well when build authors
+        // needs to register another resolution strategy to select a specific modules.
+        // See: https://github.com/gradle/gradle/issues/20348
+        // 'findHighestVersionCandidate()' here acts as a fallback/default strategy.
+        // Note: Our implementation uses the versions of the module candidates, while selectHighestVersion() uses the capability's versions.
+        ComponentVariantIdentifier candidate = findHighestVersionCandidate(details.getCandidates());
+        if (candidate != null) {
+            details.select(candidate);
+            details.because("latest version of " + details.getCapability().getGroup() + ":" + details.getCapability().getName());
+        }
+    }
+
+    private void select(CapabilityResolutionDetails details, String moduleGA) {
+        Optional<ComponentVariantIdentifier> module = details.getCandidates().stream().filter(c -> {
+            if (c.getId() instanceof ModuleComponentIdentifier) {
+                return ((ModuleComponentIdentifier) c.getId()).getModuleIdentifier().toString().equals(moduleGA);
             }
-        });
+            return false;
+        }).findFirst();
+
+        module.ifPresent(details::select);
     }
 
     @Nullable

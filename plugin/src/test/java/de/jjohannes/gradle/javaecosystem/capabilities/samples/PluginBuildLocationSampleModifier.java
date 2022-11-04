@@ -15,7 +15,7 @@ public class PluginBuildLocationSampleModifier implements SampleModifier {
         sampleIn.getCommands().add(
                 new Command(new File(pluginProjectDir, "../gradlew").getAbsolutePath(),
                         cmd.getExecutionSubdirectory(),
-                        Arrays.asList("dependencies", "--configuration=compileClasspath", "-q", "-PpluginLocation=" + pluginProjectDir.getAbsolutePath()),
+                        Arrays.asList("dependencies", "--configuration=compileClasspath", "-s", "-q", "-PpluginLocation=" + pluginProjectDir.getAbsolutePath()),
                         cmd.getFlags(),
                         cmd.getExpectedOutput(),
                         cmd.isExpectFailure(),
