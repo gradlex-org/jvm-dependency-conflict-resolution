@@ -102,56 +102,17 @@ class GuavaClasspathTest extends Specification {
         allGuavaVersions().each {
             int majorGuavaVersion = it[0].substring(0, 2) as Integer
             if (useVersionForEnv || majorGuavaVersion < 31) {
-                result.add([it[0], it[1], it[2], 6, 'compileClasspath'])
-                result.add([it[0], it[1], it[2], 6, 'runtimeClasspath'])
-                result.add([it[0], it[1], it[2], 8, 'compileClasspath'])
-                result.add([it[0], it[1], it[2], 8, 'runtimeClasspath'])
+                result.add([it[0], it[1], it[2], 'android', 'compileClasspath'])
+                result.add([it[0], it[1], it[2], 'android', 'runtimeClasspath'])
+                result.add([it[0], it[1], it[2], 'standard-jvm', 'compileClasspath'])
+                result.add([it[0], it[1], it[2], 'standard-jvm', 'runtimeClasspath'])
             }
         }
         return result
     }
 
     @Unroll
-    def "has correct classpath for Guava selected by target Java version #guavaVersion-#versionSuffix, Java#javaVersion, #classpath"() {
-        given:
-        buildFile << """
-            plugins {
-                id("java-library")
-                id("de.jjohannes.java-ecosystem-capabilities")
-            }
-
-            repositories {
-                mavenCentral()
-                ${guavaVersion == nextGuavaVersion? 'mavenLocal()' : ''}
-            }
-
-            java {
-                targetCompatibility = JavaVersion.VERSION_1_$javaVersion
-                sourceCompatibility = JavaVersion.VERSION_1_$javaVersion
-            }
-
-            dependencies {
-                api("com.google.collections:google-collections:1.0")
-                api("com.google.guava:listenablefuture:1.0")
-                api("com.google.guava:guava:$guavaVersion${versionSuffix ? '-' : ''}$versionSuffix")
-            }
-
-            tasks.register("printJars") {
-                doLast {
-                    configurations.${classpath}.files.forEach { println(it.name) }
-                }
-            }
-        """
-
-        expect:
-        expectedClasspath(guavaVersion, javaVersion, classpath, dependencyVersions) == printJars().output.split('\n') as Set
-
-        where:
-        [guavaVersion, versionSuffix, dependencyVersions, javaVersion, classpath] << allGuavaCombinations(false)
-    }
-
-    @Unroll
-    def "has correct classpath for Guava selected by target environment version #guavaVersion-#versionSuffix, Java#javaVersion, #classpath"() {
+    def "has correct classpath for Guava selected by target environment version #guavaVersion-#versionSuffix, #jvmEnv, #classpath"() {
         given:
         buildFile << """
             import org.gradle.api.attributes.java.TargetJvmEnvironment
@@ -166,12 +127,11 @@ class GuavaClasspathTest extends Specification {
                 ${guavaVersion == nextGuavaVersion? 'mavenLocal()' : ''}
             }
 
-            val jvmEnv = ${javaVersion == 6 ? 'TargetJvmEnvironment.ANDROID' : 'TargetJvmEnvironment.STANDARD_JVM'}
             configurations.compileClasspath {
-                attributes.attribute(TargetJvmEnvironment.TARGET_JVM_ENVIRONMENT_ATTRIBUTE, objects.named(jvmEnv))
+                attributes.attribute(TargetJvmEnvironment.TARGET_JVM_ENVIRONMENT_ATTRIBUTE, objects.named("$jvmEnv"))
             }
             configurations.runtimeClasspath {
-                attributes.attribute(TargetJvmEnvironment.TARGET_JVM_ENVIRONMENT_ATTRIBUTE, objects.named(jvmEnv))
+                attributes.attribute(TargetJvmEnvironment.TARGET_JVM_ENVIRONMENT_ATTRIBUTE, objects.named("$jvmEnv"))
             }
 
             dependencies {
@@ -188,15 +148,15 @@ class GuavaClasspathTest extends Specification {
         """
 
         expect:
-        expectedClasspath(guavaVersion, javaVersion, classpath, dependencyVersions) == printJars().output.split('\n') as Set
+        expectedClasspath(guavaVersion, jvmEnv, classpath, dependencyVersions) == printJars().output.split('\n') as Set
 
         where:
-        [guavaVersion, versionSuffix, dependencyVersions, javaVersion, classpath] << allGuavaCombinations(true)
+        [guavaVersion, versionSuffix, dependencyVersions, jvmEnv, classpath] << allGuavaCombinations(true)
     }
 
-    Set<String> expectedClasspath(String guavaVersion, int javaVersion, String classpath, Map<String, String> dependencyVersions) {
+    Set<String> expectedClasspath(String guavaVersion, String jvmEnv, String classpath, Map<String, String> dependencyVersions) {
         int majorGuavaVersion = guavaVersion.substring(0, 2) as Integer
-        String jarSuffix = majorGuavaVersion < 22 ? '' : javaVersion < 8 ? 'android' : (guavaVersion == '22.0' || guavaVersion == '23.0') ? '' : 'jre'
+        String jarSuffix = majorGuavaVersion < 22 ? '' : jvmEnv == 'android' ? 'android' : (guavaVersion == '22.0' || guavaVersion == '23.0') ? '' : 'jre'
         Set<String> result = ["guava-${guavaVersion}${jarSuffix? '-' : ''}${jarSuffix}.jar"]
         if (dependencyVersions.failureaccess) {
             result += "failureaccess-${dependencyVersions.failureaccess}.jar"
@@ -212,7 +172,7 @@ class GuavaClasspathTest extends Specification {
                 result += "error_prone_annotations-${dependencyVersions.errorProne}.jar"
             }
             if (dependencyVersions.checker && dependencyVersions.checkerCompat) {
-                if (javaVersion < 8) {
+                if (jvmEnv == 'android') {
                     result += "checker-compat-qual-${dependencyVersions.checkerCompat}.jar"
                     if (majorGuavaVersion > 30) {
                         result += "checker-qual-${dependencyVersions.checker}.jar"

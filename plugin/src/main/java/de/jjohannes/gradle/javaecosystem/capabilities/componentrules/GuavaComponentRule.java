@@ -6,8 +6,6 @@ import org.gradle.api.artifacts.ComponentMetadataDetails;
 import org.gradle.api.artifacts.ComponentMetadataRule;
 import org.gradle.api.attributes.Attribute;
 
-import static org.gradle.api.attributes.java.TargetJvmVersion.TARGET_JVM_VERSION_ATTRIBUTE;
-
 @CacheableRule
 abstract public class GuavaComponentRule implements ComponentMetadataRule {
 
@@ -74,22 +72,18 @@ abstract public class GuavaComponentRule implements ComponentMetadataRule {
         int majorVersion = getMajorVersion(details);
         boolean isAndroidVariantVersion = isAndroidVariantVersion(details);
 
-        int jdkVersion = isAndroidVariantVersion ? majorVersion < 31 ? 6 : 8 : 8;
         String env = isAndroidVariantVersion ? "android" : "standard-jvm";
 
         String otherJarSuffix = isAndroidVariantVersion ?
                 "22.0".equals(version) || "23.0".equals(version) ? "" : "-jre" : "-android";
-        int otherJdkVersion = isAndroidVariantVersion ? 8 : majorVersion < 31 ? 6 : 8;
         String otherEnv = isAndroidVariantVersion ? "standard-jvm" : "android";
         String otherVariantName = isAndroidVariantVersion ? "standardJvm" : "android";
 
         details.withVariant(baseVariantName.toLowerCase(), variant -> variant.attributes(a -> {
-            a.attribute(TARGET_JVM_VERSION_ATTRIBUTE, jdkVersion);
             a.attribute(TARGET_JVM_ENVIRONMENT_ATTRIBUTE, env);
         }));
         details.addVariant(otherVariantName + baseVariantName, baseVariantName.toLowerCase(), variant -> {
             variant.attributes(a -> {
-                a.attribute(TARGET_JVM_VERSION_ATTRIBUTE, otherJdkVersion);
                 a.attribute(TARGET_JVM_ENVIRONMENT_ATTRIBUTE, otherEnv);
             });
             if ((majorVersion >= 26 && majorVersion < 31) || version.startsWith("31.0") || "25.1".equals(version)) {
