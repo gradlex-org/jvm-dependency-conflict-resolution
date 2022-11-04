@@ -108,7 +108,12 @@ class GuavaClasspathTest extends Specification {
                 result.add([it[0], it[1], it[2], 'standard-jvm', 'runtimeClasspath'])
             }
         }
-        return result
+        if (System.getProperty("gradleVersionUnderTest") == "7.5.1") {
+            // only do all permutations for one Gradle version
+            return result
+        }
+        // reduced amount of permutations
+        return result.subList(0, 32)
     }
 
     @Unroll
