@@ -34,43 +34,45 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
         Set<String> allCapabilities = new TreeSet<>();
         JavaEcosystemCapabilitiesExtension javaEcosystemCapabilities =
                 project.getExtensions().create("javaEcosystemCapabilities", JavaEcosystemCapabilitiesExtension.class, allCapabilities);
-        registerRules(project.getDependencies().getComponents(), javaEcosystemCapabilities, allCapabilities);
+        
+        registerCapabilityRules(project.getDependencies().getComponents(), allCapabilities);
+        
         project.getConfigurations().all(configuration ->
                 defineStrategies(javaEcosystemCapabilities, configuration.getResolutionStrategy().getCapabilitiesResolution()));
     }
 
-    private void registerRules(ComponentMetadataHandler components, JavaEcosystemCapabilitiesExtension javaEcosystemCapabilities, Set<String> allCapabilities) {
-        registerRule(AsmRule.CAPABILITY, AsmRule.MODULES, AsmRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(C3p0Rule.CAPABILITY, C3p0Rule.MODULES, C3p0Rule.class, null, javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(CGlibRule.CAPABILITY, CGlibRule.MODULES, CGlibRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(CommonsIoRule.CAPABILITY, CommonsIoRule.MODULES, CommonsIoRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(Dom4jRule.CAPABILITY, Dom4jRule.MODULES, Dom4jRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(GuavaRule.CAPABILITY, GuavaRule.MODULES, GuavaRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(HamcrestCoreRule.CAPABILITY, HamcrestCoreRule.MODULES, HamcrestCoreRule.class, HamcrestCoreRule.MODULES[0], javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(HamcrestLibraryRule.CAPABILITY, HamcrestLibraryRule.MODULES, HamcrestLibraryRule.class, HamcrestLibraryRule.MODULES[0], javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(JakartaActivationApiRule.CAPABILITY, JakartaActivationApiRule.MODULES, JakartaActivationApiRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(JakartaAnnotationApiRule.CAPABILITY, JakartaAnnotationApiRule.MODULES, JakartaAnnotationApiRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(JakartaEjbApiRule.CAPABILITY, JakartaEjbApiRule.MODULES, JakartaEjbApiRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(JakartaElApiRule.CAPABILITY, JakartaElApiRule.MODULES, JakartaElApiRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(JakartaInjectApiRule.CAPABILITY, JakartaInjectApiRule.MODULES, JakartaInjectApiRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(JakartaJwsApisRule.CAPABILITY, JakartaJwsApisRule.MODULES, JakartaJwsApisRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(JakartaMailApiRule.CAPABILITY, JakartaMailApiRule.MODULES, JakartaMailApiRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(JakartaPersistenceApiRule.CAPABILITY, JakartaPersistenceApiRule.MODULES, JakartaPersistenceApiRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(JakartaServletApiRule.CAPABILITY, JakartaServletApiRule.MODULES, JakartaServletApiRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(JakartaSoapApisRule.CAPABILITY, JakartaSoapApisRule.MODULES, JakartaSoapApisRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(JakartaValidationAPIRule.CAPABILITY, JakartaValidationAPIRule.MODULES, JakartaValidationAPIRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(JakartaWsRsApisRule.CAPABILITY, JakartaWsRsApisRule.MODULES, JakartaWsRsApisRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(JakartaXmlBindApisRule.CAPABILITY, JakartaXmlBindApisRule.MODULES, JakartaXmlBindApisRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(JakartaXmlWsApisRule.CAPABILITY, JakartaXmlWsApisRule.MODULES, JakartaXmlWsApisRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(JavaAssistRule.CAPABILITY, JavaAssistRule.MODULES, JavaAssistRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(JtsCoreRule.CAPABILITY, JtsCoreRule.MODULES, JtsCoreRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(JtsRule.CAPABILITY, JtsRule.MODULES, JtsRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(JunitRule.CAPABILITY, JunitRule.MODULES, JunitRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(PostgresqlRule.CAPABILITY, PostgresqlRule.MODULES, PostgresqlRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(StaxApiRule.CAPABILITY, StaxApiRule.MODULES, StaxApiRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(VelocityRule.CAPABILITY, VelocityRule.MODULES, VelocityRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(WoodstoxAslRule.CAPABILITY, WoodstoxAslRule.MODULES, WoodstoxAslRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
-        registerRule(WoodstoxLgplRule.CAPABILITY, WoodstoxLgplRule.MODULES, WoodstoxLgplRule.class, null, javaEcosystemCapabilities, components, allCapabilities);
+    private void registerCapabilityRules(ComponentMetadataHandler components, Set<String> allCapabilities) {
+        registerRule(AsmRule.CAPABILITY, AsmRule.MODULES, AsmRule.class, null, components, allCapabilities);
+        registerRule(C3p0Rule.CAPABILITY, C3p0Rule.MODULES, C3p0Rule.class, null, components, allCapabilities);
+        registerRule(CGlibRule.CAPABILITY, CGlibRule.MODULES, CGlibRule.class, null, components, allCapabilities);
+        registerRule(CommonsIoRule.CAPABILITY, CommonsIoRule.MODULES, CommonsIoRule.class, null, components, allCapabilities);
+        registerRule(Dom4jRule.CAPABILITY, Dom4jRule.MODULES, Dom4jRule.class, null, components, allCapabilities);
+        registerRule(GuavaRule.CAPABILITY, GuavaRule.MODULES, GuavaRule.class, null, components, allCapabilities);
+        registerRule(HamcrestCoreRule.CAPABILITY, HamcrestCoreRule.MODULES, HamcrestCoreRule.class, HamcrestCoreRule.MODULES[0], components, allCapabilities);
+        registerRule(HamcrestLibraryRule.CAPABILITY, HamcrestLibraryRule.MODULES, HamcrestLibraryRule.class, HamcrestLibraryRule.MODULES[0], components, allCapabilities);
+        registerRule(JakartaActivationApiRule.CAPABILITY, JakartaActivationApiRule.MODULES, JakartaActivationApiRule.class, null, components, allCapabilities);
+        registerRule(JakartaAnnotationApiRule.CAPABILITY, JakartaAnnotationApiRule.MODULES, JakartaAnnotationApiRule.class, null, components, allCapabilities);
+        registerRule(JakartaEjbApiRule.CAPABILITY, JakartaEjbApiRule.MODULES, JakartaEjbApiRule.class, null, components, allCapabilities);
+        registerRule(JakartaElApiRule.CAPABILITY, JakartaElApiRule.MODULES, JakartaElApiRule.class, null, components, allCapabilities);
+        registerRule(JakartaInjectApiRule.CAPABILITY, JakartaInjectApiRule.MODULES, JakartaInjectApiRule.class, null, components, allCapabilities);
+        registerRule(JakartaJwsApisRule.CAPABILITY, JakartaJwsApisRule.MODULES, JakartaJwsApisRule.class, null, components, allCapabilities);
+        registerRule(JakartaMailApiRule.CAPABILITY, JakartaMailApiRule.MODULES, JakartaMailApiRule.class, null, components, allCapabilities);
+        registerRule(JakartaPersistenceApiRule.CAPABILITY, JakartaPersistenceApiRule.MODULES, JakartaPersistenceApiRule.class, null, components, allCapabilities);
+        registerRule(JakartaServletApiRule.CAPABILITY, JakartaServletApiRule.MODULES, JakartaServletApiRule.class, null, components, allCapabilities);
+        registerRule(JakartaSoapApisRule.CAPABILITY, JakartaSoapApisRule.MODULES, JakartaSoapApisRule.class, null, components, allCapabilities);
+        registerRule(JakartaValidationAPIRule.CAPABILITY, JakartaValidationAPIRule.MODULES, JakartaValidationAPIRule.class, null, components, allCapabilities);
+        registerRule(JakartaWsRsApisRule.CAPABILITY, JakartaWsRsApisRule.MODULES, JakartaWsRsApisRule.class, null, components, allCapabilities);
+        registerRule(JakartaXmlBindApisRule.CAPABILITY, JakartaXmlBindApisRule.MODULES, JakartaXmlBindApisRule.class, null, components, allCapabilities);
+        registerRule(JakartaXmlWsApisRule.CAPABILITY, JakartaXmlWsApisRule.MODULES, JakartaXmlWsApisRule.class, null, components, allCapabilities);
+        registerRule(JavaAssistRule.CAPABILITY, JavaAssistRule.MODULES, JavaAssistRule.class, null, components, allCapabilities);
+        registerRule(JtsCoreRule.CAPABILITY, JtsCoreRule.MODULES, JtsCoreRule.class, null, components, allCapabilities);
+        registerRule(JtsRule.CAPABILITY, JtsRule.MODULES, JtsRule.class, null, components, allCapabilities);
+        registerRule(JunitRule.CAPABILITY, JunitRule.MODULES, JunitRule.class, null, components, allCapabilities);
+        registerRule(PostgresqlRule.CAPABILITY, PostgresqlRule.MODULES, PostgresqlRule.class, null, components, allCapabilities);
+        registerRule(StaxApiRule.CAPABILITY, StaxApiRule.MODULES, StaxApiRule.class, null, components, allCapabilities);
+        registerRule(VelocityRule.CAPABILITY, VelocityRule.MODULES, VelocityRule.class, null, components, allCapabilities);
+        registerRule(WoodstoxAslRule.CAPABILITY, WoodstoxAslRule.MODULES, WoodstoxAslRule.class, null, components, allCapabilities);
+        registerRule(WoodstoxLgplRule.CAPABILITY, WoodstoxLgplRule.MODULES, WoodstoxLgplRule.class, null, components, allCapabilities);
     }
 
     private void registerRule(
@@ -78,7 +80,6 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
             String[] modules,
             Class<? extends ComponentMetadataRule> rule,
             @Nullable String resolveToModule,
-            JavaEcosystemCapabilitiesExtension javaEcosystemCapabilities,
             ComponentMetadataHandler components,
             Set<String> allCapabilities) {
 
