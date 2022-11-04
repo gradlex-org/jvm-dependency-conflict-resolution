@@ -14,6 +14,7 @@ class GradleBuild {
     final File propertiesFile
 
     final String gradleVersionUnderTest = System.getProperty("gradleVersionUnderTest")
+    final boolean noJvmTargetEnvAttribute = gradleVersionUnderTest?.startsWith("6.")
 
     GradleBuild(File projectDir = Files.createTempDirectory("gradle-build").toFile()) {
         this.projectDir = projectDir
@@ -22,6 +23,7 @@ class GradleBuild {
         this.propertiesFile = file("gradle.properties")
 
         settingsFile << '''
+            rootProject.name = "test-project"
         '''
         buildFile << '''
         '''
@@ -45,6 +47,10 @@ class GradleBuild {
 
     BuildResult printJars() {
         runner('printJars').build()
+    }
+
+    BuildResult dependencies() {
+        runner('dependencies', "--configuration=compileClasspath").build()
     }
 
     GradleRunner runner(String... args) {

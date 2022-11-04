@@ -2,8 +2,9 @@ package de.jjohannes.gradle.javaecosystem.capabilities.test
 
 import de.jjohannes.gradle.javaecosystem.capabilities.test.fixture.GradleBuild
 import spock.lang.Specification
+import spock.lang.Tag
 
-class CapabilityConflictResolutionTest extends Specification {
+class GuavaCapabilityConflictResolutionTest extends Specification {
 
     @Delegate
     GradleBuild build = new GradleBuild()
@@ -14,18 +15,20 @@ class CapabilityConflictResolutionTest extends Specification {
                 repositories.mavenCentral()
                 repositories.google()
             }
-            rootProject.name = "test-project"
         """
         propertiesFile << "android.useAndroidX=true"
     }
 
     def "resolves capability conflicts to Guava (standard-jvm)"() {
         given:
+        def attributeSetup = noJvmTargetEnvAttribute? 'configurations.compileClasspath { attributes.attribute(Attribute.of("org.gradle.jvm.environment", String::class.java), "standard-jvm") } ' : ''
         buildFile << """
             plugins {
                 id("de.jjohannes.java-ecosystem-capabilities")
                 id("java-library")
             }
+
+            $attributeSetup
             
             repositories {
                 mavenCentral()
@@ -55,6 +58,7 @@ class CapabilityConflictResolutionTest extends Specification {
         ]
     }
 
+    @Tag("no-cross-version")
     def "resolves capability conflicts to Guava (android)"() {
         given:
         buildFile << """

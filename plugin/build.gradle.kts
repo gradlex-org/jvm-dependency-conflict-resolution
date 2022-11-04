@@ -42,3 +42,22 @@ tasks.test {
     maxParallelForks = 4
     inputs.dir(layout.projectDirectory.dir("../samples"))
 }
+
+listOf("6.0.1", "6.4.1", "6.9.3", "7.0.2", "7.1.1", "7.2", "7.3.3", "7.4.2", "7.5.1").forEach { gradleVersionUnderTest ->
+    val testGradle = tasks.register<Test>("testGradle$gradleVersionUnderTest") {
+        group = "verification"
+        description = "Runs tests against Gradle $gradleVersionUnderTest"
+        testClassesDirs = sourceSets.test.get().output.classesDirs
+        classpath = sourceSets.test.get().runtimeClasspath
+        useJUnitPlatform {
+            excludeTags("no-cross-version")
+        }
+        maxParallelForks = 4
+        systemProperty("gradleVersionUnderTest", gradleVersionUnderTest)
+
+        exclude("**/*SamplesTest.class") // Not yet cross-version ready
+    }
+    tasks.check {
+        dependsOn(testGradle)
+    }
+}

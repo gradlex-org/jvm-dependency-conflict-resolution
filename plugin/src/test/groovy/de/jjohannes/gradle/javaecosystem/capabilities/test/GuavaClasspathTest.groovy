@@ -114,9 +114,9 @@ class GuavaClasspathTest extends Specification {
     @Unroll
     def "has correct classpath for Guava selected by target environment version #guavaVersion-#versionSuffix, #jvmEnv, #classpath"() {
         given:
+        def attr = noJvmTargetEnvAttribute? 'Attribute.of("org.gradle.jvm.environment", String::class.java)' : 'org.gradle.api.attributes.java.TargetJvmEnvironment.TARGET_JVM_ENVIRONMENT_ATTRIBUTE'
+        def attrValue = noJvmTargetEnvAttribute? "\"$jvmEnv\"" : "objects.named(\"$jvmEnv\")"
         buildFile << """
-            import org.gradle.api.attributes.java.TargetJvmEnvironment
-
             plugins {
                 id("java-library")
                 id("de.jjohannes.java-ecosystem-capabilities")
@@ -127,11 +127,12 @@ class GuavaClasspathTest extends Specification {
                 ${guavaVersion == nextGuavaVersion? 'mavenLocal()' : ''}
             }
 
+            val envAttribute = $attr
             configurations.compileClasspath {
-                attributes.attribute(TargetJvmEnvironment.TARGET_JVM_ENVIRONMENT_ATTRIBUTE, objects.named("$jvmEnv"))
+                attributes.attribute(envAttribute, $attrValue)
             }
             configurations.runtimeClasspath {
-                attributes.attribute(TargetJvmEnvironment.TARGET_JVM_ENVIRONMENT_ATTRIBUTE, objects.named("$jvmEnv"))
+                attributes.attribute(envAttribute, $attrValue)
             }
 
             dependencies {
