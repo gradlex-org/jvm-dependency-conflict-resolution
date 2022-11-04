@@ -12,6 +12,7 @@ import org.gradle.api.artifacts.ComponentMetadataRule;
 import org.gradle.api.artifacts.ComponentVariantIdentifier;
 import org.gradle.api.artifacts.component.ModuleComponentIdentifier;
 import org.gradle.api.artifacts.dsl.ComponentMetadataHandler;
+import org.gradle.util.GradleVersion;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
@@ -25,6 +26,8 @@ import java.util.TreeSet;
 @NonNullApi
 public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project> {
 
+    private static final GradleVersion MINIMUM_SUPPORTED_VERSION = GradleVersion.version("6.0");
+
     /**
      * Map: Capability -> Default Module to resolve to (or 'null' if resolve to the highest version)
      */
@@ -32,6 +35,10 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
 
     @Override
     public void apply(Project project) {
+        if (GradleVersion.current().compareTo(MINIMUM_SUPPORTED_VERSION) < 0) {
+            throw new IllegalStateException("Plugin requires at least Gradle 6.0");
+        }
+
         Set<String> allCapabilities = new TreeSet<>();
         JavaEcosystemCapabilitiesExtension javaEcosystemCapabilities =
                 project.getExtensions().create("javaEcosystemCapabilities", JavaEcosystemCapabilitiesExtension.class, allCapabilities);
