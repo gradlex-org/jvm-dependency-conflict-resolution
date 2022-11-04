@@ -2,6 +2,7 @@ package de.jjohannes.gradle.javaecosystem.capabilities;
 
 import de.jjohannes.gradle.javaecosystem.capabilities.rules.*;
 import de.jjohannes.gradle.javaecosystem.capabilities.util.VersionNumber;
+import de.jjohannes.gradle.javaecosystem.capabilities.componentrules.GuavaComponentRule;
 import org.gradle.api.NonNullApi;
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;
@@ -36,6 +37,7 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
                 project.getExtensions().create("javaEcosystemCapabilities", JavaEcosystemCapabilitiesExtension.class, allCapabilities);
         
         registerCapabilityRules(project.getDependencies().getComponents(), allCapabilities);
+        registerComponentRules(project.getDependencies().getComponents());
         
         project.getConfigurations().all(configuration ->
                 defineStrategies(javaEcosystemCapabilities, configuration.getResolutionStrategy().getCapabilitiesResolution()));
@@ -47,6 +49,8 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
         registerRule(CGlibRule.CAPABILITY, CGlibRule.MODULES, CGlibRule.class, null, components, allCapabilities);
         registerRule(CommonsIoRule.CAPABILITY, CommonsIoRule.MODULES, CommonsIoRule.class, null, components, allCapabilities);
         registerRule(Dom4jRule.CAPABILITY, Dom4jRule.MODULES, Dom4jRule.class, null, components, allCapabilities);
+        registerRule(GoogleCollectionsRule.CAPABILITY, GoogleCollectionsRule.MODULES, GoogleCollectionsRule.class, null, components, allCapabilities);
+        registerRule(GuavaListenableFutureRule.CAPABILITY, GuavaListenableFutureRule.MODULES, GuavaListenableFutureRule.class, null, components, allCapabilities);
         registerRule(GuavaRule.CAPABILITY, GuavaRule.MODULES, GuavaRule.class, null, components, allCapabilities);
         registerRule(HamcrestCoreRule.CAPABILITY, HamcrestCoreRule.MODULES, HamcrestCoreRule.class, HamcrestCoreRule.MODULES[0], components, allCapabilities);
         registerRule(HamcrestLibraryRule.CAPABILITY, HamcrestLibraryRule.MODULES, HamcrestLibraryRule.class, HamcrestLibraryRule.MODULES[0], components, allCapabilities);
@@ -73,6 +77,10 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
         registerRule(VelocityRule.CAPABILITY, VelocityRule.MODULES, VelocityRule.class, null, components, allCapabilities);
         registerRule(WoodstoxAslRule.CAPABILITY, WoodstoxAslRule.MODULES, WoodstoxAslRule.class, null, components, allCapabilities);
         registerRule(WoodstoxLgplRule.CAPABILITY, WoodstoxLgplRule.MODULES, WoodstoxLgplRule.class, null, components, allCapabilities);
+    }
+
+    private void registerComponentRules(ComponentMetadataHandler components) {
+        components.withModule(GuavaComponentRule.MODULE, GuavaComponentRule.class);
     }
 
     private void registerRule(
