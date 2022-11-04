@@ -10,6 +10,7 @@ public abstract class JakartaServletApiRule implements ComponentMetadataRule {
 
     public static final String CAPABILITY_GROUP = "javax.servlet";
     public static final String CAPABILITY_NAME = "servlet-api";
+    public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
 
     public static final String[] MODULES = {
             "org.apache.tomcat:tomcat-servlet-api",

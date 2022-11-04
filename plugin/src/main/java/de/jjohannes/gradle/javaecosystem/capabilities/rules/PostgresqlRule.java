@@ -9,6 +9,7 @@ public abstract class PostgresqlRule implements ComponentMetadataRule {
 
     public static final String CAPABILITY_GROUP = "postgresql";
     public static final String CAPABILITY_NAME = "postgresql";
+    public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
 
     public static final String[] MODULES = {
             "org.postgresql:postgresql"

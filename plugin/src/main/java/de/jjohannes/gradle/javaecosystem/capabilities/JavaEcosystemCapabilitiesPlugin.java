@@ -31,7 +31,8 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
         for (String module : CommonsIoRule.MODULES) { components.withModule(module, CommonsIoRule.class); }
         for (String module : Dom4jRule.MODULES) { components.withModule(module, Dom4jRule.class); }
         for (String module : GuavaRule.MODULES) { components.withModule(module, GuavaRule.class); }
-        for (String module : HamcrestRule.MODULES) { components.withModule(module, HamcrestRule.class); }
+        for (String module : HamcrestCoreRule.MODULES) { components.withModule(module, HamcrestCoreRule.class); }
+        for (String module : HamcrestLibraryRule.MODULES) { components.withModule(module, HamcrestLibraryRule.class); }
         for (String module : JakartaActivationApiRule.MODULES) { components.withModule(module, JakartaActivationApiRule.class); }
         for (String module : JakartaAnnotationApiRule.MODULES) { components.withModule(module, JakartaAnnotationApiRule.class); }
         for (String module : JakartaEjbApiRule.MODULES) { components.withModule(module, JakartaEjbApiRule.class); }
@@ -59,43 +60,43 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
     }
 
     private void defineStrategies(CapabilitiesResolution resolution) {
-        selectHighestVersion(resolution, AsmRule.CAPABILITY_GROUP, AsmRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, C3p0Rule.CAPABILITY_GROUP, C3p0Rule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, CGlibRule.CAPABILITY_GROUP, CGlibRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, CommonsIoRule.CAPABILITY_GROUP, CommonsIoRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, Dom4jRule.CAPABILITY_GROUP, Dom4jRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, JakartaActivationApiRule.CAPABILITY_GROUP, JakartaActivationApiRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, GuavaRule.CAPABILITY_GROUP, GuavaRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, JakartaAnnotationApiRule.CAPABILITY_GROUP, JakartaAnnotationApiRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, JakartaEjbApiRule.CAPABILITY_GROUP, JakartaEjbApiRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, JakartaElApiRule.CAPABILITY_GROUP, JakartaElApiRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, JakartaInjectApiRule.CAPABILITY_GROUP, JakartaInjectApiRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, JakartaJwsApisRule.CAPABILITY_GROUP, JakartaJwsApisRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, JakartaMailApiRule.CAPABILITY_GROUP, JakartaMailApiRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, JakartaPersistenceApiRule.CAPABILITY_GROUP, JakartaPersistenceApiRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, JakartaServletApiRule.CAPABILITY_GROUP, JakartaServletApiRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, JakartaSoapApisRule.CAPABILITY_GROUP, JakartaSoapApisRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, JakartaValidationAPIRule.CAPABILITY_GROUP, JakartaValidationAPIRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, JakartaWsRsApisRule.CAPABILITY_GROUP, JakartaWsRsApisRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, JakartaXmlBindApisRule.CAPABILITY_GROUP, JakartaXmlBindApisRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, JakartaXmlWsApisRule.CAPABILITY_GROUP, JakartaXmlWsApisRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, JavaAssistJbossRule.CAPABILITY_GROUP, JavaAssistJbossRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, JavaAssistRule.CAPABILITY_GROUP, JavaAssistRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, JtsCoreRule.CAPABILITY_GROUP, JtsCoreRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, JtsRule.CAPABILITY_GROUP, JtsRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, JunitRule.CAPABILITY_GROUP, JunitRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, PostgresqlRule.CAPABILITY_GROUP, PostgresqlRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, StaxApiRule.CAPABILITY_GROUP, StaxApiRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, VelocityRule.CAPABILITY_GROUP, VelocityRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, WoodstoxAslRule.CAPABILITY_GROUP, WoodstoxAslRule.CAPABILITY_NAME);
-        selectHighestVersion(resolution, WoodstoxLgplRule.CAPABILITY_GROUP, WoodstoxLgplRule.CAPABILITY_NAME);
+        selectHighestVersion(resolution, AsmRule.CAPABILITY);
+        selectHighestVersion(resolution, C3p0Rule.CAPABILITY);
+        selectHighestVersion(resolution, CGlibRule.CAPABILITY);
+        selectHighestVersion(resolution, CommonsIoRule.CAPABILITY);
+        selectHighestVersion(resolution, Dom4jRule.CAPABILITY);
+        selectHighestVersion(resolution, JakartaActivationApiRule.CAPABILITY);
+        selectHighestVersion(resolution, GuavaRule.CAPABILITY);
+        selectHighestVersion(resolution, JakartaAnnotationApiRule.CAPABILITY);
+        selectHighestVersion(resolution, JakartaEjbApiRule.CAPABILITY);
+        selectHighestVersion(resolution, JakartaElApiRule.CAPABILITY);
+        selectHighestVersion(resolution, JakartaInjectApiRule.CAPABILITY);
+        selectHighestVersion(resolution, JakartaJwsApisRule.CAPABILITY);
+        selectHighestVersion(resolution, JakartaMailApiRule.CAPABILITY);
+        selectHighestVersion(resolution, JakartaPersistenceApiRule.CAPABILITY);
+        selectHighestVersion(resolution, JakartaServletApiRule.CAPABILITY);
+        selectHighestVersion(resolution, JakartaSoapApisRule.CAPABILITY);
+        selectHighestVersion(resolution, JakartaValidationAPIRule.CAPABILITY);
+        selectHighestVersion(resolution, JakartaWsRsApisRule.CAPABILITY);
+        selectHighestVersion(resolution, JakartaXmlBindApisRule.CAPABILITY);
+        selectHighestVersion(resolution, JakartaXmlWsApisRule.CAPABILITY);
+        selectHighestVersion(resolution, JavaAssistJbossRule.CAPABILITY);
+        selectHighestVersion(resolution, JavaAssistRule.CAPABILITY);
+        selectHighestVersion(resolution, JtsCoreRule.CAPABILITY);
+        selectHighestVersion(resolution, JtsRule.CAPABILITY);
+        selectHighestVersion(resolution, JunitRule.CAPABILITY);
+        selectHighestVersion(resolution, PostgresqlRule.CAPABILITY);
+        selectHighestVersion(resolution, StaxApiRule.CAPABILITY);
+        selectHighestVersion(resolution, VelocityRule.CAPABILITY);
+        selectHighestVersion(resolution, WoodstoxAslRule.CAPABILITY);
+        selectHighestVersion(resolution, WoodstoxLgplRule.CAPABILITY);
 
-        select(resolution, HamcrestRule.CAPABILITY_GROUP, HamcrestRule.CAPABILITY_NAME_CORE, HamcrestRule.MODULES);
-        select(resolution, HamcrestRule.CAPABILITY_GROUP, HamcrestRule.CAPABILITY_NAME_LIBRARY, HamcrestRule.MODULES);
+        select(resolution, HamcrestCoreRule.CAPABILITY, HamcrestCoreRule.MODULES);
+        select(resolution, HamcrestLibraryRule.CAPABILITY, HamcrestLibraryRule.MODULES);
     }
 
-    private void selectHighestVersion(CapabilitiesResolution resolution, String capabilityGroup, String capabilityName) {
-        resolution.withCapability(capabilityGroup + ":" + capabilityName, details -> {
+    private void selectHighestVersion(CapabilitiesResolution resolution, String capability) {
+        resolution.withCapability(capability, details -> {
             // Do not use 'details.selectHighestVersion()' because it does not stack well when build authors
             // needs to register another resolution strategy to select a specific modules.
             // See: https://github.com/gradle/gradle/issues/20348
@@ -109,11 +110,11 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
         });
     }
 
-    private void select(CapabilitiesResolution resolution, String capabilityGroup, String capabilityName, String[] moduleGAs) {
-        resolution.withCapability(capabilityGroup + ":" + capabilityName, details -> {
+    private void select(CapabilitiesResolution resolution, String capability, String[] moduleGAs) {
+        resolution.withCapability(capability, details -> {
             for (String moduleGA : moduleGAs) {
                 Optional<ComponentVariantIdentifier> module = details.getCandidates().stream().filter(c -> {
-                    if (c.getId()instanceof ModuleComponentIdentifier) {
+                    if (c.getId() instanceof ModuleComponentIdentifier) {
                         return ((ModuleComponentIdentifier) c.getId()).getModuleIdentifier().toString().equals(moduleGA);
                     }
                     return false;

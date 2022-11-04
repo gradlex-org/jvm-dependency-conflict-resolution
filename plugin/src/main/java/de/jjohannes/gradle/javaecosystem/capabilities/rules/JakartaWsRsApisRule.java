@@ -9,6 +9,7 @@ public abstract class JakartaWsRsApisRule implements ComponentMetadataRule {
 
     public static final String CAPABILITY_GROUP = "javax.ws.rs";
     public static final String CAPABILITY_NAME = "jsr311-api";
+    public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
 
     public static final String[] MODULES = {
             "org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_3.0_spec",

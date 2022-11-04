@@ -9,6 +9,7 @@ public abstract class JakartaValidationAPIRule implements ComponentMetadataRule 
 
     public static final String CAPABILITY_GROUP = "javax.validation";
     public static final String CAPABILITY_NAME = "validation-api";
+    public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
 
     public static final String[] MODULES = {
             "jakarta.validation:jakarta.validation-api"

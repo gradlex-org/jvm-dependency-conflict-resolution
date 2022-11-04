@@ -9,6 +9,7 @@ public abstract class JakartaInjectApiRule implements ComponentMetadataRule {
 
     public static final String CAPABILITY_GROUP = "javax.inject";
     public static final String CAPABILITY_NAME = "javax.inject";
+    public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
 
     public static final String[] MODULES = {
             "jakarta.inject:jakarta.inject-api"

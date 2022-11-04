@@ -9,6 +9,7 @@ public abstract class WoodstoxLgplRule implements ComponentMetadataRule {
 
     public static final String CAPABILITY_GROUP = "woodstox";
     public static final String CAPABILITY_NAME = "wstx-lgpl";
+    public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
 
     public static final String[] MODULES = {
             "org.codehaus.woodstox:wstx-lgpl",

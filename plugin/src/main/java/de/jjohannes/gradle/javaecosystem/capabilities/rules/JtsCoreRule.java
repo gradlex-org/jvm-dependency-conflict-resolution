@@ -9,6 +9,7 @@ public abstract class JtsCoreRule implements ComponentMetadataRule {
 
     public static final String CAPABILITY_GROUP = "com.vividsolutions";
     public static final String CAPABILITY_NAME = "jts-core";
+    public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
 
     public static final String[] MODULES = {
             "org.locationtech.jts:jts-core"

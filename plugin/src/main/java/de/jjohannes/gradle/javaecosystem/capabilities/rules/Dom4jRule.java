@@ -9,6 +9,7 @@ public abstract class Dom4jRule implements ComponentMetadataRule {
 
     public static final String CAPABILITY_GROUP = "dom4j";
     public static final String CAPABILITY_NAME = "dom4j";
+    public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
 
     public static final String[] MODULES = {
             "org.dom4j:dom4j"

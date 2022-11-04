@@ -9,6 +9,7 @@ public abstract class JakartaSoapApisRule implements ComponentMetadataRule {
 
     public static final String CAPABILITY_GROUP = "javax.xml.soap";
     public static final String CAPABILITY_NAME = "javax.xml.soap-api";
+    public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
 
     public static final String[] MODULES = {
             "jakarta.xml.soap:jakarta.xml.soap-api"

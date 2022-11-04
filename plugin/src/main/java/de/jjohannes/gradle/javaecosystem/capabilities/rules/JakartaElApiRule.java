@@ -9,6 +9,7 @@ public abstract class JakartaElApiRule implements ComponentMetadataRule {
 
     public static final String CAPABILITY_GROUP = "javax.el";
     public static final String CAPABILITY_NAME = "el-api";
+    public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
 
     public static final String[] MODULES = {
             "jakarta.el:jakarta.el-api",

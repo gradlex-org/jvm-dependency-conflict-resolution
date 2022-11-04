@@ -9,6 +9,7 @@ public abstract class JakartaMailApiRule implements ComponentMetadataRule {
 
     public static final String CAPABILITY_GROUP = "javax.mail";
     public static final String CAPABILITY_NAME = "mail";
+    public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
 
     public static final String[] MODULES = {
             // API only

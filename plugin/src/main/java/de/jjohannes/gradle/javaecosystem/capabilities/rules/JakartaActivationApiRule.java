@@ -9,6 +9,7 @@ public abstract class JakartaActivationApiRule implements ComponentMetadataRule 
 
     public static final String CAPABILITY_GROUP = "javax.activation";
     public static final String CAPABILITY_NAME = "activation";
+    public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
 
     public static final String[] MODULES = {
             "jakarta.activation:jakarta.activation-api",

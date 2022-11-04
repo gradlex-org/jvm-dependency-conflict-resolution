@@ -9,6 +9,7 @@ public abstract class JunitRule implements ComponentMetadataRule {
 
     public static final String CAPABILITY_GROUP = "junit";
     public static final String CAPABILITY_NAME = "junit";
+    public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
 
     public static final String[] MODULES = {
             "junit:junit-dep"

@@ -9,6 +9,7 @@ public abstract class JavaAssistRule implements ComponentMetadataRule {
 
     public static final String CAPABILITY_GROUP = "javassist";
     public static final String CAPABILITY_NAME = "javassist";
+    public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
 
     public static final String[] MODULES = {
             "org.javassist:javassist"

@@ -9,6 +9,7 @@ public abstract class StaxApiRule implements ComponentMetadataRule {
 
     public static final String CAPABILITY_GROUP = "stax";
     public static final String CAPABILITY_NAME = "stax-api";
+    public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
 
     public static final String[] MODULES = {
             "org.codehaus.woodstox:stax2-api",

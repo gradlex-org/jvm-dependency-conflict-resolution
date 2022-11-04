@@ -10,6 +10,7 @@ public abstract class JakartaAnnotationApiRule implements ComponentMetadataRule 
 
     public static final String CAPABILITY_GROUP = "javax.annotation";
     public static final String CAPABILITY_NAME = "jsr250-api";
+    public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
 
     public static final String[] MODULES = {
             "jakarta.annotation:jakarta.annotation-api",

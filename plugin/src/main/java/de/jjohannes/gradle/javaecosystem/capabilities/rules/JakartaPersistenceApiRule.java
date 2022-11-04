@@ -8,6 +8,7 @@ import org.gradle.api.artifacts.ComponentMetadataRule;
 public abstract class JakartaPersistenceApiRule implements ComponentMetadataRule {
     public static final String CAPABILITY_GROUP = "javax.persistence";
     public static final String CAPABILITY_NAME = "javax.persistence-api";
+    public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
 
     public static final String[] MODULES = {
             "jakarta.persistence:jakarta.persistence-api",

@@ -54,8 +54,12 @@ val checkAllSample = tasks.register("checkAllSample") {
 
         val missing = allClasses.map { ruleClass ->
             val capabilityGroup = ruleClass.getDeclaredField("CAPABILITY_GROUP").get(null)
-            val capabilityName = ruleClass.declaredFields.find { it.name.startsWith("CAPABILITY_NAME") }!!.get(null)
-            ((ruleClass.getDeclaredField("MODULES").get(null) as Array<*>).toList() + "$capabilityGroup:$capabilityName").filter {
+            val capabilityName = ruleClass.getDeclaredField("CAPABILITY_NAME").get(null)
+            val capability = ruleClass.getDeclaredField("CAPABILITY").get(null)
+            if (capability != "$capabilityGroup:$capabilityName") {
+                throw RuntimeException("Inconsistent fields in ${ruleClass.simpleName}: $capabilityGroup:$capabilityName | $capability")
+            }
+            ((ruleClass.getDeclaredField("MODULES").get(null) as Array<*>).toList() + capability).filter {
                     module -> !buildFile.contains(module as String) }
         }.flatten()
 
