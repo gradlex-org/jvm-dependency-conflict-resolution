@@ -1,4 +1,5 @@
 plugins {
+    id("groovy")
     id("java-gradle-plugin")
     id("com.gradle.plugin-publish") version "1.0.0"
 }
@@ -23,13 +24,21 @@ pluginBundle {
 }
 
 java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(8))
+    toolchain.languageVersion.set(JavaLanguageVersion.of(11)) // to run tests that use Android with 11
+}
+
+tasks.withType<JavaCompile>().configureEach {
+    options.release.set(8)
 }
 
 dependencies {
     testImplementation("org.gradle.exemplar:samples-check:1.0.0")
+    testImplementation("org.spockframework:spock-core:2.3-groovy-3.0")
+    testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
 }
 
 tasks.test {
+    useJUnitPlatform()
+    maxParallelForks = 4
     inputs.dir(layout.projectDirectory.dir("../samples"))
 }
