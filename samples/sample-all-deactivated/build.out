@@ -7,8 +7,10 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- c3p0:c3p0:0.9.1.2 FAILED
 +--- cglib:cglib-nodep:3.2.12 FAILED
 +--- cglib:cglib:3.3.0 FAILED
++--- com.google.collections:google-collections:1.0 FAILED
 +--- com.google.guava:guava-jdk5:17.0 FAILED
 +--- com.google.guava:guava:31.1-jre FAILED
++--- com.google.guava:listenablefuture:1.0 FAILED
 +--- com.mchange:c3p0:0.9.5.5 FAILED
 +--- com.sun.activation:javax.activation:1.2.0 FAILED
 +--- com.sun.mail:jakarta.mail:2.0.1 FAILED

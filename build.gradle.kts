@@ -1,5 +1,7 @@
-tasks.register("check") {
-    group = LifecycleBasePlugin.VERIFICATION_GROUP
-    dependsOn(gradle.includedBuild("documentation").task(":checkAndUpdate"))
-    dependsOn(gradle.includedBuild("plugin").task(":check"))
+plugins {
+    id("gradlexbuild.java-ecosystem-capabilities-documentation")
+}
+
+tasks.check {
+    dependsOn(gradle.includedBuild("plugin").task(":checkAllVersions"))
 }
