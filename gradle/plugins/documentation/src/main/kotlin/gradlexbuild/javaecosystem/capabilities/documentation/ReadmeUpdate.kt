@@ -2,22 +2,39 @@ package gradlexbuild.javaecosystem.capabilities.documentation
 
 import org.gradle.api.DefaultTask
 import org.gradle.api.artifacts.ComponentMetadataRule
+import org.gradle.api.file.ConfigurableFileCollection
 import org.gradle.api.file.RegularFileProperty
+import org.gradle.api.tasks.Classpath
 import org.gradle.api.tasks.InputFile
 import org.gradle.api.tasks.TaskAction
+import org.reflections.util.ClasspathHelper
+import org.reflections.util.ConfigurationBuilder
+import java.net.URLClassLoader
+import kotlin.reflect.jvm.internal.impl.load.kotlin.JvmType
 
 abstract class ReadmeUpdate : DefaultTask() {
 
     @get:InputFile
     abstract val readme: RegularFileProperty
 
+    @get:Classpath
+    abstract val pluginClasses: ConfigurableFileCollection
+
     @TaskAction
     fun update() {
-        val reflections = org.reflections.Reflections("de.jjohannes.gradle.javaecosystem.capabilities.rules")
-        val allClasses = reflections.getSubTypesOf(ComponentMetadataRule::class.java)
+        val classesUrls = pluginClasses.files.map { it.toURI().toURL() }
+        val loader = URLClassLoader("pluginClasspath", classesUrls.toTypedArray(), ComponentMetadataRule::class.java.classLoader)
+        val reflectionConfiguration = ConfigurationBuilder().setUrls(ClasspathHelper.forClassLoader(loader)).addClassLoaders(loader)
+        val allClasses = org.reflections.Reflections(reflectionConfiguration).getSubTypesOf(ComponentMetadataRule::class.java).filter {
+            it.`package`.name == "de.jjohannes.gradle.javaecosystem.capabilities.rules" }
+
+        if (allClasses.isEmpty()) {
+            throw RuntimeException("No rule implementations found")
+        }
+
         val allCapabilities = allClasses.map { ruleClass ->
             val capabilityGroup = ruleClass.getDeclaredField("CAPABILITY_GROUP").get(null) as String
-            var capability = "";
+            var capability = ""
             ruleClass.declaredFields.filter { it.name.startsWith("CAPABILITY_NAME") }.forEach { field ->
                 if (capability.isNotEmpty()) {
                     capability += " / "

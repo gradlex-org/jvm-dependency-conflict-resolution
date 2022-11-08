@@ -1,17 +1,25 @@
-pluginManagement {
-    includeBuild("plugin")
-    includeBuild("samples/sample-all")
-    includeBuild("documentation")
-}
+import buildparameters.BuildParametersExtension
 
+pluginManagement {
+    includeBuild("gradle/plugins")
+}
 plugins {
     id("com.gradle.enterprise") version "3.11.2"
+    id("gradlexbuild.build-parameters")
 }
 
-gradleEnterprise {
-    buildScan {
-        publishAlways()
-        termsOfServiceUrl = "https://gradle.com/terms-of-service"
-        termsOfServiceAgree = "yes"
+rootProject.name = "java-ecosystem-capabilities"
+
+dependencyResolutionManagement {
+    repositories.mavenCentral()
+}
+
+if (the<BuildParametersExtension>().ci) {
+    gradleEnterprise {
+        buildScan {
+            publishAlways()
+            termsOfServiceUrl = "https://gradle.com/terms-of-service"
+            termsOfServiceAgree = "yes"
+        }
     }
 }

@@ -1,7 +1,6 @@
-pluginManagement {
-    includeBuild("../plugin")
-}
 dependencyResolutionManagement {
     repositories.gradlePluginPortal()
 }
 
+include("build-parameters")
+include("documentation")

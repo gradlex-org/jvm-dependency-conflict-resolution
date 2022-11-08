@@ -6,7 +6,7 @@ import org.gradle.exemplar.test.runner.SamplesRunner;
 import org.junit.runner.RunWith;
 
 @RunWith(SamplesRunner.class)
-@SamplesRoot("../samples")
+@SamplesRoot("samples")
 @SampleModifiers(PluginBuildLocationSampleModifier.class)
 public class SamplesTest {
 
