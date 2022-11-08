@@ -79,21 +79,30 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Extensio
         registerRule(GuavaRule.CAPABILITY, GuavaRule.MODULES, GuavaRule.class, null, components, allCapabilities);
         registerRule(HamcrestCoreRule.CAPABILITY, HamcrestCoreRule.MODULES, HamcrestCoreRule.class, HamcrestCoreRule.MODULES[0], components, allCapabilities);
         registerRule(HamcrestLibraryRule.CAPABILITY, HamcrestLibraryRule.MODULES, HamcrestLibraryRule.class, HamcrestLibraryRule.MODULES[0], components, allCapabilities);
+
         registerRule(JakartaActivationApiRule.CAPABILITY, JakartaActivationApiRule.MODULES, JakartaActivationApiRule.class, null, components, allCapabilities);
         registerRule(JakartaAnnotationApiRule.CAPABILITY, JakartaAnnotationApiRule.MODULES, JakartaAnnotationApiRule.class, null, components, allCapabilities);
-        registerRule(JakartaEjbApiRule.CAPABILITY, JakartaEjbApiRule.MODULES, JakartaEjbApiRule.class, null, components, allCapabilities);
-        registerRule(JakartaElApiRule.CAPABILITY, JakartaElApiRule.MODULES, JakartaElApiRule.class, null, components, allCapabilities);
-        registerRule(JakartaInjectApiRule.CAPABILITY, JakartaInjectApiRule.MODULES, JakartaInjectApiRule.class, null, components, allCapabilities);
-        registerRule(JakartaJwsApisRule.CAPABILITY, JakartaJwsApisRule.MODULES, JakartaJwsApisRule.class, null, components, allCapabilities);
         registerRule(JakartaMailApiRule.CAPABILITY, JakartaMailApiRule.MODULES, JakartaMailApiRule.class, null, components, allCapabilities);
-        registerRule(JakartaPersistenceApiRule.CAPABILITY, JakartaPersistenceApiRule.MODULES, JakartaPersistenceApiRule.class, null, components, allCapabilities);
         registerRule(JakartaServletApiRule.CAPABILITY, JakartaServletApiRule.MODULES, JakartaServletApiRule.class, null, components, allCapabilities);
-        registerRule(JakartaSoapApisRule.CAPABILITY, JakartaSoapApisRule.MODULES, JakartaSoapApisRule.class, null, components, allCapabilities);
-        registerRule(JakartaValidationAPIRule.CAPABILITY, JakartaValidationAPIRule.MODULES, JakartaValidationAPIRule.class, null, components, allCapabilities);
-        registerRule(JakartaWsRsApisRule.CAPABILITY, JakartaWsRsApisRule.MODULES, JakartaWsRsApisRule.class, null, components, allCapabilities);
-        registerRule(JakartaXmlBindApisRule.CAPABILITY, JakartaXmlBindApisRule.MODULES, JakartaXmlBindApisRule.class, null, components, allCapabilities);
-        registerRule(JakartaXmlWsApisRule.CAPABILITY, JakartaXmlWsApisRule.MODULES, JakartaXmlWsApisRule.class, null, components, allCapabilities);
+        registerRule(JakartaWsRsApiRule.CAPABILITY, JakartaWsRsApiRule.MODULES, JakartaWsRsApiRule.class, null, components, allCapabilities);
+
         registerRule(JavaAssistRule.CAPABILITY, JavaAssistRule.MODULES, JavaAssistRule.class, null, components, allCapabilities);
+
+        registerRule(JavaxActivationApiRule.CAPABILITY, JavaxActivationApiRule.MODULES, JavaxActivationApiRule.class, null, components, allCapabilities);
+        registerRule(JavaxAnnotationApiRule.CAPABILITY, JavaxAnnotationApiRule.MODULES, JavaxAnnotationApiRule.class, null, components, allCapabilities);
+        registerRule(JavaxEjbApiRule.CAPABILITY, JavaxEjbApiRule.MODULES, JavaxEjbApiRule.class, null, components, allCapabilities);
+        registerRule(JavaxElApiRule.CAPABILITY, JavaxElApiRule.MODULES, JavaxElApiRule.class, null, components, allCapabilities);
+        registerRule(JavaxInjectApiRule.CAPABILITY, JavaxInjectApiRule.MODULES, JavaxInjectApiRule.class, null, components, allCapabilities);
+        registerRule(JavaxJwsApisRule.CAPABILITY, JavaxJwsApisRule.MODULES, JavaxJwsApisRule.class, null, components, allCapabilities);
+        registerRule(JavaxMailApiRule.CAPABILITY, JavaxMailApiRule.MODULES, JavaxMailApiRule.class, null, components, allCapabilities);
+        registerRule(JavaxPersistenceApiRule.CAPABILITY, JavaxPersistenceApiRule.MODULES, JavaxPersistenceApiRule.class, null, components, allCapabilities);
+        registerRule(JavaxServletApiRule.CAPABILITY, JavaxServletApiRule.MODULES, JavaxServletApiRule.class, null, components, allCapabilities);
+        registerRule(JavaxSoapApiRule.CAPABILITY, JavaxSoapApiRule.MODULES, JavaxSoapApiRule.class, null, components, allCapabilities);
+        registerRule(JavaxValidationApiRule.CAPABILITY, JavaxValidationApiRule.MODULES, JavaxValidationApiRule.class, null, components, allCapabilities);
+        registerRule(JavaxWsRsApiRule.CAPABILITY, JavaxWsRsApiRule.MODULES, JavaxWsRsApiRule.class, null, components, allCapabilities);
+        registerRule(JavaxXmlBindApiRule.CAPABILITY, JavaxXmlBindApiRule.MODULES, JavaxXmlBindApiRule.class, null, components, allCapabilities);
+        registerRule(JavaxXmlWsApiRule.CAPABILITY, JavaxXmlWsApiRule.MODULES, JavaxXmlWsApiRule.class, null, components, allCapabilities);
+
         registerRule(JtsCoreRule.CAPABILITY, JtsCoreRule.MODULES, JtsCoreRule.class, null, components, allCapabilities);
         registerRule(JtsRule.CAPABILITY, JtsRule.MODULES, JtsRule.class, null, components, allCapabilities);
         registerRule(JunitRule.CAPABILITY, JunitRule.MODULES, JunitRule.class, null, components, allCapabilities);
@@ -120,7 +129,7 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Extensio
         standardResolutionStrategy.put(capability, resolveToModule);
 
         for (String module : modules) {
-            components.withModule(module, rule); //TODO remove param!
+            components.withModule(module, rule);
         }
     }
 

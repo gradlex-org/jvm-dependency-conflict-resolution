@@ -10,13 +10,11 @@ import org.gradle.api.artifacts.ComponentMetadataRule;
 @NonNullApi
 public abstract class JakartaAnnotationApiRule implements ComponentMetadataRule {
 
-    public static final String CAPABILITY_GROUP = "javax.annotation";
-    public static final String CAPABILITY_NAME = "jsr250-api";
+    public static final String CAPABILITY_GROUP = "jakarta.annotation";
+    public static final String CAPABILITY_NAME = "jakarta.annotation-api";
     public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
 
     public static final String[] MODULES = {
-            "jakarta.annotation:jakarta.annotation-api",
-            "javax.annotation:javax.annotation-api",
             "org.apache.tomcat:tomcat-annotations-api"
     };
 
@@ -28,9 +26,12 @@ public abstract class JakartaAnnotationApiRule implements ComponentMetadataRule 
         } else {
             version = context.getDetails().getId().getVersion();
         }
-        context.getDetails().allVariants(variant -> variant.withCapabilities(capabilities -> capabilities.addCapability(
-            CAPABILITY_GROUP, CAPABILITY_NAME, version
-        )));
+
+        if (VersionNumber.parse(version).compareTo(VersionNumber.parse(JavaxAnnotationApiRule.FIRST_JAKARTA_VERSION)) >= 0) {
+            context.getDetails().allVariants(variant -> variant.withCapabilities(capabilities ->
+                    capabilities.addCapability(CAPABILITY_GROUP, CAPABILITY_NAME, version)
+            ));
+        }
     }
 
     // This is probably 100% accurate - older Tomcat versions might ship older 1.x specs

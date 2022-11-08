@@ -32,6 +32,9 @@ abstract class SamplesCompletenessCheck : DefaultTask() {
             }
 
             val missing = allClasses.map { ruleClass ->
+                if (ruleClass.simpleName.startsWith("Javax")) {
+                    ruleClass.getDeclaredField("FIRST_JAKARTA_VERSION")
+                }
                 val capabilityGroup = ruleClass.getDeclaredField("CAPABILITY_GROUP").get(null)
                 val capabilityName = ruleClass.getDeclaredField("CAPABILITY_NAME").get(null)
                 val capability = ruleClass.getDeclaredField("CAPABILITY").get(null)

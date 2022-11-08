@@ -3,7 +3,7 @@ pluginManagement {
     if (extra.properties["pluginLocation"] != null) {
         includeBuild(extra.properties["pluginLocation"]!!)
     } else {
-        includeBuild("../../plugin")
+        includeBuild("../../")
     }
 }
 
