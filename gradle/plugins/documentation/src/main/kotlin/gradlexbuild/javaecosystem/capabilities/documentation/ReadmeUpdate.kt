@@ -42,7 +42,7 @@ abstract class ReadmeUpdate : DefaultTask() {
                 val capabilityName = field.get(null) as String
                 capability += "$capabilityGroup:${capabilityName}".asRepoLink()
             }
-            capability += " ([${ruleClass.simpleName}](plugin/src/main/java/de/jjohannes/gradle/javaecosystem/capabilities/rules/${ruleClass.simpleName}.java))"
+            capability += " ([${ruleClass.simpleName}](src/main/java/de/jjohannes/gradle/javaecosystem/capabilities/rules/${ruleClass.simpleName}.java))"
 
             val modules = ruleClass.getDeclaredField("MODULES").get(null) as Array<*>
             Pair(capability, modules)
