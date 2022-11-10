@@ -1,7 +1,10 @@
 import buildparameters.BuildParametersExtension
 
 pluginManagement {
-    includeBuild("gradle/plugins")
+    includeBuild("gradle/plugins") {
+        // give a unique name to this plugins build - https://github.com/gradle/gradle/issues/17228
+        name = "java-ecosystem-capabilities-gradle-plugins"
+    }
 }
 plugins {
     id("com.gradle.enterprise") version "3.11.2"
