@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "de.jjohannes.gradle"
-version = "0.6"
+version = "0.7"
 
 gradlePlugin {
     plugins.create(project.name) {
