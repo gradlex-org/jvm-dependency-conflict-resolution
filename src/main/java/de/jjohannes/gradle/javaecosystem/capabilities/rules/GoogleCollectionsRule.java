@@ -5,6 +5,8 @@ import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataRule;
 
+import static de.jjohannes.gradle.javaecosystem.capabilities.rules.GuavaRule.parseGuavaVersion;
+
 @CacheableRule
 @NonNullApi
 public abstract class GoogleCollectionsRule implements ComponentMetadataRule {
@@ -19,7 +21,7 @@ public abstract class GoogleCollectionsRule implements ComponentMetadataRule {
 
     @Override
     public void execute(ComponentMetadataContext context) {
-        String version = context.getDetails().getId().getVersion();
+        String version = parseGuavaVersion(context.getDetails());
         context.getDetails().allVariants(variant -> variant.withCapabilities(capabilities -> capabilities.addCapability(
                 CAPABILITY_GROUP, CAPABILITY_NAME, version
         )));

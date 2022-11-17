@@ -3,6 +3,7 @@ package de.jjohannes.gradle.javaecosystem.capabilities.rules;
 import org.gradle.api.NonNullApi;
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ComponentMetadataContext;
+import org.gradle.api.artifacts.ComponentMetadataDetails;
 import org.gradle.api.artifacts.ComponentMetadataRule;
 
 @CacheableRule
@@ -19,9 +20,17 @@ public abstract class GuavaRule implements ComponentMetadataRule {
 
     @Override
     public void execute(ComponentMetadataContext context) {
-        String version = context.getDetails().getId().getVersion();
+        String version = parseGuavaVersion(context.getDetails());
         context.getDetails().allVariants(variant -> variant.withCapabilities(capabilities -> capabilities.addCapability(
                 CAPABILITY_GROUP, CAPABILITY_NAME, version
         )));
+    }
+
+    static String parseGuavaVersion(ComponentMetadataDetails details) {
+        String versionString = details.getId().getVersion();
+        if (!versionString.contains("-")) {
+            return versionString;
+        }
+        return versionString.substring(0, versionString.indexOf("-"));
     }
 }
