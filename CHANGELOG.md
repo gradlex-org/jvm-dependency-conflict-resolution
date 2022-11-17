@@ -1,5 +1,9 @@
 # Java Ecosystem Capabilities Gradle plugin - Changelog
 
+## Version 1.0
+
+* Moved project to [GradleX](https://gradlex.org) - new plugin ID: `org.gradlex.java-ecosystem-capabilities`
+
 ## Version 0.7
 * [New] [#5](https://github.com/jjohannes/java-ecosystem-capabilities/issues/5) Allow plugin to be used as Settings Plugin
 * [New] [#2](https://github.com/jjohannes/java-ecosystem-capabilities/issues/2) More rules for Guava - integrated from [missing-metadata-guava](https://github.com/jjohannes/missing-metadata-guava)
