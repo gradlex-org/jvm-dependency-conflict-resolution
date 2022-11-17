@@ -14,7 +14,7 @@ plugins {
 rootProject.name = "java-ecosystem-capabilities"
 
 dependencyResolutionManagement {
-    repositories.mavenCentral()
+    repositories.gradlePluginPortal()
 }
 
 if (the<BuildParametersExtension>().ci) {

@@ -4,8 +4,12 @@ plugins {
     id("org.gradlex.internal.plugin-publish-conventions") version "0.4"
 }
 
-group = "org.gradlex"
-version = "1.0"
+group = "de.jjohannes.gradle"
+version = "0.8"
+
+signing {
+    isRequired = false
+}
 
 java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(11)) // to run tests that use Android with 11
@@ -15,10 +19,10 @@ tasks.withType<JavaCompile>().configureEach {
 }
 
 pluginPublishConventions {
-    id("${project.group}.${project.name}")
-    implementationClass("org.gradlex.javaecosystem.capabilities.JavaEcosystemCapabilitiesPlugin")
+    id("de.jjohannes.${project.name}")
+    implementationClass("de.jjohannes.gradle.javaecosystem.capabilities.JavaEcosystemCapabilitiesPlugin")
     displayName("Java Ecosystem Capabilities Gradle Plugin")
-    description("Adds Capabilities to well-known Components hosted on Maven Central.")
+    description("!!! Plugin ID changed to 'org.gradlex.${project.name}' !!!")
     tags("capabilities", "java",
          "asm", "cglib", "commons-io", "dom4j", "guava", "hamcrest", "javax", "jakarta", "junit", "postgresql",
          "stax", "velocity", "woodstox")
@@ -37,6 +41,8 @@ pluginPublishConventions {
 }
 
 dependencies {
+    implementation("org.gradlex:${project.name}:1.0")
+
     testImplementation("org.gradle.exemplar:samples-check:1.0.0")
     testImplementation("org.spockframework:spock-core:2.3-groovy-3.0")
     testRuntimeOnly("org.junit.vintage:junit-vintage-engine")

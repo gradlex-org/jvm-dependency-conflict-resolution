@@ -14,7 +14,7 @@ class CustomizationTest extends Specification {
             import org.gradlex.javaecosystem.capabilities.rules.CGlibRule
             
             plugins {
-                id("org.gradlex.java-ecosystem-capabilities")
+                id("de.jjohannes.java-ecosystem-capabilities")
                 id("java-library")
             }
             
@@ -53,7 +53,7 @@ class CustomizationTest extends Specification {
         given:
         buildFile << """
             plugins {
-                id("org.gradlex.java-ecosystem-capabilities")
+                id("de.jjohannes.java-ecosystem-capabilities")
                 id("java-library")
             }
             

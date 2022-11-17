@@ -14,7 +14,7 @@ class SettingsTest extends Specification {
         given:
         settingsFile << """
             plugins {
-                id("org.gradlex.java-ecosystem-capabilities")
+                id("de.jjohannes.java-ecosystem-capabilities")
             }
         """
         buildFile << """

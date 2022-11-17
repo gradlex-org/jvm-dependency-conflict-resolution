@@ -124,7 +124,7 @@ class GuavaClasspathTest extends Specification {
         buildFile << """
             plugins {
                 id("java-library")
-                id("org.gradlex.java-ecosystem-capabilities")
+                id("de.jjohannes.java-ecosystem-capabilities")
             }
 
             repositories {

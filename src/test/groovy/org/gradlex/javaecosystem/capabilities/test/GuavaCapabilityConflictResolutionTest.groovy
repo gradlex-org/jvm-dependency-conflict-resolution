@@ -24,7 +24,7 @@ class GuavaCapabilityConflictResolutionTest extends Specification {
         def attributeSetup = noJvmTargetEnvAttribute? 'configurations.compileClasspath { attributes.attribute(Attribute.of("org.gradle.jvm.environment", String::class.java), "standard-jvm") } ' : ''
         buildFile << """
             plugins {
-                id("org.gradlex.java-ecosystem-capabilities")
+                id("de.jjohannes.java-ecosystem-capabilities")
                 id("java-library")
             }
 
@@ -63,7 +63,7 @@ class GuavaCapabilityConflictResolutionTest extends Specification {
         given:
         buildFile << """
             plugins {
-                id("org.gradlex.java-ecosystem-capabilities")
+                id("de.jjohannes.java-ecosystem-capabilities")
                 id("com.android.library") version "7.0.4"
             }
             
