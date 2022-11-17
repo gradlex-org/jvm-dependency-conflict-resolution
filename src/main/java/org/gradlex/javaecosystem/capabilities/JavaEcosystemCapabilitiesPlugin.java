@@ -120,7 +120,7 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Extensio
             project.getConfigurations().all(configuration ->
                     defineStrategies(javaEcosystemCapabilities, configuration.getResolutionStrategy().getCapabilitiesResolution()));
             project.getPlugins().withId("de.jjohannes.missing-metadata-guava", plugin -> {
-                project.getLogger().lifecycle("[WARN] Remove 'de.jjohannes.missing-metadata-guava' plugin from the build. The functionality of is included in 'org.gradlex.java-ecosystem-capabilities'.");
+                project.getLogger().lifecycle("[WARN] Remove 'de.jjohannes.missing-metadata-guava' plugin from the build. The functionality is included in 'org.gradlex.java-ecosystem-capabilities'.");
             });
         }
     }
