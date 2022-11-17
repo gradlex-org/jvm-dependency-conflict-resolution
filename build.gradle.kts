@@ -1,34 +1,39 @@
 plugins {
-    id("com.gradle.plugin-publish") version "1.0.0"
-    id("gradlexbuild.java-ecosystem-capabilities-documentation")
     id("groovy")
-    id("java-gradle-plugin")
+    id("gradlexbuild.java-ecosystem-capabilities-documentation")
+    id("org.gradlex.internal.plugin-publish-conventions") version "0.4"
 }
 
 group = "org.gradlex"
 version = "0.7"
-
-gradlePlugin {
-    plugins.create(project.name) {
-        id = "${project.group}.${project.name}"
-        implementationClass = "${project.group}.javaecosystem.capabilities.JavaEcosystemCapabilitiesPlugin"
-        displayName = "Adds Capabilities to well-known Components hosted on Maven Central."
-        description = "Adds Capabilities to well-known Components hosted on Maven Central."
-    }
-}
-
-pluginBundle {
-    website = "https://github.com/gradlex-org/java-ecosystem-capabilities"
-    vcsUrl = "https://github.com/gradlex-org/java-ecosystem-capabilities.git"
-    tags = listOf("capabilities", "java",
-        "asm", "cglib", "dom4j", "javax", "jakarta", "velocity", "hamcrest", "stax", "woodstox") // TODO tags from rules!
-}
 
 java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(11)) // to run tests that use Android with 11
 }
 tasks.withType<JavaCompile>().configureEach {
     options.release.set(8)
+}
+
+pluginPublishConventions {
+    id("${project.group}.${project.name}")
+    implementationClass("org.gradlex.javaecosystem.capabilities.JavaEcosystemCapabilitiesPlugin")
+    displayName("Java Ecosystem Capabilities Gradle Plugin")
+    description("Adds Capabilities to well-known Components hosted on Maven Central.")
+    tags("capabilities", "java",
+         "asm", "cglib", "commons-io", "dom4j", "guava", "hamcrest", "javax", "jakarta", "junit", "postgresql",
+         "stax", "velocity", "woodstox")
+    gitHub("https://github.com/gradlex-org/java-ecosystem-capabilities")
+    website("https://github.com/gradlex-org/java-ecosystem-capabilities")
+    developer {
+        id.set("britter")
+        name.set("Benedikt Ritter")
+        email.set("benedikt@gradlex.org")
+    }
+    developer {
+        id.set("jjohannes")
+        name.set("Jendrik Johannes")
+        email.set("jendrik@gradlex.org")
+    }
 }
 
 dependencies {
