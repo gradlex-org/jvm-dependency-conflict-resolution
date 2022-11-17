@@ -5,12 +5,12 @@ plugins {
     id("java-gradle-plugin")
 }
 
-group = "de.jjohannes.gradle"
+group = "org.gradlex"
 version = "0.7"
 
 gradlePlugin {
     plugins.create(project.name) {
-        id = "de.jjohannes.${project.name}"
+        id = "${project.group}.${project.name}"
         implementationClass = "${project.group}.javaecosystem.capabilities.JavaEcosystemCapabilitiesPlugin"
         displayName = "Adds Capabilities to well-known Components hosted on Maven Central."
         description = "Adds Capabilities to well-known Components hosted on Maven Central."
@@ -18,8 +18,8 @@ gradlePlugin {
 }
 
 pluginBundle {
-    website = "https://github.com/jjohannes/java-ecosystem-capabilities"
-    vcsUrl = "https://github.com/jjohannes/java-ecosystem-capabilities.git"
+    website = "https://github.com/gradlex-org/java-ecosystem-capabilities"
+    vcsUrl = "https://github.com/gradlex-org/java-ecosystem-capabilities.git"
     tags = listOf("capabilities", "java",
         "asm", "cglib", "dom4j", "javax", "jakarta", "velocity", "hamcrest", "stax", "woodstox") // TODO tags from rules!
 }

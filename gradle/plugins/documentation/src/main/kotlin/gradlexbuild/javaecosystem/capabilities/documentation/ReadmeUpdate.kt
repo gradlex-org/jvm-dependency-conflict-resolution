@@ -26,7 +26,7 @@ abstract class ReadmeUpdate : DefaultTask() {
         val loader = URLClassLoader("pluginClasspath", classesUrls.toTypedArray(), ComponentMetadataRule::class.java.classLoader)
         val reflectionConfiguration = ConfigurationBuilder().setUrls(ClasspathHelper.forClassLoader(loader)).addClassLoaders(loader)
         val allClasses = org.reflections.Reflections(reflectionConfiguration).getSubTypesOf(ComponentMetadataRule::class.java).filter {
-            it.`package`.name == "de.jjohannes.gradle.javaecosystem.capabilities.rules" }
+            it.`package`.name == "org.gradlex.javaecosystem.capabilities.rules" }
 
         if (allClasses.isEmpty()) {
             throw RuntimeException("No rule implementations found")
@@ -42,7 +42,7 @@ abstract class ReadmeUpdate : DefaultTask() {
                 val capabilityName = field.get(null) as String
                 capability += "$capabilityGroup:${capabilityName}".asRepoLink()
             }
-            capability += " ([${ruleClass.simpleName}](src/main/java/de/jjohannes/gradle/javaecosystem/capabilities/rules/${ruleClass.simpleName}.java))"
+            capability += " ([${ruleClass.simpleName}](src/main/java/org.gradlex/javaecosystem/capabilities/rules/${ruleClass.simpleName}.java))"
 
             val modules = ruleClass.getDeclaredField("MODULES").get(null) as Array<*>
             Pair(capability, modules)

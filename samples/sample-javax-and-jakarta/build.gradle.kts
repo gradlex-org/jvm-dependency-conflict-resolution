@@ -1,5 +1,5 @@
 plugins {
-    id("de.jjohannes.java-ecosystem-capabilities") version "0.7" // 0.6 will cause 'NoClassDefFoundError: jakarta/servlet/UnavailableException'
+    id("org.gradlex.java-ecosystem-capabilities") version "0.7" // 0.6 will cause 'NoClassDefFoundError: jakarta/servlet/UnavailableException'
     id("application")
 }
 
