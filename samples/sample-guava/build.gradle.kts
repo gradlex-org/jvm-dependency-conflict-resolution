@@ -1,5 +1,5 @@
 plugins {
-    id("org.gradlex.java-ecosystem-capabilities") version "0.7"
+    id("org.gradlex.java-ecosystem-capabilities") version "1.0"
     id("de.jjohannes.missing-metadata-guava") version "31.1.1"
     id("application")
 }
