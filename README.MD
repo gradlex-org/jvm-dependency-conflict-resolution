@@ -325,14 +325,14 @@ You add the `asm:asm` capability as follows:
 configurations {
     apiElements {
         outgoing {
-            capability("${project.group}:${project.name}:${project.verson}") // keep default capability 'org.ow2.asm:asm'
-            capability("asm:asm:${project.verson}")                          // add 'asm:asm'
+            capability("${project.group}:${project.name}:${project.version}") // keep default capability 'org.ow2.asm:asm'
+            capability("asm:asm:${project.version}")                          // add 'asm:asm'
         }
     }
     runtimeElements {
         outgoing {
-            capability("${project.group}:${project.name}:${project.verson}") // keep default capability 'org.ow2.asm:asm'
-            capability("asm:asm:${project.verson}")                          // add 'asm:asm'
+            capability("${project.group}:${project.name}:${project.version}") // keep default capability 'org.ow2.asm:asm'
+            capability("asm:asm:${project.version}")                          // add 'asm:asm'
         }
     }
 }
