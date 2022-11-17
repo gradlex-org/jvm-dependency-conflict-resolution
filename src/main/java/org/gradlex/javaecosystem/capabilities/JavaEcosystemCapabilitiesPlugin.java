@@ -1,8 +1,21 @@
+/*
+ * Copyright 2022 the GradleX team.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.gradlex.javaecosystem.capabilities;
 
-import org.gradlex.javaecosystem.capabilities.rules.*;
-import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
-import org.gradlex.javaecosystem.capabilities.componentrules.GuavaComponentRule;
 import org.gradle.api.NonNullApi;
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;
@@ -15,6 +28,46 @@ import org.gradle.api.artifacts.dsl.ComponentMetadataHandler;
 import org.gradle.api.initialization.Settings;
 import org.gradle.api.plugins.ExtensionAware;
 import org.gradle.util.GradleVersion;
+import org.gradlex.javaecosystem.capabilities.componentrules.GuavaComponentRule;
+import org.gradlex.javaecosystem.capabilities.rules.AsmRule;
+import org.gradlex.javaecosystem.capabilities.rules.C3p0Rule;
+import org.gradlex.javaecosystem.capabilities.rules.CGlibRule;
+import org.gradlex.javaecosystem.capabilities.rules.CommonsIoRule;
+import org.gradlex.javaecosystem.capabilities.rules.Dom4jRule;
+import org.gradlex.javaecosystem.capabilities.rules.GoogleCollectionsRule;
+import org.gradlex.javaecosystem.capabilities.rules.GuavaListenableFutureRule;
+import org.gradlex.javaecosystem.capabilities.rules.GuavaRule;
+import org.gradlex.javaecosystem.capabilities.rules.HamcrestCoreRule;
+import org.gradlex.javaecosystem.capabilities.rules.HamcrestLibraryRule;
+import org.gradlex.javaecosystem.capabilities.rules.JakartaActivationApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.JakartaAnnotationApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.JakartaMailApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.JakartaServletApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.JakartaWsRsApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.JavaAssistRule;
+import org.gradlex.javaecosystem.capabilities.rules.JavaxActivationApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.JavaxAnnotationApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.JavaxEjbApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.JavaxElApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.JavaxInjectApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.JavaxJwsApisRule;
+import org.gradlex.javaecosystem.capabilities.rules.JavaxMailApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.JavaxPersistenceApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.JavaxServletApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.JavaxSoapApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.JavaxValidationApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.JavaxWsRsApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.JavaxXmlBindApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.JavaxXmlWsApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.JtsCoreRule;
+import org.gradlex.javaecosystem.capabilities.rules.JtsRule;
+import org.gradlex.javaecosystem.capabilities.rules.JunitRule;
+import org.gradlex.javaecosystem.capabilities.rules.PostgresqlRule;
+import org.gradlex.javaecosystem.capabilities.rules.StaxApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.VelocityRule;
+import org.gradlex.javaecosystem.capabilities.rules.WoodstoxAslRule;
+import org.gradlex.javaecosystem.capabilities.rules.WoodstoxLgplRule;
+import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
