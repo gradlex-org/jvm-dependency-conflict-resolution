@@ -40,16 +40,56 @@ plugins {
 }
 ```
 
+You can apply the plugin as a _project plugin_ (`build.gradle(.kts)`) or a _setting plugin_ (`settings.gradle(.kts)`).
+If you don't know what the difference is, using it as _project plugin_ (most Gradle plugins are  _project plugins_) is the preferred way.
+
+The following things are to consider:
+- If you use it as a _project plugin_ make sure to apply it to **all** (sub)projects using a convention plugin
+- If you use it as a _settings plugin_ you may directly apply it in your `settings.gradle(.kts)`
+- If you use it as a _settings plugin_, there are no [default resolution strategies](#deactivating-the-default-resolution-strategy-for-capabilities) registered
+- If you write additional component metadata rules, or use other plugins that add more rules, make sure to consistently do either everything in _projects_ or in _settings_ as Gradle has trouble combining both approaches.
+
+### Supported Gradle versions
+
+- Minimal Gradle version when used as _project plugin_ is `6.0`
+- Minimal Gradle version when used as _settings plugin_ is `6.8`
+
+Note: There are rules in this plugin (in particular for _Guava_) which work _better_ with Gradle `7+`.
+This is because Gradle 7 added support for the `org.gradle.jvm.environment` Attribute that allows Gradle to better distinguish between _standard-jvm_ and _android_ projects.
+
 ### Alternative: Copy rules into your build logic
 
 Instead of applying this plugin, you may also copy selected rules to your own _build logic_ and register them in your convention plugin(s) directly.
 In [the list below](#which-components-does-this-plugin-affect), all rule implementations are linked.
 Here they are implemented in Java, but converting them to Kotlin or Groovy should be straightforward if you prefer.
 
+### Deactivating the default resolution strategy for capabilities
+
+The plugin adds a _default resolution strategy_ for each capability (if the plugin is used as _project plugin_).
+Which in most cases means that Gradle will automatically pick the highest version of all components in conflict.
+This is to cover the cases where users _just want things to work somehow_.
+But it might not always be the right solution.
+
+If you prefer to get all the conflicts reported and then add the conflict resolution explicitly (see next section),
+you can deactivate the default resolution for one or all rules through the `javaEcosystemCapabilities` extension.
+
+```
+// Deactivate default resolution strategy for all rules
+javaEcosystemCapabilities {
+    deactivatedResolutionStrategies.addAll(allCapabilities)
+}
+
+// Deactivate default resolution strategy for selected rules
+javaEcosystemCapabilities {
+    deactivatedResolutionStrategies.addAll(CGlibRule.CAPABILITY)
+    deactivatedResolutionStrategies.addAll(JavaxMailApiRule.CAPABILITY)
+}
+```
+
 ### I use the plugin and now there is a conflict - what now?
 
-The plugin configures Gradle to resolve conflicts by selecting the highest version.
-If this is not possible, because there is no single highest version, you will get a conflict error.
+Unless deactivated (see above), the plugin configures Gradle to resolve conflicts by selecting the highest version.
+If Gradle does not know how to resolve a conflict, you get a conflict error.
 
 If you get an error like this:
 
@@ -73,6 +113,42 @@ configurations.all {
   }
 }
 ```
+
+### One of the rules added by the plugin has an undesired effect - what now?
+
+The goal of this plugin is to enrich the metadata of widely used components from Maven Central to allow Gradle to detect conflicts.
+The rules implemented in this plugin extend existing metadata with the mindset that the metadata should look like that in the first place.
+It just doesn't for technical limitations during the development of the component.
+In most cases, because the component is published with Maven and only published POM metadata which cannot express capability information.
+
+With that in mind, the rules _should_ be usable as they are for almost all Gradle builds.
+If you encounter a problem with a rule in your build:
+
+1. Maybe there is a mistake/bug in this plugin. Please [open an issue](https://github.com/jjohannes/java-ecosystem-capabilities/blob/main/issues/new) to discuss it.
+2. You might have a very special setup, where one of the rules causes trouble only in that setup.
+
+In the second case, you cannot deactivate one of the rules in the plugin.
+But you can treat the modified metadata as if it was the original metadata and add another rule on top to modify it further or to revert the effect of the rule in this plugin.
+For example:
+
+```
+dependencies {
+    components.withModule(CGlibRule.MODULES[0]) {
+        // Ad-hoc rule to revert the effect of 'CGlibRule'
+        allVariants {
+            withCapabilities {
+                removeCapability(CGlibRule.CAPABILITY_GROUP, CGlibRule.CAPABILITY_NAME)
+            }
+        }
+    }
+}
+```
+
+Such additional rules are best added in the place where you applied this plugin (e.g. one of your convention plugins).
+The snippet above shows how to add a rule without putting it into a separate class.
+You can put it into a class (written in Java, Kotlin or Groovy) and use the `@CacheableRule` annotation for better performance.
+That's how the rules in this plugin are implemented.
+Consult the Gradle documentation on [Component Metadata Rules](https://docs.gradle.org/current/userguide/component_metadata_rules.html) for more details.
 
 ## What is the concrete effect of the plugin?
 
