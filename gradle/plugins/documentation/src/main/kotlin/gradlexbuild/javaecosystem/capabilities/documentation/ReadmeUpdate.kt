@@ -10,7 +10,6 @@ import org.gradle.api.tasks.TaskAction
 import org.reflections.util.ClasspathHelper
 import org.reflections.util.ConfigurationBuilder
 import java.net.URLClassLoader
-import kotlin.reflect.jvm.internal.impl.load.kotlin.JvmType
 
 abstract class ReadmeUpdate : DefaultTask() {
 
@@ -61,5 +60,5 @@ abstract class ReadmeUpdate : DefaultTask() {
         )
     }
 
-    private fun String.asRepoLink() = "[$this](https://mvnrepository.com/artifact/${replace(":", "/")})"
+    private fun String.asRepoLink() = "[$this](https://search.maven.org/artifact/${replace(":", "/")})"
 }
