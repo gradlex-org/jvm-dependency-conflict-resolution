@@ -89,6 +89,8 @@ dependencies {
     implementation("org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.0_spec:1.0.1.Final")
     implementation("org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.1_spec:2.0.2.Final")
     implementation("org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_3.0_spec:1.0.1.Final")
+    implementation("net.java.dev.jna:platform:3.4.0")
+    implementation("net.java.dev.jna:jna-platform:5.10.0")
     implementation("org.locationtech.jts:jts-core:1.19.0")
     implementation("org.ow2.asm:asm:9.2")
     implementation("org.postgresql:postgresql:42.5.0")
