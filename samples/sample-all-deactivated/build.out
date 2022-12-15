@@ -80,6 +80,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.apache.tomcat:servlet-api:6.0.53 FAILED
 +--- org.apache.tomcat:tomcat-annotations-api:9.0.1 FAILED
 +--- org.apache.tomcat:tomcat-servlet-api:9.0.1 FAILED
++--- org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api:5.0.2 FAILED
 +--- org.apache.velocity:velocity-engine-core:2.3 FAILED
 +--- org.apache.velocity:velocity:1.7 FAILED
 +--- org.codehaus.woodstox:stax2-api:4.2.1 FAILED

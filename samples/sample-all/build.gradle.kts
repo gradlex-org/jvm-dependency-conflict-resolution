@@ -84,6 +84,7 @@ dependencies {
     implementation("org.apache.tomcat:servlet-api:6.0.53")
     implementation("org.apache.tomcat:tomcat-annotations-api:10.1.1")
     implementation("org.apache.tomcat:tomcat-servlet-api:10.1.1")
+    implementation("org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api:5.0.2")
     implementation("org.apache.velocity:velocity-engine-core:2.3")
     implementation("org.apache.velocity:velocity:1.7")
     implementation("org.codehaus.woodstox:stax2-api:4.2.1")
