@@ -256,6 +256,8 @@ Each Capability's GA coordinates correspond to the GA coordinates of the Compone
   * [jakarta.xml.ws:jakarta.xml.ws-api](https://search.maven.org/artifact/jakarta.xml.ws/jakarta.xml.ws-api)
 * [junit:junit](https://search.maven.org/artifact/junit/junit) ([JunitRule](src/main/java/org/gradlex/javaecosystem/capabilities/rules/JunitRule.java))
   * [junit:junit-dep](https://search.maven.org/artifact/junit/junit-dep)
+* [net.java.dev.jna:platform](https://search.maven.org/artifact/net.java.dev.jna/platform) ([JnaPlatformRule](src/main/java/org/gradlex/javaecosystem/capabilities/rules/JnaPlatformRule.java))
+  * [net.java.dev.jna:jna-platform](https://search.maven.org/artifact/net.java.dev.jna/jna-platform)
 * [org.hamcrest:hamcrest-core](https://search.maven.org/artifact/org.hamcrest/hamcrest-core) ([HamcrestCoreRule](src/main/java/org/gradlex/javaecosystem/capabilities/rules/HamcrestCoreRule.java))
   * [org.hamcrest:hamcrest](https://search.maven.org/artifact/org.hamcrest/hamcrest)
 * [org.hamcrest:hamcrest-library](https://search.maven.org/artifact/org.hamcrest/hamcrest-library) ([HamcrestLibraryRule](src/main/java/org/gradlex/javaecosystem/capabilities/rules/HamcrestLibraryRule.java))

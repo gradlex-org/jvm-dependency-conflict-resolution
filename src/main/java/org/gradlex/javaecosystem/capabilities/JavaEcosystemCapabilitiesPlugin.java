@@ -59,6 +59,7 @@ import org.gradlex.javaecosystem.capabilities.rules.JavaxValidationApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaxWsRsApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaxXmlBindApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaxXmlWsApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.JnaPlatformRule;
 import org.gradlex.javaecosystem.capabilities.rules.JtsCoreRule;
 import org.gradlex.javaecosystem.capabilities.rules.JtsRule;
 import org.gradlex.javaecosystem.capabilities.rules.JunitRule;
@@ -160,6 +161,7 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Extensio
         registerRule(JavaxXmlBindApiRule.CAPABILITY, JavaxXmlBindApiRule.MODULES, JavaxXmlBindApiRule.class, null, components, allCapabilities);
         registerRule(JavaxXmlWsApiRule.CAPABILITY, JavaxXmlWsApiRule.MODULES, JavaxXmlWsApiRule.class, null, components, allCapabilities);
 
+        registerRule(JnaPlatformRule.CAPABILITY, JnaPlatformRule.MODULES, JnaPlatformRule.class, null, components, allCapabilities);
         registerRule(JtsCoreRule.CAPABILITY, JtsCoreRule.MODULES, JtsCoreRule.class, null, components, allCapabilities);
         registerRule(JtsRule.CAPABILITY, JtsRule.MODULES, JtsRule.class, null, components, allCapabilities);
         registerRule(JunitRule.CAPABILITY, JunitRule.MODULES, JunitRule.class, null, components, allCapabilities);

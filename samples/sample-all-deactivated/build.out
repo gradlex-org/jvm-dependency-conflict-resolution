@@ -84,6 +84,8 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.0_spec:1.0.1.Final FAILED
 +--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.1_spec:2.0.2.Final FAILED
 +--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_3.0_spec:1.0.1.Final FAILED
++--- net.java.dev.jna:platform:3.4.0 FAILED
++--- net.java.dev.jna:jna-platform:5.10.0 FAILED
 +--- org.locationtech.jts:jts-core:1.19.0 FAILED
 +--- org.ow2.asm:asm:9.2 FAILED
 +--- org.postgresql:postgresql:42.5.0 FAILED
