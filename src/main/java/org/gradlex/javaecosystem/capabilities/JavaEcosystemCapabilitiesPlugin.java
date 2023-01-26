@@ -67,7 +67,6 @@ import org.gradlex.javaecosystem.capabilities.rules.PostgresqlRule;
 import org.gradlex.javaecosystem.capabilities.rules.StaxApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.VelocityRule;
 import org.gradlex.javaecosystem.capabilities.rules.WoodstoxAslRule;
-import org.gradlex.javaecosystem.capabilities.rules.WoodstoxLgplRule;
 import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
 
 import javax.annotation.Nullable;
@@ -169,7 +168,6 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Extensio
         registerRule(StaxApiRule.CAPABILITY, StaxApiRule.MODULES, StaxApiRule.class, null, components, allCapabilities);
         registerRule(VelocityRule.CAPABILITY, VelocityRule.MODULES, VelocityRule.class, null, components, allCapabilities);
         registerRule(WoodstoxAslRule.CAPABILITY, WoodstoxAslRule.MODULES, WoodstoxAslRule.class, null, components, allCapabilities);
-        registerRule(WoodstoxLgplRule.CAPABILITY, WoodstoxLgplRule.MODULES, WoodstoxLgplRule.class, null, components, allCapabilities);
     }
 
     private void registerComponentRules(ComponentMetadataHandler components) {
