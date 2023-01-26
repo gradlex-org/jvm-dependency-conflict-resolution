@@ -90,6 +90,7 @@ dependencies {
     implementation("org.codehaus.woodstox:wstx-asl:4.0.6")
     implementation("org.codehaus.woodstox:wstx-lgpl:3.2.9")
     implementation("org.dom4j:dom4j:2.1.3")
+    implementation("org.eclipse.angus:angus-activation:1.1.0")
     implementation("org.eclipse.angus:jakarta.mail:1.0.0")
     implementation("org.hamcrest:hamcrest-core:2.2")
     implementation("org.hamcrest:hamcrest-library:2.2")

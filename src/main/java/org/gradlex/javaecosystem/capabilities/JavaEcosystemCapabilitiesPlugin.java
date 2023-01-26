@@ -40,6 +40,7 @@ import org.gradlex.javaecosystem.capabilities.rules.GuavaRule;
 import org.gradlex.javaecosystem.capabilities.rules.HamcrestCoreRule;
 import org.gradlex.javaecosystem.capabilities.rules.HamcrestLibraryRule;
 import org.gradlex.javaecosystem.capabilities.rules.JakartaActivationApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.JakartaActivationImplementationRule;
 import org.gradlex.javaecosystem.capabilities.rules.JakartaAnnotationApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JakartaMailApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JakartaServletApiRule;
@@ -140,6 +141,7 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Extensio
         registerRule(HamcrestLibraryRule.CAPABILITY, HamcrestLibraryRule.MODULES, HamcrestLibraryRule.class, HamcrestLibraryRule.MODULES[0], components, allCapabilities);
 
         registerRule(JakartaActivationApiRule.CAPABILITY, JakartaActivationApiRule.MODULES, JakartaActivationApiRule.class, null, components, allCapabilities);
+        registerRule(JakartaActivationImplementationRule.CAPABILITY, JakartaActivationImplementationRule.MODULES, JakartaActivationImplementationRule.class, null, components, allCapabilities);
         registerRule(JakartaAnnotationApiRule.CAPABILITY, JakartaAnnotationApiRule.MODULES, JakartaAnnotationApiRule.class, null, components, allCapabilities);
         registerRule(JakartaMailApiRule.CAPABILITY, JakartaMailApiRule.MODULES, JakartaMailApiRule.class, null, components, allCapabilities);
         registerRule(JakartaServletApiRule.CAPABILITY, JakartaServletApiRule.MODULES, JakartaServletApiRule.class, null, components, allCapabilities);
