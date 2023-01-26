@@ -38,17 +38,37 @@ public abstract class JavaxMailApiRule implements ComponentMetadataRule {
             "jakarta.mail:jakarta.mail-api",
             // API + Implementation
             "com.sun.mail:javax.mail",
-            "com.sun.mail:jakarta.mail"
+            "com.sun.mail:jakarta.mail",
+            // Apache Geronimo
+            "org.apache.geronimo.javamail:geronimo-javamail_1.3.1_mail",
+            "org.apache.geronimo.javamail:geronimo-javamail_1.3.1_provider",
+            "org.apache.geronimo.javamail:geronimo-javamail_1.4_mail",
+            "org.apache.geronimo.javamail:geronimo-javamail_1.4_provider",
+            "org.apache.geronimo.javamail:geronimo-javamail_1.6_mail",
+            "org.apache.geronimo.javamail:geronimo-javamail_1.6_provider"
     };
 
     @Override
     public void execute(ComponentMetadataContext context) {
-        String version = context.getDetails().getId().getVersion();
+        String name = context.getDetails().getId().getName();
+        String group = context.getDetails().getId().getGroup();
+        String version;
+
+        if (group.equals("org.apache.geronimo.javamail")) {
+            version = mailApiVersionForGeronimoName(name);
+        } else {
+            version = context.getDetails().getId().getVersion();
+        }
 
         if (VersionNumber.parse(version).compareTo(VersionNumber.parse(FIRST_JAKARTA_VERSION)) < 0) {
             context.getDetails().allVariants(variant -> variant.withCapabilities(capabilities ->
                     capabilities.addCapability(CAPABILITY_GROUP, CAPABILITY_NAME, version)
             ));
         }
+    }
+
+    private String mailApiVersionForGeronimoName(String name) {
+        int index = "geronimo-javamail_".length();
+        return name.substring(index, index + 3) + ".0";
     }
 }
