@@ -68,7 +68,7 @@ dependencies {
     implementation("org.apache.velocity:velocity:1.7")
     implementation("org.codehaus.woodstox:stax2-api:4.2.1")
     implementation("org.codehaus.woodstox:woodstox-core-asl:4.4.1")
-    implementation("org.codehaus.woodstox:woodstox-core-lgpl:4.4.1")
+    implementation("org.codehaus.woodstox:woodstox-core-lgpl:4.4.0")
     implementation("org.codehaus.woodstox:wstx-asl:4.0.6")
     implementation("org.codehaus.woodstox:wstx-lgpl:3.2.9")
     implementation("org.dom4j:dom4j:2.1.3")

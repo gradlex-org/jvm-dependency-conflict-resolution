@@ -30,8 +30,11 @@ public abstract class WoodstoxAslRule implements ComponentMetadataRule {
     public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
 
     public static final String[] MODULES = {
+            "org.codehaus.woodstox:woodstox-core-asl",
+            "org.codehaus.woodstox:woodstox-core-lgpl",
             "org.codehaus.woodstox:wstx-asl",
-            "org.codehaus.woodstox:woodstox-core-asl"
+            "org.codehaus.woodstox:wstx-lgpl",
+            "woodstox:wstx-asl",
     };
 
     @Override
