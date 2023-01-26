@@ -52,7 +52,7 @@ val checkAllVersions = tasks.register("checkAllVersions") {
     dependsOn(tasks.check)
 }
 
-listOf("6.0.1", "6.4.1", "6.9.3", "7.0.2", "7.1.1", "7.2", "7.3.3", "7.4.2", "7.5.1").forEach { gradleVersionUnderTest ->
+listOf("6.0.1", "6.4.1", "6.9.3", "7.0.2", "7.1.1", "7.2", "7.3.3", "7.4.2", "7.5.1", "7.6").forEach { gradleVersionUnderTest ->
     val testGradle = tasks.register<Test>("testGradle$gradleVersionUnderTest") {
         group = LifecycleBasePlugin.VERIFICATION_GROUP
         description = "Runs tests against Gradle $gradleVersionUnderTest"
