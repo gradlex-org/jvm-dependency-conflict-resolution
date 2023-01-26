@@ -61,6 +61,12 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- junit:junit-dep:4.8 FAILED
 +--- junit:junit:4.12 FAILED
 +--- org.apache.commons:commons-io:1.3.2 FAILED
++--- org.apache.geronimo.javamail:geronimo-javamail_1.3.1_mail:1.1 FAILED
++--- org.apache.geronimo.javamail:geronimo-javamail_1.3.1_provider:1.1 FAILED
++--- org.apache.geronimo.javamail:geronimo-javamail_1.4_mail:1.8.4 FAILED
++--- org.apache.geronimo.javamail:geronimo-javamail_1.4_provider:1.8.3 FAILED
++--- org.apache.geronimo.javamail:geronimo-javamail_1.6_mail:1.0.1 FAILED
++--- org.apache.geronimo.javamail:geronimo-javamail_1.6_provider:1.0.1 FAILED
 +--- org.apache.tomcat:servlet-api:6.0.53 FAILED
 +--- org.apache.tomcat:tomcat-annotations-api:9.0.1 FAILED
 +--- org.apache.tomcat:tomcat-servlet-api:9.0.1 FAILED
