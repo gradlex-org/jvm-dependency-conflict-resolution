@@ -54,6 +54,8 @@ import org.gradlex.javaecosystem.capabilities.rules.JavaxJwsApisRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaxMailApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaxPersistenceApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaxServletApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.JavaxServletJspRule;
+import org.gradlex.javaecosystem.capabilities.rules.JavaxServletJstlRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaxSoapApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaxValidationApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaxWsRsApiRule;
@@ -154,6 +156,8 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Extensio
         registerRule(JavaxMailApiRule.CAPABILITY, JavaxMailApiRule.MODULES, JavaxMailApiRule.class, null, components, allCapabilities);
         registerRule(JavaxPersistenceApiRule.CAPABILITY, JavaxPersistenceApiRule.MODULES, JavaxPersistenceApiRule.class, null, components, allCapabilities);
         registerRule(JavaxServletApiRule.CAPABILITY, JavaxServletApiRule.MODULES, JavaxServletApiRule.class, null, components, allCapabilities);
+        registerRule(JavaxServletJspRule.CAPABILITY, JavaxServletJspRule.MODULES, JavaxServletJspRule.class, null, components, allCapabilities);
+        registerRule(JavaxServletJstlRule.CAPABILITY, JavaxServletJstlRule.MODULES, JavaxServletJstlRule.class, null, components, allCapabilities);
         registerRule(JavaxSoapApiRule.CAPABILITY, JavaxSoapApiRule.MODULES, JavaxSoapApiRule.class, null, components, allCapabilities);
         registerRule(JavaxValidationApiRule.CAPABILITY, JavaxValidationApiRule.MODULES, JavaxValidationApiRule.class, null, components, allCapabilities);
         registerRule(JavaxWsRsApiRule.CAPABILITY, JavaxWsRsApiRule.MODULES, JavaxWsRsApiRule.class, null, components, allCapabilities);

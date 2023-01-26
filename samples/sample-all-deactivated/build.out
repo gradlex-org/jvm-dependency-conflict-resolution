@@ -28,6 +28,8 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- jakarta.jws:jakarta.jws-api:2.1.0 FAILED
 +--- jakarta.mail:jakarta.mail-api:2.1.0 FAILED
 +--- jakarta.persistence:jakarta.persistence-api:2.2.3 FAILED
++--- jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:1.2.7 FAILED
++--- jakarta.servlet.jsp:jakarta.servlet.jsp-api:2.3.6 FAILED
 +--- jakarta.servlet:jakarta.servlet-api:4.0.4 FAILED
 +--- jakarta.validation:jakarta.validation-api:2.0.1 FAILED
 +--- jakarta.ws.rs:jakarta.ws.rs-api:3.0.0 FAILED
@@ -48,7 +50,13 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- javax.jws:javax.jws-api:1.1 FAILED
 +--- javax.mail:mail:1.4.7 FAILED
 +--- javax.persistence:javax.persistence-api:2.2 FAILED
++--- javax.servlet.jsp.jstl:jstl-api:1.2 FAILED
++--- javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api:1.2.2 FAILED
++--- javax.servlet.jsp:javax.servlet.jsp-api:2.3.3 FAILED
++--- javax.servlet.jsp:jsp-api:2.2 FAILED
 +--- javax.servlet:javax.servlet-api:4.0.1 FAILED
++--- javax.servlet:jstl:1.2 FAILED
++--- javax.servlet:jsp-api:2.0 FAILED
 +--- javax.servlet:servlet-api:2.5 FAILED
 +--- javax.validation:validation-api:2.0.1.Final FAILED
 +--- javax.ws.rs:javax.ws.rs-api:2.1.1 FAILED
