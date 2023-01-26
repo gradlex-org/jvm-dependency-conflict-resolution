@@ -34,6 +34,7 @@ public abstract class JavaxActivationApiRule implements ComponentMetadataRule {
 
     public static final String[] MODULES = {
             "jakarta.activation:jakarta.activation-api",
+            "javax.activation:javax.activation-api",
             "com.sun.activation:javax.activation",
             "com.sun.activation:jakarta.activation"
     };
