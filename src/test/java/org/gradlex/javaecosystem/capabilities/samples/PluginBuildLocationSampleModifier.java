@@ -21,6 +21,7 @@ import org.gradle.exemplar.model.Sample;
 import org.gradle.exemplar.test.runner.SampleModifier;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class PluginBuildLocationSampleModifier implements SampleModifier {
@@ -28,10 +29,12 @@ public class PluginBuildLocationSampleModifier implements SampleModifier {
     public Sample modify(Sample sampleIn) {
         Command cmd = sampleIn.getCommands().remove(0);
         File pluginProjectDir = new File(".");
+        ArrayList<String> allArgs = new ArrayList<>(cmd.getArgs());
+        allArgs.addAll(Arrays.asList("dependencies", "--configuration=compileClasspath", "-s", "-q", "-PpluginLocation=" + pluginProjectDir.getAbsolutePath()));
         sampleIn.getCommands().add(
                 new Command(new File(pluginProjectDir, "./gradlew").getAbsolutePath(),
                         cmd.getExecutionSubdirectory(),
-                        Arrays.asList("dependencies", "--configuration=compileClasspath", "-s", "-q", "-PpluginLocation=" + pluginProjectDir.getAbsolutePath()),
+                        allArgs,
                         cmd.getFlags(),
                         cmd.getExpectedOutput(),
                         cmd.isExpectFailure(),

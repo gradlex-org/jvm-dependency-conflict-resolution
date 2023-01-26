@@ -3,6 +3,7 @@ import  org.gradlex.javaecosystem.capabilities.rules.JavaxActivationApiRule
 plugins {
     id("org.gradlex.java-ecosystem-capabilities")
     id("java-library")
+    id("io.fuchs.gradle.classpath-collision-detector") version "0.3"
 }
 
 dependencies {
