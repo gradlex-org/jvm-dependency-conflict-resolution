@@ -64,7 +64,7 @@ class GuavaCapabilityConflictResolutionTest extends Specification {
         buildFile << """
             plugins {
                 id("org.gradlex.java-ecosystem-capabilities")
-                id("com.android.library") version "7.0.4"
+                id("com.android.library") version "7.4.0"
             }
             
             repositories {
