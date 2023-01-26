@@ -36,6 +36,8 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- jakarta.jws:jakarta.jws-api:3.0.0
 +--- jakarta.mail:jakarta.mail-api:2.1.0 (*)
 +--- jakarta.persistence:jakarta.persistence-api:3.0.0
++--- jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:1.2.7
++--- jakarta.servlet.jsp:jakarta.servlet.jsp-api:2.3.6
 +--- jakarta.servlet:jakarta.servlet-api:5.0.0 -> org.apache.tomcat:tomcat-servlet-api:10.1.1
 +--- jakarta.validation:jakarta.validation-api:2.0.1 -> javax.validation:validation-api:2.0.1.Final
 +--- jakarta.ws.rs:jakarta.ws.rs-api:3.0.0
@@ -60,7 +62,13 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- javax.jws:javax.jws-api:1.1
 +--- javax.mail:mail:1.4.7 -> org.apache.geronimo.javamail:geronimo-javamail_1.4_mail:1.8.4
 +--- javax.persistence:javax.persistence-api:2.2
++--- javax.servlet.jsp.jstl:jstl-api:1.2 -> jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:1.2.7
++--- javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api:1.2.2 -> jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:1.2.7
++--- javax.servlet.jsp:javax.servlet.jsp-api:2.3.3 -> jakarta.servlet.jsp:jakarta.servlet.jsp-api:2.3.6
++--- javax.servlet.jsp:jsp-api:2.2 -> jakarta.servlet.jsp:jakarta.servlet.jsp-api:2.3.6
 +--- javax.servlet:javax.servlet-api:4.0.1 -> org.apache.tomcat:servlet-api:6.0.53
++--- javax.servlet:jstl:1.2 -> jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:1.2.7
++--- javax.servlet:jsp-api:2.0 -> jakarta.servlet.jsp:jakarta.servlet.jsp-api:2.3.6
 +--- javax.servlet:servlet-api:2.5 -> org.apache.tomcat:servlet-api:6.0.53
 +--- javax.validation:validation-api:2.0.1.Final
 +--- javax.ws.rs:javax.ws.rs-api:2.1.1
