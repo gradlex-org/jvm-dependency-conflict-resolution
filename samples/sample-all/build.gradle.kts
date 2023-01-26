@@ -1,3 +1,5 @@
+import  org.gradlex.javaecosystem.capabilities.rules.JavaxActivationApiRule
+
 plugins {
     id("org.gradlex.java-ecosystem-capabilities")
     id("java-library")
@@ -37,6 +39,7 @@ dependencies {
     implementation("jakarta.xml.ws:jakarta.xml.ws-api:3.0.1")
     implementation("javassist:javassist:3.12.1.GA")
     implementation("javax.activation:activation:1.1.1")
+    implementation("javax.activation:javax.activation-api:1.2.0")
     implementation("javax.annotation:javax.annotation-api:1.3.2")
     implementation("javax.annotation:jsr250-api:1.0")
     implementation("javax.ejb:ejb-api:3.0")
@@ -96,4 +99,15 @@ dependencies {
     implementation("woodstox:wstx-asl:2.9.3")
     implementation("com.sun.activation:jakarta.activation:2.0.1") // down here due to bug: https://github.com/gradle/gradle/issues/14220
     // implementation("woodstox:wstx-lgpl:3.2.7") - has no POM file
+}
+
+configurations.all {
+    resolutionStrategy.capabilitiesResolution {
+        withCapability(JavaxActivationApiRule.CAPABILITY) {
+            val toBeSelected = candidates.firstOrNull { it.id.let { id -> id is ModuleComponentIdentifier && id.module == "javax.activation-api" } }
+            if (toBeSelected != null) {
+                select(toBeSelected)
+            }
+        }
+    }
 }

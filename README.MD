@@ -207,6 +207,7 @@ Each Capability's GA coordinates correspond to the GA coordinates of the Compone
   * [jboss:javassist](https://search.maven.org/artifact/jboss/javassist)
 * [javax.activation:activation](https://search.maven.org/artifact/javax.activation/activation) ([JavaxActivationApiRule](src/main/java/org/gradlex/javaecosystem/capabilities/rules/JavaxActivationApiRule.java))
   * [jakarta.activation:jakarta.activation-api](https://search.maven.org/artifact/jakarta.activation/jakarta.activation-api)
+  * [javax.activation:javax.activation-api](https://search.maven.org/artifact/javax.activation/javax.activation-api)
   * [com.sun.activation:javax.activation](https://search.maven.org/artifact/com.sun.activation/javax.activation)
   * [com.sun.activation:jakarta.activation](https://search.maven.org/artifact/com.sun.activation/jakarta.activation)
 * [javax.annotation:jsr250-api](https://search.maven.org/artifact/javax.annotation/jsr250-api) ([JavaxAnnotationApiRule](src/main/java/org/gradlex/javaecosystem/capabilities/rules/JavaxAnnotationApiRule.java))
@@ -271,11 +272,11 @@ Each Capability's GA coordinates correspond to the GA coordinates of the Compone
   * [org.apache.velocity:velocity](https://search.maven.org/artifact/org.apache.velocity/velocity)
   * [org.apache.velocity:velocity-engine-core](https://search.maven.org/artifact/org.apache.velocity/velocity-engine-core)
 * [woodstox:wstx-asl](https://search.maven.org/artifact/woodstox/wstx-asl) ([WoodstoxAslRule](src/main/java/org/gradlex/javaecosystem/capabilities/rules/WoodstoxAslRule.java))
-  * [org.codehaus.woodstox:wstx-asl](https://search.maven.org/artifact/org.codehaus.woodstox/wstx-asl)
   * [org.codehaus.woodstox:woodstox-core-asl](https://search.maven.org/artifact/org.codehaus.woodstox/woodstox-core-asl)
-* [woodstox:wstx-lgpl](https://search.maven.org/artifact/woodstox/wstx-lgpl) ([WoodstoxLgplRule](src/main/java/org/gradlex/javaecosystem/capabilities/rules/WoodstoxLgplRule.java))
-  * [org.codehaus.woodstox:wstx-lgpl](https://search.maven.org/artifact/org.codehaus.woodstox/wstx-lgpl)
   * [org.codehaus.woodstox:woodstox-core-lgpl](https://search.maven.org/artifact/org.codehaus.woodstox/woodstox-core-lgpl)
+  * [org.codehaus.woodstox:wstx-asl](https://search.maven.org/artifact/org.codehaus.woodstox/wstx-asl)
+  * [org.codehaus.woodstox:wstx-lgpl](https://search.maven.org/artifact/org.codehaus.woodstox/wstx-lgpl)
+  * [woodstox:wstx-asl](https://search.maven.org/artifact/woodstox/wstx-asl)
 
 <!-- END_GENERATED -->
 

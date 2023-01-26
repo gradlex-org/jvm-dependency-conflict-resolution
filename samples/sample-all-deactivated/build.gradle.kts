@@ -41,6 +41,7 @@ dependencies {
     implementation("jakarta.xml.ws:jakarta.xml.ws-api:2.3.3")
     implementation("javassist:javassist:3.12.1.GA")
     implementation("javax.activation:activation:1.1.1")
+    implementation("javax.activation:javax.activation-api:1.2.0")
     implementation("javax.annotation:javax.annotation-api:1.3.2")
     implementation("javax.annotation:jsr250-api:1.0")
     implementation("javax.ejb:ejb-api:3.0")
