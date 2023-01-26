@@ -24,7 +24,7 @@ dependencies {
     implementation("com.vividsolutions:jts:1.13")
     implementation("commons-io:commons-io:2.11.0")
     implementation("dom4j:dom4j:1.6.1")
-    implementation("jakarta.activation:jakarta.activation-api:2.1.0")
+    implementation("jakarta.activation:jakarta.activation-api:2.0.0!!")
     implementation("jakarta.annotation:jakarta.annotation-api:2.1.0")
     implementation("jakarta.ejb:jakarta.ejb-api:4.0.0")
     implementation("jakarta.el:jakarta.el-api:4.0.0")
