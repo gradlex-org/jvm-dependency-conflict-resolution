@@ -1,3 +1,4 @@
+import  org.gradlex.javaecosystem.capabilities.rules.BouncycastleBctspRule
 import  org.gradlex.javaecosystem.capabilities.rules.JavaxActivationApiRule
 
 plugins {
@@ -86,6 +87,65 @@ dependencies {
     implementation("org.apache.tomcat:tomcat-servlet-api:10.1.1")
     implementation("org.apache.velocity:velocity-engine-core:2.3")
     implementation("org.apache.velocity:velocity:1.7")
+    implementation("org.bouncycastle:bcjmail-jdk15on:1.70")
+    implementation("org.bouncycastle:bcjmail-jdk15to18:1.70")
+    implementation("org.bouncycastle:bcjmail-jdk18on:1.72")
+    implementation("org.bouncycastle:bcmail-fips:1.0.4")
+    implementation("org.bouncycastle:bcmail-jdk14:1.68")
+    implementation("org.bouncycastle:bcmail-jdk15+:1.46")
+    implementation("org.bouncycastle:bcmail-jdk15:1.46")
+    implementation("org.bouncycastle:bcmail-jdk15on:1.69")
+    implementation("org.bouncycastle:bcmail-jdk15to18:1.70")
+    implementation("org.bouncycastle:bcmail-jdk16:1.46")
+    implementation("org.bouncycastle:bcmail-jdk18on:1.71")
+    implementation("org.bouncycastle:bcpg-jdk12:130")
+    implementation("org.bouncycastle:bcpg-jdk14:1.70")
+    implementation("org.bouncycastle:bcpg-jdk15+:1.46")
+    implementation("org.bouncycastle:bcpg-jdk15:1.46")
+    implementation("org.bouncycastle:bcpg-jdk15on:1.70")
+    implementation("org.bouncycastle:bcpg-jdk15to18:1.70")
+    implementation("org.bouncycastle:bcpg-jdk16:1.46")
+    implementation("org.bouncycastle:bcpg-jdk18on:1.72")
+    implementation("org.bouncycastle:bcprov-debug-jdk14:1.70")
+    implementation("org.bouncycastle:bcprov-debug-jdk15on:1.70")
+    implementation("org.bouncycastle:bcprov-debug-jdk15to18:1.70")
+    implementation("org.bouncycastle:bcprov-debug-jdk18on:1.71")
+    implementation("org.bouncycastle:bcprov-ext-debug-jdk14:1.70")
+    implementation("org.bouncycastle:bcprov-ext-debug-jdk15on:1.70")
+    implementation("org.bouncycastle:bcprov-ext-debug-jdk15to18:1.70")
+    implementation("org.bouncycastle:bcprov-ext-debug-jdk18on:1.71")
+    implementation("org.bouncycastle:bcprov-ext-jdk14:1.70")
+    implementation("org.bouncycastle:bcprov-ext-jdk15:1.46")
+    implementation("org.bouncycastle:bcprov-ext-jdk15on:1.70")
+    implementation("org.bouncycastle:bcprov-ext-jdk15to18:1.70")
+    implementation("org.bouncycastle:bcprov-ext-jdk16:1.46")
+    implementation("org.bouncycastle:bcprov-ext-jdk18on:1.71")
+    implementation("org.bouncycastle:bcprov-jdk12:130")
+    implementation("org.bouncycastle:bcprov-jdk14:1.70")
+    implementation("org.bouncycastle:bcprov-jdk15+:1.46")
+    implementation("org.bouncycastle:bcprov-jdk15:1.46")
+    implementation("org.bouncycastle:bcprov-jdk15on:1.70")
+    implementation("org.bouncycastle:bcprov-jdk15to18:1.70")
+    implementation("org.bouncycastle:bcprov-jdk16:1.46")
+    implementation("org.bouncycastle:bcprov-jdk18on:1.71")
+    implementation("org.bouncycastle:bctls-fips:1.0.9")
+    implementation("org.bouncycastle:bctls-jdk14:1.70")
+    implementation("org.bouncycastle:bctls-jdk15on:1.69")
+    implementation("org.bouncycastle:bctls-jdk15to18:1.70")
+    implementation("org.bouncycastle:bctls-jdk18on:1.72")
+    implementation("org.bouncycastle:bctsp-jdk14:1.45")
+    implementation("org.bouncycastle:bctsp-jdk15+:1.46")
+    implementation("org.bouncycastle:bctsp-jdk15:1.45")
+    implementation("org.bouncycastle:bctsp-jdk15on:1.46")
+    implementation("org.bouncycastle:bctsp-jdk16:1.45")
+    implementation("org.bouncycastle:bcutil-jdk14:1.70")
+    implementation("org.bouncycastle:bcutil-jdk15on:1.70")
+    implementation("org.bouncycastle:bcutil-jdk15to18:1.70")
+    implementation("org.bouncycastle:bcutil-jdk18on:1.72")
+    implementation("org.bouncycastle:bcpkix-jdk14:1.70")
+    implementation("org.bouncycastle:bcpkix-jdk15on:1.70")
+    implementation("org.bouncycastle:bcpkix-jdk15to18:1.70")
+    implementation("org.bouncycastle:bcpkix-jdk18on:1.72")
     implementation("org.codehaus.woodstox:stax2-api:4.2.1")
     implementation("org.codehaus.woodstox:woodstox-core-asl:4.4.1")
     implementation("org.codehaus.woodstox:woodstox-core-lgpl:4.4.0")
@@ -114,7 +174,17 @@ dependencies {
     implementation("stax:stax-api:1.0")
     implementation("velocity:velocity:1.4")
     implementation("woodstox:wstx-asl:2.9.3")
-    implementation("com.sun.activation:jakarta.activation:2.0.1") // down here due to bug: https://github.com/gradle/gradle/issues/14220
+
+    // Declaration moved down here due to bug: https://github.com/gradle/gradle/issues/14220
+    // Also, some dependencies disappear completely in the result (instead of showing what they have been substituted with).
+    // E.g.: 'org.bouncycastle:bcprov-*' do not show up as direct dependencies in the ':dependencies' report (or build scan),
+    //       although they are declared in this file.
+    implementation("com.sun.activation:jakarta.activation:2.0.1")
+    implementation("org.bouncycastle:bc-fips-debug:1.0.2.3")
+    implementation("org.bouncycastle:bc-fips:1.0.2.3")
+    implementation("org.bouncycastle:bcpg-fips:1.0.6")
+    implementation("org.bouncycastle:bcpkix-fips:1.0.7")
+
     // implementation("woodstox:wstx-lgpl:3.2.7") - has no POM file
 }
 
@@ -126,5 +196,16 @@ configurations.all {
                 select(toBeSelected)
             }
         }
+        withCapability(BouncycastleBctspRule.CAPABILITY) {
+            val toBeSelected = candidates.firstOrNull { it.id.let { id -> id is ModuleComponentIdentifier && id.module == "bctsp-jdk15on" } }
+            if (toBeSelected != null) {
+                select(toBeSelected)
+            }
+        }
     }
+}
+
+tasks.detectCollisions {
+    // With ALL variations of bouncycastle modules in all variations in one build it is not possible to avoid all collisions
+    collisionFilter.exclude("org/bouncycastle/**")
 }
