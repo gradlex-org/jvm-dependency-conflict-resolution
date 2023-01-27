@@ -31,7 +31,8 @@ public abstract class JakartaServletApiRule implements ComponentMetadataRule {
     public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
 
     public static final String[] MODULES = {
-            "org.apache.tomcat:tomcat-servlet-api"
+            "org.apache.tomcat:tomcat-servlet-api",
+            "org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api",
     };
 
     @Override

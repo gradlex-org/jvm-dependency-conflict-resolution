@@ -96,6 +96,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.apache.tomcat:servlet-api:6.0.53
 +--- org.apache.tomcat:tomcat-annotations-api:10.1.1
 +--- org.apache.tomcat:tomcat-servlet-api:10.1.1
++--- org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api:5.0.2 -> org.apache.tomcat:tomcat-servlet-api:10.1.1
 +--- org.apache.velocity:velocity-engine-core:2.3
 |    +--- org.apache.commons:commons-lang3:3.11
 |    \--- org.slf4j:slf4j-api:1.7.30

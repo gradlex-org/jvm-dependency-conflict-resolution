@@ -202,6 +202,7 @@ Each Capability's GA coordinates correspond to the GA coordinates of the Compone
   * [org.eclipse.angus:jakarta.mail](https://search.maven.org/artifact/org.eclipse.angus/jakarta.mail)
 * [jakarta.servlet:jakarta.servlet-api](https://search.maven.org/artifact/jakarta.servlet/jakarta.servlet-api) ([JakartaServletApiRule](src/main/java/org/gradlex/javaecosystem/capabilities/rules/JakartaServletApiRule.java))
   * [org.apache.tomcat:tomcat-servlet-api](https://search.maven.org/artifact/org.apache.tomcat/tomcat-servlet-api)
+  * [org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api](https://search.maven.org/artifact/org.eclipse.jetty.toolchain/jetty-jakarta-servlet-api)
 * [jakarta.ws.rs:jakarta.ws.rs-api](https://search.maven.org/artifact/jakarta.ws.rs/jakarta.ws.rs-api) ([JakartaWsRsApiRule](src/main/java/org/gradlex/javaecosystem/capabilities/rules/JakartaWsRsApiRule.java))
   * [org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_3.0_spec](https://search.maven.org/artifact/org.jboss.spec.javax.ws.rs/jboss-jaxrs-api_3.0_spec)
 * [javassist:javassist](https://search.maven.org/artifact/javassist/javassist) ([JavaAssistRule](src/main/java/org/gradlex/javaecosystem/capabilities/rules/JavaAssistRule.java))
