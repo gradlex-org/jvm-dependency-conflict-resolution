@@ -23,37 +23,22 @@ import org.gradle.api.artifacts.ComponentMetadataRule;
 
 @CacheableRule
 @NonNullApi
-public abstract class BouncycastleBcprovRule implements ComponentMetadataRule {
+public abstract class BouncycastleBcpgRule implements ComponentMetadataRule {
 
     public static final String CAPABILITY_GROUP = "org.bouncycastle";
-    public static final String CAPABILITY_NAME = "bcprov";
+    public static final String CAPABILITY_NAME = "bcpg";
     public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
 
     public static final String[] MODULES = {
-            "org.bouncycastle:bcprov-debug-jdk14",
-            "org.bouncycastle:bcprov-debug-jdk15on",
-            "org.bouncycastle:bcprov-debug-jdk15to18",
-            "org.bouncycastle:bcprov-debug-jdk18on",
-            "org.bouncycastle:bcprov-ext-debug-jdk14",
-            "org.bouncycastle:bcprov-ext-debug-jdk15on",
-            "org.bouncycastle:bcprov-ext-debug-jdk15to18",
-            "org.bouncycastle:bcprov-ext-debug-jdk18on",
-            "org.bouncycastle:bcprov-ext-jdk14",
-            "org.bouncycastle:bcprov-ext-jdk15",
-            "org.bouncycastle:bcprov-ext-jdk15on",
-            "org.bouncycastle:bcprov-ext-jdk15to18",
-            "org.bouncycastle:bcprov-ext-jdk16",
-            "org.bouncycastle:bcprov-ext-jdk18on",
-            "org.bouncycastle:bcprov-jdk12",
-            "org.bouncycastle:bcprov-jdk14",
-            "org.bouncycastle:bcprov-jdk15",
-            "org.bouncycastle:bcprov-jdk15+",
-            "org.bouncycastle:bcprov-jdk15on",
-            "org.bouncycastle:bcprov-jdk15to18",
-            "org.bouncycastle:bcprov-jdk16",
-            "org.bouncycastle:bcprov-jdk18on",
-            "org.bouncycastle:bc-fips",
-            "org.bouncycastle:bc-fips-debug"
+            "org.bouncycastle:bcpg-fips",
+            "org.bouncycastle:bcpg-jdk12",
+            "org.bouncycastle:bcpg-jdk14",
+            "org.bouncycastle:bcpg-jdk15",
+            "org.bouncycastle:bcpg-jdk15+",
+            "org.bouncycastle:bcpg-jdk15on",
+            "org.bouncycastle:bcpg-jdk15to18",
+            "org.bouncycastle:bcpg-jdk16",
+            "org.bouncycastle:bcpg-jdk18on"
     };
 
     @Override

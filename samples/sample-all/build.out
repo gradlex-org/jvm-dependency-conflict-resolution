@@ -19,10 +19,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- com.google.guava:guava:31.1-jre (*)
 +--- com.google.guava:listenablefuture:1.0 -> com.google.guava:guava:31.1-jre (*)
 +--- com.mchange:c3p0:0.9.5.5 (*)
-+--- com.sun.mail:jakarta.mail:2.0.1 -> jakarta.mail:jakarta.mail-api:2.1.0
-|    \--- jakarta.activation:jakarta.activation-api:2.1.0 -> com.sun.activation:jakarta.activation:2.0.1
 +--- com.sun.mail:javax.mail:1.6.2 -> org.apache.geronimo.javamail:geronimo-javamail_1.4_mail:1.8.4
-+--- com.sun.mail:mailapi:2.0.0 -> jakarta.mail:jakarta.mail-api:2.1.0 (*)
 +--- com.vividsolutions:jts-core:1.14.0 -> org.locationtech.jts:jts-core:1.19.0
 +--- com.vividsolutions:jts:1.13 -> org.locationtech.jts:jts-core:1.19.0
 +--- commons-io:commons-io:2.11.0
@@ -34,7 +31,6 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- jakarta.el:jakarta.el-api:4.0.0
 +--- jakarta.inject:jakarta.inject-api:1.0.5
 +--- jakarta.jws:jakarta.jws-api:3.0.0
-+--- jakarta.mail:jakarta.mail-api:2.1.0 (*)
 +--- jakarta.persistence:jakarta.persistence-api:3.0.0
 +--- jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:1.2.7
 +--- jakarta.servlet.jsp:jakarta.servlet.jsp-api:2.3.6
@@ -100,28 +96,36 @@ compileClasspath - Compile classpath for source set 'main'.
 |    +--- org.apache.commons:commons-lang3:3.11
 |    \--- org.slf4j:slf4j-api:1.7.30
 +--- org.apache.velocity:velocity:1.7 -> org.apache.velocity:velocity-engine-core:2.3 (*)
-+--- org.bouncycastle:bcprov-debug-jdk14:1.70 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-debug-jdk15on:1.70 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-debug-jdk15to18:1.70 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-debug-jdk18on:1.71 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-ext-debug-jdk14:1.70 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-ext-debug-jdk15on:1.70 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-ext-debug-jdk15to18:1.70 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-ext-debug-jdk18on:1.71 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-ext-jdk14:1.70 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-ext-jdk15:1.46 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-ext-jdk15on:1.70 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-ext-jdk15to18:1.70 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-ext-jdk16:1.46 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-ext-jdk18on:1.71 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-jdk14:1.70 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-jdk15+:1.46 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-jdk15:1.46 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-jdk15on:1.70 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-jdk15to18:1.70 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-jdk16:1.46 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-jdk18on:1.71 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcpg-jdk12:130
+|    \--- org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcpg-jdk14:1.70 -> org.bouncycastle:bcpg-jdk12:130 (*)
++--- org.bouncycastle:bcpg-jdk15+:1.46 -> org.bouncycastle:bcpg-jdk12:130 (*)
++--- org.bouncycastle:bcpg-jdk15:1.46 -> org.bouncycastle:bcpg-jdk12:130 (*)
++--- org.bouncycastle:bcpg-jdk15on:1.70 -> org.bouncycastle:bcpg-jdk12:130 (*)
++--- org.bouncycastle:bcpg-jdk15to18:1.70 -> org.bouncycastle:bcpg-jdk12:130 (*)
++--- org.bouncycastle:bcpg-jdk16:1.46 -> org.bouncycastle:bcpg-jdk12:130 (*)
++--- org.bouncycastle:bcpg-jdk18on:1.72 -> org.bouncycastle:bcpg-jdk12:130 (*)
++--- org.bouncycastle:bctls-fips:1.0.9 -> org.bouncycastle:bctls-jdk18on:1.72
+|    \--- org.bouncycastle:bcprov-jdk18on:1.72 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bctls-jdk14:1.70 -> org.bouncycastle:bctls-jdk18on:1.72 (*)
++--- org.bouncycastle:bctls-jdk15on:1.69 -> org.bouncycastle:bctls-jdk18on:1.72 (*)
++--- org.bouncycastle:bctls-jdk15to18:1.70 -> org.bouncycastle:bctls-jdk18on:1.72 (*)
++--- org.bouncycastle:bctls-jdk18on:1.72 (*)
++--- org.bouncycastle:bctsp-jdk14:1.45 -> org.bouncycastle:bctsp-jdk15on:1.46
+|    +--- org.bouncycastle:bcprov-jdk15on:1.46 -> org.bouncycastle:bcprov-jdk12:130
+|    \--- org.bouncycastle:bcmail-jdk15on:1.46 -> org.bouncycastle:bcmail-jdk15+:1.46
+|         \--- org.bouncycastle:bcprov-jdk15+:1.46 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bctsp-jdk15+:1.46 -> org.bouncycastle:bctsp-jdk15on:1.46 (*)
++--- org.bouncycastle:bctsp-jdk15:1.45 -> org.bouncycastle:bctsp-jdk15on:1.46 (*)
++--- org.bouncycastle:bctsp-jdk15on:1.46 (*)
++--- org.bouncycastle:bctsp-jdk16:1.45 -> org.bouncycastle:bctsp-jdk15on:1.46 (*)
++--- org.bouncycastle:bcpkix-jdk14:1.70 -> org.bouncycastle:bcpkix-jdk18on:1.72
+|    +--- org.bouncycastle:bcprov-jdk18on:1.72 -> org.bouncycastle:bcprov-jdk12:130
+|    \--- org.bouncycastle:bcutil-jdk18on:1.72
+|         \--- org.bouncycastle:bcprov-jdk18on:1.72 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcpkix-jdk15on:1.70 -> org.bouncycastle:bcpkix-jdk18on:1.72 (*)
++--- org.bouncycastle:bcpkix-jdk15to18:1.70 -> org.bouncycastle:bcpkix-jdk18on:1.72 (*)
++--- org.bouncycastle:bcpkix-jdk18on:1.72 (*)
 +--- org.codehaus.woodstox:woodstox-core-asl:4.4.1
 |    +--- javax.xml.stream:stax-api:1.0-2 -> org.codehaus.woodstox:stax2-api:4.2.1
 |    \--- org.codehaus.woodstox:stax2-api:3.1.4 -> 4.2.1
@@ -130,7 +134,8 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.codehaus.woodstox:wstx-lgpl:3.2.9 -> org.codehaus.woodstox:woodstox-core-asl:4.4.1 (*)
 +--- org.dom4j:dom4j:2.1.3
 +--- org.eclipse.angus:angus-activation:1.1.0 -> com.sun.activation:jakarta.activation:2.0.1
-+--- org.eclipse.angus:jakarta.mail:1.0.0 -> jakarta.mail:jakarta.mail-api:2.1.0 (*)
++--- org.eclipse.angus:jakarta.mail:1.0.0 -> jakarta.mail:jakarta.mail-api:2.1.0
+|    \--- jakarta.activation:jakarta.activation-api:2.1.0 -> com.sun.activation:jakarta.activation:2.0.1
 +--- org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api:5.0.2 -> org.apache.tomcat:tomcat-servlet-api:10.1.1
 +--- org.hamcrest:hamcrest-core:2.2 -> org.hamcrest:hamcrest:2.2
 +--- org.hamcrest:hamcrest-library:2.2 -> org.hamcrest:hamcrest:2.2
@@ -150,7 +155,11 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- postgresql:postgresql:9.1-901-1.jdbc4 -> org.postgresql:postgresql:42.5.0
 +--- velocity:velocity:1.4 -> org.apache.velocity:velocity-engine-core:2.3 (*)
 +--- woodstox:wstx-asl:2.9.3 -> org.codehaus.woodstox:woodstox-core-asl:4.4.1 (*)
-\--- com.sun.activation:jakarta.activation:2.0.1
++--- com.sun.activation:jakarta.activation:2.0.1
++--- org.bouncycastle:bc-fips-debug:1.0.2.3 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bc-fips:1.0.2.3 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcpg-fips:1.0.6 -> org.bouncycastle:bcpg-jdk12:130 (*)
+\--- org.bouncycastle:bcpkix-fips:1.0.7 -> org.bouncycastle:bcpkix-jdk18on:1.72 (*)
 
 (*) - Indicates repeated occurrences of a transitive dependency subtree. Gradle expands transitive dependency subtrees only once per project; repeat occurrences only display the root of the subtree, followed by this annotation.
 

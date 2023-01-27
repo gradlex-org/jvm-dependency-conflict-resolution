@@ -23,37 +23,18 @@ import org.gradle.api.artifacts.ComponentMetadataRule;
 
 @CacheableRule
 @NonNullApi
-public abstract class BouncycastleBcprovRule implements ComponentMetadataRule {
+public abstract class BouncycastleBctspRule implements ComponentMetadataRule {
 
     public static final String CAPABILITY_GROUP = "org.bouncycastle";
-    public static final String CAPABILITY_NAME = "bcprov";
+    public static final String CAPABILITY_NAME = "bctsp";
     public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
 
     public static final String[] MODULES = {
-            "org.bouncycastle:bcprov-debug-jdk14",
-            "org.bouncycastle:bcprov-debug-jdk15on",
-            "org.bouncycastle:bcprov-debug-jdk15to18",
-            "org.bouncycastle:bcprov-debug-jdk18on",
-            "org.bouncycastle:bcprov-ext-debug-jdk14",
-            "org.bouncycastle:bcprov-ext-debug-jdk15on",
-            "org.bouncycastle:bcprov-ext-debug-jdk15to18",
-            "org.bouncycastle:bcprov-ext-debug-jdk18on",
-            "org.bouncycastle:bcprov-ext-jdk14",
-            "org.bouncycastle:bcprov-ext-jdk15",
-            "org.bouncycastle:bcprov-ext-jdk15on",
-            "org.bouncycastle:bcprov-ext-jdk15to18",
-            "org.bouncycastle:bcprov-ext-jdk16",
-            "org.bouncycastle:bcprov-ext-jdk18on",
-            "org.bouncycastle:bcprov-jdk12",
-            "org.bouncycastle:bcprov-jdk14",
-            "org.bouncycastle:bcprov-jdk15",
-            "org.bouncycastle:bcprov-jdk15+",
-            "org.bouncycastle:bcprov-jdk15on",
-            "org.bouncycastle:bcprov-jdk15to18",
-            "org.bouncycastle:bcprov-jdk16",
-            "org.bouncycastle:bcprov-jdk18on",
-            "org.bouncycastle:bc-fips",
-            "org.bouncycastle:bc-fips-debug"
+            "org.bouncycastle:bctsp-jdk14",
+            "org.bouncycastle:bctsp-jdk15",
+            "org.bouncycastle:bctsp-jdk15+",
+            "org.bouncycastle:bctsp-jdk15on",
+            "org.bouncycastle:bctsp-jdk16"
     };
 
     @Override
