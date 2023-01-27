@@ -30,6 +30,7 @@ import org.gradle.api.plugins.ExtensionAware;
 import org.gradle.util.GradleVersion;
 import org.gradlex.javaecosystem.capabilities.componentrules.GuavaComponentRule;
 import org.gradlex.javaecosystem.capabilities.rules.AsmRule;
+import org.gradlex.javaecosystem.capabilities.rules.BouncycastleBcprovRule;
 import org.gradlex.javaecosystem.capabilities.rules.C3p0Rule;
 import org.gradlex.javaecosystem.capabilities.rules.CGlibRule;
 import org.gradlex.javaecosystem.capabilities.rules.CommonsIoRule;
@@ -130,6 +131,7 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Extensio
 
     private void registerCapabilityRules(ComponentMetadataHandler components, Set<String> allCapabilities) {
         registerRule(AsmRule.CAPABILITY, AsmRule.MODULES, AsmRule.class, null, components, allCapabilities);
+        registerRule(BouncycastleBcprovRule.CAPABILITY, BouncycastleBcprovRule.MODULES, BouncycastleBcprovRule.class, null, components, allCapabilities);
         registerRule(C3p0Rule.CAPABILITY, C3p0Rule.MODULES, C3p0Rule.class, null, components, allCapabilities);
         registerRule(CGlibRule.CAPABILITY, CGlibRule.MODULES, CGlibRule.class, null, components, allCapabilities);
         registerRule(CommonsIoRule.CAPABILITY, CommonsIoRule.MODULES, CommonsIoRule.class, null, components, allCapabilities);

@@ -100,6 +100,28 @@ compileClasspath - Compile classpath for source set 'main'.
 |    +--- org.apache.commons:commons-lang3:3.11
 |    \--- org.slf4j:slf4j-api:1.7.30
 +--- org.apache.velocity:velocity:1.7 -> org.apache.velocity:velocity-engine-core:2.3 (*)
++--- org.bouncycastle:bcprov-debug-jdk14:1.70 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-debug-jdk15on:1.70 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-debug-jdk15to18:1.70 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-debug-jdk18on:1.71 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-ext-debug-jdk14:1.70 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-ext-debug-jdk15on:1.70 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-ext-debug-jdk15to18:1.70 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-ext-debug-jdk18on:1.71 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-ext-jdk14:1.70 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-ext-jdk15:1.46 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-ext-jdk15on:1.70 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-ext-jdk15to18:1.70 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-ext-jdk16:1.46 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-ext-jdk18on:1.71 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-jdk14:1.70 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-jdk15+:1.46 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-jdk15:1.46 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-jdk15on:1.70 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-jdk15to18:1.70 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-jdk16:1.46 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-jdk18on:1.71 -> org.bouncycastle:bcprov-jdk12:130
 +--- org.codehaus.woodstox:woodstox-core-asl:4.4.1
 |    +--- javax.xml.stream:stax-api:1.0-2 -> org.codehaus.woodstox:stax2-api:4.2.1
 |    \--- org.codehaus.woodstox:stax2-api:3.1.4 -> 4.2.1
