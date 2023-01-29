@@ -30,6 +30,7 @@ compileClasspath - Compile classpath for source set 'main'.
 |    \--- jakarta.transaction:jakarta.transaction-api:2.0.0
 +--- jakarta.el:jakarta.el-api:4.0.0
 +--- jakarta.inject:jakarta.inject-api:1.0.5
++--- jakarta.json:jakarta.json-api:1.1.6
 +--- jakarta.jws:jakarta.jws-api:3.0.0
 +--- jakarta.persistence:jakarta.persistence-api:3.0.0
 +--- jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:1.2.7
@@ -55,6 +56,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- javax.el:el-api:2.2 -> javax.el:javax.el-api:3.0.0
 +--- javax.el:javax.el-api:3.0.0
 +--- javax.inject:javax.inject:1 -> jakarta.inject:jakarta.inject-api:1.0.5
++--- javax.json:javax.json-api:1.1.4 -> jakarta.json:jakarta.json-api:1.1.6
 +--- javax.jws:javax.jws-api:1.1
 +--- javax.mail:mail:1.4.7 -> org.apache.geronimo.javamail:geronimo-javamail_1.4_mail:1.8.4
 +--- javax.persistence:javax.persistence-api:2.2
@@ -105,8 +107,16 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.bouncycastle:bcpg-jdk15to18:1.70 -> org.bouncycastle:bcpg-jdk12:130 (*)
 +--- org.bouncycastle:bcpg-jdk16:1.46 -> org.bouncycastle:bcpg-jdk12:130 (*)
 +--- org.bouncycastle:bcpg-jdk18on:1.72 -> org.bouncycastle:bcpg-jdk12:130 (*)
++--- org.bouncycastle:bcpkix-jdk14:1.70 -> org.bouncycastle:bcpkix-jdk18on:1.72
+|    +--- org.bouncycastle:bcprov-jdk18on:1.72 -> org.bouncycastle:bcprov-jdk12:130
+|    \--- org.bouncycastle:bcutil-jdk18on:1.72
+|         \--- org.bouncycastle:bcprov-jdk18on:1.72 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcpkix-jdk15on:1.70 -> org.bouncycastle:bcpkix-jdk18on:1.72 (*)
++--- org.bouncycastle:bcpkix-jdk15to18:1.70 -> org.bouncycastle:bcpkix-jdk18on:1.72 (*)
++--- org.bouncycastle:bcpkix-jdk18on:1.72 (*)
 +--- org.bouncycastle:bctls-fips:1.0.9 -> org.bouncycastle:bctls-jdk18on:1.72
-|    \--- org.bouncycastle:bcprov-jdk18on:1.72 -> org.bouncycastle:bcprov-jdk12:130
+|    +--- org.bouncycastle:bcprov-jdk18on:1.72 -> org.bouncycastle:bcprov-jdk12:130
+|    \--- org.bouncycastle:bcutil-jdk18on:1.72 (*)
 +--- org.bouncycastle:bctls-jdk14:1.70 -> org.bouncycastle:bctls-jdk18on:1.72 (*)
 +--- org.bouncycastle:bctls-jdk15on:1.69 -> org.bouncycastle:bctls-jdk18on:1.72 (*)
 +--- org.bouncycastle:bctls-jdk15to18:1.70 -> org.bouncycastle:bctls-jdk18on:1.72 (*)
@@ -119,13 +129,10 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.bouncycastle:bctsp-jdk15:1.45 -> org.bouncycastle:bctsp-jdk15on:1.46 (*)
 +--- org.bouncycastle:bctsp-jdk15on:1.46 (*)
 +--- org.bouncycastle:bctsp-jdk16:1.45 -> org.bouncycastle:bctsp-jdk15on:1.46 (*)
-+--- org.bouncycastle:bcpkix-jdk14:1.70 -> org.bouncycastle:bcpkix-jdk18on:1.72
-|    +--- org.bouncycastle:bcprov-jdk18on:1.72 -> org.bouncycastle:bcprov-jdk12:130
-|    \--- org.bouncycastle:bcutil-jdk18on:1.72
-|         \--- org.bouncycastle:bcprov-jdk18on:1.72 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcpkix-jdk15on:1.70 -> org.bouncycastle:bcpkix-jdk18on:1.72 (*)
-+--- org.bouncycastle:bcpkix-jdk15to18:1.70 -> org.bouncycastle:bcpkix-jdk18on:1.72 (*)
-+--- org.bouncycastle:bcpkix-jdk18on:1.72 (*)
++--- org.bouncycastle:bcutil-jdk14:1.70 -> org.bouncycastle:bcutil-jdk18on:1.72 (*)
++--- org.bouncycastle:bcutil-jdk15on:1.70 -> org.bouncycastle:bcutil-jdk18on:1.72 (*)
++--- org.bouncycastle:bcutil-jdk15to18:1.70 -> org.bouncycastle:bcutil-jdk18on:1.72 (*)
++--- org.bouncycastle:bcutil-jdk18on:1.72 (*)
 +--- org.codehaus.woodstox:woodstox-core-asl:4.4.1
 |    +--- javax.xml.stream:stax-api:1.0-2 -> org.codehaus.woodstox:stax2-api:4.2.1
 |    \--- org.codehaus.woodstox:stax2-api:3.1.4 -> 4.2.1
@@ -137,6 +144,8 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.eclipse.angus:jakarta.mail:1.0.0 -> jakarta.mail:jakarta.mail-api:2.1.0
 |    \--- jakarta.activation:jakarta.activation-api:2.1.0 -> com.sun.activation:jakarta.activation:2.0.1
 +--- org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api:5.0.2 -> org.apache.tomcat:tomcat-servlet-api:10.1.1
++--- org.glassfish:jakarta.json:1.1.5 -> jakarta.json:jakarta.json-api:1.1.6
++--- org.glassfish:javax.json:1.1.4 -> jakarta.json:jakarta.json-api:1.1.6
 +--- org.hamcrest:hamcrest-core:2.2 -> org.hamcrest:hamcrest:2.2
 +--- org.hamcrest:hamcrest-library:2.2 -> org.hamcrest:hamcrest:2.2
 +--- org.hamcrest:hamcrest:2.2
