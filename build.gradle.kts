@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "org.gradlex"
-version = "1.0"
+version = "1.1"
 
 java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(11)) // to run tests that use Android with 11
@@ -20,8 +20,8 @@ pluginPublishConventions {
     displayName("Java Ecosystem Capabilities Gradle Plugin")
     description("Adds Capabilities to well-known Components hosted on Maven Central.")
     tags("capabilities", "java",
-         "asm", "cglib", "commons-io", "dom4j", "guava", "hamcrest", "javax", "jakarta", "junit", "postgresql",
-         "stax", "velocity", "woodstox")
+         "asm", "bouncycastle", "cglib", "commons-io", "dom4j", "guava", "hamcrest", "javax", "jakarta", "junit",
+         "postgresql", "stax", "velocity", "woodstox")
     gitHub("https://github.com/gradlex-org/java-ecosystem-capabilities")
     website("https://github.com/gradlex-org/java-ecosystem-capabilities")
     developer {
