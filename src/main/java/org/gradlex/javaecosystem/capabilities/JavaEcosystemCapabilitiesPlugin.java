@@ -52,6 +52,8 @@ import org.gradlex.javaecosystem.capabilities.rules.JakartaAnnotationApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JakartaJsonApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JakartaMailApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JakartaServletApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.JakartaWebsocketApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.JakartaWebsocketClientApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JakartaWsRsApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaAssistRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaxActivationApiRule;
@@ -68,6 +70,7 @@ import org.gradlex.javaecosystem.capabilities.rules.JavaxServletJspRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaxServletJstlRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaxSoapApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaxValidationApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.JavaxWebsocketApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaxWsRsApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaxXmlBindApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaxXmlWsApiRule;
@@ -162,6 +165,8 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Extensio
         registerRule(JakartaJsonApiRule.CAPABILITY, JakartaJsonApiRule.MODULES, JakartaJsonApiRule.class, null, components, allCapabilities);
         registerRule(JakartaMailApiRule.CAPABILITY, JakartaMailApiRule.MODULES, JakartaMailApiRule.class, null, components, allCapabilities);
         registerRule(JakartaServletApiRule.CAPABILITY, JakartaServletApiRule.MODULES, JakartaServletApiRule.class, null, components, allCapabilities);
+        registerRule(JakartaWebsocketApiRule.CAPABILITY, JakartaWebsocketApiRule.MODULES, JakartaWebsocketApiRule.class, null, components, allCapabilities);
+        registerRule(JakartaWebsocketClientApiRule.CAPABILITY, JakartaWebsocketClientApiRule.MODULES, JakartaWebsocketClientApiRule.class, null, components, allCapabilities);
         registerRule(JakartaWsRsApiRule.CAPABILITY, JakartaWsRsApiRule.MODULES, JakartaWsRsApiRule.class, null, components, allCapabilities);
 
         registerRule(JavaAssistRule.CAPABILITY, JavaAssistRule.MODULES, JavaAssistRule.class, null, components, allCapabilities);
@@ -180,6 +185,7 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Extensio
         registerRule(JavaxServletJstlRule.CAPABILITY, JavaxServletJstlRule.MODULES, JavaxServletJstlRule.class, null, components, allCapabilities);
         registerRule(JavaxSoapApiRule.CAPABILITY, JavaxSoapApiRule.MODULES, JavaxSoapApiRule.class, null, components, allCapabilities);
         registerRule(JavaxValidationApiRule.CAPABILITY, JavaxValidationApiRule.MODULES, JavaxValidationApiRule.class, null, components, allCapabilities);
+        registerRule(JavaxWebsocketApiRule.CAPABILITY, JavaxWebsocketApiRule.MODULES, JavaxWebsocketApiRule.class, null, components, allCapabilities);
         registerRule(JavaxWsRsApiRule.CAPABILITY, JavaxWsRsApiRule.MODULES, JavaxWsRsApiRule.class, null, components, allCapabilities);
         registerRule(JavaxXmlBindApiRule.CAPABILITY, JavaxXmlBindApiRule.MODULES, JavaxXmlBindApiRule.class, null, components, allCapabilities);
         registerRule(JavaxXmlWsApiRule.CAPABILITY, JavaxXmlWsApiRule.MODULES, JavaxXmlWsApiRule.class, null, components, allCapabilities);
