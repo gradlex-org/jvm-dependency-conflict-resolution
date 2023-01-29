@@ -33,6 +33,8 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- jakarta.servlet.jsp:jakarta.servlet.jsp-api:2.3.6 FAILED
 +--- jakarta.servlet:jakarta.servlet-api:4.0.4 FAILED
 +--- jakarta.validation:jakarta.validation-api:2.0.1 FAILED
++--- jakarta.websocket:jakarta.websocket-api:2.1.0 FAILED
++--- jakarta.websocket:jakarta.websocket-client-api:2.1.0 FAILED
 +--- jakarta.ws.rs:jakarta.ws.rs-api:3.0.0 FAILED
 +--- jakarta.xml.bind:jakarta.xml.bind-api:2.3.3 FAILED
 +--- jakarta.xml.soap:jakarta.xml.soap-api:1.4.2 FAILED
@@ -61,6 +63,8 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- javax.servlet:jstl:1.2 FAILED
 +--- javax.servlet:servlet-api:2.5 FAILED
 +--- javax.validation:validation-api:2.0.1.Final FAILED
++--- javax.websocket:javax.websocket-api:1.1 FAILED
++--- javax.websocket:javax.websocket-client-api:1.1 FAILED
 +--- javax.ws.rs:javax.ws.rs-api:2.1.1 FAILED
 +--- javax.ws.rs:jsr311-api:1.1.1 FAILED
 +--- javax.xml.bind:jaxb-api:2.3.1 FAILED
@@ -79,9 +83,14 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.apache.geronimo.javamail:geronimo-javamail_1.4_provider:1.8.3 FAILED
 +--- org.apache.geronimo.javamail:geronimo-javamail_1.6_mail:1.0.1 FAILED
 +--- org.apache.geronimo.javamail:geronimo-javamail_1.6_provider:1.0.1 FAILED
++--- org.apache.tomcat.embed:tomcat-embed-core:10.1.0 FAILED
++--- org.apache.tomcat.embed:tomcat-embed-websocket:10.1.0 FAILED
 +--- org.apache.tomcat:servlet-api:6.0.53 FAILED
 +--- org.apache.tomcat:tomcat-annotations-api:9.0.1 FAILED
 +--- org.apache.tomcat:tomcat-servlet-api:9.0.1 FAILED
++--- org.apache.tomcat:tomcat-websocket-api:10.1.0 FAILED
++--- org.apache.tomcat:tomcat-websocket-client-api:10.1.0 FAILED
++--- org.apache.tomcat:tomcat-websocket:10.1.1 FAILED
 +--- org.apache.velocity:velocity-engine-core:2.3 FAILED
 +--- org.apache.velocity:velocity:1.7 FAILED
 +--- org.bouncycastle:bcjmail-jdk15on:1.70 FAILED
@@ -152,6 +161,8 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.eclipse.angus:angus-activation:1.1.0 FAILED
 +--- org.eclipse.angus:jakarta.mail:1.0.0 FAILED
 +--- org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api:5.0.2 FAILED
++--- org.eclipse.jetty.toolchain:jetty-jakarta-websocket-api:2.0.0 FAILED
++--- org.eclipse.jetty.toolchain:jetty-javax-websocket-api:1.1.2 FAILED
 +--- org.glassfish:jakarta.json:1.1.5 FAILED
 +--- org.glassfish:javax.json:1.1.4 FAILED
 +--- org.hamcrest:hamcrest-core:2.2 FAILED

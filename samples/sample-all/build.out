@@ -35,8 +35,14 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- jakarta.persistence:jakarta.persistence-api:3.0.0
 +--- jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:1.2.7
 +--- jakarta.servlet.jsp:jakarta.servlet.jsp-api:2.3.6
-+--- jakarta.servlet:jakarta.servlet-api:5.0.0 -> org.apache.tomcat:tomcat-servlet-api:10.1.1
 +--- jakarta.validation:jakarta.validation-api:2.0.1 -> javax.validation:validation-api:2.0.1.Final
++--- jakarta.websocket:jakarta.websocket-api:2.1.0 -> org.apache.tomcat:tomcat-websocket:10.1.1
+|    +--- org.apache.tomcat:tomcat-servlet-api:10.1.1
+|    +--- org.apache.tomcat:tomcat-websocket-api:10.1.1 -> org.apache.tomcat:tomcat-websocket:10.1.1 (*)
+|    +--- org.apache.tomcat:tomcat-juli:10.1.1
+|    \--- org.apache.tomcat:tomcat-util:10.1.1
+|         \--- org.apache.tomcat:tomcat-juli:10.1.1
++--- jakarta.websocket:jakarta.websocket-client-api:2.1.0 -> org.apache.tomcat:tomcat-websocket:10.1.1 (*)
 +--- jakarta.ws.rs:jakarta.ws.rs-api:3.0.0
 +--- jakarta.xml.bind:jakarta.xml.bind-api:3.0.1
 |    \--- com.sun.activation:jakarta.activation:2.0.1
@@ -69,6 +75,8 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- javax.servlet:jstl:1.2 -> jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:1.2.7
 +--- javax.servlet:servlet-api:2.5 -> org.apache.tomcat:servlet-api:6.0.53
 +--- javax.validation:validation-api:2.0.1.Final
++--- javax.websocket:javax.websocket-api:1.1 -> org.eclipse.jetty.toolchain:jetty-javax-websocket-api:1.1.2
++--- javax.websocket:javax.websocket-client-api:1.0 -> org.eclipse.jetty.toolchain:jetty-javax-websocket-api:1.1.2
 +--- javax.ws.rs:javax.ws.rs-api:2.1.1
 +--- javax.ws.rs:jsr311-api:1.1.1 -> javax.ws.rs:javax.ws.rs-api:2.1.1
 +--- javax.xml.bind:jaxb-api:2.3.1
@@ -91,9 +99,12 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.apache.geronimo.javamail:geronimo-javamail_1.4_provider:1.8.3 -> org.apache.geronimo.javamail:geronimo-javamail_1.4_mail:1.8.4
 +--- org.apache.geronimo.javamail:geronimo-javamail_1.6_mail:1.0.1 -> org.apache.geronimo.javamail:geronimo-javamail_1.4_mail:1.8.4
 +--- org.apache.geronimo.javamail:geronimo-javamail_1.6_provider:1.0.1 -> org.apache.geronimo.javamail:geronimo-javamail_1.4_mail:1.8.4
++--- org.apache.tomcat.embed:tomcat-embed-websocket:10.1.0 -> org.apache.tomcat:tomcat-websocket:10.1.1 (*)
 +--- org.apache.tomcat:servlet-api:6.0.53
 +--- org.apache.tomcat:tomcat-annotations-api:10.1.1
-+--- org.apache.tomcat:tomcat-servlet-api:10.1.1
++--- org.apache.tomcat:tomcat-websocket-api:10.1.0 -> org.apache.tomcat:tomcat-websocket:10.1.1 (*)
++--- org.apache.tomcat:tomcat-websocket-client-api:10.1.0 -> org.apache.tomcat:tomcat-websocket:10.1.1 (*)
++--- org.apache.tomcat:tomcat-websocket:10.1.1 (*)
 +--- org.apache.velocity:velocity-engine-core:2.3
 |    +--- org.apache.commons:commons-lang3:3.11
 |    \--- org.slf4j:slf4j-api:1.7.30
@@ -144,6 +155,8 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.eclipse.angus:jakarta.mail:1.0.0 -> jakarta.mail:jakarta.mail-api:2.1.0
 |    \--- jakarta.activation:jakarta.activation-api:2.1.0 -> com.sun.activation:jakarta.activation:2.0.1
 +--- org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api:5.0.2 -> org.apache.tomcat:tomcat-servlet-api:10.1.1
++--- org.eclipse.jetty.toolchain:jetty-jakarta-websocket-api:2.0.0 -> org.apache.tomcat:tomcat-websocket:10.1.1 (*)
++--- org.eclipse.jetty.toolchain:jetty-javax-websocket-api:1.1.2
 +--- org.glassfish:jakarta.json:1.1.5 -> jakarta.json:jakarta.json-api:1.1.6
 +--- org.glassfish:javax.json:1.1.4 -> jakarta.json:jakarta.json-api:1.1.6
 +--- org.hamcrest:hamcrest-core:2.2 -> org.hamcrest:hamcrest:2.2

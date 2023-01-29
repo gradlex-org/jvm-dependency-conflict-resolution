@@ -37,12 +37,14 @@ public abstract class JavaxServletApiRule implements ComponentMetadataRule {
             "jakarta.servlet:jakarta.servlet-api",
             "org.apache.tomcat:servlet-api",
             "org.apache.tomcat:tomcat-servlet-api",
+            "org.apache.tomcat.embed:tomcat-embed-core"
     };
 
     @Override
     public void execute(ComponentMetadataContext context) {
+        String group = context.getDetails().getId().getGroup();
         String version;
-        if ("org.apache.tomcat".equals(context.getDetails().getId().getGroup())) {
+        if (group.startsWith("org.apache.tomcat")) {
             version = servletApiVersionForTomcatVersion(VersionNumber.parse(context.getDetails().getId().getVersion()));
         } else {
             version = context.getDetails().getId().getVersion();

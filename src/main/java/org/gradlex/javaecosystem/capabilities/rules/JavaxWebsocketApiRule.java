@@ -24,16 +24,23 @@ import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
 
 @CacheableRule
 @NonNullApi
-public abstract class JakartaServletApiRule implements ComponentMetadataRule {
+public abstract class JavaxWebsocketApiRule implements ComponentMetadataRule {
 
-    public static final String CAPABILITY_GROUP = "jakarta.servlet";
-    public static final String CAPABILITY_NAME = "jakarta.servlet-api";
+    public static final String CAPABILITY_GROUP = "javax.websocket";
+    public static final String CAPABILITY_NAME = "javax.websocket-api";
     public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
 
+    public static final String FIRST_JAKARTA_VERSION = "2.0.0";
+
     public static final String[] MODULES = {
-            "org.apache.tomcat:tomcat-servlet-api",
-            "org.apache.tomcat.embed:tomcat-embed-core",
-            "org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api",
+            "jakarta.websocket:jakarta.websocket-api",
+            // in javax namespace, websocket-api and websocket-client-api overlap
+            "javax.websocket:javax.websocket-client-api",
+            "jakarta.websocket:jakarta.websocket-client-api",
+            "org.apache.tomcat:tomcat-websocket-api",
+            "org.apache.tomcat:tomcat-websocket",
+            "org.apache.tomcat.embed:tomcat-embed-websocket",
+            "org.eclipse.jetty.toolchain:jetty-javax-websocket-api"
     };
 
     @Override
@@ -41,15 +48,26 @@ public abstract class JakartaServletApiRule implements ComponentMetadataRule {
         String group = context.getDetails().getId().getGroup();
         String version;
         if (group.startsWith("org.apache.tomcat")) {
-            version = JavaxServletApiRule.servletApiVersionForTomcatVersion(VersionNumber.parse(context.getDetails().getId().getVersion()));
+            version = websocketApiVersionForTomcatVersion(VersionNumber.parse(context.getDetails().getId().getVersion()));
         } else {
             version = context.getDetails().getId().getVersion();
         }
 
-        if (VersionNumber.parse(version).compareTo(VersionNumber.parse(JavaxServletApiRule.FIRST_JAKARTA_VERSION)) >= 0) {
+        if (VersionNumber.parse(version).compareTo(VersionNumber.parse(FIRST_JAKARTA_VERSION)) < 0) {
             context.getDetails().allVariants(variant -> variant.withCapabilities(capabilities ->
                     capabilities.addCapability(CAPABILITY_GROUP, CAPABILITY_NAME, version)
             ));
         }
+    }
+
+    // https://tomcat.apache.org/whichversion.html
+    static String websocketApiVersionForTomcatVersion(VersionNumber tomcatVersion) {
+        if (tomcatVersion.compareTo(VersionNumber.version(10, 1)) >= 0) {
+            return "2.1.0";
+        }
+        if (tomcatVersion.compareTo(VersionNumber.version(10, 0)) >= 0) {
+            return "2.0.0";
+        }
+        return "1.1.0";
     }
 }

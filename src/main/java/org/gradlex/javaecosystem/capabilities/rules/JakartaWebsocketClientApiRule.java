@@ -24,16 +24,17 @@ import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
 
 @CacheableRule
 @NonNullApi
-public abstract class JakartaServletApiRule implements ComponentMetadataRule {
+public abstract class JakartaWebsocketClientApiRule implements ComponentMetadataRule {
 
-    public static final String CAPABILITY_GROUP = "jakarta.servlet";
-    public static final String CAPABILITY_NAME = "jakarta.servlet-api";
+    public static final String CAPABILITY_GROUP = "jakarta.websocket";
+    public static final String CAPABILITY_NAME = "jakarta.websocket-client-api";
     public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
 
     public static final String[] MODULES = {
-            "org.apache.tomcat:tomcat-servlet-api",
-            "org.apache.tomcat.embed:tomcat-embed-core",
-            "org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api",
+            "org.apache.tomcat:tomcat-websocket-client-api",
+            "org.apache.tomcat:tomcat-websocket",
+            "org.apache.tomcat.embed:tomcat-embed-websocket",
+            "org.eclipse.jetty.toolchain:jetty-jakarta-websocket-api"
     };
 
     @Override
@@ -41,12 +42,12 @@ public abstract class JakartaServletApiRule implements ComponentMetadataRule {
         String group = context.getDetails().getId().getGroup();
         String version;
         if (group.startsWith("org.apache.tomcat")) {
-            version = JavaxServletApiRule.servletApiVersionForTomcatVersion(VersionNumber.parse(context.getDetails().getId().getVersion()));
+            version = JavaxWebsocketApiRule.websocketApiVersionForTomcatVersion(VersionNumber.parse(context.getDetails().getId().getVersion()));
         } else {
             version = context.getDetails().getId().getVersion();
         }
 
-        if (VersionNumber.parse(version).compareTo(VersionNumber.parse(JavaxServletApiRule.FIRST_JAKARTA_VERSION)) >= 0) {
+        if (VersionNumber.parse(version).compareTo(VersionNumber.parse(JavaxWebsocketApiRule.FIRST_JAKARTA_VERSION)) >= 0) {
             context.getDetails().allVariants(variant -> variant.withCapabilities(capabilities ->
                     capabilities.addCapability(CAPABILITY_GROUP, CAPABILITY_NAME, version)
             ));
