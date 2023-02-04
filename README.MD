@@ -470,7 +470,7 @@ You add the `asm:asm` capability as follows:
     <plugin>
       <groupId>de.jjohannes</groupId>
       <artifactId>gradle-module-metadata-maven-plugin</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.0</version>
       <executions>
         <execution>
           <goals>
