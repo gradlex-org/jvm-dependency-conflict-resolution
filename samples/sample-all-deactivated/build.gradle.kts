@@ -67,6 +67,7 @@ dependencies {
     implementation("javax.servlet:jsp-api:2.0")
     implementation("javax.servlet:jstl:1.2")
     implementation("javax.servlet:servlet-api:2.5")
+    implementation("servletapi:servletapi:2.4")
     implementation("javax.validation:validation-api:2.0.1.Final")
     implementation("javax.websocket:javax.websocket-api:1.1")
     implementation("javax.websocket:javax.websocket-client-api:1.1")

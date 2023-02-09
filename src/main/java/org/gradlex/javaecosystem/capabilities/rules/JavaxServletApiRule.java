@@ -37,7 +37,8 @@ public abstract class JavaxServletApiRule implements ComponentMetadataRule {
             "jakarta.servlet:jakarta.servlet-api",
             "org.apache.tomcat:servlet-api",
             "org.apache.tomcat:tomcat-servlet-api",
-            "org.apache.tomcat.embed:tomcat-embed-core"
+            "org.apache.tomcat.embed:tomcat-embed-core",
+            "servletapi:servletapi"
     };
 
     @Override
