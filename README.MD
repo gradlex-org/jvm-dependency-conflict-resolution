@@ -276,6 +276,7 @@ Each Capability's GA coordinates correspond to the GA coordinates of the Compone
   * [org.apache.tomcat:servlet-api](https://search.maven.org/artifact/org.apache.tomcat/servlet-api)
   * [org.apache.tomcat:tomcat-servlet-api](https://search.maven.org/artifact/org.apache.tomcat/tomcat-servlet-api)
   * [org.apache.tomcat.embed:tomcat-embed-core](https://search.maven.org/artifact/org.apache.tomcat.embed/tomcat-embed-core)
+  * [servletapi:servletapi](https://search.maven.org/artifact/servletapi/servletapi)
 * [javax.validation:validation-api](https://search.maven.org/artifact/javax.validation/validation-api) ([JavaxValidationApiRule](src/main/java/org/gradlex/javaecosystem/capabilities/rules/JavaxValidationApiRule.java))
   * [jakarta.validation:jakarta.validation-api](https://search.maven.org/artifact/jakarta.validation/jakarta.validation-api)
 * [javax.websocket:javax.websocket-api](https://search.maven.org/artifact/javax.websocket/javax.websocket-api) ([JavaxWebsocketApiRule](src/main/java/org/gradlex/javaecosystem/capabilities/rules/JavaxWebsocketApiRule.java))
