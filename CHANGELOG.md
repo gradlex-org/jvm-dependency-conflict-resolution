@@ -1,5 +1,8 @@
 # Java Ecosystem Capabilities Gradle plugin - Changelog
 
+## Version 1.2
+* [Adjusted Rule] [#37](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/37) servletapi:servletapi (Thanks [Kenny Moens](https://github.com/kmoens)!)
+
 ## Version 1.1
 
 * [New Rules] [#20](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/20) net.java.dev.jna:platform (Thanks [Florian Dreier](https://github.com/DreierF)!)
