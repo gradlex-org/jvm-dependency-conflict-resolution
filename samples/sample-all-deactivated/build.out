@@ -11,6 +11,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- com.google.guava:guava-jdk5:17.0 FAILED
 +--- com.google.guava:guava:31.1-jre FAILED
 +--- com.google.guava:listenablefuture:1.0 FAILED
++--- com.intellij:annotations:12.0 FAILED
 +--- com.mchange:c3p0:0.9.5.5 FAILED
 +--- com.sun.activation:javax.activation:1.2.0 FAILED
 +--- com.sun.mail:jakarta.mail:2.0.1 FAILED
@@ -178,6 +179,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.0_spec:1.0.1.Final FAILED
 +--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.1_spec:2.0.2.Final FAILED
 +--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_3.0_spec:1.0.1.Final FAILED
++--- org.jetbrains:annotations:24.0.0 FAILED
 +--- org.locationtech.jts:jts-core:1.19.0 FAILED
 +--- org.ow2.asm:asm:9.2 FAILED
 +--- org.postgresql:postgresql:42.5.0 FAILED

@@ -18,6 +18,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- com.google.guava:guava-jdk5:17.0 -> com.google.guava:guava:31.1-jre (*)
 +--- com.google.guava:guava:31.1-jre (*)
 +--- com.google.guava:listenablefuture:1.0 -> com.google.guava:guava:31.1-jre (*)
++--- com.intellij:annotations:12.0 -> org.jetbrains:annotations:24.0.0
 +--- com.mchange:c3p0:0.9.5.5 (*)
 +--- com.sun.mail:javax.mail:1.6.2 -> org.apache.geronimo.javamail:geronimo-javamail_1.4_mail:1.8.4
 +--- com.vividsolutions:jts-core:1.14.0 -> org.locationtech.jts:jts-core:1.19.0
@@ -172,6 +173,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.0_spec:1.0.1.Final -> javax.ws.rs:javax.ws.rs-api:2.1.1
 +--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.1_spec:2.0.2.Final -> javax.ws.rs:javax.ws.rs-api:2.1.1
 +--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_3.0_spec:1.0.1.Final -> jakarta.ws.rs:jakarta.ws.rs-api:3.0.0
++--- org.jetbrains:annotations:24.0.0
 +--- org.locationtech.jts:jts-core:1.19.0
 +--- org.ow2.asm:asm:9.2
 +--- org.postgresql:postgresql:42.5.0
