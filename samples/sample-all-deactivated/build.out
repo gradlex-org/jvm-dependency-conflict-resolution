@@ -19,6 +19,9 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- com.sun.mail:mailapi:2.0.0 FAILED
 +--- com.vividsolutions:jts-core:1.14.0 FAILED
 +--- com.vividsolutions:jts:1.13 FAILED
++--- com.zaxxer:HikariCP:5.0.1 FAILED
++--- com.zaxxer:HikariCP-java6:2.3.9 FAILED
++--- com.zaxxer:HikariCP-java7:2.4.9 FAILED
 +--- commons-io:commons-io:2.11.0 FAILED
 +--- dom4j:dom4j:1.6.1 FAILED
 +--- jakarta.activation:jakarta.activation-api:2.1.0 FAILED
