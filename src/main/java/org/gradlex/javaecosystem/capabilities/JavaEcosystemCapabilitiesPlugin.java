@@ -46,6 +46,7 @@ import org.gradlex.javaecosystem.capabilities.rules.GuavaListenableFutureRule;
 import org.gradlex.javaecosystem.capabilities.rules.GuavaRule;
 import org.gradlex.javaecosystem.capabilities.rules.HamcrestCoreRule;
 import org.gradlex.javaecosystem.capabilities.rules.HamcrestLibraryRule;
+import org.gradlex.javaecosystem.capabilities.rules.HikariCPRule;
 import org.gradlex.javaecosystem.capabilities.rules.IntellijAnnotationsRule;
 import org.gradlex.javaecosystem.capabilities.rules.JakartaActivationApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JakartaActivationImplementationRule;
@@ -159,7 +160,8 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Extensio
         registerRule(GuavaRule.CAPABILITY, GuavaRule.MODULES, GuavaRule.class, null, components, allCapabilities);
         registerRule(HamcrestCoreRule.CAPABILITY, HamcrestCoreRule.MODULES, HamcrestCoreRule.class, HamcrestCoreRule.MODULES[0], components, allCapabilities);
         registerRule(HamcrestLibraryRule.CAPABILITY, HamcrestLibraryRule.MODULES, HamcrestLibraryRule.class, HamcrestLibraryRule.MODULES[0], components, allCapabilities);
-		registerRule(IntellijAnnotationsRule.CAPABILITY, IntellijAnnotationsRule.MODULES, IntellijAnnotationsRule.class, null, components, allCapabilities);
+        registerRule(HikariCPRule.CAPABILITY, HikariCPRule.MODULES, HikariCPRule.class, null, components, allCapabilities);
+        registerRule(IntellijAnnotationsRule.CAPABILITY, IntellijAnnotationsRule.MODULES, IntellijAnnotationsRule.class, null, components, allCapabilities);
 
         registerRule(JakartaActivationApiRule.CAPABILITY, JakartaActivationApiRule.MODULES, JakartaActivationApiRule.class, null, components, allCapabilities);
         registerRule(JakartaActivationImplementationRule.CAPABILITY, JakartaActivationImplementationRule.MODULES, JakartaActivationImplementationRule.class, null, components, allCapabilities);

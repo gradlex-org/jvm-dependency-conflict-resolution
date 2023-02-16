@@ -23,6 +23,10 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- com.sun.mail:javax.mail:1.6.2 -> org.apache.geronimo.javamail:geronimo-javamail_1.4_mail:1.8.4
 +--- com.vividsolutions:jts-core:1.14.0 -> org.locationtech.jts:jts-core:1.19.0
 +--- com.vividsolutions:jts:1.13 -> org.locationtech.jts:jts-core:1.19.0
++--- com.zaxxer:HikariCP:5.0.1
+|    \--- org.slf4j:slf4j-api:1.7.30
++--- com.zaxxer:HikariCP-java6:2.3.9 -> com.zaxxer:HikariCP:5.0.1 (*)
++--- com.zaxxer:HikariCP-java7:2.4.9 -> com.zaxxer:HikariCP:5.0.1 (*)
 +--- commons-io:commons-io:2.11.0
 +--- dom4j:dom4j:1.6.1 -> org.dom4j:dom4j:2.1.3
 +--- jakarta.activation:jakarta.activation-api:{strictly 2.0.0} -> com.sun.activation:jakarta.activation:2.0.1
