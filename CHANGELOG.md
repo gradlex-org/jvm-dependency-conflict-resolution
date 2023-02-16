@@ -1,6 +1,8 @@
 # Java Ecosystem Capabilities Gradle plugin - Changelog
 
 ## Version 1.2
+* [New Rules] [#42](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/42) com.intellij:annotations / org.jetbrains:annotations (Thanks [Boris Petrov](https://github.com/boris-petrov)!)
+* [New Rules] [#43](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/43) com.zaxxer:HikariCP (Thanks [Boris Petrov](https://github.com/boris-petrov)!)
 * [Adjusted Rule] [#37](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/37) servletapi:servletapi (Thanks [Kenny Moens](https://github.com/kmoens)!)
 
 ## Version 1.1
