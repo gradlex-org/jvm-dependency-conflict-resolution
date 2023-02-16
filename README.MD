@@ -183,6 +183,8 @@ Each Capability's GA coordinates correspond to the GA coordinates of the Compone
   * [com.google.guava:guava-jdk5](https://search.maven.org/artifact/com.google.guava/guava-jdk5)
 * [com.google.guava:listenablefuture](https://search.maven.org/artifact/com.google.guava/listenablefuture) ([GuavaListenableFutureRule](src/main/java/org/gradlex/javaecosystem/capabilities/rules/GuavaListenableFutureRule.java))
   * [com.google.guava:guava](https://search.maven.org/artifact/com.google.guava/guava)
+* [com.intellij:annotations](https://search.maven.org/artifact/com.intellij/annotations) ([IntellijAnnotationsRule](src/main/java/org/gradlex/javaecosystem/capabilities/rules/IntellijAnnotationsRule.java))
+  * [org.jetbrains:annotations](https://search.maven.org/artifact/org.jetbrains/annotations)
 * [com.sun.activation:jakarta.activation](https://search.maven.org/artifact/com.sun.activation/jakarta.activation) ([JakartaActivationImplementationRule](src/main/java/org/gradlex/javaecosystem/capabilities/rules/JakartaActivationImplementationRule.java))
   * [org.eclipse.angus:angus-activation](https://search.maven.org/artifact/org.eclipse.angus/angus-activation)
 * [com.vividsolutions:jts-core](https://search.maven.org/artifact/com.vividsolutions/jts-core) ([JtsCoreRule](src/main/java/org/gradlex/javaecosystem/capabilities/rules/JtsCoreRule.java))
