@@ -27,7 +27,7 @@ you can check out my [Understanding Gradle video series](https://www.youtube.com
 Add this to the build file of your convention plugin's build
 (e.g. `build-logic/build.gradle(.kts)` or `buildSrc/build.gradle(.kts)`).
 
-```
+``` groovy
 dependencies {
     implementation("org.gradlex:java-ecosystem-capabilities:1.1")
 }
@@ -37,7 +37,7 @@ dependencies {
 
 In your convention plugin, apply the plugin.
 
-```
+``` groovy
 plugins {
     ...
     id("org.gradlex.java-ecosystem-capabilities")
@@ -77,7 +77,7 @@ But it might not always be the right solution.
 If you prefer to get all the conflicts reported and then add the conflict resolution explicitly (see next section),
 you can deactivate the default resolution for one or all rules through the `javaEcosystemCapabilities` extension.
 
-```
+``` groovy
 // Deactivate default resolution strategy for all rules
 javaEcosystemCapabilities {
     deactivatedResolutionStrategies.addAll(allCapabilities)
@@ -108,7 +108,7 @@ In this case, you can decide between `com.sun.mail:jakarta.mail` (see first line
 A decision is made by defining a resolution strategy for the capability.
 This is best done in the place where you applied this plugin (e.g. one of your convention plugins):
 
-```
+``` groovy
 configurations.all {
   resolutionStrategy.capabilitiesResolution {
     withCapability("javax.mail:mail") {        // Capability for which to make the decision
@@ -135,7 +135,7 @@ In the second case, you cannot deactivate one of the rules in the plugin.
 But you can treat the modified metadata as if it was the original metadata and add another rule on top to modify it further or to revert the effect of the rule in this plugin.
 For example:
 
-```
+``` groovy
 dependencies {
     components.withModule(CGlibRule.MODULES[0]) {
         // Ad-hoc rule to revert the effect of 'CGlibRule'
@@ -426,7 +426,7 @@ This plugin does not contain rules for logging libraries, which is a specific ar
 There is [a separate plugin](https://github.com/ljacomet/logging-capabilities) covering this topic by adding capabilities to the components of well-known logging APIs and implementations.
 Please apply that plugin in addition to this one:
 
-```
+``` groovy
 plugins {
     ...
     id("org.gradlex.java-ecosystem-capabilities")
@@ -444,7 +444,7 @@ If you wonder how you could do it, here is how:
 Assuming the component you are publishing is `org.ow2.asm:asm`.
 You add the `asm:asm` capability as follows:
 
-```
+``` groovy
 configurations {
     apiElements {
         outgoing {
@@ -468,7 +468,7 @@ See also: [Documentation in Gradle Manual](https://docs.gradle.org/current/userg
 Assuming the component you are publishing is `org.ow2.asm:asm`.
 You add the `asm:asm` capability as follows:
 
-```
+``` xml
 <!-- do_not_remove: published-with-gradle-metadata -->
 
 <build>
