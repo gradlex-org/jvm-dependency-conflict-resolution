@@ -116,6 +116,10 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Extensio
 
         ComponentMetadataHandler components;
         if (projectOrSettings instanceof Project) {
+            if (GradleVersion.current().compareTo(MINIMUM_SUPPORTED_VERSION_SETTINGS) >= 0) {
+                // If available, make sure 'jvm-ecosystem' is applied which adds the schemas for the attributes this plugin relies on
+                ((Project) projectOrSettings).getPlugins().apply("jvm-ecosystem");
+            }
             components = ((Project) projectOrSettings).getDependencies().getComponents();
         } else if (projectOrSettings instanceof Settings) {
             if (GradleVersion.current().compareTo(MINIMUM_SUPPORTED_VERSION_SETTINGS) < 0) {
