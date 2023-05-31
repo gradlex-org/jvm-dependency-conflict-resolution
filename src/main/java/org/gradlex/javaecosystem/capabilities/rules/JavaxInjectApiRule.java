@@ -33,7 +33,8 @@ public abstract class JavaxInjectApiRule implements ComponentMetadataRule {
     public static final String FIRST_JAKARTA_VERSION = "2.0.0";
 
     public static final String[] MODULES = {
-            "jakarta.inject:jakarta.inject-api"
+            "jakarta.inject:jakarta.inject-api",
+            "com.jwebmp:javax.inject"
     };
 
     @Override

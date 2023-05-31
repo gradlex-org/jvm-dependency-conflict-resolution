@@ -247,6 +247,7 @@ Each Capability's GA coordinates correspond to the GA coordinates of the Compone
   * [javax.el:javax.el-api](https://search.maven.org/artifact/javax.el/javax.el-api)
 * [javax.inject:javax.inject](https://search.maven.org/artifact/javax.inject/javax.inject) ([JavaxInjectApiRule](src/main/java/org/gradlex/javaecosystem/capabilities/rules/JavaxInjectApiRule.java))
   * [jakarta.inject:jakarta.inject-api](https://search.maven.org/artifact/jakarta.inject/jakarta.inject-api)
+  * [com.jwebmp:javax.inject](https://search.maven.org/artifact/com.jwebmp/javax.inject)
 * [javax.json:javax.json-api](https://search.maven.org/artifact/javax.json/javax.json-api) ([JavaxJsonApiRule](src/main/java/org/gradlex/javaecosystem/capabilities/rules/JavaxJsonApiRule.java))
   * [jakarta.json:jakarta.json-api](https://search.maven.org/artifact/jakarta.json/jakarta.json-api)
   * [org.glassfish:javax.json](https://search.maven.org/artifact/org.glassfish/javax.json)
