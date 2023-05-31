@@ -3,6 +3,7 @@ Root project 'sample-all-deactivated_build.sample'
 ------------------------------------------------------------
 
 compileClasspath - Compile classpath for source set 'main'.
++--- aopalliance:aopalliance:1.0 FAILED
 +--- asm:asm:3.3.1 FAILED
 +--- c3p0:c3p0:0.9.1.2 FAILED
 +--- cglib:cglib-nodep:3.2.12 FAILED
@@ -19,9 +20,9 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- com.sun.mail:mailapi:2.0.0 FAILED
 +--- com.vividsolutions:jts-core:1.14.0 FAILED
 +--- com.vividsolutions:jts:1.13 FAILED
-+--- com.zaxxer:HikariCP:5.0.1 FAILED
 +--- com.zaxxer:HikariCP-java6:2.3.9 FAILED
 +--- com.zaxxer:HikariCP-java7:2.4.9 FAILED
++--- com.zaxxer:HikariCP:5.0.1 FAILED
 +--- commons-io:commons-io:2.11.0 FAILED
 +--- dom4j:dom4j:1.6.1 FAILED
 +--- jakarta.activation:jakarta.activation-api:2.1.0 FAILED
@@ -66,7 +67,6 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- javax.servlet:jsp-api:2.0 FAILED
 +--- javax.servlet:jstl:1.2 FAILED
 +--- javax.servlet:servlet-api:2.5 FAILED
-+--- servletapi:servletapi:2.4 FAILED
 +--- javax.validation:validation-api:2.0.1.Final FAILED
 +--- javax.websocket:javax.websocket-api:1.1 FAILED
 +--- javax.websocket:javax.websocket-client-api:1.1 FAILED
@@ -186,7 +186,9 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.locationtech.jts:jts-core:1.19.0 FAILED
 +--- org.ow2.asm:asm:9.2 FAILED
 +--- org.postgresql:postgresql:42.5.0 FAILED
++--- org.springframework:spring-aop:5.3.23 FAILED
 +--- postgresql:postgresql:9.1-901-1.jdbc4 FAILED
++--- servletapi:servletapi:2.4 FAILED
 +--- stax:stax-api:1.0 FAILED
 +--- velocity:velocity:1.4 FAILED
 +--- woodstox:wstx-asl:2.9.3 FAILED

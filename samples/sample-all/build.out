@@ -3,6 +3,11 @@ Root project 'sample-all_build.sample'
 ------------------------------------------------------------
 
 compileClasspath - Compile classpath for source set 'main'.
++--- aopalliance:aopalliance:1.0 -> org.springframework:spring-aop:5.3.23
+|    +--- org.springframework:spring-beans:5.3.23
+|    |    \--- org.springframework:spring-core:5.3.23
+|    |         \--- org.springframework:spring-jcl:5.3.23
+|    \--- org.springframework:spring-core:5.3.23 (*)
 +--- asm:asm:3.3.1 -> org.ow2.asm:asm:9.2
 +--- c3p0:c3p0:0.9.1.2 -> com.mchange:c3p0:0.9.5.5
 |    \--- com.mchange:mchange-commons-java:0.2.19
@@ -23,10 +28,10 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- com.sun.mail:javax.mail:1.6.2 -> org.apache.geronimo.javamail:geronimo-javamail_1.4_mail:1.8.4
 +--- com.vividsolutions:jts-core:1.14.0 -> org.locationtech.jts:jts-core:1.19.0
 +--- com.vividsolutions:jts:1.13 -> org.locationtech.jts:jts-core:1.19.0
-+--- com.zaxxer:HikariCP:5.0.1
++--- com.zaxxer:HikariCP-java6:2.3.9 -> com.zaxxer:HikariCP:5.0.1
 |    \--- org.slf4j:slf4j-api:1.7.30
-+--- com.zaxxer:HikariCP-java6:2.3.9 -> com.zaxxer:HikariCP:5.0.1 (*)
 +--- com.zaxxer:HikariCP-java7:2.4.9 -> com.zaxxer:HikariCP:5.0.1 (*)
++--- com.zaxxer:HikariCP:5.0.1 (*)
 +--- commons-io:commons-io:2.11.0
 +--- dom4j:dom4j:1.6.1 -> org.dom4j:dom4j:2.1.3
 +--- jakarta.activation:jakarta.activation-api:{strictly 2.0.0} -> com.sun.activation:jakarta.activation:2.0.1
@@ -79,7 +84,6 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- javax.servlet:jsp-api:2.0 -> jakarta.servlet.jsp:jakarta.servlet.jsp-api:2.3.6
 +--- javax.servlet:jstl:1.2 -> jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:1.2.7
 +--- javax.servlet:servlet-api:2.5 -> org.apache.tomcat:servlet-api:6.0.53
-+--- servletapi:servletapi:2.4 -> org.apache.tomcat:servlet-api:6.0.53
 +--- javax.validation:validation-api:2.0.1.Final
 +--- javax.websocket:javax.websocket-api:1.1 -> org.eclipse.jetty.toolchain:jetty-javax-websocket-api:1.1.2
 +--- javax.websocket:javax.websocket-client-api:1.0 -> org.eclipse.jetty.toolchain:jetty-javax-websocket-api:1.1.2
@@ -181,7 +185,9 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.locationtech.jts:jts-core:1.19.0
 +--- org.ow2.asm:asm:9.2
 +--- org.postgresql:postgresql:42.5.0
++--- org.springframework:spring-aop:5.3.23 (*)
 +--- postgresql:postgresql:9.1-901-1.jdbc4 -> org.postgresql:postgresql:42.5.0
++--- servletapi:servletapi:2.4 -> org.apache.tomcat:servlet-api:6.0.53
 +--- velocity:velocity:1.4 -> org.apache.velocity:velocity-engine-core:2.3 (*)
 +--- woodstox:wstx-asl:2.9.3 -> org.codehaus.woodstox:woodstox-core-asl:4.4.1 (*)
 +--- com.sun.activation:jakarta.activation:2.0.1

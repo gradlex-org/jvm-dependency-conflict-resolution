@@ -8,6 +8,7 @@ javaEcosystemCapabilities {
 }
 
 dependencies {
+    implementation("aopalliance:aopalliance:1.0")
     implementation("asm:asm:3.3.1")
     implementation("c3p0:c3p0:0.9.1.2")
     implementation("cglib:cglib-nodep:3.2.12")
@@ -24,9 +25,9 @@ dependencies {
     implementation("com.sun.mail:mailapi:2.0.0")
     implementation("com.vividsolutions:jts-core:1.14.0")
     implementation("com.vividsolutions:jts:1.13")
-    implementation("com.zaxxer:HikariCP:5.0.1")
     implementation("com.zaxxer:HikariCP-java6:2.3.9")
     implementation("com.zaxxer:HikariCP-java7:2.4.9")
+    implementation("com.zaxxer:HikariCP:5.0.1")
     implementation("commons-io:commons-io:2.11.0")
     implementation("dom4j:dom4j:1.6.1")
     implementation("jakarta.activation:jakarta.activation-api:2.1.0")
@@ -71,7 +72,6 @@ dependencies {
     implementation("javax.servlet:jsp-api:2.0")
     implementation("javax.servlet:jstl:1.2")
     implementation("javax.servlet:servlet-api:2.5")
-    implementation("servletapi:servletapi:2.4")
     implementation("javax.validation:validation-api:2.0.1.Final")
     implementation("javax.websocket:javax.websocket-api:1.1")
     implementation("javax.websocket:javax.websocket-client-api:1.1")
@@ -191,7 +191,9 @@ dependencies {
     implementation("org.locationtech.jts:jts-core:1.19.0")
     implementation("org.ow2.asm:asm:9.2")
     implementation("org.postgresql:postgresql:42.5.0")
+    implementation("org.springframework:spring-aop:5.3.23")
     implementation("postgresql:postgresql:9.1-901-1.jdbc4")
+    implementation("servletapi:servletapi:2.4")
     implementation("stax:stax-api:1.0")
     implementation("velocity:velocity:1.4")
     implementation("woodstox:wstx-asl:2.9.3")
