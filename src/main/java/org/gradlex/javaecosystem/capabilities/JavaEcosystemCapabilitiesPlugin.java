@@ -29,6 +29,7 @@ import org.gradle.api.initialization.Settings;
 import org.gradle.api.plugins.ExtensionAware;
 import org.gradle.util.GradleVersion;
 import org.gradlex.javaecosystem.capabilities.componentrules.GuavaComponentRule;
+import org.gradlex.javaecosystem.capabilities.rules.AopallianceRule;
 import org.gradlex.javaecosystem.capabilities.rules.AsmRule;
 import org.gradlex.javaecosystem.capabilities.rules.BouncycastleBcmailRule;
 import org.gradlex.javaecosystem.capabilities.rules.BouncycastleBcpgRule;
@@ -147,6 +148,7 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Extensio
     }
 
     private void registerCapabilityRules(ComponentMetadataHandler components, Set<String> allCapabilities) {
+        registerRule(AopallianceRule.CAPABILITY, AopallianceRule.MODULES, AopallianceRule.class, null, components, allCapabilities);
         registerRule(AsmRule.CAPABILITY, AsmRule.MODULES, AsmRule.class, null, components, allCapabilities);
         registerRule(BouncycastleBcmailRule.CAPABILITY, BouncycastleBcmailRule.MODULES, BouncycastleBcmailRule.class, null, components, allCapabilities);
         registerRule(BouncycastleBcpgRule.CAPABILITY, BouncycastleBcpgRule.MODULES, BouncycastleBcpgRule.class, null, components, allCapabilities);

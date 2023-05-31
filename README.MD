@@ -171,6 +171,8 @@ The following list shows all Capabilities and the Components they are added to.
 Each Capability's GA coordinates correspond to the GA coordinates of the Component that first introduced the Capability.
 
 <!-- START_GENERATED -->
+* [aopalliance:aopalliance](https://search.maven.org/artifact/aopalliance/aopalliance) ([AopallianceRule](src/main/java/org/gradlex/javaecosystem/capabilities/rules/AopallianceRule.java))
+  * [org.springframework:spring-aop](https://search.maven.org/artifact/org.springframework/spring-aop)
 * [asm:asm](https://search.maven.org/artifact/asm/asm) ([AsmRule](src/main/java/org/gradlex/javaecosystem/capabilities/rules/AsmRule.java))
   * [org.ow2.asm:asm](https://search.maven.org/artifact/org.ow2.asm/asm)
 * [c3p0:c3p0](https://search.maven.org/artifact/c3p0/c3p0) ([C3p0Rule](src/main/java/org/gradlex/javaecosystem/capabilities/rules/C3p0Rule.java))
