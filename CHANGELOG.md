@@ -5,6 +5,7 @@
 * [New Rules] [#42](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/42) com.intellij:annotations / org.jetbrains:annotations (Thanks [Boris Petrov](https://github.com/boris-petrov)!)
 * [New Rules] [#43](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/43) com.zaxxer:HikariCP (Thanks [Boris Petrov](https://github.com/boris-petrov)!)
 * [Adjusted Rule] [#37](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/37) servletapi:servletapi (Thanks [Kenny Moens](https://github.com/kmoens)!)
+* [Adjusted Rule] [#41](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/41) com.jwebmp:javax.inject (Thanks [Boris Petrov](https://github.com/boris-petrov) for reporting)
 * [New] [#47](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/47) Apply 'jvm-ecosystem' plugin
 
 ## Version 1.1

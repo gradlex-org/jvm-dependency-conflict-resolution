@@ -13,6 +13,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- com.google.guava:guava:31.1-jre FAILED
 +--- com.google.guava:listenablefuture:1.0 FAILED
 +--- com.intellij:annotations:12.0 FAILED
++--- com.jwebmp:javax.inject:1.1 FAILED
 +--- com.mchange:c3p0:0.9.5.5 FAILED
 +--- com.sun.activation:javax.activation:1.2.0 FAILED
 +--- com.sun.mail:jakarta.mail:2.0.1 FAILED

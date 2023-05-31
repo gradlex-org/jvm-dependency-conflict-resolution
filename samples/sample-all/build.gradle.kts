@@ -18,6 +18,7 @@ dependencies {
     implementation("com.google.guava:guava:31.1-jre")
     implementation("com.google.guava:listenablefuture:1.0")
     implementation("com.intellij:annotations:12.0")
+    implementation("com.jwebmp:javax.inject:1.1")
     implementation("com.mchange:c3p0:0.9.5.5")
     implementation("com.sun.activation:javax.activation:1.2.0")
     implementation("com.sun.mail:jakarta.mail:2.0.1")
