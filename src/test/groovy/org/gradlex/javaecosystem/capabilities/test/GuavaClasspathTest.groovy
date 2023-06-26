@@ -18,8 +18,10 @@ class GuavaClasspathTest extends Specification {
 
     static allGuavaVersions() {
         [
-                // ['32.0'  , 'jre'    , [errorProne:  '2.7.1', j2objc: '1.3', jsr305: '3.0.2', checker: '3.12.0', failureaccess: '1.0.1']],
-                // ['32.0'  , 'android', [errorProne:  '2.7.1', j2objc: '1.3', jsr305: '3.0.2', checker: '3.12.0', failureaccess: '1.0.1']],
+                ['32.0.1'  ,'jre'    , [errorProne:  '2.18.0', j2objc: '2.8', jsr305: '3.0.2', checker: '3.33.0', failureaccess: '1.0.1']],
+                ['32.0.1'  , 'android', [errorProne:  '2.18.0', j2objc: '2.8', jsr305: '3.0.2', checker: '3.33.0', failureaccess: '1.0.1']],
+                ['32.0.0'  ,'jre'    , [errorProne:  '2.18.0', j2objc: '2.8', jsr305: '3.0.2', checker: '3.33.0', failureaccess: '1.0.1']],
+                ['32.0.0'  , 'android', [errorProne:  '2.18.0', j2objc: '2.8', jsr305: '3.0.2', checker: '3.33.0', failureaccess: '1.0.1']],
                 ['31.1'  , 'jre'    , [errorProne:  '2.11.0', j2objc: '1.3', jsr305: '3.0.2', checker: '3.12.0', failureaccess: '1.0.1']],
                 ['31.1'  , 'android', [errorProne:  '2.11.0', j2objc: '1.3', jsr305: '3.0.2', checker: '3.12.0', failureaccess: '1.0.1']],
                 ['31.0.1', 'jre'    , [errorProne:  '2.7.1', j2objc: '1.3', jsr305: '3.0.2', checkerCompat:  '2.5.5', checker: '3.12.0', failureaccess: '1.0.1']],
