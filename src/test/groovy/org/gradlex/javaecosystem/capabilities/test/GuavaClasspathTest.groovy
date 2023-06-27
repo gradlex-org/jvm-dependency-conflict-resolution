@@ -10,18 +10,20 @@ class GuavaClasspathTest extends Specification {
     GradleBuild build = new GradleBuild()
 
     def setup() {
-        // buildNextGuavaVersion() -- enable to test with https://github.com/google/guava/pull/3683
+        // buildNextGuavaVersion() // -- enable to test with https://github.com/google/guava/pull/3683
         settingsFile << 'rootProject.name = "test-project"'
     }
 
-    String nextGuavaVersion = '32.0'
+    static String devGuavaVersion = '02.1'
 
     static allGuavaVersions() {
         [
-                ['32.0.1'  ,'jre'    , [errorProne:  '2.18.0', j2objc: '2.8', jsr305: '3.0.2', checker: '3.33.0', failureaccess: '1.0.1']],
-                ['32.0.1'  , 'android', [errorProne:  '2.18.0', j2objc: '2.8', jsr305: '3.0.2', checker: '3.33.0', failureaccess: '1.0.1']],
-                ['32.0.0'  ,'jre'    , [errorProne:  '2.18.0', j2objc: '2.8', jsr305: '3.0.2', checker: '3.33.0', failureaccess: '1.0.1']],
-                ['32.0.0'  , 'android', [errorProne:  '2.18.0', j2objc: '2.8', jsr305: '3.0.2', checker: '3.33.0', failureaccess: '1.0.1']],
+                // [devGuavaVersion, 'jre'    , [errorProne:  '2.18.0', j2objc: '2.8', jsr305: '3.0.2', checker: '3.33.0', failureaccess: '1.0.1']],
+                // [devGuavaVersion, 'android', [errorProne:  '2.18.0', j2objc: '2.8', jsr305: '3.0.2', checker: '3.33.0', failureaccess: '1.0.1']],
+                ['32.0.1', 'jre'    , [errorProne:  '2.18.0', j2objc: '2.8', jsr305: '3.0.2', checker: '3.33.0', failureaccess: '1.0.1']],
+                ['32.0.1', 'android', [errorProne:  '2.18.0', j2objc: '2.8', jsr305: '3.0.2', checker: '3.33.0', failureaccess: '1.0.1']],
+                ['32.0.0', 'jre'    , [errorProne:  '2.18.0', j2objc: '2.8', jsr305: '3.0.2', checker: '3.33.0', failureaccess: '1.0.1']],
+                ['32.0.0', 'android', [errorProne:  '2.18.0', j2objc: '2.8', jsr305: '3.0.2', checker: '3.33.0', failureaccess: '1.0.1']],
                 ['31.1'  , 'jre'    , [errorProne:  '2.11.0', j2objc: '1.3', jsr305: '3.0.2', checker: '3.12.0', failureaccess: '1.0.1']],
                 ['31.1'  , 'android', [errorProne:  '2.11.0', j2objc: '1.3', jsr305: '3.0.2', checker: '3.12.0', failureaccess: '1.0.1']],
                 ['31.0.1', 'jre'    , [errorProne:  '2.7.1', j2objc: '1.3', jsr305: '3.0.2', checkerCompat:  '2.5.5', checker: '3.12.0', failureaccess: '1.0.1']],
@@ -131,7 +133,7 @@ class GuavaClasspathTest extends Specification {
 
             repositories {
                 mavenCentral()
-                ${guavaVersion == nextGuavaVersion? 'mavenLocal()' : ''}
+                ${guavaVersion == devGuavaVersion? 'mavenLocal()' : ''}
             }
 
             val envAttribute = $attr
@@ -164,12 +166,12 @@ class GuavaClasspathTest extends Specification {
 
     Set<String> expectedClasspath(String guavaVersion, String jvmEnv, String classpath, Map<String, String> dependencyVersions) {
         int majorGuavaVersion = guavaVersion.substring(0, 2) as Integer
-        String jarSuffix = majorGuavaVersion < 22 ? '' : jvmEnv == 'android' ? 'android' : (guavaVersion == '22.0' || guavaVersion == '23.0') ? '' : 'jre'
+        String jarSuffix = majorGuavaVersion < 22 && guavaVersion != devGuavaVersion ? '' : jvmEnv == 'android' ? 'android' : (guavaVersion == '22.0' || guavaVersion == '23.0') ? '' : 'jre'
         Set<String> result = ["guava-${guavaVersion}${jarSuffix? '-' : ''}${jarSuffix}.jar"]
         if (dependencyVersions.failureaccess) {
             result += "failureaccess-${dependencyVersions.failureaccess}.jar"
         }
-        if (classpath == 'compileClasspath' || guavaVersion == nextGuavaVersion) { // Guava itself is planing to be more conservative with reducing the runtime classpath, so 'nextGuavaVersion' has more entries right now
+        if (classpath == 'compileClasspath' || guavaVersion == devGuavaVersion) { // Guava itself is planing to be more conservative with reducing the runtime classpath, so 'devGuavaVersion' has more entries right now
             if (classpath == 'compileClasspath' && dependencyVersions.j2objc) {
                 result += "j2objc-annotations-${dependencyVersions.j2objc}.jar"
             }
@@ -182,7 +184,7 @@ class GuavaClasspathTest extends Specification {
             if (dependencyVersions.checker && dependencyVersions.checkerCompat) {
                 if (jvmEnv == 'android') {
                     result += "checker-compat-qual-${dependencyVersions.checkerCompat}.jar"
-                    if (majorGuavaVersion > 30) {
+                    if (majorGuavaVersion > 30 || guavaVersion == devGuavaVersion) {
                         result += "checker-qual-${dependencyVersions.checker}.jar"
                     }
                 } else {
@@ -200,8 +202,8 @@ class GuavaClasspathTest extends Specification {
     void buildNextGuavaVersion() {
         def guavaDir = new File('build/guava')
         if (!guavaDir.exists()) {
-            print "git clone --depth 1 https://github.com/gradlex-org/guava.git -b gradle-module-metadata".execute(null, guavaDir.parentFile).text
-            print "util/set_version.sh $nextGuavaVersion".execute(null, guavaDir).text
+            print "git clone --depth 1 https://github.com/jjohannes/guava.git -b gradle-module-metadata".execute(null, guavaDir.parentFile).text
+            print "util/set_version.sh $devGuavaVersion".execute(null, guavaDir).text
             print "mvn clean install -DskipTests".execute(null, guavaDir).text
             print "mvn clean install -DskipTests".execute(null, new File(guavaDir, 'android')).text
         }
