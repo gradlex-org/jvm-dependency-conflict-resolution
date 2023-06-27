@@ -20,6 +20,7 @@ import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataDetails;
 import org.gradle.api.artifacts.ComponentMetadataRule;
+import org.gradle.api.artifacts.VariantMetadata;
 import org.gradle.api.attributes.Attribute;
 
 @CacheableRule
@@ -31,15 +32,9 @@ abstract public class GuavaComponentRule implements ComponentMetadataRule {
             Attribute.of("org.gradle.jvm.environment", String.class);
 
     public void execute(ComponentMetadataContext ctx) {
-        int majorVersion = getMajorVersion(ctx.getDetails());
-        int minorVersion = getMinorVersion(ctx.getDetails());
-        if (majorVersion > 32 || (majorVersion == 20 && minorVersion > 1)) {
-            return;
-        }
-
         removeAnnotationProcessorDependenciesFromRuntime(ctx.getDetails());
 
-        if (majorVersion >= 22) {
+        if (getMajorVersion(ctx.getDetails()) >= 22) {
             removeAnimalSnifferAnnotations(ctx.getDetails());
 
             addOtherJvmVariant("Compile", ctx.getDetails());
@@ -102,16 +97,7 @@ abstract public class GuavaComponentRule implements ComponentMetadataRule {
             variant.attributes(a -> {
                 a.attribute(TARGET_JVM_ENVIRONMENT_ATTRIBUTE, otherEnv);
             });
-            if ((majorVersion >= 26 && majorVersion < 31) || version.startsWith("31.0") || "25.1".equals(version)) {
-                variant.withDependencies(dependencies -> {
-                    if (majorVersion < 31 || isAndroidVariantVersion) {
-                        dependencies.removeIf(d -> "org.checkerframework".equals(d.getGroup()));
-                    }
-                    if (baseVariantName.equals("Compile")) {
-                        dependencies.add("org.checkerframework:" + checkerVersionFor(version, !isAndroidVariantVersion));
-                    }
-                });
-            }
+            adjustDependenciesForGuava31AndLower(variant, baseVariantName, version, majorVersion, isAndroidVariantVersion);
             variant.withFiles(files -> {
                 files.removeAllFiles();
                 files.addFile("guava-" + version + otherJarSuffix + ".jar",
@@ -120,14 +106,24 @@ abstract public class GuavaComponentRule implements ComponentMetadataRule {
         });
     }
 
+    private void adjustDependenciesForGuava31AndLower(VariantMetadata variant, String baseVariantName, String version, int majorVersion, boolean isAndroidVariantVersion) {
+        if ((majorVersion >= 26 && majorVersion < 31) || version.startsWith("31.0") || "25.1".equals(version)) {
+            variant.withDependencies(dependencies -> {
+                if (majorVersion < 31 || isAndroidVariantVersion) {
+                    dependencies.removeIf(d -> "org.checkerframework".equals(d.getGroup()));
+                }
+                if (baseVariantName.equals("Compile")) {
+                    dependencies.add("org.checkerframework:" + checkerVersionFor(version, !isAndroidVariantVersion));
+                }
+            });
+        }
+    }
+
     private String checkerVersionFor(String guavaVersion, boolean androidVariant) {
         String name = androidVariant ? "checker-compat-qual" : "checker-qual";
         String version = "";
         if (androidVariant) {
-            if(guavaVersion.startsWith("32.0")){
-                version = "3.33.0";
-            }
-            else if (guavaVersion.equals("25.1")) {
+            if (guavaVersion.equals("25.1")) {
                 version = "2.0.0";
             } else if (guavaVersion.startsWith("28.") || guavaVersion.startsWith("29.") || guavaVersion.startsWith("30.") || guavaVersion.startsWith("31.")) {
                 version = "2.5.5";
@@ -135,10 +131,7 @@ abstract public class GuavaComponentRule implements ComponentMetadataRule {
                 version = "2.5.2";
             }
         } else {
-            if (guavaVersion.startsWith("32.")){
-                version = "3.33.0";
-            }
-            else if (guavaVersion.startsWith("31.")) {
+            if (guavaVersion.startsWith("31.")) {
                 version = "3.12.0";
             } else if (guavaVersion.equals("30.1.1")) {
                 version = "3.8.0";
