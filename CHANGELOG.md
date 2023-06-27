@@ -1,5 +1,8 @@
 # Java Ecosystem Capabilities Gradle plugin - Changelog
 
+## Version 1.3
+* [Adjusted Rule] [#53](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/53) Support Guava 32 and newer (Thanks [MatanSabag](https://github.com/MatanSabag)!)
+
 ## Version 1.2
 * [New Rules] [#34](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/34) aopalliance:aopalliance / org.springframework:spring-aop
 * [New Rules] [#42](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/42) com.intellij:annotations / org.jetbrains:annotations (Thanks [Boris Petrov](https://github.com/boris-petrov)!)
