@@ -21,6 +21,7 @@ import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataRule;
 
+import static org.gradlex.javaecosystem.capabilities.rules.GuavaRule.parseGuavaMajorVersion;
 import static org.gradlex.javaecosystem.capabilities.rules.GuavaRule.parseGuavaVersion;
 
 @CacheableRule
@@ -37,9 +38,11 @@ public abstract class GoogleCollectionsRule implements ComponentMetadataRule {
 
     @Override
     public void execute(ComponentMetadataContext context) {
-        String version = parseGuavaVersion(context.getDetails());
-        context.getDetails().allVariants(variant -> variant.withCapabilities(capabilities -> capabilities.addCapability(
-                CAPABILITY_GROUP, CAPABILITY_NAME, version
-        )));
+        int version = parseGuavaMajorVersion(context.getDetails());
+        if (version <= 31 || context.getDetails().getId().getVersion().startsWith("32.0")) {
+            context.getDetails().allVariants(variant -> variant.withCapabilities(capabilities -> capabilities.addCapability(
+                    CAPABILITY_GROUP, CAPABILITY_NAME, parseGuavaVersion(context.getDetails())
+            )));
+        }
     }
 }

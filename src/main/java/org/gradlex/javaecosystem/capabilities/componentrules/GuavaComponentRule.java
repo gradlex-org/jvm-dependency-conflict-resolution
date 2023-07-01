@@ -23,6 +23,9 @@ import org.gradle.api.artifacts.ComponentMetadataRule;
 import org.gradle.api.artifacts.VariantMetadata;
 import org.gradle.api.attributes.Attribute;
 
+import java.util.Arrays;
+import java.util.List;
+
 @CacheableRule
 abstract public class GuavaComponentRule implements ComponentMetadataRule {
 
@@ -31,10 +34,15 @@ abstract public class GuavaComponentRule implements ComponentMetadataRule {
     private final static Attribute<String> TARGET_JVM_ENVIRONMENT_ATTRIBUTE =
             Attribute.of("org.gradle.jvm.environment", String.class);
 
+    private final List<String> RUNTIME_VARIANT_NAMES =
+            Arrays.asList("runtime", "androidRuntimeElements", "jreRuntimeElements");
+
     public void execute(ComponentMetadataContext ctx) {
+        int majorVersion = getMajorVersion(ctx.getDetails());
+        // if (majorVersion <= 32) // May add this check should https://github.com/google/guava/pull/6606 be done
         removeAnnotationProcessorDependenciesFromRuntime(ctx.getDetails());
 
-        if (getMajorVersion(ctx.getDetails()) >= 22) {
+        if ((majorVersion >= 22 && majorVersion <= 31) || ctx.getDetails().getId().getVersion().startsWith("32.0")) {
             removeAnimalSnifferAnnotations(ctx.getDetails());
 
             addOtherJvmVariant("Compile", ctx.getDetails());
@@ -51,8 +59,10 @@ abstract public class GuavaComponentRule implements ComponentMetadataRule {
     private void removeAnnotationProcessorDependenciesFromRuntime(ComponentMetadataDetails details) {
         // everything outside the 'com.google.guava' group is an annotation processor
         String guavaGroup = details.getId().getGroup();
-        details.withVariant("runtime", variant -> variant.withDependencies(dependencies ->
-                dependencies.removeIf(dependency -> !guavaGroup.equals(dependency.getGroup()))));
+        for (String runtime : RUNTIME_VARIANT_NAMES) {
+            details.withVariant(runtime, variant -> variant.withDependencies(dependencies ->
+                    dependencies.removeIf(dependency -> !guavaGroup.equals(dependency.getGroup()))));
+        }
     }
 
     private boolean isAndroidVariantVersion(ComponentMetadataDetails details) {

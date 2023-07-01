@@ -42,6 +42,11 @@ public abstract class GuavaRule implements ComponentMetadataRule {
         )));
     }
 
+    static int parseGuavaMajorVersion(ComponentMetadataDetails details) {
+        String version = parseGuavaVersion(details);
+        return Integer.parseInt(version.substring(0, version.indexOf(".")));
+    }
+
     static String parseGuavaVersion(ComponentMetadataDetails details) {
         String versionString = details.getId().getVersion();
         if (!versionString.contains("-")) {
