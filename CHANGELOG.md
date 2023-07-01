@@ -1,5 +1,8 @@
 # Java Ecosystem Capabilities Gradle plugin - Changelog
 
+## Version 1.3.1
+* [Adjusted Rule] [#54](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/54) Support latest Guava version published with Gradle Metadata (Thanks [Kenny Moens](https://github.com/kmoens) for reporting)
+
 ## Version 1.3
 * [Adjusted Rule] [#53](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/53) Support Guava 32 and newer (Thanks [MatanSabag](https://github.com/MatanSabag)!)
 
