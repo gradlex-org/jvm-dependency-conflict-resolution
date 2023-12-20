@@ -20,6 +20,7 @@ import org.gradle.api.NonNullApi;
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataRule;
+import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
 
 @CacheableRule
 @NonNullApi
@@ -29,6 +30,9 @@ public abstract class AopallianceRule implements ComponentMetadataRule {
     public static final String CAPABILITY_NAME = "aopalliance";
     public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
 
+    // the confict starts from Spring 4.3.0, before that it is effectively a correct dependency
+    public static final String FIRST_AOP_EMBEDDED_VERSION = "4.3.0";
+
     public static final String[] MODULES = {
             "org.springframework:spring-aop"
     };
@@ -36,8 +40,10 @@ public abstract class AopallianceRule implements ComponentMetadataRule {
     @Override
     public void execute(ComponentMetadataContext context) {
         String version = context.getDetails().getId().getVersion();
-        context.getDetails().allVariants(variant -> variant.withCapabilities(capabilities -> capabilities.addCapability(
-                CAPABILITY_GROUP, CAPABILITY_NAME, version
-        )));
+        if (VersionNumber.parse(version).compareTo(VersionNumber.parse(FIRST_AOP_EMBEDDED_VERSION)) >= 0) {
+            context.getDetails().allVariants(variant -> variant.withCapabilities(capabilities -> capabilities.addCapability(
+                    CAPABILITY_GROUP, CAPABILITY_NAME, version
+            )));
+        }
     }
 }
