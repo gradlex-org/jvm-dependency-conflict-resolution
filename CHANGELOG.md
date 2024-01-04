@@ -1,5 +1,11 @@
 # Java Ecosystem Capabilities Gradle plugin - Changelog
 
+## Version 1.4
+* [New Rules] [#50](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/50) net.jcip:jcip-annotations / com.github.stephenc.jcip:jcip-annotations (Thanks [Boris Petrov](https://github.com/boris-petrov) for reporting)
+* [Adjusted Rule] [#41](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/41) org.glassfish.hk2.external:jakarta.injectt (Thanks [Boris Petrov](https://github.com/boris-petrov) for reporting)
+* [Adjusted Rule] [#59](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/59) javax.mail:javax.mail-api / org.apache.geronimo.specs:geronimo-javamail (Thanks [Boris Petrov](https://github.com/boris-petrov)!)
+* [Adjusted Rule] [#60](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/60) org.springframework:spring-aop (Thanks [Boris Petrov](https://github.com/boris-petrov)!)
+
 ## Version 1.3.1
 * [Adjusted Rule] [#54](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/54) Support latest Guava version published with Gradle Metadata (Thanks [Kenny Moens](https://github.com/kmoens) for reporting)
 

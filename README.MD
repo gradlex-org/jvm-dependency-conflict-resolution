@@ -29,7 +29,7 @@ Add this to the build file of your convention plugin's build
 
 ``` groovy
 dependencies {
-    implementation("org.gradlex:java-ecosystem-capabilities:1.3.1")
+    implementation("org.gradlex:java-ecosystem-capabilities:1.4")
 }
 ```
 
