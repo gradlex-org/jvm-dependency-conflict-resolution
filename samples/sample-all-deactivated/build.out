@@ -59,6 +59,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- javax.json:javax.json-api:1.1.4 FAILED
 +--- javax.jws:javax.jws-api:1.1 FAILED
 +--- javax.mail:mail:1.4.7 FAILED
++--- javax.mail:javax.mail-api:1.4.7 FAILED
 +--- javax.persistence:javax.persistence-api:2.2 FAILED
 +--- javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api:1.2.2 FAILED
 +--- javax.servlet.jsp.jstl:jstl-api:1.2 FAILED
@@ -89,6 +90,9 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.apache.geronimo.javamail:geronimo-javamail_1.4_provider:1.8.3 FAILED
 +--- org.apache.geronimo.javamail:geronimo-javamail_1.6_mail:1.0.1 FAILED
 +--- org.apache.geronimo.javamail:geronimo-javamail_1.6_provider:1.0.1 FAILED
++--- org.apache.geronimo.specs:geronimo-javamail_1.3.1_spec:1.3 FAILED
++--- org.apache.geronimo.specs:geronimo-javamail_1.4_spec:1.6 FAILED
++--- org.apache.geronimo.specs:geronimo-javamail_1.6_spec:1.0.1 FAILED
 +--- org.apache.tomcat.embed:tomcat-embed-core:10.1.0 FAILED
 +--- org.apache.tomcat.embed:tomcat-embed-websocket:10.1.0 FAILED
 +--- org.apache.tomcat:servlet-api:6.0.53 FAILED

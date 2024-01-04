@@ -36,16 +36,20 @@ public abstract class JavaxMailApiRule implements ComponentMetadataRule {
             // API only
             "com.sun.mail:mailapi",
             "jakarta.mail:jakarta.mail-api",
+            "javax.mail:javax.mail-api",
             // API + Implementation
             "com.sun.mail:javax.mail",
             "com.sun.mail:jakarta.mail",
             // Apache Geronimo
             "org.apache.geronimo.javamail:geronimo-javamail_1.3.1_mail",
             "org.apache.geronimo.javamail:geronimo-javamail_1.3.1_provider",
+            "org.apache.geronimo.specs:geronimo-javamail_1.3.1_spec",
             "org.apache.geronimo.javamail:geronimo-javamail_1.4_mail",
             "org.apache.geronimo.javamail:geronimo-javamail_1.4_provider",
+            "org.apache.geronimo.specs:geronimo-javamail_1.4_spec",
             "org.apache.geronimo.javamail:geronimo-javamail_1.6_mail",
-            "org.apache.geronimo.javamail:geronimo-javamail_1.6_provider"
+            "org.apache.geronimo.javamail:geronimo-javamail_1.6_provider",
+            "org.apache.geronimo.specs:geronimo-javamail_1.6_spec"
     };
 
     @Override
@@ -54,7 +58,7 @@ public abstract class JavaxMailApiRule implements ComponentMetadataRule {
         String group = context.getDetails().getId().getGroup();
         String version;
 
-        if (group.equals("org.apache.geronimo.javamail")) {
+        if (group.equals("org.apache.geronimo.javamail") || group.equals("org.apache.geronimo.specs")) {
             version = mailApiVersionForGeronimoName(name);
         } else {
             version = context.getDetails().getId().getVersion();
