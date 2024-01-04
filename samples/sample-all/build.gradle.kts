@@ -16,7 +16,7 @@ dependencies {
     implementation("com.github.stephenc.jcip:jcip-annotations:1.0-1")
     implementation("com.google.collections:google-collections:1.0")
     implementation("com.google.guava:guava-jdk5:17.0")
-    implementation("com.google.guava:guava:31.1-jre")
+    implementation("com.google.guava:guava:33.0.0-jre")
     implementation("com.google.guava:listenablefuture:1.0")
     implementation("com.intellij:annotations:12.0")
     implementation("com.jwebmp:javax.inject:1.1")

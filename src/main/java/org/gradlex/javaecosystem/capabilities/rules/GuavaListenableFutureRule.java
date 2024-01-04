@@ -21,8 +21,6 @@ import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataRule;
 
-import static org.gradlex.javaecosystem.capabilities.rules.GuavaRule.parseGuavaMajorVersion;
-
 @CacheableRule
 @NonNullApi
 public abstract class GuavaListenableFutureRule implements ComponentMetadataRule {
@@ -37,15 +35,15 @@ public abstract class GuavaListenableFutureRule implements ComponentMetadataRule
 
     @Override
     public void execute(ComponentMetadataContext context) {
-        int version = parseGuavaMajorVersion(context.getDetails());
-        if (version <= 31 || context.getDetails().getId().getVersion().startsWith("32.0")) {
-            context.getDetails().allVariants(variant -> {
-                // Remove workaround dependency to '9999.0-empty-to-avoid-conflict-with-guava'
-                variant.withDependencies(dependencies -> dependencies.removeIf(d -> CAPABILITY_NAME.equals(d.getName())));
-                variant.withCapabilities(capabilities -> capabilities.addCapability(
-                        CAPABILITY_GROUP, CAPABILITY_NAME, "1.0"
-                ));
+        // Despite publishing Gradle Metadata for Guava 32.1+, this part was not adopted eventually
+        // See: https://github.com/google/guava/issues/6642#issuecomment-1656201382
+        context.getDetails().allVariants(variant -> {
+            // Remove workaround dependency to '9999.0-empty-to-avoid-conflict-with-guava'
+            variant.withDependencies(dependencies -> dependencies.removeIf(d -> CAPABILITY_NAME.equals(d.getName())));
+            variant.withCapabilities(capabilities -> {
+                capabilities.removeCapability(CAPABILITY_GROUP, CAPABILITY_NAME); // remove just in case, as some intermediate 32.1.x version did add the capability
+                capabilities.addCapability(CAPABILITY_GROUP, CAPABILITY_NAME, "1.0");
             });
-        }
+        });
     }
 }

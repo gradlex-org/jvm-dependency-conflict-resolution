@@ -11,7 +11,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- com.github.stephenc.jcip:jcip-annotations:1.0-1 FAILED
 +--- com.google.collections:google-collections:1.0 FAILED
 +--- com.google.guava:guava-jdk5:17.0 FAILED
-+--- com.google.guava:guava:31.1-jre FAILED
++--- com.google.guava:guava:33.0.0-jre FAILED
 +--- com.google.guava:listenablefuture:1.0 FAILED
 +--- com.intellij:annotations:12.0 FAILED
 +--- com.jwebmp:javax.inject:1.1 FAILED
