@@ -58,8 +58,8 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- javax.inject:javax.inject:1 FAILED
 +--- javax.json:javax.json-api:1.1.4 FAILED
 +--- javax.jws:javax.jws-api:1.1 FAILED
-+--- javax.mail:mail:1.4.7 FAILED
 +--- javax.mail:javax.mail-api:1.4.7 FAILED
++--- javax.mail:mail:1.4.7 FAILED
 +--- javax.persistence:javax.persistence-api:2.2 FAILED
 +--- javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api:1.2.2 FAILED
 +--- javax.servlet.jsp.jstl:jstl-api:1.2 FAILED
@@ -173,6 +173,8 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api:5.0.2 FAILED
 +--- org.eclipse.jetty.toolchain:jetty-jakarta-websocket-api:2.0.0 FAILED
 +--- org.eclipse.jetty.toolchain:jetty-javax-websocket-api:1.1.2 FAILED
++--- org.glassfish.hk2.external:jakarta.inject:2.6.1 FAILED
++--- org.glassfish.hk2.external:javax.inject:2.4.0 FAILED
 +--- org.glassfish:jakarta.json:1.1.5 FAILED
 +--- org.glassfish:javax.json:1.1.4 FAILED
 +--- org.hamcrest:hamcrest-core:2.2 FAILED

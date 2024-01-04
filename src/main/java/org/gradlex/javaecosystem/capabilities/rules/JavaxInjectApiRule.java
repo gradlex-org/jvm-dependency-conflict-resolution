@@ -34,12 +34,21 @@ public abstract class JavaxInjectApiRule implements ComponentMetadataRule {
 
     public static final String[] MODULES = {
             "jakarta.inject:jakarta.inject-api",
-            "com.jwebmp:javax.inject"
+            "com.jwebmp:javax.inject",
+            "org.glassfish.hk2.external:javax.inject",
+            "org.glassfish.hk2.external:jakarta.inject"
     };
 
     @Override
     public void execute(ComponentMetadataContext context) {
-        String version = context.getDetails().getId().getVersion();
+        String group = context.getDetails().getId().getGroup();
+
+        String version;
+        if ("org.glassfish.hk2.external".equals(group)) {
+            version = "1";
+        } else {
+            version = context.getDetails().getId().getVersion();
+        }
 
         if (VersionNumber.parse(version).compareTo(VersionNumber.parse(FIRST_JAKARTA_VERSION)) < 0) {
             context.getDetails().allVariants(variant -> variant.withCapabilities(capabilities ->
