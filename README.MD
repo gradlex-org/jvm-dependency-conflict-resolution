@@ -318,6 +318,8 @@ Each Capability's GA coordinates correspond to the GA coordinates of the Compone
   * [junit:junit-dep](https://search.maven.org/artifact/junit/junit-dep)
 * [net.java.dev.jna:platform](https://search.maven.org/artifact/net.java.dev.jna/platform) ([JnaPlatformRule](src/main/java/org/gradlex/javaecosystem/capabilities/rules/JnaPlatformRule.java))
   * [net.java.dev.jna:jna-platform](https://search.maven.org/artifact/net.java.dev.jna/jna-platform)
+* [net.jcip:jcip-annotations](https://search.maven.org/artifact/net.jcip/jcip-annotations) ([JcipAnnotationsRule](src/main/java/org/gradlex/javaecosystem/capabilities/rules/JcipAnnotationsRule.java))
+  * [com.github.stephenc.jcip:jcip-annotations](https://search.maven.org/artifact/com.github.stephenc.jcip/jcip-annotations)
 * [org.bouncycastle:bcmail](https://search.maven.org/artifact/org.bouncycastle/bcmail) ([BouncycastleBcmailRule](src/main/java/org/gradlex/javaecosystem/capabilities/rules/BouncycastleBcmailRule.java))
   * [org.bouncycastle:bcmail-fips](https://search.maven.org/artifact/org.bouncycastle/bcmail-fips)
   * [org.bouncycastle:bcmail-jdk14](https://search.maven.org/artifact/org.bouncycastle/bcmail-jdk14)
