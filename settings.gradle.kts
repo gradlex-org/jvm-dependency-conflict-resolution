@@ -7,7 +7,7 @@ pluginManagement {
     }
 }
 plugins {
-    id("com.gradle.enterprise") version "3.13.3"
+    id("com.gradle.enterprise") version "3.16.1"
     id("gradlexbuild.build-parameters")
 }
 

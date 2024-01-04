@@ -37,7 +37,7 @@ pluginPublishConventions {
 }
 
 dependencies {
-    testImplementation("org.gradle.exemplar:samples-check:1.0.0")
+    testImplementation("org.gradle.exemplar:samples-check:1.0.2")
     testImplementation("org.spockframework:spock-core:2.3-groovy-3.0")
     testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
 }
@@ -47,10 +47,14 @@ signing {
     useInMemoryPgpKeys(providers.environmentVariable("SIGNING_KEY").orNull, providers.environmentVariable("SIGNING_PASSPHRASE").orNull)
 }
 
-tasks.test {
-    useJUnitPlatform()
-    maxParallelForks = 4
-    inputs.dir(layout.projectDirectory.dir("samples"))
+testing.suites.named<JvmTestSuite>("test") {
+    useJUnitJupiter()
+    targets.all {
+        testTask {
+            maxParallelForks = 4
+            inputs.dir(layout.projectDirectory.dir("samples"))
+        }
+    }
 }
 
 val checkAllVersions = tasks.register("checkAllVersions") {
