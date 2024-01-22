@@ -13,8 +13,9 @@ class GradleBuild {
     final File buildFile
     final File propertiesFile
 
-    final String gradleVersionUnderTest = System.getProperty("gradleVersionUnderTest")
-    final boolean noJvmTargetEnvAttribute = gradleVersionUnderTest?.startsWith("6.")
+    final static String GRADLE_VERSION_UNDER_TEST = System.getProperty("gradleVersionUnderTest")
+    final static boolean GRADLE6_TEST = GRADLE_VERSION_UNDER_TEST?.startsWith("6.")
+    final static boolean GRADLE7_TEST = GRADLE_VERSION_UNDER_TEST?.startsWith("7.")
 
     GradleBuild(File projectDir = Files.createTempDirectory("gradle-build").toFile()) {
         this.projectDir = projectDir
@@ -50,7 +51,11 @@ class GradleBuild {
     }
 
     BuildResult dependencies() {
-        runner('dependencies', "--configuration=compileClasspath").build()
+        runner('dependencies', '--configuration=compileClasspath').build()
+    }
+
+    BuildResult dependencyInsight(String module) {
+        runner('dependencyInsight', '--configuration=compileClasspath', '--dependency', module).build()
     }
 
     GradleRunner runner(String... args) {
@@ -60,7 +65,7 @@ class GradleBuild {
                 .withProjectDir(projectDir)
                 .withArguments(Arrays.asList(args) + '-s' + '-q')
                 .withDebug(ManagementFactory.getRuntimeMXBean().getInputArguments().toString().contains("-agentlib:jdwp")).with {
-            gradleVersionUnderTest ? it.withGradleVersion(gradleVersionUnderTest) : it
+            GRADLE_VERSION_UNDER_TEST ? it.withGradleVersion(GRADLE_VERSION_UNDER_TEST) : it
         }
     }
 }

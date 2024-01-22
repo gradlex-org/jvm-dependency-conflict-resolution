@@ -4,6 +4,8 @@ import org.gradlex.javaecosystem.capabilities.test.fixture.GradleBuild
 import spock.lang.Specification
 import spock.lang.Unroll
 
+import static org.gradlex.javaecosystem.capabilities.test.fixture.GradleBuild.GRADLE6_TEST
+
 class GuavaClasspathTest extends Specification {
 
     @Delegate
@@ -120,8 +122,8 @@ class GuavaClasspathTest extends Specification {
     @Unroll
     def "has correct classpath for Guava selected by target environment version #guavaVersion-#versionSuffix, #jvmEnv, #classpath"() {
         given:
-        def attr = noJvmTargetEnvAttribute? 'Attribute.of("org.gradle.jvm.environment", String::class.java)' : 'org.gradle.api.attributes.java.TargetJvmEnvironment.TARGET_JVM_ENVIRONMENT_ATTRIBUTE'
-        def attrValue = noJvmTargetEnvAttribute? "\"$jvmEnv\"" : "objects.named(\"$jvmEnv\")"
+        def attr = GRADLE6_TEST? 'Attribute.of("org.gradle.jvm.environment", String::class.java)' : 'org.gradle.api.attributes.java.TargetJvmEnvironment.TARGET_JVM_ENVIRONMENT_ATTRIBUTE'
+        def attrValue = GRADLE6_TEST? "\"$jvmEnv\"" : "objects.named(\"$jvmEnv\")"
         buildFile << """
             plugins {
                 id("java-library")
