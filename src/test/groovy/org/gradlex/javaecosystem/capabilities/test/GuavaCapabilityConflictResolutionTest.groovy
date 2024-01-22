@@ -4,6 +4,8 @@ import org.gradlex.javaecosystem.capabilities.test.fixture.GradleBuild
 import spock.lang.Specification
 import spock.lang.Tag
 
+import static org.gradlex.javaecosystem.capabilities.test.fixture.GradleBuild.GRADLE6_TEST
+
 class GuavaCapabilityConflictResolutionTest extends Specification {
 
     @Delegate
@@ -21,7 +23,7 @@ class GuavaCapabilityConflictResolutionTest extends Specification {
 
     def "resolves capability conflicts to Guava (standard-jvm)"() {
         given:
-        def attributeSetup = noJvmTargetEnvAttribute? 'configurations.compileClasspath { attributes.attribute(Attribute.of("org.gradle.jvm.environment", String::class.java), "standard-jvm") } ' : ''
+        def attributeSetup = GRADLE6_TEST? 'configurations.compileClasspath { attributes.attribute(Attribute.of("org.gradle.jvm.environment", String::class.java), "standard-jvm") } ' : ''
         buildFile << """
             plugins {
                 id("org.gradlex.java-ecosystem-capabilities")
