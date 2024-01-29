@@ -238,4 +238,55 @@ compileClasspath - Compile classpath for source set 'main'.
 '''
     }
 
+    def "can add alignment via BOM"() {
+        given:
+        buildFile << """
+            dependencies.components {
+                val asmComponents = listOf(
+                    "org.ow2.asm:asm",
+                    "org.ow2.asm:asm-tree",
+                    "org.ow2.asm:asm-analysis",
+                    "org.ow2.asm:asm-util",
+                    "org.ow2.asm:asm-commons"
+                )
+                asmComponents.forEach {
+                    withModule<AddBomDependencyMetadataRule>(it) { params("org.ow2.asm:asm-bom") }
+                }
+            }
+            dependencies {
+                implementation("org.ow2.asm:asm")
+                implementation("org.ow2.asm:asm-tree:9.6")
+                implementation("org.ow2.asm:asm-analysis")
+                implementation("org.ow2.asm:asm-util")
+                implementation("org.ow2.asm:asm-commons")
+            }
+        """
+
+        expect:
+        dependencies().output.contains '''
+compileClasspath - Compile classpath for source set 'main'.
++--- org.ow2.asm:asm -> 9.6
+|    \\--- org.ow2.asm:asm-bom:9.6
+|         +--- org.ow2.asm:asm:9.6 (c)
+|         +--- org.ow2.asm:asm-tree:9.6 (c)
+|         +--- org.ow2.asm:asm-analysis:9.6 (c)
+|         +--- org.ow2.asm:asm-util:9.6 (c)
+|         \\--- org.ow2.asm:asm-commons:9.6 (c)
++--- org.ow2.asm:asm-tree:9.6
+|    +--- org.ow2.asm:asm:9.6 (*)
+|    \\--- org.ow2.asm:asm-bom:9.6 (*)
++--- org.ow2.asm:asm-analysis -> 9.6
+|    +--- org.ow2.asm:asm-tree:9.6 (*)
+|    \\--- org.ow2.asm:asm-bom:9.6 (*)
++--- org.ow2.asm:asm-util -> 9.6
+|    +--- org.ow2.asm:asm:9.6 (*)
+|    +--- org.ow2.asm:asm-tree:9.6 (*)
+|    +--- org.ow2.asm:asm-analysis:9.6 (*)
+|    \\--- org.ow2.asm:asm-bom:9.6 (*)
+\\--- org.ow2.asm:asm-commons -> 9.6
+     +--- org.ow2.asm:asm:9.6 (*)
+     +--- org.ow2.asm:asm-tree:9.6 (*)
+     \\--- org.ow2.asm:asm-bom:9.6 (*)
+'''
+    }
 }
