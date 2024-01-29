@@ -1,11 +1,11 @@
 plugins {
     id("groovy")
     id("gradlexbuild.java-ecosystem-capabilities-documentation")
-    id("org.gradlex.internal.plugin-publish-conventions") version "0.5"
+    id("org.gradlex.internal.plugin-publish-conventions") version "0.6"
 }
 
 group = "org.gradlex"
-version = "1.4"
+version = "1.5"
 
 java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(11)) // to run tests that use Android with 11
@@ -40,11 +40,6 @@ dependencies {
     testImplementation("org.gradle.exemplar:samples-check:1.0.2")
     testImplementation("org.spockframework:spock-core:2.3-groovy-3.0")
     testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
-}
-
-// TODO This needs to be included in org.gradlex.internal.plugin-publish-conventions
-signing {
-    useInMemoryPgpKeys(providers.environmentVariable("SIGNING_KEY").orNull, providers.environmentVariable("SIGNING_PASSPHRASE").orNull)
 }
 
 testing.suites.named<JvmTestSuite>("test") {

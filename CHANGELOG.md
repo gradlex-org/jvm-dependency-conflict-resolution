@@ -1,8 +1,13 @@
 # Java Ecosystem Capabilities Gradle plugin - Changelog
 
+## Version 1.5
+* [New] [#61](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/61) Generic rule implementations to ease configuration of custom rules in Java projects
+* [New Rules] [#63](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/63) Rule that sets the component status to 'integration' for common pre-release version numbers
+* [New Rules] [#62](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/62) com.g.c.findbugs:annotations / com.github.spotbugs:spotbugs-annotations (Thanks [Boris Petrov](https://github.com/boris-petrov) for reporting)
+
 ## Version 1.4
 * [New Rules] [#50](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/50) net.jcip:jcip-annotations / com.github.stephenc.jcip:jcip-annotations (Thanks [Boris Petrov](https://github.com/boris-petrov) for reporting)
-* [Adjusted Rule] [#41](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/41) org.glassfish.hk2.external:jakarta.injectt (Thanks [Boris Petrov](https://github.com/boris-petrov) for reporting)
+* [Adjusted Rule] [#41](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/41) org.glassfish.hk2.external:jakarta.inject (Thanks [Boris Petrov](https://github.com/boris-petrov) for reporting)
 * [Adjusted Rule] [#59](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/59) javax.mail:javax.mail-api / org.apache.geronimo.specs:geronimo-javamail (Thanks [Boris Petrov](https://github.com/boris-petrov)!)
 * [Adjusted Rule] [#60](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/60) org.springframework:spring-aop (Thanks [Boris Petrov](https://github.com/boris-petrov)!)
 
