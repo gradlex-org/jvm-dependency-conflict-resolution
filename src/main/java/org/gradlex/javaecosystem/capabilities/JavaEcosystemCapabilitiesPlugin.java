@@ -43,6 +43,7 @@ import org.gradlex.javaecosystem.capabilities.rules.C3p0Rule;
 import org.gradlex.javaecosystem.capabilities.rules.CGlibRule;
 import org.gradlex.javaecosystem.capabilities.rules.CommonsIoRule;
 import org.gradlex.javaecosystem.capabilities.rules.Dom4jRule;
+import org.gradlex.javaecosystem.capabilities.rules.FindbugsAnnotationsRule;
 import org.gradlex.javaecosystem.capabilities.rules.GoogleCollectionsRule;
 import org.gradlex.javaecosystem.capabilities.rules.GuavaListenableFutureRule;
 import org.gradlex.javaecosystem.capabilities.rules.GuavaRule;
@@ -163,6 +164,7 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Extensio
         registerRule(CGlibRule.CAPABILITY, CGlibRule.MODULES, CGlibRule.class, null, components, allCapabilities);
         registerRule(CommonsIoRule.CAPABILITY, CommonsIoRule.MODULES, CommonsIoRule.class, null, components, allCapabilities);
         registerRule(Dom4jRule.CAPABILITY, Dom4jRule.MODULES, Dom4jRule.class, null, components, allCapabilities);
+        registerRule(FindbugsAnnotationsRule.CAPABILITY, FindbugsAnnotationsRule.MODULES, FindbugsAnnotationsRule.class, null, components, allCapabilities);
         registerRule(GoogleCollectionsRule.CAPABILITY, GoogleCollectionsRule.MODULES, GoogleCollectionsRule.class, null, components, allCapabilities);
         registerRule(GuavaListenableFutureRule.CAPABILITY, GuavaListenableFutureRule.MODULES, GuavaListenableFutureRule.class, null, components, allCapabilities);
         registerRule(GuavaRule.CAPABILITY, GuavaRule.MODULES, GuavaRule.class, null, components, allCapabilities);

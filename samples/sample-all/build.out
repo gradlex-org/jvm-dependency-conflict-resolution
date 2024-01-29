@@ -14,7 +14,11 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- cglib:cglib-nodep:3.2.12 -> cglib:cglib:3.3.0
 |    \--- org.ow2.asm:asm:7.1 -> 9.2
 +--- cglib:cglib:3.3.0 (*)
++--- com.github.spotbugs:spotbugs-annotations:4.8.3
+|    \--- com.google.code.findbugs:jsr305:3.0.2
 +--- com.github.stephenc.jcip:jcip-annotations:1.0-1
++--- com.google.code.findbugs:annotations:3.0.1 -> com.github.spotbugs:spotbugs-annotations:4.8.3 (*)
++--- com.google.code.findbugs:findbugs-annotations:3.0.1 -> com.github.spotbugs:spotbugs-annotations:4.8.3 (*)
 +--- com.google.collections:google-collections:1.0 -> com.google.guava:guava:33.0.0-jre
 |    +--- com.google.guava:failureaccess:1.0.2
 |    +--- com.google.code.findbugs:jsr305:3.0.2
