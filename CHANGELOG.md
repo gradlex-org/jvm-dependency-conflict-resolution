@@ -1,6 +1,9 @@
 # Java Ecosystem Capabilities Gradle plugin - Changelog
 
 ## Version 1.5
+* [Fix] [#65](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/65) Turn component status rule into a custom rule instead of always applying it to 'all' (Thanks [KO](https://github.com/ko-at-work) for reporting)
+
+## Version 1.5
 * [New] [#61](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/61) Generic rule implementations to ease configuration of custom rules in Java projects
 * [New Rules] [#63](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/63) Rule that sets the component status to 'integration' for common pre-release version numbers
 * [New Rules] [#62](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/62) com.g.c.findbugs:annotations / com.github.spotbugs:spotbugs-annotations (Thanks [Boris Petrov](https://github.com/boris-petrov) for reporting)

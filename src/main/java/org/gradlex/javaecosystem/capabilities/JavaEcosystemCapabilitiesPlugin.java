@@ -28,7 +28,6 @@ import org.gradle.api.artifacts.dsl.ComponentMetadataHandler;
 import org.gradle.api.initialization.Settings;
 import org.gradle.api.plugins.ExtensionAware;
 import org.gradle.util.GradleVersion;
-import org.gradlex.javaecosystem.capabilities.componentrules.ComponentStatusRule;
 import org.gradlex.javaecosystem.capabilities.componentrules.GuavaComponentRule;
 import org.gradlex.javaecosystem.capabilities.rules.AopallianceRule;
 import org.gradlex.javaecosystem.capabilities.rules.AsmRule;
@@ -217,7 +216,6 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Extensio
 
     private void registerComponentRules(ComponentMetadataHandler components) {
         components.withModule(GuavaComponentRule.MODULE, GuavaComponentRule.class);
-        components.all(ComponentStatusRule.class);
     }
 
     private void registerRule(

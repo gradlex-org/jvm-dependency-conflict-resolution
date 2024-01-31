@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package org.gradlex.javaecosystem.capabilities.componentrules;
+package org.gradlex.javaecosystem.capabilities.customrules;
 
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataRule;
 
-import java.util.Arrays;
+import javax.inject.Inject;
 import java.util.List;
 
 /**
@@ -31,19 +31,17 @@ import java.util.List;
 @CacheableRule
 public abstract class ComponentStatusRule implements ComponentMetadataRule {
 
-    public static List<String> INTEGRATION_VERSION_MARKER = Arrays.asList(
-            "-b",
-            "alpha",
-            "beta",
-            "cr",
-            "m",
-            "rc"
-    );
+    private final List<String> integrationVersionMarker;
+
+    @Inject
+    public ComponentStatusRule(List<String> integrationVersionMarker) {
+        this.integrationVersionMarker = integrationVersionMarker;
+    }
 
     @Override
     public void execute(ComponentMetadataContext context) {
         String version = context.getDetails().getId().getVersion().toLowerCase();
-        if (INTEGRATION_VERSION_MARKER.stream().anyMatch(version::contains)) {
+        if (integrationVersionMarker.stream().anyMatch(version::contains)) {
             context.getDetails().setStatus("integration");
         }
     }

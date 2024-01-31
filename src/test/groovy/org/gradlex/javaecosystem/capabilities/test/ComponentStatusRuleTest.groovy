@@ -12,11 +12,17 @@ class ComponentStatusRuleTest extends Specification {
 
     def setup() {
         buildFile << """
+            import org.gradlex.javaecosystem.capabilities.customrules.*
             plugins {
                 id("org.gradlex.java-ecosystem-capabilities")
                 id("java-library")
             }
             repositories.mavenCentral()
+            dependencies.components {
+                all<ComponentStatusRule>() { params(listOf(
+                    "-b", "alpha", "beta", "cr", "m", "rc"
+                ))}
+            }
         """
     }
 
