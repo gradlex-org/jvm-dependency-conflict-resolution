@@ -166,8 +166,8 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.bouncycastle:bcutil-jdk15to18:1.70 -> org.bouncycastle:bcutil-jdk18on:1.72 (*)
 +--- org.bouncycastle:bcutil-jdk18on:1.72 (*)
 +--- org.codehaus.woodstox:woodstox-core-asl:4.4.1
-|    +--- javax.xml.stream:stax-api:1.0-2 -> org.codehaus.woodstox:stax2-api:4.2.1
-|    \--- org.codehaus.woodstox:stax2-api:3.1.4 -> 4.2.1
+|    +--- javax.xml.stream:stax-api:1.0-2 -> stax:stax-api:1.0.1
+|    \--- org.codehaus.woodstox:stax2-api:3.1.4
 +--- org.codehaus.woodstox:woodstox-core-lgpl:4.4.0 -> org.codehaus.woodstox:woodstox-core-asl:4.4.1 (*)
 +--- org.codehaus.woodstox:wstx-asl:4.0.6 -> org.codehaus.woodstox:woodstox-core-asl:4.4.1 (*)
 +--- org.codehaus.woodstox:wstx-lgpl:3.2.9 -> org.codehaus.woodstox:woodstox-core-asl:4.4.1 (*)

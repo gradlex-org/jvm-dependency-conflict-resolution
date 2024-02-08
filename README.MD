@@ -400,7 +400,6 @@ Each Capability's GA coordinates correspond to the GA coordinates of the Compone
 * [postgresql:postgresql](https://search.maven.org/artifact/postgresql/postgresql) ([PostgresqlRule](src/main/java/org/gradlex/javaecosystem/capabilities/rules/PostgresqlRule.java))
   * [org.postgresql:postgresql](https://search.maven.org/artifact/org.postgresql/postgresql)
 * [stax:stax-api](https://search.maven.org/artifact/stax/stax-api) ([StaxApiRule](src/main/java/org/gradlex/javaecosystem/capabilities/rules/StaxApiRule.java))
-  * [org.codehaus.woodstox:stax2-api](https://search.maven.org/artifact/org.codehaus.woodstox/stax2-api)
   * [javax.xml.stream:stax-api](https://search.maven.org/artifact/javax.xml.stream/stax-api)
 * [velocity:velocity](https://search.maven.org/artifact/velocity/velocity) ([VelocityRule](src/main/java/org/gradlex/javaecosystem/capabilities/rules/VelocityRule.java))
   * [org.apache.velocity:velocity](https://search.maven.org/artifact/org.apache.velocity/velocity)

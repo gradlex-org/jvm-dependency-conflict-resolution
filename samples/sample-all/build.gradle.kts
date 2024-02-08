@@ -172,7 +172,6 @@ dependencies {
     implementation("org.bouncycastle:bcutil-jdk15on:1.70")
     implementation("org.bouncycastle:bcutil-jdk15to18:1.70")
     implementation("org.bouncycastle:bcutil-jdk18on:1.72")
-    implementation("org.codehaus.woodstox:stax2-api:4.2.1")
     implementation("org.codehaus.woodstox:woodstox-core-asl:4.4.1")
     implementation("org.codehaus.woodstox:woodstox-core-lgpl:4.4.0")
     implementation("org.codehaus.woodstox:wstx-asl:4.0.6")
@@ -206,7 +205,7 @@ dependencies {
     implementation("org.springframework:spring-aop:5.3.23")
     implementation("postgresql:postgresql:9.1-901-1.jdbc4")
     implementation("servletapi:servletapi:2.4")
-    implementation("stax:stax-api:1.0")
+    implementation("stax:stax-api:1.0.1")
     implementation("velocity:velocity:1.4")
     implementation("woodstox:wstx-asl:2.9.3")
 
@@ -243,4 +242,5 @@ configurations.all {
 tasks.detectCollisions {
     // With ALL variations of bouncycastle modules in all variations in one build it is not possible to avoid all collisions
     collisionFilter.exclude("org/bouncycastle/**")
+    collisionFilter.exclude("javax/xml/namespace/QName.class")
 }

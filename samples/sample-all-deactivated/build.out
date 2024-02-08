@@ -80,7 +80,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- javax.ws.rs:jsr311-api:1.1.1 FAILED
 +--- javax.xml.bind:jaxb-api:2.3.1 FAILED
 +--- javax.xml.soap:javax.xml.soap-api:1.4.0 FAILED
-+--- javax.xml.stream:stax-api:1.0 FAILED
++--- javax.xml.stream:stax-api:1.0-2 FAILED
 +--- javax.xml.ws:jaxws-api:2.3.1 FAILED
 +--- jboss:javassist:3.8.0.GA FAILED
 +--- junit:junit-dep:4.8 FAILED
@@ -167,7 +167,6 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.bouncycastle:bcutil-jdk15on:1.70 FAILED
 +--- org.bouncycastle:bcutil-jdk15to18:1.70 FAILED
 +--- org.bouncycastle:bcutil-jdk18on:1.72 FAILED
-+--- org.codehaus.woodstox:stax2-api:4.2.1 FAILED
 +--- org.codehaus.woodstox:woodstox-core-asl:4.4.1 FAILED
 +--- org.codehaus.woodstox:woodstox-core-lgpl:4.4.1 FAILED
 +--- org.codehaus.woodstox:wstx-asl:4.0.6 FAILED
@@ -201,7 +200,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.springframework:spring-aop:5.3.23 FAILED
 +--- postgresql:postgresql:9.1-901-1.jdbc4 FAILED
 +--- servletapi:servletapi:2.4 FAILED
-+--- stax:stax-api:1.0 FAILED
++--- stax:stax-api:1.0.1 FAILED
 +--- velocity:velocity:1.4 FAILED
 +--- woodstox:wstx-asl:2.9.3 FAILED
 +--- com.sun.activation:jakarta.activation:2.0.1 FAILED

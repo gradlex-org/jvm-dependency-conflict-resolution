@@ -1,6 +1,9 @@
 # Java Ecosystem Capabilities Gradle plugin - Changelog
 
-## Version 1.5
+## Version 1.5.2
+* [Adjusted Rule] [67](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/67) Remove 'stax2-api' from StaxApiRule
+
+## Version 1.5.1
 * [Fix] [#65](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/65) Turn component status rule into a custom rule instead of always applying it to 'all' (Thanks [KO](https://github.com/ko-at-work) for reporting)
 
 ## Version 1.5
