@@ -266,7 +266,7 @@ public class LoggingCapabilitiesExtension {
             selectCapabilityConflict(Slf4JVsJCL.CAPABILITY_ID, dependency, because);
         } else if (LoggingModuleIdentifiers.LOG4J_JCL.matches(dependency)) {
             selectCapabilityConflict(Slf4JVsLog4J2ForJCL.CAPABILITY_ID, dependency, because);
-            ExternalDependency commonsLogging = validateNotation(LoggingModuleIdentifiers.COMMONS_LOGGING.asVersionZero());
+            ExternalDependency commonsLogging = validateNotation(LoggingModuleIdentifiers.COMMONS_LOGGING.moduleId);
             selectCapabilityConflict(CommonsLoggingImplementationRule.CAPABILITY_ID, commonsLogging, because);
         } else {
             throw new IllegalArgumentException("Provided dependency '" + dependency + "' is not a valid JCL implementation");
@@ -294,7 +294,7 @@ public class LoggingCapabilitiesExtension {
             selectCapabilityConflict(configurationName, Slf4JVsJCL.CAPABILITY_ID, dependency, because);
         } else if (LoggingModuleIdentifiers.LOG4J_JCL.matches(dependency)) {
             selectCapabilityConflict(configurationName, Slf4JVsLog4J2ForJCL.CAPABILITY_ID, dependency, because);
-            ExternalDependency commonsLogging = validateNotation(LoggingModuleIdentifiers.COMMONS_LOGGING.asVersionZero());
+            ExternalDependency commonsLogging = validateNotation(LoggingModuleIdentifiers.COMMONS_LOGGING.moduleId);
             selectCapabilityConflict(configurationName, CommonsLoggingImplementationRule.CAPABILITY_ID, commonsLogging, because);
         } else {
             throw new IllegalArgumentException("Provided dependency '" + dependency + "' is not a valid JCL implementation");
@@ -351,7 +351,7 @@ public class LoggingCapabilitiesExtension {
      * For example, {@code commons-logging} and {@code log4j-jcl} will be substituted with {@code jcl-over-slf4j}.
      */
     public void enforceLogback() {
-        selectSlf4JBinding(LoggingModuleIdentifiers.LOGBACK_CLASSIC.asVersionZero());
+        selectSlf4JBinding(LoggingModuleIdentifiers.LOGBACK_CLASSIC.moduleId);
         enforceSlf4JImplementation();
     }
 
@@ -364,7 +364,7 @@ public class LoggingCapabilitiesExtension {
      * @param configurationName the configuration to be setup
      */
     public void enforceLogback(String configurationName) {
-        selectSlf4JBinding(configurationName, LoggingModuleIdentifiers.LOGBACK_CLASSIC.asVersionZero());
+        selectSlf4JBinding(configurationName, LoggingModuleIdentifiers.LOGBACK_CLASSIC.moduleId);
         enforceSlf4JImplementation(configurationName);
     }
 
@@ -375,7 +375,7 @@ public class LoggingCapabilitiesExtension {
      * For example, {@code commons-logging} and {@code log4j-jcl} will be substituted with {@code jcl-over-slf4j}.
      */
     public void enforceSlf4JSimple() {
-        selectSlf4JBinding(LoggingModuleIdentifiers.SLF4J_SIMPLE.asVersionZero());
+        selectSlf4JBinding(LoggingModuleIdentifiers.SLF4J_SIMPLE.moduleId);
         enforceSlf4JImplementation();
     }
 
@@ -388,7 +388,7 @@ public class LoggingCapabilitiesExtension {
      * @param configurationName the configuration to be setup
      */
     public void enforceSlf4JSimple(String configurationName) {
-        selectSlf4JBinding(configurationName, LoggingModuleIdentifiers.SLF4J_SIMPLE.asVersionZero());
+        selectSlf4JBinding(configurationName, LoggingModuleIdentifiers.SLF4J_SIMPLE.moduleId);
         enforceSlf4JImplementation(configurationName);
     }
 
@@ -399,11 +399,11 @@ public class LoggingCapabilitiesExtension {
      * For example, {@code commons-logging} and {@code log4j} will be configured to end up in Log4J 2 as well.
      */
     public void enforceLog4J2() {
-        selectLog4J2Implementation(LoggingModuleIdentifiers.LOG4J_CORE.asVersionZero());
-        selectSlf4JLog4J2Interaction(LoggingModuleIdentifiers.LOG4J_SLF4J_IMPL.asVersionZero());
-        selectJulDelegation(LoggingModuleIdentifiers.LOG4J_JUL.asVersionZero());
-        selectJCLImplementation(LoggingModuleIdentifiers.LOG4J_JCL.asVersionZero());
-        selectLog4J12Implementation(LoggingModuleIdentifiers.LOG4J12API.asVersionZero());
+        selectLog4J2Implementation(LoggingModuleIdentifiers.LOG4J_CORE.moduleId);
+        selectSlf4JLog4J2Interaction(LoggingModuleIdentifiers.LOG4J_SLF4J_IMPL.moduleId);
+        selectJulDelegation(LoggingModuleIdentifiers.LOG4J_JUL.moduleId);
+        selectJCLImplementation(LoggingModuleIdentifiers.LOG4J_JCL.moduleId);
+        selectLog4J12Implementation(LoggingModuleIdentifiers.LOG4J12API.moduleId);
 
     }
 
@@ -416,29 +416,29 @@ public class LoggingCapabilitiesExtension {
      * @param configurationName the configuration to be setup
      */
     public void enforceLog4J2(String configurationName) {
-        selectLog4J2Implementation(configurationName, LoggingModuleIdentifiers.LOG4J_CORE.asVersionZero());
-        selectSlf4JLog4J2Interaction(configurationName, LoggingModuleIdentifiers.LOG4J_SLF4J_IMPL.asVersionZero());
-        selectJulDelegation(configurationName, LoggingModuleIdentifiers.LOG4J_JUL.asVersionZero());
-        selectJCLImplementation(configurationName, LoggingModuleIdentifiers.LOG4J_JCL.asVersionZero());
-        selectLog4J12Implementation(configurationName, LoggingModuleIdentifiers.LOG4J12API.asVersionZero());
+        selectLog4J2Implementation(configurationName, LoggingModuleIdentifiers.LOG4J_CORE.moduleId);
+        selectSlf4JLog4J2Interaction(configurationName, LoggingModuleIdentifiers.LOG4J_SLF4J_IMPL.moduleId);
+        selectJulDelegation(configurationName, LoggingModuleIdentifiers.LOG4J_JUL.moduleId);
+        selectJCLImplementation(configurationName, LoggingModuleIdentifiers.LOG4J_JCL.moduleId);
+        selectLog4J12Implementation(configurationName, LoggingModuleIdentifiers.LOG4J12API.moduleId);
     }
 
     private void enforceSlf4JImplementation() {
-        selectLog4J12Implementation(LoggingModuleIdentifiers.LOG4J_OVER_SLF4J.asVersionZero());
-        selectJulDelegation(LoggingModuleIdentifiers.JUL_TO_SLF4J.asVersionZero());
-        selectJCLImplementation(LoggingModuleIdentifiers.JCL_OVER_SLF4J.asVersionZero());
-        selectSlf4JLog4J2Interaction(LoggingModuleIdentifiers.LOG4J_TO_SLF4J.asVersionZero());
-        selectLog4J2Implementation(LoggingModuleIdentifiers.LOG4J_TO_SLF4J.asVersionZero());
+        selectLog4J12Implementation(LoggingModuleIdentifiers.LOG4J_OVER_SLF4J.moduleId);
+        selectJulDelegation(LoggingModuleIdentifiers.JUL_TO_SLF4J.moduleId);
+        selectJCLImplementation(LoggingModuleIdentifiers.JCL_OVER_SLF4J.moduleId);
+        selectSlf4JLog4J2Interaction(LoggingModuleIdentifiers.LOG4J_TO_SLF4J.moduleId);
+        selectLog4J2Implementation(LoggingModuleIdentifiers.LOG4J_TO_SLF4J.moduleId);
 
         configurations.all(getSlf4JEnforcementSubstitutions());
     }
 
     private void enforceSlf4JImplementation(String configurationName) {
-        selectLog4J12Implementation(configurationName, LoggingModuleIdentifiers.LOG4J_OVER_SLF4J.asVersionZero());
-        selectJulDelegation(configurationName, LoggingModuleIdentifiers.JUL_TO_SLF4J.asVersionZero());
-        selectJCLImplementation(configurationName, LoggingModuleIdentifiers.JCL_OVER_SLF4J.asVersionZero());
-        selectSlf4JLog4J2Interaction(configurationName, LoggingModuleIdentifiers.LOG4J_TO_SLF4J.asVersionZero());
-        selectLog4J2Implementation(configurationName, LoggingModuleIdentifiers.LOG4J_TO_SLF4J.asVersionZero());
+        selectLog4J12Implementation(configurationName, LoggingModuleIdentifiers.LOG4J_OVER_SLF4J.moduleId);
+        selectJulDelegation(configurationName, LoggingModuleIdentifiers.JUL_TO_SLF4J.moduleId);
+        selectJCLImplementation(configurationName, LoggingModuleIdentifiers.JCL_OVER_SLF4J.moduleId);
+        selectSlf4JLog4J2Interaction(configurationName, LoggingModuleIdentifiers.LOG4J_TO_SLF4J.moduleId);
+        selectLog4J2Implementation(configurationName, LoggingModuleIdentifiers.LOG4J_TO_SLF4J.moduleId);
 
         configurations.matching(conf -> conf.getName().equals(configurationName)).all(getSlf4JEnforcementSubstitutions());
     }
