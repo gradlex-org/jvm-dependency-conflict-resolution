@@ -120,7 +120,7 @@ class LoggingCapabilitiesPluginDetectionFunctionalTest extends AbstractLoggingCa
 
         then:
         outcomeOf(result, ':doIt') == FAILED
-        conflictOnCapability(result.output, "org.gradlex.logging:log4j2-impl:2.17.0")
+        conflictOnCapability(result.output, "org.gradlex:log4j2-impl:2.17.0")
     }
 
     @Unroll

@@ -84,7 +84,6 @@ import org.gradlex.javaecosystem.capabilities.rules.VelocityRule;
 import org.gradlex.javaecosystem.capabilities.rules.WoodstoxAslRule;
 import org.gradlex.javaecosystem.capabilities.rules.logging.CommonsLoggingImplementationRule;
 import org.gradlex.javaecosystem.capabilities.rules.logging.Log4J2Alignment;
-import org.gradlex.javaecosystem.capabilities.rules.logging.Log4J2Implementation;
 import org.gradlex.javaecosystem.capabilities.rules.logging.Log4J2vsSlf4J;
 import org.gradlex.javaecosystem.capabilities.rules.logging.LoggingModuleIdentifiers;
 import org.gradlex.javaecosystem.capabilities.rules.logging.Slf4JAlignment;
@@ -196,7 +195,6 @@ public class JavaEcosystemCapabilitiesBasePlugin implements Plugin<ExtensionAwar
         configureLog4J(components);
         configureSlf4J(components);
         configureLog4J2(components);
-        configureLog4J2Implementation(components);
 
         configureAlignment(components);
 
@@ -236,18 +234,6 @@ public class JavaEcosystemCapabilitiesBasePlugin implements Plugin<ExtensionAwar
         components.withModule(LoggingModuleIdentifiers.LOG4J_SLF4J_IMPL.moduleId, Log4J2vsSlf4J.class);
         components.withModule(LoggingModuleIdentifiers.LOG4J_SLF4J2_IMPL.moduleId, Log4J2vsSlf4J.class);
         components.withModule(LoggingModuleIdentifiers.LOG4J_TO_SLF4J.moduleId, Log4J2vsSlf4J.class);
-    }
-
-    /**
-     * Log4J2 has its own implementation with `log4j-core`.
-     * It can also delegate to Slf4J with `log4j-to-slf4j`.
-     * <p>
-     * Given the above:
-     * * `log4j-core` and `log4j-to-slf4j` are exclusive
-     */
-    private void configureLog4J2Implementation(ComponentMetadataHandler components) {
-        components.withModule(LoggingModuleIdentifiers.LOG4J_TO_SLF4J.moduleId, Log4J2Implementation.class);
-        components.withModule(LoggingModuleIdentifiers.LOG4J_CORE.moduleId, Log4J2Implementation.class);
     }
 
     /**

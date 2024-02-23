@@ -17,6 +17,7 @@
 package org.gradlex.javaecosystem.capabilities.rules;
 
 import org.gradle.api.artifacts.ComponentMetadataRule;
+import org.gradlex.javaecosystem.capabilities.rules.logging.LoggingModuleIdentifiers;
 
 import java.util.Arrays;
 import java.util.List;
@@ -41,7 +42,19 @@ public enum CapabilityDefinitions {
         "org.apache.tomcat:tomcat-servlet-api",
         "org.apache.tomcat.embed:tomcat-embed-core",
         "servletapi:servletapi"
-    );
+    ),
+    /**
+     * Log4J2 has its own implementation with `log4j-core`.
+     * It can also delegate to Slf4J with `log4j-to-slf4j`.
+     * <p>
+     * Given the above:
+     * * `log4j-core` and `log4j-to-slf4j` are exclusive
+     */
+    LOG4J2_IMPL(
+        LoggingModuleIdentifiers.LOG4J_TO_SLF4J.moduleId,
+        LoggingModuleIdentifiers.LOG4J_CORE.moduleId
+    ),
+    ;
 
     public final String group;
     public final String name;
