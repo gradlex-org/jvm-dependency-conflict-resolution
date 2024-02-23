@@ -16,26 +16,37 @@
 
 package org.gradlex.javaecosystem.capabilities.rules;
 
-import org.gradle.api.NonNullApi;
 import org.gradle.api.artifacts.CacheableRule;
+import org.gradle.api.artifacts.ComponentMetadataContext;
+import org.gradle.api.artifacts.ComponentMetadataRule;
 import org.gradle.api.artifacts.ModuleVersionIdentifier;
-import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
 
 import javax.inject.Inject;
 
 @CacheableRule
-@NonNullApi
-public abstract class JakartaMailApiRule extends EnumBasedRule {
+public abstract class EnumBasedRule implements ComponentMetadataRule {
+
+    private final CapabilityDefinitions rule;
 
     @Inject
-    public JakartaMailApiRule(CapabilityDefinitions rule) {
-        super(rule);
+    public EnumBasedRule(CapabilityDefinitions rule) {
+        this.rule = rule;
     }
 
     @Override
+    public final void execute(ComponentMetadataContext context) {
+        if (shouldApply(context.getDetails().getId())) {
+            context.getDetails().allVariants(variant -> variant.withCapabilities(capabilities -> capabilities.addCapability(
+                    rule.group, rule.name, getVersion(context.getDetails().getId())
+            )));
+        }
+    }
+
     protected boolean shouldApply(ModuleVersionIdentifier id) {
-        // org.eclipse.angus has its own versioning, and everything is Jakarta
-        return "org.eclipse.angus".equals(id.getGroup())
-                || VersionNumber.parse(id.getVersion()).compareTo(VersionNumber.parse(JavaxMailApiRule.FIRST_JAKARTA_VERSION)) >= 0;
+        return true;
+    }
+
+    protected String getVersion(ModuleVersionIdentifier id) {
+        return id.getVersion();
     }
 }

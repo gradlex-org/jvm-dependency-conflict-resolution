@@ -24,7 +24,6 @@ import org.gradle.api.artifacts.CapabilityResolutionDetails;
 import org.gradle.api.artifacts.ComponentVariantIdentifier;
 import org.gradle.api.artifacts.component.ModuleComponentIdentifier;
 import org.gradlex.javaecosystem.capabilities.rules.AopallianceRule;
-import org.gradlex.javaecosystem.capabilities.rules.AsmRule;
 import org.gradlex.javaecosystem.capabilities.rules.BouncycastleBcmailRule;
 import org.gradlex.javaecosystem.capabilities.rules.BouncycastleBcpgRule;
 import org.gradlex.javaecosystem.capabilities.rules.BouncycastleBcpkixRule;
@@ -34,6 +33,7 @@ import org.gradlex.javaecosystem.capabilities.rules.BouncycastleBctspRule;
 import org.gradlex.javaecosystem.capabilities.rules.BouncycastleBcutilRule;
 import org.gradlex.javaecosystem.capabilities.rules.C3p0Rule;
 import org.gradlex.javaecosystem.capabilities.rules.CGlibRule;
+import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
 import org.gradlex.javaecosystem.capabilities.rules.CommonsIoRule;
 import org.gradlex.javaecosystem.capabilities.rules.Dom4jRule;
 import org.gradlex.javaecosystem.capabilities.rules.FindbugsAnnotationsRule;
@@ -63,7 +63,6 @@ import org.gradlex.javaecosystem.capabilities.rules.JavaxJsonApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaxJwsApisRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaxMailApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaxPersistenceApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.JavaxServletApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaxServletJspRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaxServletJstlRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaxSoapApiRule;
@@ -110,8 +109,11 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
     private Map<String, String> configureResolutionStrategies() {
         final Map<String, String> standardResolutionStrategy = new HashMap<>();
 
+        for (CapabilityDefinitions definition : CapabilityDefinitions.values()) {
+            standardResolutionStrategy.put(definition.getCapability(), null);
+        }
+
         standardResolutionStrategy.put(AopallianceRule.CAPABILITY, null);
-        standardResolutionStrategy.put(AsmRule.CAPABILITY, null);
         standardResolutionStrategy.put(BouncycastleBcmailRule.CAPABILITY, null);
         standardResolutionStrategy.put(BouncycastleBcpgRule.CAPABILITY, null);
         standardResolutionStrategy.put(BouncycastleBcpkixRule.CAPABILITY, null);
@@ -137,7 +139,6 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
         standardResolutionStrategy.put(JakartaActivationImplementationRule.CAPABILITY, null);
         standardResolutionStrategy.put(JakartaAnnotationApiRule.CAPABILITY, null);
         standardResolutionStrategy.put(JakartaJsonApiRule.CAPABILITY, null);
-        standardResolutionStrategy.put(JakartaMailApiRule.CAPABILITY, null);
         standardResolutionStrategy.put(JakartaServletApiRule.CAPABILITY, null);
         standardResolutionStrategy.put(JakartaWebsocketApiRule.CAPABILITY, null);
         standardResolutionStrategy.put(JakartaWebsocketClientApiRule.CAPABILITY, null);
@@ -152,7 +153,6 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
         standardResolutionStrategy.put(JavaxJwsApisRule.CAPABILITY, null);
         standardResolutionStrategy.put(JavaxMailApiRule.CAPABILITY, null);
         standardResolutionStrategy.put(JavaxPersistenceApiRule.CAPABILITY, null);
-        standardResolutionStrategy.put(JavaxServletApiRule.CAPABILITY, null);
         standardResolutionStrategy.put(JavaxServletJspRule.CAPABILITY, null);
         standardResolutionStrategy.put(JavaxServletJstlRule.CAPABILITY, null);
         standardResolutionStrategy.put(JavaxSoapApiRule.CAPABILITY, null);

@@ -26,7 +26,6 @@ import org.gradle.api.plugins.ExtensionAware;
 import org.gradle.util.GradleVersion;
 import org.gradlex.javaecosystem.capabilities.componentrules.GuavaComponentRule;
 import org.gradlex.javaecosystem.capabilities.rules.AopallianceRule;
-import org.gradlex.javaecosystem.capabilities.rules.AsmRule;
 import org.gradlex.javaecosystem.capabilities.rules.BouncycastleBcmailRule;
 import org.gradlex.javaecosystem.capabilities.rules.BouncycastleBcpgRule;
 import org.gradlex.javaecosystem.capabilities.rules.BouncycastleBcpkixRule;
@@ -36,6 +35,7 @@ import org.gradlex.javaecosystem.capabilities.rules.BouncycastleBctspRule;
 import org.gradlex.javaecosystem.capabilities.rules.BouncycastleBcutilRule;
 import org.gradlex.javaecosystem.capabilities.rules.C3p0Rule;
 import org.gradlex.javaecosystem.capabilities.rules.CGlibRule;
+import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
 import org.gradlex.javaecosystem.capabilities.rules.CommonsIoRule;
 import org.gradlex.javaecosystem.capabilities.rules.Dom4jRule;
 import org.gradlex.javaecosystem.capabilities.rules.FindbugsAnnotationsRule;
@@ -65,7 +65,6 @@ import org.gradlex.javaecosystem.capabilities.rules.JavaxJsonApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaxJwsApisRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaxMailApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaxPersistenceApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.JavaxServletApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaxServletJspRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaxServletJstlRule;
 import org.gradlex.javaecosystem.capabilities.rules.JavaxSoapApiRule;
@@ -128,8 +127,10 @@ public class JavaEcosystemCapabilitiesBasePlugin implements Plugin<ExtensionAwar
 
 
     private void registerCapabilityRules(ComponentMetadataHandler components) {
+        for (CapabilityDefinitions rule : CapabilityDefinitions.values()) {
+            registerRuleFromEnum(rule, components);
+        }
         registerRule(AopallianceRule.MODULES, AopallianceRule.class, components);
-        registerRule(AsmRule.MODULES, AsmRule.class, components);
         registerRule(BouncycastleBcmailRule.MODULES, BouncycastleBcmailRule.class, components);
         registerRule(BouncycastleBcpgRule.MODULES, BouncycastleBcpgRule.class, components);
         registerRule(BouncycastleBcpkixRule.MODULES, BouncycastleBcpkixRule.class, components);
@@ -154,7 +155,6 @@ public class JavaEcosystemCapabilitiesBasePlugin implements Plugin<ExtensionAwar
         registerRule(JakartaActivationImplementationRule.MODULES, JakartaActivationImplementationRule.class, components);
         registerRule(JakartaAnnotationApiRule.MODULES, JakartaAnnotationApiRule.class, components);
         registerRule(JakartaJsonApiRule.MODULES, JakartaJsonApiRule.class, components);
-        registerRule(JakartaMailApiRule.MODULES, JakartaMailApiRule.class, components);
         registerRule(JakartaServletApiRule.MODULES, JakartaServletApiRule.class, components);
         registerRule(JakartaWebsocketApiRule.MODULES, JakartaWebsocketApiRule.class, components);
         registerRule(JakartaWebsocketClientApiRule.MODULES, JakartaWebsocketClientApiRule.class, components);
@@ -171,7 +171,6 @@ public class JavaEcosystemCapabilitiesBasePlugin implements Plugin<ExtensionAwar
         registerRule(JavaxJwsApisRule.MODULES, JavaxJwsApisRule.class, components);
         registerRule(JavaxMailApiRule.MODULES, JavaxMailApiRule.class, components);
         registerRule(JavaxPersistenceApiRule.MODULES, JavaxPersistenceApiRule.class, components);
-        registerRule(JavaxServletApiRule.MODULES, JavaxServletApiRule.class, components);
         registerRule(JavaxServletJspRule.MODULES, JavaxServletJspRule.class, components);
         registerRule(JavaxServletJstlRule.MODULES, JavaxServletJstlRule.class, components);
         registerRule(JavaxSoapApiRule.MODULES, JavaxSoapApiRule.class, components);
@@ -202,6 +201,12 @@ public class JavaEcosystemCapabilitiesBasePlugin implements Plugin<ExtensionAwar
         configureAlignment(components);
 
         registerComponentRules(components); // TODO move out here
+    }
+
+    private void registerRuleFromEnum(CapabilityDefinitions capabilityDefinitions, ComponentMetadataHandler components) {
+        for (String module : capabilityDefinitions.modules) {
+            components.withModule(module, capabilityDefinitions.ruleClass, ac -> ac.params(capabilityDefinitions));
+        }
     }
 
     private void registerComponentRules(ComponentMetadataHandler components) {
