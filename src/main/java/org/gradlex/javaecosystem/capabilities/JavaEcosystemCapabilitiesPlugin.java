@@ -93,7 +93,6 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
 
-@SuppressWarnings("unused")
 @NonNullApi
 public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<PluginAware> {
 

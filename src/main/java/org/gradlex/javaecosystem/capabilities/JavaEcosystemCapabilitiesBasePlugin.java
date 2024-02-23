@@ -1,5 +1,6 @@
 package org.gradlex.javaecosystem.capabilities;
 
+import org.gradle.api.NonNullApi;
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;
 import org.gradle.api.artifacts.ComponentMetadataRule;
@@ -66,12 +67,25 @@ import org.gradlex.javaecosystem.capabilities.rules.PostgresqlRule;
 import org.gradlex.javaecosystem.capabilities.rules.StaxApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.VelocityRule;
 import org.gradlex.javaecosystem.capabilities.rules.WoodstoxAslRule;
+import org.gradlex.javaecosystem.capabilities.rules.logging.CommonsLoggingImplementationRule;
+import org.gradlex.javaecosystem.capabilities.rules.logging.Log4J2Alignment;
+import org.gradlex.javaecosystem.capabilities.rules.logging.Log4J2Implementation;
+import org.gradlex.javaecosystem.capabilities.rules.logging.Log4J2vsSlf4J;
+import org.gradlex.javaecosystem.capabilities.rules.logging.LoggingModuleIdentifiers;
+import org.gradlex.javaecosystem.capabilities.rules.logging.Slf4JAlignment;
+import org.gradlex.javaecosystem.capabilities.rules.logging.Slf4JImplementation;
+import org.gradlex.javaecosystem.capabilities.rules.logging.Slf4JVsJCL;
+import org.gradlex.javaecosystem.capabilities.rules.logging.Slf4JVsLog4J2ForJCL;
+import org.gradlex.javaecosystem.capabilities.rules.logging.Slf4JvsJUL;
+import org.gradlex.javaecosystem.capabilities.rules.logging.Slf4JvsLog4J;
+import org.gradlex.javaecosystem.capabilities.rules.logging.Slf4JvsLog4J2ForJUL;
+import org.gradlex.javaecosystem.capabilities.rules.logging.Slf4JvsLog4J2ForLog4J;
 
-import java.util.Set;
-
+@NonNullApi
 public class JavaEcosystemCapabilitiesBasePlugin implements Plugin<ExtensionAware> {
 
-    private static final GradleVersion MINIMUM_SUPPORTED_VERSION = GradleVersion.version("6.0");
+    // Minimal version that works reliably with alignment
+    private static final GradleVersion MINIMUM_SUPPORTED_VERSION = GradleVersion.version("6.2");
     private static final GradleVersion MINIMUM_SUPPORTED_VERSION_SETTINGS = GradleVersion.version("6.8");
 
     @Override
@@ -164,7 +178,17 @@ public class JavaEcosystemCapabilitiesBasePlugin implements Plugin<ExtensionAwar
         registerRule(VelocityRule.MODULES, VelocityRule.class, components);
         registerRule(WoodstoxAslRule.MODULES, WoodstoxAslRule.class, components);
 
-        registerComponentRules(components);
+        // logging
+        configureCommonsLogging(components);
+        configureJavaUtilLogging(components);
+        configureLog4J(components);
+        configureSlf4J(components);
+        configureLog4J2(components);
+        configureLog4J2Implementation(components);
+
+        configureAlignment(components);
+
+        registerComponentRules(components); // TODO move out here
     }
 
     private void registerComponentRules(ComponentMetadataHandler components) {
@@ -180,5 +204,126 @@ public class JavaEcosystemCapabilitiesBasePlugin implements Plugin<ExtensionAwar
         for (String module : modules) {
             components.withModule(module, rule);
         }
+    }
+
+
+    /**
+     * Log4J2 can act as an Slf4J implementation with `log4j-slf4j-impl` or `log4j-slf4j2-impl`.
+     * It can also delegate to Slf4J with `log4j-to-slf4j`.
+     * <p>
+     * Given the above:
+     * * `log4j-slf4j-impl`, `log4j-slf4j2-impl` and `log4j-to-slf4j` are exclusive
+     */
+    private void configureLog4J2(ComponentMetadataHandler components) {
+        components.withModule(LoggingModuleIdentifiers.LOG4J_SLF4J_IMPL.moduleId, Log4J2vsSlf4J.class);
+        components.withModule(LoggingModuleIdentifiers.LOG4J_SLF4J2_IMPL.moduleId, Log4J2vsSlf4J.class);
+        components.withModule(LoggingModuleIdentifiers.LOG4J_TO_SLF4J.moduleId, Log4J2vsSlf4J.class);
+    }
+
+    /**
+     * Log4J2 has its own implementation with `log4j-core`.
+     * It can also delegate to Slf4J with `log4j-to-slf4j`.
+     * <p>
+     * Given the above:
+     * * `log4j-core` and `log4j-to-slf4j` are exclusive
+     */
+    private void configureLog4J2Implementation(ComponentMetadataHandler components) {
+        components.withModule(LoggingModuleIdentifiers.LOG4J_TO_SLF4J.moduleId, Log4J2Implementation.class);
+        components.withModule(LoggingModuleIdentifiers.LOG4J_CORE.moduleId, Log4J2Implementation.class);
+    }
+
+    /**
+     * Slf4J provides an API, which requires an implementation.
+     * Only one implementation can be on the classpath, selected between:
+     * * `slf4j-simple`
+     * * `logback-classic`
+     * * `slf4j-log4j12` to use Log4J 1.2
+     * * `slf4j-jcl` to use Jakarta Commons Logging
+     * * `slf4j-jdk14` to use Java Util Logging
+     * * `log4j-slf4j-impl` to use Log4J2
+     */
+    private void configureSlf4J(ComponentMetadataHandler components) {
+        components.withModule(LoggingModuleIdentifiers.SLF4J_SIMPLE.moduleId, Slf4JImplementation.class);
+        components.withModule(LoggingModuleIdentifiers.LOGBACK_CLASSIC.moduleId, Slf4JImplementation.class);
+        components.withModule(LoggingModuleIdentifiers.SLF4J_LOG4J12.moduleId, Slf4JImplementation.class);
+        components.withModule(LoggingModuleIdentifiers.SLF4J_JCL.moduleId, Slf4JImplementation.class);
+        components.withModule(LoggingModuleIdentifiers.SLF4J_JDK14.moduleId, Slf4JImplementation.class);
+        components.withModule(LoggingModuleIdentifiers.LOG4J_SLF4J_IMPL.moduleId, Slf4JImplementation.class);
+        components.withModule(LoggingModuleIdentifiers.LOG4J_SLF4J2_IMPL.moduleId, Slf4JImplementation.class);
+    }
+
+    /**
+     * `log4j:log4j` can be replaced by:
+     * * Slf4j with `log4j-over-slf4j`
+     * * Log4J2 with `log4j-1.2-api`
+     * <p>
+     * Log4J can be used from:
+     * * Slf4J API delegating to it with `slf4j-log4j12`
+     * * Log4J2 API only through Slf4J delegation
+     * <p>
+     * Given the above:
+     * * `log4j-over-slf4j` and `slf4j-log4j12` are exclusive
+     * * `log4j-over-slf4j` and `log4j-1.2-api` and `log4j` are exclusive
+     */
+    private void configureLog4J(ComponentMetadataHandler components) {
+        components.withModule(LoggingModuleIdentifiers.LOG4J_OVER_SLF4J.moduleId, Slf4JvsLog4J.class);
+        components.withModule(LoggingModuleIdentifiers.SLF4J_LOG4J12.moduleId, Slf4JvsLog4J.class);
+
+        components.withModule(LoggingModuleIdentifiers.LOG4J_OVER_SLF4J.moduleId, Slf4JvsLog4J2ForLog4J.class);
+        components.withModule(LoggingModuleIdentifiers.LOG4J12API.moduleId, Slf4JvsLog4J2ForLog4J.class);
+        components.withModule(LoggingModuleIdentifiers.LOG4J.moduleId, Slf4JvsLog4J2ForLog4J.class);
+    }
+
+    /**
+     * Java Util Logging can be replaced by:
+     * * Slf4J with `jul-to-slf4j`
+     * * Log4J2 with `log4j-jul`
+     * <p>
+     * Java Util Logging can be used from:
+     * * Slf4J API delegating to it with `slf4j-jdk14`
+     * * Log4J2 API only through SLF4J delegation
+     * <p>
+     * Given the above:
+     * * `jul-to-slf4j` and `slf4j-jdk14` are exclusive
+     * * `jul-to-slf4j` and `log4j-jul` are exclusive
+     */
+    private void configureJavaUtilLogging(ComponentMetadataHandler components) {
+        components.withModule(LoggingModuleIdentifiers.JUL_TO_SLF4J.moduleId, Slf4JvsJUL.class);
+        components.withModule(LoggingModuleIdentifiers.SLF4J_JDK14.moduleId, Slf4JvsJUL.class);
+
+        components.withModule(LoggingModuleIdentifiers.JUL_TO_SLF4J.moduleId, Slf4JvsLog4J2ForJUL.class);
+        components.withModule(LoggingModuleIdentifiers.LOG4J_JUL.moduleId, Slf4JvsLog4J2ForJUL.class);
+    }
+
+    /**
+     * `commons-logging:commons-logging` can be replaced by:
+     * * Slf4J with `org.slf4j:jcl-over-slf4j`
+     * * Log4J2 with `org.apache.logging.log4j:log4j-jcl` _which requires `commons-logging`_
+     * * Spring JCL with `org.springframework:spring-jcl`
+     * <p>
+     * `commons-logging:commons-logging` can be used from:
+     * * Slf4J API delegating to it with `org.slf4j:slf4j-jcl`
+     * * Log4J2 API only through Slf4J delegation
+     * <p>
+     * Given the above:
+     * * `jcl-over-slf4j` and `slf4j-jcl` are exclusive
+     * * `commons-logging`, `jcl-over-slf4j` and `spring-jcl` are exclusive
+     * * `jcl-over-slf4j` and `log4j-jcl` are exclusive
+     */
+    private void configureCommonsLogging(ComponentMetadataHandler components) {
+        components.withModule(LoggingModuleIdentifiers.COMMONS_LOGGING.moduleId, CommonsLoggingImplementationRule.class);
+        components.withModule(LoggingModuleIdentifiers.JCL_OVER_SLF4J.moduleId, CommonsLoggingImplementationRule.class);
+        components.withModule(LoggingModuleIdentifiers.SPRING_JCL.moduleId, CommonsLoggingImplementationRule.class);
+
+        components.withModule(LoggingModuleIdentifiers.JCL_OVER_SLF4J.moduleId, Slf4JVsJCL.class);
+        components.withModule(LoggingModuleIdentifiers.SLF4J_JCL.moduleId, Slf4JVsJCL.class);
+
+        components.withModule(LoggingModuleIdentifiers.JCL_OVER_SLF4J.moduleId, Slf4JVsLog4J2ForJCL.class);
+        components.withModule(LoggingModuleIdentifiers.LOG4J_JCL.moduleId, Slf4JVsLog4J2ForJCL.class);
+    }
+
+    private void configureAlignment(ComponentMetadataHandler components) {
+        components.all(Slf4JAlignment.class);
+        components.all(Log4J2Alignment.class);
     }
 }
