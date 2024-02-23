@@ -34,6 +34,23 @@ pluginPublishConventions {
         name.set("Jendrik Johannes")
         email.set("jendrik@gradlex.org")
     }
+    developer {
+        id.set("ljacomet")
+        name.set("Louis Jacomet")
+        email.set("louis@gradlex.org")
+    }
+}
+
+gradlePlugin {
+    plugins {
+        create("logging-capabilities") {
+            id = "org.gradlex.logging-capabilities"
+            implementationClass = "org.gradlex.javaecosystem.capabilities.LoggingCapabilitiesPlugin"
+            displayName = "Java Logging Capabilities"
+            description = "Adds configuration options for resolving logging framework conflicts."
+            tags = listOf("dependency", "dependencies", "dependency-management", "logging", "slf4j", "log4j2")
+        }
+    }
 }
 
 dependencies {
@@ -56,7 +73,7 @@ val checkAllVersions = tasks.register("checkAllVersions") {
     dependsOn(tasks.check)
 }
 
-listOf("6.2.2", "6.9.4", "7.0.2", "7.6.4", "8.0.2").forEach { gradleVersionUnderTest ->
+listOf("6.6.1", "6.9.4", "7.0.2", "7.6.4", "8.0.2").forEach { gradleVersionUnderTest ->
     val testGradle = tasks.register<Test>("testGradle$gradleVersionUnderTest") {
         group = LifecycleBasePlugin.VERIFICATION_GROUP
         description = "Runs tests against Gradle $gradleVersionUnderTest"

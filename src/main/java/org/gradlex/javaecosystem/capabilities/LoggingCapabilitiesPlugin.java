@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-package org.gradlex.javaecosystem.capabilities.rules.logging;
+package org.gradlex.javaecosystem.capabilities;
 
-import org.gradle.api.artifacts.ComponentMetadataContext;
-import org.gradle.api.artifacts.ComponentMetadataDetails;
-import org.gradle.api.artifacts.ComponentMetadataRule;
+import org.gradle.api.Plugin;
+import org.gradle.api.Project;
+import org.gradle.api.artifacts.dsl.DependencyHandler;
 
-public class Slf4JAlignment implements ComponentMetadataRule {
+public class LoggingCapabilitiesPlugin implements Plugin<Project> {
+
     @Override
-    public void execute(ComponentMetadataContext context) {
-        ComponentMetadataDetails details = context.getDetails();
-        if (details.getId().getGroup().startsWith("org.slf4j")) {
-            details.belongsTo("org.gradlex.logging.align:slf4j:" + details.getId().getVersion());
-        }
+    public void apply(Project project) {
+        project.getPlugins().apply(JavaEcosystemCapabilitiesBasePlugin.class);
+        DependencyHandler dependencies = project.getDependencies();
+        project.getExtensions().create("loggingCapabilities", LoggingCapabilitiesExtension.class, project.getConfigurations(), dependencies);
     }
 }

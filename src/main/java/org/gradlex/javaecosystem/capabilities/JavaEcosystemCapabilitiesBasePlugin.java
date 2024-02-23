@@ -100,8 +100,8 @@ import org.gradlex.javaecosystem.capabilities.rules.logging.Slf4JvsLog4J2ForLog4
 @NonNullApi
 public class JavaEcosystemCapabilitiesBasePlugin implements Plugin<ExtensionAware> {
 
-    // Minimal version that works reliably with alignment
-    private static final GradleVersion MINIMUM_SUPPORTED_VERSION = GradleVersion.version("6.2.2");
+    // Minimal version that works reliably with alignment and has the substitution rules `using` API
+    private static final GradleVersion MINIMUM_SUPPORTED_VERSION = GradleVersion.version("6.6.1");
     private static final GradleVersion MINIMUM_SUPPORTED_VERSION_SETTINGS = GradleVersion.version("6.8");
 
     @Override
