@@ -23,40 +23,44 @@ import java.util.List;
 
 public enum CapabilityDefinitions {
 
-    ASM("asm", "asm",
-            "org.ow2.asm:asm"
+    ASM(
+        "asm:asm",
+        "org.ow2.asm:asm"
     ),
-    JAKARTA_MAIL_API("jakarta.mail", "jakarta.mail-api", JakartaMailApiRule.class,
-            "com.sun.mail:mailapi",
-            "com.sun.mail:jakarta.mail",
-            "org.eclipse.angus:jakarta.mail"
+    JAKARTA_MAIL_API(JakartaMailApiRule.class,
+        "jakarta.mail:jakarta.mail-api",
+        "com.sun.mail:mailapi",
+        "com.sun.mail:jakarta.mail",
+        "org.eclipse.angus:jakarta.mail"
     ),
-    SERVLET_API("javax.servlet", "servlet-api", JavaxServletApiRule.class,
-            "javax.servlet:javax.servlet-api",
-            "jakarta.servlet:jakarta.servlet-api",
-            "org.apache.tomcat:servlet-api",
-            "org.apache.tomcat:tomcat-servlet-api",
-            "org.apache.tomcat.embed:tomcat-embed-core",
-            "servletapi:servletapi"
+    SERVLET_API(JavaxServletApiRule.class,
+        "javax.servlet:servlet-api",
+        "javax.servlet:javax.servlet-api",
+        "jakarta.servlet:jakarta.servlet-api",
+        "org.apache.tomcat:servlet-api",
+        "org.apache.tomcat:tomcat-servlet-api",
+        "org.apache.tomcat.embed:tomcat-embed-core",
+        "servletapi:servletapi"
     );
 
-    public String group;
-    public String name;
-    public List<String> modules;
-    public Class<? extends ComponentMetadataRule> ruleClass;
+    public final String group;
+    public final String name;
+    public final List<String> modules;
+    public final Class<? extends ComponentMetadataRule> ruleClass;
 
-    CapabilityDefinitions(String group, String name, String... modules) {
-        this.group = group;
-        this.name = name;
-        this.modules = Arrays.asList(modules);
-        this.ruleClass = EnumBasedRule.class;
+    CapabilityDefinitions(String... modules) {
+        this(EnumBasedRule.class, modules);
     }
 
-    CapabilityDefinitions(String group, String name, Class<? extends ComponentMetadataRule> ruleClass, String... modules) {
-        this.group = group;
-        this.name = name;
+    CapabilityDefinitions(Class<? extends ComponentMetadataRule> ruleClass, String... modules) {
+        this.group = "org.gradlex";
+        this.name = nameInKebabCase();
         this.modules = Arrays.asList(modules);
         this.ruleClass = ruleClass;
+    }
+
+    private String nameInKebabCase() {
+        return name().toLowerCase().replace("_", "-");
     }
 
     public String getCapability() {
