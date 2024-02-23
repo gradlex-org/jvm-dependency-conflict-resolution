@@ -22,6 +22,8 @@ import org.gradle.api.Project;
 import org.gradle.api.artifacts.ComponentMetadataRule;
 import org.gradle.api.artifacts.dsl.ComponentMetadataHandler;
 import org.gradle.api.initialization.Settings;
+import org.gradle.api.internal.GradleInternal;
+import org.gradle.api.internal.SettingsInternal;
 import org.gradle.api.plugins.ExtensionAware;
 import org.gradle.util.GradleVersion;
 import org.gradlex.javaecosystem.capabilities.componentrules.GuavaComponentRule;
@@ -103,6 +105,11 @@ public class JavaEcosystemCapabilitiesBasePlugin implements Plugin<ExtensionAwar
     // Minimal version that works reliably with alignment and has the substitution rules `using` API
     private static final GradleVersion MINIMUM_SUPPORTED_VERSION = GradleVersion.version("6.6.1");
     private static final GradleVersion MINIMUM_SUPPORTED_VERSION_SETTINGS = GradleVersion.version("6.8");
+
+    static boolean basePluginNotYetRegisteredInSettings(Project project) {
+        SettingsInternal settings = ((GradleInternal) project.getGradle()).getSettings();
+        return null == settings.getPlugins().findPlugin(JavaEcosystemCapabilitiesBasePlugin.class);
+    }
 
     @Override
     public void apply(ExtensionAware projectOrSettings) {

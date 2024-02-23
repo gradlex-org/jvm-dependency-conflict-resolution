@@ -20,11 +20,16 @@ import org.gradle.api.Plugin;
 import org.gradle.api.Project;
 import org.gradle.api.artifacts.dsl.DependencyHandler;
 
+import static org.gradlex.javaecosystem.capabilities.JavaEcosystemCapabilitiesBasePlugin.basePluginNotYetRegisteredInSettings;
+
 public class LoggingCapabilitiesPlugin implements Plugin<Project> {
 
     @Override
     public void apply(Project project) {
-        project.getPlugins().apply(JavaEcosystemCapabilitiesBasePlugin.class);
+        if (basePluginNotYetRegisteredInSettings(project)) {
+            project.getPlugins().apply(JavaEcosystemCapabilitiesBasePlugin.class);
+        }
+
         DependencyHandler dependencies = project.getDependencies();
         project.getExtensions().create("loggingCapabilities", LoggingCapabilitiesExtension.class, project.getConfigurations(), dependencies);
     }

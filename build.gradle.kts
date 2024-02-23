@@ -50,6 +50,10 @@ gradlePlugin {
             description = "Adds configuration options for resolving logging framework conflicts."
             tags = listOf("dependency", "dependencies", "dependency-management", "logging", "slf4j", "log4j2")
         }
+        create("java-ecosystem-capabilities-base") {
+            id = "org.gradlex.java-ecosystem-capabilities-base"
+            implementationClass = "org.gradlex.javaecosystem.capabilities.JavaEcosystemCapabilitiesBasePlugin"
+       }
     }
 }
 
