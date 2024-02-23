@@ -50,7 +50,6 @@ import org.gradlex.javaecosystem.capabilities.rules.JakartaActivationApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JakartaActivationImplementationRule;
 import org.gradlex.javaecosystem.capabilities.rules.JakartaAnnotationApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JakartaJsonApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.JakartaMailApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JakartaServletApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JakartaWebsocketApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JakartaWebsocketClientApiRule;
