@@ -33,7 +33,7 @@ public enum CapabilityDefinitions {
         "com.sun.mail:jakarta.mail",
         "org.eclipse.angus:jakarta.mail"
     ),
-    SERVLET_API(JavaxServletApiRule.class,
+    JAVAX_SERVLET_API(JavaxServletApiRule.class,
         "javax.servlet:servlet-api",
         "javax.servlet:javax.servlet-api",
         "jakarta.servlet:jakarta.servlet-api",
