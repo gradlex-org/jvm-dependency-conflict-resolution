@@ -1,5 +1,6 @@
 plugins {
     id("groovy")
+    id("gradlexbuild.java-ecosystem-capabilities-lifecycle")
     id("gradlexbuild.java-ecosystem-capabilities-documentation")
     id("org.gradlex.internal.plugin-publish-conventions") version "0.6"
 }
@@ -64,10 +65,6 @@ dependencies {
     testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
 }
 
-val checkAllVersions = tasks.register("checkAllVersions") {
-    dependsOn(tasks.check)
-}
-
 testing.suites.named<JvmTestSuite>("test") {
     useJUnitJupiter()
     listOf("6.6.1", "6.9.4", "7.0.2", "7.6.4", "8.0.2").forEach { gradleVersionUnderTest ->
@@ -81,9 +78,6 @@ testing.suites.named<JvmTestSuite>("test") {
                 systemProperty("gradleVersionUnderTest", gradleVersionUnderTest)
 
                 exclude("**/*SamplesTest.class") // Not yet cross-version ready
-            }
-            checkAllVersions {
-                dependsOn(this@register)
             }
         }
     }

@@ -3,6 +3,7 @@ import gradlexbuild.javaecosystem.capabilities.documentation.SamplesCompleteness
 
 plugins {
     id("java")
+    id("gradlexbuild.java-ecosystem-capabilities-lifecycle")
 }
 
 val updateReadme = tasks.register<ReadmeUpdate>("updateReadme") {
@@ -16,7 +17,7 @@ val checkSamplesForCompleteness = tasks.register<SamplesCompletenessCheck>("chec
     samplesBuildFiles.from(layout.projectDirectory.file("samples/sample-all-deactivated/build.gradle.kts"))
 }
 
-tasks.check {
+tasks.quickCheck {
     dependsOn(updateReadme)
     dependsOn(checkSamplesForCompleteness)
 }
