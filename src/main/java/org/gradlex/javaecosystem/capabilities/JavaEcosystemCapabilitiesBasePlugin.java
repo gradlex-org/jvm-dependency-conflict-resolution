@@ -18,7 +18,6 @@ package org.gradlex.javaecosystem.capabilities;
 
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;
-import org.gradle.api.artifacts.ComponentMetadataRule;
 import org.gradle.api.artifacts.dsl.ComponentMetadataHandler;
 import org.gradle.api.initialization.Settings;
 import org.gradle.api.plugins.ExtensionAware;

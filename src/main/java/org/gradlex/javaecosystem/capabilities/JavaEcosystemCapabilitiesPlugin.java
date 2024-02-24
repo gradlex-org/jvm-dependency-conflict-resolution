@@ -28,7 +28,6 @@ import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
 
 import java.util.Optional;
 
-import static org.gradlex.javaecosystem.capabilities.JavaEcosystemCapabilitiesBasePlugin.basePluginNotYetRegisteredInSettings;
 import static org.gradlex.javaecosystem.capabilities.resolution.DefaultResolutionStrategy.FIRST_MODULE;
 import static org.gradlex.javaecosystem.capabilities.resolution.DefaultResolutionStrategy.HIGHEST_VERSION;
 
