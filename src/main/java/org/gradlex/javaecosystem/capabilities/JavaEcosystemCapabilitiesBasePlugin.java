@@ -68,8 +68,8 @@ public class JavaEcosystemCapabilitiesBasePlugin implements Plugin<ExtensionAwar
     }
 
     private void registerRuleFromEnum(CapabilityDefinitions capabilityDefinitions, ComponentMetadataHandler components) {
-        for (String module : capabilityDefinitions.modules) {
-            components.withModule(module, capabilityDefinitions.ruleClass, ac -> ac.params(capabilityDefinitions));
+        for (String module : capabilityDefinitions.getModules()) {
+            components.withModule(module, capabilityDefinitions.getRuleClass(), ac -> ac.params(capabilityDefinitions));
         }
     }
 

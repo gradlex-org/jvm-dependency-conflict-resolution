@@ -39,7 +39,7 @@ public abstract class EnumBasedRule implements ComponentMetadataRule {
         if (shouldApply(context.getDetails().getId())) {
             context.getDetails().allVariants(variant -> {
                 variant.withCapabilities(capabilities -> capabilities.addCapability(
-                        rule.group, rule.name, getVersion(context.getDetails().getId())
+                        rule.getGroup(), rule.getCapabilityName(), getVersion(context.getDetails().getId())
                 ));
                 additionalAdjustments(variant);
             });

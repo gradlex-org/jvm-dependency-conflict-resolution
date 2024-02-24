@@ -27,7 +27,7 @@ class CustomizationTest extends Specification {
                 components.withModule(CapabilityDefinitions.CGLIB.modules[0]) {
                     allVariants {
                         withCapabilities {
-                            removeCapability(CapabilityDefinitions.CGLIB.group, CapabilityDefinitions.CGLIB.name)
+                            removeCapability(CapabilityDefinitions.CGLIB.group, CapabilityDefinitions.CGLIB.capabilityName)
                         }
                     }
                 }

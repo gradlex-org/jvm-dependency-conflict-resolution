@@ -54,10 +54,10 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
         CapabilitiesResolution resolution = configuration.getResolutionStrategy().getCapabilitiesResolution();
         resolution.withCapability(definition.getCapability(), details -> {
             if (!javaEcosystemCapabilities.getDeactivatedResolutionStrategies().get().contains(definition)) {
-                if (definition.defaultStrategy == HIGHEST_VERSION) {
+                if (definition.getDefaultStrategy() == HIGHEST_VERSION) {
                     details.selectHighestVersion();
-                } else if (definition.defaultStrategy == FIRST_MODULE) {
-                    select(details, definition.modules.get(0));
+                } else if (definition.getDefaultStrategy() == FIRST_MODULE) {
+                    select(details, definition.getModules().get(0));
                 }
             }
         });

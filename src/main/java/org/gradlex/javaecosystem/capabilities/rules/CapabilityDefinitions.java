@@ -501,11 +501,11 @@ public enum CapabilityDefinitions {
             LoggingModuleIdentifiers.LOG4J_JUL.moduleId
     );
 
-    public final String group;
-    public final String name;
-    public final List<String> modules;
-    public final DefaultResolutionStrategy defaultStrategy;
-    public final Class<? extends ComponentMetadataRule> ruleClass;
+    private final String group;
+    private final String capabilityName;
+    private final List<String> modules;
+    private final DefaultResolutionStrategy defaultStrategy;
+    private final Class<? extends ComponentMetadataRule> ruleClass;
 
     CapabilityDefinitions(DefaultResolutionStrategy defaultStrategy, String... modules) {
         this(defaultStrategy, "org.gradlex", EnumBasedRule.class, modules);
@@ -517,17 +517,38 @@ public enum CapabilityDefinitions {
 
     CapabilityDefinitions(DefaultResolutionStrategy defaultStrategy, String group, Class<? extends ComponentMetadataRule> ruleClass, String... modules) {
         this.group =  group;
-        this.name = nameInKebabCase();
+        this.capabilityName = nameInKebabCase();
         this.modules = Arrays.asList(modules);
         this.defaultStrategy = defaultStrategy;
         this.ruleClass = ruleClass;
     }
 
-    private String nameInKebabCase() {
-        return name().toLowerCase().replace("_", "-");
+    public String getGroup() {
+        return group;
+    }
+
+    // Not 'getName()' because it may clash with Enum's 'name()' in Kotlin/Groovy
+    public String getCapabilityName() {
+        return capabilityName;
+    }
+
+    public List<String> getModules() {
+        return modules;
+    }
+
+    public DefaultResolutionStrategy getDefaultStrategy() {
+        return defaultStrategy;
+    }
+
+    public Class<? extends ComponentMetadataRule> getRuleClass() {
+        return ruleClass;
     }
 
     public String getCapability() {
-        return group + ":" + name;
+        return group + ":" + capabilityName;
+    }
+
+    private String nameInKebabCase() {
+        return name().toLowerCase().replace("_", "-");
     }
 }
