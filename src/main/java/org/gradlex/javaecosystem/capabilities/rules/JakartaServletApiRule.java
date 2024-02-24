@@ -18,38 +18,33 @@ package org.gradlex.javaecosystem.capabilities.rules;
 
 import org.gradle.api.NonNullApi;
 import org.gradle.api.artifacts.CacheableRule;
-import org.gradle.api.artifacts.ComponentMetadataContext;
-import org.gradle.api.artifacts.ComponentMetadataRule;
+import org.gradle.api.artifacts.ModuleVersionIdentifier;
 import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
+
+import javax.inject.Inject;
 
 @CacheableRule
 @NonNullApi
-public abstract class JakartaServletApiRule implements ComponentMetadataRule {
+public abstract class JakartaServletApiRule extends EnumBasedRule {
 
-    public static final String CAPABILITY_GROUP = "jakarta.servlet";
-    public static final String CAPABILITY_NAME = "jakarta.servlet-api";
-    public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
-
-    public static final String[] MODULES = {
-            "org.apache.tomcat:tomcat-servlet-api",
-            "org.apache.tomcat.embed:tomcat-embed-core",
-            "org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api",
-    };
+    @Inject
+    public JakartaServletApiRule(CapabilityDefinitions rule) {
+        super(rule);
+    }
 
     @Override
-    public void execute(ComponentMetadataContext context) {
-        String group = context.getDetails().getId().getGroup();
+    protected String getVersion(ModuleVersionIdentifier id) {
         String version;
-        if (group.startsWith("org.apache.tomcat")) {
-            version = JavaxServletApiRule.servletApiVersionForTomcatVersion(VersionNumber.parse(context.getDetails().getId().getVersion()));
+        if (id.getGroup().startsWith("org.apache.tomcat")) {
+            version = JavaxServletApiRule.servletApiVersionForTomcatVersion(VersionNumber.parse(id.getVersion()));
         } else {
-            version = context.getDetails().getId().getVersion();
+            version = id.getVersion();
         }
+        return version;
+    }
 
-        if (VersionNumber.parse(version).compareTo(VersionNumber.parse(JavaxServletApiRule.FIRST_JAKARTA_VERSION)) >= 0) {
-            context.getDetails().allVariants(variant -> variant.withCapabilities(capabilities ->
-                    capabilities.addCapability(CAPABILITY_GROUP, CAPABILITY_NAME, version)
-            ));
-        }
+    @Override
+    protected boolean shouldApply(ModuleVersionIdentifier id) {
+        return VersionNumber.parse(getVersion(id)).compareTo(VersionNumber.parse(JavaxServletApiRule.FIRST_JAKARTA_VERSION)) >= 0;
     }
 }

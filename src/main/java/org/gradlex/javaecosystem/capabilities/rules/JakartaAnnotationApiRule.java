@@ -18,36 +18,34 @@ package org.gradlex.javaecosystem.capabilities.rules;
 
 import org.gradle.api.NonNullApi;
 import org.gradle.api.artifacts.CacheableRule;
-import org.gradle.api.artifacts.ComponentMetadataContext;
-import org.gradle.api.artifacts.ComponentMetadataRule;
+import org.gradle.api.artifacts.ModuleVersionIdentifier;
 import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
+
+import javax.inject.Inject;
 
 @CacheableRule
 @NonNullApi
-public abstract class JakartaAnnotationApiRule implements ComponentMetadataRule {
+public abstract class JakartaAnnotationApiRule extends EnumBasedRule {
 
-    public static final String CAPABILITY_GROUP = "jakarta.annotation";
-    public static final String CAPABILITY_NAME = "jakarta.annotation-api";
-    public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
-
-    public static final String[] MODULES = {
-            "org.apache.tomcat:tomcat-annotations-api"
-    };
+    @Inject
+    public JakartaAnnotationApiRule(CapabilityDefinitions rule) {
+        super(rule);
+    }
 
     @Override
-    public void execute(ComponentMetadataContext context) {
+    protected String getVersion(ModuleVersionIdentifier id) {
         String version;
-        if ("org.apache.tomcat".equals(context.getDetails().getId().getGroup())) {
-            version = annotationApiVersionForTomcatVersion(VersionNumber.parse(context.getDetails().getId().getVersion()));
+        if ("org.apache.tomcat".equals(id.getGroup())) {
+            version = annotationApiVersionForTomcatVersion(VersionNumber.parse(id.getVersion()));
         } else {
-            version = context.getDetails().getId().getVersion();
+            version = id.getVersion();
         }
+        return version;
+    }
 
-        if (VersionNumber.parse(version).compareTo(VersionNumber.parse(JavaxAnnotationApiRule.FIRST_JAKARTA_VERSION)) >= 0) {
-            context.getDetails().allVariants(variant -> variant.withCapabilities(capabilities ->
-                    capabilities.addCapability(CAPABILITY_GROUP, CAPABILITY_NAME, version)
-            ));
-        }
+    @Override
+    protected boolean shouldApply(ModuleVersionIdentifier id) {
+        return VersionNumber.parse(getVersion(id)).compareTo(VersionNumber.parse(JavaxAnnotationApiRule.FIRST_JAKARTA_VERSION)) >= 0;
     }
 
     // This is probably 100% accurate - older Tomcat versions might ship older 1.x specs

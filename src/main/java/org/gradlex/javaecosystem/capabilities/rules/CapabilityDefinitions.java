@@ -203,7 +203,46 @@ public enum CapabilityDefinitions {
         "org.codehaus.woodstox:wstx-lgpl",
         "woodstox:wstx-asl"
     ),
-
+    JAKARTA_ACTIVATION_API(HIGHEST_VERSION, JakartaActivationApiRule.class,
+        "jakarta.activation:jakarta.activation-api",
+        "com.sun.activation:jakarta.activation"
+    ),
+    JAKARTA_ACTIVATION_IMPL(HIGHEST_VERSION, JakartaActivationImplementationRule.class,
+        "com.sun.activation:jakarta.activation",
+        "org.eclipse.angus:angus-activation"
+    ),
+    JAKARTA_ANNOTATION_API(HIGHEST_VERSION, JakartaAnnotationApiRule.class,
+            "jakarta.annotation:jakarta.annotation-api",
+            "org.apache.tomcat:tomcat-annotations-api"
+    ),
+    JAKARTA_JSON_API(HIGHEST_VERSION,
+        "jakarta.json:jakarta.json-api",
+        "org.glassfish:jakarta.json"
+    ),
+    JAKARTA_SERVLET_API(HIGHEST_VERSION, JakartaServletApiRule.class,
+            "jakarta.servlet:jakarta.servlet-api",
+            "org.apache.tomcat:tomcat-servlet-api",
+            "org.apache.tomcat.embed:tomcat-embed-core",
+            "org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api"
+    ),
+    JAKARTA_WEBSOCKET_API(HIGHEST_VERSION, JakartaWebsocketApiRule.class,
+            "jakarta.websocket:jakarta.websocket-api",
+            "org.apache.tomcat:tomcat-websocket-api",
+            "org.apache.tomcat:tomcat-websocket",
+            "org.apache.tomcat.embed:tomcat-embed-websocket",
+            "org.eclipse.jetty.toolchain:jetty-jakarta-websocket-api"
+    ),
+    JAKARTA_WEBSOCKET_CLIENT_API(HIGHEST_VERSION, JakartaWebsocketClientApiRule.class,
+            "jakarta.websocket:jakarta.websocket-client-api",
+            "org.apache.tomcat:tomcat-websocket-client-api",
+            "org.apache.tomcat:tomcat-websocket",
+            "org.apache.tomcat.embed:tomcat-embed-websocket",
+            "org.eclipse.jetty.toolchain:jetty-jakarta-websocket-api"
+    ),
+    JAKARTA_WS_RS_API(HIGHEST_VERSION, JakartaWsRsApiRule.class,
+            "jakarta.ws.rs:jakarta.ws.rs-api",
+            "org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_3.0_spec"
+    ),
     JAKARTA_MAIL_API(HIGHEST_VERSION, JakartaMailApiRule.class,
         "jakarta.mail:jakarta.mail-api",
         "com.sun.mail:mailapi",

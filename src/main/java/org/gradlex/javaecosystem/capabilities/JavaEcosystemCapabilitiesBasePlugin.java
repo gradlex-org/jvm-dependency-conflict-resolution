@@ -24,13 +24,7 @@ import org.gradle.api.initialization.Settings;
 import org.gradle.api.plugins.ExtensionAware;
 import org.gradle.util.GradleVersion;
 import org.gradlex.javaecosystem.capabilities.componentrules.GuavaComponentRule;
-import org.gradlex.javaecosystem.capabilities.rules.AopallianceRule;
 import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
-import org.gradlex.javaecosystem.capabilities.rules.GuavaListenableFutureRule;
-import org.gradlex.javaecosystem.capabilities.rules.JakartaActivationApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.JakartaActivationImplementationRule;
-import org.gradlex.javaecosystem.capabilities.rules.JakartaAnnotationApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.JakartaJsonApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JakartaServletApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JakartaWebsocketApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.JakartaWebsocketClientApiRule;
@@ -88,15 +82,6 @@ public class JavaEcosystemCapabilitiesBasePlugin implements Plugin<ExtensionAwar
         for (CapabilityDefinitions rule : CapabilityDefinitions.values()) {
             registerRuleFromEnum(rule, components);
         }
-
-        registerRule(JakartaActivationApiRule.MODULES, JakartaActivationApiRule.class, components);
-        registerRule(JakartaActivationImplementationRule.MODULES, JakartaActivationImplementationRule.class, components);
-        registerRule(JakartaAnnotationApiRule.MODULES, JakartaAnnotationApiRule.class, components);
-        registerRule(JakartaJsonApiRule.MODULES, JakartaJsonApiRule.class, components);
-        registerRule(JakartaServletApiRule.MODULES, JakartaServletApiRule.class, components);
-        registerRule(JakartaWebsocketApiRule.MODULES, JakartaWebsocketApiRule.class, components);
-        registerRule(JakartaWebsocketClientApiRule.MODULES, JakartaWebsocketClientApiRule.class, components);
-        registerRule(JakartaWsRsApiRule.MODULES, JakartaWsRsApiRule.class, components);
 
         registerRule(JavaxActivationApiRule.MODULES, JavaxActivationApiRule.class, components);
         registerRule(JavaxAnnotationApiRule.MODULES, JavaxAnnotationApiRule.class, components);

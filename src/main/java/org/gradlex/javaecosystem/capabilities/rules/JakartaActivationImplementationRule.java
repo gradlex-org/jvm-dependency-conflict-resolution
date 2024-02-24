@@ -18,33 +18,26 @@ package org.gradlex.javaecosystem.capabilities.rules;
 
 import org.gradle.api.NonNullApi;
 import org.gradle.api.artifacts.CacheableRule;
-import org.gradle.api.artifacts.ComponentMetadataContext;
-import org.gradle.api.artifacts.ComponentMetadataRule;
+import org.gradle.api.artifacts.ModuleVersionIdentifier;
 import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
+
+import javax.inject.Inject;
 
 @CacheableRule
 @NonNullApi
-public abstract class JakartaActivationImplementationRule implements ComponentMetadataRule {
+public abstract class JakartaActivationImplementationRule extends EnumBasedRule {
 
-    public static final String CAPABILITY_GROUP = "com.sun.activation";
-    public static final String CAPABILITY_NAME = "jakarta.activation";
-    public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
 
     // Starting with this version the implementation moved to the 'org.eclipse' package and is no longer a conflict
     public static final String FIRST_ECLIPSE_VERSION = "2.0.0";
 
-    public static final String[] MODULES = {
-            "org.eclipse.angus:angus-activation"
-    };
+    @Inject
+    public JakartaActivationImplementationRule(CapabilityDefinitions rule) {
+        super(rule);
+    }
 
     @Override
-    public void execute(ComponentMetadataContext context) {
-        String version = context.getDetails().getId().getVersion();
-
-        if (VersionNumber.parse(version).compareTo(VersionNumber.parse(FIRST_ECLIPSE_VERSION)) < 0) {
-            context.getDetails().allVariants(variant -> variant.withCapabilities(capabilities ->
-                    capabilities.addCapability(CAPABILITY_GROUP, CAPABILITY_NAME, version)
-            ));
-        }
+    protected boolean shouldApply(ModuleVersionIdentifier id) {
+        return VersionNumber.parse(id.getVersion()).compareTo(VersionNumber.parse(FIRST_ECLIPSE_VERSION)) < 0;
     }
 }
