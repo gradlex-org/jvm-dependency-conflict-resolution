@@ -21,6 +21,8 @@ import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ModuleVersionIdentifier;
 import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
 
+import javax.inject.Inject;
+
 @CacheableRule
 @NonNullApi
 public abstract class AopallianceRule extends EnumBasedRule {
@@ -28,6 +30,7 @@ public abstract class AopallianceRule extends EnumBasedRule {
     // the conflict starts from Spring 4.3.0, before that it is effectively a correct dependency
     private static final String FIRST_AOP_EMBEDDED_VERSION = "4.3.0";
 
+    @Inject
     public AopallianceRule(CapabilityDefinitions rule) {
         super(rule);
     }
