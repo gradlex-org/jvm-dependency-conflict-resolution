@@ -200,7 +200,6 @@ compileClasspath - Compile classpath for source set 'main'.
 |    +--- com.zaxxer:SparseBitSet:1.3
 |    +--- org.apache.logging.log4j:log4j-api:2.21.1
 |    |    \\--- org.apache.logging.log4j:log4j-bom:2.21.1
-|    |         +--- org.apache.logging.log4j:log4j-bom:2.21.1 (*)
 |    |         \\--- org.apache.logging.log4j:log4j-api:2.21.1 (c)
 |    +--- org.apache.poi:poi:5.2.5 (c)
 |    +--- org.apache.poi:poi-excelant:5.2.5 (c)
