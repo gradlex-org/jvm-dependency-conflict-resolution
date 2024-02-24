@@ -16,14 +16,12 @@
 
 package org.gradlex.javaecosystem.capabilities.rules;
 
-import org.gradle.api.NonNullApi;
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.VariantMetadata;
 
 import javax.inject.Inject;
 
 @CacheableRule
-@NonNullApi
 public abstract class GuavaListenableFutureRule extends EnumBasedRule {
 
     @Inject

@@ -16,17 +16,13 @@
 
 package org.gradlex.javaecosystem.capabilities.rules;
 
-import org.gradle.api.NonNullApi;
 import org.gradle.api.artifacts.CacheableRule;
-import org.gradle.api.artifacts.ComponentMetadataContext;
-import org.gradle.api.artifacts.ComponentMetadataRule;
 import org.gradle.api.artifacts.ModuleVersionIdentifier;
 import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
 
 import javax.inject.Inject;
 
 @CacheableRule
-@NonNullApi
 public abstract class JavaxInjectApiRule extends EnumBasedRule {
 
     public static final String FIRST_JAKARTA_VERSION = "2.0.0";

@@ -16,7 +16,6 @@
 
 package org.gradlex.javaecosystem.capabilities.rules;
 
-import org.gradle.api.NonNullApi;
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ModuleVersionIdentifier;
 import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
@@ -24,7 +23,6 @@ import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
 import javax.inject.Inject;
 
 @CacheableRule
-@NonNullApi
 public abstract class AopallianceRule extends EnumBasedRule {
 
     // the conflict starts from Spring 4.3.0, before that it is effectively a correct dependency

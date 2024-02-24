@@ -14,26 +14,7 @@
  * limitations under the License.
  */
 
+@NonNullApi
 package org.gradlex.javaecosystem.capabilities.rules;
 
-import org.gradle.api.artifacts.CacheableRule;
-import org.gradle.api.artifacts.ModuleVersionIdentifier;
-import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
-
-import javax.inject.Inject;
-
-@CacheableRule
-public abstract class JavaxValidationApiRule extends EnumBasedRule {
-
-    static final String FIRST_JAKARTA_VERSION = "3.0.0";
-
-    @Inject
-    public JavaxValidationApiRule(CapabilityDefinitions rule) {
-        super(rule);
-    }
-
-    @Override
-    protected boolean shouldApply(ModuleVersionIdentifier id) {
-        return VersionNumber.parse(id.getVersion()).compareTo(VersionNumber.parse(FIRST_JAKARTA_VERSION)) < 0;
-    }
-}
+import org.gradle.api.NonNullApi;
