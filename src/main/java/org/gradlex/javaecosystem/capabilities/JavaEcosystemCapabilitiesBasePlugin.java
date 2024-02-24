@@ -42,8 +42,6 @@ import org.gradlex.javaecosystem.capabilities.rules.FindbugsAnnotationsRule;
 import org.gradlex.javaecosystem.capabilities.rules.GoogleCollectionsRule;
 import org.gradlex.javaecosystem.capabilities.rules.GuavaListenableFutureRule;
 import org.gradlex.javaecosystem.capabilities.rules.GuavaRule;
-import org.gradlex.javaecosystem.capabilities.rules.HamcrestCoreRule;
-import org.gradlex.javaecosystem.capabilities.rules.HamcrestLibraryRule;
 import org.gradlex.javaecosystem.capabilities.rules.HikariCPRule;
 import org.gradlex.javaecosystem.capabilities.rules.IntellijAnnotationsRule;
 import org.gradlex.javaecosystem.capabilities.rules.JakartaActivationApiRule;
@@ -144,8 +142,6 @@ public class JavaEcosystemCapabilitiesBasePlugin implements Plugin<ExtensionAwar
         registerRule(GoogleCollectionsRule.MODULES, GoogleCollectionsRule.class, components);
         registerRule(GuavaListenableFutureRule.MODULES, GuavaListenableFutureRule.class, components);
         registerRule(GuavaRule.MODULES, GuavaRule.class, components);
-        registerRule(HamcrestCoreRule.MODULES, HamcrestCoreRule.class, components);
-        registerRule(HamcrestLibraryRule.MODULES, HamcrestLibraryRule.class, components);
         registerRule(HikariCPRule.MODULES, HikariCPRule.class, components);
         registerRule(IntellijAnnotationsRule.MODULES, IntellijAnnotationsRule.class, components);
 

@@ -22,70 +22,19 @@ import org.gradle.api.Project;
 import org.gradle.api.artifacts.CapabilitiesResolution;
 import org.gradle.api.artifacts.CapabilityResolutionDetails;
 import org.gradle.api.artifacts.ComponentVariantIdentifier;
+import org.gradle.api.artifacts.Configuration;
+import org.gradle.api.artifacts.ConfigurationContainer;
 import org.gradle.api.artifacts.component.ModuleComponentIdentifier;
-import org.gradlex.javaecosystem.capabilities.rules.AopallianceRule;
-import org.gradlex.javaecosystem.capabilities.rules.BouncycastleBcmailRule;
-import org.gradlex.javaecosystem.capabilities.rules.BouncycastleBcpgRule;
-import org.gradlex.javaecosystem.capabilities.rules.BouncycastleBcpkixRule;
-import org.gradlex.javaecosystem.capabilities.rules.BouncycastleBcprovRule;
-import org.gradlex.javaecosystem.capabilities.rules.BouncycastleBctlsRule;
-import org.gradlex.javaecosystem.capabilities.rules.BouncycastleBctspRule;
-import org.gradlex.javaecosystem.capabilities.rules.BouncycastleBcutilRule;
-import org.gradlex.javaecosystem.capabilities.rules.C3p0Rule;
-import org.gradlex.javaecosystem.capabilities.rules.CGlibRule;
 import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
-import org.gradlex.javaecosystem.capabilities.rules.CommonsIoRule;
-import org.gradlex.javaecosystem.capabilities.rules.Dom4jRule;
-import org.gradlex.javaecosystem.capabilities.rules.FindbugsAnnotationsRule;
-import org.gradlex.javaecosystem.capabilities.rules.GoogleCollectionsRule;
-import org.gradlex.javaecosystem.capabilities.rules.GuavaListenableFutureRule;
-import org.gradlex.javaecosystem.capabilities.rules.GuavaRule;
-import org.gradlex.javaecosystem.capabilities.rules.HamcrestCoreRule;
-import org.gradlex.javaecosystem.capabilities.rules.HamcrestLibraryRule;
-import org.gradlex.javaecosystem.capabilities.rules.HikariCPRule;
-import org.gradlex.javaecosystem.capabilities.rules.IntellijAnnotationsRule;
-import org.gradlex.javaecosystem.capabilities.rules.JakartaActivationApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.JakartaActivationImplementationRule;
-import org.gradlex.javaecosystem.capabilities.rules.JakartaAnnotationApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.JakartaJsonApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.JakartaServletApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.JakartaWebsocketApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.JakartaWebsocketClientApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.JakartaWsRsApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.JavaAssistRule;
-import org.gradlex.javaecosystem.capabilities.rules.JavaxActivationApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.JavaxAnnotationApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.JavaxEjbApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.JavaxElApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.JavaxInjectApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.JavaxJsonApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.JavaxJwsApisRule;
-import org.gradlex.javaecosystem.capabilities.rules.JavaxMailApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.JavaxPersistenceApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.JavaxServletJspRule;
-import org.gradlex.javaecosystem.capabilities.rules.JavaxServletJstlRule;
-import org.gradlex.javaecosystem.capabilities.rules.JavaxSoapApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.JavaxValidationApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.JavaxWebsocketApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.JavaxWsRsApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.JavaxXmlBindApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.JavaxXmlWsApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.JcipAnnotationsRule;
-import org.gradlex.javaecosystem.capabilities.rules.JnaPlatformRule;
-import org.gradlex.javaecosystem.capabilities.rules.JtsCoreRule;
-import org.gradlex.javaecosystem.capabilities.rules.JtsRule;
-import org.gradlex.javaecosystem.capabilities.rules.JunitRule;
-import org.gradlex.javaecosystem.capabilities.rules.PostgresqlRule;
-import org.gradlex.javaecosystem.capabilities.rules.StaxApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.VelocityRule;
-import org.gradlex.javaecosystem.capabilities.rules.WoodstoxAslRule;
 import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
 
 import javax.annotation.Nullable;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
+
+import static org.gradlex.javaecosystem.capabilities.JavaEcosystemCapabilitiesBasePlugin.basePluginNotYetRegisteredInSettings;
+import static org.gradlex.javaecosystem.capabilities.resolution.DefaultResolutionStrategy.FIRST_MODULE;
+import static org.gradlex.javaecosystem.capabilities.resolution.DefaultResolutionStrategy.HIGHEST_VERSION;
 
 @NonNullApi
 public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project> {
@@ -94,24 +43,19 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
     public void apply(Project project) {
         BasePluginApplication.of(project).handleRulesMode();
 
-        Map<String, String> standardResolutionStrategy = configureResolutionStrategies();
+        JavaEcosystemCapabilitiesExtension javaEcosystemCapabilities = project.getExtensions().create("javaEcosystemCapabilities", JavaEcosystemCapabilitiesExtension.class);
 
-        JavaEcosystemCapabilitiesExtension javaEcosystemCapabilities =
-                project.getExtensions().create("javaEcosystemCapabilities", JavaEcosystemCapabilitiesExtension.class, standardResolutionStrategy.keySet());
-        project.getConfigurations().all(configuration ->
-                defineStrategies(javaEcosystemCapabilities, configuration.getResolutionStrategy().getCapabilitiesResolution(), standardResolutionStrategy));
+        configureResolutionStrategies(project.getConfigurations(), javaEcosystemCapabilities);
     }
 
-    /**
-     * @return Map: Capability -> Default Module to resolve to (or 'null' if resolve to the highest version)
-     */
-    private Map<String, String> configureResolutionStrategies() {
-        final Map<String, String> standardResolutionStrategy = new HashMap<>();
+    private void configureResolutionStrategies(ConfigurationContainer configurations, JavaEcosystemCapabilitiesExtension javaEcosystemCapabilities) {
+        configurations.all(configuration -> {
+            for (CapabilityDefinitions definition : CapabilityDefinitions.values()) {
+                defineStrategy(definition, configuration, javaEcosystemCapabilities);
+            }
+        });
 
-        for (CapabilityDefinitions definition : CapabilityDefinitions.values()) {
-            standardResolutionStrategy.put(definition.getCapability(), null);
-        }
-
+        /*
         standardResolutionStrategy.put(AopallianceRule.CAPABILITY, null);
         standardResolutionStrategy.put(BouncycastleBcmailRule.CAPABILITY, null);
         standardResolutionStrategy.put(BouncycastleBcpgRule.CAPABILITY, null);
@@ -128,10 +72,6 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
         standardResolutionStrategy.put(GoogleCollectionsRule.CAPABILITY, null);
         standardResolutionStrategy.put(GuavaListenableFutureRule.CAPABILITY, null);
         standardResolutionStrategy.put(GuavaRule.CAPABILITY, null);
-        standardResolutionStrategy.put(HamcrestCoreRule.CAPABILITY, HamcrestCoreRule.MODULES[0]);
-
-        standardResolutionStrategy.put(HamcrestLibraryRule.CAPABILITY, HamcrestLibraryRule.MODULES[0]);
-
         standardResolutionStrategy.put(HikariCPRule.CAPABILITY, null);
         standardResolutionStrategy.put(IntellijAnnotationsRule.CAPABILITY, null);
         standardResolutionStrategy.put(JakartaActivationApiRule.CAPABILITY, null);
@@ -169,23 +109,20 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project>
         standardResolutionStrategy.put(StaxApiRule.CAPABILITY, null);
         standardResolutionStrategy.put(VelocityRule.CAPABILITY, null);
         standardResolutionStrategy.put(WoodstoxAslRule.CAPABILITY, null);
-
-        return standardResolutionStrategy;
+        */
     }
 
-    private void defineStrategies(JavaEcosystemCapabilitiesExtension javaEcosystemCapabilities, CapabilitiesResolution resolution, Map<String, String> standardResolutionStrategy) {
-        for (String capability : javaEcosystemCapabilities.getAllCapabilities()) {
-            String strategy = standardResolutionStrategy.get(capability);
-            resolution.withCapability(capability, details -> {
-                if (!javaEcosystemCapabilities.getDeactivatedResolutionStrategies().get().contains(capability)) {
-                    if (strategy == null) {
-                        selectHighestVersion(details);
-                    } else {
-                        select(details, strategy);
-                    }
+    private void defineStrategy(CapabilityDefinitions definition, Configuration configuration, JavaEcosystemCapabilitiesExtension javaEcosystemCapabilities) {
+        CapabilitiesResolution resolution = configuration.getResolutionStrategy().getCapabilitiesResolution();
+        resolution.withCapability(definition.getCapability(), details -> {
+            if (!javaEcosystemCapabilities.getDeactivatedResolutionStrategies().get().contains(definition)) {
+                if (definition.defaultStrategy == HIGHEST_VERSION) {
+                    selectHighestVersion(details);
+                } else if (definition.defaultStrategy == FIRST_MODULE) {
+                    select(details, definition.modules.get(0));
                 }
-            });
-        }
+            }
+        });
     }
 
     private void selectHighestVersion(CapabilityResolutionDetails details) {

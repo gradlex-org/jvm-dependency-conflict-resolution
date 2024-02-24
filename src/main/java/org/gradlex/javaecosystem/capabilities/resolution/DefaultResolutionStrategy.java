@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-package org.gradlex.javaecosystem.capabilities;
+package org.gradlex.javaecosystem.capabilities.resolution;
 
-import org.gradle.api.provider.SetProperty;
-import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
-
-public abstract class JavaEcosystemCapabilitiesExtension {
-    public abstract SetProperty<CapabilityDefinitions> getDeactivatedResolutionStrategies();
+public enum DefaultResolutionStrategy {
+    HIGHEST_VERSION,
+    FIRST_MODULE,
+    NONE
 }
