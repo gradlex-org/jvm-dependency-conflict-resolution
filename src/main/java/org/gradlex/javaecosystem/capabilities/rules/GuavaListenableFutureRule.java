@@ -17,6 +17,7 @@
 package org.gradlex.javaecosystem.capabilities.rules;
 
 import org.gradle.api.artifacts.CacheableRule;
+import org.gradle.api.artifacts.ModuleVersionIdentifier;
 import org.gradle.api.artifacts.VariantMetadata;
 
 import javax.inject.Inject;
@@ -27,6 +28,14 @@ public abstract class GuavaListenableFutureRule extends EnumBasedRule {
     @Inject
     public GuavaListenableFutureRule(CapabilityDefinitions rule) {
         super(rule);
+    }
+
+    @Override
+    protected String getVersion(ModuleVersionIdentifier id) {
+        if ("listenablefuture".equals(id.getGroup())) {
+            return "1.0";
+        }
+        return id.getVersion();
     }
 
     @Override
