@@ -32,13 +32,10 @@ public abstract class JakartaServletApiRule extends EnumBasedRule {
 
     @Override
     protected String getVersion(ModuleVersionIdentifier id) {
-        String version;
         if (id.getGroup().startsWith("org.apache.tomcat")) {
-            version = JavaxServletApiRule.servletApiVersionForTomcatVersion(VersionNumber.parse(id.getVersion()));
-        } else {
-            version = id.getVersion();
+            return JavaxServletApiRule.servletApiVersionForTomcatVersion(VersionNumber.parse(id.getVersion()));
         }
-        return version;
+        return id.getVersion();
     }
 
     @Override

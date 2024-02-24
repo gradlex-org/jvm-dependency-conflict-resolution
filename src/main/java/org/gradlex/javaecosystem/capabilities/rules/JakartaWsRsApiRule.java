@@ -31,6 +31,9 @@ public abstract class JakartaWsRsApiRule extends EnumBasedRule {
 
     @Override
     protected String getVersion(ModuleVersionIdentifier id) {
-        return "3.0";
+        if ("jakarta.ws.rs".equals(id.getGroup())) {
+            return id.getVersion();
+        }
+        return "3.0.0";
     }
 }
