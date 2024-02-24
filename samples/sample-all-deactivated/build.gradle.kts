@@ -199,7 +199,6 @@ dependencies {
     implementation("org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.1_spec:2.0.2.Final")
     implementation("org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_3.0_spec:1.0.1.Final")
     implementation("org.jetbrains:annotations:24.0.0")
-    implementation("org.locationtech.jts:jts-core:1.19.0")
     implementation("org.ow2.asm:asm:9.2")
     implementation("org.postgresql:postgresql:42.5.0")
     implementation("org.springframework:spring-aop:5.3.23")

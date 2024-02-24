@@ -18,32 +18,21 @@ package org.gradlex.javaecosystem.capabilities.rules;
 
 import org.gradle.api.NonNullApi;
 import org.gradle.api.artifacts.CacheableRule;
-import org.gradle.api.artifacts.ComponentMetadataContext;
-import org.gradle.api.artifacts.ComponentMetadataRule;
+import org.gradle.api.artifacts.VariantMetadata;
 
 @CacheableRule
 @NonNullApi
-public abstract class GuavaListenableFutureRule implements ComponentMetadataRule {
+public abstract class GuavaListenableFutureRule extends EnumBasedRule {
 
-    public static final String CAPABILITY_GROUP = "com.google.guava";
-    public static final String CAPABILITY_NAME = "listenablefuture";
-    public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
-
-    public static final String[] MODULES = {
-            "com.google.guava:guava"
-    };
+    public GuavaListenableFutureRule(CapabilityDefinitions rule) {
+        super(rule);
+    }
 
     @Override
-    public void execute(ComponentMetadataContext context) {
+    protected void additionalAdjustments(VariantMetadata variant) {
         // Despite publishing Gradle Metadata for Guava 32.1+, this part was not adopted eventually
         // See: https://github.com/google/guava/issues/6642#issuecomment-1656201382
-        context.getDetails().allVariants(variant -> {
-            // Remove workaround dependency to '9999.0-empty-to-avoid-conflict-with-guava'
-            variant.withDependencies(dependencies -> dependencies.removeIf(d -> CAPABILITY_NAME.equals(d.getName())));
-            variant.withCapabilities(capabilities -> {
-                capabilities.removeCapability(CAPABILITY_GROUP, CAPABILITY_NAME); // remove just in case, as some intermediate 32.1.x version did add the capability
-                capabilities.addCapability(CAPABILITY_GROUP, CAPABILITY_NAME, "1.0");
-            });
-        });
+        // Remove workaround dependency to '9999.0-empty-to-avoid-conflict-with-guava'
+        variant.withDependencies(dependencies -> dependencies.removeIf(d -> "listenablefuture".equals(d.getName())));
     }
 }

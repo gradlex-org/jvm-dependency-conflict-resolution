@@ -28,12 +28,123 @@ import static org.gradlex.javaecosystem.capabilities.resolution.DefaultResolutio
 import static org.gradlex.javaecosystem.capabilities.resolution.DefaultResolutionStrategy.NONE;
 
 public enum CapabilityDefinitions {
-
-    ASM(HIGHEST_VERSION,
-        "asm:asm",
-        "org.ow2.asm:asm"
+    AOPALLIANCE(HIGHEST_VERSION, AopallianceRule.class,
+        "aopalliance", "aopalliance",
+        "org.springframework:spring-aop"
     ),
-
+    ASM(HIGHEST_VERSION,
+            "asm:asm",
+            "org.ow2.asm:asm"
+    ),
+    BOUNCYCASTLE_BCMAIL(HIGHEST_VERSION,
+        "org.bouncycastle:bcmail",
+        "org.bouncycastle:bcmail-fips",
+        "org.bouncycastle:bcmail-jdk14",
+        "org.bouncycastle:bcmail-jdk15",
+        "org.bouncycastle:bcmail-jdk15+",
+        "org.bouncycastle:bcmail-jdk15on",
+        "org.bouncycastle:bcmail-jdk15to18",
+        "org.bouncycastle:bcmail-jdk16",
+        "org.bouncycastle:bcmail-jdk18on",
+        "org.bouncycastle:bcjmail-jdk15on",
+        "org.bouncycastle:bcjmail-jdk15to18",
+        "org.bouncycastle:bcjmail-jdk18on"
+    ),
+    BOUNCYCASTLE_BCPG(HIGHEST_VERSION,
+        "org.bouncycastle:bcpg",
+        "org.bouncycastle:bcpg-fips",
+        "org.bouncycastle:bcpg-jdk12",
+        "org.bouncycastle:bcpg-jdk14",
+        "org.bouncycastle:bcpg-jdk15",
+        "org.bouncycastle:bcpg-jdk15+",
+        "org.bouncycastle:bcpg-jdk15on",
+        "org.bouncycastle:bcpg-jdk15to18",
+        "org.bouncycastle:bcpg-jdk16",
+        "org.bouncycastle:bcpg-jdk18on"
+    ),
+    BOUNCYCASTLE_BCPKIX(HIGHEST_VERSION,
+        "org.bouncycastle:bcpkix",
+        "org.bouncycastle:bcpkix-fips",
+        "org.bouncycastle:bcpkix-jdk14",
+        "org.bouncycastle:bcpkix-jdk15on",
+        "org.bouncycastle:bcpkix-jdk15to18",
+        "org.bouncycastle:bcpkix-jdk18on"
+    ),
+    BOUNCYCASTLE_BCPROV(HIGHEST_VERSION,
+        "org.bouncycastle:bcprov",
+        "org.bouncycastle:bcprov-debug-jdk14",
+        "org.bouncycastle:bcprov-debug-jdk15on",
+        "org.bouncycastle:bcprov-debug-jdk15to18",
+        "org.bouncycastle:bcprov-debug-jdk18on",
+        "org.bouncycastle:bcprov-ext-debug-jdk14",
+        "org.bouncycastle:bcprov-ext-debug-jdk15on",
+        "org.bouncycastle:bcprov-ext-debug-jdk15to18",
+        "org.bouncycastle:bcprov-ext-debug-jdk18on",
+        "org.bouncycastle:bcprov-ext-jdk14",
+        "org.bouncycastle:bcprov-ext-jdk15",
+        "org.bouncycastle:bcprov-ext-jdk15on",
+        "org.bouncycastle:bcprov-ext-jdk15to18",
+        "org.bouncycastle:bcprov-ext-jdk16",
+        "org.bouncycastle:bcprov-ext-jdk18on",
+        "org.bouncycastle:bcprov-jdk12",
+        "org.bouncycastle:bcprov-jdk14",
+        "org.bouncycastle:bcprov-jdk15",
+        "org.bouncycastle:bcprov-jdk15+",
+        "org.bouncycastle:bcprov-jdk15on",
+        "org.bouncycastle:bcprov-jdk15to18",
+        "org.bouncycastle:bcprov-jdk16",
+        "org.bouncycastle:bcprov-jdk18on",
+        "org.bouncycastle:bc-fips",
+        "org.bouncycastle:bc-fips-debug"
+    ),
+    BOUNCYCASTLE_BCTLS(HIGHEST_VERSION,
+        "org.bouncycastle:bctls",
+        "org.bouncycastle:bctls-jdk14",
+        "org.bouncycastle:bctls-jdk15on",
+        "org.bouncycastle:bctls-jdk15to18",
+        "org.bouncycastle:bctls-jdk18on",
+        "org.bouncycastle:bctls-fips"
+    ),
+    BOUNCYCASTLE_BCUTIL(HIGHEST_VERSION,
+        "org.bouncycastle:bcutil",
+        "org.bouncycastle:bcutil-jdk14",
+        "org.bouncycastle:bcutil-jdk15on",
+        "org.bouncycastle:bcutil-jdk15to18",
+        "org.bouncycastle:bcutil-jdk18on"
+    ),
+    C3P0(HIGHEST_VERSION,
+        "c3po:c3po",
+        "com.mchange:c3p0"
+    ),
+    CGLIB(HIGHEST_VERSION,
+        "cglib:cglib",
+        "cglib:cglib-nodep"
+    ),
+    COMMONS_IO(HIGHEST_VERSION,
+        "commons-io:commons-io",
+        "org.apache.commons:commons-io"
+    ),
+    DOM4J(HIGHEST_VERSION,
+        "dom4j:dom4j",
+        "org.dom4j:dom4j"
+    ),
+    FINDBUGS_ANNOTATIONS(HIGHEST_VERSION,
+        "com.google.code.findbugs:annotations",
+        "com.google.code.findbugs:findbugs-annotations",
+        "com.github.spotbugs:spotbugs-annotations"
+    ),
+    GOOGLE_COLLECTIONS(HIGHEST_VERSION,
+        "com.google.collections:google-collections",
+        "com.google.guava:guava"
+    ),
+    GUAVA(HIGHEST_VERSION,
+        "com.google.guava:guava",
+        "com.google.guava:guava-jdk5"
+    ),
+    GUAVA_LISTENABLE_FUTURE(HIGHEST_VERSION, GuavaListenableFutureRule.class,
+        "com.google.guava:listenablefuture",
+        "com.google.guava:guava"
+    ),
     HAMCREST_LIBRARY(FIRST_MODULE,
         "org.hamcrest:hamcrest",
         "org.hamcrest:hamcrest-library"
@@ -42,14 +153,64 @@ public enum CapabilityDefinitions {
         "org.hamcrest:hamcrest",
         "org.hamcrest:hamcrest-core"
     ),
+    HIKARI_CP(HIGHEST_VERSION,
+        "com.zaxxer:HikariCP",
+        "com.zaxxer:HikariCP-java6",
+        "com.zaxxer:HikariCP-java7"
+    ),
+    INTELLIJ_ANNOTATIONS(HIGHEST_VERSION,
+        "org.jetbrains:annotations",
+        "com.intellij:annotations"
+    ),
+    JAVA_ASSIST(HIGHEST_VERSION,
+        "javassist:javassist",
+        "org.javassist:javassist",
+        "jboss:javassist"
+    ),
+    JCIP_ANNOTATIONS(HIGHEST_VERSION,
+        "net.jcip:jcip-annotations",
+        "com.github.stephenc.jcip:jcip-annotations"
+    ),
+    JNA_PLATFORM(HIGHEST_VERSION,
+        "net.java.dev.jna:platform",
+        "net.java.dev.jna:jna-platform"
+    ),
+    JTS_CORE(HIGHEST_VERSION,
+        "com.vividsolutions:jts",
+        "com.vividsolutions:jts-core"
+    ),
+    JUNIT(HIGHEST_VERSION,
+        "junit:junit",
+        "junit:junit-dep"
+    ),
+    POSTGRESQL(HIGHEST_VERSION,
+        "postgresql:postgresql",
+        "org.postgresql:postgresql"
+    ),
+    STAX_API(HIGHEST_VERSION,
+        "stax:stax-api",
+        "javax.xml.stream:stax-api"
+    ),
+    VELOCITY(HIGHEST_VERSION,
+        "velocity:velocity",
+        "org.apache.velocity:velocity",
+        "org.apache.velocity:velocity-engine-core"
+    ),
+    WOODSTOX_ASL(HIGHEST_VERSION,
+        "org.codehaus.woodstox:woodstox-core-asl",
+        "org.codehaus.woodstox:woodstox-core-lgpl",
+        "org.codehaus.woodstox:wstx-asl",
+        "org.codehaus.woodstox:wstx-lgpl",
+        "woodstox:wstx-asl"
+    ),
 
-    JAKARTA_MAIL_API(NONE, JakartaMailApiRule.class,
+    JAKARTA_MAIL_API(HIGHEST_VERSION, JakartaMailApiRule.class,
         "jakarta.mail:jakarta.mail-api",
         "com.sun.mail:mailapi",
         "com.sun.mail:jakarta.mail",
         "org.eclipse.angus:jakarta.mail"
     ),
-    JAVAX_SERVLET_API(NONE, JavaxServletApiRule.class,
+    JAVAX_SERVLET_API(HIGHEST_VERSION, JavaxServletApiRule.class,
         "javax.servlet:servlet-api",
         "javax.servlet:javax.servlet-api",
         "jakarta.servlet:jakarta.servlet-api",
@@ -58,6 +219,9 @@ public enum CapabilityDefinitions {
         "org.apache.tomcat.embed:tomcat-embed-core",
         "servletapi:servletapi"
     ),
+
+
+
     /**
      * Log4J2 has its own implementation with `log4j-core`.
      * It can also delegate to Slf4J with `log4j-to-slf4j`.

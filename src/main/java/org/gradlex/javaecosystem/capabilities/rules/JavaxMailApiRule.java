@@ -30,7 +30,7 @@ public abstract class JavaxMailApiRule implements ComponentMetadataRule {
     public static final String CAPABILITY_NAME = "mail";
     public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
 
-    public static final String FIRST_JAKARTA_VERSION = "2.0.0";
+    static final String FIRST_JAKARTA_VERSION = "2.0.0";
 
     public static final String[] MODULES = {
             // API only

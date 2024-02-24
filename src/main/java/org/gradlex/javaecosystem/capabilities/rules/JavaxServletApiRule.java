@@ -27,7 +27,7 @@ import javax.inject.Inject;
 @NonNullApi
 public abstract class JavaxServletApiRule extends EnumBasedRule {
 
-    public static final String FIRST_JAKARTA_VERSION = "5.0.0";
+    private static final String FIRST_JAKARTA_VERSION = "5.0.0";
 
     @Inject
     public JavaxServletApiRule(CapabilityDefinitions rule) {

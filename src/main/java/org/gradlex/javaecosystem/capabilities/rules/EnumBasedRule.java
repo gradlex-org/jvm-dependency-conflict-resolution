@@ -20,6 +20,7 @@ import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataRule;
 import org.gradle.api.artifacts.ModuleVersionIdentifier;
+import org.gradle.api.artifacts.VariantMetadata;
 
 import javax.inject.Inject;
 
@@ -36,9 +37,12 @@ public abstract class EnumBasedRule implements ComponentMetadataRule {
     @Override
     public final void execute(ComponentMetadataContext context) {
         if (shouldApply(context.getDetails().getId())) {
-            context.getDetails().allVariants(variant -> variant.withCapabilities(capabilities -> capabilities.addCapability(
-                    rule.group, rule.name, getVersion(context.getDetails().getId())
-            )));
+            context.getDetails().allVariants(variant -> {
+                variant.withCapabilities(capabilities -> capabilities.addCapability(
+                        rule.group, rule.name, getVersion(context.getDetails().getId())
+                ));
+                additionalAdjustments(variant);
+            });
         }
     }
 
@@ -48,5 +52,9 @@ public abstract class EnumBasedRule implements ComponentMetadataRule {
 
     protected String getVersion(ModuleVersionIdentifier id) {
         return id.getVersion();
+    }
+
+    protected void additionalAdjustments(VariantMetadata variant) {
+        // no-op
     }
 }
