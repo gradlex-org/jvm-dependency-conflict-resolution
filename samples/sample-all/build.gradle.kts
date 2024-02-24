@@ -24,7 +24,6 @@ dependencies {
     implementation("com.jwebmp:javax.inject:1.1")
     implementation("com.mchange:c3p0:0.9.5.5")
     implementation("com.sun.activation:javax.activation:1.2.0")
-    implementation("com.sun.mail:jakarta.mail:2.0.1")
     implementation("com.sun.mail:javax.mail:1.6.2")
     implementation("com.sun.mail:mailapi:2.0.0")
     implementation("com.vividsolutions:jts-core:1.14.0")
@@ -35,21 +34,21 @@ dependencies {
     implementation("commons-io:commons-io:2.11.0")
     implementation("dom4j:dom4j:1.6.1")
     implementation("jakarta.activation:jakarta.activation-api:2.0.0!!")
-    implementation("jakarta.annotation:jakarta.annotation-api:2.1.0")
+    implementation("jakarta.annotation:jakarta.annotation-api:2.1.1")
     implementation("jakarta.ejb:jakarta.ejb-api:4.0.0")
     implementation("jakarta.el:jakarta.el-api:4.0.0")
     implementation("jakarta.inject:jakarta.inject-api:1.0.5")
     implementation("jakarta.json:jakarta.json-api:1.1.6")
     implementation("jakarta.jws:jakarta.jws-api:3.0.0")
-    // implementation("jakarta.mail:jakarta.mail-api:2.1.0") - hitting https://github.com/gradle/gradle/issues/14220
+    implementation("jakarta.mail:jakarta.mail-api:2.1.0")
     implementation("jakarta.persistence:jakarta.persistence-api:3.0.0")
     implementation("jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:1.2.7")
     implementation("jakarta.servlet.jsp:jakarta.servlet.jsp-api:2.3.6")
     implementation("jakarta.servlet:jakarta.servlet-api:5.0.0")
     implementation("jakarta.validation:jakarta.validation-api:2.0.1")
-    implementation("jakarta.websocket:jakarta.websocket-api:2.1.0")
-    implementation("jakarta.websocket:jakarta.websocket-client-api:2.1.0")
-    implementation("jakarta.ws.rs:jakarta.ws.rs-api:3.0.0")
+    implementation("jakarta.websocket:jakarta.websocket-api:2.1.1")
+    implementation("jakarta.websocket:jakarta.websocket-client-api:2.1.1")
+    implementation("jakarta.ws.rs:jakarta.ws.rs-api:3.1.0")
     implementation("jakarta.xml.bind:jakarta.xml.bind-api:3.0.1")
     implementation("jakarta.xml.soap:jakarta.xml.soap-api:2.0.1")
     implementation("jakarta.xml.ws:jakarta.xml.ws-api:3.0.1")
@@ -103,13 +102,11 @@ dependencies {
     implementation("org.apache.geronimo.specs:geronimo-javamail_1.4_spec:1.6")
     implementation("org.apache.geronimo.specs:geronimo-javamail_1.6_spec:1.0.1")
     implementation("org.apache.tomcat.embed:tomcat-embed-core:10.1.0")
-    implementation("org.apache.tomcat.embed:tomcat-embed-websocket:10.1.0")
     implementation("org.apache.tomcat:servlet-api:6.0.53")
     implementation("org.apache.tomcat:tomcat-annotations-api:10.1.1")
     implementation("org.apache.tomcat:tomcat-servlet-api:10.1.1")
     implementation("org.apache.tomcat:tomcat-websocket-api:10.1.0")
     implementation("org.apache.tomcat:tomcat-websocket-client-api:10.1.0")
-    implementation("org.apache.tomcat:tomcat-websocket:10.1.1")
     implementation("org.apache.velocity:velocity-engine-core:2.3")
     implementation("org.apache.velocity:velocity:1.7")
     implementation("org.bouncycastle:bcjmail-jdk15on:1.70")
@@ -177,7 +174,6 @@ dependencies {
     implementation("org.eclipse.angus:angus-activation:1.1.0")
     implementation("org.eclipse.angus:jakarta.mail:1.0.0")
     implementation("org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api:5.0.2")
-    implementation("org.eclipse.jetty.toolchain:jetty-jakarta-websocket-api:2.0.0")
     implementation("org.eclipse.jetty.toolchain:jetty-javax-websocket-api:1.1.2")
     implementation("org.glassfish.hk2.external:jakarta.inject:2.6.1")
     implementation("org.glassfish.hk2.external:javax.inject:2.4.0")
@@ -217,16 +213,43 @@ dependencies {
     implementation("org.bouncycastle:bcpkix-fips:1.0.7")
     implementation("org.bouncycastle:bcpkix-jdk18on:1.72")
 
+    // DEACTIVATED DUE TO BUG https://github.com/gradle/gradle/issues/14220
+    // implementation("com.sun.mail:jakarta.mail:2.0.1")
+    // implementation("org.apache.tomcat.embed:tomcat-embed-websocket:10.1.0")
+    // implementation("org.apache.tomcat:tomcat-websocket:10.1.1")
+    // implementation("org.eclipse.jetty.toolchain:jetty-jakarta-websocket-api:2.0.0")
+
     // implementation("woodstox:wstx-lgpl:3.2.7") - has no POM file
 }
 
 javaEcosystemCapabilities {
     deactivatedResolutionStrategies.add(CapabilityDefinitions.BOUNCYCASTLE_BCTSP)
+    deactivatedResolutionStrategies.add(CapabilityDefinitions.JAVAX_ACTIVATION_API)
+    deactivatedResolutionStrategies.add(CapabilityDefinitions.JAVAX_SERVLET_API)
+    deactivatedResolutionStrategies.add(CapabilityDefinitions.JAKARTA_SERVLET_API)
 }
 configurations.all {
     resolutionStrategy.capabilitiesResolution {
         withCapability(CapabilityDefinitions.JAVAX_ACTIVATION_API.capability) {
             val toBeSelected = candidates.firstOrNull { it.id.let { id -> id is ModuleComponentIdentifier && id.module == "javax.activation-api" } }
+            if (toBeSelected != null) {
+                select(toBeSelected)
+            }
+        }
+        withCapability(CapabilityDefinitions.JAVAX_ACTIVATION_API.capability) {
+            val toBeSelected = candidates.firstOrNull { it.id.let { id -> id is ModuleComponentIdentifier && id.module == "javax-activation-api" } }
+            if (toBeSelected != null) {
+                select(toBeSelected)
+            }
+        }
+        withCapability(CapabilityDefinitions.JAKARTA_SERVLET_API.capability) {
+            val toBeSelected = candidates.firstOrNull { it.id.let { id -> id is ModuleComponentIdentifier && id.module == "jakarta.servlet-api" } }
+            if (toBeSelected != null) {
+                select(toBeSelected)
+            }
+        }
+        withCapability(CapabilityDefinitions.JAVAX_SERVLET_API.capability) {
+            val toBeSelected = candidates.firstOrNull { it.id.let { id -> id is ModuleComponentIdentifier && id.module == "javax.servlet-api" } }
             if (toBeSelected != null) {
                 select(toBeSelected)
             }
@@ -244,4 +267,5 @@ tasks.detectCollisions {
     // With ALL variations of bouncycastle modules in all variations in one build it is not possible to avoid all collisions
     collisionFilter.exclude("org/bouncycastle/**")
     collisionFilter.exclude("javax/xml/namespace/QName.class")
+    collisionFilter.exclude("com/sun/activation/registries/*")
 }
