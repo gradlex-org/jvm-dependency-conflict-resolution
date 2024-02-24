@@ -1,5 +1,11 @@
-name: Build Plugin
-on: [ push ]
+name: Cross version tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
 jobs:
   gradle-build:
     runs-on: ubuntu-latest
@@ -16,4 +22,4 @@ jobs:
           java-version: 11
       - name: Set up Gradle
         uses: gradle/gradle-build-action@v2.11.1
-      - run: "./gradlew test${{ gradleVersion }}"
+      - run: "./gradlew test${{ matrix.gradleVersion }}"

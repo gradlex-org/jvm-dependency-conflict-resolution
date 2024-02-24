@@ -2,6 +2,7 @@ dependencyResolutionManagement {
     repositories.gradlePluginPortal()
 }
 
+include("build-lifecycle")
 include("build-parameters")
 include("documentation")
 

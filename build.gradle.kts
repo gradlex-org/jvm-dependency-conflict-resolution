@@ -1,5 +1,6 @@
 plugins {
     id("groovy")
+    id("gradlexbuild.java-ecosystem-capabilities-lifecycle")
     id("gradlexbuild.java-ecosystem-capabilities-documentation")
     id("org.gradlex.internal.plugin-publish-conventions") version "0.6"
 }
@@ -10,6 +11,7 @@ version = "2.0"
 java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(11)) // to run tests that use Android with 11
 }
+
 tasks.withType<JavaCompile>().configureEach {
     options.release.set(8)
 }
@@ -65,6 +67,20 @@ dependencies {
 
 testing.suites.named<JvmTestSuite>("test") {
     useJUnitJupiter()
+    listOf("6.6.1", "6.9.4", "7.0.2", "7.6.4", "8.0.2").forEach { gradleVersionUnderTest ->
+        targets.register("test${gradleVersionUnderTest}") {
+            testTask {
+                group = LifecycleBasePlugin.VERIFICATION_GROUP
+                description = "Runs tests against Gradle $gradleVersionUnderTest"
+                useJUnitPlatform {
+                    excludeTags("no-cross-version")
+                }
+                systemProperty("gradleVersionUnderTest", gradleVersionUnderTest)
+
+                exclude("**/*SamplesTest.class") // Not yet cross-version ready
+            }
+        }
+    }
     targets.all {
         testTask {
             maxParallelForks = 4
@@ -73,25 +89,3 @@ testing.suites.named<JvmTestSuite>("test") {
     }
 }
 
-val checkAllVersions = tasks.register("checkAllVersions") {
-    dependsOn(tasks.check)
-}
-
-listOf("6.6.1", "6.9.4", "7.0.2", "7.6.4", "8.0.2").forEach { gradleVersionUnderTest ->
-    val testGradle = tasks.register<Test>("testGradle$gradleVersionUnderTest") {
-        group = LifecycleBasePlugin.VERIFICATION_GROUP
-        description = "Runs tests against Gradle $gradleVersionUnderTest"
-        testClassesDirs = sourceSets.test.get().output.classesDirs
-        classpath = sourceSets.test.get().runtimeClasspath
-        useJUnitPlatform {
-            excludeTags("no-cross-version")
-        }
-        maxParallelForks = 4
-        systemProperty("gradleVersionUnderTest", gradleVersionUnderTest)
-
-        exclude("**/*SamplesTest.class") // Not yet cross-version ready
-    }
-    checkAllVersions {
-        dependsOn(testGradle)
-    }
-}
