@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "org.gradlex"
-version = "1.5.2"
+version = "2.0"
 
 java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(11)) // to run tests that use Android with 11
@@ -34,6 +34,27 @@ pluginPublishConventions {
         name.set("Jendrik Johannes")
         email.set("jendrik@gradlex.org")
     }
+    developer {
+        id.set("ljacomet")
+        name.set("Louis Jacomet")
+        email.set("louis@gradlex.org")
+    }
+}
+
+gradlePlugin {
+    plugins {
+        create("logging-capabilities") {
+            id = "org.gradlex.logging-capabilities"
+            implementationClass = "org.gradlex.javaecosystem.capabilities.LoggingCapabilitiesPlugin"
+            displayName = "Java Logging Capabilities"
+            description = "Adds configuration options for resolving logging framework conflicts."
+            tags = listOf("dependency", "dependencies", "dependency-management", "logging", "slf4j", "log4j2")
+        }
+        create("java-ecosystem-capabilities-base") {
+            id = "org.gradlex.java-ecosystem-capabilities-base"
+            implementationClass = "org.gradlex.javaecosystem.capabilities.JavaEcosystemCapabilitiesBasePlugin"
+       }
+    }
 }
 
 dependencies {
@@ -56,7 +77,7 @@ val checkAllVersions = tasks.register("checkAllVersions") {
     dependsOn(tasks.check)
 }
 
-listOf("6.0.1", "6.4.1", "6.9.3", "7.0.2", "7.1.1", "7.2", "7.3.3", "7.4.2", "7.5.1", "7.6.1").forEach { gradleVersionUnderTest ->
+listOf("6.6.1", "6.9.4", "7.0.2", "7.6.4", "8.0.2").forEach { gradleVersionUnderTest ->
     val testGradle = tasks.register<Test>("testGradle$gradleVersionUnderTest") {
         group = LifecycleBasePlugin.VERIFICATION_GROUP
         description = "Runs tests against Gradle $gradleVersionUnderTest"

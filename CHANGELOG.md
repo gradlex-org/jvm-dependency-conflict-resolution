@@ -1,5 +1,12 @@
 # Java Ecosystem Capabilities Gradle plugin - Changelog
 
+## Version 2.0
+* [New Rules] [78](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/78) Merge with ['dev.jacomet.logging-capabilities' plugin](https://github.com/ljacomet/logging-capabilities)
+
+### Breaking changes
+
+* Minimum required Gradle version raised to 6.6.2
+
 ## Version 1.5.2
 * [Adjusted Rule] [67](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/67) Remove 'stax2-api' from StaxApiRule
 

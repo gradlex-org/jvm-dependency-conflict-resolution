@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 the GradleX team.
+ * Copyright the GradleX team.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,14 +21,8 @@ import org.gradle.api.Plugin;
 import org.gradle.api.Project;
 import org.gradle.api.artifacts.CapabilitiesResolution;
 import org.gradle.api.artifacts.CapabilityResolutionDetails;
-import org.gradle.api.artifacts.ComponentMetadataRule;
 import org.gradle.api.artifacts.ComponentVariantIdentifier;
 import org.gradle.api.artifacts.component.ModuleComponentIdentifier;
-import org.gradle.api.artifacts.dsl.ComponentMetadataHandler;
-import org.gradle.api.initialization.Settings;
-import org.gradle.api.plugins.ExtensionAware;
-import org.gradle.util.GradleVersion;
-import org.gradlex.javaecosystem.capabilities.componentrules.GuavaComponentRule;
 import org.gradlex.javaecosystem.capabilities.rules.AopallianceRule;
 import org.gradlex.javaecosystem.capabilities.rules.AsmRule;
 import org.gradlex.javaecosystem.capabilities.rules.BouncycastleBcmailRule;
@@ -94,147 +88,97 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
-import java.util.TreeSet;
 
-@SuppressWarnings("unused")
+import static org.gradlex.javaecosystem.capabilities.JavaEcosystemCapabilitiesBasePlugin.basePluginNotYetRegisteredInSettings;
+
 @NonNullApi
-public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<ExtensionAware> {
-
-    private static final GradleVersion MINIMUM_SUPPORTED_VERSION = GradleVersion.version("6.0");
-    private static final GradleVersion MINIMUM_SUPPORTED_VERSION_SETTINGS = GradleVersion.version("6.8");
-
-    /**
-     * Map: Capability -> Default Module to resolve to (or 'null' if resolve to the highest version)
-     */
-    private final Map<String, String> standardResolutionStrategy = new HashMap<>();
+public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project> {
 
     @Override
-    public void apply(ExtensionAware projectOrSettings) {
-        if (GradleVersion.current().compareTo(MINIMUM_SUPPORTED_VERSION) < 0) {
-            throw new IllegalStateException("Plugin requires at least Gradle " + MINIMUM_SUPPORTED_VERSION.getVersion());
+    public void apply(Project project) {
+        if (basePluginNotYetRegisteredInSettings(project)) {
+            project.getPlugins().apply(JavaEcosystemCapabilitiesBasePlugin.class);
         }
 
-        Set<String> allCapabilities = new TreeSet<>();
+        Map<String, String> standardResolutionStrategy = configureResolutionStrategies();
 
-        ComponentMetadataHandler components;
-        if (projectOrSettings instanceof Project) {
-            if (GradleVersion.current().compareTo(MINIMUM_SUPPORTED_VERSION_SETTINGS) >= 0) {
-                // If available, make sure 'jvm-ecosystem' is applied which adds the schemas for the attributes this plugin relies on
-                ((Project) projectOrSettings).getPlugins().apply("jvm-ecosystem");
-            }
-            components = ((Project) projectOrSettings).getDependencies().getComponents();
-        } else if (projectOrSettings instanceof Settings) {
-            if (GradleVersion.current().compareTo(MINIMUM_SUPPORTED_VERSION_SETTINGS) < 0) {
-                throw new IllegalStateException("Using this plugin in settings.gradle requires at least Gradle " + MINIMUM_SUPPORTED_VERSION_SETTINGS.getVersion());
-            }
-            //noinspection UnstableApiUsage
-            components = ((Settings) projectOrSettings).getDependencyResolutionManagement().getComponents();
-        } else {
-            throw new IllegalStateException("Cannot apply plugin to: " + projectOrSettings.getClass().getName());
-        }
-
-        registerCapabilityRules(components, allCapabilities);
-        registerComponentRules(components);
-
-        if (projectOrSettings instanceof Project) {
-            Project project = (Project) projectOrSettings;
-            JavaEcosystemCapabilitiesExtension javaEcosystemCapabilities =
-                    project.getExtensions().create("javaEcosystemCapabilities", JavaEcosystemCapabilitiesExtension.class, allCapabilities);
-            project.getConfigurations().all(configuration ->
-                    defineStrategies(javaEcosystemCapabilities, configuration.getResolutionStrategy().getCapabilitiesResolution()));
-            project.getPlugins().withId("de.jjohannes.missing-metadata-guava", plugin -> {
-                project.getLogger().lifecycle("[WARN] Remove 'de.jjohannes.missing-metadata-guava' plugin from the build. The functionality is included in 'org.gradlex.java-ecosystem-capabilities'.");
-            });
-        }
+        JavaEcosystemCapabilitiesExtension javaEcosystemCapabilities =
+                project.getExtensions().create("javaEcosystemCapabilities", JavaEcosystemCapabilitiesExtension.class, standardResolutionStrategy.keySet());
+        project.getConfigurations().all(configuration ->
+                defineStrategies(javaEcosystemCapabilities, configuration.getResolutionStrategy().getCapabilitiesResolution(), standardResolutionStrategy));
     }
 
-    private void registerCapabilityRules(ComponentMetadataHandler components, Set<String> allCapabilities) {
-        registerRule(AopallianceRule.CAPABILITY, AopallianceRule.MODULES, AopallianceRule.class, null, components, allCapabilities);
-        registerRule(AsmRule.CAPABILITY, AsmRule.MODULES, AsmRule.class, null, components, allCapabilities);
-        registerRule(BouncycastleBcmailRule.CAPABILITY, BouncycastleBcmailRule.MODULES, BouncycastleBcmailRule.class, null, components, allCapabilities);
-        registerRule(BouncycastleBcpgRule.CAPABILITY, BouncycastleBcpgRule.MODULES, BouncycastleBcpgRule.class, null, components, allCapabilities);
-        registerRule(BouncycastleBcpkixRule.CAPABILITY, BouncycastleBcpkixRule.MODULES, BouncycastleBcpkixRule.class, null, components, allCapabilities);
-        registerRule(BouncycastleBcprovRule.CAPABILITY, BouncycastleBcprovRule.MODULES, BouncycastleBcprovRule.class, null, components, allCapabilities);
-        registerRule(BouncycastleBctlsRule.CAPABILITY, BouncycastleBctlsRule.MODULES, BouncycastleBctlsRule.class, null, components, allCapabilities);
-        registerRule(BouncycastleBctspRule.CAPABILITY, BouncycastleBctspRule.MODULES, BouncycastleBctspRule.class, null, components, allCapabilities);
-        registerRule(BouncycastleBcutilRule.CAPABILITY, BouncycastleBcutilRule.MODULES, BouncycastleBcutilRule.class, null, components, allCapabilities);
-        registerRule(C3p0Rule.CAPABILITY, C3p0Rule.MODULES, C3p0Rule.class, null, components, allCapabilities);
-        registerRule(CGlibRule.CAPABILITY, CGlibRule.MODULES, CGlibRule.class, null, components, allCapabilities);
-        registerRule(CommonsIoRule.CAPABILITY, CommonsIoRule.MODULES, CommonsIoRule.class, null, components, allCapabilities);
-        registerRule(Dom4jRule.CAPABILITY, Dom4jRule.MODULES, Dom4jRule.class, null, components, allCapabilities);
-        registerRule(FindbugsAnnotationsRule.CAPABILITY, FindbugsAnnotationsRule.MODULES, FindbugsAnnotationsRule.class, null, components, allCapabilities);
-        registerRule(GoogleCollectionsRule.CAPABILITY, GoogleCollectionsRule.MODULES, GoogleCollectionsRule.class, null, components, allCapabilities);
-        registerRule(GuavaListenableFutureRule.CAPABILITY, GuavaListenableFutureRule.MODULES, GuavaListenableFutureRule.class, null, components, allCapabilities);
-        registerRule(GuavaRule.CAPABILITY, GuavaRule.MODULES, GuavaRule.class, null, components, allCapabilities);
-        registerRule(HamcrestCoreRule.CAPABILITY, HamcrestCoreRule.MODULES, HamcrestCoreRule.class, HamcrestCoreRule.MODULES[0], components, allCapabilities);
-        registerRule(HamcrestLibraryRule.CAPABILITY, HamcrestLibraryRule.MODULES, HamcrestLibraryRule.class, HamcrestLibraryRule.MODULES[0], components, allCapabilities);
-        registerRule(HikariCPRule.CAPABILITY, HikariCPRule.MODULES, HikariCPRule.class, null, components, allCapabilities);
-        registerRule(IntellijAnnotationsRule.CAPABILITY, IntellijAnnotationsRule.MODULES, IntellijAnnotationsRule.class, null, components, allCapabilities);
+    /**
+     * @return Map: Capability -> Default Module to resolve to (or 'null' if resolve to the highest version)
+     */
+    private Map<String, String> configureResolutionStrategies() {
+        final Map<String, String> standardResolutionStrategy = new HashMap<>();
 
-        registerRule(JakartaActivationApiRule.CAPABILITY, JakartaActivationApiRule.MODULES, JakartaActivationApiRule.class, null, components, allCapabilities);
-        registerRule(JakartaActivationImplementationRule.CAPABILITY, JakartaActivationImplementationRule.MODULES, JakartaActivationImplementationRule.class, null, components, allCapabilities);
-        registerRule(JakartaAnnotationApiRule.CAPABILITY, JakartaAnnotationApiRule.MODULES, JakartaAnnotationApiRule.class, null, components, allCapabilities);
-        registerRule(JakartaJsonApiRule.CAPABILITY, JakartaJsonApiRule.MODULES, JakartaJsonApiRule.class, null, components, allCapabilities);
-        registerRule(JakartaMailApiRule.CAPABILITY, JakartaMailApiRule.MODULES, JakartaMailApiRule.class, null, components, allCapabilities);
-        registerRule(JakartaServletApiRule.CAPABILITY, JakartaServletApiRule.MODULES, JakartaServletApiRule.class, null, components, allCapabilities);
-        registerRule(JakartaWebsocketApiRule.CAPABILITY, JakartaWebsocketApiRule.MODULES, JakartaWebsocketApiRule.class, null, components, allCapabilities);
-        registerRule(JakartaWebsocketClientApiRule.CAPABILITY, JakartaWebsocketClientApiRule.MODULES, JakartaWebsocketClientApiRule.class, null, components, allCapabilities);
-        registerRule(JakartaWsRsApiRule.CAPABILITY, JakartaWsRsApiRule.MODULES, JakartaWsRsApiRule.class, null, components, allCapabilities);
+        standardResolutionStrategy.put(AopallianceRule.CAPABILITY, null);
+        standardResolutionStrategy.put(AsmRule.CAPABILITY, null);
+        standardResolutionStrategy.put(BouncycastleBcmailRule.CAPABILITY, null);
+        standardResolutionStrategy.put(BouncycastleBcpgRule.CAPABILITY, null);
+        standardResolutionStrategy.put(BouncycastleBcpkixRule.CAPABILITY, null);
+        standardResolutionStrategy.put(BouncycastleBcprovRule.CAPABILITY, null);
+        standardResolutionStrategy.put(BouncycastleBctlsRule.CAPABILITY, null);
+        standardResolutionStrategy.put(BouncycastleBctspRule.CAPABILITY, null);
+        standardResolutionStrategy.put(BouncycastleBcutilRule.CAPABILITY, null);
+        standardResolutionStrategy.put(C3p0Rule.CAPABILITY, null);
+        standardResolutionStrategy.put(CGlibRule.CAPABILITY, null);
+        standardResolutionStrategy.put(CommonsIoRule.CAPABILITY, null);
+        standardResolutionStrategy.put(Dom4jRule.CAPABILITY, null);
+        standardResolutionStrategy.put(FindbugsAnnotationsRule.CAPABILITY, null);
+        standardResolutionStrategy.put(GoogleCollectionsRule.CAPABILITY, null);
+        standardResolutionStrategy.put(GuavaListenableFutureRule.CAPABILITY, null);
+        standardResolutionStrategy.put(GuavaRule.CAPABILITY, null);
+        standardResolutionStrategy.put(HamcrestCoreRule.CAPABILITY, HamcrestCoreRule.MODULES[0]);
 
-        registerRule(JavaAssistRule.CAPABILITY, JavaAssistRule.MODULES, JavaAssistRule.class, null, components, allCapabilities);
+        standardResolutionStrategy.put(HamcrestLibraryRule.CAPABILITY, HamcrestLibraryRule.MODULES[0]);
 
-        registerRule(JavaxActivationApiRule.CAPABILITY, JavaxActivationApiRule.MODULES, JavaxActivationApiRule.class, null, components, allCapabilities);
-        registerRule(JavaxAnnotationApiRule.CAPABILITY, JavaxAnnotationApiRule.MODULES, JavaxAnnotationApiRule.class, null, components, allCapabilities);
-        registerRule(JavaxEjbApiRule.CAPABILITY, JavaxEjbApiRule.MODULES, JavaxEjbApiRule.class, null, components, allCapabilities);
-        registerRule(JavaxElApiRule.CAPABILITY, JavaxElApiRule.MODULES, JavaxElApiRule.class, null, components, allCapabilities);
-        registerRule(JavaxInjectApiRule.CAPABILITY, JavaxInjectApiRule.MODULES, JavaxInjectApiRule.class, null, components, allCapabilities);
-        registerRule(JavaxJsonApiRule.CAPABILITY, JavaxJsonApiRule.MODULES, JavaxJsonApiRule.class, null, components, allCapabilities);
-        registerRule(JavaxJwsApisRule.CAPABILITY, JavaxJwsApisRule.MODULES, JavaxJwsApisRule.class, null, components, allCapabilities);
-        registerRule(JavaxMailApiRule.CAPABILITY, JavaxMailApiRule.MODULES, JavaxMailApiRule.class, null, components, allCapabilities);
-        registerRule(JavaxPersistenceApiRule.CAPABILITY, JavaxPersistenceApiRule.MODULES, JavaxPersistenceApiRule.class, null, components, allCapabilities);
-        registerRule(JavaxServletApiRule.CAPABILITY, JavaxServletApiRule.MODULES, JavaxServletApiRule.class, null, components, allCapabilities);
-        registerRule(JavaxServletJspRule.CAPABILITY, JavaxServletJspRule.MODULES, JavaxServletJspRule.class, null, components, allCapabilities);
-        registerRule(JavaxServletJstlRule.CAPABILITY, JavaxServletJstlRule.MODULES, JavaxServletJstlRule.class, null, components, allCapabilities);
-        registerRule(JavaxSoapApiRule.CAPABILITY, JavaxSoapApiRule.MODULES, JavaxSoapApiRule.class, null, components, allCapabilities);
-        registerRule(JavaxValidationApiRule.CAPABILITY, JavaxValidationApiRule.MODULES, JavaxValidationApiRule.class, null, components, allCapabilities);
-        registerRule(JavaxWebsocketApiRule.CAPABILITY, JavaxWebsocketApiRule.MODULES, JavaxWebsocketApiRule.class, null, components, allCapabilities);
-        registerRule(JavaxWsRsApiRule.CAPABILITY, JavaxWsRsApiRule.MODULES, JavaxWsRsApiRule.class, null, components, allCapabilities);
-        registerRule(JavaxXmlBindApiRule.CAPABILITY, JavaxXmlBindApiRule.MODULES, JavaxXmlBindApiRule.class, null, components, allCapabilities);
-        registerRule(JavaxXmlWsApiRule.CAPABILITY, JavaxXmlWsApiRule.MODULES, JavaxXmlWsApiRule.class, null, components, allCapabilities);
+        standardResolutionStrategy.put(HikariCPRule.CAPABILITY, null);
+        standardResolutionStrategy.put(IntellijAnnotationsRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JakartaActivationApiRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JakartaActivationImplementationRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JakartaAnnotationApiRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JakartaJsonApiRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JakartaMailApiRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JakartaServletApiRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JakartaWebsocketApiRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JakartaWebsocketClientApiRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JakartaWsRsApiRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JavaAssistRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JavaxActivationApiRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JavaxAnnotationApiRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JavaxEjbApiRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JavaxElApiRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JavaxInjectApiRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JavaxJsonApiRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JavaxJwsApisRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JavaxMailApiRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JavaxPersistenceApiRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JavaxServletApiRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JavaxServletJspRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JavaxServletJstlRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JavaxSoapApiRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JavaxValidationApiRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JavaxWebsocketApiRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JavaxWsRsApiRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JavaxXmlBindApiRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JavaxXmlWsApiRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JcipAnnotationsRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JnaPlatformRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JtsCoreRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JtsRule.CAPABILITY, null);
+        standardResolutionStrategy.put(JunitRule.CAPABILITY, null);
+        standardResolutionStrategy.put(PostgresqlRule.CAPABILITY, null);
+        standardResolutionStrategy.put(StaxApiRule.CAPABILITY, null);
+        standardResolutionStrategy.put(VelocityRule.CAPABILITY, null);
+        standardResolutionStrategy.put(WoodstoxAslRule.CAPABILITY, null);
 
-        registerRule(JcipAnnotationsRule.CAPABILITY, JcipAnnotationsRule.MODULES, JcipAnnotationsRule.class, null, components, allCapabilities);
-        registerRule(JnaPlatformRule.CAPABILITY, JnaPlatformRule.MODULES, JnaPlatformRule.class, null, components, allCapabilities);
-        registerRule(JtsCoreRule.CAPABILITY, JtsCoreRule.MODULES, JtsCoreRule.class, null, components, allCapabilities);
-        registerRule(JtsRule.CAPABILITY, JtsRule.MODULES, JtsRule.class, null, components, allCapabilities);
-        registerRule(JunitRule.CAPABILITY, JunitRule.MODULES, JunitRule.class, null, components, allCapabilities);
-        registerRule(PostgresqlRule.CAPABILITY, PostgresqlRule.MODULES, PostgresqlRule.class, null, components, allCapabilities);
-        registerRule(StaxApiRule.CAPABILITY, StaxApiRule.MODULES, StaxApiRule.class, null, components, allCapabilities);
-        registerRule(VelocityRule.CAPABILITY, VelocityRule.MODULES, VelocityRule.class, null, components, allCapabilities);
-        registerRule(WoodstoxAslRule.CAPABILITY, WoodstoxAslRule.MODULES, WoodstoxAslRule.class, null, components, allCapabilities);
+        return standardResolutionStrategy;
     }
 
-    private void registerComponentRules(ComponentMetadataHandler components) {
-        components.withModule(GuavaComponentRule.MODULE, GuavaComponentRule.class);
-    }
-
-    private void registerRule(
-            String capability,
-            String[] modules,
-            Class<? extends ComponentMetadataRule> rule,
-            @Nullable String resolveToModule,
-            ComponentMetadataHandler components,
-            Set<String> allCapabilities) {
-
-        allCapabilities.add(capability);
-        standardResolutionStrategy.put(capability, resolveToModule);
-
-        for (String module : modules) {
-            components.withModule(module, rule);
-        }
-    }
-
-    private void defineStrategies(JavaEcosystemCapabilitiesExtension javaEcosystemCapabilities, CapabilitiesResolution resolution) {
+    private void defineStrategies(JavaEcosystemCapabilitiesExtension javaEcosystemCapabilities, CapabilitiesResolution resolution, Map<String, String> standardResolutionStrategy) {
         for (String capability : javaEcosystemCapabilities.getAllCapabilities()) {
             String strategy = standardResolutionStrategy.get(capability);
             resolution.withCapability(capability, details -> {
