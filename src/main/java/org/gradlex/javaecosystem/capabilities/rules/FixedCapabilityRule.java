@@ -14,29 +14,27 @@
  * limitations under the License.
  */
 
-package org.gradlex.javaecosystem.capabilities.rules.logging;
+package org.gradlex.javaecosystem.capabilities.rules;
 
-import org.gradle.api.artifacts.ComponentMetadataContext;
-import org.gradle.api.artifacts.ComponentMetadataRule;
+import org.gradle.api.artifacts.CacheableRule;
+import org.gradle.api.artifacts.ModuleVersionIdentifier;
+import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
+import org.gradlex.javaecosystem.capabilities.rules.EnumBasedRule;
+
+import javax.inject.Inject;
 
 /**
  * Abstract rule adding a capability with a hard coded version.
  */
-abstract class FixedCapabilityRule implements ComponentMetadataRule {
-    static final String CAPABILITY_GROUP = "org.gradlex.logging";
-    
-    private final String name;
-
-    protected FixedCapabilityRule(String name) {
-        this.name = name;
+@CacheableRule
+public abstract class FixedCapabilityRule extends EnumBasedRule {
+    @Inject
+    public FixedCapabilityRule(CapabilityDefinitions capabilityDefinition) {
+        super(capabilityDefinition);
     }
 
     @Override
-    public void execute(ComponentMetadataContext context) {
-        context.getDetails().allVariants(variant -> {
-            variant.withCapabilities(capabilities -> {
-                capabilities.addCapability(CAPABILITY_GROUP, name, "1.0");
-            });
-        });
+    protected String getVersion(ModuleVersionIdentifier id) {
+        return "1.0";
     }
 }

@@ -16,8 +16,6 @@
 
 package org.gradlex.javaecosystem.capabilities.test.logging
 
-import org.gradle.util.GradleVersion
-import spock.lang.Requires
 import spock.lang.Unroll
 
 import static org.gradle.testkit.runner.TaskOutcome.FAILED
@@ -41,7 +39,7 @@ class LoggingCapabilitiesPluginDetectionFunctionalTest extends AbstractLoggingCa
 
         then:
         outcomeOf(result, ':doIt') == FAILED
-        conflictOnCapability(result.output, "org.gradlex.logging:slf4j-impl:1.0")
+        conflictOnCapability(result.output, "org.gradlex:slf4j-impl:1.0")
 
         where:
         first                           | second
@@ -64,7 +62,7 @@ class LoggingCapabilitiesPluginDetectionFunctionalTest extends AbstractLoggingCa
 
         then:
         outcomeOf(result, ':doIt') == FAILED
-        conflictOnCapability(result.output, "org.gradlex.logging:$capability:1.7.27")
+        conflictOnCapability(result.output, "org.gradlex:$capability:1.7.27")
 
         where:
         first                               | second                            | capability
@@ -83,16 +81,16 @@ class LoggingCapabilitiesPluginDetectionFunctionalTest extends AbstractLoggingCa
 
         then:
         outcomeOf(result, ':doIt') == FAILED
-        conflictOnCapability(result.output, "org.gradlex.logging:$capability:1.0")
+        conflictOnCapability(result.output, "org.gradlex:$capability:1.0")
 
         where:
         first                                           | second                                            | capability
         'org.slf4j:jcl-over-slf4j:1.7.27'               | 'commons-logging:commons-logging:1.2'             | 'commons-logging-impl'
         'org.springframework:spring-jcl:5.3.9'          | 'commons-logging:commons-logging:1.2'             | 'commons-logging-impl'
-        'org.slf4j:log4j-over-slf4j:1.7.27'             | 'log4j:log4j:1.2.9'                               | 'slf4j-vs-log4j2-log4j'
-        'org.slf4j:log4j-over-slf4j:1.7.27'             | 'org.apache.logging.log4j:log4j-1.2-api:2.17.0'   | 'slf4j-vs-log4j2-log4j'
-        'org.slf4j:slf4j-log4j12:1.7.27'                | 'org.apache.logging.log4j:log4j-1.2-api:2.17.0'   | 'slf4j-vs-log4j2-log4j'
-        'org.apache.logging.log4j:log4j-1.2-api:2.17.0' | 'org.slf4j:slf4j-log4j12:1.7.27'                  | 'slf4j-vs-log4j2-log4j'
+        'org.slf4j:log4j-over-slf4j:1.7.27'             | 'log4j:log4j:1.2.9'                               | 'slf4j-vs-log4j2-for-log4j'
+        'org.slf4j:log4j-over-slf4j:1.7.27'             | 'org.apache.logging.log4j:log4j-1.2-api:2.17.0'   | 'slf4j-vs-log4j2-for-log4j'
+        'org.slf4j:slf4j-log4j12:1.7.27'                | 'org.apache.logging.log4j:log4j-1.2-api:2.17.0'   | 'slf4j-vs-log4j2-for-log4j'
+        'org.apache.logging.log4j:log4j-1.2-api:2.17.0' | 'org.slf4j:slf4j-log4j12:1.7.27'                  | 'slf4j-vs-log4j2-for-log4j'
     }
 
     @Unroll
@@ -105,7 +103,7 @@ class LoggingCapabilitiesPluginDetectionFunctionalTest extends AbstractLoggingCa
 
         then:
         outcomeOf(result, ':doIt') == FAILED
-        conflictOnCapability(result.output, "org.gradlex.logging:log4j2-vs-slf4j:2.20.0")
+        conflictOnCapability(result.output, "org.gradlex:log4j2-vs-slf4j:2.20.0")
 
         where:
         bridge << ['org.apache.logging.log4j:log4j-slf4j-impl:2.20.0', 'org.apache.logging.log4j:log4j-slf4j2-impl:2.20.0']
@@ -133,12 +131,12 @@ class LoggingCapabilitiesPluginDetectionFunctionalTest extends AbstractLoggingCa
 
         then:
         outcomeOf(result, ':doIt') == FAILED
-        conflictOnCapability(result.output, "org.gradlex.logging:$capability:1.0")
+        conflictOnCapability(result.output, "org.gradlex:$capability:1.0")
 
         where:
         first                               | second                                        | capability
-        'org.slf4j:jul-to-slf4j:1.7.27'     | 'org.apache.logging.log4j:log4j-jul:2.17.0'   | 'slf4j-vs-log4j2-jul'
-        'org.slf4j:jcl-over-slf4j:1.7.27'   | 'org.apache.logging.log4j:log4j-jcl:2.17.0'   | 'slf4j-vs-log4j2-jcl'
+        'org.slf4j:jul-to-slf4j:1.7.27'     | 'org.apache.logging.log4j:log4j-jul:2.17.0'   | 'slf4j-vs-log4j2-for-jul'
+        'org.slf4j:jcl-over-slf4j:1.7.27'   | 'org.apache.logging.log4j:log4j-jcl:2.17.0'   | 'slf4j-vs-log4j2-for-jcl'
     }
 
     def "provides alignment on Slf4J"() {
