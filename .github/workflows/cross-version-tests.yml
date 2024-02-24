@@ -1,8 +1,11 @@
-name: Build Plugin
+name: Cross version tests
 on: [ push ]
 jobs:
   gradle-build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        gradleVersion: ["6.6.1", "6.9.4", "7.0.2", "7.6.4", "8.0.2"]
     steps:
       - name: git clone
         uses: actions/checkout@v4.1.1
@@ -13,4 +16,4 @@ jobs:
           java-version: 11
       - name: Set up Gradle
         uses: gradle/gradle-build-action@v2.11.1
-      - run: "./gradlew checkAllVersions"
+      - run: "./gradlew test${{ matrix.gradleVersion }}"
