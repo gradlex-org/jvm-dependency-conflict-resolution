@@ -41,7 +41,7 @@ dependencies {
     implementation("jakarta.inject:jakarta.inject-api:1.0.5")
     implementation("jakarta.json:jakarta.json-api:1.1.6")
     implementation("jakarta.jws:jakarta.jws-api:3.0.0")
-    implementation("jakarta.mail:jakarta.mail-api:2.1.0")
+    // implementation("jakarta.mail:jakarta.mail-api:2.1.0") - hitting https://github.com/gradle/gradle/issues/14220
     implementation("jakarta.persistence:jakarta.persistence-api:3.0.0")
     implementation("jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:1.2.7")
     implementation("jakarta.servlet.jsp:jakarta.servlet.jsp-api:2.3.6")
@@ -119,7 +119,6 @@ dependencies {
     implementation("org.bouncycastle:bcmail-jdk14:1.68")
     implementation("org.bouncycastle:bcmail-jdk15+:1.46")
     implementation("org.bouncycastle:bcmail-jdk15:1.46")
-    implementation("org.bouncycastle:bcmail-jdk15on:1.69")
     implementation("org.bouncycastle:bcmail-jdk15to18:1.70")
     implementation("org.bouncycastle:bcmail-jdk16:1.46")
     implementation("org.bouncycastle:bcmail-jdk18on:1.71")
@@ -134,7 +133,6 @@ dependencies {
     implementation("org.bouncycastle:bcpkix-jdk14:1.70")
     implementation("org.bouncycastle:bcpkix-jdk15on:1.70")
     implementation("org.bouncycastle:bcpkix-jdk15to18:1.70")
-    implementation("org.bouncycastle:bcpkix-jdk18on:1.72")
     implementation("org.bouncycastle:bcprov-debug-jdk14:1.70")
     implementation("org.bouncycastle:bcprov-debug-jdk15on:1.70")
     implementation("org.bouncycastle:bcprov-debug-jdk15to18:1.70")
@@ -214,8 +212,10 @@ dependencies {
     implementation("com.sun.activation:jakarta.activation:2.0.1")
     implementation("org.bouncycastle:bc-fips-debug:1.0.2.3")
     implementation("org.bouncycastle:bc-fips:1.0.2.3")
+    implementation("org.bouncycastle:bcmail-jdk15on:1.69")
     implementation("org.bouncycastle:bcpg-fips:1.0.6")
     implementation("org.bouncycastle:bcpkix-fips:1.0.7")
+    implementation("org.bouncycastle:bcpkix-jdk18on:1.72")
 
     // implementation("woodstox:wstx-lgpl:3.2.7") - has no POM file
 }
