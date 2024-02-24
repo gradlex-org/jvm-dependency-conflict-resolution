@@ -29,12 +29,12 @@ import static org.gradlex.javaecosystem.capabilities.resolution.DefaultResolutio
 
 public enum CapabilityDefinitions {
     AOPALLIANCE(HIGHEST_VERSION, AopallianceRule.class,
-        "aopalliance", "aopalliance",
+        "aopalliance:aopalliance",
         "org.springframework:spring-aop"
     ),
     ASM(HIGHEST_VERSION,
-            "asm:asm",
-            "org.ow2.asm:asm"
+        "asm:asm",
+        "org.ow2.asm:asm"
     ),
     BOUNCYCASTLE_BCMAIL(HIGHEST_VERSION,
         "org.bouncycastle:bcmail",
@@ -104,6 +104,14 @@ public enum CapabilityDefinitions {
         "org.bouncycastle:bctls-jdk15to18",
         "org.bouncycastle:bctls-jdk18on",
         "org.bouncycastle:bctls-fips"
+    ),
+    BOUNCYCASTLE_BCTSP(HIGHEST_VERSION,
+        "org.bouncycastle:bctsp",
+        "org.bouncycastle:bctsp-jdk14",
+        "org.bouncycastle:bctsp-jdk15",
+        "org.bouncycastle:bctsp-jdk15+",
+        "org.bouncycastle:bctsp-jdk15on",
+        "org.bouncycastle:bctsp-jdk16"
     ),
     BOUNCYCASTLE_BCUTIL(HIGHEST_VERSION,
         "org.bouncycastle:bcutil",
@@ -212,42 +220,108 @@ public enum CapabilityDefinitions {
         "org.eclipse.angus:angus-activation"
     ),
     JAKARTA_ANNOTATION_API(HIGHEST_VERSION, JakartaAnnotationApiRule.class,
-            "jakarta.annotation:jakarta.annotation-api",
-            "org.apache.tomcat:tomcat-annotations-api"
+        "jakarta.annotation:jakarta.annotation-api",
+        "org.apache.tomcat:tomcat-annotations-api"
     ),
     JAKARTA_JSON_API(HIGHEST_VERSION,
         "jakarta.json:jakarta.json-api",
         "org.glassfish:jakarta.json"
-    ),
-    JAKARTA_SERVLET_API(HIGHEST_VERSION, JakartaServletApiRule.class,
-            "jakarta.servlet:jakarta.servlet-api",
-            "org.apache.tomcat:tomcat-servlet-api",
-            "org.apache.tomcat.embed:tomcat-embed-core",
-            "org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api"
-    ),
-    JAKARTA_WEBSOCKET_API(HIGHEST_VERSION, JakartaWebsocketApiRule.class,
-            "jakarta.websocket:jakarta.websocket-api",
-            "org.apache.tomcat:tomcat-websocket-api",
-            "org.apache.tomcat:tomcat-websocket",
-            "org.apache.tomcat.embed:tomcat-embed-websocket",
-            "org.eclipse.jetty.toolchain:jetty-jakarta-websocket-api"
-    ),
-    JAKARTA_WEBSOCKET_CLIENT_API(HIGHEST_VERSION, JakartaWebsocketClientApiRule.class,
-            "jakarta.websocket:jakarta.websocket-client-api",
-            "org.apache.tomcat:tomcat-websocket-client-api",
-            "org.apache.tomcat:tomcat-websocket",
-            "org.apache.tomcat.embed:tomcat-embed-websocket",
-            "org.eclipse.jetty.toolchain:jetty-jakarta-websocket-api"
-    ),
-    JAKARTA_WS_RS_API(HIGHEST_VERSION, JakartaWsRsApiRule.class,
-            "jakarta.ws.rs:jakarta.ws.rs-api",
-            "org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_3.0_spec"
     ),
     JAKARTA_MAIL_API(HIGHEST_VERSION, JakartaMailApiRule.class,
         "jakarta.mail:jakarta.mail-api",
         "com.sun.mail:mailapi",
         "com.sun.mail:jakarta.mail",
         "org.eclipse.angus:jakarta.mail"
+    ),
+    JAKARTA_SERVLET_API(HIGHEST_VERSION, JakartaServletApiRule.class,
+        "jakarta.servlet:jakarta.servlet-api",
+        "org.apache.tomcat:tomcat-servlet-api",
+        "org.apache.tomcat.embed:tomcat-embed-core",
+        "org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api"
+    ),
+    JAKARTA_WEBSOCKET_API(HIGHEST_VERSION, JakartaWebsocketApiRule.class,
+        "jakarta.websocket:jakarta.websocket-api",
+        "org.apache.tomcat:tomcat-websocket-api",
+        "org.apache.tomcat:tomcat-websocket",
+        "org.apache.tomcat.embed:tomcat-embed-websocket",
+        "org.eclipse.jetty.toolchain:jetty-jakarta-websocket-api"
+    ),
+    JAKARTA_WEBSOCKET_CLIENT_API(HIGHEST_VERSION, JakartaWebsocketClientApiRule.class,
+        "jakarta.websocket:jakarta.websocket-client-api",
+        "org.apache.tomcat:tomcat-websocket-client-api",
+        "org.apache.tomcat:tomcat-websocket",
+        "org.apache.tomcat.embed:tomcat-embed-websocket",
+        "org.eclipse.jetty.toolchain:jetty-jakarta-websocket-api"
+    ),
+    JAKARTA_WS_RS_API(HIGHEST_VERSION, JakartaWsRsApiRule.class,
+        "jakarta.ws.rs:jakarta.ws.rs-api",
+        "org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_3.0_spec"
+    ),
+
+    JAVAX_ACTIVATION_API(HIGHEST_VERSION, JavaxActivationApiRule.class,
+        "javax.activation:activation",
+        "jakarta.activation:jakarta.activation-api",
+        "javax.activation:javax.activation-api",
+        "com.sun.activation:javax.activation",
+        "com.sun.activation:jakarta.activation"
+    ),
+    JAVAX_ANNOTATION_API(HIGHEST_VERSION, JavaxAnnotationApiRule.class,
+        "javax.annotation:jsr250-api",
+        "jakarta.annotation:jakarta.annotation-api",
+        "javax.annotation:javax.annotation-api",
+        "org.apache.tomcat:tomcat-annotations-api"
+    ),
+    JAVAX_EJB_API(HIGHEST_VERSION, JavaxEjbApiRule.class,
+        "javax.ejb:ejb",
+        "jakarta.ejb:jakarta.ejb-api",
+        "javax.ejb:javax.ejb-api",
+        "javax.ejb:ejb-api"
+    ),
+    JAVAX_EL_API(HIGHEST_VERSION, JavaxElApiRule.class,
+        "javax.el:el-api",
+        "jakarta.el:jakarta.el-api",
+        "javax.el:javax.el-api"
+    ),
+    JAVAX_INJECT_API(HIGHEST_VERSION, JavaxInjectApiRule.class,
+        "javax.inject:javax.inject",
+        "jakarta.inject:jakarta.inject-api",
+        "com.jwebmp:javax.inject",
+        "org.glassfish.hk2.external:javax.inject",
+        "org.glassfish.hk2.external:jakarta.inject"
+    ),
+    JAVAX_JSON_API(HIGHEST_VERSION, JavaxJsonApiRule.class,
+        "javax.json:javax.json-api",
+        "jakarta.json:jakarta.json-api",
+        "org.glassfish:javax.json",
+        "org.glassfish:jakarta.json"
+    ),
+    JAVAX_JWS_API(HIGHEST_VERSION, JavaxJwsApisRule.class,
+        "javax.jws:javax.jws-api",
+        "jakarta.jws:jakarta.jws-api"
+    ),
+    JAVAX_MAIL_API(HIGHEST_VERSION, JavaxMailApiRule.class,
+        "com.sun.mail:mailapi", // API only
+        "jakarta.mail:jakarta.mail-api", // API only
+        "javax.mail:javax.mail-api", // API only
+        "javax.mail:mail", // API + Implementation
+        "com.sun.mail:javax.mail", // API + Implementation
+        "com.sun.mail:jakarta.mail", // API + Implementation
+        "org.apache.geronimo.javamail:geronimo-javamail_1.3.1_mail",
+        "org.apache.geronimo.javamail:geronimo-javamail_1.3.1_provider",
+        "org.apache.geronimo.specs:geronimo-javamail_1.3.1_spec",
+        "org.apache.geronimo.javamail:geronimo-javamail_1.4_mail",
+        "org.apache.geronimo.javamail:geronimo-javamail_1.4_provider",
+        "org.apache.geronimo.specs:geronimo-javamail_1.4_spec",
+        "org.apache.geronimo.javamail:geronimo-javamail_1.6_mail",
+        "org.apache.geronimo.javamail:geronimo-javamail_1.6_provider",
+        "org.apache.geronimo.specs:geronimo-javamail_1.6_spec"
+    ),
+    JAVAX_PERSISTENCE_API(HIGHEST_VERSION, JavaxPersistenceApiRule.class,
+        "javax.persistence:javax.persistence-api",
+        "jakarta.persistence:jakarta.persistence-api",
+        "org.hibernate.javax.persistence:hibernate-jpa-2.2-api",
+        "org.hibernate.javax.persistence:hibernate-jpa-2.1-api",
+        "org.hibernate.javax.persistence:hibernate-jpa-2.0-api"
     ),
     JAVAX_SERVLET_API(HIGHEST_VERSION, JavaxServletApiRule.class,
         "javax.servlet:servlet-api",
@@ -257,6 +331,56 @@ public enum CapabilityDefinitions {
         "org.apache.tomcat:tomcat-servlet-api",
         "org.apache.tomcat.embed:tomcat-embed-core",
         "servletapi:servletapi"
+    ),
+    JAVAX_SERVLET_JSP(HIGHEST_VERSION, JavaxServletJspRule.class,
+        "javax.servlet.jsp:jsp-api",
+        "javax.servlet.jsp:javax.servlet.jsp-api",
+        "jakarta.servlet.jsp:jakarta.servlet.jsp-api"
+    ),
+    JAVAX_SERVLET_JSTL(HIGHEST_VERSION, JavaxServletJstlRule.class,
+        "javax.servlet:jstl",
+        "javax.servlet.jsp.jstl:jstl-api",
+        "javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api",
+        "jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api"
+    )
+    ,
+    JAVAX_SOAP_API(HIGHEST_VERSION, JavaxSoapApiRule.class,
+        "javax.xml.soap:javax.xml.soap-api",
+        "jakarta.xml.soap:jakarta.xml.soap-api"
+    ),
+
+    JAVAX_VALIDATION_API(HIGHEST_VERSION, JavaxValidationApiRule.class,
+        "javax.validation:validation-api",
+        "javax.validation:validation"
+    ),
+
+    JAVAX_WEBSOCKET_API_RULE(HIGHEST_VERSION, JavaxWebsocketApiRule.class,
+        "javax.websocket:javax.websocket-api",
+        "jakarta.websocket:jakarta.websocket-api",
+        "javax.websocket:javax.websocket-client-api", // in javax namespace, websocket-api and websocket-client-api overlap
+        "jakarta.websocket:jakarta.websocket-client-api",
+        "org.apache.tomcat:tomcat-websocket-api",
+        "org.apache.tomcat:tomcat-websocket",
+        "org.apache.tomcat.embed:tomcat-embed-websocket",
+        "org.eclipse.jetty.toolchain:jetty-javax-websocket-api"
+    ),
+
+    JAVAX_WS_RS_API(HIGHEST_VERSION, JavaxWsRsApiRule.class,
+        "javax.ws.rs:jsr311-api",
+        "org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.1_spec",
+        "org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.0_spec",
+        "org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_1.1_spec",
+        "org.jboss.resteasy:jaxrs-api",
+        "jakarta.ws.rs:jakarta.ws.rs-api",
+        "javax.ws.rs:javax.ws.rs-api"
+    ),
+    JAVAX_XML_BIND_API(HIGHEST_VERSION, JavaxXmlBindApiRule.class,
+        "javax.xml.bind:jaxb-api",
+        "jakarta.xml.bind:jakarta.xml.bind-api"
+    ),
+    JAVAX_XML_WS_API(HIGHEST_VERSION, JavaxXmlWsApiRule.class,
+        "javax.xml.ws:jaxws-api",
+        "jakarta.xml.ws:jakarta.xml.ws-api"
     ),
 
 

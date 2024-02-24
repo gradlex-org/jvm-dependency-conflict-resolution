@@ -20,44 +20,33 @@ import org.gradle.api.NonNullApi;
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataRule;
+import org.gradle.api.artifacts.ModuleVersionIdentifier;
 import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
+
+import javax.inject.Inject;
 
 @CacheableRule
 @NonNullApi
-public abstract class JavaxWebsocketApiRule implements ComponentMetadataRule {
+public abstract class JavaxWebsocketApiRule extends EnumBasedRule {
 
-    public static final String CAPABILITY_GROUP = "javax.websocket";
-    public static final String CAPABILITY_NAME = "javax.websocket-api";
-    public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
+    static final String FIRST_JAKARTA_VERSION = "2.0.0";
 
-    public static final String FIRST_JAKARTA_VERSION = "2.0.0";
-
-    public static final String[] MODULES = {
-            "jakarta.websocket:jakarta.websocket-api",
-            // in javax namespace, websocket-api and websocket-client-api overlap
-            "javax.websocket:javax.websocket-client-api",
-            "jakarta.websocket:jakarta.websocket-client-api",
-            "org.apache.tomcat:tomcat-websocket-api",
-            "org.apache.tomcat:tomcat-websocket",
-            "org.apache.tomcat.embed:tomcat-embed-websocket",
-            "org.eclipse.jetty.toolchain:jetty-javax-websocket-api"
-    };
+    @Inject
+    public JavaxWebsocketApiRule(CapabilityDefinitions rule) {
+        super(rule);
+    }
 
     @Override
-    public void execute(ComponentMetadataContext context) {
-        String group = context.getDetails().getId().getGroup();
-        String version;
-        if (group.startsWith("org.apache.tomcat")) {
-            version = websocketApiVersionForTomcatVersion(VersionNumber.parse(context.getDetails().getId().getVersion()));
-        } else {
-            version = context.getDetails().getId().getVersion();
-        }
+    protected boolean shouldApply(ModuleVersionIdentifier id) {
+        return VersionNumber.parse(getVersion(id)).compareTo(VersionNumber.parse(FIRST_JAKARTA_VERSION)) < 0;
+    }
 
-        if (VersionNumber.parse(version).compareTo(VersionNumber.parse(FIRST_JAKARTA_VERSION)) < 0) {
-            context.getDetails().allVariants(variant -> variant.withCapabilities(capabilities ->
-                    capabilities.addCapability(CAPABILITY_GROUP, CAPABILITY_NAME, version)
-            ));
+    @Override
+    protected String getVersion(ModuleVersionIdentifier id) {
+        if (id.getGroup().startsWith("org.apache.tomcat")) {
+            return websocketApiVersionForTomcatVersion(VersionNumber.parse(id.getVersion()));
         }
+        return id.getVersion();
     }
 
     // https://tomcat.apache.org/whichversion.html

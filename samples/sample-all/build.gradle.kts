@@ -1,5 +1,4 @@
-import  org.gradlex.javaecosystem.capabilities.rules.BouncycastleBctspRule
-import  org.gradlex.javaecosystem.capabilities.rules.JavaxActivationApiRule
+import  org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions
 
 plugins {
     id("org.gradlex.java-ecosystem-capabilities")
@@ -223,13 +222,13 @@ dependencies {
 
 configurations.all {
     resolutionStrategy.capabilitiesResolution {
-        withCapability(JavaxActivationApiRule.CAPABILITY) {
+        withCapability(CapabilityDefinitions.JAVAX_ACTIVATION_API.capability) {
             val toBeSelected = candidates.firstOrNull { it.id.let { id -> id is ModuleComponentIdentifier && id.module == "javax.activation-api" } }
             if (toBeSelected != null) {
                 select(toBeSelected)
             }
         }
-        withCapability(BouncycastleBctspRule.CAPABILITY) {
+        withCapability(CapabilityDefinitions.BOUNCYCASTLE_BCTSP.capability) {
             val toBeSelected = candidates.firstOrNull { it.id.let { id -> id is ModuleComponentIdentifier && id.module == "bctsp-jdk15on" } }
             if (toBeSelected != null) {
                 select(toBeSelected)

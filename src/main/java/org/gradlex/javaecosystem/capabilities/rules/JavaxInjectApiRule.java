@@ -20,40 +20,32 @@ import org.gradle.api.NonNullApi;
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataRule;
+import org.gradle.api.artifacts.ModuleVersionIdentifier;
 import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
+
+import javax.inject.Inject;
 
 @CacheableRule
 @NonNullApi
-public abstract class JavaxInjectApiRule implements ComponentMetadataRule {
-
-    public static final String CAPABILITY_GROUP = "javax.inject";
-    public static final String CAPABILITY_NAME = "javax.inject";
-    public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
+public abstract class JavaxInjectApiRule extends EnumBasedRule {
 
     public static final String FIRST_JAKARTA_VERSION = "2.0.0";
 
-    public static final String[] MODULES = {
-            "jakarta.inject:jakarta.inject-api",
-            "com.jwebmp:javax.inject",
-            "org.glassfish.hk2.external:javax.inject",
-            "org.glassfish.hk2.external:jakarta.inject"
-    };
+    @Inject
+    public JavaxInjectApiRule(CapabilityDefinitions rule) {
+        super(rule);
+    }
 
     @Override
-    public void execute(ComponentMetadataContext context) {
-        String group = context.getDetails().getId().getGroup();
+    protected boolean shouldApply(ModuleVersionIdentifier id) {
+        return VersionNumber.parse(getVersion(id)).compareTo(VersionNumber.parse(FIRST_JAKARTA_VERSION)) < 0;
+    }
 
-        String version;
-        if ("org.glassfish.hk2.external".equals(group)) {
-            version = "1";
-        } else {
-            version = context.getDetails().getId().getVersion();
+    @Override
+    protected String getVersion(ModuleVersionIdentifier id) {
+        if ("org.glassfish.hk2.external".equals(id.getGroup())) {
+            return  "1";
         }
-
-        if (VersionNumber.parse(version).compareTo(VersionNumber.parse(FIRST_JAKARTA_VERSION)) < 0) {
-            context.getDetails().allVariants(variant -> variant.withCapabilities(capabilities ->
-                    capabilities.addCapability(CAPABILITY_GROUP, CAPABILITY_NAME, version)
-            ));
-        }
+        return id.getVersion();
     }
 }

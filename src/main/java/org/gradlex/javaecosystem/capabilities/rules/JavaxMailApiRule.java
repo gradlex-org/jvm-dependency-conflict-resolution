@@ -20,55 +20,34 @@ import org.gradle.api.NonNullApi;
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataRule;
+import org.gradle.api.artifacts.ModuleVersionIdentifier;
 import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
+
+import javax.inject.Inject;
 
 @CacheableRule
 @NonNullApi
-public abstract class JavaxMailApiRule implements ComponentMetadataRule {
-
-    public static final String CAPABILITY_GROUP = "javax.mail";
-    public static final String CAPABILITY_NAME = "mail";
-    public static final String CAPABILITY = CAPABILITY_GROUP + ":" + CAPABILITY_NAME;
+public abstract class JavaxMailApiRule extends EnumBasedRule {
 
     static final String FIRST_JAKARTA_VERSION = "2.0.0";
 
-    public static final String[] MODULES = {
-            // API only
-            "com.sun.mail:mailapi",
-            "jakarta.mail:jakarta.mail-api",
-            "javax.mail:javax.mail-api",
-            // API + Implementation
-            "com.sun.mail:javax.mail",
-            "com.sun.mail:jakarta.mail",
-            // Apache Geronimo
-            "org.apache.geronimo.javamail:geronimo-javamail_1.3.1_mail",
-            "org.apache.geronimo.javamail:geronimo-javamail_1.3.1_provider",
-            "org.apache.geronimo.specs:geronimo-javamail_1.3.1_spec",
-            "org.apache.geronimo.javamail:geronimo-javamail_1.4_mail",
-            "org.apache.geronimo.javamail:geronimo-javamail_1.4_provider",
-            "org.apache.geronimo.specs:geronimo-javamail_1.4_spec",
-            "org.apache.geronimo.javamail:geronimo-javamail_1.6_mail",
-            "org.apache.geronimo.javamail:geronimo-javamail_1.6_provider",
-            "org.apache.geronimo.specs:geronimo-javamail_1.6_spec"
-    };
+    @Inject
+    public JavaxMailApiRule(CapabilityDefinitions rule) {
+        super(rule);
+    }
 
     @Override
-    public void execute(ComponentMetadataContext context) {
-        String name = context.getDetails().getId().getName();
-        String group = context.getDetails().getId().getGroup();
-        String version;
+    protected boolean shouldApply(ModuleVersionIdentifier id) {
+        return VersionNumber.parse(getVersion(id)).compareTo(VersionNumber.parse(FIRST_JAKARTA_VERSION)) < 0;
+    }
 
+    @Override
+    protected String getVersion(ModuleVersionIdentifier id) {
+        String group = id.getGroup();
         if (group.equals("org.apache.geronimo.javamail") || group.equals("org.apache.geronimo.specs")) {
-            version = mailApiVersionForGeronimoName(name);
-        } else {
-            version = context.getDetails().getId().getVersion();
+            return mailApiVersionForGeronimoName(id.getName());
         }
-
-        if (VersionNumber.parse(version).compareTo(VersionNumber.parse(FIRST_JAKARTA_VERSION)) < 0) {
-            context.getDetails().allVariants(variant -> variant.withCapabilities(capabilities ->
-                    capabilities.addCapability(CAPABILITY_GROUP, CAPABILITY_NAME, version)
-            ));
-        }
+        return id.getVersion();
     }
 
     private String mailApiVersionForGeronimoName(String name) {

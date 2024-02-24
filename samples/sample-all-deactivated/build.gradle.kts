@@ -1,10 +1,6 @@
 plugins {
-    id("org.gradlex.java-ecosystem-capabilities")
+    id("org.gradlex.java-ecosystem-capabilities-base")
     id("java-library")
-}
-
-javaEcosystemCapabilities {
-    deactivatedResolutionStrategies.addAll(allCapabilities)
 }
 
 dependencies {
