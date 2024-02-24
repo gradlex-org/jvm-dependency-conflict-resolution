@@ -220,6 +220,9 @@ dependencies {
     // implementation("woodstox:wstx-lgpl:3.2.7") - has no POM file
 }
 
+javaEcosystemCapabilities {
+    deactivatedResolutionStrategies.add(CapabilityDefinitions.BOUNCYCASTLE_BCTSP)
+}
 configurations.all {
     resolutionStrategy.capabilitiesResolution {
         withCapability(CapabilityDefinitions.JAVAX_ACTIVATION_API.capability) {
