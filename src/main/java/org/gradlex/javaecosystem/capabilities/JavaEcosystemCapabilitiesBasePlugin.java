@@ -78,17 +78,6 @@ public class JavaEcosystemCapabilitiesBasePlugin implements Plugin<ExtensionAwar
         components.withModule(GuavaComponentRule.MODULE, GuavaComponentRule.class);
     }
 
-    private void registerRule(
-            String[] modules,
-            Class<? extends ComponentMetadataRule> rule,
-            ComponentMetadataHandler components) {
-
-
-        for (String module : modules) {
-            components.withModule(module, rule);
-        }
-    }
-
     private void configureAlignment(ComponentMetadataHandler components) {
         for (String slf4jModule : Slf4JAlignment.SLF4J_MODULES) {
             components.withModule(slf4jModule, Slf4JAlignment.class);
