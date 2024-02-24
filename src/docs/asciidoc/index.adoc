@@ -1,0 +1,39 @@
+= Java Ecosystem Capabilities Gradle plugin
+
+image:https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fgradlex-org%2Fjava-ecosystem-capabilities%2Fbadge%3Fref%3Dmain&style=flat["Build Status", link="https://actions-badge.atrox.dev/gradlex-org/java-ecosystem-capabilities/goto?ref=main"]
+image:https://img.shields.io/maven-metadata/v?label=Plugin%20Portal&metadataUrl=https%3A%2F%2Fplugins.gradle.org%2Fm2%2Forg%2Fgradlex%2Fjava-ecosystem-capabilities%2Forg.gradlex.java-ecosystem-capabilities.gradle.plugin%2Fmaven-metadata.xml["Gradle Plugin Portal", link="https://plugins.gradle.org/plugin/org.gradlex.java-ecosystem-capabilities"]
+
+This plugin adds https://docs.gradle.org/current/userguide/component_capabilities.html#capabilities_as_first_level_concept[Capabilities]
+to the metadata of well-known components hosted on Maven Central that are used in many Java projects.
+
+== What is a 'Capability' in Gradle and why should I care?
+
+In the videos below,
+I explain the concept of Capability Conflicts and why they can help you to avoid "dependency hell" in your project.
+With this plugin, you enable Gradle to detect and automatically resolved typical capability conflicts in the Java Ecosystem.
+
+<!-- FIXME the images are rendered full size. We need to make them smaller so they are rendered side-by-side -->
+
+image:https://onepiecesoftware.github.io/img/videos/29.png[https://www.youtube.com/watch?v=KocTqF0hO_8&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE]
+image:https://onepiecesoftware.github.io/img/videos/11.png[https://www.youtube.com/watch?v=5g20kbbqBFk&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE]
+
+== How to use the plugin?
+
+Apply the plugin to all (sub)projects of your build so that the capability-adding rules are active everywhere.
+There is nothing else you need to do. The rules will now be considered when dependencies are resolved.
+For general information about how to structure Gradle builds, and apply community plugins like this one to all subprojects,
+you can check out my https://www.youtube.com/watch?v=N95YI-szd78&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE[Understanding Gradle video series].
+
+=== Plugin dependency
+
+Add this to the build file of your convention plugin's build
+(e.g. `build-logic/build.gradle(.kts)` or `buildSrc/build.gradle(.kts)`).
+
+[source.multi-language-sample,kotlin]
+----
+include::{samples-path}/plugin-dependency/kotlin/build.gradle.kts[tags=plugin-dependency]
+----
+[source.multi-language-sample,groovy]
+----
+include::{samples-path}/plugin-dependency/groovy/build.gradle[tags=plugin-dependency]
+----

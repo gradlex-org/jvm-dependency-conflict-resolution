@@ -4,6 +4,8 @@ import gradlexbuild.javaecosystem.conflict.documentation.SamplesCompletenessChec
 plugins {
     id("java")
     id("gradlexbuild.java-ecosystem-capabilities-lifecycle")
+    id("gradlexbuild.asciidoctor-conventions")
+    id("gradlexbuild.exemplar-conventions")
 }
 
 val updateReadme = tasks.register<ReadmeUpdate>("updateReadme") {
