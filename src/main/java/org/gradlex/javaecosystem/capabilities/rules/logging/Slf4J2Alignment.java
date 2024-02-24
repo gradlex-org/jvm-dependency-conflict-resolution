@@ -19,7 +19,6 @@ package org.gradlex.javaecosystem.capabilities.rules.logging;
 import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataDetails;
 import org.gradle.api.artifacts.ComponentMetadataRule;
-import org.gradle.api.artifacts.ModuleVersionIdentifier;
 import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
 
 public class Slf4J2Alignment implements ComponentMetadataRule {

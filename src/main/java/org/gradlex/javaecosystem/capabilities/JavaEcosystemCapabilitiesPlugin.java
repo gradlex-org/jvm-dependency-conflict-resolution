@@ -25,10 +25,7 @@ import org.gradle.api.artifacts.Configuration;
 import org.gradle.api.artifacts.ConfigurationContainer;
 import org.gradle.api.artifacts.component.ModuleComponentIdentifier;
 import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
-import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
 
-import javax.annotation.Nullable;
-import java.util.List;
 import java.util.Optional;
 
 import static org.gradlex.javaecosystem.capabilities.JavaEcosystemCapabilitiesBasePlugin.basePluginNotYetRegisteredInSettings;
