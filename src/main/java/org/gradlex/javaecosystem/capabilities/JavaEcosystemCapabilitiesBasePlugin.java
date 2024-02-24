@@ -22,8 +22,6 @@ import org.gradle.api.Project;
 import org.gradle.api.artifacts.ComponentMetadataRule;
 import org.gradle.api.artifacts.dsl.ComponentMetadataHandler;
 import org.gradle.api.initialization.Settings;
-import org.gradle.api.internal.GradleInternal;
-import org.gradle.api.internal.SettingsInternal;
 import org.gradle.api.plugins.ExtensionAware;
 import org.gradle.util.GradleVersion;
 import org.gradlex.javaecosystem.capabilities.componentrules.GuavaComponentRule;
@@ -102,14 +100,11 @@ import org.gradlex.javaecosystem.capabilities.rules.logging.Slf4JvsLog4J2ForLog4
 @NonNullApi
 public class JavaEcosystemCapabilitiesBasePlugin implements Plugin<ExtensionAware> {
 
-    // Minimal version that works reliably with alignment and has the substitution rules `using` API
-    private static final GradleVersion MINIMUM_SUPPORTED_VERSION = GradleVersion.version("6.6.1");
-    private static final GradleVersion MINIMUM_SUPPORTED_VERSION_SETTINGS = GradleVersion.version("6.8");
+    static final String PLUGIN_ID = "org.gradlex.java-ecosystem-capabilities-base";
 
-    static boolean basePluginNotYetRegisteredInSettings(Project project) {
-        SettingsInternal settings = ((GradleInternal) project.getGradle()).getSettings();
-        return null == settings.getPlugins().findPlugin(JavaEcosystemCapabilitiesBasePlugin.class);
-    }
+    // Minimal version that works reliably with alignment and has the substitution rules `using` API and has rulesMode
+    // setting in dependencyResolutionManagement
+    private static final GradleVersion MINIMUM_SUPPORTED_VERSION = GradleVersion.version("6.8.3");
 
     @Override
     public void apply(ExtensionAware projectOrSettings) {
@@ -119,15 +114,10 @@ public class JavaEcosystemCapabilitiesBasePlugin implements Plugin<ExtensionAwar
 
         ComponentMetadataHandler components;
         if (projectOrSettings instanceof Project) {
-            if (GradleVersion.current().compareTo(MINIMUM_SUPPORTED_VERSION_SETTINGS) >= 0) {
-                // If available, make sure 'jvm-ecosystem' is applied which adds the schemas for the attributes this plugin relies on
-                ((Project) projectOrSettings).getPlugins().apply("jvm-ecosystem");
-            }
+            // Make sure 'jvm-ecosystem' is applied which adds the schemas for the attributes this plugin relies on
+            ((Project) projectOrSettings).getPlugins().apply("jvm-ecosystem");
             components = ((Project) projectOrSettings).getDependencies().getComponents();
         } else if (projectOrSettings instanceof Settings) {
-            if (GradleVersion.current().compareTo(MINIMUM_SUPPORTED_VERSION_SETTINGS) < 0) {
-                throw new IllegalStateException("Using this plugin in settings.gradle requires at least Gradle " + MINIMUM_SUPPORTED_VERSION_SETTINGS.getVersion());
-            }
             //noinspection UnstableApiUsage
             components = ((Settings) projectOrSettings).getDependencyResolutionManagement().getComponents();
         } else {

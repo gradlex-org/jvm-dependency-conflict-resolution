@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        gradleVersion: ["6.6.1", "6.9.4", "7.0.2", "7.6.4", "8.0.2"]
+        gradleVersion: ["6.8.3", "6.9.4", "7.0.2", "7.6.4", "8.0.2"]
     steps:
       - name: git clone
         uses: actions/checkout@v4.1.1

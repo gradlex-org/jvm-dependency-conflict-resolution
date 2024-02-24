@@ -89,16 +89,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import static org.gradlex.javaecosystem.capabilities.JavaEcosystemCapabilitiesBasePlugin.basePluginNotYetRegisteredInSettings;
-
 @NonNullApi
 public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project> {
 
     @Override
     public void apply(Project project) {
-        if (basePluginNotYetRegisteredInSettings(project)) {
-            project.getPlugins().apply(JavaEcosystemCapabilitiesBasePlugin.class);
-        }
+        BasePluginApplication.of(project).handleRulesMode();
 
         Map<String, String> standardResolutionStrategy = configureResolutionStrategies();
 
