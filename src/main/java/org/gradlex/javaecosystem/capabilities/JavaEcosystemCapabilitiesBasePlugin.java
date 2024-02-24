@@ -16,7 +16,6 @@
 
 package org.gradlex.javaecosystem.capabilities;
 
-import org.gradle.api.NonNullApi;
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;
 import org.gradle.api.artifacts.ComponentMetadataRule;
@@ -92,7 +91,6 @@ import org.gradlex.javaecosystem.capabilities.rules.logging.Slf4JvsLog4J;
 import org.gradlex.javaecosystem.capabilities.rules.logging.Slf4JvsLog4J2ForJUL;
 import org.gradlex.javaecosystem.capabilities.rules.logging.Slf4JvsLog4J2ForLog4J;
 
-@NonNullApi
 public class JavaEcosystemCapabilitiesBasePlugin implements Plugin<ExtensionAware> {
 
     static final String PLUGIN_ID = "org.gradlex.java-ecosystem-capabilities-base";

@@ -16,7 +16,6 @@
 
 package org.gradlex.javaecosystem.capabilities;
 
-import org.gradle.api.NonNullApi;
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;
 import org.gradle.api.artifacts.CapabilitiesResolution;
@@ -36,7 +35,6 @@ import static org.gradlex.javaecosystem.capabilities.JavaEcosystemCapabilitiesBa
 import static org.gradlex.javaecosystem.capabilities.resolution.DefaultResolutionStrategy.FIRST_MODULE;
 import static org.gradlex.javaecosystem.capabilities.resolution.DefaultResolutionStrategy.HIGHEST_VERSION;
 
-@NonNullApi
 public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project> {
 
     @Override
