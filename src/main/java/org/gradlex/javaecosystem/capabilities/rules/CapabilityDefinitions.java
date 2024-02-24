@@ -121,7 +121,7 @@ public enum CapabilityDefinitions {
         "org.bouncycastle:bcutil-jdk18on"
     ),
     C3P0(HIGHEST_VERSION,
-        "c3po:c3po",
+        "c3p0:c3p0",
         "com.mchange:c3p0"
     ),
     CGLIB(HIGHEST_VERSION,
@@ -141,7 +141,7 @@ public enum CapabilityDefinitions {
         "com.google.code.findbugs:findbugs-annotations",
         "com.github.spotbugs:spotbugs-annotations"
     ),
-    GOOGLE_COLLECTIONS(HIGHEST_VERSION,
+    GOOGLE_COLLECTIONS(HIGHEST_VERSION, "com.google.collections", EnumBasedRule.class,
         "com.google.collections:google-collections",
         "com.google.guava:guava"
     ),
@@ -149,7 +149,7 @@ public enum CapabilityDefinitions {
         "com.google.guava:guava",
         "com.google.guava:guava-jdk5"
     ),
-    GUAVA_LISTENABLE_FUTURE(HIGHEST_VERSION, GuavaListenableFutureRule.class,
+    LISTENABLEFUTURE(HIGHEST_VERSION, "com.google.guava", GuavaListenableFutureRule.class,
         "com.google.guava:listenablefuture",
         "com.google.guava:guava"
     ),
@@ -333,6 +333,7 @@ public enum CapabilityDefinitions {
         "servletapi:servletapi"
     ),
     JAVAX_SERVLET_JSP(HIGHEST_VERSION, JavaxServletJspRule.class,
+        "javax.servlet:jsp-api",
         "javax.servlet.jsp:jsp-api",
         "javax.servlet.jsp:javax.servlet.jsp-api",
         "jakarta.servlet.jsp:jakarta.servlet.jsp-api"
@@ -351,7 +352,7 @@ public enum CapabilityDefinitions {
 
     JAVAX_VALIDATION_API(HIGHEST_VERSION, JavaxValidationApiRule.class,
         "javax.validation:validation-api",
-        "javax.validation:validation"
+        "jakarta.validation:jakarta.validation-api"
     ),
 
     JAVAX_WEBSOCKET_API_RULE(HIGHEST_VERSION, JavaxWebsocketApiRule.class,
@@ -506,12 +507,16 @@ public enum CapabilityDefinitions {
     public final DefaultResolutionStrategy defaultStrategy;
     public final Class<? extends ComponentMetadataRule> ruleClass;
 
-    CapabilityDefinitions(DefaultResolutionStrategy strategy, String... modules) {
-        this(strategy, EnumBasedRule.class, modules);
+    CapabilityDefinitions(DefaultResolutionStrategy defaultStrategy, String... modules) {
+        this(defaultStrategy, "org.gradlex", EnumBasedRule.class, modules);
     }
 
     CapabilityDefinitions(DefaultResolutionStrategy defaultStrategy, Class<? extends ComponentMetadataRule> ruleClass, String... modules) {
-        this.group = "org.gradlex";
+        this(defaultStrategy, "org.gradlex", EnumBasedRule.class, modules);
+    }
+
+    CapabilityDefinitions(DefaultResolutionStrategy defaultStrategy, String group, Class<? extends ComponentMetadataRule> ruleClass, String... modules) {
+        this.group =  group;
         this.name = nameInKebabCase();
         this.modules = Arrays.asList(modules);
         this.defaultStrategy = defaultStrategy;

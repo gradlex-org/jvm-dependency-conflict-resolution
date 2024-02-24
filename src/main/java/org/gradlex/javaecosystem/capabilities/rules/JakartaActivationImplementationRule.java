@@ -38,6 +38,6 @@ public abstract class JakartaActivationImplementationRule extends EnumBasedRule 
 
     @Override
     protected boolean shouldApply(ModuleVersionIdentifier id) {
-        return VersionNumber.parse(id.getVersion()).compareTo(VersionNumber.parse(FIRST_ECLIPSE_VERSION)) < 0;
+        return "com.sun.activation".equals(id.getGroup()) || VersionNumber.parse(id.getVersion()).compareTo(VersionNumber.parse(FIRST_ECLIPSE_VERSION)) < 0;
     }
 }

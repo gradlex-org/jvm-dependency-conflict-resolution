@@ -37,6 +37,6 @@ public abstract class AopallianceRule extends EnumBasedRule {
 
     @Override
     protected boolean shouldApply(ModuleVersionIdentifier id) {
-        return VersionNumber.parse(id.getVersion()).compareTo(VersionNumber.parse(FIRST_AOP_EMBEDDED_VERSION)) >= 0;
+        return "aopalliance".equals(id.getGroup()) || VersionNumber.parse(id.getVersion()).compareTo(VersionNumber.parse(FIRST_AOP_EMBEDDED_VERSION)) >= 0;
     }
 }

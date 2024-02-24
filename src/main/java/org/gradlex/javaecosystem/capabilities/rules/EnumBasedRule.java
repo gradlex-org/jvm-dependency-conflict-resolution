@@ -54,7 +54,5 @@ public abstract class EnumBasedRule implements ComponentMetadataRule {
         return id.getVersion();
     }
 
-    protected void additionalAdjustments(VariantMetadata variant) {
-        // no-op
-    }
+    protected void additionalAdjustments(VariantMetadata variant) { }
 }
