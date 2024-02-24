@@ -512,7 +512,7 @@ public enum CapabilityDefinitions {
     }
 
     CapabilityDefinitions(DefaultResolutionStrategy defaultStrategy, Class<? extends ComponentMetadataRule> ruleClass, String... modules) {
-        this(defaultStrategy, "org.gradlex", EnumBasedRule.class, modules);
+        this(defaultStrategy, "org.gradlex", ruleClass, modules);
     }
 
     CapabilityDefinitions(DefaultResolutionStrategy defaultStrategy, String group, Class<? extends ComponentMetadataRule> ruleClass, String... modules) {

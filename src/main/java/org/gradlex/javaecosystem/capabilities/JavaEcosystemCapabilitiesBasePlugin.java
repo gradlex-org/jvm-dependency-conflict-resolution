@@ -26,6 +26,7 @@ import org.gradle.util.GradleVersion;
 import org.gradlex.javaecosystem.capabilities.componentrules.GuavaComponentRule;
 import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
 import org.gradlex.javaecosystem.capabilities.rules.logging.Log4J2Alignment;
+import org.gradlex.javaecosystem.capabilities.rules.logging.Slf4J2Alignment;
 import org.gradlex.javaecosystem.capabilities.rules.logging.Slf4JAlignment;
 
 public class JavaEcosystemCapabilitiesBasePlugin implements Plugin<ExtensionAware> {
@@ -89,7 +90,13 @@ public class JavaEcosystemCapabilitiesBasePlugin implements Plugin<ExtensionAwar
     }
 
     private void configureAlignment(ComponentMetadataHandler components) {
-        components.all(Slf4JAlignment.class);
+        for (String slf4jModule : Slf4JAlignment.SLF4J_MODULES) {
+            components.withModule(slf4jModule, Slf4JAlignment.class);
+        }
+        for (String slf4j2Module : Slf4J2Alignment.SLF4J2_MODULES) {
+            components.withModule(slf4j2Module, Slf4J2Alignment.class);
+        }
+
         components.all(Log4J2Alignment.class);
     }
 }
