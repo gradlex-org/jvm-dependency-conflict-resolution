@@ -32,10 +32,7 @@ public abstract class GuavaListenableFutureRule extends EnumBasedRule {
 
     @Override
     protected String getVersion(ModuleVersionIdentifier id) {
-        if ("listenablefuture".equals(id.getGroup())) {
-            return "1.0";
-        }
-        return id.getVersion();
+        return "1.0";
     }
 
     @Override

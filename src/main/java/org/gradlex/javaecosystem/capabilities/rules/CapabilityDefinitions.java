@@ -149,9 +149,9 @@ public enum CapabilityDefinitions {
         "com.google.guava:guava",
         "com.google.guava:guava-jdk5"
     ),
-    LISTENABLEFUTURE(HIGHEST_VERSION, "com.google.guava", GuavaListenableFutureRule.class,
-        "com.google.guava:listenablefuture",
-        "com.google.guava:guava"
+    LISTENABLEFUTURE(FIRST_MODULE, "com.google.guava", GuavaListenableFutureRule.class,
+        "com.google.guava:guava",
+        "com.google.guava:listenablefuture"
     ),
     HAMCREST_LIBRARY(FIRST_MODULE,
         "org.hamcrest:hamcrest",
