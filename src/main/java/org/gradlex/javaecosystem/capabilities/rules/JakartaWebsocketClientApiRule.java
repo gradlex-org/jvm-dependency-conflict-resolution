@@ -32,13 +32,10 @@ public abstract class JakartaWebsocketClientApiRule extends EnumBasedRule {
 
     @Override
     protected String getVersion(ModuleVersionIdentifier id) {
-        String version;
         if (id.getGroup().startsWith("org.apache.tomcat")) {
-            version = JavaxWebsocketApiRule.websocketApiVersionForTomcatVersion(VersionNumber.parse(id.getVersion()));
-        } else {
-            version = id.getVersion();
+            return JavaxWebsocketApiRule.websocketApiVersionForTomcatVersion(VersionNumber.parse(id.getVersion()));
         }
-        return version;
+        return id.getVersion();
     }
 
     @Override

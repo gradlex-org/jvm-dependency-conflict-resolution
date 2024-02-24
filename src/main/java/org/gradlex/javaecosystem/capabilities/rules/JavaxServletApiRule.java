@@ -39,14 +39,10 @@ public abstract class JavaxServletApiRule extends EnumBasedRule {
 
     @Override
     protected String getVersion(ModuleVersionIdentifier id) {
-        String group = id.getGroup();
-        String version;
-        if (group.startsWith("org.apache.tomcat")) {
-            version = servletApiVersionForTomcatVersion(VersionNumber.parse(id.getVersion()));
-        } else {
-            version = id.getVersion();
+        if (id.getGroup().startsWith("org.apache.tomcat")) {
+            return servletApiVersionForTomcatVersion(VersionNumber.parse(id.getVersion()));
         }
-        return version;
+        return id.getVersion();
     }
 
     // https://tomcat.apache.org/whichversion.html

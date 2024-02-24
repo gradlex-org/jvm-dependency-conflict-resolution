@@ -32,13 +32,10 @@ public abstract class JakartaAnnotationApiRule extends EnumBasedRule {
 
     @Override
     protected String getVersion(ModuleVersionIdentifier id) {
-        String version;
         if ("org.apache.tomcat".equals(id.getGroup())) {
-            version = annotationApiVersionForTomcatVersion(VersionNumber.parse(id.getVersion()));
-        } else {
-            version = id.getVersion();
+            return annotationApiVersionForTomcatVersion(VersionNumber.parse(id.getVersion()));
         }
-        return version;
+        return id.getVersion();
     }
 
     @Override
