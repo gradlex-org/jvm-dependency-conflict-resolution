@@ -1,5 +1,11 @@
 name: Build Plugin
-on: [ push ]
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
 jobs:
   gradle-build:
     runs-on: ubuntu-latest
