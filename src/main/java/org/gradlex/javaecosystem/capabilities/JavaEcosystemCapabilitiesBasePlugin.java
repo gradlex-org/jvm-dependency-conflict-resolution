@@ -96,7 +96,8 @@ public class JavaEcosystemCapabilitiesBasePlugin implements Plugin<ExtensionAwar
         for (String slf4j2Module : Slf4J2Alignment.SLF4J2_MODULES) {
             components.withModule(slf4j2Module, Slf4J2Alignment.class);
         }
-
-        components.all(Log4J2Alignment.class);
+        for (String log4j2Module : Log4J2Alignment.LOG4J2_MODULES) {
+            components.withModule(log4j2Module, Log4J2Alignment.class);
+        }
     }
 }

@@ -19,13 +19,30 @@ package org.gradlex.javaecosystem.capabilities.rules.logging;
 import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataDetails;
 import org.gradle.api.artifacts.ComponentMetadataRule;
+import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
 
 public class Log4J2Alignment implements ComponentMetadataRule {
+
+    public static String[] LOG4J2_MODULES = {
+            "org.apache.logging.log4j:log4j-api",
+            "org.apache.logging.log4j:log4j-core",
+            "org.apache.logging.log4j:log4j-1.2-api",
+            "org.apache.logging.log4j:log4j-jcl",
+            "org.apache.logging.log4j:log4j-flume-ng",
+            "org.apache.logging.log4j:log4j-taglib",
+            "org.apache.logging.log4j:log4j-jmx-gui",
+            "org.apache.logging.log4j:log4j-slf4j-impl",
+            "org.apache.logging.log4j:log4j-web",
+            "org.apache.logging.log4j:log4j-nosql"
+    };
+
     @Override
     public void execute(ComponentMetadataContext context) {
         ComponentMetadataDetails details = context.getDetails();
-        if (details.getId().getGroup().startsWith("org.apache.logging.log4j")) {
-            details.belongsTo("org.apache.logging.log4j:log4j-bom:" + details.getId().getVersion(), false);
+
+        String version = details.getId().getVersion();
+        if (VersionNumber.parse(version).compareTo(VersionNumber.parse("2.0")) >= 0) {
+            details.belongsTo("org.apache.logging.log4j:log4j-bom:" + version, false);
         }
     }
 }
