@@ -7,8 +7,6 @@ import org.gradle.api.file.RegularFileProperty
 import org.gradle.api.tasks.Classpath
 import org.gradle.api.tasks.InputFile
 import org.gradle.api.tasks.TaskAction
-import org.reflections.util.ClasspathHelper
-import org.reflections.util.ConfigurationBuilder
 import java.net.URLClassLoader
 
 abstract class ReadmeUpdate : DefaultTask() {
@@ -23,27 +21,12 @@ abstract class ReadmeUpdate : DefaultTask() {
     fun update() {
         val classesUrls = pluginClasses.files.map { it.toURI().toURL() }
         val loader = URLClassLoader("pluginClasspath", classesUrls.toTypedArray(), ComponentMetadataRule::class.java.classLoader)
-        val reflectionConfiguration = ConfigurationBuilder().setUrls(ClasspathHelper.forClassLoader(loader)).addClassLoaders(loader)
-        val allClasses = org.reflections.Reflections(reflectionConfiguration).getSubTypesOf(ComponentMetadataRule::class.java).filter {
-            it.`package`.name == "org.gradlex.javaecosystem.capabilities.rules" }
+        val definitions = loader.loadClass("org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions")
 
-        if (allClasses.isEmpty()) {
-            throw RuntimeException("No rule implementations found")
-        }
+        val allCapabilities = definitions.enumConstants.map { rule ->
+            val capability = definitions.getDeclaredMethod("getCapability").invoke(rule) as String
+            val modules = definitions.getDeclaredMethod("getModules").invoke(rule) as List<*>
 
-        val allCapabilities = allClasses.map { ruleClass ->
-            val capabilityGroup = ruleClass.getDeclaredField("CAPABILITY_GROUP").get(null) as String
-            var capability = ""
-            ruleClass.declaredFields.filter { it.name.startsWith("CAPABILITY_NAME") }.forEach { field ->
-                if (capability.isNotEmpty()) {
-                    capability += " / "
-                }
-                val capabilityName = field.get(null) as String
-                capability += "$capabilityGroup:${capabilityName}".asRepoLink()
-            }
-            capability += " ([${ruleClass.simpleName}](src/main/java/org/gradlex/javaecosystem/capabilities/rules/${ruleClass.simpleName}.java))"
-
-            val modules = ruleClass.getDeclaredField("MODULES").get(null) as Array<*>
             Pair(capability, modules)
         }.sortedBy { it.first }
 

@@ -18,6 +18,6 @@ val checkSamplesForCompleteness = tasks.register<SamplesCompletenessCheck>("chec
 }
 
 tasks.quickCheck {
-    // dependsOn(updateReadme)
+    dependsOn(updateReadme)
     // dependsOn(checkSamplesForCompleteness)
 }
