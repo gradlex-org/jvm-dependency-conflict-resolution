@@ -1,0 +1,2 @@
+[[ecosystem-plugin]]
+= Java ecosystem capabilities resolution plugin

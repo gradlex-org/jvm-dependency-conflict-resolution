@@ -1,28 +1,8 @@
 [[logging-plugin]]
 = Logging Capabilities Gradle Plugin
 
-:tip-caption: :bulb:
-:note-caption: :information_source:
-:important-caption: :heavy_exclamation_mark:
-:caution-caption: :fire:
-:warning-caption: :warning:
-
-Ever seen this infamous Slf4J warning?
-
-[source]
-----
-SLF4J: Class path contains multiple SLF4J bindings.
-SLF4J: Found binding in [jar:file:.../slf4j-log4j12-1.7.29.jar!/org/slf4j/impl/StaticLoggerBinder.class]
-SLF4J: Found binding in [jar:file:.../logback-classic-1.2.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
-SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
-SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
-----
-
-Ever wondered how to make sure _all_ your dependencies' logging ends up in your Log4J 2 configured outputs?
-
-Then this plugin is for you!
-
-It is built on the https://docs.gradle.org/6.0.1/userguide/component_capabilities.html[Gradle capabilities feature], to select a Java logger implementation so that it is enforced at build time!
+This plugin provides a DSL that enables an application to declaratively enforce _at build time_ the logging framework it decided to use.
+See the <<index.adoc#intro,general introduction>> for the motivation for this plugin.
 
 == Plugin application and compatibility
 
@@ -37,7 +17,7 @@ plugins {
 
 Have a look at https://plugins.gradle.org/plugin/dev.jacomet.logging-capabilities[the documentation on the plugin portal] for alternate or DSL specific syntax.
 
-The application will make sure that the <<rules.adoc#capabilities,capabilities definition plugin>> has been applied as well, either as a settings or project plugin.
+The application will make sure that the <<base.adoc#base-plugin,capabilities definition plugin>> has been applied as well, either as a settings or project plugin.
 This base plugin is the one that defines a number of Java ecosystem capabilities, including <<rules.adoc#logging,ones covering the logging landscape>>.
 
 == Expressing preference over a logging solution

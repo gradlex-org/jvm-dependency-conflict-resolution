@@ -1,0 +1,7 @@
+[[base-plugin]]
+= Java ecosystem capabilities base plugin
+
+This plugin is responsible for applying the capability rules that support the other two plugins.
+
+WARNING: Applying only this plugin will result in broken builds if capability conflicts are found.
+Conflict resolution is handled by the other two plugins: <<ecosystem.adoc#ecosystem-plugin,`java-ecosystem-capabilities`>> and <<logging.adoc#logging-plugin,`logging-capabilities`>>.

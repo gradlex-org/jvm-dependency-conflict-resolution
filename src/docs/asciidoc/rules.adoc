@@ -1,5 +1,7 @@
-[[capabilities]]
-= Java ecosystem capabilities
+[[capability-rules]]
+= Java ecosystem capability rules
+
+Find here all the capability rules that are added by the <<base.adoc#base-plugin,base plugin>>.
 
 [[logging]]
 == Detection of invalid logging configurations
