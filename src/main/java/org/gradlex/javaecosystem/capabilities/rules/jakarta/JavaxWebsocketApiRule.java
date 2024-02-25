@@ -14,21 +14,23 @@
  * limitations under the License.
  */
 
-package org.gradlex.javaecosystem.capabilities.rules;
+package org.gradlex.javaecosystem.capabilities.rules.jakarta;
 
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ModuleVersionIdentifier;
+import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
+import org.gradlex.javaecosystem.capabilities.rules.EnumBasedRule;
 import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
 
 import javax.inject.Inject;
 
 @CacheableRule
-public abstract class JavaxInjectApiRule extends EnumBasedRule {
+public abstract class JavaxWebsocketApiRule extends EnumBasedRule {
 
-    public static final String FIRST_JAKARTA_VERSION = "2.0.0";
+    static final String FIRST_JAKARTA_VERSION = "2.0.0";
 
     @Inject
-    public JavaxInjectApiRule(CapabilityDefinitions rule) {
+    public JavaxWebsocketApiRule(CapabilityDefinitions rule) {
         super(rule);
     }
 
@@ -39,9 +41,20 @@ public abstract class JavaxInjectApiRule extends EnumBasedRule {
 
     @Override
     protected String getVersion(ModuleVersionIdentifier id) {
-        if ("org.glassfish.hk2.external".equals(id.getGroup())) {
-            return  "1";
+        if (id.getGroup().startsWith("org.apache.tomcat")) {
+            return websocketApiVersionForTomcatVersion(VersionNumber.parse(id.getVersion()));
         }
         return id.getVersion();
+    }
+
+    // https://tomcat.apache.org/whichversion.html
+    static String websocketApiVersionForTomcatVersion(VersionNumber tomcatVersion) {
+        if (tomcatVersion.compareTo(VersionNumber.version(10, 1)) >= 0) {
+            return "2.1.0";
+        }
+        if (tomcatVersion.compareTo(VersionNumber.version(10, 0)) >= 0) {
+            return "2.0.0";
+        }
+        return "1.1.0";
     }
 }

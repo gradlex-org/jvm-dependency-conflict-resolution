@@ -14,26 +14,7 @@
  * limitations under the License.
  */
 
-package org.gradlex.javaecosystem.capabilities.rules;
+@NonNullApi
+package org.gradlex.javaecosystem.capabilities.rules.jakarta;
 
-import org.gradle.api.artifacts.CacheableRule;
-import org.gradle.api.artifacts.ModuleVersionIdentifier;
-
-import javax.inject.Inject;
-
-@CacheableRule
-public abstract class JakartaWsRsApiRule extends EnumBasedRule {
-
-    @Inject
-    public JakartaWsRsApiRule(CapabilityDefinitions rule) {
-        super(rule);
-    }
-
-    @Override
-    protected String getVersion(ModuleVersionIdentifier id) {
-        if ("jakarta.ws.rs".equals(id.getGroup())) {
-            return id.getVersion();
-        }
-        return "3.0.0";
-    }
-}
+import org.gradle.api.NonNullApi;

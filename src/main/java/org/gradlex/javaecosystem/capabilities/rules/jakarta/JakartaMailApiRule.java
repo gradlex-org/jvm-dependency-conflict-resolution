@@ -14,40 +14,28 @@
  * limitations under the License.
  */
 
-package org.gradlex.javaecosystem.capabilities.rules;
+package org.gradlex.javaecosystem.capabilities.rules.jakarta;
 
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ModuleVersionIdentifier;
+import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
+import org.gradlex.javaecosystem.capabilities.rules.EnumBasedRule;
 import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
 
 import javax.inject.Inject;
 
 @CacheableRule
-public abstract class JavaxMailApiRule extends EnumBasedRule {
-
-    static final String FIRST_JAKARTA_VERSION = "2.0.0";
+public abstract class JakartaMailApiRule extends EnumBasedRule {
 
     @Inject
-    public JavaxMailApiRule(CapabilityDefinitions rule) {
+    public JakartaMailApiRule(CapabilityDefinitions rule) {
         super(rule);
     }
 
     @Override
     protected boolean shouldApply(ModuleVersionIdentifier id) {
-        return VersionNumber.parse(getVersion(id)).compareTo(VersionNumber.parse(FIRST_JAKARTA_VERSION)) < 0;
-    }
-
-    @Override
-    protected String getVersion(ModuleVersionIdentifier id) {
-        String group = id.getGroup();
-        if (group.equals("org.apache.geronimo.javamail") || group.equals("org.apache.geronimo.specs")) {
-            return mailApiVersionForGeronimoName(id.getName());
-        }
-        return id.getVersion();
-    }
-
-    private String mailApiVersionForGeronimoName(String name) {
-        int index = "geronimo-javamail_".length();
-        return name.substring(index, index + 3) + ".0";
+        // org.eclipse.angus has its own versioning, and everything is Jakarta
+        return "org.eclipse.angus".equals(id.getGroup())
+                || VersionNumber.parse(id.getVersion()).compareTo(VersionNumber.parse(JavaxMailApiRule.FIRST_JAKARTA_VERSION)) >= 0;
     }
 }

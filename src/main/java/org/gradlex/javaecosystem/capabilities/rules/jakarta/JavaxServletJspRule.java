@@ -14,21 +14,23 @@
  * limitations under the License.
  */
 
-package org.gradlex.javaecosystem.capabilities.rules;
+package org.gradlex.javaecosystem.capabilities.rules.jakarta;
 
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ModuleVersionIdentifier;
+import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
+import org.gradlex.javaecosystem.capabilities.rules.EnumBasedRule;
 import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
 
 import javax.inject.Inject;
 
 @CacheableRule
-public abstract class JavaxPersistenceApiRule extends EnumBasedRule {
+public abstract class JavaxServletJspRule extends EnumBasedRule {
 
     static final String FIRST_JAKARTA_VERSION = "3.0.0";
 
     @Inject
-    public JavaxPersistenceApiRule(CapabilityDefinitions rule) {
+    public JavaxServletJspRule(CapabilityDefinitions rule) {
         super(rule);
     }
 
@@ -36,4 +38,5 @@ public abstract class JavaxPersistenceApiRule extends EnumBasedRule {
     protected boolean shouldApply(ModuleVersionIdentifier id) {
         return VersionNumber.parse(id.getVersion()).compareTo(VersionNumber.parse(FIRST_JAKARTA_VERSION)) < 0;
     }
+
 }

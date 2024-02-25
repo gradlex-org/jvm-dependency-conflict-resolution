@@ -14,21 +14,23 @@
  * limitations under the License.
  */
 
-package org.gradlex.javaecosystem.capabilities.rules;
+package org.gradlex.javaecosystem.capabilities.rules.jakarta;
 
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ModuleVersionIdentifier;
+import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
+import org.gradlex.javaecosystem.capabilities.rules.EnumBasedRule;
 import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
 
 import javax.inject.Inject;
 
 @CacheableRule
-public abstract class JavaxAnnotationApiRule extends EnumBasedRule {
+public abstract class JavaxJwsApisRule extends EnumBasedRule {
 
-    static final String FIRST_JAKARTA_VERSION = "2.0.0";
+    static final String FIRST_JAKARTA_VERSION = "3.0.0";
 
     @Inject
-    public JavaxAnnotationApiRule(CapabilityDefinitions rule) {
+    public JavaxJwsApisRule(CapabilityDefinitions rule) {
         super(rule);
     }
 
@@ -36,20 +38,5 @@ public abstract class JavaxAnnotationApiRule extends EnumBasedRule {
     protected boolean shouldApply(ModuleVersionIdentifier id) {
         return VersionNumber.parse(getVersion(id)).compareTo(VersionNumber.parse(FIRST_JAKARTA_VERSION)) < 0;
     }
-
-    @Override
-    protected String getVersion(ModuleVersionIdentifier id) {
-        if ("org.apache.tomcat".equals(id.getGroup())) {
-            return annotationApiVersionForTomcatVersion(VersionNumber.parse(id.getVersion()));
-        }
-        return id.getVersion();
-    }
-
-    // This is probably 100% accurate - older Tomcat versions might ship older 1.x specs
-    private static String annotationApiVersionForTomcatVersion(VersionNumber tomcatVersion) {
-        if (tomcatVersion.compareTo(VersionNumber.version(10, 0)) >= 0) {
-            return "2.1.0";
-        }
-        return "1.3.0";
-    }
 }
+

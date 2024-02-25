@@ -22,7 +22,6 @@ import org.gradle.api.artifacts.dsl.ComponentMetadataHandler;
 import org.gradle.api.initialization.Settings;
 import org.gradle.api.plugins.ExtensionAware;
 import org.gradle.util.GradleVersion;
-import org.gradlex.javaecosystem.capabilities.componentrules.GuavaComponentRule;
 import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
 import org.gradlex.javaecosystem.capabilities.rules.logging.Log4J2Alignment;
 import org.gradlex.javaecosystem.capabilities.rules.logging.Slf4J2Alignment;

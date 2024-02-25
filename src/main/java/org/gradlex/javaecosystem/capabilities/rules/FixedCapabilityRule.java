@@ -26,6 +26,7 @@ import javax.inject.Inject;
  */
 @CacheableRule
 public abstract class FixedCapabilityRule extends EnumBasedRule {
+
     @Inject
     public FixedCapabilityRule(CapabilityDefinitions capabilityDefinition) {
         super(capabilityDefinition);

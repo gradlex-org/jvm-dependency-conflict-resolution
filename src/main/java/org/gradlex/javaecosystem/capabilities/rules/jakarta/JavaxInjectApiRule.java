@@ -14,26 +14,36 @@
  * limitations under the License.
  */
 
-package org.gradlex.javaecosystem.capabilities.rules;
+package org.gradlex.javaecosystem.capabilities.rules.jakarta;
 
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ModuleVersionIdentifier;
+import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
+import org.gradlex.javaecosystem.capabilities.rules.EnumBasedRule;
 import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
 
 import javax.inject.Inject;
 
 @CacheableRule
-public abstract class JavaxXmlWsApiRule extends EnumBasedRule {
+public abstract class JavaxInjectApiRule extends EnumBasedRule {
 
-    static final String FIRST_JAKARTA_VERSION = "3.0.0";
+    public static final String FIRST_JAKARTA_VERSION = "2.0.0";
 
     @Inject
-    public JavaxXmlWsApiRule(CapabilityDefinitions rule) {
+    public JavaxInjectApiRule(CapabilityDefinitions rule) {
         super(rule);
     }
 
     @Override
     protected boolean shouldApply(ModuleVersionIdentifier id) {
-        return VersionNumber.parse(id.getVersion()).compareTo(VersionNumber.parse(FIRST_JAKARTA_VERSION)) < 0;
+        return VersionNumber.parse(getVersion(id)).compareTo(VersionNumber.parse(FIRST_JAKARTA_VERSION)) < 0;
+    }
+
+    @Override
+    protected String getVersion(ModuleVersionIdentifier id) {
+        if ("org.glassfish.hk2.external".equals(id.getGroup())) {
+            return  "1";
+        }
+        return id.getVersion();
     }
 }
