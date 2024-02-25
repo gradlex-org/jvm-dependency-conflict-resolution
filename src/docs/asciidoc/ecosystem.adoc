@@ -1,2 +1,39 @@
 [[ecosystem-plugin]]
 = Java ecosystem capabilities resolution plugin
+
+== Deactivating the default resolution strategy for capabilities
+
+The plugin adds a _default resolution strategy_ for each capability (if the plugin is used as _project plugin_).
+Which in most cases means that Gradle will automatically pick the highest version of all components in conflict.
+This is to cover the cases where users _just want things to work somehow_.
+But it might not always be the right solution.
+
+If you prefer to get all the conflicts reported and then add the conflict resolution explicitly (see next section),
+you can deactivate the default resolution for one or all rules through the `javaEcosystemCapabilities` extension.
+
+[source.multi-language-sample,kotlin]
+----
+// Deactivate default resolution strategy for all rules
+javaEcosystemCapabilities {
+    deactivatedResolutionStrategies.addAll(allCapabilities)
+}
+
+// Deactivate default resolution strategy for selected rules
+javaEcosystemCapabilities {
+    deactivatedResolutionStrategies.addAll(CGlibRule.CAPABILITY)
+    deactivatedResolutionStrategies.addAll(JavaxMailApiRule.CAPABILITY)
+}
+----
+[source.multi-language-sample,groovy]
+----
+// Deactivate default resolution strategy for all rules
+javaEcosystemCapabilities {
+    deactivatedResolutionStrategies.addAll(allCapabilities)
+}
+
+// Deactivate default resolution strategy for selected rules
+javaEcosystemCapabilities {
+    deactivatedResolutionStrategies.addAll(CGlibRule.CAPABILITY)
+    deactivatedResolutionStrategies.addAll(JavaxMailApiRule.CAPABILITY)
+}
+----

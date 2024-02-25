@@ -3,5 +3,175 @@
 
 This plugin is responsible for applying the capability rules that support the other two plugins.
 
-WARNING: Applying only this plugin will result in broken builds if capability conflicts are found.
+WARNING: Applying only this base plugin will result in broken builds if capability conflicts are found.
 Conflict resolution is handled by the other two plugins: <<ecosystem.adoc#ecosystem-plugin,`java-ecosystem-capabilities`>> and <<logging.adoc#logging-plugin,`logging-capabilities`>>.
+
+== What is the concrete effect of the plugin?
+
+The plugin makes sure that during dependency resolution, you do not end up with two components that 'do the same thing' in the dependency resolution result.
+That is, you won't have two or more Jars with different names (e.g. `jsr311-api-1.1.1.jar`, `javax.ws.rs-api-2.1.1.jar`, `jakarta.ws.rs-api-3.0.0.jar` and `jaxrs-api-3.0.1.Final.jar`) but same/similar classes on the classpath.
+In this example, Gradle will use `jaxrs-api` in all places.
+You can see all effects in https://scans.gradle.com/s/2pcbycndpf54c/dependencies?toggled=W1swXSxbMCwxXV0[this build scan]
+from this https://github.com/gradlex-org/java-ecosystem-capabilities/blob/main/samples/sample-all/build.gradle.kts[artificial sample project] that includes dependencies to all components covered by rules in this plugin.
+
+image::build-scan.png[link=https://scans.gradle.com/s/2pcbycndpf54c/dependencies?toggled=W1swXSxbMCwxXV0]
+
+=== Alternative: Copy rules into your build logic
+
+Instead of applying this plugin, you may also copy selected rules to your own _build logic_ and register them in your convention plugin(s) directly.
+In <<rules.adoc#capability-rules,rules documentation>>, all implementations are linked.
+Here they are implemented in Java, but converting them to Kotlin or Groovy should be straightforward if you prefer.
+
+== I use the plugin and now there is a conflict - what now?
+
+TIP: You can apply the <<ecosystem.adoc#ecosystem-plugin,`java-ecosystem-capabilities` plugin>> to get some automatic conflict resolution.
+
+If you get an error like this:
+
+[source]
+----
+> Module 'com.sun.mail:jakarta.mail' has been rejected:
+     Cannot select module with conflict on capability 'javax.mail:mail:2.0.1' also provided by [com.sun.mail:mailapi:2.0.1(compile)]
+----
+
+It means that you need to make a decision for the given capability - in this case `javax.mail:mail` - by selecting one of the modules that both provide the capability.
+In this case, you can decide between `com.sun.mail:jakarta.mail` (see first line of message) and `com.sun.mail:mailapi` (see end of second line).
+
+A decision is made by defining a resolution strategy for the capability.
+This is best done in the place where you applied this plugin (e.g. one of your convention plugins):
+
+[source,groovy]
+----
+configurations.all {
+  resolutionStrategy.capabilitiesResolution {
+    withCapability("javax.mail:mail") {        // Capability for which to make the decision
+      select("com.sun.mail:jakarta.mail:0")    // The component to select
+    }
+  }
+}
+----
+
+== One of the rules added by the plugin has an undesired effect - what now?
+
+The goal of this plugin is to enrich the metadata of widely used components from Maven Central to allow Gradle to detect conflicts.
+The rules implemented in this plugin extend existing metadata with the mindset that the metadata should look like that in the first place.
+It just doesn't for technical limitations during the development of the component.
+In most cases, because the component is published with Maven and only published POM metadata which cannot express capability information.
+
+With that in mind, the rules _should_ be usable as they are for almost all Gradle builds.
+If you encounter a problem with a rule in your build:
+
+1. Maybe there is a mistake/bug in this plugin. Please https://github.com/gradlex-org/java-ecosystem-capabilities/blob/main/issues/new[open an issue] to discuss it.
+2. You might have a very special setup, where one of the rules causes trouble only in that setup.
+
+In the second case, you cannot deactivate one of the rules in the plugin.
+But you can treat the modified metadata as if it was the original metadata and add another rule on top to modify it further or to revert the effect of the rule in this plugin.
+For example:
+
+[source,groovy]
+----
+dependencies {
+    components.withModule(CGlibRule.MODULES[0]) {
+        // Ad-hoc rule to revert the effect of 'CGlibRule'
+        allVariants {
+            withCapabilities {
+                removeCapability(CGlibRule.CAPABILITY_GROUP, CGlibRule.CAPABILITY_NAME)
+            }
+        }
+    }
+}
+----
+
+Such additional rules are best added in the place where you applied this plugin (e.g. one of your convention plugins).
+The snippet above shows how to add a rule without putting it into a separate class.
+You can put it into a class (written in Java, Kotlin or Groovy) and use the `@CacheableRule` annotation for better performance.
+That's how the rules in this plugin are implemented.
+Consult the Gradle documentation on https://docs.gradle.org/current/userguide/component_metadata_rules.html[Component Metadata Rules] for more details.
+
+== Something seems to be missing
+
+This plugin collects rules that universally apply in the Java ecosystem.
+That means, that the information this plugin adds would ideally be already published in the metadata of the corresponding components.
+The idea is that _every_ Java project can apply this plugin to avoid certain 'dependency hell' situations.
+Even if the project does not use any of the components this plugin affects directly, transitive dependency might bring in components that cause conflicts.
+
+At the moment this plugin is only covering a fraction of the components on Maven Central that miss capability information.
+If you encounter more cases, please...
+
+== ...contribute!
+
+If you use this plugin and think it is missing a rule for a well-known component (or that a rule is incomplete/wrong), please let us know by
+
+- https://github.com/gradlex-org/java-ecosystem-capabilities/blob/main/issues/new[Opening an Issue]
+- https://github.com/gradlex-org/java-ecosystem-capabilities/pulls[Providing a PR] - for this you should look at the https://github.com/gradlex-org/java-ecosystem-capabilities/blob/main/src/main/java/org.gradlex/javaecosystem/capabilities/rules[existing rules] and follow the same patterns for new rules
+
+Please make sure, you clearly state which **Capability** it is about and which **Components** provide the Capability.
+
+== I maintain a Component on Maven Central - How can I publish Capability information myself?
+
+It would be great to see more components publishing capability information directly.
+If you wonder how you could do it, here is how:
+
+=== Publishing with Gradle
+
+Assuming the component you are publishing is `org.ow2.asm:asm`.
+You add the `asm:asm` capability as follows:
+
+[source,groovy]
+----
+configurations {
+    apiElements {
+        outgoing {
+            capability("${project.group}:${project.name}:${project.version}") // keep default capability 'org.ow2.asm:asm'
+            capability("asm:asm:${project.version}")                          // add 'asm:asm'
+        }
+    }
+    runtimeElements {
+        outgoing {
+            capability("${project.group}:${project.name}:${project.version}") // keep default capability 'org.ow2.asm:asm'
+            capability("asm:asm:${project.version}")                          // add 'asm:asm'
+        }
+    }
+}
+----
+
+See also: https://docs.gradle.org/current/userguide/component_capabilities.html#sec:declaring-additional-capabilities-for-a-local-component[Documentation in Gradle Manual]
+
+=== Publishing with Maven
+
+Assuming the component you are publishing is `org.ow2.asm:asm`.
+You add the `asm:asm` capability as follows:
+
+[source,xml]
+----
+<!-- do_not_remove: published-with-gradle-metadata -->
+
+<build>
+  <plugins>
+    <plugin>
+      <groupId>de.jjohannes</groupId>
+      <artifactId>gradle-module-metadata-maven-plugin</artifactId>
+      <version>0.3.0</version>
+      <executions>
+        <execution>
+          <goals>
+            <goal>gmm</goal>
+          </goals>
+        </execution>
+      </executions>
+      <configuration>
+        <capabilities>
+          <capability>
+            <groupId>asm</groupId>
+            <artifactId>asm</artifactId>
+          </capability>
+        </capabilities>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
+
+----
+
+See also: https://github.com/gradlex-org/gradle-module-metadata-maven-plugin#defining-capabilities[Documentation of `gradle-module-metadata-maven-plugin` Maven Plugin]
+

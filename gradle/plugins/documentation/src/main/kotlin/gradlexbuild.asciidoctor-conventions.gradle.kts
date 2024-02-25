@@ -13,6 +13,7 @@ tasks {
         attributes(mapOf(
             "docinfodir" to "src/docs/asciidoc",
             "docinfo" to "shared",
+            "imagesdir" to "./images",
             "source-highlighter" to "prettify",
             "tabsize" to "4",
             "toc" to "left",
