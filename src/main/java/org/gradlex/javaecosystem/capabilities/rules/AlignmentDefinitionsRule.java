@@ -18,41 +18,32 @@ package org.gradlex.javaecosystem.capabilities.rules;
 
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ComponentMetadataContext;
+import org.gradle.api.artifacts.ComponentMetadataDetails;
 import org.gradle.api.artifacts.ComponentMetadataRule;
 import org.gradle.api.artifacts.ModuleVersionIdentifier;
-import org.gradle.api.artifacts.VariantMetadata;
 
 import javax.inject.Inject;
 
 @CacheableRule
-public abstract class CapabilityDefinitionsRule implements ComponentMetadataRule {
+public abstract class AlignmentDefinitionsRule implements ComponentMetadataRule {
 
-    private final CapabilityDefinitions definition;
+    private final AlignmentDefinitions definition;
 
     @Inject
-    public CapabilityDefinitionsRule(CapabilityDefinitions definition) {
+    public AlignmentDefinitionsRule(AlignmentDefinitions definition) {
         this.definition = definition;
     }
 
     @Override
     public final void execute(ComponentMetadataContext context) {
-        if (shouldApply(context.getDetails().getId())) {
-            context.getDetails().allVariants(variant -> {
-                variant.withCapabilities(capabilities -> capabilities.addCapability(
-                        definition.getGroup(), definition.getCapabilityName(), getVersion(context.getDetails().getId())
-                ));
-                additionalAdjustments(variant);
-            });
+        ComponentMetadataDetails details = context.getDetails();
+        if (shouldApply(details.getId())) {
+            String version = details.getId().getVersion();
+            details.belongsTo(definition.getBom() + ":" + version, definition.isVirtual());
         }
     }
 
     protected boolean shouldApply(ModuleVersionIdentifier id) {
         return true;
     }
-
-    protected String getVersion(ModuleVersionIdentifier id) {
-        return id.getVersion();
-    }
-
-    protected void additionalAdjustments(VariantMetadata variant) { }
 }

@@ -14,24 +14,7 @@
  * limitations under the License.
  */
 
+@NonNullApi
 package org.gradlex.javaecosystem.capabilities.rules.logging;
 
-import org.gradle.api.artifacts.ModuleVersionIdentifier;
-import org.gradlex.javaecosystem.capabilities.rules.AlignmentDefinitions;
-import org.gradlex.javaecosystem.capabilities.rules.AlignmentDefinitionsRule;
-import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
-
-import javax.inject.Inject;
-
-public class Log4J2Alignment extends AlignmentDefinitionsRule {
-
-    @Inject
-    public Log4J2Alignment(AlignmentDefinitions definition) {
-        super(definition);
-    }
-
-    @Override
-    protected boolean shouldApply(ModuleVersionIdentifier id) {
-        return VersionNumber.parse(id.getVersion()).compareTo(VersionNumber.parse("2.0")) >= 0;
-    }
-}
+import org.gradle.api.NonNullApi;

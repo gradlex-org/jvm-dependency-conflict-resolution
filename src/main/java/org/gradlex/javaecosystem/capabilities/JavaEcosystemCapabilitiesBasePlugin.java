@@ -22,10 +22,8 @@ import org.gradle.api.artifacts.dsl.ComponentMetadataHandler;
 import org.gradle.api.initialization.Settings;
 import org.gradle.api.plugins.ExtensionAware;
 import org.gradle.util.GradleVersion;
+import org.gradlex.javaecosystem.capabilities.rules.AlignmentDefinitions;
 import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
-import org.gradlex.javaecosystem.capabilities.rules.logging.Log4J2Alignment;
-import org.gradlex.javaecosystem.capabilities.rules.logging.Slf4J2Alignment;
-import org.gradlex.javaecosystem.capabilities.rules.logging.Slf4JAlignment;
 
 public class JavaEcosystemCapabilitiesBasePlugin implements Plugin<ExtensionAware> {
 
@@ -52,33 +50,27 @@ public class JavaEcosystemCapabilitiesBasePlugin implements Plugin<ExtensionAwar
         } else {
             throw new IllegalStateException("Cannot apply plugin to: " + projectOrSettings.getClass().getName());
         }
-        registerCapabilityRules(components);
+        registerRules(components);
     }
 
-
-    private void registerCapabilityRules(ComponentMetadataHandler components) {
-        for (CapabilityDefinitions rule : CapabilityDefinitions.values()) {
-            registerRuleFromEnum(rule, components);
+    private void registerRules(ComponentMetadataHandler components) {
+        for (CapabilityDefinitions definition : CapabilityDefinitions.values()) {
+            registerCapabilityRule(definition, components);
         }
-
-        configureAlignment(components); // TODO alignment
-    }
-
-    private void registerRuleFromEnum(CapabilityDefinitions capabilityDefinitions, ComponentMetadataHandler components) {
-        for (String module : capabilityDefinitions.getModules()) {
-            components.withModule(module, capabilityDefinitions.getRuleClass(), ac -> ac.params(capabilityDefinitions));
+        for (AlignmentDefinitions definition : AlignmentDefinitions.values()) {
+            registerAlignmentRule(definition, components);
         }
     }
 
-    private void configureAlignment(ComponentMetadataHandler components) {
-        for (String slf4jModule : Slf4JAlignment.SLF4J_MODULES) {
-            components.withModule(slf4jModule, Slf4JAlignment.class);
+    private void registerCapabilityRule(CapabilityDefinitions definition, ComponentMetadataHandler components) {
+        for (String module : definition.getModules()) {
+            components.withModule(module, definition.getRuleClass(), ac -> ac.params(definition));
         }
-        for (String slf4j2Module : Slf4J2Alignment.SLF4J2_MODULES) {
-            components.withModule(slf4j2Module, Slf4J2Alignment.class);
-        }
-        for (String log4j2Module : Log4J2Alignment.LOG4J2_MODULES) {
-            components.withModule(log4j2Module, Log4J2Alignment.class);
+    }
+
+    private void registerAlignmentRule(AlignmentDefinitions definition, ComponentMetadataHandler components) {
+        for (String module : definition.getModules()) {
+            components.withModule(module, definition.getRuleClass(), ac -> ac.params(definition));
         }
     }
 }

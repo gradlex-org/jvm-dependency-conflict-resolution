@@ -16,7 +16,6 @@
 
 package org.gradlex.javaecosystem.capabilities.rules;
 
-import org.gradle.api.artifacts.ComponentMetadataRule;
 import org.gradlex.javaecosystem.capabilities.resolution.DefaultResolutionStrategy;
 import org.gradlex.javaecosystem.capabilities.rules.jakarta.JakartaActivationApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.jakarta.JakartaActivationImplementationRule;
@@ -531,17 +530,17 @@ public enum CapabilityDefinitions {
     private final String capabilityName;
     private final List<String> modules;
     private final DefaultResolutionStrategy defaultStrategy;
-    private final Class<? extends ComponentMetadataRule> ruleClass;
+    private final Class<? extends CapabilityDefinitionsRule> ruleClass;
 
     CapabilityDefinitions(DefaultResolutionStrategy defaultStrategy, String... modules) {
         this(defaultStrategy, "org.gradlex", CapabilityDefinitionsRule.class, modules);
     }
 
-    CapabilityDefinitions(DefaultResolutionStrategy defaultStrategy, Class<? extends ComponentMetadataRule> ruleClass, String... modules) {
+    CapabilityDefinitions(DefaultResolutionStrategy defaultStrategy, Class<? extends CapabilityDefinitionsRule> ruleClass, String... modules) {
         this(defaultStrategy, "org.gradlex", ruleClass, modules);
     }
 
-    CapabilityDefinitions(DefaultResolutionStrategy defaultStrategy, String group, Class<? extends ComponentMetadataRule> ruleClass, String... modules) {
+    CapabilityDefinitions(DefaultResolutionStrategy defaultStrategy, String group, Class<? extends CapabilityDefinitionsRule> ruleClass, String... modules) {
         this.group =  group;
         this.capabilityName = nameInKebabCase();
         this.modules = Arrays.asList(modules);
@@ -570,7 +569,7 @@ public enum CapabilityDefinitions {
         return defaultStrategy;
     }
 
-    public Class<? extends ComponentMetadataRule> getRuleClass() {
+    public Class<? extends CapabilityDefinitionsRule> getRuleClass() {
         return ruleClass;
     }
 
