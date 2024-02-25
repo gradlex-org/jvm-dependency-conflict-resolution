@@ -63,18 +63,12 @@ public class JavaEcosystemCapabilitiesBasePlugin implements Plugin<ExtensionAwar
         }
 
         configureAlignment(components); // TODO alignment
-
-        registerComponentRules(components); // TODO move out here
     }
 
     private void registerRuleFromEnum(CapabilityDefinitions capabilityDefinitions, ComponentMetadataHandler components) {
         for (String module : capabilityDefinitions.getModules()) {
             components.withModule(module, capabilityDefinitions.getRuleClass(), ac -> ac.params(capabilityDefinitions));
         }
-    }
-
-    private void registerComponentRules(ComponentMetadataHandler components) {
-        components.withModule(GuavaComponentRule.MODULE, GuavaComponentRule.class);
     }
 
     private void configureAlignment(ComponentMetadataHandler components) {

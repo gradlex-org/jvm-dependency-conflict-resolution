@@ -78,6 +78,10 @@ class GuavaCapabilityConflictResolutionTest extends Specification {
                 compileSdk = 30
             }
             
+            dependencies.components {
+                withModule<org.gradlex.javaecosystem.capabilities.componentrules.GuavaComponentRule>("com.google.guava:guava")
+            }
+
             dependencies {
                 implementation("com.google.guava:guava:27.1-android") // if removed, we see buggy behavior
                 implementation("androidx.core:core-ktx:1.7.0")

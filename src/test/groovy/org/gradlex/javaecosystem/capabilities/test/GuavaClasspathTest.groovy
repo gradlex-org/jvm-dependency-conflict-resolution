@@ -141,6 +141,10 @@ class GuavaClasspathTest extends Specification {
             configurations.runtimeClasspath {
                 attributes.attribute(envAttribute, $attrValue)
             }
+            
+            dependencies.components {
+                withModule<org.gradlex.javaecosystem.capabilities.componentrules.GuavaComponentRule>("com.google.guava:guava")
+            }
 
             dependencies {
                 api("com.google.collections:google-collections:1.0")
