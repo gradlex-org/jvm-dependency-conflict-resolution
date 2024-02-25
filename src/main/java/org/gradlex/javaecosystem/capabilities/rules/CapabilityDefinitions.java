@@ -523,6 +523,10 @@ public enum CapabilityDefinitions {
         this.ruleClass = ruleClass;
     }
 
+    public String getCapability() {
+        return group + ":" + capabilityName;
+    }
+
     public String getGroup() {
         return group;
     }
@@ -542,10 +546,6 @@ public enum CapabilityDefinitions {
 
     public Class<? extends ComponentMetadataRule> getRuleClass() {
         return ruleClass;
-    }
-
-    public String getCapability() {
-        return group + ":" + capabilityName;
     }
 
     private String nameInKebabCase() {
