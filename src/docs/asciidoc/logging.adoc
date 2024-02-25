@@ -1,0 +1,136 @@
+[[logging-plugin]]
+= Logging Capabilities Gradle Plugin
+
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+
+Ever seen this infamous Slf4J warning?
+
+[source]
+----
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:.../slf4j-log4j12-1.7.29.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:.../logback-classic-1.2.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+----
+
+Ever wondered how to make sure _all_ your dependencies' logging ends up in your Log4J 2 configured outputs?
+
+Then this plugin is for you!
+
+It is built on the https://docs.gradle.org/6.0.1/userguide/component_capabilities.html[Gradle capabilities feature], to select a Java logger implementation so that it is enforced at build time!
+
+== Plugin application and compatibility
+
+The plugin can be applied to projects using Gradle 6.8.3 and later.
+
+[source,kotlin]
+----
+plugins {
+  id("org.gradlex.logging-capabilities") version "2.0"
+}
+----
+
+Have a look at https://plugins.gradle.org/plugin/dev.jacomet.logging-capabilities[the documentation on the plugin portal] for alternate or DSL specific syntax.
+
+The application will make sure that the <<rules.adoc#capabilities,capabilities definition plugin>> has been applied as well, either as a settings or project plugin.
+This base plugin is the one that defines a number of Java ecosystem capabilities, including <<rules.adoc#logging,ones covering the logging landscape>>.
+
+== Expressing preference over a logging solution
+
+The plugin contributes a project extension that allows to configure which logging solution to use in a declarative fashion.
+
+The extension is accessed as follows:
+
+[source,kotlin]
+----
+// Assuming the plugin has been applied
+loggingCapabilities {
+    // Configuration goes here
+}
+----
+
+TIP: The different configuration options documented below do not _add_ dependencies.
+Make sure to have the expected dependency in your graph, either as a direct or transitive one.
+
+The plugin first provides a number of high-level, one stop solutions, for selecting a logging solution:
+
+|===
+| Method | Documentation | Required dependency
+
+| `enforceLogback()` +
+`enforceLogback(String configurationName)`
+| This will configure all capabilities to resolve in favour of http://logback.qos.ch/[LOGBack] and route all alternative logging solutions through Slf4J.
+| `ch.qos.logback:logback-classic`
+
+| `enforceLog4J2()` +
+`enforceLog4J2(String configurationName)`
+| This will configure all capabilities to resolve in favour of http://logging.apache.org/log4j/2.x/[Log4J 2] and route all alternative logging solutions through Log4J 2.
+| `org.apache.logging.log4j:log4j-slf4j-impl`
+
+| `enforceSlf4JSimple()` +
+`enforceSlf4JSimple(String configurationName)`
+| This will configure all capabilities to resolve in favour of Slf4J simple and route all alternative logging solutions through Slf4J.
+| `org.slf4j:slf4j-simple`
+
+|===
+
+TIP: The method without parameter will apply the setup to all dependency configuration, while the other one will limit the setup to the specified dependency configuration.
+
+If you want a finer grained control, the plugin provides lower level entry points for solving the different logging capability conflicts:
+|===
+| Method | Accepted parameter values | Documentation
+
+| `selectSlf4JBinding(Object notation)`
+| Value must be an Slf4J binding implementation known by the plugin: `org.slf4j:slf4j-simple`, `org.slf4j:slf4j-log4j12`, `org.slf4j:slf4j-jcl`, `org.slf4j:slf4j-jdk14`, `ch.qos.logback:logback-classic` or `org.apache.logging.log4j:log4j-slf4j-impl`
+| Configures the provided Slf4J binding for selection, configuring related capabilities if needed
+
+| `selectSlf4JBinding(String configurationName, Object notation)`
+| A dependency configuration name, that `canBeResolved=true` +
+A notation as above
+| Configures the provided Slf4J binding for selection, configuring related capabilities if needed, only for the provided dependency configuration
+
+| `selectLog4J12Implementation(Object notation)`
+| Value must be a Log4J 1.2 implementation known by the plugin: `org.slf4j:log4j-over-slf4j`, `org.apache.logging.log4j:log4j-1.2-api`, `log4:log4j` or `org.slf4j:slf4j-log4j12`
+| Configures the provided Log4J 1.2 implementation for selection, configuring related capabilities if needed
+
+| `selectLog4J12Implementation(String configurationName, Object notation)`
+| A dependency configuration name, that `canBeResolved=true` +
+A notation as above
+| Configures the provided Log4J 1.2 implementation for selection, configuring related capabilities if needed, only for the provided dependency configuration
+
+| `selectJulDelegation(Object notation)`
+| Value must be a `java.util.logging` interceptor or binding known by the plugin: `org.slf4j:jul-to-slf4j`, `org.slf4j:slf4j-jdk14` or `org.apache.logging.log4j:log4j-jul`
+| Configures the provided JUL integration of binding for selection, configuring related capabilities if needed
+
+| `selectJulDelegation(String configurationName, Object notation)`
+| A dependency configuration name, that `canBeResolved=true` +
+A notation as above
+| Configures the provided JUL integration for selection, configuring related capabilities if needed, only for the provided dependency configuration
+
+| `selectJCLImplementation(Object notation)`
+| Value must be a Apache Commons Logging interceptor or binding known by the plugin: `org.slf4j:jcl-over-slf4j`, `commons-logging:commons-logging`, `org.slf4j:slf4j-jcl` or `org.apache.logging.log4j:log4j-jcl`
+| Configures the provided commons logging interceptor or binding for selection, configuring related capabilities if needed
+
+| `selectJCLImplementation(String configurationName, Object notation)`
+| A dependency configuration name, that `canBeResolved=true` +
+A notation as above
+| Configures the provided commons logging interceptor or binding for selection, configuring related capabilities if needed, only for the provided dependency configuration
+
+| `selectSlf4JLog4J2Interaction(Object notation)`
+| Value must be a Log4J 2 module for Slf4J interaction known by the plugin: `org.apache.logging.log4j:log4j-to-slf4j` or `org.apache.logging.log4j:log4j-slf4j-impl`
+| Configures the Log4J 2 / Slf4J integration, configuring related capabilities if needed
+
+| `selectSlf4JLog4J2Interaction(Sting configurationName, Object notation)`
+| A dependency configuration name, that `canBeResolved=true` +
+A notation as above
+| Configures the Log4J 2 / Slf4J integration, configuring related capabilities if needed, only for the provided dependency configuration
+
+|===
+
+TIP: Notations above are those accepted by https://docs.gradle.org/6.0.1/dsl/org.gradle.api.artifacts.dsl.DependencyHandler.html#org.gradle.api.artifacts.dsl.DependencyHandler:create(java.lang.Object)[`DependencyHandler.create(notation)`] in Gradle that resolves to an `ExternalDependency`.
+Most often this is a `group:name:version` `String`.
