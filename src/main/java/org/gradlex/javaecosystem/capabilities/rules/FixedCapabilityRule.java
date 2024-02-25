@@ -25,7 +25,7 @@ import javax.inject.Inject;
  * Abstract rule adding a capability with a hard coded version.
  */
 @CacheableRule
-public abstract class FixedCapabilityRule extends EnumBasedRule {
+public abstract class FixedCapabilityRule extends CapabilityDefinitionsRule {
 
     @Inject
     public FixedCapabilityRule(CapabilityDefinitions capabilityDefinition) {

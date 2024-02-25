@@ -25,12 +25,12 @@ import org.gradle.api.artifacts.VariantMetadata;
 import javax.inject.Inject;
 
 @CacheableRule
-public abstract class EnumBasedRule implements ComponentMetadataRule {
+public abstract class CapabilityDefinitionsRule implements ComponentMetadataRule {
 
     private final CapabilityDefinitions rule;
 
     @Inject
-    public EnumBasedRule(CapabilityDefinitions rule) {
+    public CapabilityDefinitionsRule(CapabilityDefinitions rule) {
         this.rule = rule;
     }
 

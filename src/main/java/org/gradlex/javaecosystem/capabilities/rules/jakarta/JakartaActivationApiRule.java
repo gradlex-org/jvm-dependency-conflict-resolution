@@ -19,13 +19,13 @@ package org.gradlex.javaecosystem.capabilities.rules.jakarta;
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ModuleVersionIdentifier;
 import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
-import org.gradlex.javaecosystem.capabilities.rules.EnumBasedRule;
+import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitionsRule;
 import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
 
 import javax.inject.Inject;
 
 @CacheableRule
-public abstract class JakartaActivationApiRule extends EnumBasedRule {
+public abstract class JakartaActivationApiRule extends CapabilityDefinitionsRule {
 
     @Inject
     public JakartaActivationApiRule(CapabilityDefinitions rule) {

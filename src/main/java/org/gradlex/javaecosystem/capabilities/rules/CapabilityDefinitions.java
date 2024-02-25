@@ -167,7 +167,7 @@ public enum CapabilityDefinitions {
         "com.google.code.findbugs:findbugs-annotations",
         "com.github.spotbugs:spotbugs-annotations"
     ),
-    GOOGLE_COLLECTIONS(HIGHEST_VERSION, "com.google.collections", EnumBasedRule.class,
+    GOOGLE_COLLECTIONS(HIGHEST_VERSION, "com.google.collections", CapabilityDefinitionsRule.class,
         "com.google.collections:google-collections",
         "com.google.guava:guava"
     ),
@@ -534,7 +534,7 @@ public enum CapabilityDefinitions {
     private final Class<? extends ComponentMetadataRule> ruleClass;
 
     CapabilityDefinitions(DefaultResolutionStrategy defaultStrategy, String... modules) {
-        this(defaultStrategy, "org.gradlex", EnumBasedRule.class, modules);
+        this(defaultStrategy, "org.gradlex", CapabilityDefinitionsRule.class, modules);
     }
 
     CapabilityDefinitions(DefaultResolutionStrategy defaultStrategy, Class<? extends ComponentMetadataRule> ruleClass, String... modules) {
