@@ -17,41 +17,7 @@ With this plugin, you enable Gradle to detect and automatically resolved typical
 
 ## How to use the plugin?
 
-Apply the plugin to all (sub)projects of your build so that the capability-adding rules are active everywhere.
-There is nothing else you need to do. The rules will now be considered when dependencies are resolved.
-For general information about how to structure Gradle builds, and apply community plugins like this one to all subprojects,
-you can check out my [Understanding Gradle video series](https://www.youtube.com/watch?v=N95YI-szd78&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE).
-
-### Plugin dependency
-
-Add this to the build file of your convention plugin's build
-(e.g. `build-logic/build.gradle(.kts)` or `buildSrc/build.gradle(.kts)`).
-
-``` groovy
-dependencies {
-    implementation("org.gradlex:java-ecosystem-capabilities:1.5.2")
-}
-```
-
-### Apply the plugin
-
-In your convention plugin, apply the plugin.
-
-``` groovy
-plugins {
-    ...
-    id("org.gradlex.java-ecosystem-capabilities")
-}
-```
-
-You can apply the plugin as a _project plugin_ (`build.gradle(.kts)`) or a _setting plugin_ (`settings.gradle(.kts)`).
-If you don't know what the difference is, using it as _project plugin_ (most Gradle plugins are  _project plugins_) is the preferred way.
-
-The following things are to consider:
-- If you use it as a _project plugin_ make sure to apply it to **all** (sub)projects using a convention plugin
-- If you use it as a _settings plugin_ you may directly apply it in your `settings.gradle(.kts)`
-- If you use it as a _settings plugin_, there are no [default resolution strategies](#deactivating-the-default-resolution-strategy-for-capabilities) registered
-- If you write additional component metadata rules, or use other plugins that add more rules, make sure to consistently do either everything in _projects_ or in _settings_ as Gradle has trouble combining both approaches.
+See the [documentation](https://gradlex.org/java-ecosystem-capabilities).
 
 ### Supported Gradle versions
 

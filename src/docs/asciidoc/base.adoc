@@ -6,6 +6,24 @@ This plugin is responsible for applying the capability rules that support the ot
 WARNING: Applying only this base plugin will result in broken builds if capability conflicts are found.
 Conflict resolution is handled by the other two plugins: <<ecosystem.adoc#ecosystem-plugin,`java-ecosystem-capabilities`>> and <<logging.adoc#logging-plugin,`logging-capabilities`>>.
 
+== Apply the plugin
+
+[source,groovy]
+----
+plugins {
+    id("org.gradlex.java-ecosystem-capabilities-base") version "2.0"
+}
+----
+
+You can apply the plugin as a _project plugin_ (`build.gradle(.kts)`) or a _setting plugin_ (`settings.gradle(.kts)`).
+If you don't know what the difference is, using it as a _project plugin_ (most Gradle plugins are  _project plugins_) is the preferred way.
+
+The following things are to consider:
+
+* If you use it as a _project plugin_ make sure to apply it to **all** (sub)projects using a convention plugin
+* If you use it as a _settings plugin_ you may directly apply it in your `settings.gradle(.kts)`
+** If you write additional component metadata rules, or use other plugins that add more rules, make sure to consistently do either everything in _projects_ or in _settings_ as Gradle cannot combine both approaches.
+
 == What is the concrete effect of the plugin?
 
 The plugin makes sure that during dependency resolution, you do not end up with two components that 'do the same thing' in the dependency resolution result.
@@ -22,6 +40,7 @@ Instead of applying this plugin, you may also copy selected rules to your own _b
 In <<rules.adoc#capability-rules,rules documentation>>, all implementations are linked.
 Here they are implemented in Java, but converting them to Kotlin or Groovy should be straightforward if you prefer.
 
+[[conflict]]
 == I use the plugin and now there is a conflict - what now?
 
 TIP: You can apply the <<ecosystem.adoc#ecosystem-plugin,`java-ecosystem-capabilities` plugin>> to get some automatic conflict resolution.
