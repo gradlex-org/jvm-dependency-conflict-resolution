@@ -17,20 +17,8 @@
 package org.gradlex.javaecosystem.capabilities;
 
 import org.gradle.api.provider.SetProperty;
-
-import java.util.Set;
+import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
 
 public abstract class JavaEcosystemCapabilitiesExtension {
-
-    private final Set<String> allCapabilities;
-
-    public JavaEcosystemCapabilitiesExtension(Set<String> allCapabilities) {
-        this.allCapabilities = allCapabilities;
-    }
-
-    public Set<String> getAllCapabilities() {
-        return allCapabilities;
-    }
-
-    public abstract SetProperty<String> getDeactivatedResolutionStrategies();
+    public abstract SetProperty<CapabilityDefinitions> getDeactivatedResolutionStrategies();
 }

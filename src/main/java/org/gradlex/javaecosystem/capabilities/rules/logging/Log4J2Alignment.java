@@ -16,16 +16,24 @@
 
 package org.gradlex.javaecosystem.capabilities.rules.logging;
 
-import org.gradle.api.artifacts.ComponentMetadataContext;
-import org.gradle.api.artifacts.ComponentMetadataDetails;
-import org.gradle.api.artifacts.ComponentMetadataRule;
+import org.gradle.api.artifacts.CacheableRule;
+import org.gradle.api.artifacts.ModuleVersionIdentifier;
+import org.gradlex.javaecosystem.capabilities.rules.AlignmentDefinitions;
+import org.gradlex.javaecosystem.capabilities.rules.AlignmentDefinitionsRule;
+import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
 
-public class Log4J2Alignment implements ComponentMetadataRule {
+import javax.inject.Inject;
+
+@CacheableRule
+public class Log4J2Alignment extends AlignmentDefinitionsRule {
+
+    @Inject
+    public Log4J2Alignment(AlignmentDefinitions definition) {
+        super(definition);
+    }
+
     @Override
-    public void execute(ComponentMetadataContext context) {
-        ComponentMetadataDetails details = context.getDetails();
-        if (details.getId().getGroup().startsWith("org.apache.logging.log4j")) {
-            details.belongsTo("org.apache.logging.log4j:log4j-bom:" + details.getId().getVersion(), false);
-        }
+    protected boolean shouldApply(ModuleVersionIdentifier id) {
+        return VersionNumber.parse(id.getVersion()).compareTo(VersionNumber.parse("2.0")) >= 0;
     }
 }

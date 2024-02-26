@@ -1,8 +1,8 @@
-import  org.gradlex.javaecosystem.capabilities.rules.BouncycastleBctspRule
-import  org.gradlex.javaecosystem.capabilities.rules.JavaxActivationApiRule
+import  org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions
 
 plugins {
     id("org.gradlex.java-ecosystem-capabilities")
+    id("org.gradlex.logging-capabilities")
     id("java-library")
     id("io.fuchs.gradle.classpath-collision-detector") version "0.3"
 }
@@ -13,6 +13,7 @@ dependencies {
     implementation("c3p0:c3p0:0.9.1.2")
     implementation("cglib:cglib-nodep:3.2.12")
     implementation("cglib:cglib:3.3.0")
+    implementation("ch.qos.logback:logback-classic:1.5.0")
     implementation("com.github.spotbugs:spotbugs-annotations:4.8.3")
     implementation("com.github.stephenc.jcip:jcip-annotations:1.0-1")
     implementation("com.google.code.findbugs:annotations:3.0.1")
@@ -25,7 +26,6 @@ dependencies {
     implementation("com.jwebmp:javax.inject:1.1")
     implementation("com.mchange:c3p0:0.9.5.5")
     implementation("com.sun.activation:javax.activation:1.2.0")
-    implementation("com.sun.mail:jakarta.mail:2.0.1")
     implementation("com.sun.mail:javax.mail:1.6.2")
     implementation("com.sun.mail:mailapi:2.0.0")
     implementation("com.vividsolutions:jts-core:1.14.0")
@@ -34,9 +34,10 @@ dependencies {
     implementation("com.zaxxer:HikariCP-java7:2.4.9")
     implementation("com.zaxxer:HikariCP:5.0.1")
     implementation("commons-io:commons-io:2.11.0")
+    implementation("commons-logging:commons-logging:1.3.0")
     implementation("dom4j:dom4j:1.6.1")
     implementation("jakarta.activation:jakarta.activation-api:2.0.0!!")
-    implementation("jakarta.annotation:jakarta.annotation-api:2.1.0")
+    implementation("jakarta.annotation:jakarta.annotation-api:2.1.1")
     implementation("jakarta.ejb:jakarta.ejb-api:4.0.0")
     implementation("jakarta.el:jakarta.el-api:4.0.0")
     implementation("jakarta.inject:jakarta.inject-api:1.0.5")
@@ -48,9 +49,9 @@ dependencies {
     implementation("jakarta.servlet.jsp:jakarta.servlet.jsp-api:2.3.6")
     implementation("jakarta.servlet:jakarta.servlet-api:5.0.0")
     implementation("jakarta.validation:jakarta.validation-api:2.0.1")
-    implementation("jakarta.websocket:jakarta.websocket-api:2.1.0")
-    implementation("jakarta.websocket:jakarta.websocket-client-api:2.1.0")
-    implementation("jakarta.ws.rs:jakarta.ws.rs-api:3.0.0")
+    implementation("jakarta.websocket:jakarta.websocket-api:2.1.1")
+    implementation("jakarta.websocket:jakarta.websocket-client-api:2.1.1")
+    implementation("jakarta.ws.rs:jakarta.ws.rs-api:3.1.0")
     implementation("jakarta.xml.bind:jakarta.xml.bind-api:3.0.1")
     implementation("jakarta.xml.soap:jakarta.xml.soap-api:2.0.1")
     implementation("jakarta.xml.ws:jakarta.xml.ws-api:3.0.1")
@@ -90,6 +91,7 @@ dependencies {
     implementation("jboss:javassist:3.8.0.GA")
     implementation("junit:junit-dep:4.8")
     implementation("junit:junit:4.12")
+    implementation("log4j:log4j:1.2.17")
     implementation("net.java.dev.jna:jna-platform:5.10.0")
     implementation("net.java.dev.jna:platform:3.4.0")
     implementation("net.jcip:jcip-annotations:1.0")
@@ -103,14 +105,17 @@ dependencies {
     implementation("org.apache.geronimo.specs:geronimo-javamail_1.3.1_spec:1.3")
     implementation("org.apache.geronimo.specs:geronimo-javamail_1.4_spec:1.6")
     implementation("org.apache.geronimo.specs:geronimo-javamail_1.6_spec:1.0.1")
+    implementation("org.apache.logging.log4j:log4j-1.2-api:2.23.0")
+    implementation("org.apache.logging.log4j:log4j-core:2.23.0")
+    implementation("org.apache.logging.log4j:log4j-jcl:2.23.0")
+    implementation("org.apache.logging.log4j:log4j-jul:2.23.0")
+    implementation("org.apache.logging.log4j:log4j-to-slf4j:2.23.0")
     implementation("org.apache.tomcat.embed:tomcat-embed-core:10.1.0")
-    implementation("org.apache.tomcat.embed:tomcat-embed-websocket:10.1.0")
     implementation("org.apache.tomcat:servlet-api:6.0.53")
     implementation("org.apache.tomcat:tomcat-annotations-api:10.1.1")
     implementation("org.apache.tomcat:tomcat-servlet-api:10.1.1")
     implementation("org.apache.tomcat:tomcat-websocket-api:10.1.0")
     implementation("org.apache.tomcat:tomcat-websocket-client-api:10.1.0")
-    implementation("org.apache.tomcat:tomcat-websocket:10.1.1")
     implementation("org.apache.velocity:velocity-engine-core:2.3")
     implementation("org.apache.velocity:velocity:1.7")
     implementation("org.bouncycastle:bcjmail-jdk15on:1.70")
@@ -120,7 +125,6 @@ dependencies {
     implementation("org.bouncycastle:bcmail-jdk14:1.68")
     implementation("org.bouncycastle:bcmail-jdk15+:1.46")
     implementation("org.bouncycastle:bcmail-jdk15:1.46")
-    implementation("org.bouncycastle:bcmail-jdk15on:1.69")
     implementation("org.bouncycastle:bcmail-jdk15to18:1.70")
     implementation("org.bouncycastle:bcmail-jdk16:1.46")
     implementation("org.bouncycastle:bcmail-jdk18on:1.71")
@@ -135,7 +139,6 @@ dependencies {
     implementation("org.bouncycastle:bcpkix-jdk14:1.70")
     implementation("org.bouncycastle:bcpkix-jdk15on:1.70")
     implementation("org.bouncycastle:bcpkix-jdk15to18:1.70")
-    implementation("org.bouncycastle:bcpkix-jdk18on:1.72")
     implementation("org.bouncycastle:bcprov-debug-jdk14:1.70")
     implementation("org.bouncycastle:bcprov-debug-jdk15on:1.70")
     implementation("org.bouncycastle:bcprov-debug-jdk15to18:1.70")
@@ -180,7 +183,6 @@ dependencies {
     implementation("org.eclipse.angus:angus-activation:1.1.0")
     implementation("org.eclipse.angus:jakarta.mail:1.0.0")
     implementation("org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api:5.0.2")
-    implementation("org.eclipse.jetty.toolchain:jetty-jakarta-websocket-api:2.0.0")
     implementation("org.eclipse.jetty.toolchain:jetty-javax-websocket-api:1.1.2")
     implementation("org.glassfish.hk2.external:jakarta.inject:2.6.1")
     implementation("org.glassfish.hk2.external:javax.inject:2.4.0")
@@ -199,15 +201,20 @@ dependencies {
     implementation("org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.1_spec:2.0.2.Final")
     implementation("org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_3.0_spec:1.0.1.Final")
     implementation("org.jetbrains:annotations:24.0.0")
-    implementation("org.locationtech.jts:jts-core:1.19.0")
     implementation("org.ow2.asm:asm:9.2")
     implementation("org.postgresql:postgresql:42.5.0")
+    implementation("org.slf4j:jcl-over-slf4j:2.0.12")
+    implementation("org.slf4j:jul-to-slf4j:2.0.12")
+    implementation("org.slf4j:log4j-over-slf4j:2.0.12")
+    implementation("org.slf4j:slf4j-simple:2.0.12")
     implementation("org.springframework:spring-aop:5.3.23")
+    implementation("org.springframework:spring-jcl:6.1.4")
     implementation("postgresql:postgresql:9.1-901-1.jdbc4")
     implementation("servletapi:servletapi:2.4")
     implementation("stax:stax-api:1.0.1")
     implementation("velocity:velocity:1.4")
     implementation("woodstox:wstx-asl:2.9.3")
+    // implementation("woodstox:wstx-lgpl:3.2.7") - has no POM file
 
     // Declaration moved down here due to bug: https://github.com/gradle/gradle/issues/14220
     // Also, some dependencies disappear completely in the result (instead of showing what they have been substituted with).
@@ -216,21 +223,60 @@ dependencies {
     implementation("com.sun.activation:jakarta.activation:2.0.1")
     implementation("org.bouncycastle:bc-fips-debug:1.0.2.3")
     implementation("org.bouncycastle:bc-fips:1.0.2.3")
+    implementation("org.bouncycastle:bcmail-jdk15on:1.69")
     implementation("org.bouncycastle:bcpg-fips:1.0.6")
     implementation("org.bouncycastle:bcpkix-fips:1.0.7")
+    implementation("org.bouncycastle:bcpkix-jdk18on:1.72")
 
-    // implementation("woodstox:wstx-lgpl:3.2.7") - has no POM file
+    // DEACTIVATED DUE TO BUG https://github.com/gradle/gradle/issues/14220
+    // implementation("com.sun.mail:jakarta.mail:2.0.1")
+    // implementation("org.apache.logging.log4j:log4j-slf4j-impl:2.23.0")
+    // implementation("org.apache.logging.log4j:log4j-slf4j2-impl:2.23.0")
+    // implementation("org.apache.tomcat.embed:tomcat-embed-websocket:10.1.0")
+    // implementation("org.apache.tomcat:tomcat-websocket:10.1.1")
+    // implementation("org.eclipse.jetty.toolchain:jetty-jakarta-websocket-api:2.0.0")
+    // implementation("org.slf4j:slf4j-jcl:1.7.9")
+    // implementation("org.slf4j:slf4j-jdk14:2.0.12")
+    // implementation("org.slf4j:slf4j-log4j12:2.0.12")
 }
 
+loggingCapabilities {
+    enforceSlf4JSimple()
+}
+
+javaEcosystemCapabilities {
+    deactivatedResolutionStrategies.add(CapabilityDefinitions.BOUNCYCASTLE_BCTSP)
+    deactivatedResolutionStrategies.add(CapabilityDefinitions.JAVAX_ACTIVATION_API)
+    deactivatedResolutionStrategies.add(CapabilityDefinitions.JAVAX_SERVLET_API)
+    deactivatedResolutionStrategies.add(CapabilityDefinitions.JAKARTA_SERVLET_API)
+}
 configurations.all {
     resolutionStrategy.capabilitiesResolution {
-        withCapability(JavaxActivationApiRule.CAPABILITY) {
+        withCapability(CapabilityDefinitions.JAVAX_ACTIVATION_API.capability) {
             val toBeSelected = candidates.firstOrNull { it.id.let { id -> id is ModuleComponentIdentifier && id.module == "javax.activation-api" } }
             if (toBeSelected != null) {
                 select(toBeSelected)
             }
         }
-        withCapability(BouncycastleBctspRule.CAPABILITY) {
+        withCapability(CapabilityDefinitions.JAVAX_ACTIVATION_API.capability) {
+            val toBeSelected = candidates.firstOrNull { it.id.let { id -> id is ModuleComponentIdentifier && id.module == "javax-activation-api" } }
+            if (toBeSelected != null) {
+                select(toBeSelected)
+            }
+        }
+        withCapability(CapabilityDefinitions.JAKARTA_SERVLET_API.capability) {
+            val toBeSelected = candidates.firstOrNull { it.id.let { id -> id is ModuleComponentIdentifier && id.module == "jakarta.servlet-api" } }
+            if (toBeSelected != null) {
+                select(toBeSelected)
+            }
+        }
+        withCapability(CapabilityDefinitions.JAVAX_SERVLET_API.capability) {
+            val toBeSelected = candidates.firstOrNull { it.id.let { id -> id is ModuleComponentIdentifier && id.module == "javax.servlet-api" } }
+            if (toBeSelected != null) {
+                select(toBeSelected)
+            }
+        }
+        withCapability(CapabilityDefinitions.BOUNCYCASTLE_BCTSP.capability) {
             val toBeSelected = candidates.firstOrNull { it.id.let { id -> id is ModuleComponentIdentifier && id.module == "bctsp-jdk15on" } }
             if (toBeSelected != null) {
                 select(toBeSelected)
@@ -243,4 +289,5 @@ tasks.detectCollisions {
     // With ALL variations of bouncycastle modules in all variations in one build it is not possible to avoid all collisions
     collisionFilter.exclude("org/bouncycastle/**")
     collisionFilter.exclude("javax/xml/namespace/QName.class")
+    collisionFilter.exclude("com/sun/activation/registries/*")
 }

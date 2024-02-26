@@ -16,16 +16,24 @@
 
 package org.gradlex.javaecosystem.capabilities.rules.logging;
 
-import org.gradle.api.artifacts.ComponentMetadataContext;
-import org.gradle.api.artifacts.ComponentMetadataDetails;
-import org.gradle.api.artifacts.ComponentMetadataRule;
+import org.gradle.api.artifacts.CacheableRule;
+import org.gradle.api.artifacts.ModuleVersionIdentifier;
+import org.gradlex.javaecosystem.capabilities.rules.AlignmentDefinitions;
+import org.gradlex.javaecosystem.capabilities.rules.AlignmentDefinitionsRule;
+import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
 
-public class Slf4JAlignment implements ComponentMetadataRule {
+import javax.inject.Inject;
+
+@CacheableRule
+public class Slf4JAlignment extends AlignmentDefinitionsRule {
+
+    @Inject
+    public Slf4JAlignment(AlignmentDefinitions definition) {
+        super(definition);
+    }
+
     @Override
-    public void execute(ComponentMetadataContext context) {
-        ComponentMetadataDetails details = context.getDetails();
-        if (details.getId().getGroup().startsWith("org.slf4j")) {
-            details.belongsTo("org.gradlex.logging.align:slf4j:" + details.getId().getVersion());
-        }
+    protected boolean shouldApply(ModuleVersionIdentifier id) {
+        return VersionNumber.parse(id.getVersion()).compareTo(VersionNumber.parse("2.0.8")) < 0;
     }
 }

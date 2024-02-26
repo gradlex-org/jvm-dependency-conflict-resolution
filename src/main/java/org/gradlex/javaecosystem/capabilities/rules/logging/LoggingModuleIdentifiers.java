@@ -57,8 +57,4 @@ public enum LoggingModuleIdentifiers {
     public String asFirstVersion() {
         return moduleId + ":" + firstVersion;
     }
-
-    public String asVersionZero() {
-        return moduleId + ":0";
-    }
 }

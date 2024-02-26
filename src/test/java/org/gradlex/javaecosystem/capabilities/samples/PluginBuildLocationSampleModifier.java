@@ -21,6 +21,7 @@ import org.gradle.exemplar.model.Sample;
 import org.gradle.exemplar.test.runner.SampleModifier;
 
 import java.io.File;
+import java.lang.management.ManagementFactory;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -31,6 +32,9 @@ public class PluginBuildLocationSampleModifier implements SampleModifier {
         File pluginProjectDir = new File(".");
         ArrayList<String> allArgs = new ArrayList<>(cmd.getArgs());
         allArgs.addAll(Arrays.asList("dependencies", "--configuration=compileClasspath", "-s", "-q", "-PpluginLocation=" + pluginProjectDir.getAbsolutePath()));
+        if (ManagementFactory.getRuntimeMXBean().getInputArguments().toString().contains("-agentlib:jdwp")) {
+            allArgs.add("-Dorg.gradle.debug=true");
+        }
         sampleIn.getCommands().add(
                 new Command(new File(pluginProjectDir, "./gradlew").getAbsolutePath(),
                         cmd.getExecutionSubdirectory(),

@@ -11,27 +11,23 @@ class CustomizationTest extends Specification {
     def "can revert effect of a rule by adding another rule"() {
         given:
         buildFile << """
-            import org.gradlex.javaecosystem.capabilities.rules.CGlibRule
+            import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions
             
             plugins {
-                id("org.gradlex.java-ecosystem-capabilities")
+                id("org.gradlex.java-ecosystem-capabilities-base")
                 id("java-library")
             }
             
             repositories.mavenCentral()
             
-            javaEcosystemCapabilities {
-                deactivatedResolutionStrategies.addAll(allCapabilities)
-            }
-            
             dependencies {
                 implementation("cglib:cglib-nodep:3.2.10")
                 implementation("cglib:cglib:3.2.10")
             
-                components.withModule(CGlibRule.MODULES[0]) {
+                components.withModule(CapabilityDefinitions.CGLIB.modules[0]) {
                     allVariants {
                         withCapabilities {
-                            removeCapability(CGlibRule.CAPABILITY_GROUP, CGlibRule.CAPABILITY_NAME)
+                            removeCapability(CapabilityDefinitions.CGLIB.group, CapabilityDefinitions.CGLIB.capabilityName)
                         }
                     }
                 }
@@ -52,6 +48,8 @@ class CustomizationTest extends Specification {
     def "can use own capability resolution strategies"() {
         given:
         buildFile << """
+            import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions
+            
             plugins {
                 id("org.gradlex.java-ecosystem-capabilities")
                 id("java-library")
@@ -59,24 +57,25 @@ class CustomizationTest extends Specification {
             
             repositories.mavenCentral()
             
+            javaEcosystemCapabilities {
+                deactivatedResolutionStrategies.add(CapabilityDefinitions.CGLIB)
+                deactivatedResolutionStrategies.add(CapabilityDefinitions.JAVAX_MAIL_API)
+                deactivatedResolutionStrategies.add(CapabilityDefinitions.JAVAX_WS_RS_API)
+                deactivatedResolutionStrategies.add(CapabilityDefinitions.JAKARTA_SERVLET_API)
+            }
+            
             configurations.all {
                 resolutionStrategy.capabilitiesResolution {
-                    withCapability("cglib:cglib") {
+                    withCapability(CapabilityDefinitions.CGLIB.capability) {
                         select("cglib:cglib:0")
                     }
-                }
-                resolutionStrategy.capabilitiesResolution {
-                    withCapability("javax.mail:mail") {
+                    withCapability(CapabilityDefinitions.JAVAX_MAIL_API.capability) {
                        select("com.sun.mail:jakarta.mail:0")
                     }
-                }
-                resolutionStrategy.capabilitiesResolution {
-                    withCapability("javax.ws.rs:jsr311-api") {
+                    withCapability(CapabilityDefinitions.JAVAX_WS_RS_API.capability) {
                         select("org.jboss.resteasy:jaxrs-api:0")
                     }
-                }
-                resolutionStrategy.capabilitiesResolution {
-                    withCapability("jakarta.servlet:jakarta.servlet-api") {
+                    withCapability(CapabilityDefinitions.JAKARTA_SERVLET_API.capability) {
                         select("jakarta.servlet:jakarta.servlet-api:0")
                     }
                 }
@@ -87,7 +86,7 @@ class CustomizationTest extends Specification {
                 implementation("cglib:cglib:3.2.10")
                 implementation("com.sun.mail:jakarta.mail:1.6.7")
                 implementation("com.sun.mail:mailapi:1.6.7")
-                implementation("jakarta.servlet:jakarta.servlet-api:4.0.4")
+                implementation("jakarta.servlet:jakarta.servlet-api:5.0.0")
                 implementation("org.apache.tomcat:tomcat-servlet-api:10.0.18")
             }
         """
@@ -103,8 +102,8 @@ class CustomizationTest extends Specification {
             +--- com.sun.mail:jakarta.mail:1.6.7
             |    \\--- com.sun.activation:jakarta.activation:1.2.1
             +--- com.sun.mail:mailapi:1.6.7 -> com.sun.mail:jakarta.mail:1.6.7 (*)
-            +--- jakarta.servlet:jakarta.servlet-api:4.0.4
-            \\--- org.apache.tomcat:tomcat-servlet-api:10.0.18 -> jakarta.servlet:jakarta.servlet-api:4.0.4
+            +--- jakarta.servlet:jakarta.servlet-api:5.0.0
+            \\--- org.apache.tomcat:tomcat-servlet-api:10.0.18 -> jakarta.servlet:jakarta.servlet-api:5.0.0
         '''.stripIndent()
     }
 }

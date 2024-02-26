@@ -29,8 +29,6 @@ import java.util.List;
 @CacheableRule
 abstract public class GuavaComponentRule implements ComponentMetadataRule {
 
-    public static final String MODULE = "com.google.guava:guava";
-
     private final static Attribute<String> TARGET_JVM_ENVIRONMENT_ATTRIBUTE =
             Attribute.of("org.gradle.jvm.environment", String.class);
 
@@ -80,12 +78,6 @@ abstract public class GuavaComponentRule implements ComponentMetadataRule {
     private int getMajorVersion(ComponentMetadataDetails details) {
         String version = getVersion(details);
         return Integer.parseInt(version.substring(0, version.indexOf(".")));
-    }
-
-    private int getMinorVersion(ComponentMetadataDetails details) {
-        String version = getVersion(details);
-        int minorIndex = version.indexOf(".") + 1;
-        return Integer.parseInt(version.substring(minorIndex, minorIndex + 1));
     }
 
     private void addOtherJvmVariant(String baseVariantName, ComponentMetadataDetails details) {

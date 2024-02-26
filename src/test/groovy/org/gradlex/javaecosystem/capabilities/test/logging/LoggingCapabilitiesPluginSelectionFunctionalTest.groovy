@@ -82,7 +82,7 @@ ${additional.collect { "                runtimeOnly(\"$it\")" }.join("\n")}
 
         then:
         outcomeOf(result, ':doIt') == FAILED
-        result.output.contains("conflict on capability 'org.gradlex.logging:slf4j-impl:1.0'")
+        result.output.contains("conflict on capability 'org.gradlex:slf4j-impl:1.0'")
     }
 
     @Unroll
