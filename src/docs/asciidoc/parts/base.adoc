@@ -31,6 +31,7 @@ That is, you won't have two or more Jars with different names (e.g. `jsr311-api-
 In this example, Gradle will use `jaxrs-api` in all places.
 You can see all effects in https://scans.gradle.com/s/2pcbycndpf54c/dependencies?toggled=W1swXSxbMCwxXV0[this build scan]
 from this https://github.com/gradlex-org/java-ecosystem-capabilities/blob/main/samples/sample-all/build.gradle.kts[artificial sample project] that includes dependencies to all components covered by rules in this plugin.
+See <<appendix>> for a full list of all capabilities that are added by this plugin and the components they apply to.
 
 image::build-scan.png[link=https://scans.gradle.com/s/2pcbycndpf54c/dependencies?toggled=W1swXSxbMCwxXV0]
 

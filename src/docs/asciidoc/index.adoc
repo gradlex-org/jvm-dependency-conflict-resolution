@@ -52,3 +52,11 @@ See each plugin's documentation for more details.
 include::src/docs/asciidoc/parts/base.adoc[leveloffset=+2]
 include::src/docs/asciidoc/parts/ecosystem.adoc[leveloffset=+2]
 include::src/docs/asciidoc/parts/logging.adoc[leveloffset=+2]
+
+[[appendix]]
+== Appendix A: Capabilities
+
+The following list shows all capabilities and the components they are added to.
+All capabilities use `org.gradlex` as group and the name of the Component that first introduced the capability.
+
+include::{capabilities-listing}[]

@@ -1,10 +1,18 @@
+import gradlexbuild.javaecosystem.conflict.documentation.CapabilityListing
+import org.asciidoctor.gradle.base.AsciidoctorAttributeProvider
 import org.asciidoctor.gradle.base.log.Severity
 
 plugins {
+    id("java")
     id("org.asciidoctor.jvm.convert")
 }
 
 tasks {
+    val generateCapabilitiesList by tasks.registering(CapabilityListing::class) {
+        pluginClasses.from(tasks.jar)
+        outputFile = layout.buildDirectory.file("generated/docs/asciidoc/parts/capabilities-listing.adoc")
+    }
+
     asciidoctor {
         notCompatibleWithConfigurationCache("See https://github.com/asciidoctor/asciidoctor-gradle-plugin/issues/564")
 
@@ -27,6 +35,11 @@ tasks {
             "idseparator" to "-",
             "samples-path" to "$projectDir/src/docs/samples"
         ))
+
+        attributeProviders += AsciidoctorAttributeProvider {
+            mapOf("capabilities-listing" to generateCapabilitiesList.get().outputFile.get().asFile.absolutePath)
+        }
+        dependsOn(generateCapabilitiesList)
 
         inputs.dir("src/docs/samples")
                 .withPathSensitivity(PathSensitivity.RELATIVE)
