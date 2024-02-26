@@ -2,7 +2,7 @@
 = Logging Capabilities Gradle Plugin
 
 This plugin provides a DSL that enables an application to declaratively enforce _at build time_ the logging framework it decided to use.
-See the <<index.adoc#intro,general introduction>> for the motivation for this plugin.
+See the <<intro,general introduction>> for the motivation for this plugin.
 
 == Plugin application and compatibility
 
@@ -17,8 +17,8 @@ plugins {
 
 Have a look at https://plugins.gradle.org/plugin/dev.jacomet.logging-capabilities[the documentation on the plugin portal] for alternate or DSL specific syntax.
 
-The application will make sure that the <<base.adoc#base-plugin,capabilities definition plugin>> has been applied as well, either as a settings or project plugin.
-This base plugin is the one that defines a number of Java ecosystem capabilities, including <<rules.adoc#logging,ones covering the logging landscape>>.
+The application will make sure that the <<base-plugin,capabilities definition plugin>> has been applied as well, either as a settings or project plugin.
+This base plugin is the one that defines a number of Java ecosystem capabilities, including <<detection-logging,ones covering the logging landscape>>.
 
 == Expressing preference over a logging solution
 
@@ -114,3 +114,63 @@ A notation as above
 
 TIP: Notations above are those accepted by https://docs.gradle.org/6.0.1/dsl/org.gradle.api.artifacts.dsl.DependencyHandler.html#org.gradle.api.artifacts.dsl.DependencyHandler:create(java.lang.Object)[`DependencyHandler.create(notation)`] in Gradle that resolves to an `ExternalDependency`.
 Most often this is a `group:name:version` `String`.
+
+[[detection-logging]]
+== Detection of invalid logging configurations
+
+Upon application, this plugin defines a set of https://docs.gradle.org/6.0.1/userguide/component_metadata_rules.html#basics_of_writing_a_component_metadata_rule[component metadata rules] that add capabilities to relevant logging related dependencies.
+The added capabilities and impacted modules can be found in the table below:
+
+|===
+| Capability | Impacted modules | Comment
+
+| `slf4j-impl`
+| `org.slf4j:slf4j-simple`, `org.slf4j:slf4j-log4j12`, `org.slf4j:slf4j-jcl`, `org.slf4j:slf4j-jdk14`, `ch.qos.logback:logback-classic`, `org.apache.logging.log4j:log4j-slf4j-impl`, `org.apache.logging.log4j:log4j-slf4j2-impl`
+| Represents an Slf4J binding
+
+| `log4j2-impl`
+| `org.apache.logging.log4j:log4j-slf4j-impl`, `org.apache.logging.log4j:log4j-slf4j2-impl`, `org.apache.logging.log4j:log4j-core`
+| Represents the native Log4J 2 implementation or delegation to Slf4J
+
+| `log4j2-vs-slf4j`
+| `org.apache.logging.log4j:log4j-slf4j-impl`, `org.apache.logging.log4j:log4j-to-slf4j`
+| Represents the Slf4J / Log4J 2 relationship: which one delegates to the other
+
+| `slf4j-vs-log4j`
+| `org.slf4j:log4j-over-slf4j`, `org.slf4j:slf4j-log4j12`
+| Represents the Slf4J / Log4J 1.2 relationship: either Slf4J intercepts or binds to Log4J
+
+| `slf4j-vs-log4j2-log4j`
+| `org.slf4j:log4j-over-slf4j`, `org.apache.logging.log4j:log4j-1.2-api`, `log4j:log4j`
+| Represents the available Log4J implementation: native, with Slf4J or with Log4J 2
+
+| `slf4j-vs-jul`
+| `org.slf4j:jul-to-slf4j`, `org.slf4j:slf4j-jdk14`
+| Represents the Slf4J / `java.util.logging` relationship: either Slf4 intercepts or binds to JUL
+
+| `slf4j-vs-log4j2-jul`
+| `org.slf4j:jul-to-slf4j`, `org.apache.logging.log4j:log4j-jul`
+| Represents JUL replacement: either with Slf4J or with Log4J 2
+
+| `commons-logging-impl`
+| `commons-logging:commons-logging`, `org.slf4j:jcl-over-slf4j`, `org.springframework:spring-jcl`
+| Represents Apache Commons Logging implementation: native or Slf4J
+
+| `slf4j-vs-jcl`
+| `org.slf4j:jcl-over-slf4j`, `org.slf4j:slf4j-jcl`
+| Represents the Slf4J / Apache Commons Logging relationship: either Slf4J intercepts or binds to `commons-logging`
+
+| `slf4j-vs-log4j2-jcl`
+| `org.slf4j:jcl-over-slf4j`, `org.apache.logging.log4j:log4j-jcl`
+| Represents the Slf4J or Log4J 2 interception of `commons-logging`
+
+|===
+
+TIP: All capabilities are in the group `org.gradlex`
+
+With the set of capabilities defined above, all configuration resolutions in Gradle will fail if conflicting modules are found in the graph.
+
+== Alignment of logging libraries
+
+In addition to the capability setting and conflict detection, the plugin also registers https://docs.gradle.org/6.0.1/userguide/dependency_version_alignment.html#sec:align-versions-virtual[alignment rules] for Slf4J and Log4J 2 modules.
+

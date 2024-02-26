@@ -29,22 +29,26 @@ image:https://onepiecesoftware.github.io/img/videos/11.png[width=400,link=https:
 
 NOTE: With this series of plugins, you enable your build to detect and automatically resolve typical capability conflicts in the Java Ecosystem.
 
-== How to use the plugins?
+== Plugins
 
 TIP: These plugins require Gradle 6.8.3 at a minimum.
 
 The benefits described above are achieved through three different plugins:
 
 `org.gradlex.java-ecosystem-capabilities-base`::
-<<base.adoc#base-plugin,This plugin>> adds capability declarations to the metadata of well-known components hosted on Maven Central that are used in many Java projects.
+<<base-plugin,This plugin>> adds capability declarations to the metadata of well-known components hosted on Maven Central that are used in many Java projects.
 This plugin can be applied as a `Settings` or a `Project` plugin.
 
 `org.gradlex.java-ecosystem-capabilities`::
-<<ecosystem.adoc#ecosystem-plugin,This plugin>> adds opinionated capability resolutions to conflicting API or implementation libraries in the Java ecosystem.
+<<ecosystem-plugin,This plugin>> adds opinionated capability resolutions to conflicting API or implementation libraries in the Java ecosystem.
 This plugin can be applied as a `Project` plugin.
 
 `org.gradlex.logging-capabilities`::
-<<logging.adoc#logging-plugin,This plugin>> adds a DSL to select logging implementation for your application.
+<<logging-plugin,This plugin>> adds a DSL to select logging implementation for your application.
 This plugin can be applied as a `Project` plugin.
 
 See each plugin's documentation for more details.
+
+include::src/docs/asciidoc/parts/base.adoc[leveloffset=+2]
+include::src/docs/asciidoc/parts/ecosystem.adoc[leveloffset=+2]
+include::src/docs/asciidoc/parts/logging.adoc[leveloffset=+2]

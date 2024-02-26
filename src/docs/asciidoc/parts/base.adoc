@@ -4,7 +4,7 @@
 This plugin is responsible for applying the capability rules that support the other two plugins.
 
 WARNING: Applying only this base plugin will result in broken builds if capability conflicts are found.
-Conflict resolution is handled by the other two plugins: <<ecosystem.adoc#ecosystem-plugin,`java-ecosystem-capabilities`>> and <<logging.adoc#logging-plugin,`logging-capabilities`>>.
+Conflict resolution is handled by the other two plugins: <<ecosystem-plugin,`java-ecosystem-capabilities`>> and <<logging-plugin,`logging-capabilities`>>.
 
 == Apply the plugin
 
@@ -43,7 +43,7 @@ Here they are implemented in Java, but converting them to Kotlin or Groovy shoul
 [[conflict]]
 == I use the plugin and now there is a conflict - what now?
 
-TIP: You can apply the <<ecosystem.adoc#ecosystem-plugin,`java-ecosystem-capabilities` plugin>> to get some automatic conflict resolution.
+TIP: You can apply the <<ecosystem-plugin,`java-ecosystem-capabilities` plugin>> to get some automatic conflict resolution.
 
 If you get an error like this:
 

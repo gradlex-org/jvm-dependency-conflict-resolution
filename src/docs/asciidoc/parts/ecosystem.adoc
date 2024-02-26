@@ -12,12 +12,12 @@ plugins {
 
 This plugin should be applied to all projects, ideally as part of your convention plugin.
 
-The plugin will verify that the rules from the <<base.adoc#base-plugin,base plugin>> are available either through the central declaration mechanism or through the project's own rules.
+The plugin will verify that the rules from the <<base-plugin,base plugin>> are available either through the central declaration mechanism or through the project's own rules.
 
 == What is the concrete effect of the plugin?
 
 The plugin registers capability conflict resolutions for the <<rules.adoc#capability-rules,capability rules>> added by the base plugin.
-This enables a number of <<base.adoc#conflict,capability conflicts>> to be resolved automatically.
+This enables a number of <<conflict,capability conflicts>> to be resolved automatically.
 
 == Deactivating the default resolution strategy for capabilities
 
