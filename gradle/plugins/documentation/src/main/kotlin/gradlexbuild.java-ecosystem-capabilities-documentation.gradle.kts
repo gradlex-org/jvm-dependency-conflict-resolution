@@ -8,7 +8,7 @@ plugins {
 
 val updateReadme = tasks.register<ReadmeUpdate>("updateReadme") {
     pluginClasses.from(tasks.jar)
-    readme.set(layout.projectDirectory.file("README.MD"))
+    readme = layout.projectDirectory.file("README.MD")
 }
 
 val checkSamplesForCompleteness = tasks.register<SamplesCompletenessCheck>("checkSamplesForCompleteness") {

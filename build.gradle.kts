@@ -9,11 +9,11 @@ group = "org.gradlex"
 version = "2.0"
 
 java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(11)) // to run tests that use Android with 11
+    toolchain.languageVersion = JavaLanguageVersion.of(11) // to run tests that use Android with 11
 }
 
 tasks.withType<JavaCompile>().configureEach {
-    options.release.set(8)
+    options.release = 8
 }
 
 pluginPublishConventions {
@@ -27,19 +27,19 @@ pluginPublishConventions {
     gitHub("https://github.com/gradlex-org/java-ecosystem-capabilities")
     website("https://github.com/gradlex-org/java-ecosystem-capabilities")
     developer {
-        id.set("britter")
-        name.set("Benedikt Ritter")
-        email.set("benedikt@gradlex.org")
+        id = "britter"
+        name = "Benedikt Ritter"
+        email = "benedikt@gradlex.org"
     }
     developer {
-        id.set("jjohannes")
-        name.set("Jendrik Johannes")
-        email.set("jendrik@gradlex.org")
+        id = "jjohannes"
+        name = "Jendrik Johannes"
+        email = "jendrik@gradlex.org"
     }
     developer {
-        id.set("ljacomet")
-        name.set("Louis Jacomet")
-        email.set("louis@gradlex.org")
+        id = "ljacomet"
+        name = "Louis Jacomet"
+        email = "louis@gradlex.org"
     }
 }
 
