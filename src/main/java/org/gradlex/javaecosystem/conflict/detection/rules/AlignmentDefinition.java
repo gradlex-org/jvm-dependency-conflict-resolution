@@ -84,7 +84,7 @@ public enum AlignmentDefinition {
     private final Class<? extends AlignmentDefinitionRule> ruleClass;
 
     AlignmentDefinition(Class<? extends AlignmentDefinitionRule> ruleClass, String... modules) {
-        this.bom =  "org.gradlex.align:" + name().toLowerCase().replace("_", "-");
+        this.bom = null;
         this.ruleClass = ruleClass;
         this.modules = Arrays.asList(modules);
     }
@@ -107,7 +107,7 @@ public enum AlignmentDefinition {
         return ruleClass;
     }
 
-    public boolean isVirtual() {
-        return bom.startsWith("org.gradlex.align:");
+    public boolean hasBom() {
+        return bom != null;
     }
 }
