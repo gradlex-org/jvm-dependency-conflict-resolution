@@ -17,32 +17,7 @@
 package org.gradlex.javaecosystem.capabilities.rules;
 
 import org.gradlex.javaecosystem.capabilities.resolution.DefaultResolutionStrategy;
-import org.gradlex.javaecosystem.capabilities.rules.jakarta.JakartaActivationApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.jakarta.JakartaActivationImplementationRule;
-import org.gradlex.javaecosystem.capabilities.rules.jakarta.JakartaAnnotationApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.jakarta.JakartaMailApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.jakarta.JakartaServletApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.jakarta.JakartaWebsocketApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.jakarta.JakartaWebsocketClientApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.jakarta.JakartaWsRsApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxActivationApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxAnnotationApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxEjbApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxElApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxInjectApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxJsonApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxJwsApisRule;
-import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxMailApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxPersistenceApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxServletApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxServletJspRule;
-import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxServletJstlRule;
-import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxSoapApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxValidationApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxWebsocketApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxWsRsApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxXmlBindApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxXmlWsApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.*;
 import org.gradlex.javaecosystem.capabilities.rules.logging.LoggingModuleIdentifiers;
 
 import java.util.Arrays;
@@ -53,9 +28,14 @@ import static org.gradlex.javaecosystem.capabilities.resolution.DefaultResolutio
 import static org.gradlex.javaecosystem.capabilities.resolution.DefaultResolutionStrategy.NONE;
 
 public enum CapabilityDefinitions {
+
     AOPALLIANCE(HIGHEST_VERSION, AopallianceRule.class,
         "aopalliance:aopalliance",
         "org.springframework:spring-aop"
+    ),
+    APACHE_CSV(HIGHEST_VERSION,
+            "org.apache.solr:solr-commons-csv",
+            "org.apache.commons:commons-csv"
     ),
     ASM(HIGHEST_VERSION,
         "asm:asm",
@@ -147,11 +127,17 @@ public enum CapabilityDefinitions {
     ),
     C3P0(HIGHEST_VERSION,
         "c3p0:c3p0",
-        "com.mchange:c3p0"
+        "com.mchange:c3p0",
+        "com.mchange:mchange-commons-java"
     ),
     CGLIB(HIGHEST_VERSION,
         "cglib:cglib",
         "cglib:cglib-nodep"
+    ),
+    COMMONS_BEANUTILS(HIGHEST_VERSION,
+        "commons-beanutils:commons-beanutils-core",
+        "commons-beanutils:commons-beanutils",
+        "commons-collections:commons-collections"
     ),
     COMMONS_IO(HIGHEST_VERSION,
         "commons-io:commons-io",
@@ -173,6 +159,18 @@ public enum CapabilityDefinitions {
     GUAVA(HIGHEST_VERSION,
         "com.google.guava:guava",
         "com.google.guava:guava-jdk5"
+    ),
+    JZY3D_EMUL_GL(HIGHEST_VERSION,
+        "org.jzy3d:jzy3d-emul-gl",
+        "org.jzy3d:jzy3d-emul-gl-awt"
+    ),
+    JZY3D_JGL(HIGHEST_VERSION,
+        "org.jzy3d:jGL",
+        "org.jzy3d:jzy3d-jGL-awt"
+    ),
+    LZ4(HIGHEST_VERSION,
+        "net.jpountz.lz4:lz4",
+        "org.lz4:lz4-java"
     ),
     LISTENABLEFUTURE(FIRST_MODULE, "com.google.guava", GuavaListenableFutureRule.class,
         "com.google.guava:guava",
@@ -216,6 +214,10 @@ public enum CapabilityDefinitions {
         "junit:junit",
         "junit:junit-dep"
     ),
+    MIGLAYOUT(HIGHEST_VERSION,
+        "com.miglayout:miglayout-swing",
+        "com.miglayout:miglayout"
+    ),
     POSTGRESQL(HIGHEST_VERSION,
         "postgresql:postgresql",
         "org.postgresql:postgresql"
@@ -223,6 +225,10 @@ public enum CapabilityDefinitions {
     STAX_API(HIGHEST_VERSION,
         "stax:stax-api",
         "javax.xml.stream:stax-api"
+    ),
+    VBMACHER_JAVA_CUP(HIGHEST_VERSION,
+        "com.github.vbmacher:java-cup-runtime",
+        "com.github.vbmacher:java-cup"
     ),
     VELOCITY(HIGHEST_VERSION,
         "velocity:velocity",
@@ -375,6 +381,12 @@ public enum CapabilityDefinitions {
         "jakarta.xml.soap:jakarta.xml.soap-api"
     ),
 
+    JAVAX_TRANSACTION_API(HIGHEST_VERSION, JavaxTransactionApiRule.class,
+            "javax.transaction:jta",
+            "javax.transaction:javax.transaction-api",
+            "jakarta.transaction:jakarta.transaction-api"
+    ),
+
     JAVAX_VALIDATION_API(HIGHEST_VERSION, JavaxValidationApiRule.class,
         "javax.validation:validation-api",
         "jakarta.validation:jakarta.validation-api"
@@ -392,6 +404,7 @@ public enum CapabilityDefinitions {
     ),
 
     JAVAX_WS_RS_API(HIGHEST_VERSION, JavaxWsRsApiRule.class,
+        "com.sun.jersey:jersey-core",
         "javax.ws.rs:jsr311-api",
         "org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.1_spec",
         "org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.0_spec",
