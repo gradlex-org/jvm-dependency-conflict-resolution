@@ -27,7 +27,7 @@ import javax.inject.Inject;
 @CacheableRule
 public abstract class JavaxTransactionApiRule extends CapabilityDefinitionsRule {
 
-    static final String FIRST_JAKARTA_VERSION = "1.3.1";
+    static final String FIRST_JAKARTA_VERSION = "2.0.0";
 
     @Inject
     public JavaxTransactionApiRule(CapabilityDefinitions rule) {
