@@ -8,5 +8,9 @@ pluginManagement {
 }
 
 dependencyResolutionManagement {
-    repositories.mavenCentral()
+    repositories {
+        mavenCentral()
+        maven("https://maven.scijava.org/content/repositories/releases")
+        maven("https://maven.scijava.org/content/groups/public")
+    }
 }

@@ -18,7 +18,7 @@ compileClasspath - Compile classpath for source set 'main'.
 |    \--- org.springframework:spring-core:5.3.23 (*)
 +--- asm:asm:3.3.1 -> org.ow2.asm:asm:9.2
 +--- c3p0:c3p0:0.9.1.2 -> com.mchange:c3p0:0.9.5.5
-|    \--- com.mchange:mchange-commons-java:0.2.19
+|    \--- com.mchange:mchange-commons-java:0.2.19 -> com.mchange:c3p0:0.9.5.5 (*)
 +--- cglib:cglib-nodep:3.2.12 -> cglib:cglib:3.3.0
 |    \--- org.ow2.asm:asm:7.1 -> 9.2
 +--- cglib:cglib:3.3.0 (*)
@@ -42,6 +42,10 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- com.intellij:annotations:12.0 -> org.jetbrains:annotations:24.0.0
 +--- com.jwebmp:javax.inject:1.1
 +--- com.mchange:c3p0:0.9.5.5 (*)
++--- com.mchange:mchange-commons-java:0.3.0 -> com.mchange:c3p0:0.9.5.5 (*)
++--- com.miglayout:miglayout-swing:5.0
+|    \--- com.miglayout:miglayout-core:5.0
++--- com.miglayout:miglayout:3.7.4 -> com.miglayout:miglayout-swing:5.0 (*)
 +--- com.sun.mail:javax.mail:1.6.2
 |    \--- javax.activation:activation:1.1
 +--- com.vividsolutions:jts-core:1.14.0
@@ -50,13 +54,17 @@ compileClasspath - Compile classpath for source set 'main'.
 |    \--- org.slf4j:slf4j-api:1.7.30 -> 2.0.12 (*)
 +--- com.zaxxer:HikariCP-java7:2.4.9 -> com.zaxxer:HikariCP:5.0.1 (*)
 +--- com.zaxxer:HikariCP:5.0.1 (*)
++--- commons-beanutils:commons-beanutils-core:1.8.3 -> commons-beanutils:commons-beanutils:1.9.4
+|    +--- commons-logging:commons-logging:1.2 -> org.slf4j:jcl-over-slf4j:2.0.12 (*)
+|    \--- commons-collections:commons-collections:3.2.2
++--- commons-beanutils:commons-beanutils:1.9.4 (*)
 +--- commons-io:commons-io:2.11.0
 +--- commons-logging:commons-logging:1.3.0 -> org.slf4j:jcl-over-slf4j:2.0.12 (*)
 +--- dom4j:dom4j:1.6.1 -> org.dom4j:dom4j:2.1.3
 +--- jakarta.activation:jakarta.activation-api:{strictly 2.0.0} -> com.sun.activation:jakarta.activation:2.0.1
 +--- jakarta.annotation:jakarta.annotation-api:2.1.1
 +--- jakarta.ejb:jakarta.ejb-api:4.0.0
-|    \--- jakarta.transaction:jakarta.transaction-api:2.0.0
+|    \--- jakarta.transaction:jakarta.transaction-api:2.0.0 -> 2.0.1
 +--- jakarta.el:jakarta.el-api:4.0.0
 +--- jakarta.inject:jakarta.inject-api:1.0.5 -> com.jwebmp:javax.inject:1.1
 +--- jakarta.json:jakarta.json-api:1.1.6
@@ -65,6 +73,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:1.2.7
 +--- jakarta.servlet.jsp:jakarta.servlet.jsp-api:2.3.6
 +--- jakarta.servlet:jakarta.servlet-api:5.0.0
++--- jakarta.transaction:jakarta.transaction-api:2.0.1
 +--- jakarta.validation:jakarta.validation-api:2.0.1
 +--- jakarta.websocket:jakarta.websocket-api:2.1.1
 +--- jakarta.websocket:jakarta.websocket-client-api:2.1.1
@@ -100,6 +109,8 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- javax.servlet:jsp-api:2.0 -> jakarta.servlet.jsp:jakarta.servlet.jsp-api:2.3.6
 +--- javax.servlet:jstl:1.2 -> jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:1.2.7
 +--- javax.servlet:servlet-api:2.5 -> javax.servlet:javax.servlet-api:4.0.1
++--- javax.transaction:javax.transaction-api:1.3
++--- javax.transaction:jta:1.1 -> javax.transaction:javax.transaction-api:1.3
 +--- javax.validation:validation-api:2.0.1.Final -> jakarta.validation:jakarta.validation-api:2.0.1
 +--- javax.websocket:javax.websocket-api:1.1 -> org.eclipse.jetty.toolchain:jetty-javax-websocket-api:1.1.2
 +--- javax.websocket:javax.websocket-client-api:1.0 -> org.eclipse.jetty.toolchain:jetty-javax-websocket-api:1.1.2
@@ -122,6 +133,9 @@ compileClasspath - Compile classpath for source set 'main'.
 |    \--- net.java.dev.jna:jna:5.10.0
 +--- net.java.dev.jna:platform:3.4.0 -> net.java.dev.jna:jna-platform:5.10.0 (*)
 +--- net.jcip:jcip-annotations:1.0
++--- net.jpountz.lz4:lz4:1.3.0 -> org.lz4:lz4-java:1.8.0
++--- org.apache.commons:commons-csv:1.10.0 -> org.apache.solr:solr-commons-csv:3.5.0
+|    \--- org.slf4j:slf4j-api:1.6.1 -> 2.0.12 (*)
 +--- org.apache.commons:commons-io:1.3.2 -> commons-io:commons-io:2.11.0
 +--- org.apache.geronimo.javamail:geronimo-javamail_1.3.1_mail:1.1 -> com.sun.mail:javax.mail:1.6.2 (*)
 +--- org.apache.geronimo.javamail:geronimo-javamail_1.3.1_provider:1.1 -> com.sun.mail:javax.mail:1.6.2 (*)
@@ -149,6 +163,7 @@ compileClasspath - Compile classpath for source set 'main'.
 |    +--- org.slf4j:slf4j-api:2.0.12 (*)
 |    \--- org.slf4j:slf4j-bom:2.0.12 (*)
 +--- org.apache.logging.log4j:log4j-to-slf4j:2.23.0 (*)
++--- org.apache.solr:solr-commons-csv:3.5.0 (*)
 +--- org.apache.tomcat.embed:tomcat-embed-core:10.1.0 -> jakarta.servlet:jakarta.servlet-api:5.0.0
 +--- org.apache.tomcat:servlet-api:6.0.53 -> javax.servlet:javax.servlet-api:4.0.1
 +--- org.apache.tomcat:tomcat-annotations-api:10.1.1 -> jakarta.annotation:jakarta.annotation-api:2.1.1
@@ -156,7 +171,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.apache.tomcat:tomcat-websocket-api:10.1.0 -> jakarta.websocket:jakarta.websocket-api:2.1.1
 +--- org.apache.tomcat:tomcat-websocket-client-api:10.1.0 -> jakarta.websocket:jakarta.websocket-client-api:2.1.1
 +--- org.apache.velocity:velocity-engine-core:2.3
-|    +--- org.apache.commons:commons-lang3:3.11
+|    +--- org.apache.commons:commons-lang3:3.11 -> 3.12.0
 |    \--- org.slf4j:slf4j-api:1.7.30 -> 2.0.12 (*)
 +--- org.apache.velocity:velocity:1.7 -> org.apache.velocity:velocity-engine-core:2.3 (*)
 +--- org.bouncycastle:bcpg-jdk12:130
@@ -218,6 +233,36 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.1_spec:2.0.2.Final -> javax.ws.rs:javax.ws.rs-api:2.1.1
 +--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_3.0_spec:1.0.1.Final -> jakarta.ws.rs:jakarta.ws.rs-api:3.1.0
 +--- org.jetbrains:annotations:24.0.0
++--- org.jzy3d:jGL:2.5
++--- org.jzy3d:jzy3d-emul-gl-awt:2.2.1
+|    +--- org.jzy3d:jzy3d-core:2.2.1
+|    |    +--- org.jzy3d:jzy3d-jdt-core:2.2.1
+|    |    |    +--- commons-io:commons-io:2.7 -> 2.11.0
+|    |    |    +--- org.apache.commons:commons-lang3:3.12.0
+|    |    |    +--- org.apache.logging.log4j:log4j-api:2.17.1 -> 2.23.0 (*)
+|    |    |    \--- org.apache.logging.log4j:log4j-core:2.17.1 -> org.apache.logging.log4j:log4j-to-slf4j:2.23.0 (*)
+|    |    +--- org.smurn:jply:0.2.1
+|    |    |    \--- org.apache.commons:commons-lang3:3.1 -> 3.12.0
+|    |    +--- net.sf.opencsv:opencsv:2.1
+|    |    +--- org.tallison:jmatio:1.5
+|    |    |    \--- org.slf4j:slf4j-api:1.7.25 -> 2.0.12 (*)
+|    |    +--- com.google.guava:guava:30.1.1-jre -> 33.0.0-jre (*)
+|    |    +--- org.apache.commons:commons-collections4:4.4
+|    |    +--- com.diogonunes:JColor:5.2.0
+|    |    |    +--- net.java.dev.jna:jna:5.8.0 -> 5.10.0
+|    |    |    \--- net.java.dev.jna:jna-platform:5.8.0 -> 5.10.0 (*)
+|    |    +--- org.apache.logging.log4j:log4j-api:2.17.1 -> 2.23.0 (*)
+|    |    \--- org.apache.logging.log4j:log4j-core:2.17.1 -> org.apache.logging.log4j:log4j-to-slf4j:2.23.0 (*)
+|    +--- org.jzy3d:jzy3d-core-awt:2.2.1
+|    |    +--- org.jzy3d:jzy3d-core:2.2.1 (*)
+|    |    +--- org.apache.logging.log4j:log4j-api:2.17.1 -> 2.23.0 (*)
+|    |    \--- org.apache.logging.log4j:log4j-core:2.17.1 -> org.apache.logging.log4j:log4j-to-slf4j:2.23.0 (*)
+|    +--- org.jzy3d:jzy3d-jGL-awt:2.2.1 -> org.jzy3d:jGL:2.5
+|    +--- org.apache.logging.log4j:log4j-api:2.17.1 -> 2.23.0 (*)
+|    \--- org.apache.logging.log4j:log4j-core:2.17.1 -> org.apache.logging.log4j:log4j-to-slf4j:2.23.0 (*)
++--- org.jzy3d:jzy3d-emul-gl:2.0.0 -> org.jzy3d:jzy3d-emul-gl-awt:2.2.1 (*)
++--- org.jzy3d:jzy3d-jGL-awt:2.2.1 -> org.jzy3d:jGL:2.5
++--- org.lz4:lz4-java:1.8.0
 +--- org.ow2.asm:asm:9.2
 +--- org.postgresql:postgresql:42.5.0
 +--- org.slf4j:jcl-over-slf4j:2.0.12 (*)

@@ -180,6 +180,9 @@ Each Capability's GA coordinates correspond to the GA coordinates of the Compone
 * org.gradlex:aopalliance
   * [aopalliance:aopalliance](https://search.maven.org/artifact/aopalliance/aopalliance)
   * [org.springframework:spring-aop](https://search.maven.org/artifact/org.springframework/spring-aop)
+* org.gradlex:apache-csv
+  * [org.apache.solr:solr-commons-csv](https://search.maven.org/artifact/org.apache.solr/solr-commons-csv)
+  * [org.apache.commons:commons-csv](https://search.maven.org/artifact/org.apache.commons/commons-csv)
 * org.gradlex:asm
   * [asm:asm](https://search.maven.org/artifact/asm/asm)
   * [org.ow2.asm:asm](https://search.maven.org/artifact/org.ow2.asm/asm)
@@ -263,9 +266,13 @@ Each Capability's GA coordinates correspond to the GA coordinates of the Compone
 * org.gradlex:c3p0
   * [c3p0:c3p0](https://search.maven.org/artifact/c3p0/c3p0)
   * [com.mchange:c3p0](https://search.maven.org/artifact/com.mchange/c3p0)
+  * [com.mchange:mchange-commons-java](https://search.maven.org/artifact/com.mchange/mchange-commons-java)
 * org.gradlex:cglib
   * [cglib:cglib](https://search.maven.org/artifact/cglib/cglib)
   * [cglib:cglib-nodep](https://search.maven.org/artifact/cglib/cglib-nodep)
+* org.gradlex:commons-beanutils
+  * [commons-beanutils:commons-beanutils-core](https://search.maven.org/artifact/commons-beanutils/commons-beanutils-core)
+  * [commons-beanutils:commons-beanutils](https://search.maven.org/artifact/commons-beanutils/commons-beanutils)
 * org.gradlex:commons-io
   * [commons-io:commons-io](https://search.maven.org/artifact/commons-io/commons-io)
   * [org.apache.commons:commons-io](https://search.maven.org/artifact/org.apache.commons/commons-io)
@@ -414,6 +421,10 @@ Each Capability's GA coordinates correspond to the GA coordinates of the Compone
 * org.gradlex:javax-soap-api
   * [javax.xml.soap:javax.xml.soap-api](https://search.maven.org/artifact/javax.xml.soap/javax.xml.soap-api)
   * [jakarta.xml.soap:jakarta.xml.soap-api](https://search.maven.org/artifact/jakarta.xml.soap/jakarta.xml.soap-api)
+* org.gradlex:javax-transaction-api
+  * [javax.transaction:jta](https://search.maven.org/artifact/javax.transaction/jta)
+  * [javax.transaction:javax.transaction-api](https://search.maven.org/artifact/javax.transaction/javax.transaction-api)
+  * [jakarta.transaction:jakarta.transaction-api](https://search.maven.org/artifact/jakarta.transaction/jakarta.transaction-api)
 * org.gradlex:javax-validation-api
   * [javax.validation:validation-api](https://search.maven.org/artifact/javax.validation/validation-api)
   * [jakarta.validation:jakarta.validation-api](https://search.maven.org/artifact/jakarta.validation/jakarta.validation-api)
@@ -452,6 +463,12 @@ Each Capability's GA coordinates correspond to the GA coordinates of the Compone
 * org.gradlex:junit
   * [junit:junit](https://search.maven.org/artifact/junit/junit)
   * [junit:junit-dep](https://search.maven.org/artifact/junit/junit-dep)
+* org.gradlex:jzy3d-emul-gl
+  * [org.jzy3d:jzy3d-emul-gl](https://search.maven.org/artifact/org.jzy3d/jzy3d-emul-gl)
+  * [org.jzy3d:jzy3d-emul-gl-awt](https://search.maven.org/artifact/org.jzy3d/jzy3d-emul-gl-awt)
+* org.gradlex:jzy3d-jgl
+  * [org.jzy3d:jGL](https://search.maven.org/artifact/org.jzy3d/jGL)
+  * [org.jzy3d:jzy3d-jGL-awt](https://search.maven.org/artifact/org.jzy3d/jzy3d-jGL-awt)
 * org.gradlex:log4j2-impl
   * [org.apache.logging.log4j:log4j-to-slf4j](https://search.maven.org/artifact/org.apache.logging.log4j/log4j-to-slf4j)
   * [org.apache.logging.log4j:log4j-core](https://search.maven.org/artifact/org.apache.logging.log4j/log4j-core)
@@ -459,6 +476,12 @@ Each Capability's GA coordinates correspond to the GA coordinates of the Compone
   * [org.apache.logging.log4j:log4j-slf4j-impl](https://search.maven.org/artifact/org.apache.logging.log4j/log4j-slf4j-impl)
   * [org.apache.logging.log4j:log4j-slf4j2-impl](https://search.maven.org/artifact/org.apache.logging.log4j/log4j-slf4j2-impl)
   * [org.apache.logging.log4j:log4j-to-slf4j](https://search.maven.org/artifact/org.apache.logging.log4j/log4j-to-slf4j)
+* org.gradlex:lz4
+  * [net.jpountz.lz4:lz4](https://search.maven.org/artifact/net.jpountz.lz4/lz4)
+  * [org.lz4:lz4-java](https://search.maven.org/artifact/org.lz4/lz4-java)
+* org.gradlex:miglayout
+  * [com.miglayout:miglayout-swing](https://search.maven.org/artifact/com.miglayout/miglayout-swing)
+  * [com.miglayout:miglayout](https://search.maven.org/artifact/com.miglayout/miglayout)
 * org.gradlex:postgresql
   * [postgresql:postgresql](https://search.maven.org/artifact/postgresql/postgresql)
   * [org.postgresql:postgresql](https://search.maven.org/artifact/org.postgresql/postgresql)
