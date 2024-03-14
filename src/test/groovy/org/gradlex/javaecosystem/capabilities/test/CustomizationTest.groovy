@@ -14,7 +14,7 @@ class CustomizationTest extends Specification {
             import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions
             
             plugins {
-                id("org.gradlex.java-ecosystem-capabilities-base")
+                id("org.gradlex.java-ecosystem-capabilities")
                 id("java-library")
             }
             
@@ -51,17 +51,17 @@ class CustomizationTest extends Specification {
             import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions
             
             plugins {
-                id("org.gradlex.java-ecosystem-capabilities")
+                id("org.gradlex.java-dependencies")
                 id("java-library")
             }
             
             repositories.mavenCentral()
             
-            javaEcosystemCapabilities {
-                deactivatedResolutionStrategies.add(CapabilityDefinitions.CGLIB)
-                deactivatedResolutionStrategies.add(CapabilityDefinitions.JAVAX_MAIL_API)
-                deactivatedResolutionStrategies.add(CapabilityDefinitions.JAVAX_WS_RS_API)
-                deactivatedResolutionStrategies.add(CapabilityDefinitions.JAKARTA_SERVLET_API)
+            javaDependencies {
+                conflictResolution.deactivatedResolutionStrategies.add(CapabilityDefinitions.CGLIB)
+                conflictResolution.deactivatedResolutionStrategies.add(CapabilityDefinitions.JAVAX_MAIL_API)
+                conflictResolution.deactivatedResolutionStrategies.add(CapabilityDefinitions.JAVAX_WS_RS_API)
+                conflictResolution.deactivatedResolutionStrategies.add(CapabilityDefinitions.JAKARTA_SERVLET_API)
             }
             
             configurations.all {

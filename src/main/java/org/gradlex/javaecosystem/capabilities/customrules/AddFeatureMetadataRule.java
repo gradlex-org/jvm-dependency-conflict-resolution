@@ -23,7 +23,6 @@ import org.gradle.api.artifacts.ComponentMetadataRule;
 import org.gradle.api.artifacts.ModuleVersionIdentifier;
 
 import javax.inject.Inject;
-import java.util.List;
 
 /**
  * See:
@@ -33,22 +32,19 @@ import java.util.List;
  */
 @CacheableRule
 @NonNullApi
-public abstract class AddFeaturesMetadataRule implements ComponentMetadataRule {
+public abstract class AddFeatureMetadataRule implements ComponentMetadataRule {
 
-    private final List<String> classifiers;
+    private final String classifier;
 
     @Inject
-    public AddFeaturesMetadataRule(List<String> classifiers) {
-        this.classifiers = classifiers;
+    public AddFeatureMetadataRule(String classifier) {
+        this.classifier = classifier;
     }
 
     @Override
     public void execute(ComponentMetadataContext context) {
-
-        for (String classifier : classifiers) {
-            addFeatureVariant(context, classifier, "Compile", "compile");
-            addFeatureVariant(context, classifier, "Runtime", "runtime");
-        }
+        addFeatureVariant(context, classifier, "Compile", "compile");
+        addFeatureVariant(context, classifier, "Runtime", "runtime");
     }
 
     private static void addFeatureVariant(ComponentMetadataContext context, String classifier, String nameSuffix, String baseVariant) {

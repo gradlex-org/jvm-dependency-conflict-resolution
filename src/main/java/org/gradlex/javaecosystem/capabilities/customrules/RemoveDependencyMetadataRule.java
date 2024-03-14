@@ -22,7 +22,7 @@ import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataRule;
 
 import javax.inject.Inject;
-import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * See:
@@ -31,21 +31,18 @@ import java.util.List;
  */
 @CacheableRule
 @NonNullApi
-public abstract class AddDependenciesMetadataRule implements ComponentMetadataRule {
+public abstract class RemoveDependencyMetadataRule implements ComponentMetadataRule {
 
-    private final List<String> dependencies;
+    private final String dependency;
 
     @Inject
-    public AddDependenciesMetadataRule(List<String> dependencies) {
-        this.dependencies = dependencies;
+    public RemoveDependencyMetadataRule(String dependency) {
+        this.dependency = dependency;
     }
 
     @Override
     public void execute(ComponentMetadataContext context) {
-        context.getDetails().allVariants(v -> v.withDependencies(d -> {
-            for (String dependency : dependencies) {
-                d.add(dependency);
-            }
-        }));
+        context.getDetails().allVariants(v -> v.withDependencies(d ->
+                d.removeAll(d.stream().filter(it -> dependency.equals(it.getModule().toString())).collect(Collectors.toList()))));
     }
 }

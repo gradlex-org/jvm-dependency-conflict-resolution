@@ -18,58 +18,59 @@ package org.gradlex.javaecosystem.capabilities;
 
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;
-import org.gradle.api.artifacts.CapabilitiesResolution;
-import org.gradle.api.artifacts.CapabilityResolutionDetails;
-import org.gradle.api.artifacts.ComponentVariantIdentifier;
-import org.gradle.api.artifacts.Configuration;
-import org.gradle.api.artifacts.ConfigurationContainer;
-import org.gradle.api.artifacts.component.ModuleComponentIdentifier;
+import org.gradle.api.artifacts.dsl.ComponentMetadataHandler;
+import org.gradle.api.initialization.Settings;
+import org.gradle.api.plugins.ExtensionAware;
+import org.gradle.util.GradleVersion;
+import org.gradlex.javaecosystem.capabilities.rules.AlignmentDefinitions;
 import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
 
-import java.util.Optional;
+public class JavaEcosystemCapabilitiesPlugin implements Plugin<ExtensionAware> {
 
-import static org.gradlex.javaecosystem.capabilities.resolution.DefaultResolutionStrategy.FIRST_MODULE;
-import static org.gradlex.javaecosystem.capabilities.resolution.DefaultResolutionStrategy.HIGHEST_VERSION;
+    static final String PLUGIN_ID = "org.gradlex.java-ecosystem-capabilities-base";
 
-public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Project> {
+    // Minimal version that works reliably with alignment and has the substitution rules `using` API and has rulesMode
+    // setting in dependencyResolutionManagement
+    private static final GradleVersion MINIMUM_SUPPORTED_VERSION = GradleVersion.version("6.8.3");
 
     @Override
-    public void apply(Project project) {
-        BasePluginApplication.of(project).handleRulesMode();
+    public void apply(ExtensionAware projectOrSettings) {
+        if (GradleVersion.current().compareTo(MINIMUM_SUPPORTED_VERSION) < 0) {
+            throw new IllegalStateException("Plugin requires at least Gradle " + MINIMUM_SUPPORTED_VERSION.getVersion());
+        }
 
-        JavaEcosystemCapabilitiesExtension javaEcosystemCapabilities = project.getExtensions().create("javaEcosystemCapabilities", JavaEcosystemCapabilitiesExtension.class);
-
-        configureResolutionStrategies(project.getConfigurations(), javaEcosystemCapabilities);
+        ComponentMetadataHandler components;
+        if (projectOrSettings instanceof Project) {
+            // Make sure 'jvm-ecosystem' is applied which adds the schemas for the attributes this plugin relies on
+            ((Project) projectOrSettings).getPlugins().apply("jvm-ecosystem");
+            components = ((Project) projectOrSettings).getDependencies().getComponents();
+        } else if (projectOrSettings instanceof Settings) {
+            //noinspection UnstableApiUsage
+            components = ((Settings) projectOrSettings).getDependencyResolutionManagement().getComponents();
+        } else {
+            throw new IllegalStateException("Cannot apply plugin to: " + projectOrSettings.getClass().getName());
+        }
+        registerRules(components);
     }
 
-    private void configureResolutionStrategies(ConfigurationContainer configurations, JavaEcosystemCapabilitiesExtension javaEcosystemCapabilities) {
-        configurations.all(configuration -> {
-            for (CapabilityDefinitions definition : CapabilityDefinitions.values()) {
-                defineStrategy(definition, configuration, javaEcosystemCapabilities);
-            }
-        });
+    private void registerRules(ComponentMetadataHandler components) {
+        for (CapabilityDefinitions definition : CapabilityDefinitions.values()) {
+            registerCapabilityRule(definition, components);
+        }
+        for (AlignmentDefinitions definition : AlignmentDefinitions.values()) {
+            registerAlignmentRule(definition, components);
+        }
     }
 
-    private void defineStrategy(CapabilityDefinitions definition, Configuration configuration, JavaEcosystemCapabilitiesExtension javaEcosystemCapabilities) {
-        CapabilitiesResolution resolution = configuration.getResolutionStrategy().getCapabilitiesResolution();
-        resolution.withCapability(definition.getCapability(), details -> {
-            if (!javaEcosystemCapabilities.getDeactivatedResolutionStrategies().get().contains(definition)) {
-                if (definition.getDefaultStrategy() == HIGHEST_VERSION) {
-                    details.selectHighestVersion();
-                } else if (definition.getDefaultStrategy() == FIRST_MODULE) {
-                    select(details, definition.getModules().get(0));
-                }
-            }
-        });
+    private void registerCapabilityRule(CapabilityDefinitions definition, ComponentMetadataHandler components) {
+        for (String module : definition.getModules()) {
+            components.withModule(module, definition.getRuleClass(), ac -> ac.params(definition));
+        }
     }
 
-    private void select(CapabilityResolutionDetails details, String moduleGA) {
-        Optional<ComponentVariantIdentifier> module = details.getCandidates().stream().filter(c -> {
-            if (c.getId() instanceof ModuleComponentIdentifier) {
-                return ((ModuleComponentIdentifier) c.getId()).getModuleIdentifier().toString().equals(moduleGA);
-            }
-            return false;
-        }).findFirst();
-        module.ifPresent(details::select);
+    private void registerAlignmentRule(AlignmentDefinitions definition, ComponentMetadataHandler components) {
+        for (String module : definition.getModules()) {
+            components.withModule(module, definition.getRuleClass(), ac -> ac.params(definition));
+        }
     }
 }

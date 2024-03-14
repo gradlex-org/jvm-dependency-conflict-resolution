@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.gradlex.javaecosystem.capabilities;
+package org.gradlex.javaecosystem.capabilities.dsl;
 
 import org.gradle.api.Action;
 import org.gradle.api.artifacts.CapabilitiesResolution;
@@ -29,17 +29,18 @@ import org.gradlex.javaecosystem.capabilities.actions.Slf4JEnforcementSubstituti
 import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
 import org.gradlex.javaecosystem.capabilities.rules.logging.LoggingModuleIdentifiers;
 
+import javax.inject.Inject;
+
 /**
  * Project extension that enables expressing preference over potential logging capabilities conflicts.
  */
-public class LoggingCapabilitiesExtension {
-    private final ConfigurationContainer configurations;
-    private final DependencyHandler dependencies;
+public abstract class Logging {
 
-    public LoggingCapabilitiesExtension(ConfigurationContainer configurations, DependencyHandler dependencies) {
-        this.configurations = configurations;
-        this.dependencies = dependencies;
-    }
+    @Inject
+    protected abstract DependencyHandler getDependencies();
+
+    @Inject
+    protected abstract ConfigurationContainer getConfigurations();
 
     /**
      * Selects the provided module as the Slf4J binding to use.
@@ -421,7 +422,7 @@ public class LoggingCapabilitiesExtension {
         selectSlf4JLog4J2Interaction(LoggingModuleIdentifiers.LOG4J_TO_SLF4J.moduleId);
         selectLog4J2Implementation(LoggingModuleIdentifiers.LOG4J_TO_SLF4J.moduleId);
 
-        configurations.all(getSlf4JEnforcementSubstitutions());
+        getConfigurations().all(getSlf4JEnforcementSubstitutions());
     }
 
     private void enforceSlf4JImplementation(String configurationName) {
@@ -431,7 +432,7 @@ public class LoggingCapabilitiesExtension {
         selectSlf4JLog4J2Interaction(configurationName, LoggingModuleIdentifiers.LOG4J_TO_SLF4J.moduleId);
         selectLog4J2Implementation(configurationName, LoggingModuleIdentifiers.LOG4J_TO_SLF4J.moduleId);
 
-        configurations.matching(conf -> conf.getName().equals(configurationName)).all(getSlf4JEnforcementSubstitutions());
+        getConfigurations().matching(conf -> conf.getName().equals(configurationName)).all(getSlf4JEnforcementSubstitutions());
     }
 
     private Action<Configuration> getSlf4JEnforcementSubstitutions() {
@@ -439,7 +440,7 @@ public class LoggingCapabilitiesExtension {
     }
 
     private ExternalDependency validateNotation(Object dependencyNotation) {
-        Dependency dependency = dependencies.create(dependencyNotation);
+        Dependency dependency = getDependencies().create(dependencyNotation);
         if (dependency instanceof ExternalDependency) {
             return (ExternalDependency) dependency;
         } else {
@@ -448,11 +449,11 @@ public class LoggingCapabilitiesExtension {
     }
 
     private void selectCapabilityConflict(String configuration, String capabilityId, ExternalDependency target, String because) {
-        configurations.matching(conf -> conf.getName().equals(configuration)).all(conf -> conf.getResolutionStrategy().capabilitiesResolution(getCapabilitiesResolutionAction(capabilityId, target, because)));
+        getConfigurations().matching(conf -> conf.getName().equals(configuration)).all(conf -> conf.getResolutionStrategy().capabilitiesResolution(getCapabilitiesResolutionAction(capabilityId, target, because)));
     }
 
     private void selectCapabilityConflict(String capabilityId, ExternalDependency target, String because) {
-        configurations.all(conf -> conf.getResolutionStrategy().capabilitiesResolution(getCapabilitiesResolutionAction(capabilityId, target, because)));
+        getConfigurations().all(conf -> conf.getResolutionStrategy().capabilitiesResolution(getCapabilitiesResolutionAction(capabilityId, target, because)));
     }
 
     private Action<CapabilitiesResolution> getCapabilitiesResolutionAction(String capabilityId, ExternalDependency target, String because) {

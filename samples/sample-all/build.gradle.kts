@@ -1,8 +1,7 @@
 import  org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions
 
 plugins {
-    id("org.gradlex.java-ecosystem-capabilities")
-    id("org.gradlex.logging-capabilities")
+    id("org.gradlex.java-dependencies")
     id("java-library")
     id("io.fuchs.gradle.classpath-collision-detector") version "0.3"
 }
@@ -256,48 +255,15 @@ dependencies {
     // implementation("com.mchange:mchange-commons-java:0.3.0")
 }
 
-loggingCapabilities {
-    enforceSlf4JSimple()
-}
-
-javaEcosystemCapabilities {
-    deactivatedResolutionStrategies.add(CapabilityDefinitions.BOUNCYCASTLE_BCTSP)
-    deactivatedResolutionStrategies.add(CapabilityDefinitions.JAVAX_ACTIVATION_API)
-    deactivatedResolutionStrategies.add(CapabilityDefinitions.JAVAX_SERVLET_API)
-    deactivatedResolutionStrategies.add(CapabilityDefinitions.JAKARTA_SERVLET_API)
-}
-configurations.all {
-    resolutionStrategy.capabilitiesResolution {
-        withCapability(CapabilityDefinitions.JAVAX_ACTIVATION_API.capability) {
-            val toBeSelected = candidates.firstOrNull { it.id.let { id -> id is ModuleComponentIdentifier && id.module == "javax.activation-api" } }
-            if (toBeSelected != null) {
-                select(toBeSelected)
-            }
-        }
-        withCapability(CapabilityDefinitions.JAVAX_ACTIVATION_API.capability) {
-            val toBeSelected = candidates.firstOrNull { it.id.let { id -> id is ModuleComponentIdentifier && id.module == "javax-activation-api" } }
-            if (toBeSelected != null) {
-                select(toBeSelected)
-            }
-        }
-        withCapability(CapabilityDefinitions.JAKARTA_SERVLET_API.capability) {
-            val toBeSelected = candidates.firstOrNull { it.id.let { id -> id is ModuleComponentIdentifier && id.module == "jakarta.servlet-api" } }
-            if (toBeSelected != null) {
-                select(toBeSelected)
-            }
-        }
-        withCapability(CapabilityDefinitions.JAVAX_SERVLET_API.capability) {
-            val toBeSelected = candidates.firstOrNull { it.id.let { id -> id is ModuleComponentIdentifier && id.module == "javax.servlet-api" } }
-            if (toBeSelected != null) {
-                select(toBeSelected)
-            }
-        }
-        withCapability(CapabilityDefinitions.BOUNCYCASTLE_BCTSP.capability) {
-            val toBeSelected = candidates.firstOrNull { it.id.let { id -> id is ModuleComponentIdentifier && id.module == "bctsp-jdk15on" } }
-            if (toBeSelected != null) {
-                select(toBeSelected)
-            }
-        }
+javaDependencies {
+    logging {
+        enforceSlf4JSimple()
+    }
+    conflictResolution {
+        select(CapabilityDefinitions.JAVAX_ACTIVATION_API, "javax.activation:javax.activation-api")
+        select(CapabilityDefinitions.JAKARTA_SERVLET_API, "jakarta.servlet:jakarta.servlet-api")
+        select(CapabilityDefinitions.JAVAX_SERVLET_API, "javax.servlet:javax.servlet-api")
+        select(CapabilityDefinitions.BOUNCYCASTLE_BCTSP, "org.bouncycastle:bctsp-jdk15on")
     }
 }
 

@@ -14,7 +14,7 @@ class ComponentStatusRuleTest extends Specification {
         buildFile << """
             import org.gradlex.javaecosystem.capabilities.customrules.*
             plugins {
-                id("org.gradlex.java-ecosystem-capabilities")
+                id("org.gradlex.java-dependencies")
                 id("java-library")
             }
             repositories.mavenCentral()

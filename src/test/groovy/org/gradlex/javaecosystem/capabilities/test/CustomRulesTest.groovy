@@ -13,9 +13,8 @@ class CustomRulesTest extends Specification {
     def setup() {
         file('src/main/java/Dummy.java') << 'class Dummy {}'
         buildFile << """
-            import org.gradlex.javaecosystem.capabilities.customrules.*
             plugins {
-                id("org.gradlex.java-ecosystem-capabilities")
+                id("org.gradlex.java-dependencies")
                 id("java-library")
             }
             repositories.mavenCentral()
@@ -25,14 +24,16 @@ class CustomRulesTest extends Specification {
     def "can remove dependencies"() {
         given:
         buildFile << """
-            dependencies.components {
-                withModule<RemoveDependenciesMetadataRule>("com.google.guava:guava") { params(listOf(
-                    "com.google.guava:listenablefuture",
-                    "com.google.code.findbugs:jsr305",
-                    "org.checkerframework:checker-qual",
-                    "com.google.errorprone:error_prone_annotations",
-                    "com.google.j2objc:j2objc-annotations"
-                ))}
+            javaDependencies {
+                patch {
+                    module("com.google.guava:guava") {
+                        removeDependency("com.google.guava:listenablefuture")
+                        removeDependency("com.google.code.findbugs:jsr305")
+                        removeDependency("org.checkerframework:checker-qual")
+                        removeDependency("com.google.errorprone:error_prone_annotations")
+                        removeDependency("com.google.j2objc:j2objc-annotations")
+                    }
+                }
             }
             dependencies {
                 implementation("com.google.guava:guava:33.0.0-jre")
@@ -50,11 +51,12 @@ compileClasspath - Compile classpath for source set 'main'.
     def "can add dependency"() {
         given:
         buildFile << """
-            dependencies.components {
-                withModule<AddDependenciesMetadataRule>("io.netty:netty-common") { params(listOf(
-                    "io.projectreactor.tools:blockhound:1.0.8.RELEASE"
-                ))}
-   
+            javaDependencies {
+                patch {
+                    module("io.netty:netty-common") {
+                        addApiDependency("io.projectreactor.tools:blockhound:1.0.8.RELEASE")
+                    }
+                }
             }
             dependencies {
                 implementation("io.netty:netty-common:4.1.106.Final")
@@ -72,11 +74,12 @@ compileClasspath - Compile classpath for source set 'main'.
     def "can add capability"() {
         given:
         buildFile << """
-            dependencies.components {
-                withModule<AddCapabilityMetadataRule>("org.apache.commons:commons-lang3") { params(
-                    "commons-lang:commons-lang" // artificial case for testing!
-                )}
-   
+            javaDependencies {
+                patch {
+                    module("org.apache.commons:commons-lang3") {
+                        addCapability("commons-lang:commons-lang") // artificial case for testing!
+                    }
+                }
             }
             dependencies {
                 implementation("commons-lang:commons-lang:2.6")
@@ -91,10 +94,13 @@ compileClasspath - Compile classpath for source set 'main'.
     def "can add feature"() {
         given:
         buildFile << """
-            dependencies.components {
-                withModule<AddFeaturesMetadataRule>("io.netty:netty-transport-native-epoll") { params(listOf(
-                    "linux-x86_64", "linux-aarch_64"
-                ))}
+            javaDependencies {
+                patch {
+                    module("io.netty:netty-transport-native-epoll") {
+                        addFeature("linux-x86_64")
+                        addFeature("linux-aarch_64")
+                    }
+                }
             }
             dependencies {
                 implementation("io.netty:netty-transport-native-epoll:4.1.106.Final")
@@ -135,14 +141,16 @@ compileClasspath - Compile classpath for source set 'main'.
     def "can add target variant"() {
         given:
         buildFile << """
-            dependencies.components {
-                withModule<AddTargetPlatformVariantsMetadataRule>("org.openjfx:javafx-base") { params(listOf(
-                    Target("", "none", "none"),
-                    Target("mac", "macos", "x86-64"),
-                    Target("mac-aarch64", "macos", "aarch64"),
-                    Target("win", "windows", "x86-64"),
-                    Target("linux-aarch64", "linux", "x86-64")
-                )) }
+            javaDependencies {
+                patch {
+                    module("org.openjfx:javafx-base") {
+                        addTargetPlatformVariant("", "none", "none")
+                        addTargetPlatformVariant("mac", "macos", "x86-64")
+                        addTargetPlatformVariant("mac-aarch64", "macos", "aarch64")
+                        addTargetPlatformVariant("win", "windows", "x86-64")
+                        addTargetPlatformVariant("linux-aarch64", "linux", "x86-64")
+                    }
+                }
             }
             configurations.compileClasspath {
                 attributes.attribute(OperatingSystemFamily.OPERATING_SYSTEM_ATTRIBUTE, objects.named("windows"))
@@ -170,15 +178,14 @@ compileClasspath - Compile classpath for source set 'main'.
     def "can add alignment"() {
         given:
         buildFile << """
-            dependencies.components {
-                val poiComponents = listOf(
-                    "org.apache.poi:poi",
-                    "org.apache.poi:poi-excelant",
-                    "org.apache.poi:poi-ooxml",
-                    "org.apache.poi:poi-scratchpad"
-                )
-                poiComponents.forEach {
-                    withModule<AddAlignmentConstraintsMetadataRule>(it) { params(poiComponents) }
+            javaDependencies {
+                patch {
+                    align(
+                        "org.apache.poi:poi",
+                        "org.apache.poi:poi-excelant",
+                        "org.apache.poi:poi-ooxml",
+                        "org.apache.poi:poi-scratchpad"
+                    )
                 }
             }
             dependencies {
@@ -243,16 +250,15 @@ compileClasspath - Compile classpath for source set 'main'.
     def "can add alignment via BOM"() {
         given:
         buildFile << """
-            dependencies.components {
-                val asmComponents = listOf(
-                    "org.ow2.asm:asm",
-                    "org.ow2.asm:asm-tree",
-                    "org.ow2.asm:asm-analysis",
-                    "org.ow2.asm:asm-util",
-                    "org.ow2.asm:asm-commons"
-                )
-                asmComponents.forEach {
-                    withModule<AddBomDependencyMetadataRule>(it) { params("org.ow2.asm:asm-bom") }
+            javaDependencies {
+                patch {
+                    alignWithBom("org.ow2.asm:asm-bom",
+                        "org.ow2.asm:asm",
+                        "org.ow2.asm:asm-tree",
+                        "org.ow2.asm:asm-analysis",
+                        "org.ow2.asm:asm-util",
+                        "org.ow2.asm:asm-commons"
+                    )
                 }
             }
             dependencies {
