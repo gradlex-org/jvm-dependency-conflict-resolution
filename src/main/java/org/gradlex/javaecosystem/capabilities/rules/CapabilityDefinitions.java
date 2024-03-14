@@ -17,7 +17,33 @@
 package org.gradlex.javaecosystem.capabilities.rules;
 
 import org.gradlex.javaecosystem.capabilities.resolution.DefaultResolutionStrategy;
-import org.gradlex.javaecosystem.capabilities.rules.jakarta.*;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.JakartaActivationApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.JakartaActivationImplementationRule;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.JakartaAnnotationApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.JakartaMailApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.JakartaServletApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.JakartaWebsocketApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.JakartaWebsocketClientApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.JakartaWsRsApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxActivationApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxAnnotationApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxEjbApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxElApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxInjectApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxJsonApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxJwsApisRule;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxMailApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxPersistenceApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxServletApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxServletJspRule;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxServletJstlRule;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxSoapApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxValidationApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxWebsocketApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxWsRsApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxXmlBindApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxXmlWsApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxTransactionApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.logging.LoggingModuleIdentifiers;
 
 import java.util.Arrays;
@@ -34,8 +60,8 @@ public enum CapabilityDefinitions {
         "org.springframework:spring-aop"
     ),
     APACHE_CSV(HIGHEST_VERSION,
-            "org.apache.solr:solr-commons-csv",
-            "org.apache.commons:commons-csv"
+        "org.apache.solr:solr-commons-csv",
+        "org.apache.commons:commons-csv"
     ),
     ASM(HIGHEST_VERSION,
         "asm:asm",
