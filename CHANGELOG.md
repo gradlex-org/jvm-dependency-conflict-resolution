@@ -3,6 +3,7 @@
 ## Version 2.0
 * [New] [76](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/76) Inform users in case of incompatible RulesMode configuration
 * [New Rules] [78](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/78) Merge with ['dev.jacomet.logging-capabilities' plugin](https://github.com/ljacomet/logging-capabilities)
+* [New Rules] [#96](https://github.com/gradlex-org/java-ecosystem-capabilities/pull/96) Add multiple rules based on 'pom-scijava' (Thanks [Giuseppe Barbieri](https://github.com/elect86)!)
 
 ### Breaking changes
 
