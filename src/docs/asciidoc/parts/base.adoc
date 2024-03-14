@@ -35,12 +35,6 @@ See <<appendix>> for a full list of all capabilities that are added by this plug
 
 image::build-scan.png[link=https://scans.gradle.com/s/2pcbycndpf54c/dependencies?toggled=W1swXSxbMCwxXV0]
 
-=== Alternative: Copy rules into your build logic
-
-Instead of applying this plugin, you may also copy selected rules to your own _build logic_ and register them in your convention plugin(s) directly.
-In <<rules.adoc#capability-rules,rules documentation>>, all implementations are linked.
-Here they are implemented in Java, but converting them to Kotlin or Groovy should be straightforward if you prefer.
-
 [[conflict]]
 == I use the plugin and now there is a conflict - what now?
 
