@@ -273,7 +273,6 @@ Each Capability's GA coordinates correspond to the GA coordinates of the Compone
 * org.gradlex:commons-beanutils
   * [commons-beanutils:commons-beanutils-core](https://search.maven.org/artifact/commons-beanutils/commons-beanutils-core)
   * [commons-beanutils:commons-beanutils](https://search.maven.org/artifact/commons-beanutils/commons-beanutils)
-  * [commons-collections:commons-collections](https://search.maven.org/artifact/commons-collections/commons-collections)
 * org.gradlex:commons-io
   * [commons-io:commons-io](https://search.maven.org/artifact/commons-io/commons-io)
   * [org.apache.commons:commons-io](https://search.maven.org/artifact/org.apache.commons/commons-io)
@@ -439,7 +438,6 @@ Each Capability's GA coordinates correspond to the GA coordinates of the Compone
   * [org.apache.tomcat.embed:tomcat-embed-websocket](https://search.maven.org/artifact/org.apache.tomcat.embed/tomcat-embed-websocket)
   * [org.eclipse.jetty.toolchain:jetty-javax-websocket-api](https://search.maven.org/artifact/org.eclipse.jetty.toolchain/jetty-javax-websocket-api)
 * org.gradlex:javax-ws-rs-api
-  * [com.sun.jersey:jersey-core](https://search.maven.org/artifact/com.sun.jersey/jersey-core)
   * [javax.ws.rs:jsr311-api](https://search.maven.org/artifact/javax.ws.rs/jsr311-api)
   * [org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.1_spec](https://search.maven.org/artifact/org.jboss.spec.javax.ws.rs/jboss-jaxrs-api_2.1_spec)
   * [org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.0_spec](https://search.maven.org/artifact/org.jboss.spec.javax.ws.rs/jboss-jaxrs-api_2.0_spec)
