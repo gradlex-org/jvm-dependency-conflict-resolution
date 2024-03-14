@@ -396,24 +396,20 @@ public enum CapabilityDefinitions {
         "javax.servlet.jsp.jstl:jstl-api",
         "javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api",
         "jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api"
-    )
-    ,
+    ),
     JAVAX_SOAP_API(HIGHEST_VERSION, JavaxSoapApiRule.class,
         "javax.xml.soap:javax.xml.soap-api",
         "jakarta.xml.soap:jakarta.xml.soap-api"
     ),
-
     JAVAX_TRANSACTION_API(HIGHEST_VERSION, JavaxTransactionApiRule.class,
-            "javax.transaction:jta",
-            "javax.transaction:javax.transaction-api",
-            "jakarta.transaction:jakarta.transaction-api"
+        "javax.transaction:jta",
+        "javax.transaction:javax.transaction-api",
+        "jakarta.transaction:jakarta.transaction-api"
     ),
-
     JAVAX_VALIDATION_API(HIGHEST_VERSION, JavaxValidationApiRule.class,
         "javax.validation:validation-api",
         "jakarta.validation:jakarta.validation-api"
     ),
-
     JAVAX_WEBSOCKET_API_RULE(HIGHEST_VERSION, JavaxWebsocketApiRule.class,
         "javax.websocket:javax.websocket-api",
         "jakarta.websocket:jakarta.websocket-api",
@@ -424,7 +420,6 @@ public enum CapabilityDefinitions {
         "org.apache.tomcat.embed:tomcat-embed-websocket",
         "org.eclipse.jetty.toolchain:jetty-javax-websocket-api"
     ),
-
     JAVAX_WS_RS_API(HIGHEST_VERSION, JavaxWsRsApiRule.class,
         "com.sun.jersey:jersey-core",
         "javax.ws.rs:jsr311-api",
@@ -443,8 +438,6 @@ public enum CapabilityDefinitions {
         "javax.xml.ws:jaxws-api",
         "jakarta.xml.ws:jakarta.xml.ws-api"
     ),
-
-
 
     /**
      * Log4J2 has its own implementation with `log4j-core`.
