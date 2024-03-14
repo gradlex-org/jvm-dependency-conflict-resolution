@@ -162,8 +162,7 @@ public enum CapabilityDefinitions {
     ),
     COMMONS_BEANUTILS(HIGHEST_VERSION,
         "commons-beanutils:commons-beanutils-core",
-        "commons-beanutils:commons-beanutils",
-        "commons-collections:commons-collections"
+        "commons-beanutils:commons-beanutils"
     ),
     COMMONS_IO(HIGHEST_VERSION,
         "commons-io:commons-io",
@@ -421,7 +420,6 @@ public enum CapabilityDefinitions {
         "org.eclipse.jetty.toolchain:jetty-javax-websocket-api"
     ),
     JAVAX_WS_RS_API(HIGHEST_VERSION, JavaxWsRsApiRule.class,
-        "com.sun.jersey:jersey-core",
         "javax.ws.rs:jsr311-api",
         "org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.1_spec",
         "org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.0_spec",
