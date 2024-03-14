@@ -38,12 +38,12 @@ import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxServletApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxServletJspRule;
 import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxServletJstlRule;
 import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxSoapApiRule;
+import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxTransactionApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxValidationApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxWebsocketApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxWsRsApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxXmlBindApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxXmlWsApiRule;
-import org.gradlex.javaecosystem.capabilities.rules.jakarta.JavaxTransactionApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.logging.LoggingModuleIdentifiers;
 
 import java.util.Arrays;
@@ -251,10 +251,6 @@ public enum CapabilityDefinitions {
     STAX_API(HIGHEST_VERSION,
         "stax:stax-api",
         "javax.xml.stream:stax-api"
-    ),
-    VBMACHER_JAVA_CUP(HIGHEST_VERSION,
-        "com.github.vbmacher:java-cup-runtime",
-        "com.github.vbmacher:java-cup"
     ),
     VELOCITY(HIGHEST_VERSION,
         "velocity:velocity",

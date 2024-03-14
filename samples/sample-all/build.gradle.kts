@@ -215,6 +215,24 @@ dependencies {
     implementation("velocity:velocity:1.4")
     implementation("woodstox:wstx-asl:2.9.3")
     // implementation("woodstox:wstx-lgpl:3.2.7") - has no POM file
+    implementation("org.apache.solr:solr-commons-csv:+")
+    implementation("org.apache.commons:commons-csv:+")
+    implementation("com.mchange:mchange-commons-java:+")
+    implementation("commons-beanutils:commons-beanutils-core:+")
+    implementation("commons-beanutils:commons-beanutils:+")
+    implementation("commons-collections:commons-collections:+")
+    implementation("org.jzy3d:jzy3d-emul-gl:+")
+    implementation("org.jzy3d:jzy3d-emul-gl-awt:+")
+    implementation("org.jzy3d:jGL:+")
+    implementation("org.jzy3d:jzy3d-jGL-awt:+")
+    implementation("net.jpountz.lz4:lz4:+")
+    implementation("org.lz4:lz4-java:+")
+    implementation("com.miglayout:miglayout-swing:+")
+    implementation("com.miglayout:miglayout:+")
+    implementation("javax.transaction:jta:+")
+    implementation("javax.transaction:javax.transaction-api:+")
+    implementation("jakarta.transaction:jakarta.transaction-api:+")
+    implementation("com.sun.jersey:jersey-core:+")
 
     // Declaration moved down here due to bug: https://github.com/gradle/gradle/issues/14220
     // Also, some dependencies disappear completely in the result (instead of showing what they have been substituted with).
