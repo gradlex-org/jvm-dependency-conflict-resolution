@@ -1,3 +1,4 @@
+rootProject.name = "plugins"
 dependencyResolutionManagement {
     repositories.gradlePluginPortal()
 }
