@@ -153,7 +153,10 @@ public enum CapabilityDefinitions {
     ),
     C3P0(HIGHEST_VERSION,
         "c3p0:c3p0",
-        "com.mchange:c3p0",
+        "com.mchange:c3p0"
+    ),
+    MCHANGE_COMMONS_JAVA(HIGHEST_VERSION,
+        "c3p0:c3p0",
         "com.mchange:mchange-commons-java"
     ),
     CGLIB(HIGHEST_VERSION,

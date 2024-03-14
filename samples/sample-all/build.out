@@ -18,7 +18,7 @@ compileClasspath - Compile classpath for source set 'main'.
 |    \--- org.springframework:spring-core:5.3.23 (*)
 +--- asm:asm:3.3.1 -> org.ow2.asm:asm:9.2
 +--- c3p0:c3p0:0.9.1.2 -> com.mchange:c3p0:0.9.5.5
-|    \--- com.mchange:mchange-commons-java:0.2.19 -> com.mchange:c3p0:0.9.5.5 (*)
+|    \--- com.mchange:mchange-commons-java:0.2.19
 +--- cglib:cglib-nodep:3.2.12 -> cglib:cglib:3.3.0
 |    \--- org.ow2.asm:asm:7.1 -> 9.2
 +--- cglib:cglib:3.3.0 (*)
@@ -42,7 +42,6 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- com.intellij:annotations:12.0 -> org.jetbrains:annotations:24.0.0
 +--- com.jwebmp:javax.inject:1.1
 +--- com.mchange:c3p0:0.9.5.5 (*)
-+--- com.mchange:mchange-commons-java:0.3.0 -> com.mchange:c3p0:0.9.5.5 (*)
 +--- com.miglayout:miglayout-swing:5.0
 |    \--- com.miglayout:miglayout-core:5.0
 +--- com.miglayout:miglayout:3.7.4 -> com.miglayout:miglayout-swing:5.0 (*)

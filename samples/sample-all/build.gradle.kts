@@ -25,7 +25,6 @@ dependencies {
     implementation("com.intellij:annotations:12.0")
     implementation("com.jwebmp:javax.inject:1.1")
     implementation("com.mchange:c3p0:0.9.5.5")
-    implementation("com.mchange:mchange-commons-java:0.3.0")
     implementation("com.miglayout:miglayout-swing:5.0")
     implementation("com.miglayout:miglayout:3.7.4")
     implementation("com.sun.activation:javax.activation:1.2.0")
@@ -254,6 +253,7 @@ dependencies {
     // implementation("org.slf4j:slf4j-jcl:1.7.9")
     // implementation("org.slf4j:slf4j-jdk14:2.0.12")
     // implementation("org.slf4j:slf4j-log4j12:2.0.12")
+    // implementation("com.mchange:mchange-commons-java:0.3.0")
 }
 
 loggingCapabilities {
