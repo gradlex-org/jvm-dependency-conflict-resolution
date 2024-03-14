@@ -8,8 +8,7 @@ to the metadata of well-known components hosted on Maven Central that are used i
 
 ## What is a 'Capability' in Gradle and why should I care?
 
-In the videos below,
-I explain the concept of Capability Conflicts and why they can help you to avoid "dependency hell" in your project.
+The videos below explain the concept of Capability Conflicts and why they can help you to avoid "dependency hell" in your project.
 With this plugin, you enable Gradle to detect and automatically resolved typical capability conflicts in the Java Ecosystem.
 
 [<img src="https://onepiecesoftware.github.io/img/videos/29.png" width="320">](https://www.youtube.com/watch?v=KocTqF0hO_8&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
