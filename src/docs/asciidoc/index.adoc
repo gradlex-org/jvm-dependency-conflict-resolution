@@ -57,6 +57,7 @@ include::src/docs/asciidoc/parts/logging.adoc[leveloffset=+2]
 == Appendix A: Capabilities
 
 The following list shows all capabilities and the components they are added to.
-All capabilities use `org.gradlex` as group and the name of the Component that first introduced the capability.
+Most capabilities use `org.gradlex` as group and the name of the Component that first introduced the capability.
+For capabilities that already exists because they are mentioned in published metadata (like `com.google.collections:google-collections`) the official capability groups and names are used.
 
 include::{capabilities-listing}[]
