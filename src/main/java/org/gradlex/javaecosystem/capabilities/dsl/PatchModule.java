@@ -23,6 +23,8 @@ import org.gradlex.javaecosystem.capabilities.customrules.AddCompileOnlyApiDepen
 import org.gradlex.javaecosystem.capabilities.customrules.AddFeatureMetadataRule;
 import org.gradlex.javaecosystem.capabilities.customrules.AddRuntimeOnlyDependencyMetadataRule;
 import org.gradlex.javaecosystem.capabilities.customrules.AddTargetPlatformVariantsMetadataRule;
+import org.gradlex.javaecosystem.capabilities.customrules.ReduceToCompileOnlyApiDependencyMetadataRule;
+import org.gradlex.javaecosystem.capabilities.customrules.ReduceToRuntimeOnlyDependencyMetadataRule;
 import org.gradlex.javaecosystem.capabilities.customrules.ComponentStatusRule;
 import org.gradlex.javaecosystem.capabilities.customrules.RemoveDependencyMetadataRule;
 import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
@@ -64,6 +66,14 @@ public abstract class PatchModule {
 
     public void addCompileOnlyApiDependency(String dependency) {
         getDependencies().getComponents().withModule(module, AddCompileOnlyApiDependencyMetadataRule.class, r -> r.params(dependency));
+    }
+
+    public void reduceToRuntimeOnlyDependency(String dependency) {
+        getDependencies().getComponents().withModule(module, ReduceToRuntimeOnlyDependencyMetadataRule.class, r -> r.params(dependency));
+    }
+
+    public void reduceToCompileOnlyApiDependency(String dependency) {
+        getDependencies().getComponents().withModule(module, ReduceToCompileOnlyApiDependencyMetadataRule.class, r -> r.params(dependency));
     }
 
     public void addCapability(String capability) {
