@@ -23,9 +23,9 @@ import org.gradlex.javaecosystem.capabilities.customrules.AddCompileOnlyApiDepen
 import org.gradlex.javaecosystem.capabilities.customrules.AddFeatureMetadataRule;
 import org.gradlex.javaecosystem.capabilities.customrules.AddRuntimeOnlyDependencyMetadataRule;
 import org.gradlex.javaecosystem.capabilities.customrules.AddTargetPlatformVariantsMetadataRule;
+import org.gradlex.javaecosystem.capabilities.customrules.ComponentStatusRule;
 import org.gradlex.javaecosystem.capabilities.customrules.ReduceToCompileOnlyApiDependencyMetadataRule;
 import org.gradlex.javaecosystem.capabilities.customrules.ReduceToRuntimeOnlyDependencyMetadataRule;
-import org.gradlex.javaecosystem.capabilities.customrules.ComponentStatusRule;
 import org.gradlex.javaecosystem.capabilities.customrules.RemoveDependencyMetadataRule;
 import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
 

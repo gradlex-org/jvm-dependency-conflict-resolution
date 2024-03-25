@@ -16,7 +16,6 @@
 
 package org.gradlex.javaecosystem.capabilities.customrules;
 
-import org.gradle.api.NonNullApi;
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataDetails;
@@ -37,7 +36,6 @@ import static org.gradle.nativeplatform.OperatingSystemFamily.OPERATING_SYSTEM_A
  *     component_metadata_rules.html#adding_variants_for_native_jars</a>
  */
 @CacheableRule
-@NonNullApi
 public abstract class AddTargetPlatformVariantsMetadataRule implements ComponentMetadataRule {
 
     private final String classifier;

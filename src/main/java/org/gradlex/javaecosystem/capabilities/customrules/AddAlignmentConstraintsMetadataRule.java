@@ -16,7 +16,6 @@
 
 package org.gradlex.javaecosystem.capabilities.customrules;
 
-import org.gradle.api.NonNullApi;
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataRule;
@@ -29,7 +28,6 @@ import java.util.List;
  * <a href="https://blog.gradle.org/alignment-with-gradle-module-metadata">blog.gradle.org/alignment-with-gradle-module-metadata</a>
  */
 @CacheableRule
-@NonNullApi
 public abstract class AddAlignmentConstraintsMetadataRule implements ComponentMetadataRule {
 
     private final List<String> components;

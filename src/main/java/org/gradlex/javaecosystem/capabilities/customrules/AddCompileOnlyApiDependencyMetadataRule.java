@@ -16,7 +16,6 @@
 
 package org.gradlex.javaecosystem.capabilities.customrules;
 
-import org.gradle.api.NonNullApi;
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataRule;
@@ -29,7 +28,6 @@ import javax.inject.Inject;
  *     component_metadata_rules.html#fixing_wrong_dependency_details</a>
  */
 @CacheableRule
-@NonNullApi
 public abstract class AddCompileOnlyApiDependencyMetadataRule implements ComponentMetadataRule {
 
     private final String dependency;

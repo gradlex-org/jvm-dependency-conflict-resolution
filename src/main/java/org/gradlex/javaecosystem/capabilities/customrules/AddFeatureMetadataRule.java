@@ -16,7 +16,6 @@
 
 package org.gradlex.javaecosystem.capabilities.customrules;
 
-import org.gradle.api.NonNullApi;
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataRule;
@@ -31,7 +30,6 @@ import javax.inject.Inject;
  * <a href="https://blog.gradle.org/optional-dependencies">blog.gradle.org/optional-dependencies</a>
  */
 @CacheableRule
-@NonNullApi
 public abstract class AddFeatureMetadataRule implements ComponentMetadataRule {
 
     private final String classifier;
