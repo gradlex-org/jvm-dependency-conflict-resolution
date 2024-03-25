@@ -266,7 +266,6 @@ Each Capability's GA coordinates correspond to the GA coordinates of the Compone
 * org.gradlex:c3p0
   * [c3p0:c3p0](https://search.maven.org/artifact/c3p0/c3p0)
   * [com.mchange:c3p0](https://search.maven.org/artifact/com.mchange/c3p0)
-  * [com.mchange:mchange-commons-java](https://search.maven.org/artifact/com.mchange/mchange-commons-java)
 * org.gradlex:cglib
   * [cglib:cglib](https://search.maven.org/artifact/cglib/cglib)
   * [cglib:cglib-nodep](https://search.maven.org/artifact/cglib/cglib-nodep)
@@ -479,6 +478,9 @@ Each Capability's GA coordinates correspond to the GA coordinates of the Compone
 * org.gradlex:lz4
   * [net.jpountz.lz4:lz4](https://search.maven.org/artifact/net.jpountz.lz4/lz4)
   * [org.lz4:lz4-java](https://search.maven.org/artifact/org.lz4/lz4-java)
+* org.gradlex:mchange-commons-java
+  * [c3p0:c3p0](https://search.maven.org/artifact/c3p0/c3p0)
+  * [com.mchange:mchange-commons-java](https://search.maven.org/artifact/com.mchange/mchange-commons-java)
 * org.gradlex:miglayout
   * [com.miglayout:miglayout-swing](https://search.maven.org/artifact/com.miglayout/miglayout-swing)
   * [com.miglayout:miglayout](https://search.maven.org/artifact/com.miglayout/miglayout)
