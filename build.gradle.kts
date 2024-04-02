@@ -17,13 +17,13 @@ tasks.withType<JavaCompile>().configureEach {
 }
 
 pluginPublishConventions {
-    id("${project.group}.${project.name}")
-    implementationClass("org.gradlex.javaecosystem.capabilities.JavaEcosystemCapabilitiesPlugin")
-    displayName("Java Ecosystem Capabilities Gradle Plugin")
-    description("Adds Capabilities to well-known Components hosted on Maven Central.")
-    tags("capabilities", "java",
+    id("org.gradlex.jvm-ecosystem-conflict-resolution")
+    implementationClass("org.gradlex.javaecosystem.capabilities.JvmConflictResolutionPlugin")
+    displayName("JVM Conflict Resolution Gradle Plugin")
+    description("Convenient dependency conflict management for Jave projects.")
+    tags("dependency", "dependencies", "dependency-management", "capabilities", "java", "logging",
          "asm", "bouncycastle", "cglib", "commons-io", "dom4j", "guava", "hamcrest", "javax", "jakarta", "junit",
-         "postgresql", "stax", "velocity", "woodstox")
+         "postgresql", "stax", "slf4j", "log4j2", "velocity", "woodstox")
     gitHub("https://github.com/gradlex-org/java-ecosystem-capabilities")
     website("https://github.com/gradlex-org/java-ecosystem-capabilities")
     developer {
@@ -45,17 +45,12 @@ pluginPublishConventions {
 
 gradlePlugin {
     plugins {
-        create("logging-capabilities") {
-            id = "org.gradlex.logging-capabilities"
-            implementationClass = "org.gradlex.javaecosystem.capabilities.LoggingCapabilitiesPlugin"
-            displayName = "Java Logging Capabilities"
-            description = "Adds configuration options for resolving logging framework conflicts."
-            tags = listOf("dependency", "dependencies", "dependency-management", "logging", "slf4j", "log4j2")
+        create("jvm-ecosystem-conflict-detection") {
+            id = "org.gradlex.jvm-ecosystem-conflict-detection"
+            implementationClass = "org.gradlex.javaecosystem.capabilities.JvmConflictDetectionPlugin"
+            displayName = "JVM Conflict Detection Gradle Plugin"
+            description = "Adds Capabilities to well-known Components hosted on Maven Central."
         }
-        create("java-ecosystem-capabilities-base") {
-            id = "org.gradlex.java-ecosystem-capabilities-base"
-            implementationClass = "org.gradlex.javaecosystem.capabilities.JavaEcosystemCapabilitiesBasePlugin"
-       }
     }
 }
 

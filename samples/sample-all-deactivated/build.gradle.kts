@@ -1,5 +1,5 @@
 plugins {
-    id("org.gradlex.java-ecosystem-capabilities-base")
+    id("org.gradlex.jvm-ecosystem-conflict-detection")
     id("java-library")
 }
 

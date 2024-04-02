@@ -14,11 +14,7 @@
  * limitations under the License.
  */
 
-package org.gradlex.javaecosystem.capabilities;
+@NonNullApi
+package org.gradlex.javaecosystem.capabilities.dsl;
 
-import org.gradle.api.provider.SetProperty;
-import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
-
-public abstract class JavaEcosystemCapabilitiesExtension {
-    public abstract SetProperty<CapabilityDefinitions> getDeactivatedResolutionStrategies();
-}
+import org.gradle.api.NonNullApi;

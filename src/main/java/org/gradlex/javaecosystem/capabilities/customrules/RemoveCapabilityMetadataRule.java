@@ -19,33 +19,32 @@ package org.gradlex.javaecosystem.capabilities.customrules;
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataRule;
-import org.gradle.api.attributes.Category;
-import org.gradle.api.model.ObjectFactory;
+import org.gradle.api.artifacts.ModuleVersionIdentifier;
 
 import javax.inject.Inject;
 
 /**
  * See:
- * <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#fixing_wrong_dependency_details">
- *     component_metadata_rules.html#fixing_wrong_dependency_details</a>
+ * <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#adding_missing_capabilities_to_detect_conflicts">
+ *     component_metadata_rules.html#adding_missing_capabilities_to_detect_conflicts</a>,
+ * <a href="https://blog.gradle.org/addressing-logging-complexity-capabilities">blog.gradle.org/addressing-logging-complexity-capabilities</a>
  */
 @CacheableRule
-public abstract class AddBomDependencyMetadataRule implements ComponentMetadataRule {
+public abstract class RemoveCapabilityMetadataRule implements ComponentMetadataRule {
 
-    private final String bom;
+    private final String capability;
 
     @Inject
-    public AddBomDependencyMetadataRule(String bom) {
-        this.bom = bom;
+    public RemoveCapabilityMetadataRule(String capability) {
+        this.capability = capability;
     }
-
-    @Inject
-    protected abstract ObjectFactory getObjects();
 
     @Override
     public void execute(ComponentMetadataContext context) {
-        String version = context.getDetails().getId().getVersion();
-        context.getDetails().allVariants(v -> v.withDependencies(dependencies -> dependencies.add(bom + ":" + version,
-                d -> d.attributes(a -> a.attribute(Category.CATEGORY_ATTRIBUTE, getObjects().named(Category.class, Category.REGULAR_PLATFORM))))));
+        ModuleVersionIdentifier id = context.getDetails().getId();
+        String group = capability.split(":")[0];
+        String name = capability.split(":")[1];
+
+        context.getDetails().allVariants(v -> v.withCapabilities(c -> c.removeCapability(group, name)));
     }
 }

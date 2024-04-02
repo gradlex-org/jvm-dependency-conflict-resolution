@@ -13,14 +13,14 @@ class LoggingCapabilitiesPluginSelectionFunctionalTest extends AbstractLoggingCa
         withBuildScript("""
             plugins {
                 `java-library`
-                id("org.gradlex.logging-capabilities")
+                id("org.gradlex.jvm-ecosystem-conflict-resolution")
             }
 
             repositories {
                 mavenCentral()
             }
 
-            loggingCapabilities {
+            jvmDependencyConflicts.logging {
                 selectSlf4JBinding("ch.qos.logback:logback-classic:1.2.3")
             }
 
@@ -54,14 +54,14 @@ ${additional.collect { "                runtimeOnly(\"$it\")" }.join("\n")}
         withBuildScript("""
             plugins {
                 `java-library`
-                id("org.gradlex.logging-capabilities")
+                id("org.gradlex.jvm-ecosystem-conflict-resolution")
             }
 
             repositories {
                 mavenCentral()
             }
             
-            loggingCapabilities {
+            jvmDependencyConflicts.logging {
                 selectSlf4JBinding("ch.qos.logback:logback-classic:1.2.3")
             }
 
@@ -91,14 +91,14 @@ ${additional.collect { "                runtimeOnly(\"$it\")" }.join("\n")}
         withBuildScript("""
             plugins {
                 `java-library`
-                id("org.gradlex.logging-capabilities")
+                id("org.gradlex.jvm-ecosystem-conflict-resolution")
             }
 
             repositories {
                 mavenCentral()
             }
             
-            loggingCapabilities {
+            jvmDependencyConflicts.logging {
                 $prefered
             }
             
@@ -151,14 +151,14 @@ ${additional.collect { "                runtimeOnly(\"$it\")" }.join("\n")}
         withBuildScript("""
             plugins {
                 `java-library`
-                id("org.gradlex.logging-capabilities")
+                id("org.gradlex.jvm-ecosystem-conflict-resolution")
             }
 
             repositories {
                 mavenCentral()
             }
             
-            loggingCapabilities {
+            jvmDependencyConflicts.logging {
                 ${loggerFrom(enforced)}
             }
 
@@ -203,14 +203,14 @@ ${additional.collect { "                runtimeOnly(\"$it\")" }.join("\n")}
         withBuildScript("""
             plugins {
                 `java-library`
-                id("org.gradlex.logging-capabilities")
+                id("org.gradlex.jvm-ecosystem-conflict-resolution")
             }
 
             repositories {
                 mavenCentral()
             }
             
-            loggingCapabilities {
+            jvmDependencyConflicts.logging {
                 enforceLogback()
             }
             
@@ -241,14 +241,14 @@ ${additional.collect { "                runtimeOnly(\"$it\")" }.join("\n")}
         withBuildScript("""
             plugins {
                 `java-library`
-                id("org.gradlex.logging-capabilities")
+                id("org.gradlex.jvm-ecosystem-conflict-resolution")
             }
 
             repositories {
                 mavenCentral()
             }
 
-            loggingCapabilities {
+            jvmDependencyConflicts.logging {
                 enforceLogback()
             }
 
@@ -280,14 +280,14 @@ ${additional.collect { "                runtimeOnly(\"$it\")" }.join("\n")}
         withBuildScript("""
             plugins {
                 `java-library`
-                id("org.gradlex.logging-capabilities")
+                id("org.gradlex.jvm-ecosystem-conflict-resolution")
             }
 
             repositories {
                 mavenCentral()
             }
             
-            loggingCapabilities {
+            jvmDependencyConflicts.logging {
                 enforceLog4J2("runtimeClasspath")
                 enforceSlf4JSimple("testRuntimeClasspath")
             }

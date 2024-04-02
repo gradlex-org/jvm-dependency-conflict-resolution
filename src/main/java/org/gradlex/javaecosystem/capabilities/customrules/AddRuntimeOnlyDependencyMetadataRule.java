@@ -19,8 +19,6 @@ package org.gradlex.javaecosystem.capabilities.customrules;
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataRule;
-import org.gradle.api.attributes.Category;
-import org.gradle.api.model.ObjectFactory;
 
 import javax.inject.Inject;
 
@@ -30,22 +28,18 @@ import javax.inject.Inject;
  *     component_metadata_rules.html#fixing_wrong_dependency_details</a>
  */
 @CacheableRule
-public abstract class AddBomDependencyMetadataRule implements ComponentMetadataRule {
+public abstract class AddRuntimeOnlyDependencyMetadataRule implements ComponentMetadataRule {
 
-    private final String bom;
+    private final String dependency;
 
     @Inject
-    public AddBomDependencyMetadataRule(String bom) {
-        this.bom = bom;
+    public AddRuntimeOnlyDependencyMetadataRule(String dependency) {
+        this.dependency = dependency;
     }
-
-    @Inject
-    protected abstract ObjectFactory getObjects();
 
     @Override
     public void execute(ComponentMetadataContext context) {
-        String version = context.getDetails().getId().getVersion();
-        context.getDetails().allVariants(v -> v.withDependencies(dependencies -> dependencies.add(bom + ":" + version,
-                d -> d.attributes(a -> a.attribute(Category.CATEGORY_ATTRIBUTE, getObjects().named(Category.class, Category.REGULAR_PLATFORM))))));
+        context.getDetails().withVariant("runtime", v -> v.withDependencies(d -> d.add(dependency))); // .pom
+        context.getDetails().withVariant("runtimeElements", v -> v.withDependencies(d -> d.add(dependency))); // .module
     }
 }

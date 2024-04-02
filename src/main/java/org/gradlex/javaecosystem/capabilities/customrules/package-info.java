@@ -14,19 +14,7 @@
  * limitations under the License.
  */
 
-package org.gradlex.javaecosystem.capabilities;
+@NonNullApi
+package org.gradlex.javaecosystem.capabilities.customrules;
 
-import org.gradle.api.Plugin;
-import org.gradle.api.Project;
-import org.gradle.api.artifacts.dsl.DependencyHandler;
-
-public class LoggingCapabilitiesPlugin implements Plugin<Project> {
-
-    @Override
-    public void apply(Project project) {
-        BasePluginApplication.of(project).handleRulesMode();
-
-        DependencyHandler dependencies = project.getDependencies();
-        project.getExtensions().create("loggingCapabilities", LoggingCapabilitiesExtension.class, project.getConfigurations(), dependencies);
-    }
-}
+import org.gradle.api.NonNullApi;

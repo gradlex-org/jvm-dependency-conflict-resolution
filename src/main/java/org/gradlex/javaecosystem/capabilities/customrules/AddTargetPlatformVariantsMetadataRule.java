@@ -16,7 +16,6 @@
 
 package org.gradlex.javaecosystem.capabilities.customrules;
 
-import org.gradle.api.NonNullApi;
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataDetails;
@@ -27,7 +26,6 @@ import org.gradle.nativeplatform.MachineArchitecture;
 import org.gradle.nativeplatform.OperatingSystemFamily;
 
 import javax.inject.Inject;
-import java.util.List;
 
 import static org.gradle.nativeplatform.MachineArchitecture.ARCHITECTURE_ATTRIBUTE;
 import static org.gradle.nativeplatform.OperatingSystemFamily.OPERATING_SYSTEM_ATTRIBUTE;
@@ -38,55 +36,51 @@ import static org.gradle.nativeplatform.OperatingSystemFamily.OPERATING_SYSTEM_A
  *     component_metadata_rules.html#adding_variants_for_native_jars</a>
  */
 @CacheableRule
-@NonNullApi
 public abstract class AddTargetPlatformVariantsMetadataRule implements ComponentMetadataRule {
 
-    private final List<Target> targets;
+    private final String classifier;
+    private final String operatingSystem;
+    private final String architecture;
 
     @Inject
     abstract protected ObjectFactory getObjects();
 
     @Inject
-    public AddTargetPlatformVariantsMetadataRule(List<Target> targets) {
-        this.targets = targets;
+    public AddTargetPlatformVariantsMetadataRule(String classifier, String operatingSystem, String architecture) {
+        this.classifier = classifier;
+        this.operatingSystem = operatingSystem;
+        this.architecture = architecture;
     }
 
     @Override
     public void execute(ComponentMetadataContext context) {
         ComponentMetadataDetails details = context.getDetails();
-
-        for (Target target : targets) {
-            if (target.getLabel().isEmpty()) {
-                details.withVariant("compile", variant -> {
-                    configureAttributes(target, variant);
-                });
-                details.withVariant("runtime", variant -> {
-                    configureAttributes(target, variant);
-                });
-            } else {
-                addTargetPlatformVariant(target, details, "Compile", "compile");
-                addTargetPlatformVariant(target, details, "Runtime", "runtime");
-            }
+        if (classifier.isEmpty()) {
+            details.withVariant("compile", this::configureAttributes);
+            details.withVariant("runtime", this::configureAttributes);
+        } else {
+            addTargetPlatformVariant(details, "Compile", "compile");
+            addTargetPlatformVariant(details, "Runtime", "runtime");
         }
     }
 
-    private void addTargetPlatformVariant(Target target, ComponentMetadataDetails details, String nameSuffix, String baseVariant) {
+    private void addTargetPlatformVariant(ComponentMetadataDetails details, String nameSuffix, String baseVariant) {
         String name = details.getId().getName();
         String version = details.getId().getVersion();
 
-        details.addVariant(target.getLabel() + nameSuffix, baseVariant, variant -> {
-            configureAttributes(target, variant);
+        details.addVariant(classifier + nameSuffix, baseVariant, variant -> {
+            configureAttributes(variant);
             variant.withFiles(files -> {
                 files.removeAllFiles();
-                files.addFile(name + "-" + version + "-" + target.getLabel() + ".jar");
+                files.addFile(name + "-" + version + "-" + classifier + ".jar");
             });
         });
     }
 
-    private void configureAttributes(Target target, VariantMetadata variant) {
+    private void configureAttributes(VariantMetadata variant) {
         variant.attributes(attributes -> {
-            attributes.attribute(OPERATING_SYSTEM_ATTRIBUTE, getObjects().named(OperatingSystemFamily.class, target.getOperatingSystem()));
-            attributes.attribute(ARCHITECTURE_ATTRIBUTE, getObjects().named(MachineArchitecture.class, target.getArchitecture()));
+            attributes.attribute(OPERATING_SYSTEM_ATTRIBUTE, getObjects().named(OperatingSystemFamily.class, operatingSystem));
+            attributes.attribute(ARCHITECTURE_ATTRIBUTE, getObjects().named(MachineArchitecture.class, architecture));
         });
     }
 }
