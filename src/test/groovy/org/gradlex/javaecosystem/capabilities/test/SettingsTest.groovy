@@ -54,7 +54,7 @@ class SettingsTest extends Specification {
         """
 
         expect:
-        dependencies().output.contains '''
+        dependenciesCompile().output.contains '''
             compileClasspath - Compile classpath for source set 'main'.
             +--- cglib:cglib-nodep:3.2.10 -> cglib:cglib:3.2.10
             |    +--- org.ow2.asm:asm:7.0

@@ -50,8 +50,12 @@ class GradleBuild {
         runner('printJars').build()
     }
 
-    BuildResult dependencies() {
+    BuildResult dependenciesCompile() {
         runner('dependencies', '--configuration=compileClasspath').build()
+    }
+
+    BuildResult dependenciesRuntime() {
+        runner('dependencies', '--configuration=runtimeClasspath').build()
     }
 
     BuildResult dependencyInsight(String module) {

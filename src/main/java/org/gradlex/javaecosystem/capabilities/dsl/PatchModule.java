@@ -26,6 +26,7 @@ import org.gradlex.javaecosystem.capabilities.customrules.AddTargetPlatformVaria
 import org.gradlex.javaecosystem.capabilities.customrules.ComponentStatusRule;
 import org.gradlex.javaecosystem.capabilities.customrules.ReduceToCompileOnlyApiDependencyMetadataRule;
 import org.gradlex.javaecosystem.capabilities.customrules.ReduceToRuntimeOnlyDependencyMetadataRule;
+import org.gradlex.javaecosystem.capabilities.customrules.RemoveCapabilityMetadataRule;
 import org.gradlex.javaecosystem.capabilities.customrules.RemoveDependencyMetadataRule;
 import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
 
@@ -76,19 +77,23 @@ public abstract class PatchModule {
         getDependencies().getComponents().withModule(module, ReduceToCompileOnlyApiDependencyMetadataRule.class, r -> r.params(dependency));
     }
 
-    public void addCapability(String capability) {
-        getDependencies().getComponents().withModule(module, AddCapabilityMetadataRule.class, r -> r.params(capability));
+    public void addCapability(CapabilityDefinitions capability) {
+        addCapability(capability.getCapability());
     }
 
-    public void removeCapability(String capability) {
-        getDependencies().getComponents().withModule(module, RemoveDependencyMetadataRule.class, r -> r.params(capability));
+    public void addCapability(String capability) {
+        getDependencies().getComponents().withModule(module, AddCapabilityMetadataRule.class, r -> r.params(capability));
     }
 
     public void removeCapability(CapabilityDefinitions capability) {
         removeCapability(capability.getCapability());
     }
 
-    public void setIntegrationStatus(String... markerInVersion) {
+    public void removeCapability(String capability) {
+        getDependencies().getComponents().withModule(module, RemoveCapabilityMetadataRule.class, r -> r.params(capability));
+    }
+
+    public void setStatusToIntegration(String... markerInVersion) {
         getDependencies().getComponents().withModule(module, ComponentStatusRule.class, r -> r.params(Arrays.asList(markerInVersion)));
     }
 

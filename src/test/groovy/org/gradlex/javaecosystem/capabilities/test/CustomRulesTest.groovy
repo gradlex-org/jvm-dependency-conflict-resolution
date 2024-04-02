@@ -41,14 +41,72 @@ class CustomRulesTest extends Specification {
         """
 
         expect:
-        dependencies().output.contains '''
+        dependenciesCompile().output.contains '''
 compileClasspath - Compile classpath for source set 'main'.
 \\--- com.google.guava:guava:33.0.0-jre
      \\--- com.google.guava:failureaccess:1.0.2
 '''
     }
 
-    def "can add dependency"() {
+    def "can reduce dependency scope to runtime only"() {
+        given:
+        buildFile << """
+            javaDependencies {
+                patch {
+                    module("org.apache.commons:commons-text") {
+                        reduceToRuntimeOnlyDependency("org.apache.commons:commons-lang3")
+                    }
+                }
+            }
+            dependencies {
+                implementation("org.apache.commons:commons-text:1.11.0")
+            }
+        """
+
+        expect:
+        dependenciesCompile().output.contains '''
+compileClasspath - Compile classpath for source set 'main'.
+\\--- org.apache.commons:commons-text:1.11.0
+
+'''
+        dependenciesRuntime().output.contains '''
+runtimeClasspath - Runtime classpath of source set 'main'.
+\\--- org.apache.commons:commons-text:1.11.0
+     \\--- org.apache.commons:commons-lang3:3.13.0
+
+'''
+    }
+
+    def "can reduce dependency scope to compile only"() {
+        given:
+        buildFile << """
+            javaDependencies {
+                patch {
+                    module("org.apache.commons:commons-text") {
+                        reduceToCompileOnlyApiDependency("org.apache.commons:commons-lang3")
+                    }
+                }
+            }
+            dependencies {
+                implementation("org.apache.commons:commons-text:1.11.0")
+            }
+        """
+
+        expect:
+        dependenciesCompile().output.contains '''
+compileClasspath - Compile classpath for source set 'main'.
+\\--- org.apache.commons:commons-text:1.11.0
+     \\--- org.apache.commons:commons-lang3:3.13.0
+
+'''
+        dependenciesRuntime().output.contains '''
+runtimeClasspath - Runtime classpath of source set 'main'.
+\\--- org.apache.commons:commons-text:1.11.0
+
+'''
+    }
+
+    def "can add api dependency"() {
         given:
         buildFile << """
             javaDependencies {
@@ -64,14 +122,105 @@ compileClasspath - Compile classpath for source set 'main'.
         """
 
         expect:
-        dependencies().output.contains '''
+        dependenciesCompile().output.contains '''
 compileClasspath - Compile classpath for source set 'main'.
 \\--- io.netty:netty-common:4.1.106.Final
      \\--- io.projectreactor.tools:blockhound:1.0.8.RELEASE
+
+'''
+        dependenciesRuntime().output.contains '''
+runtimeClasspath - Runtime classpath of source set 'main'.
+\\--- io.netty:netty-common:4.1.106.Final
+     \\--- io.projectreactor.tools:blockhound:1.0.8.RELEASE
+
 '''
     }
 
-    def "can add capability"() {
+    def "can add runtime only dependency"() {
+        given:
+        buildFile << """
+            javaDependencies {
+                patch {
+                    module("io.netty:netty-common") {
+                        addRuntimeOnlyDependency("io.projectreactor.tools:blockhound:1.0.8.RELEASE")
+                    }
+                }
+            }
+            dependencies {
+                implementation("io.netty:netty-common:4.1.106.Final")
+            }
+        """
+
+        expect:
+        dependenciesCompile().output.contains '''
+compileClasspath - Compile classpath for source set 'main'.
+\\--- io.netty:netty-common:4.1.106.Final
+
+'''
+        dependenciesRuntime().output.contains '''
+runtimeClasspath - Runtime classpath of source set 'main'.
+\\--- io.netty:netty-common:4.1.106.Final
+     \\--- io.projectreactor.tools:blockhound:1.0.8.RELEASE
+
+'''
+    }
+
+    def "can add compile only dependency"() {
+        given:
+        buildFile << """
+            javaDependencies {
+                patch {
+                    module("io.netty:netty-common") {
+                        addCompileOnlyApiDependency("io.projectreactor.tools:blockhound:1.0.8.RELEASE")
+                    }
+                }
+            }
+            dependencies {
+                implementation("io.netty:netty-common:4.1.106.Final")
+            }
+        """
+
+        expect:
+        dependenciesCompile().output.contains '''
+compileClasspath - Compile classpath for source set 'main'.
+\\--- io.netty:netty-common:4.1.106.Final
+     \\--- io.projectreactor.tools:blockhound:1.0.8.RELEASE
+
+'''
+        dependenciesRuntime().output.contains '''
+runtimeClasspath - Runtime classpath of source set 'main'.
+\\--- io.netty:netty-common:4.1.106.Final
+
+'''
+    }
+
+    def "can add capability by enum"() {
+        given:
+        buildFile.text = 'import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions.STAX_API\n' + buildFile.text
+        buildFile << """
+            javaDependencies {
+                patch {
+                    module("org.eclipse.birt.runtime:javax.xml.stream") {
+                        addCapability(STAX_API)
+                    }
+                }
+            }
+            dependencies {
+                implementation("stax:stax-api:1.0.1")
+                implementation("org.eclipse.birt.runtime:javax.xml.stream:1.0.1.v201004272200")
+            }
+        """
+
+        expect:
+        dependenciesCompile().output.contains '''
+compileClasspath - Compile classpath for source set 'main'.
++--- stax:stax-api:1.0.1
+\\--- org.eclipse.birt.runtime:javax.xml.stream:1.0.1.v201004272200 -> stax:stax-api:1.0.1
+
+'''
+    }
+
+    def "can add capability by string"() {
         given:
         buildFile << """
             javaDependencies {
@@ -89,6 +238,61 @@ compileClasspath - Compile classpath for source set 'main'.
 
         expect:
         fail().output.contains "Cannot select module with conflict on capability 'commons-lang:commons-lang:2.6' also provided by [org.apache.commons:commons-lang3:3.11(compile)]"
+    }
+
+    def "can remove capability by enum"() {
+        given:
+        buildFile.text = 'import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions.STAX_API\n' + buildFile.text
+        buildFile << """
+            javaDependencies {
+                patch {
+                    module("javax.xml.stream:stax-api") {
+                        removeCapability(STAX_API)
+                    }
+                }
+            }
+            dependencies {
+                implementation("stax:stax-api:1.0.1")
+                implementation("javax.xml.stream:stax-api:1.0-2")
+            }
+        """
+
+        expect:
+        dependenciesCompile().output.contains '''
+compileClasspath - Compile classpath for source set 'main'.
++--- stax:stax-api:1.0.1
+\\--- javax.xml.stream:stax-api:1.0-2
+
+'''
+    }
+
+    def "can remove capability by string"() {
+        given:
+        buildFile << """
+            javaDependencies {
+                patch {
+                    module("com.google.guava:guava") {
+                        removeCapability("com.google.collections:google-collections")
+                    }
+                }
+            }
+            dependencies {
+                implementation("com.google.guava:guava:33.1.0-jre")
+                implementation("com.google.collections:google-collections:1.0")
+            }
+        """
+
+        expect:
+        dependenciesRuntime().output.contains '''
+runtimeClasspath - Runtime classpath of source set 'main'.
++--- com.google.guava:guava:33.1.0-jre
+|    +--- com.google.guava:failureaccess:1.0.2
+|    +--- com.google.code.findbugs:jsr305:3.0.2
+|    +--- org.checkerframework:checker-qual:3.42.0
+|    \\--- com.google.errorprone:error_prone_annotations:2.26.1
+\\--- com.google.collections:google-collections:1.0
+
+'''
     }
 
     def "can add feature"() {
@@ -197,7 +401,7 @@ compileClasspath - Compile classpath for source set 'main'.
         """
 
         expect:
-        dependencies().output.contains '''
+        dependenciesCompile().output.contains '''
 compileClasspath - Compile classpath for source set 'main'.
 +--- org.apache.poi:poi:5.2.5
 |    +--- commons-codec:commons-codec:1.16.0
@@ -271,7 +475,7 @@ compileClasspath - Compile classpath for source set 'main'.
         """
 
         expect:
-        dependencies().output.contains '''
+        dependenciesCompile().output.contains '''
 compileClasspath - Compile classpath for source set 'main'.
 +--- org.ow2.asm:asm -> 9.6
 |    \\--- org.ow2.asm:asm-bom:9.6
@@ -295,6 +499,35 @@ compileClasspath - Compile classpath for source set 'main'.
      +--- org.ow2.asm:asm:9.6 (*)
      +--- org.ow2.asm:asm-tree:9.6 (*)
      \\--- org.ow2.asm:asm-bom:9.6 (*)
+'''
+    }
+
+    def "can set component status to integration for certain versions"() {
+        given:
+        buildFile << """
+            javaDependencies {
+                patch {
+                    module("com.fasterxml.jackson.core:jackson-core") {
+                        setStatusToIntegration("-m", "-rc")
+                    }
+                }
+            }
+            dependencies {
+                implementation("com.fasterxml.jackson.core:jackson-core:2.15.0-rc3")
+            }
+        """
+
+        expect:
+        dependencyInsight("com.fasterxml.jackson.core:jackson-core").output.contains '''com.fasterxml.jackson.core:jackson-core:2.15.0-rc3 (by constraint)
+  Variant apiElements:
+    | Attribute Name                 | Provided    | Requested    |
+    |--------------------------------|-------------|--------------|
+    | org.gradle.status              | integration |              |
+    | org.gradle.category            | library     | library      |
+    | org.gradle.dependency.bundling | external    | external     |
+    | org.gradle.libraryelements     | jar         | classes      |
+    | org.gradle.usage               | java-api    | java-api     |
+    | org.gradle.jvm.environment     |             | standard-jvm |
 '''
     }
 }
