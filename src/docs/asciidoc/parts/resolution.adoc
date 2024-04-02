@@ -1,43 +1,104 @@
-[[logging-plugin]]
-= Logging Capabilities Gradle Plugin
+[[resolution-plugin]]
+= JVM Ecosystem Conflict Resolution
 
-This plugin provides a DSL that enables an application to declaratively enforce _at build time_ the logging framework it decided to use.
-See the <<intro,general introduction>> for the motivation for this plugin.
+== Plugin dependency
+Add this to the build file of your convention plugin's build (e.g. `build-logic/build.gradle(.kts)` or `buildSrc/build.gradle(.kts)`).
 
-== Plugin application and compatibility
+[source,groovy]
+----
+dependencies {
+    implementation("org.gradlex:jvm-ecosystem-conflict-resolution:2.0")
+}
+----
 
-The plugin can be applied to projects using Gradle 6.8.3 and later.
+== Apply the plugin
 
-[source,kotlin]
+[source,groovy]
 ----
 plugins {
-  id("org.gradlex.logging-capabilities") version "2.0"
+    id("org.gradlex.jvm-ecosystem-conflict-resolution")
 }
 ----
 
-Have a look at https://plugins.gradle.org/plugin/dev.jacomet.logging-capabilities[the documentation on the plugin portal] for alternate or DSL specific syntax.
+This plugin should be applied to all projects, ideally as part of your convention plugin.
 
-The application will make sure that the <<base-plugin,capabilities definition plugin>> has been applied as well, either as a settings or project plugin.
-This base plugin is the one that defines a number of Java ecosystem capabilities, including <<detection-logging,ones covering the logging landscape>>.
+If the <<detection-plugin,jvm-ecosystem-conflict-resolution>> plugin has been explicitly applied as well, either as a settings or project plugin, it will be automatically applied (as project plugin).
 
-== Expressing preference over a logging solution
+== What is the concrete effect of the plugin?
 
-The plugin contributes a project extension that allows to configure which logging solution to use in a declarative fashion.
+The plugin registers capability conflict resolutions for the <<rules.adoc#capability-rules,capability rules>> added by the base plugin.
+This enables a number of <<conflict,capability conflicts>> to be resolved automatically.
+For conflicts that...
 
-The extension is accessed as follows:
+- cannot be resolved automatically
+- should be resolved differently (than the default)
+- are not detected correctly due to incomplete metadata
 
-[source,kotlin]
+...this plugin offers the `jvmDependencyConflicts` DLS with the following sections.
+
+[source,groovy]
 ----
-// Assuming the plugin has been applied
-loggingCapabilities {
-    // Configuration goes here
+jvmDependencyConflicts {
+    conflictResolution {
+        // Customize resolutin of capability conflicts
+        select(JAVAX_ACTIVATION_API, "com.sun.activation:jakarta.activation")
+    }
+
+    logging {
+        // Customize resolution of conflicts for a certain logging setup
+        enforceSlf4JSimple()
+    }
+
+    patch {
+        // Patch or extend wrong metdata
+        module("com.googlecode.json-simple:json-simple") { removeDependency("junit:junit") }
+    }
 }
 ----
+
+[[conflictResolution-dsl-block]]
+== conflictResolution – Customize resolution strategies for capability conflicts
+
+The plugin adds a _default resolution strategy_ for each capability.
+Which in most cases means that Gradle will automatically pick the highest version of all components in conflict.
+This is to cover the cases where users _just want things to work somehow_.
+But it might not always be the right solution.
+
+If you prefer to get all the conflicts reported and then add the conflict resolution explicitly (see next section),
+you can deactivate the default resolution for one or all rules through the `jvmDependencyConflicts` extension.
+
+[source.multi-language-sample,kotlin]
+----
+// Deactivate default resolution strategy for selected rules
+jvmDependencyConflicts {
+    conflictResolution {
+        deactivateResolutionStrategy(CapabilityDefinitions.CGLIB)
+        deactivateResolutionStrategy(CapabilityDefinitions.JAVAX_MAIL_API)
+    }
+}
+----
+[source.multi-language-sample,groovy]
+----
+// Deactivate default resolution strategy for selected rules
+jvmDependencyConflicts {
+    conflictResolution {
+        deactivateResolutionStrategy(CapabilityDefinitions.CGLIB)
+        deactivateResolutionStrategy(CapabilityDefinitions.JAVAX_MAIL_API)
+    }
+}
+----
+
+*TODO document more*
+
+[[logging-dsl-block]]
+== logging – Select and enforce a logging framework
+
+This part of the DSL enables you to declaratively enforce the logging framework it your application should use _at build time_.
 
 TIP: The different configuration options documented below do not _add_ dependencies.
 Make sure to have the expected dependency in your graph, either as a direct or transitive one.
 
-The plugin first provides a number of high-level, one stop solutions, for selecting a logging solution:
+The `logging { }` block first provides a number of high-level, one stop solutions, for selecting a logging solution:
 
 |===
 | Method | Documentation | Required dependency
@@ -61,7 +122,7 @@ The plugin first provides a number of high-level, one stop solutions, for select
 
 TIP: The method without parameter will apply the setup to all dependency configuration, while the other one will limit the setup to the specified dependency configuration.
 
-If you want a finer grained control, the plugin provides lower level entry points for solving the different logging capability conflicts:
+If you want a finer grained control, the `logging { }` block provides lower level entry points for solving the different logging capability conflicts:
 |===
 | Method | Accepted parameter values | Documentation
 
@@ -115,62 +176,7 @@ A notation as above
 TIP: Notations above are those accepted by https://docs.gradle.org/6.0.1/dsl/org.gradle.api.artifacts.dsl.DependencyHandler.html#org.gradle.api.artifacts.dsl.DependencyHandler:create(java.lang.Object)[`DependencyHandler.create(notation)`] in Gradle that resolves to an `ExternalDependency`.
 Most often this is a `group:name:version` `String`.
 
-[[detection-logging]]
-== Detection of invalid logging configurations
+[[patch-dsl-block]]
+== patch – Patch metadata of published components
 
-Upon application, this plugin defines a set of https://docs.gradle.org/6.0.1/userguide/component_metadata_rules.html#basics_of_writing_a_component_metadata_rule[component metadata rules] that add capabilities to relevant logging related dependencies.
-The added capabilities and impacted modules can be found in the table below:
-
-|===
-| Capability | Impacted modules | Comment
-
-| `slf4j-impl`
-| `org.slf4j:slf4j-simple`, `org.slf4j:slf4j-log4j12`, `org.slf4j:slf4j-jcl`, `org.slf4j:slf4j-jdk14`, `ch.qos.logback:logback-classic`, `org.apache.logging.log4j:log4j-slf4j-impl`, `org.apache.logging.log4j:log4j-slf4j2-impl`
-| Represents an Slf4J binding
-
-| `log4j2-impl`
-| `org.apache.logging.log4j:log4j-slf4j-impl`, `org.apache.logging.log4j:log4j-slf4j2-impl`, `org.apache.logging.log4j:log4j-core`
-| Represents the native Log4J 2 implementation or delegation to Slf4J
-
-| `log4j2-vs-slf4j`
-| `org.apache.logging.log4j:log4j-slf4j-impl`, `org.apache.logging.log4j:log4j-to-slf4j`
-| Represents the Slf4J / Log4J 2 relationship: which one delegates to the other
-
-| `slf4j-vs-log4j`
-| `org.slf4j:log4j-over-slf4j`, `org.slf4j:slf4j-log4j12`
-| Represents the Slf4J / Log4J 1.2 relationship: either Slf4J intercepts or binds to Log4J
-
-| `slf4j-vs-log4j2-log4j`
-| `org.slf4j:log4j-over-slf4j`, `org.apache.logging.log4j:log4j-1.2-api`, `log4j:log4j`
-| Represents the available Log4J implementation: native, with Slf4J or with Log4J 2
-
-| `slf4j-vs-jul`
-| `org.slf4j:jul-to-slf4j`, `org.slf4j:slf4j-jdk14`
-| Represents the Slf4J / `java.util.logging` relationship: either Slf4 intercepts or binds to JUL
-
-| `slf4j-vs-log4j2-jul`
-| `org.slf4j:jul-to-slf4j`, `org.apache.logging.log4j:log4j-jul`
-| Represents JUL replacement: either with Slf4J or with Log4J 2
-
-| `commons-logging-impl`
-| `commons-logging:commons-logging`, `org.slf4j:jcl-over-slf4j`, `org.springframework:spring-jcl`
-| Represents Apache Commons Logging implementation: native or Slf4J
-
-| `slf4j-vs-jcl`
-| `org.slf4j:jcl-over-slf4j`, `org.slf4j:slf4j-jcl`
-| Represents the Slf4J / Apache Commons Logging relationship: either Slf4J intercepts or binds to `commons-logging`
-
-| `slf4j-vs-log4j2-jcl`
-| `org.slf4j:jcl-over-slf4j`, `org.apache.logging.log4j:log4j-jcl`
-| Represents the Slf4J or Log4J 2 interception of `commons-logging`
-
-|===
-
-TIP: All capabilities are in the group `org.gradlex`
-
-With the set of capabilities defined above, all configuration resolutions in Gradle will fail if conflicting modules are found in the graph.
-
-== Alignment of logging libraries
-
-In addition to the capability setting and conflict detection, the plugin also registers https://docs.gradle.org/6.0.1/userguide/dependency_version_alignment.html#sec:align-versions-virtual[alignment rules] for Slf4J and Log4J 2 modules.
-
+*TODO document*

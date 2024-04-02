@@ -1,5 +1,5 @@
 [[intro]]
-= Java Ecosystem Capabilities Gradle plugins
+= JVM Ecosystem Conflict Resolution and Conflict Detection plugins
 
 image:https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fgradlex-org%2Fjava-ecosystem-capabilities%2Fbadge%3Fref%3Dmain&style=flat["Build Status", link="https://actions-badge.atrox.dev/gradlex-org/java-ecosystem-capabilities/goto?ref=main"]
 image:https://img.shields.io/maven-metadata/v?label=Plugin%20Portal&metadataUrl=https%3A%2F%2Fplugins.gradle.org%2Fm2%2Forg%2Fgradlex%2Fjava-ecosystem-capabilities%2Forg.gradlex.java-ecosystem-capabilities.gradle.plugin%2Fmaven-metadata.xml["Gradle Plugin Portal", link="https://plugins.gradle.org/plugin/org.gradlex.java-ecosystem-capabilities"]
@@ -35,29 +35,81 @@ TIP: These plugins require Gradle 6.8.3 at a minimum.
 
 The benefits described above are achieved through three different plugins:
 
-`org.gradlex.java-ecosystem-capabilities-base`::
+`org.gradlex.jvm-ecosystem-conflict-detection`::
 <<base-plugin,This plugin>> adds capability declarations to the metadata of well-known components hosted on Maven Central that are used in many Java projects.
 This plugin can be applied as a `Settings` or a `Project` plugin.
 
-`org.gradlex.java-ecosystem-capabilities`::
+`org.gradlex.jvm-ecosystem-conflict-resolution`::
 <<ecosystem-plugin,This plugin>> adds opinionated capability resolutions to conflicting API or implementation libraries in the Java ecosystem.
 This plugin can be applied as a `Project` plugin.
-
-`org.gradlex.logging-capabilities`::
-<<logging-plugin,This plugin>> adds a DSL to select logging implementation for your application.
-This plugin can be applied as a `Project` plugin.
+It adds a DSL to configure resolution strategies, select logging implementations, and fix/enhance metadata of published components.
 
 See each plugin's documentation for more details.
 
-include::src/docs/asciidoc/parts/base.adoc[leveloffset=+2]
-include::src/docs/asciidoc/parts/ecosystem.adoc[leveloffset=+2]
-include::src/docs/asciidoc/parts/logging.adoc[leveloffset=+2]
+include::src/docs/asciidoc/parts/detection.adoc[leveloffset=+2]
+include::src/docs/asciidoc/parts/resolution.adoc[leveloffset=+2]
+
+== Appendix
 
 [[appendix]]
-== Appendix A: Capabilities
+=== Appendix A: All Capabilities
 
 The following list shows all capabilities and the components they are added to.
 Most capabilities use `org.gradlex` as group and the name of the Component that first introduced the capability.
 For capabilities that already exists because they are mentioned in published metadata (like `com.google.collections:google-collections`) the official capability groups and names are used.
 
 include::{capabilities-listing}[]
+
+=== Appendix B: Capabilities for logging
+
+The following lists the capabilities important for the logging topic (see <<logging-dsl-block, logging DSL block>>).
+
+|===
+| Capability | Impacted modules | Comment
+
+| `slf4j-impl`
+| `org.slf4j:slf4j-simple`, `org.slf4j:slf4j-log4j12`, `org.slf4j:slf4j-jcl`, `org.slf4j:slf4j-jdk14`, `ch.qos.logback:logback-classic`, `org.apache.logging.log4j:log4j-slf4j-impl`, `org.apache.logging.log4j:log4j-slf4j2-impl`
+| Represents an Slf4J binding
+
+| `log4j2-impl`
+| `org.apache.logging.log4j:log4j-slf4j-impl`, `org.apache.logging.log4j:log4j-slf4j2-impl`, `org.apache.logging.log4j:log4j-core`
+| Represents the native Log4J 2 implementation or delegation to Slf4J
+
+| `log4j2-vs-slf4j`
+| `org.apache.logging.log4j:log4j-slf4j-impl`, `org.apache.logging.log4j:log4j-to-slf4j`
+| Represents the Slf4J / Log4J 2 relationship: which one delegates to the other
+
+| `slf4j-vs-log4j`
+| `org.slf4j:log4j-over-slf4j`, `org.slf4j:slf4j-log4j12`
+| Represents the Slf4J / Log4J 1.2 relationship: either Slf4J intercepts or binds to Log4J
+
+| `slf4j-vs-log4j2-log4j`
+| `org.slf4j:log4j-over-slf4j`, `org.apache.logging.log4j:log4j-1.2-api`, `log4j:log4j`
+| Represents the available Log4J implementation: native, with Slf4J or with Log4J 2
+
+| `slf4j-vs-jul`
+| `org.slf4j:jul-to-slf4j`, `org.slf4j:slf4j-jdk14`
+| Represents the Slf4J / `java.util.logging` relationship: either Slf4 intercepts or binds to JUL
+
+| `slf4j-vs-log4j2-jul`
+| `org.slf4j:jul-to-slf4j`, `org.apache.logging.log4j:log4j-jul`
+| Represents JUL replacement: either with Slf4J or with Log4J 2
+
+| `commons-logging-impl`
+| `commons-logging:commons-logging`, `org.slf4j:jcl-over-slf4j`, `org.springframework:spring-jcl`
+| Represents Apache Commons Logging implementation: native or Slf4J
+
+| `slf4j-vs-jcl`
+| `org.slf4j:jcl-over-slf4j`, `org.slf4j:slf4j-jcl`
+| Represents the Slf4J / Apache Commons Logging relationship: either Slf4J intercepts or binds to `commons-logging`
+
+| `slf4j-vs-log4j2-jcl`
+| `org.slf4j:jcl-over-slf4j`, `org.apache.logging.log4j:log4j-jcl`
+| Represents the Slf4J or Log4J 2 interception of `commons-logging`
+
+|===
+
+=== Appendix C: Alignment
+
+In addition to the capability setting and conflict detection, the plugin also registers https://docs.gradle.org/current/userguide/dependency_version_alignment.html#sec:align-versions-virtual[alignment rules] for Slf4J and Log4J 2 modules.
+
