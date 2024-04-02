@@ -25,9 +25,9 @@ import org.gradle.util.GradleVersion;
 import org.gradlex.javaecosystem.capabilities.rules.AlignmentDefinitions;
 import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
 
-public class JavaEcosystemCapabilitiesPlugin implements Plugin<ExtensionAware> {
+public class JvmConflictDetectionPlugin implements Plugin<ExtensionAware> {
 
-    static final String PLUGIN_ID = "org.gradlex.java-ecosystem-capabilities-base";
+    static final String PLUGIN_ID = "org.gradlex.jvm-ecosystem-conflict-detection";
 
     // Minimal version that works reliably with alignment, has the substitution rules `using` API
     // and has rulesMode setting in dependencyResolutionManagement

@@ -32,7 +32,7 @@ import java.util.Optional;
 import static org.gradlex.javaecosystem.capabilities.resolution.DefaultResolutionStrategy.FIRST_MODULE;
 import static org.gradlex.javaecosystem.capabilities.resolution.DefaultResolutionStrategy.HIGHEST_VERSION;
 
-public abstract class JavaDependenciesPlugin implements Plugin<Project> {
+public abstract class JvmConflictResolutionPlugin implements Plugin<Project> {
 
     @Override
     public void apply(Project project) {

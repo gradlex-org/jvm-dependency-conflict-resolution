@@ -16,7 +16,7 @@
 
 package org.gradlex.javaecosystem.capabilities.test
 
-import org.gradlex.javaecosystem.capabilities.JavaEcosystemCapabilitiesPlugin
+import org.gradlex.javaecosystem.capabilities.JvmConflictDetectionPlugin
 import org.gradlex.javaecosystem.capabilities.test.fixture.GradleBuild
 import spock.lang.Specification
 import spock.lang.Tag
@@ -31,7 +31,7 @@ class RulesModeTest extends Specification {
         given:
         buildFile << """
             plugins {
-                id("org.gradlex.java-dependencies")
+                id("org.gradlex.jvm-ecosystem-conflict-resolution")
             }
         """
 
@@ -50,7 +50,7 @@ class RulesModeTest extends Specification {
         and:
         buildFile << """
             plugins {
-                id("org.gradlex.java-dependencies")
+                id("org.gradlex.jvm-ecosystem-conflict-resolution")
             }
         """
 
@@ -60,14 +60,14 @@ class RulesModeTest extends Specification {
         then:
         result.output.contains("RulesMode is set to FAIL_ON_PROJECT_RULES")
         result.output.contains("As a result this plugin will not work.")
-        result.output.contains("Fix this problem by either changing dependencyResolutionManagement.rulesMode to PREFER_PROJECT or by applying '${JavaEcosystemCapabilitiesPlugin.PLUGIN_ID}' as a settings plugin")
+        result.output.contains("Fix this problem by either changing dependencyResolutionManagement.rulesMode to PREFER_PROJECT or by applying '${JvmConflictDetectionPlugin.PLUGIN_ID}' as a settings plugin")
     }
 
     def "applying the plugin in a project and applying the base plugin in settings with rulesMode set to FAIL_ON_PROJECT_RULES works"() {
         given:
         settingsFile << """
             plugins {
-                id("org.gradlex.java-ecosystem-capabilities")
+                id("org.gradlex.jvm-ecosystem-conflict-detection")
             }
 
             dependencyResolutionManagement {
@@ -78,7 +78,7 @@ class RulesModeTest extends Specification {
         and:
         buildFile << """
             plugins {
-                id("org.gradlex.java-dependencies")
+                id("org.gradlex.jvm-ecosystem-conflict-resolution")
             }
         """
 
@@ -97,7 +97,7 @@ class RulesModeTest extends Specification {
         and:
         buildFile << """
             plugins {
-                id("org.gradlex.java-dependencies")
+                id("org.gradlex.jvm-ecosystem-conflict-resolution")
             }
         """
 
@@ -107,14 +107,14 @@ class RulesModeTest extends Specification {
         then:
         result.output.contains("RulesMode is set to PREFER_SETTINGS")
         result.output.contains("As a result this plugin will not work.")
-        result.output.contains("Fix this problem by either changing dependencyResolutionManagement.rulesMode to PREFER_PROJECT or by applying '${JavaEcosystemCapabilitiesPlugin.PLUGIN_ID}' as a settings plugin")
+        result.output.contains("Fix this problem by either changing dependencyResolutionManagement.rulesMode to PREFER_PROJECT or by applying '${JvmConflictDetectionPlugin.PLUGIN_ID}' as a settings plugin")
     }
 
     def "applying the plugin in a project and applying the base plugin in settings and rulesMode set to PREFER_SETTINGS works"() {
         given:
         settingsFile << """
             plugins {
-                id("org.gradlex.java-ecosystem-capabilities")
+                id("org.gradlex.jvm-ecosystem-conflict-detection")
             }
 
             dependencyResolutionManagement {
@@ -125,7 +125,7 @@ class RulesModeTest extends Specification {
         and:
         buildFile << """
             plugins {
-                id("org.gradlex.java-dependencies")
+                id("org.gradlex.jvm-ecosystem-conflict-resolution")
             }
         """
 
@@ -144,7 +144,7 @@ class RulesModeTest extends Specification {
         and:
         buildFile << """
             plugins {
-                id("org.gradlex.java-dependencies")
+                id("org.gradlex.jvm-ecosystem-conflict-resolution")
             }
         """
 

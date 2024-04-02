@@ -17,9 +17,9 @@ tasks.withType<JavaCompile>().configureEach {
 }
 
 pluginPublishConventions {
-    id("org.gradlex.java-dependencies")
-    implementationClass("org.gradlex.javaecosystem.capabilities.JavaDependenciesPlugin")
-    displayName("Java Dependencies Gradle Plugin")
+    id("org.gradlex.jvm-ecosystem-conflict-resolution")
+    implementationClass("org.gradlex.javaecosystem.capabilities.JvmConflictResolutionPlugin")
+    displayName("JVM Conflict Resolution Gradle Plugin")
     description("Convenient dependency conflict management for Jave projects.")
     tags("dependency", "dependencies", "dependency-management", "capabilities", "java", "logging",
          "asm", "bouncycastle", "cglib", "commons-io", "dom4j", "guava", "hamcrest", "javax", "jakarta", "junit",
@@ -45,10 +45,10 @@ pluginPublishConventions {
 
 gradlePlugin {
     plugins {
-        create("java-ecosystem-capabilities") {
-            id = "org.gradlex.java-ecosystem-capabilities"
-            implementationClass = "org.gradlex.javaecosystem.capabilities.JavaEcosystemCapabilitiesPlugin"
-            displayName = "Java Ecosystem Capabilities Gradle Plugin"
+        create("jvm-ecosystem-conflict-detection") {
+            id = "org.gradlex.jvm-ecosystem-conflict-detection"
+            implementationClass = "org.gradlex.javaecosystem.capabilities.JvmConflictDetectionPlugin"
+            displayName = "JVM Conflict Detection Gradle Plugin"
             description = "Adds Capabilities to well-known Components hosted on Maven Central."
         }
     }

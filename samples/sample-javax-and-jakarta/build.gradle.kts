@@ -1,5 +1,5 @@
 plugins {
-    id("org.gradlex.java-dependencies")
+    id("org.gradlex.jvm-ecosystem-conflict-resolution")
     id("application")
 }
 

@@ -14,7 +14,7 @@ class CustomizationTest extends Specification {
             import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions
             
             plugins {
-                id("org.gradlex.java-ecosystem-capabilities")
+                id("org.gradlex.jvm-ecosystem-conflict-detection")
                 id("java-library")
             }
             
@@ -51,7 +51,7 @@ class CustomizationTest extends Specification {
             import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions
             
             plugins {
-                id("org.gradlex.java-dependencies")
+                id("org.gradlex.jvm-ecosystem-conflict-resolution")
                 id("java-library")
             }
             
@@ -112,7 +112,7 @@ class CustomizationTest extends Specification {
             import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions
             
             plugins {
-                id("org.gradlex.java-dependencies")
+                id("org.gradlex.jvm-ecosystem-conflict-resolution")
                 id("java-library")
             }
             

@@ -12,7 +12,7 @@ class CustomRulesTest extends Specification {
         file('src/main/java/Dummy.java') << 'class Dummy {}'
         buildFile << """
             plugins {
-                id("org.gradlex.java-dependencies")
+                id("org.gradlex.jvm-ecosystem-conflict-resolution")
                 id("java-library")
             }
             repositories.mavenCentral()

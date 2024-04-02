@@ -1,7 +1,7 @@
 import  org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions
 
 plugins {
-    id("org.gradlex.java-dependencies")
+    id("org.gradlex.jvm-ecosystem-conflict-resolution")
     id("java-library")
     id("io.fuchs.gradle.classpath-collision-detector") version "0.3"
 }

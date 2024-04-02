@@ -40,15 +40,15 @@ final class BasePluginApplication {
         switch(rulesMode) {
             // PREFER_PROJECT is the default if the user did not configure something else
             case PREFER_PROJECT:
-                project.getPlugins().apply(JavaEcosystemCapabilitiesPlugin.class);
+                project.getPlugins().apply(JvmConflictDetectionPlugin.class);
                 break;
             case PREFER_SETTINGS:
             case FAIL_ON_PROJECT_RULES:
                 if (!baseAppliedViaSettings) {
                     throw new IllegalStateException(
-                            "RulesMode is set to " + rulesMode + " in " + settingsFileName + " but the '" + JavaEcosystemCapabilitiesPlugin.PLUGIN_ID + "' plugin was not applied via settings." +
+                            "RulesMode is set to " + rulesMode + " in " + settingsFileName + " but the '" + JvmConflictDetectionPlugin.PLUGIN_ID + "' plugin was not applied via settings." +
                                     " As a result this plugin will not work." +
-                                    " Fix this problem by either changing dependencyResolutionManagement.rulesMode to PREFER_PROJECT or by applying '" + JavaEcosystemCapabilitiesPlugin.PLUGIN_ID + "' as a settings plugin in " + settingsFileName + "."
+                                    " Fix this problem by either changing dependencyResolutionManagement.rulesMode to PREFER_PROJECT or by applying '" + JvmConflictDetectionPlugin.PLUGIN_ID + "' as a settings plugin in " + settingsFileName + "."
                     );
                 }
                 break;
@@ -58,7 +58,7 @@ final class BasePluginApplication {
     }
 
     private boolean isBaseAppliedViaSettings() {
-        return getSettings().getPlugins().hasPlugin(JavaEcosystemCapabilitiesPlugin.class);
+        return getSettings().getPlugins().hasPlugin(JvmConflictDetectionPlugin.class);
     }
 
     private RulesMode getRulesMode() {
