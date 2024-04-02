@@ -27,6 +27,41 @@ See the [documentation](https://gradlex.org/java-ecosystem-capabilities).
 Note: There are rules in this plugin (in particular for _Guava_) which work _better_ with Gradle `7+`.
 This is because Gradle 7 added support for the `org.gradle.jvm.environment` attribute that allows Gradle to better distinguish between _standard-jvm_ and _android_ projects.
 
+### Notes on the Plugins history
+
+These plugins join, unify and extend functionalities that were previously part of the following discontinued plugins:
+
+- https://plugins.gradle.org/plugin/org.gradlex.java-ecosystem-capabilities
+- https://plugins.gradle.org/plugin/dev.jacomet.logging-capabilities
+- https://plugins.gradle.org/plugin/de.jjohannes.java-ecosystem-capabilities
+- https://plugins.gradle.org/plugin/de.jjohannes.missing-metadata-guava
+
+**NOTE on Guava**:
+Some of these plugins are used to patch older versions of Guava.
+This functionality is discontinued.
+Most of the patching is not included anymore by default, because Guava now publishes richer metadata and some of the adjustments were opinionated.
+If you use the latest Guava version, you may not need anything specific.
+If some of the transitive dependencies are not wanted in your case, you can fine tune them using the `jvmDependencyConflicts.patch` DSL. E.g.:
+
+```
+jvmDependencyConflicts {
+    patch {
+        module("com.google.guava:guava") {
+            removeDependency("com.google.code.findbugs:jsr305")
+            reduceToCompileOnlyApiDependency("com.google.errorprone:error_prone_annotations")
+        }
+    }
+}
+```
+
+If you need the previous behavior for older Guava versions, you can explicitly apply the `GuavaComponentRule`.
+
+```
+dependencies.components {
+    withModule<GuavaComponentRule>("com.google.guava:guava")
+}
+```
+
 # Disclaimer
 
 Gradle and the Gradle logo are trademarks of Gradle, Inc.
