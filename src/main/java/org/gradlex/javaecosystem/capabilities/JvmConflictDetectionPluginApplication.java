@@ -21,15 +21,15 @@ import org.gradle.api.initialization.resolve.RulesMode;
 import org.gradle.api.internal.GradleInternal;
 import org.gradle.api.internal.SettingsInternal;
 
-final class BasePluginApplication {
+final class JvmConflictDetectionPluginApplication {
 
-    static BasePluginApplication of(Project project) {
-        return new BasePluginApplication(project);
+    static JvmConflictDetectionPluginApplication of(Project project) {
+        return new JvmConflictDetectionPluginApplication(project);
     }
 
     private final Project project;
 
-    private BasePluginApplication(Project project) {
+    private JvmConflictDetectionPluginApplication(Project project) {
         this.project = project;
     }
 

@@ -36,7 +36,7 @@ public abstract class JvmConflictResolutionPlugin implements Plugin<Project> {
 
     @Override
     public void apply(Project project) {
-        BasePluginApplication.of(project).handleRulesMode();
+        JvmConflictDetectionPluginApplication.of(project).handleRulesMode();
 
         JvmDependencyConflictsExtension jvmDependencyConflicts = project.getExtensions().create("jvmDependencyConflicts", JvmDependencyConflictsExtension.class);
 
