@@ -29,8 +29,8 @@ public class JavaEcosystemCapabilitiesPlugin implements Plugin<ExtensionAware> {
 
     static final String PLUGIN_ID = "org.gradlex.java-ecosystem-capabilities-base";
 
-    // Minimal version that works reliably with alignment and has the substitution rules `using` API and has rulesMode
-    // setting in dependencyResolutionManagement
+    // Minimal version that works reliably with alignment, has the substitution rules `using` API
+    // and has rulesMode setting in dependencyResolutionManagement
     private static final GradleVersion MINIMUM_SUPPORTED_VERSION = GradleVersion.version("6.8.3");
 
     @Override
