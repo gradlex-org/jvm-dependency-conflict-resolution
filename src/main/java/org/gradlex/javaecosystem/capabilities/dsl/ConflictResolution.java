@@ -25,6 +25,8 @@ import org.gradle.api.provider.SetProperty;
 import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
 
 import javax.inject.Inject;
+import java.util.Arrays;
+import java.util.Optional;
 
 public abstract class ConflictResolution {
 
@@ -33,32 +35,48 @@ public abstract class ConflictResolution {
 
     public abstract SetProperty<CapabilityDefinitions> getDeactivatedResolutionStrategies();
 
-    public void selectHighestVersion(CapabilityDefinitions capability) {
+    public void deactivateResolutionStrategy(CapabilityDefinitions capability) {
         getDeactivatedResolutionStrategies().add(capability);
-        selectHighestVersion(capability.getCapability());
+    }
+
+    public void deactivateResolutionStrategy(String capability) {
+        Optional<CapabilityDefinitions> definition = Arrays.stream(CapabilityDefinitions.values()).filter(c -> capability.equals(c.getCapability())).findFirst();
+        definition.ifPresent(c -> getDeactivatedResolutionStrategies().add(c));
+    }
+
+    public void selectHighestVersion(CapabilityDefinitions capability) {
+        deactivateResolutionStrategy(capability);
+        doSelectHighestVersion(capability.getCapability());
     }
 
     public void selectHighestVersion(String capability) {
-        getConfigurations().all(conf -> conf.getResolutionStrategy().getCapabilitiesResolution().withCapability(capability,
-                CapabilityResolutionDetails::selectHighestVersion));
+        deactivateResolutionStrategy(capability);
+        doSelectHighestVersion(capability);
     }
 
     public void select(CapabilityDefinitions capability, String module) {
-        getDeactivatedResolutionStrategies().add(capability);
+        deactivateResolutionStrategy(capability);
         doSelect(capability.getCapability(), module, false);
     }
 
     public void select(String capability, String module) {
+        deactivateResolutionStrategy(capability);
         doSelect(capability, module, false);
     }
 
     public void selectLenient(CapabilityDefinitions capability, String module) {
-        getDeactivatedResolutionStrategies().add(capability);
+        deactivateResolutionStrategy(capability);
         doSelect(capability.getCapability(), module, true);
     }
 
     private void selectLenient(String capability, String module) {
+        deactivateResolutionStrategy(capability);
         doSelect(capability, module, true);
+    }
+
+    private void doSelectHighestVersion(String capability) {
+        getConfigurations().all(conf -> conf.getResolutionStrategy().getCapabilitiesResolution().withCapability(capability,
+                CapabilityResolutionDetails::selectHighestVersion));
     }
 
     private void doSelect(String capability, String module, boolean lenient) {
