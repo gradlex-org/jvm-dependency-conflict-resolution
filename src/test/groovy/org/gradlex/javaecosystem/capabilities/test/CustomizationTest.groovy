@@ -57,7 +57,7 @@ class CustomizationTest extends Specification {
             
             repositories.mavenCentral()
             
-            javaDependencies {
+            jvmDependencyConflicts {
                 conflictResolution {
                     deactivateResolutionStrategy(CapabilityDefinitions.CGLIB)
                     deactivateResolutionStrategy(CapabilityDefinitions.JAVAX_MAIL_API)
@@ -118,7 +118,7 @@ class CustomizationTest extends Specification {
             
             repositories.mavenCentral()
             
-            javaDependencies {
+            jvmDependencyConflicts {
                 conflictResolution {
                     select(CapabilityDefinitions.CGLIB, "cglib:cglib")
                     selectLenient(CapabilityDefinitions.JAVAX_MAIL_API, "com.sun.mail:jakarta.mail")

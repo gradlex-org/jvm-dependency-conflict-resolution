@@ -255,7 +255,7 @@ dependencies {
     // implementation("com.mchange:mchange-commons-java:0.3.0")
 }
 
-javaDependencies {
+jvmDependencyConflicts {
     logging {
         enforceSlf4JSimple()
     }

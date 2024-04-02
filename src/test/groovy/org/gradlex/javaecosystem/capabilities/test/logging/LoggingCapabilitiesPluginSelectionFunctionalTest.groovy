@@ -20,7 +20,7 @@ class LoggingCapabilitiesPluginSelectionFunctionalTest extends AbstractLoggingCa
                 mavenCentral()
             }
 
-            javaDependencies.logging {
+            jvmDependencyConflicts.logging {
                 selectSlf4JBinding("ch.qos.logback:logback-classic:1.2.3")
             }
 
@@ -61,7 +61,7 @@ ${additional.collect { "                runtimeOnly(\"$it\")" }.join("\n")}
                 mavenCentral()
             }
             
-            javaDependencies.logging {
+            jvmDependencyConflicts.logging {
                 selectSlf4JBinding("ch.qos.logback:logback-classic:1.2.3")
             }
 
@@ -98,7 +98,7 @@ ${additional.collect { "                runtimeOnly(\"$it\")" }.join("\n")}
                 mavenCentral()
             }
             
-            javaDependencies.logging {
+            jvmDependencyConflicts.logging {
                 $prefered
             }
             
@@ -158,7 +158,7 @@ ${additional.collect { "                runtimeOnly(\"$it\")" }.join("\n")}
                 mavenCentral()
             }
             
-            javaDependencies.logging {
+            jvmDependencyConflicts.logging {
                 ${loggerFrom(enforced)}
             }
 
@@ -210,7 +210,7 @@ ${additional.collect { "                runtimeOnly(\"$it\")" }.join("\n")}
                 mavenCentral()
             }
             
-            javaDependencies.logging {
+            jvmDependencyConflicts.logging {
                 enforceLogback()
             }
             
@@ -248,7 +248,7 @@ ${additional.collect { "                runtimeOnly(\"$it\")" }.join("\n")}
                 mavenCentral()
             }
 
-            javaDependencies.logging {
+            jvmDependencyConflicts.logging {
                 enforceLogback()
             }
 
@@ -287,7 +287,7 @@ ${additional.collect { "                runtimeOnly(\"$it\")" }.join("\n")}
                 mavenCentral()
             }
             
-            javaDependencies.logging {
+            jvmDependencyConflicts.logging {
                 enforceLog4J2("runtimeClasspath")
                 enforceSlf4JSimple("testRuntimeClasspath")
             }

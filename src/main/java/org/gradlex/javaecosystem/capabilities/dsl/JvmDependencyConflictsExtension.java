@@ -21,7 +21,7 @@ import org.gradle.api.model.ObjectFactory;
 
 import javax.inject.Inject;
 
-public abstract class JavaDependenciesExtension {
+public abstract class JvmDependencyConflictsExtension {
 
     private final ConflictResolution conflictResolution;
     private final Logging logging;
@@ -30,7 +30,7 @@ public abstract class JavaDependenciesExtension {
     @Inject
     protected abstract ObjectFactory getObjects();
 
-    public JavaDependenciesExtension() {
+    public JvmDependencyConflictsExtension() {
         conflictResolution = getObjects().newInstance(ConflictResolution.class);
         logging = getObjects().newInstance(Logging.class);
         patch = getObjects().newInstance(Patch.class);

@@ -29,7 +29,7 @@ class CustomRulesTest extends Specification {
             """
         }
         buildFile << """
-            javaDependencies {
+            jvmDependencyConflicts {
                 patch {
                     module("com.google.guava:guava") {
                         removeDependency("com.google.guava:listenablefuture")
@@ -56,7 +56,7 @@ compileClasspath - Compile classpath for source set 'main'.
     def "can reduce dependency scope to runtime only"() {
         given:
         buildFile << """
-            javaDependencies {
+            jvmDependencyConflicts {
                 patch {
                     module("org.apache.commons:commons-text") {
                         reduceToRuntimeOnlyDependency("org.apache.commons:commons-lang3")
@@ -85,7 +85,7 @@ runtimeClasspath - Runtime classpath of source set 'main'.
     def "can reduce dependency scope to compile only"() {
         given:
         buildFile << """
-            javaDependencies {
+            jvmDependencyConflicts {
                 patch {
                     module("org.apache.commons:commons-text") {
                         reduceToCompileOnlyApiDependency("org.apache.commons:commons-lang3")
@@ -114,7 +114,7 @@ runtimeClasspath - Runtime classpath of source set 'main'.
     def "can add api dependency"() {
         given:
         buildFile << """
-            javaDependencies {
+            jvmDependencyConflicts {
                 patch {
                     module("io.netty:netty-common") {
                         addApiDependency("io.projectreactor.tools:blockhound:1.0.8.RELEASE")
@@ -144,7 +144,7 @@ runtimeClasspath - Runtime classpath of source set 'main'.
     def "can add runtime only dependency"() {
         given:
         buildFile << """
-            javaDependencies {
+            jvmDependencyConflicts {
                 patch {
                     module("io.netty:netty-common") {
                         addRuntimeOnlyDependency("io.projectreactor.tools:blockhound:1.0.8.RELEASE")
@@ -173,7 +173,7 @@ runtimeClasspath - Runtime classpath of source set 'main'.
     def "can add compile only dependency"() {
         given:
         buildFile << """
-            javaDependencies {
+            jvmDependencyConflicts {
                 patch {
                     module("io.netty:netty-common") {
                         addCompileOnlyApiDependency("io.projectreactor.tools:blockhound:1.0.8.RELEASE")
@@ -203,7 +203,7 @@ runtimeClasspath - Runtime classpath of source set 'main'.
         given:
         buildFile.text = 'import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions.STAX_API\n' + buildFile.text
         buildFile << """
-            javaDependencies {
+            jvmDependencyConflicts {
                 patch {
                     module("org.eclipse.birt.runtime:javax.xml.stream") {
                         addCapability(STAX_API)
@@ -228,7 +228,7 @@ compileClasspath - Compile classpath for source set 'main'.
     def "can add capability by string"() {
         given:
         buildFile << """
-            javaDependencies {
+            jvmDependencyConflicts {
                 patch {
                     module("org.apache.commons:commons-lang3") {
                         addCapability("commons-lang:commons-lang") // artificial case for testing!
@@ -249,7 +249,7 @@ compileClasspath - Compile classpath for source set 'main'.
         given:
         buildFile.text = 'import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions.STAX_API\n' + buildFile.text
         buildFile << """
-            javaDependencies {
+            jvmDependencyConflicts {
                 patch {
                     module("javax.xml.stream:stax-api") {
                         removeCapability(STAX_API)
@@ -282,7 +282,7 @@ compileClasspath - Compile classpath for source set 'main'.
         }
 
         buildFile << """
-            javaDependencies {
+            jvmDependencyConflicts {
                 patch {
                     module("com.google.guava:guava") {
                         removeCapability("com.google.collections:google-collections")
@@ -311,7 +311,7 @@ runtimeClasspath - Runtime classpath of source set 'main'.
     def "can add feature"() {
         given:
         buildFile << """
-            javaDependencies {
+            jvmDependencyConflicts {
                 patch {
                     module("io.netty:netty-transport-native-epoll") {
                         addFeature("linux-x86_64")
@@ -339,7 +339,7 @@ runtimeClasspath - Runtime classpath of source set 'main'.
     def "can add target variant"() {
         given:
         buildFile << """
-            javaDependencies {
+            jvmDependencyConflicts {
                 patch {
                     module("org.openjfx:javafx-base") {
                         addTargetPlatformVariant("", "none", "none")
@@ -368,7 +368,7 @@ runtimeClasspath - Runtime classpath of source set 'main'.
     def "can add alignment"() {
         given:
         buildFile << """
-            javaDependencies {
+            jvmDependencyConflicts {
                 patch {
                     align(
                         "org.apache.poi:poi",
@@ -440,7 +440,7 @@ compileClasspath - Compile classpath for source set 'main'.
     def "can add alignment via BOM"() {
         given:
         buildFile << """
-            javaDependencies {
+            jvmDependencyConflicts {
                 patch {
                     alignWithBom("org.ow2.asm:asm-bom",
                         "org.ow2.asm:asm",
@@ -491,7 +491,7 @@ compileClasspath - Compile classpath for source set 'main'.
     def "can set component status to integration for certain versions"() {
         given:
         buildFile << """
-            javaDependencies {
+            jvmDependencyConflicts {
                 patch {
                     module("com.fasterxml.jackson.core:jackson-core") {
                         setStatusToIntegration("-m", "-rc")
