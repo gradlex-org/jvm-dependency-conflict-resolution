@@ -56,388 +56,388 @@ import static org.gradlex.javaecosystem.capabilities.resolution.DefaultResolutio
 public enum CapabilityDefinitions {
 
     AOPALLIANCE(HIGHEST_VERSION, AopallianceRule.class,
-        "aopalliance:aopalliance",
-        "org.springframework:spring-aop"
+            "aopalliance:aopalliance",
+            "org.springframework:spring-aop"
     ),
     APACHE_CSV(HIGHEST_VERSION,
-        "org.apache.solr:solr-commons-csv",
-        "org.apache.commons:commons-csv"
+            "org.apache.solr:solr-commons-csv",
+            "org.apache.commons:commons-csv"
     ),
     ASM(HIGHEST_VERSION,
-        "asm:asm",
-        "org.ow2.asm:asm"
+            "asm:asm",
+            "org.ow2.asm:asm"
     ),
     BOUNCYCASTLE_BCMAIL(HIGHEST_VERSION,
-        "org.bouncycastle:bcmail",
-        "org.bouncycastle:bcmail-fips",
-        "org.bouncycastle:bcmail-jdk14",
-        "org.bouncycastle:bcmail-jdk15",
-        "org.bouncycastle:bcmail-jdk15+",
-        "org.bouncycastle:bcmail-jdk15on",
-        "org.bouncycastle:bcmail-jdk15to18",
-        "org.bouncycastle:bcmail-jdk16",
-        "org.bouncycastle:bcmail-jdk18on",
-        "org.bouncycastle:bcjmail-jdk15on",
-        "org.bouncycastle:bcjmail-jdk15to18",
-        "org.bouncycastle:bcjmail-jdk18on"
+            "org.bouncycastle:bcmail",
+            "org.bouncycastle:bcmail-fips",
+            "org.bouncycastle:bcmail-jdk14",
+            "org.bouncycastle:bcmail-jdk15",
+            "org.bouncycastle:bcmail-jdk15+",
+            "org.bouncycastle:bcmail-jdk15on",
+            "org.bouncycastle:bcmail-jdk15to18",
+            "org.bouncycastle:bcmail-jdk16",
+            "org.bouncycastle:bcmail-jdk18on",
+            "org.bouncycastle:bcjmail-jdk15on",
+            "org.bouncycastle:bcjmail-jdk15to18",
+            "org.bouncycastle:bcjmail-jdk18on"
     ),
     BOUNCYCASTLE_BCPG(HIGHEST_VERSION,
-        "org.bouncycastle:bcpg",
-        "org.bouncycastle:bcpg-fips",
-        "org.bouncycastle:bcpg-jdk12",
-        "org.bouncycastle:bcpg-jdk14",
-        "org.bouncycastle:bcpg-jdk15",
-        "org.bouncycastle:bcpg-jdk15+",
-        "org.bouncycastle:bcpg-jdk15on",
-        "org.bouncycastle:bcpg-jdk15to18",
-        "org.bouncycastle:bcpg-jdk16",
-        "org.bouncycastle:bcpg-jdk18on"
+            "org.bouncycastle:bcpg",
+            "org.bouncycastle:bcpg-fips",
+            "org.bouncycastle:bcpg-jdk12",
+            "org.bouncycastle:bcpg-jdk14",
+            "org.bouncycastle:bcpg-jdk15",
+            "org.bouncycastle:bcpg-jdk15+",
+            "org.bouncycastle:bcpg-jdk15on",
+            "org.bouncycastle:bcpg-jdk15to18",
+            "org.bouncycastle:bcpg-jdk16",
+            "org.bouncycastle:bcpg-jdk18on"
     ),
     BOUNCYCASTLE_BCPKIX(HIGHEST_VERSION,
-        "org.bouncycastle:bcpkix",
-        "org.bouncycastle:bcpkix-fips",
-        "org.bouncycastle:bcpkix-jdk14",
-        "org.bouncycastle:bcpkix-jdk15on",
-        "org.bouncycastle:bcpkix-jdk15to18",
-        "org.bouncycastle:bcpkix-jdk18on"
+            "org.bouncycastle:bcpkix",
+            "org.bouncycastle:bcpkix-fips",
+            "org.bouncycastle:bcpkix-jdk14",
+            "org.bouncycastle:bcpkix-jdk15on",
+            "org.bouncycastle:bcpkix-jdk15to18",
+            "org.bouncycastle:bcpkix-jdk18on"
     ),
     BOUNCYCASTLE_BCPROV(HIGHEST_VERSION,
-        "org.bouncycastle:bcprov",
-        "org.bouncycastle:bcprov-debug-jdk14",
-        "org.bouncycastle:bcprov-debug-jdk15on",
-        "org.bouncycastle:bcprov-debug-jdk15to18",
-        "org.bouncycastle:bcprov-debug-jdk18on",
-        "org.bouncycastle:bcprov-ext-debug-jdk14",
-        "org.bouncycastle:bcprov-ext-debug-jdk15on",
-        "org.bouncycastle:bcprov-ext-debug-jdk15to18",
-        "org.bouncycastle:bcprov-ext-debug-jdk18on",
-        "org.bouncycastle:bcprov-ext-jdk14",
-        "org.bouncycastle:bcprov-ext-jdk15",
-        "org.bouncycastle:bcprov-ext-jdk15on",
-        "org.bouncycastle:bcprov-ext-jdk15to18",
-        "org.bouncycastle:bcprov-ext-jdk16",
-        "org.bouncycastle:bcprov-ext-jdk18on",
-        "org.bouncycastle:bcprov-jdk12",
-        "org.bouncycastle:bcprov-jdk14",
-        "org.bouncycastle:bcprov-jdk15",
-        "org.bouncycastle:bcprov-jdk15+",
-        "org.bouncycastle:bcprov-jdk15on",
-        "org.bouncycastle:bcprov-jdk15to18",
-        "org.bouncycastle:bcprov-jdk16",
-        "org.bouncycastle:bcprov-jdk18on",
-        "org.bouncycastle:bc-fips",
-        "org.bouncycastle:bc-fips-debug"
+            "org.bouncycastle:bcprov",
+            "org.bouncycastle:bcprov-debug-jdk14",
+            "org.bouncycastle:bcprov-debug-jdk15on",
+            "org.bouncycastle:bcprov-debug-jdk15to18",
+            "org.bouncycastle:bcprov-debug-jdk18on",
+            "org.bouncycastle:bcprov-ext-debug-jdk14",
+            "org.bouncycastle:bcprov-ext-debug-jdk15on",
+            "org.bouncycastle:bcprov-ext-debug-jdk15to18",
+            "org.bouncycastle:bcprov-ext-debug-jdk18on",
+            "org.bouncycastle:bcprov-ext-jdk14",
+            "org.bouncycastle:bcprov-ext-jdk15",
+            "org.bouncycastle:bcprov-ext-jdk15on",
+            "org.bouncycastle:bcprov-ext-jdk15to18",
+            "org.bouncycastle:bcprov-ext-jdk16",
+            "org.bouncycastle:bcprov-ext-jdk18on",
+            "org.bouncycastle:bcprov-jdk12",
+            "org.bouncycastle:bcprov-jdk14",
+            "org.bouncycastle:bcprov-jdk15",
+            "org.bouncycastle:bcprov-jdk15+",
+            "org.bouncycastle:bcprov-jdk15on",
+            "org.bouncycastle:bcprov-jdk15to18",
+            "org.bouncycastle:bcprov-jdk16",
+            "org.bouncycastle:bcprov-jdk18on",
+            "org.bouncycastle:bc-fips",
+            "org.bouncycastle:bc-fips-debug"
     ),
     BOUNCYCASTLE_BCTLS(HIGHEST_VERSION,
-        "org.bouncycastle:bctls",
-        "org.bouncycastle:bctls-jdk14",
-        "org.bouncycastle:bctls-jdk15on",
-        "org.bouncycastle:bctls-jdk15to18",
-        "org.bouncycastle:bctls-jdk18on",
-        "org.bouncycastle:bctls-fips"
+            "org.bouncycastle:bctls",
+            "org.bouncycastle:bctls-jdk14",
+            "org.bouncycastle:bctls-jdk15on",
+            "org.bouncycastle:bctls-jdk15to18",
+            "org.bouncycastle:bctls-jdk18on",
+            "org.bouncycastle:bctls-fips"
     ),
     BOUNCYCASTLE_BCTSP(HIGHEST_VERSION,
-        "org.bouncycastle:bctsp",
-        "org.bouncycastle:bctsp-jdk14",
-        "org.bouncycastle:bctsp-jdk15",
-        "org.bouncycastle:bctsp-jdk15+",
-        "org.bouncycastle:bctsp-jdk15on",
-        "org.bouncycastle:bctsp-jdk16"
+            "org.bouncycastle:bctsp",
+            "org.bouncycastle:bctsp-jdk14",
+            "org.bouncycastle:bctsp-jdk15",
+            "org.bouncycastle:bctsp-jdk15+",
+            "org.bouncycastle:bctsp-jdk15on",
+            "org.bouncycastle:bctsp-jdk16"
     ),
     BOUNCYCASTLE_BCUTIL(HIGHEST_VERSION,
-        "org.bouncycastle:bcutil",
-        "org.bouncycastle:bcutil-jdk14",
-        "org.bouncycastle:bcutil-jdk15on",
-        "org.bouncycastle:bcutil-jdk15to18",
-        "org.bouncycastle:bcutil-jdk18on"
+            "org.bouncycastle:bcutil",
+            "org.bouncycastle:bcutil-jdk14",
+            "org.bouncycastle:bcutil-jdk15on",
+            "org.bouncycastle:bcutil-jdk15to18",
+            "org.bouncycastle:bcutil-jdk18on"
     ),
     C3P0(HIGHEST_VERSION,
-        "c3p0:c3p0",
-        "com.mchange:c3p0"
+            "c3p0:c3p0",
+            "com.mchange:c3p0"
     ),
     MCHANGE_COMMONS_JAVA(HIGHEST_VERSION,
-        "c3p0:c3p0",
-        "com.mchange:mchange-commons-java"
+            "c3p0:c3p0",
+            "com.mchange:mchange-commons-java"
     ),
     CGLIB(HIGHEST_VERSION,
-        "cglib:cglib",
-        "cglib:cglib-nodep"
+            "cglib:cglib",
+            "cglib:cglib-nodep"
     ),
     COMMONS_BEANUTILS(HIGHEST_VERSION,
-        "commons-beanutils:commons-beanutils-core",
-        "commons-beanutils:commons-beanutils"
+            "commons-beanutils:commons-beanutils-core",
+            "commons-beanutils:commons-beanutils"
     ),
     COMMONS_IO(HIGHEST_VERSION,
-        "commons-io:commons-io",
-        "org.apache.commons:commons-io"
+            "commons-io:commons-io",
+            "org.apache.commons:commons-io"
     ),
     DOM4J(HIGHEST_VERSION,
-        "dom4j:dom4j",
-        "org.dom4j:dom4j"
+            "dom4j:dom4j",
+            "org.dom4j:dom4j"
     ),
     FINDBUGS_ANNOTATIONS(HIGHEST_VERSION,
-        "com.google.code.findbugs:annotations",
-        "com.google.code.findbugs:findbugs-annotations",
-        "com.github.spotbugs:spotbugs-annotations"
+            "com.google.code.findbugs:annotations",
+            "com.google.code.findbugs:findbugs-annotations",
+            "com.github.spotbugs:spotbugs-annotations"
     ),
     GOOGLE_COLLECTIONS(HIGHEST_VERSION, "com.google.collections", CapabilityDefinitionsRule.class,
-        "com.google.collections:google-collections",
-        "com.google.guava:guava"
+            "com.google.collections:google-collections",
+            "com.google.guava:guava"
     ),
     GUAVA(HIGHEST_VERSION,
-        "com.google.guava:guava",
-        "com.google.guava:guava-jdk5"
+            "com.google.guava:guava",
+            "com.google.guava:guava-jdk5"
     ),
     JZY3D_EMUL_GL(HIGHEST_VERSION,
-        "org.jzy3d:jzy3d-emul-gl",
-        "org.jzy3d:jzy3d-emul-gl-awt"
+            "org.jzy3d:jzy3d-emul-gl",
+            "org.jzy3d:jzy3d-emul-gl-awt"
     ),
     JZY3D_JGL(HIGHEST_VERSION,
-        "org.jzy3d:jGL",
-        "org.jzy3d:jzy3d-jGL-awt"
+            "org.jzy3d:jGL",
+            "org.jzy3d:jzy3d-jGL-awt"
     ),
     LZ4(HIGHEST_VERSION,
-        "net.jpountz.lz4:lz4",
-        "org.lz4:lz4-java"
+            "net.jpountz.lz4:lz4",
+            "org.lz4:lz4-java"
     ),
     LISTENABLEFUTURE(FIRST_MODULE, "com.google.guava", GuavaListenableFutureRule.class,
-        "com.google.guava:guava",
-        "com.google.guava:listenablefuture"
+            "com.google.guava:guava",
+            "com.google.guava:listenablefuture"
     ),
     HAMCREST_LIBRARY(FIRST_MODULE,
-        "org.hamcrest:hamcrest",
-        "org.hamcrest:hamcrest-library"
+            "org.hamcrest:hamcrest",
+            "org.hamcrest:hamcrest-library"
     ),
     HAMCREST_CORE(FIRST_MODULE,
-        "org.hamcrest:hamcrest",
-        "org.hamcrest:hamcrest-core"
+            "org.hamcrest:hamcrest",
+            "org.hamcrest:hamcrest-core"
     ),
     HIKARI_CP(HIGHEST_VERSION,
-        "com.zaxxer:HikariCP",
-        "com.zaxxer:HikariCP-java6",
-        "com.zaxxer:HikariCP-java7"
+            "com.zaxxer:HikariCP",
+            "com.zaxxer:HikariCP-java6",
+            "com.zaxxer:HikariCP-java7"
     ),
     INTELLIJ_ANNOTATIONS(HIGHEST_VERSION,
-        "org.jetbrains:annotations",
-        "com.intellij:annotations"
+            "org.jetbrains:annotations",
+            "com.intellij:annotations"
     ),
     JAVA_ASSIST(HIGHEST_VERSION,
-        "javassist:javassist",
-        "org.javassist:javassist",
-        "jboss:javassist"
+            "javassist:javassist",
+            "org.javassist:javassist",
+            "jboss:javassist"
     ),
     JCIP_ANNOTATIONS(HIGHEST_VERSION,
-        "net.jcip:jcip-annotations",
-        "com.github.stephenc.jcip:jcip-annotations"
+            "net.jcip:jcip-annotations",
+            "com.github.stephenc.jcip:jcip-annotations"
     ),
     JNA_PLATFORM(HIGHEST_VERSION,
-        "net.java.dev.jna:platform",
-        "net.java.dev.jna:jna-platform"
+            "net.java.dev.jna:platform",
+            "net.java.dev.jna:jna-platform"
     ),
     JTS_CORE(HIGHEST_VERSION,
-        "com.vividsolutions:jts",
-        "com.vividsolutions:jts-core"
+            "com.vividsolutions:jts",
+            "com.vividsolutions:jts-core"
     ),
     JUNIT(HIGHEST_VERSION,
-        "junit:junit",
-        "junit:junit-dep"
+            "junit:junit",
+            "junit:junit-dep"
     ),
     MIGLAYOUT(HIGHEST_VERSION,
-        "com.miglayout:miglayout-swing",
-        "com.miglayout:miglayout"
+            "com.miglayout:miglayout-swing",
+            "com.miglayout:miglayout"
     ),
     POSTGRESQL(HIGHEST_VERSION,
-        "postgresql:postgresql",
-        "org.postgresql:postgresql"
+            "postgresql:postgresql",
+            "org.postgresql:postgresql"
     ),
     STAX_API(HIGHEST_VERSION,
-        "stax:stax-api",
-        "javax.xml.stream:stax-api"
+            "stax:stax-api",
+            "javax.xml.stream:stax-api"
     ),
     VELOCITY(HIGHEST_VERSION,
-        "velocity:velocity",
-        "org.apache.velocity:velocity",
-        "org.apache.velocity:velocity-engine-core"
+            "velocity:velocity",
+            "org.apache.velocity:velocity",
+            "org.apache.velocity:velocity-engine-core"
     ),
     WOODSTOX_ASL(HIGHEST_VERSION,
-        "org.codehaus.woodstox:woodstox-core-asl",
-        "org.codehaus.woodstox:woodstox-core-lgpl",
-        "org.codehaus.woodstox:wstx-asl",
-        "org.codehaus.woodstox:wstx-lgpl",
-        "woodstox:wstx-asl"
+            "org.codehaus.woodstox:woodstox-core-asl",
+            "org.codehaus.woodstox:woodstox-core-lgpl",
+            "org.codehaus.woodstox:wstx-asl",
+            "org.codehaus.woodstox:wstx-lgpl",
+            "woodstox:wstx-asl"
     ),
     JAKARTA_ACTIVATION_API(HIGHEST_VERSION, JakartaActivationApiRule.class,
-        "jakarta.activation:jakarta.activation-api",
-        "com.sun.activation:jakarta.activation"
+            "jakarta.activation:jakarta.activation-api",
+            "com.sun.activation:jakarta.activation"
     ),
     JAKARTA_ACTIVATION_IMPL(HIGHEST_VERSION, JakartaActivationImplementationRule.class,
-        "com.sun.activation:jakarta.activation",
-        "org.eclipse.angus:angus-activation"
+            "com.sun.activation:jakarta.activation",
+            "org.eclipse.angus:angus-activation"
     ),
     JAKARTA_ANNOTATION_API(HIGHEST_VERSION, JakartaAnnotationApiRule.class,
-        "jakarta.annotation:jakarta.annotation-api",
-        "org.apache.tomcat:tomcat-annotations-api"
+            "jakarta.annotation:jakarta.annotation-api",
+            "org.apache.tomcat:tomcat-annotations-api"
     ),
     JAKARTA_JSON_API(HIGHEST_VERSION,
-        "jakarta.json:jakarta.json-api",
-        "org.glassfish:jakarta.json"
+            "jakarta.json:jakarta.json-api",
+            "org.glassfish:jakarta.json"
     ),
     JAKARTA_MAIL_API(HIGHEST_VERSION, JakartaMailApiRule.class,
-        "jakarta.mail:jakarta.mail-api",
-        "com.sun.mail:mailapi",
-        "com.sun.mail:jakarta.mail",
-        "org.eclipse.angus:jakarta.mail"
+            "jakarta.mail:jakarta.mail-api",
+            "com.sun.mail:mailapi",
+            "com.sun.mail:jakarta.mail",
+            "org.eclipse.angus:jakarta.mail"
     ),
     JAKARTA_SERVLET_API(HIGHEST_VERSION, JakartaServletApiRule.class,
-        "jakarta.servlet:jakarta.servlet-api",
-        "org.apache.tomcat:tomcat-servlet-api",
-        "org.apache.tomcat.embed:tomcat-embed-core",
-        "org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api"
+            "jakarta.servlet:jakarta.servlet-api",
+            "org.apache.tomcat:tomcat-servlet-api",
+            "org.apache.tomcat.embed:tomcat-embed-core",
+            "org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api"
     ),
     JAKARTA_WEBSOCKET_API(HIGHEST_VERSION, JakartaWebsocketApiRule.class,
-        "jakarta.websocket:jakarta.websocket-api",
-        "org.apache.tomcat:tomcat-websocket-api",
-        "org.apache.tomcat:tomcat-websocket",
-        "org.apache.tomcat.embed:tomcat-embed-websocket",
-        "org.eclipse.jetty.toolchain:jetty-jakarta-websocket-api"
+            "jakarta.websocket:jakarta.websocket-api",
+            "org.apache.tomcat:tomcat-websocket-api",
+            "org.apache.tomcat:tomcat-websocket",
+            "org.apache.tomcat.embed:tomcat-embed-websocket",
+            "org.eclipse.jetty.toolchain:jetty-jakarta-websocket-api"
     ),
     JAKARTA_WEBSOCKET_CLIENT_API(HIGHEST_VERSION, JakartaWebsocketClientApiRule.class,
-        "jakarta.websocket:jakarta.websocket-client-api",
-        "org.apache.tomcat:tomcat-websocket-client-api",
-        "org.apache.tomcat:tomcat-websocket",
-        "org.apache.tomcat.embed:tomcat-embed-websocket",
-        "org.eclipse.jetty.toolchain:jetty-jakarta-websocket-api"
+            "jakarta.websocket:jakarta.websocket-client-api",
+            "org.apache.tomcat:tomcat-websocket-client-api",
+            "org.apache.tomcat:tomcat-websocket",
+            "org.apache.tomcat.embed:tomcat-embed-websocket",
+            "org.eclipse.jetty.toolchain:jetty-jakarta-websocket-api"
     ),
     JAKARTA_WS_RS_API(HIGHEST_VERSION, JakartaWsRsApiRule.class,
-        "jakarta.ws.rs:jakarta.ws.rs-api",
-        "org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_3.0_spec"
+            "jakarta.ws.rs:jakarta.ws.rs-api",
+            "org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_3.0_spec"
     ),
 
     JAVAX_ACTIVATION_API(HIGHEST_VERSION, JavaxActivationApiRule.class,
-        "javax.activation:activation",
-        "jakarta.activation:jakarta.activation-api",
-        "javax.activation:javax.activation-api",
-        "com.sun.activation:javax.activation",
-        "com.sun.activation:jakarta.activation"
+            "javax.activation:activation",
+            "jakarta.activation:jakarta.activation-api",
+            "javax.activation:javax.activation-api",
+            "com.sun.activation:javax.activation",
+            "com.sun.activation:jakarta.activation"
     ),
     JAVAX_ANNOTATION_API(HIGHEST_VERSION, JavaxAnnotationApiRule.class,
-        "javax.annotation:jsr250-api",
-        "jakarta.annotation:jakarta.annotation-api",
-        "javax.annotation:javax.annotation-api",
-        "org.apache.tomcat:tomcat-annotations-api"
+            "javax.annotation:jsr250-api",
+            "jakarta.annotation:jakarta.annotation-api",
+            "javax.annotation:javax.annotation-api",
+            "org.apache.tomcat:tomcat-annotations-api"
     ),
     JAVAX_EJB_API(HIGHEST_VERSION, JavaxEjbApiRule.class,
-        "javax.ejb:ejb",
-        "jakarta.ejb:jakarta.ejb-api",
-        "javax.ejb:javax.ejb-api",
-        "javax.ejb:ejb-api"
+            "javax.ejb:ejb",
+            "jakarta.ejb:jakarta.ejb-api",
+            "javax.ejb:javax.ejb-api",
+            "javax.ejb:ejb-api"
     ),
     JAVAX_EL_API(HIGHEST_VERSION, JavaxElApiRule.class,
-        "javax.el:el-api",
-        "jakarta.el:jakarta.el-api",
-        "javax.el:javax.el-api"
+            "javax.el:el-api",
+            "jakarta.el:jakarta.el-api",
+            "javax.el:javax.el-api"
     ),
     JAVAX_INJECT_API(HIGHEST_VERSION, JavaxInjectApiRule.class,
-        "javax.inject:javax.inject",
-        "jakarta.inject:jakarta.inject-api",
-        "com.jwebmp:javax.inject",
-        "org.glassfish.hk2.external:javax.inject",
-        "org.glassfish.hk2.external:jakarta.inject"
+            "javax.inject:javax.inject",
+            "jakarta.inject:jakarta.inject-api",
+            "com.jwebmp:javax.inject",
+            "org.glassfish.hk2.external:javax.inject",
+            "org.glassfish.hk2.external:jakarta.inject"
     ),
     JAVAX_JSON_API(HIGHEST_VERSION, JavaxJsonApiRule.class,
-        "javax.json:javax.json-api",
-        "jakarta.json:jakarta.json-api",
-        "org.glassfish:javax.json",
-        "org.glassfish:jakarta.json"
+            "javax.json:javax.json-api",
+            "jakarta.json:jakarta.json-api",
+            "org.glassfish:javax.json",
+            "org.glassfish:jakarta.json"
     ),
     JAVAX_JWS_API(HIGHEST_VERSION, JavaxJwsApisRule.class,
-        "javax.jws:javax.jws-api",
-        "jakarta.jws:jakarta.jws-api"
+            "javax.jws:javax.jws-api",
+            "jakarta.jws:jakarta.jws-api"
     ),
     JAVAX_MAIL_API(HIGHEST_VERSION, JavaxMailApiRule.class,
-        "com.sun.mail:mailapi", // API only
-        "jakarta.mail:jakarta.mail-api", // API only
-        "javax.mail:javax.mail-api", // API only
-        "javax.mail:mail", // API + Implementation
-        "com.sun.mail:javax.mail", // API + Implementation
-        "com.sun.mail:jakarta.mail", // API + Implementation
-        "org.apache.geronimo.javamail:geronimo-javamail_1.3.1_mail",
-        "org.apache.geronimo.javamail:geronimo-javamail_1.3.1_provider",
-        "org.apache.geronimo.specs:geronimo-javamail_1.3.1_spec",
-        "org.apache.geronimo.javamail:geronimo-javamail_1.4_mail",
-        "org.apache.geronimo.javamail:geronimo-javamail_1.4_provider",
-        "org.apache.geronimo.specs:geronimo-javamail_1.4_spec",
-        "org.apache.geronimo.javamail:geronimo-javamail_1.6_mail",
-        "org.apache.geronimo.javamail:geronimo-javamail_1.6_provider",
-        "org.apache.geronimo.specs:geronimo-javamail_1.6_spec"
+            "com.sun.mail:mailapi", // API only
+            "jakarta.mail:jakarta.mail-api", // API only
+            "javax.mail:javax.mail-api", // API only
+            "javax.mail:mail", // API + Implementation
+            "com.sun.mail:javax.mail", // API + Implementation
+            "com.sun.mail:jakarta.mail", // API + Implementation
+            "org.apache.geronimo.javamail:geronimo-javamail_1.3.1_mail",
+            "org.apache.geronimo.javamail:geronimo-javamail_1.3.1_provider",
+            "org.apache.geronimo.specs:geronimo-javamail_1.3.1_spec",
+            "org.apache.geronimo.javamail:geronimo-javamail_1.4_mail",
+            "org.apache.geronimo.javamail:geronimo-javamail_1.4_provider",
+            "org.apache.geronimo.specs:geronimo-javamail_1.4_spec",
+            "org.apache.geronimo.javamail:geronimo-javamail_1.6_mail",
+            "org.apache.geronimo.javamail:geronimo-javamail_1.6_provider",
+            "org.apache.geronimo.specs:geronimo-javamail_1.6_spec"
     ),
     JAVAX_PERSISTENCE_API(HIGHEST_VERSION, JavaxPersistenceApiRule.class,
-        "javax.persistence:javax.persistence-api",
-        "jakarta.persistence:jakarta.persistence-api",
-        "org.hibernate.javax.persistence:hibernate-jpa-2.2-api",
-        "org.hibernate.javax.persistence:hibernate-jpa-2.1-api",
-        "org.hibernate.javax.persistence:hibernate-jpa-2.0-api"
+            "javax.persistence:javax.persistence-api",
+            "jakarta.persistence:jakarta.persistence-api",
+            "org.hibernate.javax.persistence:hibernate-jpa-2.2-api",
+            "org.hibernate.javax.persistence:hibernate-jpa-2.1-api",
+            "org.hibernate.javax.persistence:hibernate-jpa-2.0-api"
     ),
     JAVAX_SERVLET_API(HIGHEST_VERSION, JavaxServletApiRule.class,
-        "javax.servlet:servlet-api",
-        "javax.servlet:javax.servlet-api",
-        "jakarta.servlet:jakarta.servlet-api",
-        "org.apache.tomcat:servlet-api",
-        "org.apache.tomcat:tomcat-servlet-api",
-        "org.apache.tomcat.embed:tomcat-embed-core",
-        "servletapi:servletapi"
+            "javax.servlet:servlet-api",
+            "javax.servlet:javax.servlet-api",
+            "jakarta.servlet:jakarta.servlet-api",
+            "org.apache.tomcat:servlet-api",
+            "org.apache.tomcat:tomcat-servlet-api",
+            "org.apache.tomcat.embed:tomcat-embed-core",
+            "servletapi:servletapi"
     ),
     JAVAX_SERVLET_JSP(HIGHEST_VERSION, JavaxServletJspRule.class,
-        "javax.servlet:jsp-api",
-        "javax.servlet.jsp:jsp-api",
-        "javax.servlet.jsp:javax.servlet.jsp-api",
-        "jakarta.servlet.jsp:jakarta.servlet.jsp-api"
+            "javax.servlet:jsp-api",
+            "javax.servlet.jsp:jsp-api",
+            "javax.servlet.jsp:javax.servlet.jsp-api",
+            "jakarta.servlet.jsp:jakarta.servlet.jsp-api"
     ),
     JAVAX_SERVLET_JSTL(HIGHEST_VERSION, JavaxServletJstlRule.class,
-        "javax.servlet:jstl",
-        "javax.servlet.jsp.jstl:jstl-api",
-        "javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api",
-        "jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api"
+            "javax.servlet:jstl",
+            "javax.servlet.jsp.jstl:jstl-api",
+            "javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api",
+            "jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api"
     ),
     JAVAX_SOAP_API(HIGHEST_VERSION, JavaxSoapApiRule.class,
-        "javax.xml.soap:javax.xml.soap-api",
-        "jakarta.xml.soap:jakarta.xml.soap-api"
+            "javax.xml.soap:javax.xml.soap-api",
+            "jakarta.xml.soap:jakarta.xml.soap-api"
     ),
     JAVAX_TRANSACTION_API(HIGHEST_VERSION, JavaxTransactionApiRule.class,
-        "javax.transaction:jta",
-        "javax.transaction:javax.transaction-api",
-        "jakarta.transaction:jakarta.transaction-api"
+            "javax.transaction:jta",
+            "javax.transaction:javax.transaction-api",
+            "jakarta.transaction:jakarta.transaction-api"
     ),
     JAVAX_VALIDATION_API(HIGHEST_VERSION, JavaxValidationApiRule.class,
-        "javax.validation:validation-api",
-        "jakarta.validation:jakarta.validation-api"
+            "javax.validation:validation-api",
+            "jakarta.validation:jakarta.validation-api"
     ),
     JAVAX_WEBSOCKET_API_RULE(HIGHEST_VERSION, JavaxWebsocketApiRule.class,
-        "javax.websocket:javax.websocket-api",
-        "jakarta.websocket:jakarta.websocket-api",
-        "javax.websocket:javax.websocket-client-api", // in javax namespace, websocket-api and websocket-client-api overlap
-        "jakarta.websocket:jakarta.websocket-client-api",
-        "org.apache.tomcat:tomcat-websocket-api",
-        "org.apache.tomcat:tomcat-websocket",
-        "org.apache.tomcat.embed:tomcat-embed-websocket",
-        "org.eclipse.jetty.toolchain:jetty-javax-websocket-api"
+            "javax.websocket:javax.websocket-api",
+            "jakarta.websocket:jakarta.websocket-api",
+            "javax.websocket:javax.websocket-client-api", // in javax namespace, websocket-api and websocket-client-api overlap
+            "jakarta.websocket:jakarta.websocket-client-api",
+            "org.apache.tomcat:tomcat-websocket-api",
+            "org.apache.tomcat:tomcat-websocket",
+            "org.apache.tomcat.embed:tomcat-embed-websocket",
+            "org.eclipse.jetty.toolchain:jetty-javax-websocket-api"
     ),
     JAVAX_WS_RS_API(HIGHEST_VERSION, JavaxWsRsApiRule.class,
-        "javax.ws.rs:jsr311-api",
-        "org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.1_spec",
-        "org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.0_spec",
-        "org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_1.1_spec",
-        "org.jboss.resteasy:jaxrs-api",
-        "jakarta.ws.rs:jakarta.ws.rs-api",
-        "javax.ws.rs:javax.ws.rs-api"
+            "javax.ws.rs:jsr311-api",
+            "org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.1_spec",
+            "org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.0_spec",
+            "org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_1.1_spec",
+            "org.jboss.resteasy:jaxrs-api",
+            "jakarta.ws.rs:jakarta.ws.rs-api",
+            "javax.ws.rs:javax.ws.rs-api"
     ),
     JAVAX_XML_BIND_API(HIGHEST_VERSION, JavaxXmlBindApiRule.class,
-        "javax.xml.bind:jaxb-api",
-        "jakarta.xml.bind:jakarta.xml.bind-api"
+            "javax.xml.bind:jaxb-api",
+            "jakarta.xml.bind:jakarta.xml.bind-api"
     ),
     JAVAX_XML_WS_API(HIGHEST_VERSION, JavaxXmlWsApiRule.class,
-        "javax.xml.ws:jaxws-api",
-        "jakarta.xml.ws:jakarta.xml.ws-api"
+            "javax.xml.ws:jaxws-api",
+            "jakarta.xml.ws:jakarta.xml.ws-api"
     ),
 
     /**
@@ -448,8 +448,8 @@ public enum CapabilityDefinitions {
      * * `log4j-core` and `log4j-to-slf4j` are exclusive
      */
     LOG4J2_IMPL(NONE,
-        LoggingModuleIdentifiers.LOG4J_TO_SLF4J.moduleId,
-        LoggingModuleIdentifiers.LOG4J_CORE.moduleId
+            LoggingModuleIdentifiers.LOG4J_TO_SLF4J.moduleId,
+            LoggingModuleIdentifiers.LOG4J_CORE.moduleId
     ),
 
     /**
@@ -570,7 +570,7 @@ public enum CapabilityDefinitions {
     }
 
     CapabilityDefinitions(DefaultResolutionStrategy defaultStrategy, String group, Class<? extends CapabilityDefinitionsRule> ruleClass, String... modules) {
-        this.group =  group;
+        this.group = group;
         this.capabilityName = nameInKebabCase();
         this.modules = Arrays.asList(modules);
         this.defaultStrategy = defaultStrategy;
