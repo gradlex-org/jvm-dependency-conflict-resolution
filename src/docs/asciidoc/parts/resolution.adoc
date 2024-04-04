@@ -22,7 +22,7 @@ plugins {
 
 This plugin should be applied to all projects, ideally as part of your convention plugin.
 
-If the <<detection-plugin,jvm-ecosystem-conflict-resolution>> plugin has been explicitly applied as well, either as a settings or project plugin, it will be automatically applied (as project plugin).
+If the <<detection-plugin,jvm-ecosystem-conflict-detection>> plugin has not been explicitly applied as well, either as a settings or project plugin, it will be automatically applied (as project plugin).
 
 == What is the concrete effect of the plugin?
 
@@ -57,48 +57,54 @@ jvmDependencyConflicts {
 ----
 
 [[conflictResolution-dsl-block]]
-== conflictResolution – Customize resolution strategies for capability conflicts
+== Customize resolution of capability conflicts
 
 The plugin adds a _default resolution strategy_ for each capability.
 Which in most cases means that Gradle will automatically pick the highest version of all components in conflict.
 This is to cover the cases where users _just want things to work somehow_.
 But it might not always be the right solution.
 
-If you prefer to get all the conflicts reported and then add the conflict resolution explicitly (see next section),
-you can deactivate the default resolution for one or all rules through the `jvmDependencyConflicts` extension.
+You can use the `conflictResolution` section of `jvmDependencyConflicts` to make an explicit selection for a given capability.
 
-[source.multi-language-sample,kotlin]
+[source,groovy]
 ----
-// Deactivate default resolution strategy for selected rules
 jvmDependencyConflicts {
     conflictResolution {
+        // Explicitly select candidates for capabilities
+        select(CapabilityDefinition.CGLIB, "cglib:cglib")
+        select(CapabilityDefinition.JAVAX_MAIL_API, "com.sun.mail:jakarta.mail")
+    }
+}
+----
+
+NOTE: You may also use `selectLenient()`.
+In a larger build, there can be situations where the desired selection is not always available.
+For example, if the _compile classpath_ of a module does not contain all dependencies of the final application _runtime classpath_.
+In such cases, it may be okay and simplify things by just selecting one of the candidates, which `selectLenient()` does.
+
+If you prefer to get a conflict reported without making a selection, you can also deactivate the default resolution strategy.
+
+[source,groovy]
+----
+
+jvmDependencyConflicts {
+    conflictResolution {
+        // Deactivate default resolution strategy for selected rules
         deactivateResolutionStrategy(CapabilityDefinitions.CGLIB)
         deactivateResolutionStrategy(CapabilityDefinitions.JAVAX_MAIL_API)
     }
 }
 ----
-[source.multi-language-sample,groovy]
-----
-// Deactivate default resolution strategy for selected rules
-jvmDependencyConflicts {
-    conflictResolution {
-        deactivateResolutionStrategy(CapabilityDefinitions.CGLIB)
-        deactivateResolutionStrategy(CapabilityDefinitions.JAVAX_MAIL_API)
-    }
-}
-----
-
-*TODO document more*
 
 [[logging-dsl-block]]
-== logging – Select and enforce a logging framework
+== Select and enforce a logging framework
 
-This part of the DSL enables you to declaratively enforce the logging framework it your application should use _at build time_.
+The `logging` section of `jvmDependencyConflicts` enables you to declaratively enforce the logging framework your application should use _at build time_.
 
 TIP: The different configuration options documented below do not _add_ dependencies.
 Make sure to have the expected dependency in your graph, either as a direct or transitive one.
 
-The `logging { }` block first provides a number of high-level, one stop solutions, for selecting a logging solution:
+The `logging { }` section first provides a number of high-level, one stop solutions, for selecting a logging solution:
 
 |===
 | Method | Documentation | Required dependency
@@ -122,7 +128,8 @@ The `logging { }` block first provides a number of high-level, one stop solution
 
 TIP: The method without parameter will apply the setup to all dependency configuration, while the other one will limit the setup to the specified dependency configuration.
 
-If you want a finer grained control, the `logging { }` block provides lower level entry points for solving the different logging capability conflicts:
+If you want a finer grained control, the `logging { }` section provides lower level entry points for solving the different logging capability conflicts:
+
 |===
 | Method | Accepted parameter values | Documentation
 
@@ -177,6 +184,62 @@ TIP: Notations above are those accepted by https://docs.gradle.org/6.0.1/dsl/org
 Most often this is a `group:name:version` `String`.
 
 [[patch-dsl-block]]
-== patch – Patch metadata of published components
+== Patch metadata of published components
 
-*TODO document*
+The `patch` section of `jvmDependencyConflicts` enables you to do individual adjustments to the metadata of published components.
+This can be done to add information the <<detection-plugin,jvm-ecosystem-conflict-detection>> plugin does not yet cover or to make opinionated adjustments for your context.
+In the case of generally applicable adjustments, like adding a capability, please consider contributing your discovery back to the plugin by https://github.com/gradlex-org/java-ecosystem-capabilities/compare[creating a PR].
+
+[source,groovy]
+----
+jvmDependencyConflicts {
+    patch {
+         // patch metadata of the given module
+        module("io.netty:netty-common") {
+            // required adjustments (see table below)
+        }
+        // align versions (through BOM)
+        alignWithBom("org.ow2.asm:asm-bom", "org.ow2.asm:asm", "org.ow2.asm:asm-util")
+        // align versions (without using a BOM)
+        align("org.ow2.asm:asm", "org.ow2.asm:asm-util")
+    }
+}
+----
+
+|===
+| Method | Documentation
+
+| `addApiDependency(dependency)`
+| Add a dependency in 'api' scope (visible at runtime and compile time).
+
+| `addRuntimeOnlyDependency(dependency)`
+| Add a dependency in 'runtimeOnly' scope (visible at runtime).
+
+| `addCompileOnlyApiDependency(dependency)`
+| Add a dependency in 'compileOnlyApi' scope (visible at compile time).
+
+| `removeDependency(dependency)`
+| Remove the given dependency from all scopes.
+
+| `reduceToRuntimeOnlyDependency(dependency)`
+| Reduce the given 'api' dependency to 'runtimeOnly' scope.
+
+| `reduceToCompileOnlyApiDependency(dependency)`
+| Reduce the given 'api' dependency to 'compileOnlyApi' scope.
+
+| `addCapability(capability)`
+| Add a capability.
+
+| `removeCapability(capability)`
+| Remove a capability.
+
+| `addFeature(classifier)`
+| Make the Jar with the give 'classifier' known as _Feature Variant_ so that it can be selected via capability in a dependency declaration.
+
+| `addTargetPlatformVariant(classifier, os, arch)`
+| Make the Jar with the give 'classifier' known as additional variant with the _OperatingSystemFamily_ and _MachineArchitecture_ attributes set.
+
+| `setStatusToIntegration(markerInVersion)`
+| Set the status of pre-release versions that are identified by one of the _marker string_ (e.g. `-rc`, `-m`) to `integration` (will then not be considered when using `latest.release` as version).
+
+|===
