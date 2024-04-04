@@ -150,9 +150,31 @@ class LoggingCapabilitiesPluginDetectionFunctionalTest extends AbstractLoggingCa
         result.output.contains("slf4j-simple-1.7.27.jar")
     }
 
+    def "provides alignment on Slf4J for dependency without version"() {
+        given:
+        withBuildScriptWithDependencies("org.slf4j:slf4j-simple", "org.slf4j:slf4j-api:1.7.27")
+
+        when:
+        def result = build(['doIt'])
+
+        then:
+        result.output.contains("slf4j-simple-1.7.27.jar")
+    }
+
     def "provides alignment on Slf4J2"() {
         given:
         withBuildScriptWithDependencies("org.slf4j:slf4j-simple:2.0.9", "org.slf4j:slf4j-api:2.0.11")
+
+        when:
+        def result = build(['doIt'])
+
+        then:
+        result.output.contains("slf4j-simple-2.0.11.jar")
+    }
+
+    def "provides alignment on Slf4J2 for dependency without version"() {
+        given:
+        withBuildScriptWithDependencies("org.slf4j:slf4j-simple", "org.slf4j:slf4j-api:2.0.11")
 
         when:
         def result = build(['doIt'])
