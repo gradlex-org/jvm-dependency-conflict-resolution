@@ -3,8 +3,8 @@
 
 This plugin is responsible for applying the capability rules that support the other two plugins.
 
-WARNING: Applying only the `jvm-ecosystem-conflict-detection` plugin will result in broken builds if capability conflicts are found.
-Conflict resolution is handled by the <<resolution-plugin,`jvm-ecosystem-conflict-resolution`>> plugin.
+WARNING: Applying only the `jvm-dependency-conflict-detection` plugin will result in broken builds if capability conflicts are found.
+Conflict resolution is handled by the <<resolution-plugin,`jvm-dependency-conflict-resolution`>> plugin.
 
 == Plugin dependency
 Add this to the build file of your convention plugin's build (e.g. `build-logic/build.gradle(.kts)` or `buildSrc/build.gradle(.kts)`).
@@ -12,7 +12,7 @@ Add this to the build file of your convention plugin's build (e.g. `build-logic/
 [source,groovy]
 ----
 dependencies {
-    implementation("org.gradlex:jvm-ecosystem-conflict-resolution:2.0")
+    implementation("org.gradlex:jvm-dependency-conflict-resolution:2.0")
 }
 ----
 
@@ -21,7 +21,7 @@ dependencies {
 [source,groovy]
 ----
 plugins {
-    id("org.gradlex.jvm-ecosystem-conflict-detection") version "2.0"
+    id("org.gradlex.jvm-dependency-conflict-detection") version "2.0"
 }
 ----
 
@@ -48,7 +48,7 @@ image::build-scan.png[link=https://scans.gradle.com/s/2pcbycndpf54c/dependencies
 [[conflict]]
 == I use the plugin and now there is a conflict - what now?
 
-TIP: You can apply the <<resolution-plugin,jvm-ecosystem-conflict-detection>> plugin to get some automatic conflict resolution.
+TIP: You can apply the <<resolution-plugin,jvm-dependency-conflict-detection>> plugin to get some automatic conflict resolution.
 
 If you get an error like this:
 
@@ -90,7 +90,7 @@ If you encounter a problem with a rule in your build:
 
 In the second case, you cannot deactivate one of the rules in the plugin.
 But you can treat the modified metadata as if it was the original metadata and add another rule on top to modify it further or to revert the effect of the rule in this plugin.
-This can be expressed in a compact way if you also use the <<resolution-plugin,`jvm-ecosystem-conflict-resolution`>> plugin. For example:
+This can be expressed in a compact way if you also use the <<resolution-plugin,`jvm-dependency-conflict-resolution`>> plugin. For example:
 
 [source,groovy]
 ----
@@ -102,7 +102,7 @@ jvmDependencyConflicts {
 }
 ----
 
-If you do not want to use the <<resolution-plugin,`jvm-ecosystem-conflict-resolution`>> plugin, you can use Gradle's general Component Metadata Rule API.
+If you do not want to use the <<resolution-plugin,`jvm-dependency-conflict-resolution`>> plugin, you can use Gradle's general Component Metadata Rule API.
 For example like this:
 
 [source,groovy]

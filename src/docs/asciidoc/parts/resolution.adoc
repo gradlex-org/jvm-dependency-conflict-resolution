@@ -7,7 +7,7 @@ Add this to the build file of your convention plugin's build (e.g. `build-logic/
 [source,groovy]
 ----
 dependencies {
-    implementation("org.gradlex:jvm-ecosystem-conflict-resolution:2.0")
+    implementation("org.gradlex:jvm-dependency-conflict-resolution:2.0")
 }
 ----
 
@@ -16,17 +16,17 @@ dependencies {
 [source,groovy]
 ----
 plugins {
-    id("org.gradlex.jvm-ecosystem-conflict-resolution")
+    id("org.gradlex.jvm-dependency-conflict-resolution")
 }
 ----
 
 This plugin should be applied to all projects, ideally as part of your convention plugin.
 
-If the <<detection-plugin,jvm-ecosystem-conflict-detection>> plugin has not been explicitly applied as well, either as a settings or project plugin, it will be automatically applied (as project plugin).
+If the <<detection-plugin,jvm-dependency-conflict-detection>> plugin has not been explicitly applied as well, either as a settings or project plugin, it will be automatically applied (as project plugin).
 
 == What is the concrete effect of the plugin?
 
-The plugin registers capability conflict resolutions for the <<all-capabilities,capabilities>> added by the <<detection-plugin,jvm-ecosystem-conflict-plugin>>.
+The plugin registers capability conflict resolutions for the <<all-capabilities,capabilities>> added by the <<detection-plugin,jvm-dependency-conflict-plugin>>.
 This enables a number of <<conflict,capability conflicts>> to be resolved automatically.
 For conflicts that...
 
@@ -205,7 +205,7 @@ Most often this is a `group:name:version` `String`.
 == Patch metadata of published components
 
 The `patch` section of `jvmDependencyConflicts` enables you to do individual adjustments to the metadata of published components.
-This can be done to add information the <<detection-plugin,jvm-ecosystem-conflict-detection>> plugin does not yet cover or to make opinionated adjustments for your context.
+This can be done to add information the <<detection-plugin,jvm-dependency-conflict-detection>> plugin does not yet cover or to make opinionated adjustments for your context.
 In the case of generally applicable adjustments, like adding a capability, please consider contributing your discovery back to the plugin by https://github.com/gradlex-org/java-ecosystem-capabilities/compare[creating a PR].
 
 [source,groovy]

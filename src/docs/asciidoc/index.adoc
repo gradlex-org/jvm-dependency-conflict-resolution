@@ -35,11 +35,11 @@ TIP: These plugins require Gradle 6.8.3 at a minimum.
 
 The benefits described above are achieved through three different plugins:
 
-`org.gradlex.jvm-ecosystem-conflict-detection`::
+`org.gradlex.jvm-dependency-conflict-detection`::
 <<detection-plugin,This plugin>> adds capability declarations to the metadata of well-known components hosted on Maven Central that are used in many Java projects.
 This plugin can be applied as a `Settings` or a `Project` plugin.
 
-`org.gradlex.jvm-ecosystem-conflict-resolution`::
+`org.gradlex.jvm-dependency-conflict-resolution`::
 <<resolution-plugin,This plugin>> adds opinionated capability resolutions to conflicting API or implementation libraries in the Java ecosystem.
 This plugin can be applied as a `Project` plugin.
 It adds a DSL to configure resolution strategies, select logging implementations, and fix/enhance metadata of published components.
