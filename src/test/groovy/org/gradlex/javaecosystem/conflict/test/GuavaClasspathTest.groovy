@@ -127,7 +127,7 @@ class GuavaClasspathTest extends Specification {
         buildFile << """
             plugins {
                 id("java-library")
-                id("org.gradlex.jvm-ecosystem-conflict-resolution")
+                id("org.gradlex.jvm-dependency-conflict-resolution")
             }
 
             repositories {

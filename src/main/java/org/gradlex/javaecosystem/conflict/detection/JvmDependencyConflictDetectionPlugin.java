@@ -25,7 +25,7 @@ import org.gradle.util.GradleVersion;
 import org.gradlex.javaecosystem.conflict.detection.rules.AlignmentDefinition;
 import org.gradlex.javaecosystem.conflict.detection.rules.CapabilityDefinition;
 
-public class JvmConflictDetectionPlugin implements Plugin<ExtensionAware> {
+public class JvmDependencyConflictDetectionPlugin implements Plugin<ExtensionAware> {
 
     // Minimal version that works reliably with alignment, has the substitution rules `using` API
     // and has rulesMode setting in dependencyResolutionManagement

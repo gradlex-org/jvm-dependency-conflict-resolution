@@ -51,7 +51,7 @@ abstract class AbstractLoggingCapabilitiesPluginFunctionalTest extends Specifica
         buildFile << """
             plugins {
                 `java-library`
-                id("org.gradlex.jvm-ecosystem-conflict-resolution")
+                id("org.gradlex.jvm-dependency-conflict-resolution")
             }
 
             repositories {

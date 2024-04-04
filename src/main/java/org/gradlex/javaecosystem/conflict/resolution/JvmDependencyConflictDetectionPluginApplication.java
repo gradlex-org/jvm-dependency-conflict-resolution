@@ -20,19 +20,19 @@ import org.gradle.api.Project;
 import org.gradle.api.initialization.resolve.RulesMode;
 import org.gradle.api.internal.GradleInternal;
 import org.gradle.api.internal.SettingsInternal;
-import org.gradlex.javaecosystem.conflict.detection.JvmConflictDetectionPlugin;
+import org.gradlex.javaecosystem.conflict.detection.JvmDependencyConflictDetectionPlugin;
 
-final class JvmConflictDetectionPluginApplication {
+final class JvmDependencyConflictDetectionPluginApplication {
 
-    private static final String PLUGIN_ID = "org.gradlex.jvm-ecosystem-conflict-detection";
+    private static final String PLUGIN_ID = "org.gradlex.jvm-dependency-conflict-detection";
 
-    static JvmConflictDetectionPluginApplication of(Project project) {
-        return new JvmConflictDetectionPluginApplication(project);
+    static JvmDependencyConflictDetectionPluginApplication of(Project project) {
+        return new JvmDependencyConflictDetectionPluginApplication(project);
     }
 
     private final Project project;
 
-    private JvmConflictDetectionPluginApplication(Project project) {
+    private JvmDependencyConflictDetectionPluginApplication(Project project) {
         this.project = project;
     }
 
@@ -43,7 +43,7 @@ final class JvmConflictDetectionPluginApplication {
         switch(rulesMode) {
             // PREFER_PROJECT is the default if the user did not configure something else
             case PREFER_PROJECT:
-                project.getPlugins().apply(JvmConflictDetectionPlugin.class);
+                project.getPlugins().apply(JvmDependencyConflictDetectionPlugin.class);
                 break;
             case PREFER_SETTINGS:
             case FAIL_ON_PROJECT_RULES:
@@ -61,7 +61,7 @@ final class JvmConflictDetectionPluginApplication {
     }
 
     private boolean isBaseAppliedViaSettings() {
-        return getSettings().getPlugins().hasPlugin(JvmConflictDetectionPlugin.class);
+        return getSettings().getPlugins().hasPlugin(JvmDependencyConflictDetectionPlugin.class);
     }
 
     private RulesMode getRulesMode() {

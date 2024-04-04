@@ -30,7 +30,7 @@ class RulesModeTest extends Specification {
         given:
         buildFile << """
             plugins {
-                id("org.gradlex.jvm-ecosystem-conflict-resolution")
+                id("org.gradlex.jvm-dependency-conflict-resolution")
             }
         """
 
@@ -49,7 +49,7 @@ class RulesModeTest extends Specification {
         and:
         buildFile << """
             plugins {
-                id("org.gradlex.jvm-ecosystem-conflict-resolution")
+                id("org.gradlex.jvm-dependency-conflict-resolution")
             }
         """
 
@@ -59,14 +59,14 @@ class RulesModeTest extends Specification {
         then:
         result.output.contains("RulesMode is set to FAIL_ON_PROJECT_RULES")
         result.output.contains("As a result this plugin will not work.")
-        result.output.contains("Fix this problem by either changing dependencyResolutionManagement.rulesMode to PREFER_PROJECT or by applying 'org.gradlex.jvm-ecosystem-conflict-detection' as a settings plugin")
+        result.output.contains("Fix this problem by either changing dependencyResolutionManagement.rulesMode to PREFER_PROJECT or by applying 'org.gradlex.jvm-dependency-conflict-detection' as a settings plugin")
     }
 
     def "applying the plugin in a project and applying the base plugin in settings with rulesMode set to FAIL_ON_PROJECT_RULES works"() {
         given:
         settingsFile << """
             plugins {
-                id("org.gradlex.jvm-ecosystem-conflict-detection")
+                id("org.gradlex.jvm-dependency-conflict-detection")
             }
 
             dependencyResolutionManagement {
@@ -77,7 +77,7 @@ class RulesModeTest extends Specification {
         and:
         buildFile << """
             plugins {
-                id("org.gradlex.jvm-ecosystem-conflict-resolution")
+                id("org.gradlex.jvm-dependency-conflict-resolution")
             }
         """
 
@@ -96,7 +96,7 @@ class RulesModeTest extends Specification {
         and:
         buildFile << """
             plugins {
-                id("org.gradlex.jvm-ecosystem-conflict-resolution")
+                id("org.gradlex.jvm-dependency-conflict-resolution")
             }
         """
 
@@ -106,14 +106,14 @@ class RulesModeTest extends Specification {
         then:
         result.output.contains("RulesMode is set to PREFER_SETTINGS")
         result.output.contains("As a result this plugin will not work.")
-        result.output.contains("Fix this problem by either changing dependencyResolutionManagement.rulesMode to PREFER_PROJECT or by applying 'org.gradlex.jvm-ecosystem-conflict-detection' as a settings plugin")
+        result.output.contains("Fix this problem by either changing dependencyResolutionManagement.rulesMode to PREFER_PROJECT or by applying 'org.gradlex.jvm-dependency-conflict-detection' as a settings plugin")
     }
 
     def "applying the plugin in a project and applying the base plugin in settings and rulesMode set to PREFER_SETTINGS works"() {
         given:
         settingsFile << """
             plugins {
-                id("org.gradlex.jvm-ecosystem-conflict-detection")
+                id("org.gradlex.jvm-dependency-conflict-detection")
             }
 
             dependencyResolutionManagement {
@@ -124,7 +124,7 @@ class RulesModeTest extends Specification {
         and:
         buildFile << """
             plugins {
-                id("org.gradlex.jvm-ecosystem-conflict-resolution")
+                id("org.gradlex.jvm-dependency-conflict-resolution")
             }
         """
 
@@ -143,7 +143,7 @@ class RulesModeTest extends Specification {
         and:
         buildFile << """
             plugins {
-                id("org.gradlex.jvm-ecosystem-conflict-resolution")
+                id("org.gradlex.jvm-dependency-conflict-resolution")
             }
         """
 

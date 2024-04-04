@@ -26,8 +26,8 @@ tasks.withType<Javadoc>().configureEach {
 }
 
 pluginPublishConventions {
-    id("org.gradlex.jvm-ecosystem-conflict-resolution")
-    implementationClass("org.gradlex.javaecosystem.conflict.resolution.JvmConflictResolutionPlugin")
+    id("org.gradlex.jvm-dependency-conflict-resolution")
+    implementationClass("org.gradlex.javaecosystem.conflict.resolution.JvmDependencyConflictResolutionPlugin")
     displayName("JVM Conflict Resolution Gradle Plugin")
     description("Convenient dependency conflict management for Jave projects.")
     tags("dependency", "dependencies", "dependency-management", "capabilities", "java", "logging",
@@ -54,9 +54,9 @@ pluginPublishConventions {
 
 gradlePlugin {
     plugins {
-        create("jvm-ecosystem-conflict-detection") {
-            id = "org.gradlex.jvm-ecosystem-conflict-detection"
-            implementationClass = "org.gradlex.javaecosystem.conflict.detection.JvmConflictDetectionPlugin"
+        create("jvm-dependency-conflict-detection") {
+            id = "org.gradlex.jvm-dependency-conflict-detection"
+            implementationClass = "org.gradlex.javaecosystem.conflict.detection.JvmDependencyConflictDetectionPlugin"
             displayName = "JVM Conflict Detection Gradle Plugin"
             description = "Adds Capabilities to well-known Components hosted on Maven Central."
         }

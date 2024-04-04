@@ -14,7 +14,7 @@ class SettingsTest extends Specification {
         given:
         settingsFile << """
             plugins {
-                id("org.gradlex.jvm-ecosystem-conflict-detection")
+                id("org.gradlex.jvm-dependency-conflict-detection")
             }
         """
         buildFile << """

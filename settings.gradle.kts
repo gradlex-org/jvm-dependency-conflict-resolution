@@ -9,7 +9,7 @@ plugins {
     id("gradlexbuild.build-parameters")
 }
 
-rootProject.name = "java-ecosystem-capabilities"
+rootProject.name = "jvm-dependency-conflict-resolution"
 
 dependencyResolutionManagement {
     repositories.mavenCentral()

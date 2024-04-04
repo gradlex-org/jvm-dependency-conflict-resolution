@@ -31,11 +31,11 @@ import java.util.Optional;
 import static org.gradlex.javaecosystem.conflict.resolution.DefaultResolutionStrategy.FIRST_MODULE;
 import static org.gradlex.javaecosystem.conflict.resolution.DefaultResolutionStrategy.HIGHEST_VERSION;
 
-public abstract class JvmConflictResolutionPlugin implements Plugin<Project> {
+public abstract class JvmDependencyConflictResolutionPlugin implements Plugin<Project> {
 
     @Override
     public void apply(Project project) {
-        JvmConflictDetectionPluginApplication.of(project).handleRulesMode();
+        JvmDependencyConflictDetectionPluginApplication.of(project).handleRulesMode();
 
         JvmDependencyConflictsExtension jvmDependencyConflicts = project.getExtensions().create("jvmDependencyConflicts", JvmDependencyConflictsExtension.class);
 

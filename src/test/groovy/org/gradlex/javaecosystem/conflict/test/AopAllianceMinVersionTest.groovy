@@ -22,7 +22,7 @@ class AopAllianceMinVersionTest extends Specification {
         given:
         buildFile << """
             plugins {
-                id("org.gradlex.jvm-ecosystem-conflict-resolution")
+                id("org.gradlex.jvm-dependency-conflict-resolution")
                 id("java-library")
             }
 
@@ -55,7 +55,7 @@ class AopAllianceMinVersionTest extends Specification {
         given:
         buildFile << """
             plugins {
-                id("org.gradlex.jvm-ecosystem-conflict-resolution")
+                id("org.gradlex.jvm-dependency-conflict-resolution")
                 id("java-library")
             }
 

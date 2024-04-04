@@ -14,7 +14,7 @@ class ComponentStatusRuleTest extends Specification {
         buildFile << """
             import org.gradlex.javaecosystem.conflict.resolution.rules.*
             plugins {
-                id("org.gradlex.jvm-ecosystem-conflict-resolution")
+                id("org.gradlex.jvm-dependency-conflict-resolution")
                 id("java-library")
             }
             repositories.mavenCentral()
