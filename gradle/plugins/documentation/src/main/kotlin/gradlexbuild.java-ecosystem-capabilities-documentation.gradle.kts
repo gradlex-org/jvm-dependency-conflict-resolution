@@ -1,5 +1,5 @@
-import gradlexbuild.javaecosystem.capabilities.documentation.ReadmeUpdate
-import gradlexbuild.javaecosystem.capabilities.documentation.SamplesCompletenessCheck
+import gradlexbuild.javaecosystem.conflict.documentation.ReadmeUpdate
+import gradlexbuild.javaecosystem.conflict.documentation.SamplesCompletenessCheck
 
 plugins {
     id("java")
