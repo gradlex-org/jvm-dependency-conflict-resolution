@@ -16,6 +16,15 @@ tasks.withType<JavaCompile>().configureEach {
     options.release = 8
 }
 
+tasks.withType<Javadoc>().configureEach {
+    options {
+        this as StandardJavadocDocletOptions
+        encoding = "UTF-8"
+        addStringOption("Xdoclint:all,-missing", "-quiet")
+        addStringOption("Xwerror", "-quiet")
+    }
+}
+
 pluginPublishConventions {
     id("org.gradlex.jvm-ecosystem-conflict-resolution")
     implementationClass("org.gradlex.javaecosystem.conflict.resolution.JvmConflictResolutionPlugin")

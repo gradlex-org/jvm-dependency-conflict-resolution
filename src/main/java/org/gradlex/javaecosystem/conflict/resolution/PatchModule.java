@@ -47,7 +47,7 @@ public abstract class PatchModule {
 
     /**
      * Add a dependency in 'api' scope (visible at runtime and compile time).
-     * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#fixing_wrong_dependency_details">
+     * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#fixing_wrong_dependency_details">component_metadata_rules.html#fixing_wrong_dependency_details</a>
      */
     public void addApiDependency(String dependency) {
         getDependencies().getComponents().withModule(module, AddApiDependencyMetadataRule.class, r -> r.params(dependency));
@@ -55,7 +55,7 @@ public abstract class PatchModule {
 
     /**
      * Add a dependency in 'runtimeOnly' scope (visible at runtime).
-     * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#fixing_wrong_dependency_details">
+     * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#fixing_wrong_dependency_details">component_metadata_rules.html#fixing_wrong_dependency_details</a>
      */
     public void addRuntimeOnlyDependency(String dependency) {
         getDependencies().getComponents().withModule(module, AddRuntimeOnlyDependencyMetadataRule.class, r -> r.params(dependency));
@@ -63,7 +63,7 @@ public abstract class PatchModule {
 
     /**
      * Add a dependency in 'compileOnlyApi' scope (visible at compile time).
-     * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#fixing_wrong_dependency_details">
+     * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#fixing_wrong_dependency_details">component_metadata_rules.html#fixing_wrong_dependency_details</a>
      */
     public void addCompileOnlyApiDependency(String dependency) {
         getDependencies().getComponents().withModule(module, AddCompileOnlyApiDependencyMetadataRule.class, r -> r.params(dependency));
@@ -71,7 +71,7 @@ public abstract class PatchModule {
 
     /**
      * Remove the given dependency from all scopes.
-     * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#fixing_wrong_dependency_details">
+     * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#fixing_wrong_dependency_details">component_metadata_rules.html#fixing_wrong_dependency_details</a>
      */
     public void removeDependency(String dependency) {
         getDependencies().getComponents().withModule(module, RemoveDependencyMetadataRule.class, r -> r.params(dependency));
@@ -79,7 +79,7 @@ public abstract class PatchModule {
 
     /**
      * Reduce the given 'api' dependency to 'runtimeOnly' scope.
-     * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#fixing_wrong_dependency_details">
+     * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#fixing_wrong_dependency_details">component_metadata_rules.html#fixing_wrong_dependency_details</a>
      */
     public void reduceToRuntimeOnlyDependency(String dependency) {
         getDependencies().getComponents().withModule(module, ReduceToRuntimeOnlyDependencyMetadataRule.class, r -> r.params(dependency));
@@ -87,7 +87,7 @@ public abstract class PatchModule {
 
     /**
      * Reduce the given 'api' dependency to 'compileOnlyApi' scope.
-     * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#fixing_wrong_dependency_details">
+     * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#fixing_wrong_dependency_details">component_metadata_rules.html#fixing_wrong_dependency_details</a>
      */
     public void reduceToCompileOnlyApiDependency(String dependency) {
         getDependencies().getComponents().withModule(module, ReduceToCompileOnlyApiDependencyMetadataRule.class, r -> r.params(dependency));
