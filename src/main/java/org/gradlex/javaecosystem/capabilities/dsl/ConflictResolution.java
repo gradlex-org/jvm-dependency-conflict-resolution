@@ -22,7 +22,7 @@ import org.gradle.api.artifacts.ConfigurationContainer;
 import org.gradle.api.artifacts.component.ComponentIdentifier;
 import org.gradle.api.artifacts.component.ModuleComponentIdentifier;
 import org.gradle.api.provider.SetProperty;
-import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
+import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinition;
 
 import javax.inject.Inject;
 import java.util.Arrays;
@@ -33,18 +33,18 @@ public abstract class ConflictResolution {
     @Inject
     protected abstract ConfigurationContainer getConfigurations();
 
-    public abstract SetProperty<CapabilityDefinitions> getDeactivatedResolutionStrategies();
+    public abstract SetProperty<CapabilityDefinition> getDeactivatedResolutionStrategies();
 
-    public void deactivateResolutionStrategy(CapabilityDefinitions capability) {
+    public void deactivateResolutionStrategy(CapabilityDefinition capability) {
         getDeactivatedResolutionStrategies().add(capability);
     }
 
     public void deactivateResolutionStrategy(String capability) {
-        Optional<CapabilityDefinitions> definition = Arrays.stream(CapabilityDefinitions.values()).filter(c -> capability.equals(c.getCapability())).findFirst();
+        Optional<CapabilityDefinition> definition = Arrays.stream(CapabilityDefinition.values()).filter(c -> capability.equals(c.getCapability())).findFirst();
         definition.ifPresent(c -> getDeactivatedResolutionStrategies().add(c));
     }
 
-    public void selectHighestVersion(CapabilityDefinitions capability) {
+    public void selectHighestVersion(CapabilityDefinition capability) {
         deactivateResolutionStrategy(capability);
         doSelectHighestVersion(capability.getCapability());
     }
@@ -54,7 +54,7 @@ public abstract class ConflictResolution {
         doSelectHighestVersion(capability);
     }
 
-    public void select(CapabilityDefinitions capability, String module) {
+    public void select(CapabilityDefinition capability, String module) {
         deactivateResolutionStrategy(capability);
         doSelect(capability.getCapability(), module, false);
     }
@@ -64,7 +64,7 @@ public abstract class ConflictResolution {
         doSelect(capability, module, false);
     }
 
-    public void selectLenient(CapabilityDefinitions capability, String module) {
+    public void selectLenient(CapabilityDefinition capability, String module) {
         deactivateResolutionStrategy(capability);
         doSelect(capability.getCapability(), module, true);
     }

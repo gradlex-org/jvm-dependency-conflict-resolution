@@ -23,7 +23,7 @@ import org.gradlex.javaecosystem.capabilities.rules.logging.Slf4JAlignment;
 import java.util.Arrays;
 import java.util.List;
 
-public enum AlignmentDefinitions {
+public enum AlignmentDefinition {
     LOG4J2("org.apache.logging.log4j:log4j-bom", Log4J2Alignment.class,
         "org.apache.logging.log4j:log4j-api",
         "org.apache.logging.log4j:log4j-core",
@@ -81,15 +81,15 @@ public enum AlignmentDefinitions {
 
     private final String bom;
     private final List<String> modules;
-    private final Class<? extends AlignmentDefinitionsRule> ruleClass;
+    private final Class<? extends AlignmentDefinitionRule> ruleClass;
 
-    AlignmentDefinitions(Class<? extends AlignmentDefinitionsRule> ruleClass, String... modules) {
+    AlignmentDefinition(Class<? extends AlignmentDefinitionRule> ruleClass, String... modules) {
         this.bom =  "org.gradlex.align:" + name().toLowerCase().replace("_", "-");
         this.ruleClass = ruleClass;
         this.modules = Arrays.asList(modules);
     }
 
-    AlignmentDefinitions(String bom, Class<? extends AlignmentDefinitionsRule> ruleClass, String... modules) {
+    AlignmentDefinition(String bom, Class<? extends AlignmentDefinitionRule> ruleClass, String... modules) {
         this.bom =  bom;
         this.ruleClass = ruleClass;
         this.modules = Arrays.asList(modules);
@@ -103,7 +103,7 @@ public enum AlignmentDefinitions {
         return modules;
     }
 
-    public Class<? extends AlignmentDefinitionsRule> getRuleClass() {
+    public Class<? extends AlignmentDefinitionRule> getRuleClass() {
         return ruleClass;
     }
 

@@ -23,7 +23,7 @@ abstract class SamplesCompletenessCheck : DefaultTask() {
 
             val classesUrls = pluginClasses.files.map { it.toURI().toURL() }
             val loader = URLClassLoader("pluginClasspath", classesUrls.toTypedArray(), ComponentMetadataRule::class.java.classLoader)
-            val definitions = loader.loadClass("org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions")
+            val definitions = loader.loadClass("org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinition")
 
             val missing = definitions.enumConstants.map { rule ->
                 val modules = definitions.getDeclaredMethod("getModules").invoke(rule) as List<*>

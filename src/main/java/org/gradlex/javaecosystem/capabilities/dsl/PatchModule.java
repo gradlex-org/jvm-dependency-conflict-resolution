@@ -28,7 +28,7 @@ import org.gradlex.javaecosystem.capabilities.customrules.ReduceToCompileOnlyApi
 import org.gradlex.javaecosystem.capabilities.customrules.ReduceToRuntimeOnlyDependencyMetadataRule;
 import org.gradlex.javaecosystem.capabilities.customrules.RemoveCapabilityMetadataRule;
 import org.gradlex.javaecosystem.capabilities.customrules.RemoveDependencyMetadataRule;
-import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
+import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinition;
 
 import javax.inject.Inject;
 import java.util.Arrays;
@@ -77,7 +77,7 @@ public abstract class PatchModule {
         getDependencies().getComponents().withModule(module, ReduceToCompileOnlyApiDependencyMetadataRule.class, r -> r.params(dependency));
     }
 
-    public void addCapability(CapabilityDefinitions capability) {
+    public void addCapability(CapabilityDefinition capability) {
         addCapability(capability.getCapability());
     }
 
@@ -85,7 +85,7 @@ public abstract class PatchModule {
         getDependencies().getComponents().withModule(module, AddCapabilityMetadataRule.class, r -> r.params(capability));
     }
 
-    public void removeCapability(CapabilityDefinitions capability) {
+    public void removeCapability(CapabilityDefinition capability) {
         removeCapability(capability.getCapability());
     }
 

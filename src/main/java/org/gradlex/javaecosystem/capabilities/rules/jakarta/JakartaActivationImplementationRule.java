@@ -18,21 +18,21 @@ package org.gradlex.javaecosystem.capabilities.rules.jakarta;
 
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ModuleVersionIdentifier;
-import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
-import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitionsRule;
+import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinition;
+import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitionRule;
 import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
 
 import javax.inject.Inject;
 
 @CacheableRule
-public abstract class JakartaActivationImplementationRule extends CapabilityDefinitionsRule {
+public abstract class JakartaActivationImplementationRule extends CapabilityDefinitionRule {
 
 
     // Starting with this version the implementation moved to the 'org.eclipse' package and is no longer a conflict
     public static final String FIRST_ECLIPSE_VERSION = "2.0.0";
 
     @Inject
-    public JakartaActivationImplementationRule(CapabilityDefinitions rule) {
+    public JakartaActivationImplementationRule(CapabilityDefinition rule) {
         super(rule);
     }
 

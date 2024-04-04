@@ -25,10 +25,10 @@ import javax.inject.Inject;
  * Abstract rule adding a capability with a hard coded version.
  */
 @CacheableRule
-public abstract class FixedCapabilityRule extends CapabilityDefinitionsRule {
+public abstract class FixedCapabilityRule extends CapabilityDefinitionRule {
 
     @Inject
-    public FixedCapabilityRule(CapabilityDefinitions capabilityDefinition) {
+    public FixedCapabilityRule(CapabilityDefinition capabilityDefinition) {
         super(capabilityDefinition);
     }
 

@@ -1,4 +1,4 @@
-import  org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions
+import  org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinition
 
 plugins {
     id("org.gradlex.jvm-ecosystem-conflict-resolution")
@@ -260,10 +260,10 @@ jvmDependencyConflicts {
         enforceSlf4JSimple()
     }
     conflictResolution {
-        select(CapabilityDefinitions.JAVAX_ACTIVATION_API, "javax.activation:javax.activation-api")
-        select(CapabilityDefinitions.JAKARTA_SERVLET_API, "jakarta.servlet:jakarta.servlet-api")
-        select(CapabilityDefinitions.JAVAX_SERVLET_API, "javax.servlet:javax.servlet-api")
-        select(CapabilityDefinitions.BOUNCYCASTLE_BCTSP, "org.bouncycastle:bctsp-jdk15on")
+        select(CapabilityDefinition.JAVAX_ACTIVATION_API, "javax.activation:javax.activation-api")
+        select(CapabilityDefinition.JAKARTA_SERVLET_API, "jakarta.servlet:jakarta.servlet-api")
+        select(CapabilityDefinition.JAVAX_SERVLET_API, "javax.servlet:javax.servlet-api")
+        select(CapabilityDefinition.BOUNCYCASTLE_BCTSP, "org.bouncycastle:bctsp-jdk15on")
     }
 }
 

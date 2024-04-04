@@ -53,7 +53,7 @@ import static org.gradlex.javaecosystem.capabilities.resolution.DefaultResolutio
 import static org.gradlex.javaecosystem.capabilities.resolution.DefaultResolutionStrategy.HIGHEST_VERSION;
 import static org.gradlex.javaecosystem.capabilities.resolution.DefaultResolutionStrategy.NONE;
 
-public enum CapabilityDefinitions {
+public enum CapabilityDefinition {
 
     AOPALLIANCE(HIGHEST_VERSION, AopallianceRule.class,
             "aopalliance:aopalliance",
@@ -180,7 +180,7 @@ public enum CapabilityDefinitions {
             "com.google.code.findbugs:findbugs-annotations",
             "com.github.spotbugs:spotbugs-annotations"
     ),
-    GOOGLE_COLLECTIONS(HIGHEST_VERSION, "com.google.collections", CapabilityDefinitionsRule.class,
+    GOOGLE_COLLECTIONS(HIGHEST_VERSION, "com.google.collections", CapabilityDefinitionRule.class,
             "com.google.collections:google-collections",
             "com.google.guava:guava"
     ),
@@ -559,17 +559,17 @@ public enum CapabilityDefinitions {
     private final String capabilityName;
     private final List<String> modules;
     private final DefaultResolutionStrategy defaultStrategy;
-    private final Class<? extends CapabilityDefinitionsRule> ruleClass;
+    private final Class<? extends CapabilityDefinitionRule> ruleClass;
 
-    CapabilityDefinitions(DefaultResolutionStrategy defaultStrategy, String... modules) {
-        this(defaultStrategy, "org.gradlex", CapabilityDefinitionsRule.class, modules);
+    CapabilityDefinition(DefaultResolutionStrategy defaultStrategy, String... modules) {
+        this(defaultStrategy, "org.gradlex", CapabilityDefinitionRule.class, modules);
     }
 
-    CapabilityDefinitions(DefaultResolutionStrategy defaultStrategy, Class<? extends CapabilityDefinitionsRule> ruleClass, String... modules) {
+    CapabilityDefinition(DefaultResolutionStrategy defaultStrategy, Class<? extends CapabilityDefinitionRule> ruleClass, String... modules) {
         this(defaultStrategy, "org.gradlex", ruleClass, modules);
     }
 
-    CapabilityDefinitions(DefaultResolutionStrategy defaultStrategy, String group, Class<? extends CapabilityDefinitionsRule> ruleClass, String... modules) {
+    CapabilityDefinition(DefaultResolutionStrategy defaultStrategy, String group, Class<? extends CapabilityDefinitionRule> ruleClass, String... modules) {
         this.group = group;
         this.capabilityName = nameInKebabCase();
         this.modules = Arrays.asList(modules);
@@ -598,7 +598,7 @@ public enum CapabilityDefinitions {
         return defaultStrategy;
     }
 
-    public Class<? extends CapabilityDefinitionsRule> getRuleClass() {
+    public Class<? extends CapabilityDefinitionRule> getRuleClass() {
         return ruleClass;
     }
 

@@ -18,7 +18,7 @@ class SettingsTest extends Specification {
             }
         """
         buildFile << """
-            import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions
+            import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinition
             
             plugins {
                 id("java-library")
@@ -28,16 +28,16 @@ class SettingsTest extends Specification {
             
             configurations.all {
                 resolutionStrategy.capabilitiesResolution {
-                    withCapability(CapabilityDefinitions.CGLIB.capability) {
+                    withCapability(CapabilityDefinition.CGLIB.capability) {
                         select("cglib:cglib:0")
                     }
-                    withCapability(CapabilityDefinitions.JAVAX_MAIL_API.capability) {
+                    withCapability(CapabilityDefinition.JAVAX_MAIL_API.capability) {
                        select("com.sun.mail:jakarta.mail:0")
                     }
-                    withCapability(CapabilityDefinitions.JAVAX_WS_RS_API.capability) {
+                    withCapability(CapabilityDefinition.JAVAX_WS_RS_API.capability) {
                         select("org.jboss.resteasy:jaxrs-api:0")
                     }
-                    withCapability(CapabilityDefinitions.JAKARTA_SERVLET_API.capability) {
+                    withCapability(CapabilityDefinition.JAKARTA_SERVLET_API.capability) {
                         select("jakarta.servlet:jakarta.servlet-api:0")
                     }
                 }

@@ -23,10 +23,10 @@ import org.gradle.api.artifacts.VariantMetadata;
 import javax.inject.Inject;
 
 @CacheableRule
-public abstract class GuavaListenableFutureRule extends CapabilityDefinitionsRule {
+public abstract class GuavaListenableFutureRule extends CapabilityDefinitionRule {
 
     @Inject
-    public GuavaListenableFutureRule(CapabilityDefinitions rule) {
+    public GuavaListenableFutureRule(CapabilityDefinition rule) {
         super(rule);
     }
 

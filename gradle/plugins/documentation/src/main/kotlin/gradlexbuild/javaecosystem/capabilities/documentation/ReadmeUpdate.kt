@@ -21,7 +21,7 @@ abstract class ReadmeUpdate : DefaultTask() {
     fun update() {
         val classesUrls = pluginClasses.files.map { it.toURI().toURL() }
         val loader = URLClassLoader("pluginClasspath", classesUrls.toTypedArray(), ComponentMetadataRule::class.java.classLoader)
-        val definitions = loader.loadClass("org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions")
+        val definitions = loader.loadClass("org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinition")
 
         val allCapabilities = definitions.enumConstants.map { rule ->
             val capability = definitions.getDeclaredMethod("getCapability").invoke(rule) as String

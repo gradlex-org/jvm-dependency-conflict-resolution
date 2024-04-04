@@ -22,8 +22,8 @@ import org.gradle.api.artifacts.dsl.ComponentMetadataHandler;
 import org.gradle.api.initialization.Settings;
 import org.gradle.api.plugins.ExtensionAware;
 import org.gradle.util.GradleVersion;
-import org.gradlex.javaecosystem.capabilities.rules.AlignmentDefinitions;
-import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
+import org.gradlex.javaecosystem.capabilities.rules.AlignmentDefinition;
+import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinition;
 
 public class JvmConflictDetectionPlugin implements Plugin<ExtensionAware> {
 
@@ -54,21 +54,21 @@ public class JvmConflictDetectionPlugin implements Plugin<ExtensionAware> {
     }
 
     private void registerRules(ComponentMetadataHandler components) {
-        for (CapabilityDefinitions definition : CapabilityDefinitions.values()) {
+        for (CapabilityDefinition definition : CapabilityDefinition.values()) {
             registerCapabilityRule(definition, components);
         }
-        for (AlignmentDefinitions definition : AlignmentDefinitions.values()) {
+        for (AlignmentDefinition definition : AlignmentDefinition.values()) {
             registerAlignmentRule(definition, components);
         }
     }
 
-    private void registerCapabilityRule(CapabilityDefinitions definition, ComponentMetadataHandler components) {
+    private void registerCapabilityRule(CapabilityDefinition definition, ComponentMetadataHandler components) {
         for (String module : definition.getModules()) {
             components.withModule(module, definition.getRuleClass(), ac -> ac.params(definition));
         }
     }
 
-    private void registerAlignmentRule(AlignmentDefinitions definition, ComponentMetadataHandler components) {
+    private void registerAlignmentRule(AlignmentDefinition definition, ComponentMetadataHandler components) {
         for (String module : definition.getModules()) {
             components.withModule(module, definition.getRuleClass(), ac -> ac.params(definition));
         }

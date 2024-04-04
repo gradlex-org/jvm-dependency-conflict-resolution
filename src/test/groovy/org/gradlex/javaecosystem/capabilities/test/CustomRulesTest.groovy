@@ -201,7 +201,7 @@ runtimeClasspath - Runtime classpath of source set 'main'.
 
     def "can add capability by enum"() {
         given:
-        buildFile.text = 'import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions.STAX_API\n' + buildFile.text
+        buildFile.text = 'import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinition.STAX_API\n' + buildFile.text
         buildFile << """
             jvmDependencyConflicts {
                 patch {
@@ -247,7 +247,7 @@ compileClasspath - Compile classpath for source set 'main'.
 
     def "can remove capability by enum"() {
         given:
-        buildFile.text = 'import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions.STAX_API\n' + buildFile.text
+        buildFile.text = 'import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinition.STAX_API\n' + buildFile.text
         buildFile << """
             jvmDependencyConflicts {
                 patch {

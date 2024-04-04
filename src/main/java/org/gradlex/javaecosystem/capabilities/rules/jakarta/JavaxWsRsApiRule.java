@@ -18,19 +18,19 @@ package org.gradlex.javaecosystem.capabilities.rules.jakarta;
 
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ModuleVersionIdentifier;
-import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
-import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitionsRule;
+import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinition;
+import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitionRule;
 import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
 
 import javax.inject.Inject;
 
 @CacheableRule
-public abstract class JavaxWsRsApiRule extends CapabilityDefinitionsRule {
+public abstract class JavaxWsRsApiRule extends CapabilityDefinitionRule {
 
     static final String FIRST_JAKARTA_VERSION = "3.0.0";
 
     @Inject
-    public JavaxWsRsApiRule(CapabilityDefinitions rule) {
+    public JavaxWsRsApiRule(CapabilityDefinition rule) {
         super(rule);
     }
 

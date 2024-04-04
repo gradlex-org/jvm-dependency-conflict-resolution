@@ -18,17 +18,17 @@ package org.gradlex.javaecosystem.capabilities.rules.jakarta;
 
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ModuleVersionIdentifier;
-import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
-import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitionsRule;
+import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinition;
+import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitionRule;
 import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
 
 import javax.inject.Inject;
 
 @CacheableRule
-public abstract class JakartaServletApiRule extends CapabilityDefinitionsRule {
+public abstract class JakartaServletApiRule extends CapabilityDefinitionRule {
 
     @Inject
-    public JakartaServletApiRule(CapabilityDefinitions rule) {
+    public JakartaServletApiRule(CapabilityDefinition rule) {
         super(rule);
     }
 

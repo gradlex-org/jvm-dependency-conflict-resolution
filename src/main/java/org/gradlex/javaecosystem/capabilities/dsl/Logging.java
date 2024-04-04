@@ -26,7 +26,7 @@ import org.gradle.api.artifacts.component.ComponentIdentifier;
 import org.gradle.api.artifacts.component.ModuleComponentIdentifier;
 import org.gradle.api.artifacts.dsl.DependencyHandler;
 import org.gradlex.javaecosystem.capabilities.actions.Slf4JEnforcementSubstitutionsUsing;
-import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
+import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinition;
 import org.gradlex.javaecosystem.capabilities.rules.logging.LoggingModuleIdentifiers;
 
 import javax.inject.Inject;
@@ -53,21 +53,21 @@ public abstract class Logging {
         ExternalDependency dependency = validateNotation(dependencyNotation);
         String because = "Logging capabilities plugin selected Slf4J binding";
         if (LoggingModuleIdentifiers.SLF4J_LOG4J12.matches(dependency)) {
-            selectCapabilityConflict(CapabilityDefinitions.SLF4J_VS_LOG4J.getCapability(), dependency, because);
-            selectCapabilityConflict(CapabilityDefinitions.SLF4J_IMPL.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.SLF4J_VS_LOG4J.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.SLF4J_IMPL.getCapability(), dependency, because);
         } else if (LoggingModuleIdentifiers.SLF4J_JDK14.matches(dependency)) {
-            selectCapabilityConflict(CapabilityDefinitions.SLF4J_VS_JUL.getCapability(), dependency, because);
-            selectCapabilityConflict(CapabilityDefinitions.SLF4J_IMPL.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.SLF4J_VS_JUL.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.SLF4J_IMPL.getCapability(), dependency, because);
         } else if (LoggingModuleIdentifiers.SLF4J_JCL.matches(dependency)) {
-            selectCapabilityConflict(CapabilityDefinitions.SLF4J_VS_JCL.getCapability(), dependency, because);
-            selectCapabilityConflict(CapabilityDefinitions.SLF4J_IMPL.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.SLF4J_VS_JCL.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.SLF4J_IMPL.getCapability(), dependency, because);
         } else if (LoggingModuleIdentifiers.LOG4J_SLF4J_IMPL.matches(dependency) || LoggingModuleIdentifiers.LOG4J_SLF4J2_IMPL.matches(dependency)) {
-            selectCapabilityConflict(CapabilityDefinitions.LOG4J2_VS_SLF4J.getCapability(), dependency, because);
-            selectCapabilityConflict(CapabilityDefinitions.SLF4J_IMPL.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.LOG4J2_VS_SLF4J.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.SLF4J_IMPL.getCapability(), dependency, because);
             // Slf4j binding towards log4j2, so we need to make sure Log4j-core is selected
-            selectCapabilityConflict(CapabilityDefinitions.LOG4J2_IMPL.getCapability(), validateNotation(LoggingModuleIdentifiers.LOG4J_CORE.moduleId), because);
+            selectCapabilityConflict(CapabilityDefinition.LOG4J2_IMPL.getCapability(), validateNotation(LoggingModuleIdentifiers.LOG4J_CORE.moduleId), because);
         } else if (LoggingModuleIdentifiers.LOGBACK_CLASSIC.matches(dependency) || LoggingModuleIdentifiers.SLF4J_SIMPLE.matches(dependency)) {
-            selectCapabilityConflict(CapabilityDefinitions.SLF4J_IMPL.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.SLF4J_IMPL.getCapability(), dependency, because);
         } else {
             throw new IllegalArgumentException("Provided dependency '" + dependency + "' is not a valid Slf4J binding");
         }
@@ -85,21 +85,21 @@ public abstract class Logging {
         ExternalDependency dependency = validateNotation(dependencyNotation);
         String because = "Logging capabilities plugin selected Slf4J binding";
         if (LoggingModuleIdentifiers.SLF4J_LOG4J12.matches(dependency)) {
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.SLF4J_VS_LOG4J.getCapability(), dependency, because);
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.SLF4J_IMPL.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.SLF4J_VS_LOG4J.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.SLF4J_IMPL.getCapability(), dependency, because);
         } else if (LoggingModuleIdentifiers.SLF4J_JDK14.matches(dependency)) {
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.SLF4J_VS_JUL.getCapability(), dependency, because);
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.SLF4J_IMPL.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.SLF4J_VS_JUL.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.SLF4J_IMPL.getCapability(), dependency, because);
         } else if (LoggingModuleIdentifiers.SLF4J_JCL.matches(dependency)) {
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.SLF4J_VS_JCL.getCapability(), dependency, because);
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.SLF4J_IMPL.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.SLF4J_VS_JCL.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.SLF4J_IMPL.getCapability(), dependency, because);
         } else if (LoggingModuleIdentifiers.LOG4J_SLF4J_IMPL.matches(dependency) || LoggingModuleIdentifiers.LOG4J_SLF4J2_IMPL.matches(dependency)) {
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.LOG4J2_VS_SLF4J.getCapability(), dependency, because);
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.SLF4J_IMPL.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.LOG4J2_VS_SLF4J.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.SLF4J_IMPL.getCapability(), dependency, because);
             // Slf4j binding towards log4j2, so we need to make sure Log4j-core is selected
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.LOG4J2_IMPL.getCapability(), validateNotation(LoggingModuleIdentifiers.LOG4J_CORE.moduleId), because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.LOG4J2_IMPL.getCapability(), validateNotation(LoggingModuleIdentifiers.LOG4J_CORE.moduleId), because);
         } else if (LoggingModuleIdentifiers.LOGBACK_CLASSIC.matches(dependency) || LoggingModuleIdentifiers.SLF4J_SIMPLE.matches(dependency)) {
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.SLF4J_IMPL.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.SLF4J_IMPL.getCapability(), dependency, because);
         } else {
             throw new IllegalArgumentException("Provided dependency '" + dependency + "' is not a valid Slf4J binding");
         }
@@ -116,9 +116,9 @@ public abstract class Logging {
         ExternalDependency dependency = validateNotation(dependencyNotation);
         String because = "Logging capabilities plugin selected Log4J2 implementation";
         if (LoggingModuleIdentifiers.LOG4J_CORE.matches(dependency)) {
-            selectCapabilityConflict(CapabilityDefinitions.LOG4J2_IMPL.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.LOG4J2_IMPL.getCapability(), dependency, because);
         } else if (LoggingModuleIdentifiers.LOG4J_TO_SLF4J.matches(dependency)) {
-            selectCapabilityConflict(CapabilityDefinitions.LOG4J2_IMPL.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.LOG4J2_IMPL.getCapability(), dependency, because);
         } else {
             throw new IllegalArgumentException("Provided dependency '" + dependency + "' is not a valid Log4J2 implementation");
         }
@@ -136,9 +136,9 @@ public abstract class Logging {
         ExternalDependency dependency = validateNotation(dependencyNotation);
         String because = "Logging capabilities plugin selected Log4J2 implementation";
         if (LoggingModuleIdentifiers.LOG4J_CORE.matches(dependency)) {
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.LOG4J2_IMPL.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.LOG4J2_IMPL.getCapability(), dependency, because);
         } else if (LoggingModuleIdentifiers.LOG4J_TO_SLF4J.matches(dependency)) {
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.LOG4J2_IMPL.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.LOG4J2_IMPL.getCapability(), dependency, because);
         } else {
             throw new IllegalArgumentException("Provided dependency '" + dependency + "' is not a valid Log4J2 implementation");
         }
@@ -155,14 +155,14 @@ public abstract class Logging {
         ExternalDependency dependency = validateNotation(dependencyNotation);
         String because = "Logging capabilities plugin selected Log4J implementation";
         if (LoggingModuleIdentifiers.LOG4J_OVER_SLF4J.matches(dependency)) {
-            selectCapabilityConflict(CapabilityDefinitions.SLF4J_VS_LOG4J2_FOR_LOG4J.getCapability(), dependency, because);
-            selectCapabilityConflict(CapabilityDefinitions.SLF4J_VS_LOG4J.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.SLF4J_VS_LOG4J2_FOR_LOG4J.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.SLF4J_VS_LOG4J.getCapability(), dependency, because);
         } else if (LoggingModuleIdentifiers.LOG4J12API.matches(dependency)) {
-            selectCapabilityConflict(CapabilityDefinitions.SLF4J_VS_LOG4J2_FOR_LOG4J.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.SLF4J_VS_LOG4J2_FOR_LOG4J.getCapability(), dependency, because);
         } else if (LoggingModuleIdentifiers.LOG4J.matches(dependency)) {
-            selectCapabilityConflict(CapabilityDefinitions.SLF4J_VS_LOG4J2_FOR_LOG4J.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.SLF4J_VS_LOG4J2_FOR_LOG4J.getCapability(), dependency, because);
         } else if (LoggingModuleIdentifiers.SLF4J_LOG4J12.matches(dependency)) {
-            selectCapabilityConflict(CapabilityDefinitions.SLF4J_VS_LOG4J.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.SLF4J_VS_LOG4J.getCapability(), dependency, because);
         } else {
             throw new IllegalArgumentException("Provided dependency '" + dependency + "' is not a valid Log4J implementation");
         }
@@ -180,14 +180,14 @@ public abstract class Logging {
         ExternalDependency dependency = validateNotation(dependencyNotation);
         String because = "Logging capabilities plugin selected Log4J implementation";
         if (LoggingModuleIdentifiers.LOG4J_OVER_SLF4J.matches(dependency)) {
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.SLF4J_VS_LOG4J2_FOR_LOG4J.getCapability(), dependency, because);
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.SLF4J_VS_LOG4J.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.SLF4J_VS_LOG4J2_FOR_LOG4J.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.SLF4J_VS_LOG4J.getCapability(), dependency, because);
         } else if (LoggingModuleIdentifiers.LOG4J12API.matches(dependency)) {
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.SLF4J_VS_LOG4J2_FOR_LOG4J.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.SLF4J_VS_LOG4J2_FOR_LOG4J.getCapability(), dependency, because);
         } else if (LoggingModuleIdentifiers.LOG4J.matches(dependency)) {
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.SLF4J_VS_LOG4J2_FOR_LOG4J.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.SLF4J_VS_LOG4J2_FOR_LOG4J.getCapability(), dependency, because);
         } else if (LoggingModuleIdentifiers.SLF4J_LOG4J12.matches(dependency)) {
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.SLF4J_VS_LOG4J.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.SLF4J_VS_LOG4J.getCapability(), dependency, because);
         } else {
             throw new IllegalArgumentException("Provided dependency '" + dependency + "' is not a valid Log4J implementation");
         }
@@ -204,12 +204,12 @@ public abstract class Logging {
         ExternalDependency dependency = validateNotation(dependencyNotation);
         String because = "Logging capabilities plugin selected JUL delegation";
         if (LoggingModuleIdentifiers.JUL_TO_SLF4J.matches(dependency)) {
-            selectCapabilityConflict(CapabilityDefinitions.SLF4J_VS_LOG4J2_FOR_JUL.getCapability(), dependency, because);
-            selectCapabilityConflict(CapabilityDefinitions.SLF4J_VS_JUL.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.SLF4J_VS_LOG4J2_FOR_JUL.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.SLF4J_VS_JUL.getCapability(), dependency, because);
         } else if (LoggingModuleIdentifiers.SLF4J_JDK14.matches(dependency)) {
-            selectCapabilityConflict(CapabilityDefinitions.SLF4J_VS_JUL.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.SLF4J_VS_JUL.getCapability(), dependency, because);
         } else if (LoggingModuleIdentifiers.LOG4J_JUL.matches(dependency)) {
-            selectCapabilityConflict(CapabilityDefinitions.SLF4J_VS_LOG4J2_FOR_JUL.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.SLF4J_VS_LOG4J2_FOR_JUL.getCapability(), dependency, because);
         } else {
             throw new IllegalArgumentException("Provided dependency '" + dependency + "' is not a valid JUL delegation");
         }
@@ -227,12 +227,12 @@ public abstract class Logging {
         ExternalDependency dependency = validateNotation(dependencyNotation);
         String because = "Logging capabilities plugin selected JUL delegation";
         if (LoggingModuleIdentifiers.JUL_TO_SLF4J.matches(dependency)) {
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.SLF4J_VS_LOG4J2_FOR_JUL.getCapability(), dependency, because);
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.SLF4J_VS_JUL.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.SLF4J_VS_LOG4J2_FOR_JUL.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.SLF4J_VS_JUL.getCapability(), dependency, because);
         } else if (LoggingModuleIdentifiers.SLF4J_JDK14.matches(dependency)) {
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.SLF4J_VS_JUL.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.SLF4J_VS_JUL.getCapability(), dependency, because);
         } else if (LoggingModuleIdentifiers.LOG4J_JUL.matches(dependency)) {
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.SLF4J_VS_LOG4J2_FOR_JUL.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.SLF4J_VS_LOG4J2_FOR_JUL.getCapability(), dependency, because);
         } else {
             throw new IllegalArgumentException("Provided dependency '" + dependency + "' is not a valid JUL delegation");
         }
@@ -249,17 +249,17 @@ public abstract class Logging {
         ExternalDependency dependency = validateNotation(dependencyNotation);
         String because = "Logging capabilities plugin selected JCL implementation";
         if (LoggingModuleIdentifiers.JCL_OVER_SLF4J.matches(dependency)) {
-            selectCapabilityConflict(CapabilityDefinitions.COMMONS_LOGGING_IMPL.getCapability(), dependency, because);
-            selectCapabilityConflict(CapabilityDefinitions.SLF4J_VS_JCL.getCapability(), dependency, because);
-            selectCapabilityConflict(CapabilityDefinitions.SLF4J_VS_LOG4J2_FOR_JCL.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.COMMONS_LOGGING_IMPL.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.SLF4J_VS_JCL.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.SLF4J_VS_LOG4J2_FOR_JCL.getCapability(), dependency, because);
         } else if (LoggingModuleIdentifiers.COMMONS_LOGGING.matches(dependency)) {
-            selectCapabilityConflict(CapabilityDefinitions.COMMONS_LOGGING_IMPL.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.COMMONS_LOGGING_IMPL.getCapability(), dependency, because);
         } else if (LoggingModuleIdentifiers.SLF4J_JCL.matches(dependency)) {
-            selectCapabilityConflict(CapabilityDefinitions.SLF4J_VS_JCL.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.SLF4J_VS_JCL.getCapability(), dependency, because);
         } else if (LoggingModuleIdentifiers.LOG4J_JCL.matches(dependency)) {
-            selectCapabilityConflict(CapabilityDefinitions.SLF4J_VS_LOG4J2_FOR_JCL.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.SLF4J_VS_LOG4J2_FOR_JCL.getCapability(), dependency, because);
             ExternalDependency commonsLogging = validateNotation(LoggingModuleIdentifiers.COMMONS_LOGGING.moduleId);
-            selectCapabilityConflict(CapabilityDefinitions.COMMONS_LOGGING_IMPL.getCapability(), commonsLogging, because);
+            selectCapabilityConflict(CapabilityDefinition.COMMONS_LOGGING_IMPL.getCapability(), commonsLogging, because);
         } else {
             throw new IllegalArgumentException("Provided dependency '" + dependency + "' is not a valid JCL implementation");
         }
@@ -277,17 +277,17 @@ public abstract class Logging {
         ExternalDependency dependency = validateNotation(dependencyNotation);
         String because = "Logging capabilities plugin selected JCL implementation";
         if (LoggingModuleIdentifiers.JCL_OVER_SLF4J.matches(dependency)) {
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.COMMONS_LOGGING_IMPL.getCapability(), dependency, because);
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.SLF4J_VS_JCL.getCapability(), dependency, because);
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.SLF4J_VS_LOG4J2_FOR_JCL.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.COMMONS_LOGGING_IMPL.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.SLF4J_VS_JCL.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.SLF4J_VS_LOG4J2_FOR_JCL.getCapability(), dependency, because);
         } else if (LoggingModuleIdentifiers.COMMONS_LOGGING.matches(dependency)) {
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.COMMONS_LOGGING_IMPL.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.COMMONS_LOGGING_IMPL.getCapability(), dependency, because);
         } else if (LoggingModuleIdentifiers.SLF4J_JCL.matches(dependency)) {
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.SLF4J_VS_JCL.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.SLF4J_VS_JCL.getCapability(), dependency, because);
         } else if (LoggingModuleIdentifiers.LOG4J_JCL.matches(dependency)) {
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.SLF4J_VS_LOG4J2_FOR_JCL.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.SLF4J_VS_LOG4J2_FOR_JCL.getCapability(), dependency, because);
             ExternalDependency commonsLogging = validateNotation(LoggingModuleIdentifiers.COMMONS_LOGGING.moduleId);
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.COMMONS_LOGGING_IMPL.getCapability(), commonsLogging, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.COMMONS_LOGGING_IMPL.getCapability(), commonsLogging, because);
         } else {
             throw new IllegalArgumentException("Provided dependency '" + dependency + "' is not a valid JCL implementation");
         }
@@ -304,11 +304,11 @@ public abstract class Logging {
         ExternalDependency dependency = validateNotation(dependencyNotation);
         String because = "Logging capabilities plugin selected Slf4J Log4J 2 interaction";
         if (LoggingModuleIdentifiers.LOG4J_TO_SLF4J.matches(dependency)) {
-            selectCapabilityConflict(CapabilityDefinitions.LOG4J2_VS_SLF4J.getCapability(), dependency, because);
-            selectCapabilityConflict(CapabilityDefinitions.LOG4J2_IMPL.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.LOG4J2_VS_SLF4J.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.LOG4J2_IMPL.getCapability(), dependency, because);
         } else if (LoggingModuleIdentifiers.LOG4J_SLF4J_IMPL.matches(dependency) || LoggingModuleIdentifiers.LOG4J_SLF4J2_IMPL.matches(dependency)) {
-            selectCapabilityConflict(CapabilityDefinitions.SLF4J_IMPL.getCapability(), dependency, because);
-            selectCapabilityConflict(CapabilityDefinitions.LOG4J2_VS_SLF4J.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.SLF4J_IMPL.getCapability(), dependency, because);
+            selectCapabilityConflict(CapabilityDefinition.LOG4J2_VS_SLF4J.getCapability(), dependency, because);
         } else {
             throw new IllegalArgumentException("Provided dependency '" + dependency + "' is not a valid Slf4J / Log4J 2 interaction");
         }
@@ -326,11 +326,11 @@ public abstract class Logging {
         ExternalDependency dependency = validateNotation(dependencyNotation);
         String because = "Logging capabilities plugin selected Slf4J Log4J 2 interaction";
         if (LoggingModuleIdentifiers.LOG4J_TO_SLF4J.matches(dependency)) {
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.LOG4J2_VS_SLF4J.getCapability(), dependency, because);
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.LOG4J2_IMPL.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.LOG4J2_VS_SLF4J.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.LOG4J2_IMPL.getCapability(), dependency, because);
         } else if (LoggingModuleIdentifiers.LOG4J_SLF4J_IMPL.matches(dependency) || LoggingModuleIdentifiers.LOG4J_SLF4J2_IMPL.matches(dependency)) {
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.SLF4J_IMPL.getCapability(), dependency, because);
-            selectCapabilityConflict(configurationName, CapabilityDefinitions.LOG4J2_VS_SLF4J.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.SLF4J_IMPL.getCapability(), dependency, because);
+            selectCapabilityConflict(configurationName, CapabilityDefinition.LOG4J2_VS_SLF4J.getCapability(), dependency, because);
         } else {
             throw new IllegalArgumentException("Provided dependency '" + dependency + "' is not a valid Slf4J / Log4J 2 interaction");
         }

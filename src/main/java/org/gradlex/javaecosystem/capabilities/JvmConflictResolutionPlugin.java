@@ -25,7 +25,7 @@ import org.gradle.api.artifacts.Configuration;
 import org.gradle.api.artifacts.ConfigurationContainer;
 import org.gradle.api.artifacts.component.ModuleComponentIdentifier;
 import org.gradlex.javaecosystem.capabilities.dsl.JvmDependencyConflictsExtension;
-import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions;
+import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinition;
 
 import java.util.Optional;
 
@@ -45,13 +45,13 @@ public abstract class JvmConflictResolutionPlugin implements Plugin<Project> {
 
     private void configureResolutionStrategies(ConfigurationContainer configurations, JvmDependencyConflictsExtension jvmDependencyConflicts) {
         configurations.all(configuration -> {
-            for (CapabilityDefinitions definition : CapabilityDefinitions.values()) {
+            for (CapabilityDefinition definition : CapabilityDefinition.values()) {
                 defineStrategy(definition, configuration, jvmDependencyConflicts);
             }
         });
     }
 
-    private void defineStrategy(CapabilityDefinitions definition, Configuration configuration, JvmDependencyConflictsExtension jvmDependencyConflicts) {
+    private void defineStrategy(CapabilityDefinition definition, Configuration configuration, JvmDependencyConflictsExtension jvmDependencyConflicts) {
         CapabilitiesResolution resolution = configuration.getResolutionStrategy().getCapabilitiesResolution();
         resolution.withCapability(definition.getCapability(), details -> {
             if (!jvmDependencyConflicts.getConflictResolution().getDeactivatedResolutionStrategies().get().contains(definition)) {

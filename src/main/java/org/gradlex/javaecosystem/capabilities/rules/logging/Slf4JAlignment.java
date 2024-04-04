@@ -18,17 +18,17 @@ package org.gradlex.javaecosystem.capabilities.rules.logging;
 
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ModuleVersionIdentifier;
-import org.gradlex.javaecosystem.capabilities.rules.AlignmentDefinitions;
-import org.gradlex.javaecosystem.capabilities.rules.AlignmentDefinitionsRule;
+import org.gradlex.javaecosystem.capabilities.rules.AlignmentDefinition;
+import org.gradlex.javaecosystem.capabilities.rules.AlignmentDefinitionRule;
 import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
 
 import javax.inject.Inject;
 
 @CacheableRule
-public class Slf4JAlignment extends AlignmentDefinitionsRule {
+public class Slf4JAlignment extends AlignmentDefinitionRule {
 
     @Inject
-    public Slf4JAlignment(AlignmentDefinitions definition) {
+    public Slf4JAlignment(AlignmentDefinition definition) {
         super(definition);
     }
 

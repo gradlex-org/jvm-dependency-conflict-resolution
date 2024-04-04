@@ -11,7 +11,7 @@ class CustomizationTest extends Specification {
     def "can revert effect of a rule by adding another rule"() {
         given:
         buildFile << """
-            import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions
+            import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinition
             
             plugins {
                 id("org.gradlex.jvm-ecosystem-conflict-detection")
@@ -24,10 +24,10 @@ class CustomizationTest extends Specification {
                 implementation("cglib:cglib-nodep:3.2.10")
                 implementation("cglib:cglib:3.2.10")
             
-                components.withModule(CapabilityDefinitions.CGLIB.modules[0]) {
+                components.withModule(CapabilityDefinition.CGLIB.modules[0]) {
                     allVariants {
                         withCapabilities {
-                            removeCapability(CapabilityDefinitions.CGLIB.group, CapabilityDefinitions.CGLIB.capabilityName)
+                            removeCapability(CapabilityDefinition.CGLIB.group, CapabilityDefinition.CGLIB.capabilityName)
                         }
                     }
                 }
@@ -48,7 +48,7 @@ class CustomizationTest extends Specification {
     def "can use own capability resolution strategies through Gradle standard API"() {
         given:
         buildFile << """
-            import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions
+            import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinition
             
             plugins {
                 id("org.gradlex.jvm-ecosystem-conflict-resolution")
@@ -59,22 +59,22 @@ class CustomizationTest extends Specification {
             
             jvmDependencyConflicts {
                 conflictResolution {
-                    deactivateResolutionStrategy(CapabilityDefinitions.CGLIB)
-                    deactivateResolutionStrategy(CapabilityDefinitions.JAVAX_MAIL_API)
-                    deactivateResolutionStrategy(CapabilityDefinitions.JAVAX_WS_RS_API)
+                    deactivateResolutionStrategy(CapabilityDefinition.CGLIB)
+                    deactivateResolutionStrategy(CapabilityDefinition.JAVAX_MAIL_API)
+                    deactivateResolutionStrategy(CapabilityDefinition.JAVAX_WS_RS_API)
                     deactivateResolutionStrategy("org.gradlex:jakarta-servlet-api")
                 }
             }
             
             configurations.all {
                 resolutionStrategy.capabilitiesResolution {
-                    withCapability(CapabilityDefinitions.CGLIB.capability) {
+                    withCapability(CapabilityDefinition.CGLIB.capability) {
                         select("cglib:cglib:0")
                     }
-                    withCapability(CapabilityDefinitions.JAVAX_MAIL_API.capability) {
+                    withCapability(CapabilityDefinition.JAVAX_MAIL_API.capability) {
                        select("com.sun.mail:jakarta.mail:0")
                     }
-                    withCapability(CapabilityDefinitions.JAKARTA_SERVLET_API.capability) {
+                    withCapability(CapabilityDefinition.JAKARTA_SERVLET_API.capability) {
                         select("jakarta.servlet:jakarta.servlet-api:0")
                     }
                 }
@@ -109,7 +109,7 @@ class CustomizationTest extends Specification {
     def "can use own capability resolution strategies through DSL"() {
         given:
         buildFile << """
-            import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinitions
+            import org.gradlex.javaecosystem.capabilities.rules.CapabilityDefinition
             
             plugins {
                 id("org.gradlex.jvm-ecosystem-conflict-resolution")
@@ -120,8 +120,8 @@ class CustomizationTest extends Specification {
             
             jvmDependencyConflicts {
                 conflictResolution {
-                    select(CapabilityDefinitions.CGLIB, "cglib:cglib")
-                    selectLenient(CapabilityDefinitions.JAVAX_MAIL_API, "com.sun.mail:jakarta.mail")
+                    select(CapabilityDefinition.CGLIB, "cglib:cglib")
+                    selectLenient(CapabilityDefinition.JAVAX_MAIL_API, "com.sun.mail:jakarta.mail")
                     select("org.gradlex:jakarta-servlet-api", "jakarta.servlet:jakarta.servlet-api")
                 }
             }
