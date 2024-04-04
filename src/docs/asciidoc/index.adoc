@@ -52,6 +52,7 @@ include::src/docs/asciidoc/parts/resolution.adoc[leveloffset=+2]
 [[appendix]]
 == Appendix
 
+[[all-capabilities]]
 === Appendix A: All Capabilities
 
 The following list shows all capabilities and the components they are added to.

@@ -26,7 +26,7 @@ If the <<detection-plugin,jvm-ecosystem-conflict-detection>> plugin has not been
 
 == What is the concrete effect of the plugin?
 
-The plugin registers capability conflict resolutions for the <<rules.adoc#capability-rules,capability rules>> added by the base plugin.
+The plugin registers capability conflict resolutions for the <<all-capabilities,capabilities>> added by the <<detection-plugin,jvm-ecosystem-conflict-plugin>>.
 This enables a number of <<conflict,capability conflicts>> to be resolved automatically.
 For conflicts that...
 
