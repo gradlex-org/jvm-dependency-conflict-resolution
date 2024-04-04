@@ -90,16 +90,29 @@ If you encounter a problem with a rule in your build:
 
 In the second case, you cannot deactivate one of the rules in the plugin.
 But you can treat the modified metadata as if it was the original metadata and add another rule on top to modify it further or to revert the effect of the rule in this plugin.
-For example:
+This can be expressed in a compact way if you also use the <<resolution-plugin,`jvm-ecosystem-conflict-resolution`>> plugin. For example:
+
+[source,groovy]
+----
+jvmDependencyConflicts {
+    patch.module("javax.xml.stream:stax-api") {
+        // Additional rule to revert the effect of the plugin on 'javax.xml.stream:stax-api'
+        removeCapability(CapabilityDefinition.STAX_API)
+    }
+}
+----
+
+If you do not want to use the <<resolution-plugin,`jvm-ecosystem-conflict-resolution`>> plugin, you can use Gradle's general Component Metadata Rule API.
+For example like this:
 
 [source,groovy]
 ----
 dependencies {
-    components.withModule(CGlibRule.MODULES[0]) {
-        // Ad-hoc rule to revert the effect of 'CGlibRule'
+    components.withModule("javax.xml.stream:stax-api") {
+        // Additional rule to revert the effect of the plugin on 'javax.xml.stream:stax-api'
         allVariants {
             withCapabilities {
-                removeCapability(CGlibRule.CAPABILITY_GROUP, CGlibRule.CAPABILITY_NAME)
+                removeCapability(CapabilityDefinition.STAX_API.group, CapabilityDefinition.STAX_API.capabilityName)
             }
         }
     }
