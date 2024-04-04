@@ -86,7 +86,6 @@ If you prefer to get a conflict reported without making a selection, you can als
 
 [source,groovy]
 ----
-
 jvmDependencyConflicts {
     conflictResolution {
         // Deactivate default resolution strategy for selected rules
@@ -95,6 +94,25 @@ jvmDependencyConflicts {
     }
 }
 ----
+
+The following table lists all available functionality:
+
+|===
+| Method | Documentation
+
+| `deactivateResolutionStrategy(capability)`
+| Deactivate the default resolution strategy for a given capability.
+
+| `selectHighestVersion(capability)`
+| Select the highest available version if there is a conflict on the given capability.
+
+| `select(capability, module)`
+| Select the given _module_ if there is a conflict on the given capability. If the module is not part of the conflict: _fail_
+
+| `selectLenient(capability, module)`
+| Select the given _module_ if there is a conflict on the given capability. If the module is not part of the conflict: _select first module found_
+
+|===
 
 [[logging-dsl-block]]
 == Select and enforce a logging framework
