@@ -25,7 +25,7 @@ import org.gradlex.javaecosystem.conflict.detection.util.VersionNumber;
 import javax.inject.Inject;
 
 @CacheableRule
-public class Slf4JAlignment extends AlignmentDefinitionRule {
+public abstract class Slf4JAlignment extends AlignmentDefinitionRule {
 
     @Inject
     public Slf4JAlignment(AlignmentDefinition definition) {
