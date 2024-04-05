@@ -1,7 +1,7 @@
 # JVM Ecosystem Conflict Detection and Conflict Resolution Gradle plugins
 
-[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fgradlex-org%2Fjava-ecosystem-capabilities%2Fbadge%3Fref%3Dmain&style=flat)](https://actions-badge.atrox.dev/gradlex-org/java-ecosystem-capabilities/goto?ref=main)
-[![Gradle Plugin Portal](https://img.shields.io/maven-metadata/v?label=Plugin%20Portal&metadataUrl=https%3A%2F%2Fplugins.gradle.org%2Fm2%2Forg%2Fgradlex%2Fjava-ecosystem-capabilities%2Forg.gradlex.java-ecosystem-capabilities.gradle.plugin%2Fmaven-metadata.xml)](https://plugins.gradle.org/plugin/org.gradlex.java-ecosystem-capabilities)
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fgradlex-org%2Fjvm-dependency-conflict-resolution%2Fbadge%3Fref%3Dmain&style=flat)](https://actions-badge.atrox.dev/gradlex-org/jvm-dependency-conflict-resolution/goto?ref=main)
+[![Gradle Plugin Portal](https://img.shields.io/maven-metadata/v?label=Plugin%20Portal&metadataUrl=https%3A%2F%2Fplugins.gradle.org%2Fm2%2Forg%2Fgradlex%2Fjvm-dependency-conflict-resolution%2Forg.gradlex.jvm-dependency-conflict-resolution.gradle.plugin%2Fmaven-metadata.xml)](https://plugins.gradle.org/plugin/jvm-dependency-conflict-resolution)
 
 The `org.gradlex.jvm-dependency-conflict-detection` plugin adds [Capabilities](https://docs.gradle.org/current/userguide/component_capabilities.html#capabilities_as_first_level_concept) 
 to the metadata of well-known components hosted on Maven Central that are used in many Java projects.
@@ -18,7 +18,7 @@ With this plugin, you enable Gradle to detect and automatically resolved typical
 
 ## How to use the plugin?
 
-See the [documentation](https://gradlex.org/java-ecosystem-capabilities).
+See the [documentation](https://gradlex.org/jvm-dependency-conflict-resolution/).
 
 ### Supported Gradle versions
 
