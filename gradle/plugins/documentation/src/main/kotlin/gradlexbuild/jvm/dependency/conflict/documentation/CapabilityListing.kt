@@ -21,7 +21,7 @@ abstract class CapabilityListing : DefaultTask() {
     fun update() {
         val classesUrls = pluginClasses.files.map { it.toURI().toURL() }
         val loader = URLClassLoader("pluginClasspath", classesUrls.toTypedArray(), ComponentMetadataRule::class.java.classLoader)
-        val definitions = loader.loadClass("org.gradlex.javaecosystem.conflict.detection.rules.CapabilityDefinition")
+        val definitions = loader.loadClass("org.gradlex.jvm.dependency.conflict.detection.rules.CapabilityDefinition")
 
         val allCapabilities = definitions.enumConstants.map { rule ->
             val capability = definitions.getDeclaredMethod("getCapability").invoke(rule) as String

@@ -27,7 +27,7 @@ tasks.withType<Javadoc>().configureEach {
 
 pluginPublishConventions {
     id("org.gradlex.jvm-dependency-conflict-resolution")
-    implementationClass("org.gradlex.javaecosystem.conflict.resolution.JvmDependencyConflictResolutionPlugin")
+    implementationClass("org.gradlex.jvm.dependency.conflict.resolution.JvmDependencyConflictResolutionPlugin")
     displayName("JVM Conflict Resolution Gradle Plugin")
     description("Convenient dependency conflict management for Jave projects.")
     tags("dependency", "dependencies", "dependency-management", "capabilities", "java", "logging",
@@ -56,7 +56,7 @@ gradlePlugin {
     plugins {
         create("jvm-dependency-conflict-detection") {
             id = "org.gradlex.jvm-dependency-conflict-detection"
-            implementationClass = "org.gradlex.javaecosystem.conflict.detection.JvmDependencyConflictDetectionPlugin"
+            implementationClass = "org.gradlex.jvm.dependency.conflict.detection.JvmDependencyConflictDetectionPlugin"
             displayName = "JVM Conflict Detection Gradle Plugin"
             description = "Adds Capabilities to well-known Components hosted on Maven Central."
         }
@@ -89,6 +89,7 @@ testing.suites.named<JvmTestSuite>("test") {
         testTask {
             maxParallelForks = 4
             inputs.dir(layout.projectDirectory.dir("samples"))
+            inputs.dir("src/docs/samples")
         }
     }
 }

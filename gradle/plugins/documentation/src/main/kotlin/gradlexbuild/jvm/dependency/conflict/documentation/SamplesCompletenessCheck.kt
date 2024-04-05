@@ -27,7 +27,7 @@ abstract class SamplesCompletenessCheck : DefaultTask() {
                 classesUrls.toTypedArray(),
                 ComponentMetadataRule::class.java.classLoader
             )
-            val definitions = loader.loadClass("org.gradlex.javaecosystem.conflict.detection.rules.CapabilityDefinition")
+            val definitions = loader.loadClass("org.gradlex.jvm.dependency.conflict.detection.rules.CapabilityDefinition")
 
             val missing = definitions.enumConstants.map { rule ->
                 val modules = definitions.getDeclaredMethod("getModules").invoke(rule) as List<*>

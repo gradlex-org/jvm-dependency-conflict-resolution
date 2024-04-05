@@ -4,7 +4,6 @@ plugins {
     id("java")
     id("gradlexbuild.lifecycle")
     id("gradlexbuild.asciidoctor-conventions")
-    id("gradlexbuild.exemplar-conventions")
 }
 
 val checkSamplesForCompleteness = tasks.register<SamplesCompletenessCheck>("checkSamplesForCompleteness") {

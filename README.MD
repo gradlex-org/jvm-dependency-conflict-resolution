@@ -11,7 +11,7 @@ The `org.gradlex.jvm-dependency-conflict-resolution` plugin offers a compact lan
 ## What is a 'Capability' in Gradle and why should I care?
 
 The videos below explain the concept of Capability Conflicts and why they can help you to avoid "dependency hell" in your project.
-With this plugin, you enable Gradle to detect and automatically resolved typical capability conflicts in the JVM Ecosystem.
+With this plugin, you enable Gradle to detect and automatically resolved typical capability conflicts in the JVM ecosystem.
 
 [<img src="https://onepiecesoftware.github.io/img/videos/29.png" width="320">](https://www.youtube.com/watch?v=KocTqF0hO_8&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
 [<img src="https://onepiecesoftware.github.io/img/videos/11.png" width="320">](https://www.youtube.com/watch?v=5g20kbbqBFk&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)

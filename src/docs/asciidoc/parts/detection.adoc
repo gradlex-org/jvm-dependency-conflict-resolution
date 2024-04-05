@@ -140,7 +140,7 @@ If you encounter more cases, please...
 If you use this plugin and think it is missing a rule for a well-known component (or that a rule is incomplete/wrong), please let us know by
 
 - https://github.com/gradlex-org/jvm-dependency-conflict-resolution/blob/main/issues/new[Opening an Issue]
-- https://github.com/gradlex-org/jvm-dependency-conflict-resolution/pulls[Providing a PR] - for this you should look at the https://github.com/gradlex-org/jvm-dependency-conflict-resolution/blob/main/src/main/java/org.gradlex/javaecosystem/capabilities/rules[existing rules] and follow the same patterns for new rules
+- https://github.com/gradlex-org/jvm-dependency-conflict-resolution/pulls[Providing a PR] - for this you should look at the https://github.com/gradlex-org/jvm-dependency-conflict-resolution/blob/src/main/java/org/gradlex/jvm/dependency/conflict/detection/rules/CapabilityDefinition.java[existing rules] and follow the same patterns for new rules
 
 Please make sure, you clearly state which **Capability** it is about and which **Components** provide the Capability.
 

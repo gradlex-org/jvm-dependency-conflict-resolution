@@ -1,4 +1,4 @@
-import  org.gradlex.javaecosystem.conflict.detection.rules.CapabilityDefinition
+import  org.gradlex.jvm.dependency.conflict.detection.rules.CapabilityDefinition
 
 plugins {
     id("org.gradlex.jvm-dependency-conflict-resolution")

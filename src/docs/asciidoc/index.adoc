@@ -27,7 +27,7 @@ In the videos below, https://github.com/jjohannes[Jendrik] explains the concept 
 image:https://onepiecesoftware.github.io/img/videos/29.png[width=400,link=https://www.youtube.com/watch?v=KocTqF0hO_8&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE]
 image:https://onepiecesoftware.github.io/img/videos/11.png[width=400,link=https://www.youtube.com/watch?v=5g20kbbqBFk&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE]
 
-NOTE: With this series of plugins, you enable your build to detect and automatically resolve typical capability conflicts in the JVM Ecosystem.
+NOTE: With this series of plugins, you enable your build to detect and automatically resolve typical capability conflicts in the JVM ecosystem.
 
 == Plugins
 
@@ -40,7 +40,7 @@ The benefits described above are achieved through three different plugins:
 This plugin can be applied as a `Settings` or a `Project` plugin.
 
 `org.gradlex.jvm-dependency-conflict-resolution`::
-<<resolution-plugin,This plugin>> adds opinionated capability resolutions to conflicting API or implementation libraries in the Java ecosystem.
+<<resolution-plugin,This plugin>> adds opinionated capability resolutions to conflicting API or implementation libraries in the JVM ecosystem.
 This plugin can be applied as a `Project` plugin.
 It adds a DSL to configure resolution strategies, select logging implementations, and fix/enhance metadata of published components.
 
