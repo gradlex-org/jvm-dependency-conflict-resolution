@@ -5,14 +5,14 @@ import org.gradle.api.artifacts.ComponentMetadataRule
 import org.gradle.api.file.ConfigurableFileCollection
 import org.gradle.api.file.RegularFileProperty
 import org.gradle.api.tasks.Classpath
-import org.gradle.api.tasks.InputFile
+import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.TaskAction
 import java.net.URLClassLoader
 
-abstract class ReadmeUpdate : DefaultTask() {
+abstract class CapabilityListing : DefaultTask() {
 
-    @get:InputFile
-    abstract val readme: RegularFileProperty
+    @get:OutputFile
+    abstract val outputFile: RegularFileProperty
 
     @get:Classpath
     abstract val pluginClasses: ConfigurableFileCollection
@@ -31,17 +31,14 @@ abstract class ReadmeUpdate : DefaultTask() {
         }.sortedBy { it.first }
 
         val capabilityList = allCapabilities.joinToString("") { c ->
-            "* ${c.first}\n${c.second.joinToString("") { "  * ${(it as String).asRepoLink()}\n" }}"
+            "* ${c.first}\n${c.second.joinToString("") { "** ${(it as String).asRepoLink()}\n" }}"
         }
 
-        val readmeFile = readme.get().asFile
-        readmeFile.writeText(
-                readmeFile.readText().replace(
-                        Regex("<!-- START_GENERATED -->(.*\\n)+<!-- END_GENERATED -->"),
-                        "<!-- START_GENERATED -->\n$capabilityList\n<!-- END_GENERATED -->"
-                )
-        )
+        outputFile.get().asFile.also {
+            it.parentFile.mkdirs()
+            it.writeText(capabilityList)
+        }
     }
 
-    private fun String.asRepoLink() = "[$this](https://search.maven.org/artifact/${replace(":", "/")})"
+    private fun String.asRepoLink() = "https://search.maven.org/artifact/${replace(":", "/")}[$this]"
 }

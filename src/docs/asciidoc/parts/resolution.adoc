@@ -1,0 +1,263 @@
+[[resolution-plugin]]
+= JVM Ecosystem Conflict Resolution
+
+== Plugin dependency
+Add this to the build file of your convention plugin's build (e.g. `build-logic/build.gradle(.kts)` or `buildSrc/build.gradle(.kts)`).
+
+[source,groovy]
+----
+dependencies {
+    implementation("org.gradlex:jvm-dependency-conflict-resolution:2.0")
+}
+----
+
+== Apply the plugin
+
+[source,groovy]
+----
+plugins {
+    id("org.gradlex.jvm-dependency-conflict-resolution")
+}
+----
+
+This plugin should be applied to all projects, ideally as part of your convention plugin.
+
+If the <<detection-plugin,jvm-dependency-conflict-detection>> plugin has not been explicitly applied as well, either as a settings or project plugin, it will be automatically applied (as project plugin).
+
+== What is the concrete effect of the plugin?
+
+The plugin registers capability conflict resolutions for the <<all-capabilities,capabilities>> added by the <<detection-plugin,jvm-dependency-conflict-plugin>>.
+This enables a number of <<conflict,capability conflicts>> to be resolved automatically.
+For conflicts that...
+
+- cannot be resolved automatically
+- should be resolved differently (than the default)
+- are not detected correctly due to incomplete metadata
+
+...this plugin offers the `jvmDependencyConflicts` DLS with the following sections.
+
+[source,groovy]
+----
+jvmDependencyConflicts {
+    conflictResolution {
+        // Customize resolutin of capability conflicts
+        select(JAVAX_ACTIVATION_API, "com.sun.activation:jakarta.activation")
+    }
+
+    logging {
+        // Customize resolution of conflicts for a certain logging setup
+        enforceSlf4JSimple()
+    }
+
+    patch {
+        // Patch or extend wrong metdata
+        module("com.googlecode.json-simple:json-simple") { removeDependency("junit:junit") }
+    }
+}
+----
+
+[[conflictResolution-dsl-block]]
+== Customize resolution of capability conflicts
+
+The plugin adds a _default resolution strategy_ for each capability.
+Which in most cases means that Gradle will automatically pick the highest version of all components in conflict.
+This is to cover the cases where users _just want things to work somehow_.
+But it might not always be the right solution.
+
+You can use the `conflictResolution` section of `jvmDependencyConflicts` to make an explicit selection for a given capability.
+
+[source,groovy]
+----
+jvmDependencyConflicts {
+    conflictResolution {
+        // Explicitly select candidates for capabilities
+        select(CapabilityDefinition.CGLIB, "cglib:cglib")
+        select(CapabilityDefinition.JAVAX_MAIL_API, "com.sun.mail:jakarta.mail")
+    }
+}
+----
+
+NOTE: You may also use `selectLenient()`.
+In a larger build, there can be situations where the desired selection is not always available.
+For example, if the _compile classpath_ of a module does not contain all dependencies of the final application _runtime classpath_.
+In such cases, it may be okay and simplify things by just selecting one of the candidates, which `selectLenient()` does.
+
+If you prefer to get a conflict reported without making a selection, you can also deactivate the default resolution strategy.
+
+[source,groovy]
+----
+jvmDependencyConflicts {
+    conflictResolution {
+        // Deactivate default resolution strategy for selected rules
+        deactivateResolutionStrategy(CapabilityDefinitions.CGLIB)
+        deactivateResolutionStrategy(CapabilityDefinitions.JAVAX_MAIL_API)
+    }
+}
+----
+
+The following table lists all available functionality:
+
+|===
+| Method | Documentation
+
+| `deactivateResolutionStrategy(capability)`
+| Deactivate the default resolution strategy for a given capability.
+
+| `selectHighestVersion(capability)`
+| Select the highest available version if there is a conflict on the given capability.
+
+| `select(capability, module)`
+| Select the given _module_ if there is a conflict on the given capability. If the module is not part of the conflict: _fail_
+
+| `selectLenient(capability, module)`
+| Select the given _module_ if there is a conflict on the given capability. If the module is not part of the conflict: _select first module found_
+
+|===
+
+[[logging-dsl-block]]
+== Select and enforce a logging framework
+
+The `logging` section of `jvmDependencyConflicts` enables you to declaratively enforce the logging framework your application should use _at build time_.
+
+TIP: The different configuration options documented below do not _add_ dependencies.
+Make sure to have the expected dependency in your graph, either as a direct or transitive one.
+
+The `logging { }` section first provides a number of high-level, one stop solutions, for selecting a logging solution:
+
+|===
+| Method | Documentation | Required dependency
+
+| `enforceLogback()` +
+`enforceLogback(String configurationName)`
+| This will configure all capabilities to resolve in favour of http://logback.qos.ch/[LOGBack] and route all alternative logging solutions through Slf4J.
+| `ch.qos.logback:logback-classic`
+
+| `enforceLog4J2()` +
+`enforceLog4J2(String configurationName)`
+| This will configure all capabilities to resolve in favour of http://logging.apache.org/log4j/2.x/[Log4J 2] and route all alternative logging solutions through Log4J 2.
+| `org.apache.logging.log4j:log4j-slf4j-impl`
+
+| `enforceSlf4JSimple()` +
+`enforceSlf4JSimple(String configurationName)`
+| This will configure all capabilities to resolve in favour of Slf4J simple and route all alternative logging solutions through Slf4J.
+| `org.slf4j:slf4j-simple`
+
+|===
+
+TIP: The method without parameter will apply the setup to all dependency configuration, while the other one will limit the setup to the specified dependency configuration.
+
+If you want a finer grained control, the `logging { }` section provides lower level entry points for solving the different logging capability conflicts:
+
+|===
+| Method | Accepted parameter values | Documentation
+
+| `selectSlf4JBinding(Object notation)`
+| Value must be an Slf4J binding implementation known by the plugin: `org.slf4j:slf4j-simple`, `org.slf4j:slf4j-log4j12`, `org.slf4j:slf4j-jcl`, `org.slf4j:slf4j-jdk14`, `ch.qos.logback:logback-classic` or `org.apache.logging.log4j:log4j-slf4j-impl`
+| Configures the provided Slf4J binding for selection, configuring related capabilities if needed
+
+| `selectSlf4JBinding(String configurationName, Object notation)`
+| A dependency configuration name, that `canBeResolved=true` +
+A notation as above
+| Configures the provided Slf4J binding for selection, configuring related capabilities if needed, only for the provided dependency configuration
+
+| `selectLog4J12Implementation(Object notation)`
+| Value must be a Log4J 1.2 implementation known by the plugin: `org.slf4j:log4j-over-slf4j`, `org.apache.logging.log4j:log4j-1.2-api`, `log4:log4j` or `org.slf4j:slf4j-log4j12`
+| Configures the provided Log4J 1.2 implementation for selection, configuring related capabilities if needed
+
+| `selectLog4J12Implementation(String configurationName, Object notation)`
+| A dependency configuration name, that `canBeResolved=true` +
+A notation as above
+| Configures the provided Log4J 1.2 implementation for selection, configuring related capabilities if needed, only for the provided dependency configuration
+
+| `selectJulDelegation(Object notation)`
+| Value must be a `java.util.logging` interceptor or binding known by the plugin: `org.slf4j:jul-to-slf4j`, `org.slf4j:slf4j-jdk14` or `org.apache.logging.log4j:log4j-jul`
+| Configures the provided JUL integration of binding for selection, configuring related capabilities if needed
+
+| `selectJulDelegation(String configurationName, Object notation)`
+| A dependency configuration name, that `canBeResolved=true` +
+A notation as above
+| Configures the provided JUL integration for selection, configuring related capabilities if needed, only for the provided dependency configuration
+
+| `selectJCLImplementation(Object notation)`
+| Value must be a Apache Commons Logging interceptor or binding known by the plugin: `org.slf4j:jcl-over-slf4j`, `commons-logging:commons-logging`, `org.slf4j:slf4j-jcl` or `org.apache.logging.log4j:log4j-jcl`
+| Configures the provided commons logging interceptor or binding for selection, configuring related capabilities if needed
+
+| `selectJCLImplementation(String configurationName, Object notation)`
+| A dependency configuration name, that `canBeResolved=true` +
+A notation as above
+| Configures the provided commons logging interceptor or binding for selection, configuring related capabilities if needed, only for the provided dependency configuration
+
+| `selectSlf4JLog4J2Interaction(Object notation)`
+| Value must be a Log4J 2 module for Slf4J interaction known by the plugin: `org.apache.logging.log4j:log4j-to-slf4j` or `org.apache.logging.log4j:log4j-slf4j-impl`
+| Configures the Log4J 2 / Slf4J integration, configuring related capabilities if needed
+
+| `selectSlf4JLog4J2Interaction(Sting configurationName, Object notation)`
+| A dependency configuration name, that `canBeResolved=true` +
+A notation as above
+| Configures the Log4J 2 / Slf4J integration, configuring related capabilities if needed, only for the provided dependency configuration
+
+|===
+
+TIP: Notations above are those accepted by https://docs.gradle.org/6.0.1/dsl/org.gradle.api.artifacts.dsl.DependencyHandler.html#org.gradle.api.artifacts.dsl.DependencyHandler:create(java.lang.Object)[`DependencyHandler.create(notation)`] in Gradle that resolves to an `ExternalDependency`.
+Most often this is a `group:name:version` `String`.
+
+[[patch-dsl-block]]
+== Patch metadata of published components
+
+The `patch` section of `jvmDependencyConflicts` enables you to do individual adjustments to the metadata of published components.
+This can be done to add information the <<detection-plugin,jvm-dependency-conflict-detection>> plugin does not yet cover or to make opinionated adjustments for your context.
+In the case of generally applicable adjustments, like adding a capability, please consider contributing your discovery back to the plugin by https://github.com/gradlex-org/java-ecosystem-capabilities/compare[creating a PR].
+
+[source,groovy]
+----
+jvmDependencyConflicts {
+    patch {
+         // patch metadata of the given module
+        module("io.netty:netty-common") {
+            // required adjustments (see table below)
+        }
+        // align versions (through BOM)
+        alignWithBom("org.ow2.asm:asm-bom", "org.ow2.asm:asm", "org.ow2.asm:asm-util")
+        // align versions (without using a BOM)
+        align("org.ow2.asm:asm", "org.ow2.asm:asm-util")
+    }
+}
+----
+
+|===
+| Method | Documentation
+
+| `addApiDependency(dependency)`
+| Add a dependency in 'api' scope (visible at runtime and compile time).
+
+| `addRuntimeOnlyDependency(dependency)`
+| Add a dependency in 'runtimeOnly' scope (visible at runtime).
+
+| `addCompileOnlyApiDependency(dependency)`
+| Add a dependency in 'compileOnlyApi' scope (visible at compile time).
+
+| `removeDependency(dependency)`
+| Remove the given dependency from all scopes.
+
+| `reduceToRuntimeOnlyDependency(dependency)`
+| Reduce the given 'api' dependency to 'runtimeOnly' scope.
+
+| `reduceToCompileOnlyApiDependency(dependency)`
+| Reduce the given 'api' dependency to 'compileOnlyApi' scope.
+
+| `addCapability(capability)`
+| Add a capability.
+
+| `removeCapability(capability)`
+| Remove a capability.
+
+| `addFeature(classifier)`
+| Make the Jar with the give 'classifier' known as _Feature Variant_ so that it can be selected via capability in a dependency declaration.
+
+| `addTargetPlatformVariant(classifier, os, arch)`
+| Make the Jar with the give 'classifier' known as additional variant with the _OperatingSystemFamily_ and _MachineArchitecture_ attributes set.
+
+| `setStatusToIntegration(markerInVersion)`
+| Set the status of pre-release versions that are identified by one of the _marker string_ (e.g. `-rc`, `-m`) to `integration` (will then not be considered when using `latest.release` as version).
+
+|===

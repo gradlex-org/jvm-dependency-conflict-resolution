@@ -1,14 +1,10 @@
-import gradlexbuild.javaecosystem.conflict.documentation.ReadmeUpdate
 import gradlexbuild.javaecosystem.conflict.documentation.SamplesCompletenessCheck
 
 plugins {
     id("java")
     id("gradlexbuild.java-ecosystem-capabilities-lifecycle")
-}
-
-val updateReadme = tasks.register<ReadmeUpdate>("updateReadme") {
-    pluginClasses.from(tasks.jar)
-    readme = layout.projectDirectory.file("README.MD")
+    id("gradlexbuild.asciidoctor-conventions")
+    id("gradlexbuild.exemplar-conventions")
 }
 
 val checkSamplesForCompleteness = tasks.register<SamplesCompletenessCheck>("checkSamplesForCompleteness") {
@@ -18,6 +14,5 @@ val checkSamplesForCompleteness = tasks.register<SamplesCompletenessCheck>("chec
 }
 
 tasks.quickCheck {
-    dependsOn(updateReadme)
     dependsOn(checkSamplesForCompleteness)
 }
