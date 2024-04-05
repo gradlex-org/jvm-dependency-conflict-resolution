@@ -112,7 +112,10 @@ dependencies {
         // Additional rule to revert the effect of the plugin on 'javax.xml.stream:stax-api'
         allVariants {
             withCapabilities {
-                removeCapability(CapabilityDefinition.STAX_API.group, CapabilityDefinition.STAX_API.capabilityName)
+                removeCapability(
+                    CapabilityDefinition.STAX_API.group,
+                    CapabilityDefinition.STAX_API.capabilityName
+                )
             }
         }
     }
@@ -159,14 +162,18 @@ You add the `asm:asm` capability as follows:
 configurations {
     apiElements {
         outgoing {
-            capability("${project.group}:${project.name}:${project.version}") // keep default capability 'org.ow2.asm:asm'
-            capability("asm:asm:${project.version}")                          // add 'asm:asm'
+            // keep default capability 'org.ow2.asm:asm'
+            capability("${project.group}:${project.name}:${project.version}")
+            // add 'asm:asm'
+            capability("asm:asm:${project.version}")
         }
     }
     runtimeElements {
         outgoing {
-            capability("${project.group}:${project.name}:${project.version}") // keep default capability 'org.ow2.asm:asm'
-            capability("asm:asm:${project.version}")                          // add 'asm:asm'
+            // keep default capability 'org.ow2.asm:asm'
+            capability("${project.group}:${project.name}:${project.version}")
+            // add 'asm:asm'
+            capability("asm:asm:${project.version}")
         }
     }
 }
