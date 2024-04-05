@@ -25,14 +25,18 @@ tasks.withType<Javadoc>().configureEach {
     }
 }
 
+val tagsList = listOf(
+    "dependency", "dependencies", "dependency-management", "capabilities", "java", "logging",
+    "asm", "bouncycastle", "cglib", "commons-io", "dom4j", "guava", "hamcrest", "javax", "jakarta", "junit",
+    "postgresql", "stax", "slf4j", "log4j2", "velocity", "woodstox"
+)
+
 pluginPublishConventions {
     id("org.gradlex.jvm-dependency-conflict-resolution")
     implementationClass("org.gradlex.jvm.dependency.conflict.resolution.JvmDependencyConflictResolutionPlugin")
     displayName("JVM Conflict Resolution Gradle Plugin")
-    description("Convenient dependency conflict management for Jave projects.")
-    tags("dependency", "dependencies", "dependency-management", "capabilities", "java", "logging",
-         "asm", "bouncycastle", "cglib", "commons-io", "dom4j", "guava", "hamcrest", "javax", "jakarta", "junit",
-         "postgresql", "stax", "slf4j", "log4j2", "velocity", "woodstox")
+    description("Convenient dependency conflict management for Java projects.")
+    tags(*tagsList.toTypedArray())
     gitHub("https://github.com/gradlex-org/jvm-dependency-conflict-resolution")
     website("https://github.com/gradlex-org/jvm-dependency-conflict-resolution")
     developer {
@@ -59,6 +63,7 @@ gradlePlugin {
             implementationClass = "org.gradlex.jvm.dependency.conflict.detection.JvmDependencyConflictDetectionPlugin"
             displayName = "JVM Conflict Detection Gradle Plugin"
             description = "Adds Capabilities to well-known Components hosted on Maven Central."
+            tags = tagsList
         }
     }
 }
