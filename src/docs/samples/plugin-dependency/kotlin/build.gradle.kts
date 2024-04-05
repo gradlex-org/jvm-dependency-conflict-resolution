@@ -6,6 +6,6 @@ repositories.gradlePluginPortal()
 
 // tag::plugin-dependency[]
 dependencies {
-    implementation("org.gradlex:java-ecosystem-capabilities:1.5.2")
+    implementation("org.gradlex:jvm-dependency-conflict-resolution:2.0")
 }
 // end::plugin-dependency[]

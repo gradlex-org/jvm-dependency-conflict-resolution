@@ -1,4 +1,4 @@
-package gradlexbuild.javaecosystem.conflict.documentation
+package gradlexbuild.jvm.dependency.conflict.documentation
 
 import org.gradle.api.DefaultTask
 import org.gradle.api.artifacts.ComponentMetadataRule

@@ -1,6 +1,6 @@
 plugins {
     id("jvm-test-suite")
-    id("gradlexbuild.java-ecosystem-capabilities-lifecycle")
+    id("gradlexbuild.lifecycle")
 }
 
 val testSamples by testing.suites.registering(JvmTestSuite::class) {

@@ -1,8 +1,8 @@
-import gradlexbuild.javaecosystem.conflict.documentation.SamplesCompletenessCheck
+import gradlexbuild.jvm.dependency.conflict.documentation.SamplesCompletenessCheck
 
 plugins {
     id("java")
-    id("gradlexbuild.java-ecosystem-capabilities-lifecycle")
+    id("gradlexbuild.lifecycle")
     id("gradlexbuild.asciidoctor-conventions")
     id("gradlexbuild.exemplar-conventions")
 }

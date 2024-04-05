@@ -1,4 +1,4 @@
-import gradlexbuild.javaecosystem.conflict.documentation.CapabilityListing
+import gradlexbuild.jvm.dependency.conflict.documentation.CapabilityListing
 import org.asciidoctor.gradle.base.AsciidoctorAttributeProvider
 import org.asciidoctor.gradle.base.log.Severity
 

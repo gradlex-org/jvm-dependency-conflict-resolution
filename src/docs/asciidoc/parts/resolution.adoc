@@ -1,5 +1,5 @@
 [[resolution-plugin]]
-= JVM Ecosystem Conflict Resolution
+= JVM Dependency Conflict Resolution
 
 == Plugin dependency
 Add this to the build file of your convention plugin's build (e.g. `build-logic/build.gradle(.kts)` or `buildSrc/build.gradle(.kts)`).
@@ -206,7 +206,7 @@ Most often this is a `group:name:version` `String`.
 
 The `patch` section of `jvmDependencyConflicts` enables you to do individual adjustments to the metadata of published components.
 This can be done to add information the <<detection-plugin,jvm-dependency-conflict-detection>> plugin does not yet cover or to make opinionated adjustments for your context.
-In the case of generally applicable adjustments, like adding a capability, please consider contributing your discovery back to the plugin by https://github.com/gradlex-org/java-ecosystem-capabilities/compare[creating a PR].
+In the case of generally applicable adjustments, like adding a capability, please consider contributing your discovery back to the plugin by https://github.com/gradlex-org/jvm-dependency-conflict-resolution/compare[creating a PR].
 
 [source,groovy]
 ----

@@ -1,4 +1,4 @@
-# JVM Ecosystem Conflict Detection and Conflict Resolution Gradle plugins
+# JVM Dependency Conflict Detection and Conflict Resolution Gradle plugins
 
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fgradlex-org%2Fjvm-dependency-conflict-resolution%2Fbadge%3Fref%3Dmain&style=flat)](https://actions-badge.atrox.dev/gradlex-org/jvm-dependency-conflict-resolution/goto?ref=main)
 [![Gradle Plugin Portal](https://img.shields.io/maven-metadata/v?label=Plugin%20Portal&metadataUrl=https%3A%2F%2Fplugins.gradle.org%2Fm2%2Forg%2Fgradlex%2Fjvm-dependency-conflict-resolution%2Forg.gradlex.jvm-dependency-conflict-resolution.gradle.plugin%2Fmaven-metadata.xml)](https://plugins.gradle.org/plugin/jvm-dependency-conflict-resolution)
@@ -11,7 +11,7 @@ The `org.gradlex.jvm-dependency-conflict-resolution` plugin offers a compact lan
 ## What is a 'Capability' in Gradle and why should I care?
 
 The videos below explain the concept of Capability Conflicts and why they can help you to avoid "dependency hell" in your project.
-With this plugin, you enable Gradle to detect and automatically resolved typical capability conflicts in the Java Ecosystem.
+With this plugin, you enable Gradle to detect and automatically resolved typical capability conflicts in the JVM Ecosystem.
 
 [<img src="https://onepiecesoftware.github.io/img/videos/29.png" width="320">](https://www.youtube.com/watch?v=KocTqF0hO_8&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)
 [<img src="https://onepiecesoftware.github.io/img/videos/11.png" width="320">](https://www.youtube.com/watch?v=5g20kbbqBFk&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE)

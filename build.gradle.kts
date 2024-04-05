@@ -1,7 +1,7 @@
 plugins {
     id("groovy")
-    id("gradlexbuild.java-ecosystem-capabilities-lifecycle")
-    id("gradlexbuild.java-ecosystem-capabilities-documentation")
+    id("gradlexbuild.lifecycle")
+    id("gradlexbuild.jvm-dependency-conflict-detection-documentation")
     id("org.gradlex.internal.plugin-publish-conventions") version "0.6"
 }
 
@@ -33,8 +33,8 @@ pluginPublishConventions {
     tags("dependency", "dependencies", "dependency-management", "capabilities", "java", "logging",
          "asm", "bouncycastle", "cglib", "commons-io", "dom4j", "guava", "hamcrest", "javax", "jakarta", "junit",
          "postgresql", "stax", "slf4j", "log4j2", "velocity", "woodstox")
-    gitHub("https://github.com/gradlex-org/java-ecosystem-capabilities")
-    website("https://github.com/gradlex-org/java-ecosystem-capabilities")
+    gitHub("https://github.com/gradlex-org/jvm-dependency-conflict-resolution")
+    website("https://github.com/gradlex-org/jvm-dependency-conflict-resolution")
     developer {
         id = "britter"
         name = "Benedikt Ritter"

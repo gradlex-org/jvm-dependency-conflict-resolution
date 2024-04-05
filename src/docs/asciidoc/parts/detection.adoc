@@ -1,5 +1,5 @@
 [[detection-plugin]]
-= JVM Ecosystem Conflict Detection
+= JVM Dependency Conflict Detection
 
 This plugin is responsible for applying the capability rules that support the other two plugins.
 
@@ -40,7 +40,7 @@ The plugin makes sure that during dependency resolution, you do not end up with 
 That is, you won't have two or more Jars with different names (e.g. `jsr311-api-1.1.1.jar`, `javax.ws.rs-api-2.1.1.jar`, `jakarta.ws.rs-api-3.0.0.jar` and `jaxrs-api-3.0.1.Final.jar`) but same/similar classes on the classpath.
 In this example, Gradle will use `jaxrs-api` in all places.
 You can see all effects in https://scans.gradle.com/s/2pcbycndpf54c/dependencies?toggled=W1swXSxbMCwxXV0[this build scan]
-from this https://github.com/gradlex-org/java-ecosystem-capabilities/blob/main/samples/sample-all/build.gradle.kts[artificial sample project] that includes dependencies to all components covered by rules in this plugin.
+from this https://github.com/gradlex-org/jvm-dependency-conflict-resolution/blob/main/samples/sample-all/build.gradle.kts[artificial sample project] that includes dependencies to all components covered by rules in this plugin.
 See <<appendix>> for a full list of all capabilities that are added by this plugin and the components they apply to.
 
 image::build-scan.png[link=https://scans.gradle.com/s/2pcbycndpf54c/dependencies?toggled=W1swXSxbMCwxXV0]
@@ -85,7 +85,7 @@ In most cases, because the component is published with Maven and only published 
 With that in mind, the rules _should_ be usable as they are for almost all Gradle builds.
 If you encounter a problem with a rule in your build:
 
-1. Maybe there is a mistake/bug in this plugin. Please https://github.com/gradlex-org/java-ecosystem-capabilities/blob/main/issues/new[open an issue] to discuss it.
+1. Maybe there is a mistake/bug in this plugin. Please https://github.com/gradlex-org/jvm-dependency-conflict-resolution/blob/main/issues/new[open an issue] to discuss it.
 2. You might have a very special setup, where one of the rules causes trouble only in that setup.
 
 In the second case, you cannot deactivate one of the rules in the plugin.
@@ -139,8 +139,8 @@ If you encounter more cases, please...
 
 If you use this plugin and think it is missing a rule for a well-known component (or that a rule is incomplete/wrong), please let us know by
 
-- https://github.com/gradlex-org/java-ecosystem-capabilities/blob/main/issues/new[Opening an Issue]
-- https://github.com/gradlex-org/java-ecosystem-capabilities/pulls[Providing a PR] - for this you should look at the https://github.com/gradlex-org/java-ecosystem-capabilities/blob/main/src/main/java/org.gradlex/javaecosystem/capabilities/rules[existing rules] and follow the same patterns for new rules
+- https://github.com/gradlex-org/jvm-dependency-conflict-resolution/blob/main/issues/new[Opening an Issue]
+- https://github.com/gradlex-org/jvm-dependency-conflict-resolution/pulls[Providing a PR] - for this you should look at the https://github.com/gradlex-org/jvm-dependency-conflict-resolution/blob/main/src/main/java/org.gradlex/javaecosystem/capabilities/rules[existing rules] and follow the same patterns for new rules
 
 Please make sure, you clearly state which **Capability** it is about and which **Components** provide the Capability.
 
