@@ -1,5 +1,5 @@
 [[intro]]
-= JVM Dependency Conflict Resolution and Conflict Detection plugins
+= JVM Dependency Conflict Detection and Resolution plugins
 
 image:https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fgradlex-org%2Fjvm-dependency-conflict-resolution%2Fbadge%3Fref%3Dmain&style=flat["Build Status", link="https://actions-badge.atrox.dev/gradlex-org/jvm-dependency-conflict-resolution/goto?ref=main"]
 image:https://img.shields.io/maven-metadata/v?label=Plugin%20Portal&metadataUrl=https%3A%2F%2Fplugins.gradle.org%2Fm2%2Forg%2Fgradlex%2Fjvm-dependency-conflict-resolution%2Forg.gradlex.jvm-dependency-conflict-resolution.gradle.plugin%2Fmaven-metadata.xml["Gradle Plugin Portal", link="https://plugins.gradle.org/plugin/org.gradlex.jvm-dependency-conflict-resolution"]
@@ -27,13 +27,13 @@ In the videos below, https://github.com/jjohannes[Jendrik] explains the concept 
 image:https://onepiecesoftware.github.io/img/videos/29.png[width=400,link=https://www.youtube.com/watch?v=KocTqF0hO_8&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE]
 image:https://onepiecesoftware.github.io/img/videos/11.png[width=400,link=https://www.youtube.com/watch?v=5g20kbbqBFk&list=PLWQK2ZdV4Yl2k2OmC_gsjDpdIBTN0qqkE]
 
-NOTE: With this series of plugins, you enable your build to detect and automatically resolve typical capability conflicts in the JVM ecosystem.
+NOTE: With these plugins, you enable your build to detect and automatically resolve typical capability conflicts in the JVM ecosystem.
 
 == Plugins
 
 TIP: These plugins require Gradle 6.8.3 at a minimum.
 
-The benefits described above are achieved through three different plugins:
+The benefits described above are achieved through two plugins:
 
 `org.gradlex.jvm-dependency-conflict-detection`::
 <<detection-plugin,This plugin>> adds capability declarations to the metadata of well-known components hosted on Maven Central that are used in many Java projects.

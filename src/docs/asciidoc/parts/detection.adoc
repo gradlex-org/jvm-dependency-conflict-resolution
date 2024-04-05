@@ -1,7 +1,7 @@
 [[detection-plugin]]
 = JVM Dependency Conflict Detection
 
-This plugin is responsible for applying the capability rules that support the other two plugins.
+This plugin is responsible for applying metadata patching rules that add capability and alignment information to existing Java libraries.
 
 WARNING: Applying only the `jvm-dependency-conflict-detection` plugin will result in broken builds if capability conflicts are found.
 Conflict resolution is handled by the <<resolution-plugin,`jvm-dependency-conflict-resolution`>> plugin.
