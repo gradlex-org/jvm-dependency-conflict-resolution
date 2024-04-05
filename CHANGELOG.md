@@ -1,12 +1,14 @@
-# Java Ecosystem Capabilities Gradle plugin - Changelog
+# JVM Dependency Conflict Resolution Gradle plugin - Changelog
 
 ## Version 2.0
+* [New] [97](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/97) Unified DSL for conflict resolution, logging and metadata patching
+* [New] [78](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/78) Merge with ['dev.jacomet.logging-capabilities' plugin](https://github.com/ljacomet/logging-capabilities)
 * [New] [76](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/76) Inform users in case of incompatible RulesMode configuration
-* [New Rules] [78](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/78) Merge with ['dev.jacomet.logging-capabilities' plugin](https://github.com/ljacomet/logging-capabilities)
 * [New Rules] [#96](https://github.com/gradlex-org/java-ecosystem-capabilities/pull/96) Add multiple rules based on 'pom-scijava' (Thanks [Giuseppe Barbieri](https://github.com/elect86)!)
 
 ### Breaking changes
 
+* Plugin ID is now `org.gradlex.jvm-dependency-conflict-resolution`
 * Minimum required Gradle version raised to 6.8.3
 
 ## Version 1.5.2
