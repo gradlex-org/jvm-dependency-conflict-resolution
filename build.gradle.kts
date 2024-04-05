@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "org.gradlex"
-version = "1.5.2"
+version = "1.5.3"
 
 java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(11)) // to run tests that use Android with 11
@@ -18,7 +18,7 @@ pluginPublishConventions {
     id("${project.group}.${project.name}")
     implementationClass("org.gradlex.javaecosystem.capabilities.JavaEcosystemCapabilitiesPlugin")
     displayName("Java Ecosystem Capabilities Gradle Plugin")
-    description("Adds Capabilities to well-known Components hosted on Maven Central.")
+    description("!!! Plugin ID changed to 'org.gradlex.jvm-dependency-conflict-resolution' !!!")
     tags("capabilities", "java",
          "asm", "bouncycastle", "cglib", "commons-io", "dom4j", "guava", "hamcrest", "javax", "jakarta", "junit",
          "postgresql", "stax", "velocity", "woodstox")

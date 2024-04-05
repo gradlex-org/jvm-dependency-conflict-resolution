@@ -26,6 +26,7 @@ import org.gradle.api.artifacts.ComponentVariantIdentifier;
 import org.gradle.api.artifacts.component.ModuleComponentIdentifier;
 import org.gradle.api.artifacts.dsl.ComponentMetadataHandler;
 import org.gradle.api.initialization.Settings;
+import org.gradle.api.logging.Logger;
 import org.gradle.api.plugins.ExtensionAware;
 import org.gradle.util.GradleVersion;
 import org.gradlex.javaecosystem.capabilities.componentrules.GuavaComponentRule;
@@ -88,6 +89,7 @@ import org.gradlex.javaecosystem.capabilities.rules.StaxApiRule;
 import org.gradlex.javaecosystem.capabilities.rules.VelocityRule;
 import org.gradlex.javaecosystem.capabilities.rules.WoodstoxAslRule;
 import org.gradlex.javaecosystem.capabilities.util.VersionNumber;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
@@ -111,6 +113,11 @@ public abstract class JavaEcosystemCapabilitiesPlugin implements Plugin<Extensio
 
     @Override
     public void apply(ExtensionAware projectOrSettings) {
+        Logger logger = (Logger) LoggerFactory.getLogger(JavaEcosystemCapabilitiesPlugin.class);
+        logger.lifecycle("Plugin ID changed for version 2.0:\n" +
+                "  Plugin ID: org.gradlex.java-ecosystem-capabilities -> org.gradlex.jvm-dependency-conflict-resolution\n" +
+                "  GA Coordinates: org.gradlex:java-ecosystem-capabilities -> org.gradlex:jvm-dependency-conflict-resolution");
+
         if (GradleVersion.current().compareTo(MINIMUM_SUPPORTED_VERSION) < 0) {
             throw new IllegalStateException("Plugin requires at least Gradle " + MINIMUM_SUPPORTED_VERSION.getVersion());
         }
