@@ -40,7 +40,7 @@ For conflicts that...
 ----
 jvmDependencyConflicts {
     conflictResolution {
-        // Customize resolutin of capability conflicts
+        // Customize resolution of capability conflicts
         select(JAVAX_ACTIVATION_API, "com.sun.activation:jakarta.activation")
     }
 
@@ -50,7 +50,7 @@ jvmDependencyConflicts {
     }
 
     patch {
-        // Patch or extend wrong metdata
+        // Patch or extend wrong metadata
         module("com.googlecode.json-simple:json-simple") { removeDependency("junit:junit") }
     }
 }
