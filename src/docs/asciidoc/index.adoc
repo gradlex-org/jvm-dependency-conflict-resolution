@@ -73,7 +73,7 @@ The following lists the capabilities important for the logging topic (see <<logg
 | Represents an Slf4J binding
 
 | `log4j2-impl`
-| `org.apache.logging.log4j:log4j-slf4j-impl`, `org.apache.logging.log4j:log4j-slf4j2-impl`, `org.apache.logging.log4j:log4j-core`
+| `org.apache.logging.log4j:log4j-to-slf4j`, `org.apache.logging.log4j:log4j-core`
 | Represents the native Log4J 2 implementation or delegation to Slf4J
 
 | `log4j2-vs-slf4j`
@@ -113,4 +113,3 @@ The following lists the capabilities important for the logging topic (see <<logg
 === Appendix C: Alignment
 
 In addition to the capability setting and conflict detection, the plugin also registers https://docs.gradle.org/current/userguide/dependency_version_alignment.html#sec:align-versions-virtual[alignment rules] for Slf4J and Log4J 2 modules.
-
