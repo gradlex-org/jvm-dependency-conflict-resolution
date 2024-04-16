@@ -85,7 +85,7 @@ In most cases, because the component is published with Maven and only published 
 With that in mind, the rules _should_ be usable as they are for almost all Gradle builds.
 If you encounter a problem with a rule in your build:
 
-1. Maybe there is a mistake/bug in this plugin. Please https://github.com/gradlex-org/jvm-dependency-conflict-resolution/blob/main/issues/new[open an issue] to discuss it.
+1. Maybe there is a mistake/bug in this plugin. Please https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/new[open an issue] to discuss it.
 2. You might have a very special setup, where one of the rules causes trouble only in that setup.
 
 In the second case, you cannot deactivate one of the rules in the plugin.
@@ -218,4 +218,3 @@ You add the `asm:asm` capability as follows:
 ----
 
 See also: https://github.com/gradlex-org/gradle-module-metadata-maven-plugin#defining-capabilities[Documentation of `gradle-module-metadata-maven-plugin` Maven Plugin]
-
