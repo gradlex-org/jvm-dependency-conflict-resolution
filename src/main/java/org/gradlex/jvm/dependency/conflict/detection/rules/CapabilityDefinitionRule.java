@@ -41,7 +41,7 @@ public abstract class CapabilityDefinitionRule implements ComponentMetadataRule 
                 variant.withCapabilities(capabilities -> capabilities.addCapability(
                         definition.getGroup(), definition.getCapabilityName(), getVersion(context.getDetails().getId())
                 ));
-                additionalAdjustments(variant);
+                additionalAdjustments(context.getDetails().getId(), variant);
             });
         }
     }
@@ -52,6 +52,10 @@ public abstract class CapabilityDefinitionRule implements ComponentMetadataRule 
 
     protected String getVersion(ModuleVersionIdentifier id) {
         return id.getVersion();
+    }
+
+    protected void additionalAdjustments(ModuleVersionIdentifier id, VariantMetadata variant) {
+        additionalAdjustments(variant);
     }
 
     protected void additionalAdjustments(VariantMetadata variant) { }

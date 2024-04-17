@@ -23,7 +23,7 @@ compileClasspath - Compile classpath for source set 'main'.
 |    \--- org.ow2.asm:asm:7.1 -> 9.2
 +--- cglib:cglib:3.3.0 (*)
 +--- ch.qos.logback:logback-classic:1.5.0 -> org.slf4j:slf4j-simple:2.0.12
-|    +--- org.slf4j:slf4j-api:2.0.12 (*)
+|    +--- org.slf4j:slf4j-api:{require 2.0.12; reject [,1.8.0-alpha0)} -> 2.0.12 (*)
 |    \--- org.slf4j:slf4j-bom:2.0.12 (*)
 +--- com.github.spotbugs:spotbugs-annotations:4.8.3
 |    \--- com.google.code.findbugs:jsr305:3.0.2

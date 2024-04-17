@@ -39,16 +39,16 @@ class LoggingCapabilitiesPluginDetectionFunctionalTest extends AbstractLoggingCa
 
         then:
         outcomeOf(result, ':doIt') == FAILED
-        conflictOnCapability(result.output, "org.gradlex:slf4j-impl:1.0")
+        conflictOnCapability(result.output, "org.gradlex:slf4j-impl:$capabilityVersion")
 
         where:
-        first                           | second
-        'org.slf4j:slf4j-simple:1.7.27' | 'ch.qos.logback:logback-classic:1.2.3'
-        'org.slf4j:slf4j-simple:1.7.27' | 'org.slf4j:slf4j-log4j12:1.7.27'
-        'org.slf4j:slf4j-simple:1.7.27' | 'org.slf4j:slf4j-jcl:1.7.27'
-        'org.slf4j:slf4j-simple:1.7.27' | 'org.slf4j:slf4j-jdk14:1.7.27'
-        'org.slf4j:slf4j-simple:1.7.27' | 'org.apache.logging.log4j:log4j-slf4j-impl:2.17.0'
-        'org.slf4j:slf4j-simple:1.7.27' | 'org.apache.logging.log4j:log4j-slf4j2-impl:2.20.0'
+        first                           | second                                              | capabilityVersion
+        'org.slf4j:slf4j-simple:1.7.27' | 'ch.qos.logback:logback-classic:1.2.3'              | '1.0'
+        'org.slf4j:slf4j-simple:1.7.27' | 'org.slf4j:slf4j-log4j12:1.7.27'                    | '1.0'
+        'org.slf4j:slf4j-simple:1.7.27' | 'org.slf4j:slf4j-jcl:1.7.27'                        | '1.0'
+        'org.slf4j:slf4j-simple:1.7.27' | 'org.slf4j:slf4j-jdk14:1.7.27'                      | '1.0'
+        'org.slf4j:slf4j-simple:1.7.27' | 'org.apache.logging.log4j:log4j-slf4j-impl:2.17.0'  | '1.0'
+        'org.slf4j:slf4j-simple:1.7.27' | 'org.apache.logging.log4j:log4j-slf4j2-impl:2.20.0' | '2.0'
 
     }
 
