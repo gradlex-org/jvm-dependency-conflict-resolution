@@ -28,7 +28,7 @@ tasks.withType<Javadoc>().configureEach {
 val tagsList = listOf(
     "dependency", "dependencies", "dependency-management", "capabilities", "java", "logging",
     "asm", "bouncycastle", "cglib", "commons-io", "dom4j", "guava", "hamcrest", "javax", "jakarta", "junit",
-    "postgresql", "stax", "slf4j", "log4j2", "velocity", "woodstox"
+    "mysql", "postgresql", "stax", "slf4j", "log4j2", "velocity", "woodstox"
 )
 
 pluginPublishConventions {

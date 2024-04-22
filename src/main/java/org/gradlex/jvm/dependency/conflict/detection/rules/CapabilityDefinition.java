@@ -248,6 +248,10 @@ public enum CapabilityDefinition {
             "com.miglayout:miglayout-swing",
             "com.miglayout:miglayout"
     ),
+    MYSQL(HIGHEST_VERSION,
+            "mysql:mysql-connector-java",
+            "com.mysql:mysql-connector-j"
+    ),
     POSTGRESQL(HIGHEST_VERSION,
             "postgresql:postgresql",
             "org.postgresql:postgresql"
