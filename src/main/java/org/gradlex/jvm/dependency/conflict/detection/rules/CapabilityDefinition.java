@@ -248,7 +248,7 @@ public enum CapabilityDefinition {
             "com.miglayout:miglayout-swing",
             "com.miglayout:miglayout"
     ),
-    MYSQL(HIGHEST_VERSION,
+    MYSQL_CONNECTOR_JAVA(HIGHEST_VERSION,
             "mysql:mysql-connector-java",
             "com.mysql:mysql-connector-j"
     ),
