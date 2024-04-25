@@ -45,6 +45,8 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- com.miglayout:miglayout-swing:5.0
 |    \--- com.miglayout:miglayout-core:5.0
 +--- com.miglayout:miglayout:3.7.4 -> com.miglayout:miglayout-swing:5.0 (*)
++--- com.mysql:mysql-connector-j:8.3.0
+|    \--- com.google.protobuf:protobuf-java:3.25.1
 +--- com.sun.mail:javax.mail:1.6.2
 |    \--- javax.activation:activation:1.1
 +--- com.vividsolutions:jts-core:1.14.0
@@ -128,6 +130,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- log4j:log4j:1.2.17 -> org.slf4j:log4j-over-slf4j:2.0.12
 |    +--- org.slf4j:slf4j-api:2.0.12 (*)
 |    \--- org.slf4j:slf4j-bom:2.0.12 (*)
++--- mysql:mysql-connector-java:8.0.33 -> com.mysql:mysql-connector-j:8.3.0 (*)
 +--- net.java.dev.jna:jna-platform:5.10.0
 |    \--- net.java.dev.jna:jna:5.10.0
 +--- net.java.dev.jna:platform:3.4.0 -> net.java.dev.jna:jna-platform:5.10.0 (*)
