@@ -1,5 +1,8 @@
 # JVM Dependency Conflict Resolution Gradle plugin - Changelog
 
+## Version 2.1
+* [New Rule] [#125](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/125) mysql:mysql-connector-java / com.mysql:mysql-connector-j (Thanks [Eduardo Acosta Miguens](https://github.com/eduacostam)!)
+
 ## Version 2.0
 * [New] [97](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/97) Unified DSL for conflict resolution, logging and metadata patching
 * [New] [78](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/78) Merge with ['dev.jacomet.logging-capabilities' plugin](https://github.com/ljacomet/logging-capabilities)
