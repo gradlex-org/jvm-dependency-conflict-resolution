@@ -28,6 +28,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- com.sun.mail:jakarta.mail:2.0.1 FAILED
 +--- com.sun.mail:javax.mail:1.6.2 FAILED
 +--- com.sun.mail:mailapi:2.0.0 FAILED
++--- com.vaadin.external.google:android-json:0.0.20131108.vaadin1 FAILED
 +--- com.vividsolutions:jts-core:1.14.0 FAILED
 +--- com.vividsolutions:jts:1.13 FAILED
 +--- com.zaxxer:HikariCP-java6:2.3.9 FAILED
@@ -218,6 +219,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.1_spec:2.0.2.Final FAILED
 +--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_3.0_spec:1.0.1.Final FAILED
 +--- org.jetbrains:annotations:24.0.0 FAILED
++--- org.json:json:20240303 FAILED
 +--- org.jzy3d:jGL:2.5 FAILED
 +--- org.jzy3d:jzy3d-emul-gl-awt:2.2.1 FAILED
 +--- org.jzy3d:jzy3d-emul-gl:2.0.0 FAILED

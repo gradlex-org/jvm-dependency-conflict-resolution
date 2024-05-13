@@ -49,6 +49,7 @@ compileClasspath - Compile classpath for source set 'main'.
 |    \--- com.google.protobuf:protobuf-java:3.25.1
 +--- com.sun.mail:javax.mail:1.6.2
 |    \--- javax.activation:activation:1.1
++--- com.vaadin.external.google:android-json:0.0.20131108.vaadin1 -> org.json:json:20240303
 +--- com.vividsolutions:jts-core:1.14.0
 +--- com.vividsolutions:jts:1.13 -> com.vividsolutions:jts-core:1.14.0
 +--- com.zaxxer:HikariCP-java6:2.3.9 -> com.zaxxer:HikariCP:5.0.1
@@ -235,6 +236,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.1_spec:2.0.2.Final -> javax.ws.rs:javax.ws.rs-api:2.1.1
 +--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_3.0_spec:1.0.1.Final -> jakarta.ws.rs:jakarta.ws.rs-api:3.1.0
 +--- org.jetbrains:annotations:24.0.0
++--- org.json:json:20240303
 +--- org.jzy3d:jGL:2.5
 +--- org.jzy3d:jzy3d-emul-gl-awt:2.2.1
 |    +--- org.jzy3d:jzy3d-core:2.2.1
