@@ -36,6 +36,23 @@ public abstract class JavaxTransactionApiRule extends CapabilityDefinitionRule {
 
     @Override
     protected boolean shouldApply(ModuleVersionIdentifier id) {
-        return VersionNumber.parse(id.getVersion()).compareTo(VersionNumber.parse(FIRST_JAKARTA_VERSION)) < 0;
+        return VersionNumber.parse(getVersion(id)).compareTo(VersionNumber.parse(FIRST_JAKARTA_VERSION)) < 0;
+    }
+
+    @Override
+    protected String getVersion(ModuleVersionIdentifier id) {
+        String name = id.getName();
+        String moduleVersion = id.getVersion();
+
+        if (name.contains("jboss-transaction-api_")) {
+            return transactionApiVersionForJbossName(name);
+        }
+
+        return moduleVersion;
+    }
+
+    private static String transactionApiVersionForJbossName(String name) {
+        int index = "jboss-transaction-api_".length();
+        return name.substring(index, index + 3) + ".0";
     }
 }

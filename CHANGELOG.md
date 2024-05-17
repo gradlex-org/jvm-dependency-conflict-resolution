@@ -2,6 +2,7 @@
 
 ## Version 2.1
 * [New Rule] [#125](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/125) mysql:mysql-connector-java / com.mysql:mysql-connector-j (Thanks [Eduardo Acosta Miguens](https://github.com/eduacostam)!)
+* [Adjusted Rule] [#130](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/130) javax-transaction-api rule now also covers jboss-transaction-api artifacts
 
 ## Version 2.0
 * [New] [97](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/97) Unified DSL for conflict resolution, logging and metadata patching
