@@ -15,13 +15,12 @@ dependencyResolutionManagement {
     repositories.mavenCentral()
 }
 
-develocity {
-    buildScan {
-        if (buildParameters.ci) {
-            termsOfUseUrl = "https://gradle.com/help/legal-terms-of-use"
-            termsOfUseAgree = "yes"
-        } else {
-            publishing.onlyIf { false }
+if (the<BuildParametersExtension>().ci) {
+    gradleEnterprise {
+        buildScan {
+            publishAlways()
+            termsOfServiceUrl = "https://gradle.com/terms-of-service"
+            termsOfServiceAgree = "yes"
         }
     }
 }
