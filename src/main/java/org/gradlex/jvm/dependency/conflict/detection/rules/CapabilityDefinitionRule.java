@@ -38,9 +38,16 @@ public abstract class CapabilityDefinitionRule implements ComponentMetadataRule 
     public final void execute(ComponentMetadataContext context) {
         if (shouldApply(context.getDetails().getId())) {
             context.getDetails().allVariants(variant -> {
-                variant.withCapabilities(capabilities -> capabilities.addCapability(
-                        definition.getGroup(), definition.getCapabilityName(), getVersion(context.getDetails().getId())
-                ));
+                variant.withCapabilities(capabilities -> {
+                    // remove capability if it already exists so that it can be added back
+                    // with a potentially different version
+                    capabilities.removeCapability(
+                            definition.getGroup(), definition.getCapabilityName()
+                    );
+                    capabilities.addCapability(
+                            definition.getGroup(), definition.getCapabilityName(), getVersion(context.getDetails().getId())
+                    );
+                });
                 additionalAdjustments(variant);
             });
         }
