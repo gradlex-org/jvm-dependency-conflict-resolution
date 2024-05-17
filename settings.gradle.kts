@@ -15,12 +15,15 @@ dependencyResolutionManagement {
     repositories.mavenCentral()
 }
 
-if (the<BuildParametersExtension>().ci) {
-    gradleEnterprise {
-        buildScan {
-            publishAlways()
-            termsOfServiceUrl = "https://gradle.com/terms-of-service"
-            termsOfServiceAgree = "yes"
+develocity {
+    buildScan {
+        // required until we can upgrade to Gradle 8.8
+        val buildParameters = the<BuildParametersExtension>()
+        if (buildParameters.ci) {
+            termsOfUseUrl = "https://gradle.com/help/legal-terms-of-use"
+            termsOfUseAgree = "yes"
+        } else {
+            publishing.onlyIf { false }
         }
     }
 }
