@@ -230,6 +230,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.hibernate.javax.persistence:hibernate-jpa-2.2-api:1.0.0.Beta2 -> javax.persistence:javax.persistence-api:2.2
 +--- org.javassist:javassist:3.29.1-GA
 +--- org.jboss.resteasy:jaxrs-api:2.0.0.GA -> javax.ws.rs:javax.ws.rs-api:2.1.1
++--- org.jboss.spec.javax.transaction:jboss-transaction-api_1.3_spec:2.0.0.Final -> javax.transaction:javax.transaction-api:1.3
 +--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_1.1_spec:1.0.1.Final -> javax.ws.rs:javax.ws.rs-api:2.1.1
 +--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.0_spec:1.0.1.Final -> javax.ws.rs:javax.ws.rs-api:2.1.1
 +--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.1_spec:2.0.2.Final -> javax.ws.rs:javax.ws.rs-api:2.1.1

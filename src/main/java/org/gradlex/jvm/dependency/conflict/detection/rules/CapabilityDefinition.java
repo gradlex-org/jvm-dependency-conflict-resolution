@@ -412,7 +412,10 @@ public enum CapabilityDefinition {
     JAVAX_TRANSACTION_API(HIGHEST_VERSION, JavaxTransactionApiRule.class,
             "javax.transaction:jta",
             "javax.transaction:javax.transaction-api",
-            "jakarta.transaction:jakarta.transaction-api"
+            "jakarta.transaction:jakarta.transaction-api",
+            "org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec",
+            "org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec",
+            "org.jboss.spec.javax.transaction:jboss-transaction-api_1.3_spec"
     ),
     JAVAX_VALIDATION_API(HIGHEST_VERSION, JavaxValidationApiRule.class,
             "javax.validation:validation-api",

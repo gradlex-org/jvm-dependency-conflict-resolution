@@ -207,6 +207,7 @@ dependencies {
     implementation("org.hibernate.javax.persistence:hibernate-jpa-2.2-api:1.0.0.Beta2")
     implementation("org.javassist:javassist:3.29.1-GA")
     implementation("org.jboss.resteasy:jaxrs-api:2.0.0.GA")
+    implementation("org.jboss.spec.javax.transaction:jboss-transaction-api_1.3_spec:2.0.0.Final")
     implementation("org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_1.1_spec:1.0.1.Final")
     implementation("org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.0_spec:1.0.1.Final")
     implementation("org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.1_spec:2.0.2.Final")
@@ -255,6 +256,8 @@ dependencies {
     // implementation("org.slf4j:slf4j-jdk14:2.0.12")
     // implementation("org.slf4j:slf4j-log4j12:2.0.12")
     // implementation("com.mchange:mchange-commons-java:0.3.0")
+    // implementation("org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:1.0.1.Final")
+    // implementation("org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.1.1.Final")
 }
 
 jvmDependencyConflicts {
@@ -263,6 +266,7 @@ jvmDependencyConflicts {
     }
     conflictResolution {
         select(CapabilityDefinition.JAVAX_ACTIVATION_API, "javax.activation:javax.activation-api")
+        select(CapabilityDefinition.JAVAX_TRANSACTION_API, "javax.transaction:javax.transaction-api")
         select(CapabilityDefinition.JAKARTA_SERVLET_API, "jakarta.servlet:jakarta.servlet-api")
         select(CapabilityDefinition.JAVAX_SERVLET_API, "javax.servlet:javax.servlet-api")
         select(CapabilityDefinition.BOUNCYCASTLE_BCTSP, "org.bouncycastle:bctsp-jdk15on")
@@ -274,4 +278,5 @@ tasks.detectCollisions {
     collisionFilter.exclude("org/bouncycastle/**")
     collisionFilter.exclude("javax/xml/namespace/QName.class")
     collisionFilter.exclude("com/sun/activation/registries/*")
+    collisionFilter.exclude("javax/transaction/*")
 }
