@@ -3,6 +3,8 @@ package org.gradlex.jvm.dependency.conflict.test
 import org.gradlex.jvm.dependency.conflict.test.fixture.GradleBuild
 import spock.lang.Specification
 
+import static org.gradlex.jvm.dependency.conflict.test.fixture.GradleBuild.GRADLE6_TEST
+
 class CapabilityWithDifferentVersionsTest extends Specification {
 
     @Delegate
@@ -37,8 +39,44 @@ class CapabilityWithDifferentVersionsTest extends Specification {
                 println(configurations.compileClasspath.get().files.joinToString("\\n") { it.name })
             }
         """
+        if (GRADLE6_TEST) { configureEnvAttribute() }
 
         expect:
         printJars()
+    }
+
+    def "does not fail with empty listenable future dependency on the classpath"() {
+        given:
+        buildFile << """
+            plugins {
+                id("org.gradlex.jvm-dependency-conflict-resolution")
+                id("java-library")
+            }
+            tasks.withType<JavaCompile>().configureEach {
+                options.release.set(17)
+            }
+            repositories.mavenCentral()
+            dependencies {
+                 implementation(platform("com.google.cloud:spring-cloud-gcp-dependencies:5.2.0"))
+                 implementation("com.google.cloud:spring-cloud-gcp-starter-bigquery")
+            }
+
+            tasks.register("printJars") {
+                println(configurations.compileClasspath.get().files.joinToString("\\n") { it.name })
+            }
+        """
+        if (GRADLE6_TEST) { configureEnvAttribute() }
+
+        expect:
+        printJars()
+    }
+
+    void configureEnvAttribute() {
+        buildFile << """
+            val envAttribute = Attribute.of("org.gradle.jvm.environment", String::class.java)
+            configurations.compileClasspath {
+                attributes.attribute(envAttribute, "standard-jvm")
+            }
+        """
     }
 }
