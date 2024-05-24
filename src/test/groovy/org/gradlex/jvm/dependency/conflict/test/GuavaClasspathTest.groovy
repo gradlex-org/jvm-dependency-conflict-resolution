@@ -17,6 +17,16 @@ class GuavaClasspathTest extends Specification {
 
     static allGuavaVersions() {
         [
+                ['33.2.0', 'jre'    , [errorProne:  '2.26.1', j2objc: '3.0.0', jsr305: '3.0.2', checker: '3.42.0', failureaccess: '1.0.2']],
+                ['33.2.0', 'android', [errorProne:  '2.26.1', j2objc: '3.0.0', jsr305: '3.0.2', checker: '3.42.0', failureaccess: '1.0.2']],
+                ['33.1.0', 'jre'    , [errorProne:  '2.26.1', j2objc: '3.0.0', jsr305: '3.0.2', checker: '3.42.0', failureaccess: '1.0.2']],
+                ['33.1.0', 'android', [errorProne:  '2.26.1', j2objc: '3.0.0', jsr305: '3.0.2', checker: '3.42.0', failureaccess: '1.0.2']],
+                ['33.0.0', 'jre'    , [errorProne:  '2.23.0', j2objc: '2.8', jsr305: '3.0.2', checker: '3.41.0', failureaccess: '1.0.2']],
+                ['33.0.0', 'android', [errorProne:  '2.23.0', j2objc: '2.8', jsr305: '3.0.2', checker: '3.41.0', failureaccess: '1.0.2']],
+                ['32.1.3', 'jre'    , [errorProne:  '2.21.1', j2objc: '2.8', jsr305: '3.0.2', checker: '3.37.0', failureaccess: '1.0.1']],
+                ['32.1.3', 'android', [errorProne:  '2.21.1', j2objc: '2.8', jsr305: '3.0.2', checker: '3.37.0', failureaccess: '1.0.1']],
+                ['32.1.2', 'jre'    , [errorProne:  '2.18.0', j2objc: '2.8', jsr305: '3.0.2', checker: '3.33.0', failureaccess: '1.0.1']],
+                ['32.1.2', 'android', [errorProne:  '2.18.0', j2objc: '2.8', jsr305: '3.0.2', checker: '3.33.0', failureaccess: '1.0.1']],
                 ['32.1.1', 'jre'    , [errorProne:  '2.18.0', j2objc: '2.8', jsr305: '3.0.2', checker: '3.33.0', failureaccess: '1.0.1']],
                 ['32.1.1', 'android', [errorProne:  '2.18.0', j2objc: '2.8', jsr305: '3.0.2', checker: '3.33.0', failureaccess: '1.0.1']],
                 ['32.0.1', 'jre'    , [errorProne:  '2.18.0', j2objc: '2.8', jsr305: '3.0.2', checker: '3.33.0', failureaccess: '1.0.1']],
@@ -111,12 +121,12 @@ class GuavaClasspathTest extends Specification {
                 result.add([it[0], it[1], it[2], 'standard-jvm', 'runtimeClasspath'])
             }
         }
-        if (System.getProperty("gradleVersionUnderTest") == "7.5.1") {
+        if (System.getProperty("gradleVersionUnderTest") == "7.6.4") {
             // only do all permutations for one Gradle version
             return result
         }
         // reduced amount of permutations
-        return result.subList(0, 32)
+        return result.subList(0, 80)
     }
 
     @Unroll
@@ -160,7 +170,7 @@ class GuavaClasspathTest extends Specification {
         """
 
         expect:
-        expectedClasspath(guavaVersion, jvmEnv, classpath, dependencyVersions) == printJars().output.split('\n') as Set
+        expectedClasspath(guavaVersion, jvmEnv, classpath, dependencyVersions) == printJars().output.split('\n') as TreeSet
 
         where:
         [guavaVersion, versionSuffix, dependencyVersions, jvmEnv, classpath] << allGuavaCombinations(true)
@@ -169,7 +179,7 @@ class GuavaClasspathTest extends Specification {
     Set<String> expectedClasspath(String guavaVersion, String jvmEnv, String classpath, Map<String, String> dependencyVersions) {
         int majorGuavaVersion = guavaVersion.substring(0, 2) as Integer
         String jarSuffix = majorGuavaVersion < 22 ? '' : jvmEnv == 'android' ? 'android' : (guavaVersion == '22.0' || guavaVersion == '23.0') ? '' : 'jre'
-        Set<String> result = ["guava-${guavaVersion}${jarSuffix? '-' : ''}${jarSuffix}.jar"]
+        Set<String> result = ["guava-${guavaVersion}${jarSuffix? '-' : ''}${jarSuffix}.jar"] as TreeSet
         if (dependencyVersions.failureaccess) {
             result += "failureaccess-${dependencyVersions.failureaccess}.jar"
         }
