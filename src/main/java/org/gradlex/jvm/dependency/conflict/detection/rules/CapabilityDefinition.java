@@ -46,6 +46,7 @@ import org.gradlex.jvm.dependency.conflict.detection.rules.jakarta.JavaxWsRsApiR
 import org.gradlex.jvm.dependency.conflict.detection.rules.jakarta.JavaxXmlBindApiRule;
 import org.gradlex.jvm.dependency.conflict.detection.rules.jakarta.JavaxXmlWsApiRule;
 import org.gradlex.jvm.dependency.conflict.detection.rules.logging.LoggingModuleIdentifiers;
+import org.gradlex.jvm.dependency.conflict.detection.rules.logging.Slf4jVersionCompatibilityRule;
 import org.gradlex.jvm.dependency.conflict.resolution.DefaultResolutionStrategy;
 
 import java.util.Arrays;
@@ -510,8 +511,13 @@ public enum CapabilityDefinition {
      * * `slf4j-jcl` to use Jakarta Commons Logging
      * * `slf4j-jdk14` to use Java Util Logging
      * * `log4j-slf4j-impl` to use Log4J2
+     * <p>
+     * Additionally, Slf4j 1 and 2 aren't compatible with each other,
+     * so the capability version depends on the implementation, and
+     * dependency on `slf4j-api` is adjusted to reject incompatible
+     * versions.
      */
-    SLF4J_IMPL(NONE, FixedVersionCapabilityDefinitionRule.class,
+    SLF4J_IMPL(NONE, Slf4jVersionCompatibilityRule.class,
             LoggingModuleIdentifiers.SLF4J_SIMPLE.moduleId,
             LoggingModuleIdentifiers.LOGBACK_CLASSIC.moduleId,
             LoggingModuleIdentifiers.SLF4J_LOG4J12.moduleId,
