@@ -248,6 +248,13 @@ public enum CapabilityDefinition {
             "com.miglayout:miglayout-swing",
             "com.miglayout:miglayout"
     ),
+    /**
+     * See <a href="https://github.com/spring-projects/spring-boot/issues/32881">spring-projects/spring-boot/issues/32881</a>
+     */
+    ORG_JSON(HIGHEST_VERSION,
+            "com.vaadin.external.google:android-json",
+            "org.json:json"
+    ),
     MYSQL_CONNECTOR_JAVA(HIGHEST_VERSION,
             "mysql:mysql-connector-java",
             "com.mysql:mysql-connector-j"
