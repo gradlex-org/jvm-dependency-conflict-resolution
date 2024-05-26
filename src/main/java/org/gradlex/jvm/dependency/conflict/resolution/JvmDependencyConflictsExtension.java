@@ -18,6 +18,7 @@ package org.gradlex.jvm.dependency.conflict.resolution;
 
 import org.gradle.api.Action;
 import org.gradle.api.model.ObjectFactory;
+import org.gradle.api.tasks.SourceSetContainer;
 
 import javax.inject.Inject;
 
@@ -26,15 +27,18 @@ public abstract class JvmDependencyConflictsExtension {
     private final ConflictResolution conflictResolution;
     private final Logging logging;
     private final Patch patch;
+    private final ConsistentResolution consistentResolution;
 
     @Inject
-    protected abstract ObjectFactory getObjects();
-
-    public JvmDependencyConflictsExtension() {
+    public JvmDependencyConflictsExtension(SourceSetContainer sourceSets) {
         conflictResolution = getObjects().newInstance(ConflictResolution.class);
         logging = getObjects().newInstance(Logging.class);
         patch = getObjects().newInstance(Patch.class);
+        consistentResolution = getObjects().newInstance(ConsistentResolution.class, sourceSets);
     }
+
+    @Inject
+    protected abstract ObjectFactory getObjects();
 
     public ConflictResolution getConflictResolution() {
         return conflictResolution;
@@ -58,5 +62,13 @@ public abstract class JvmDependencyConflictsExtension {
 
     public void patch(Action<Patch> action) {
         action.execute(patch);
+    }
+
+    public ConsistentResolution getConsistentResolution() {
+        return consistentResolution;
+    }
+
+    public void consistentResolution(Action<ConsistentResolution> action) {
+        action.execute(consistentResolution);
     }
 }
