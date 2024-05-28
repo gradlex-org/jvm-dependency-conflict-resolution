@@ -43,7 +43,7 @@ Most of the patching is not included anymore by default, because Guava now publi
 If you use the latest Guava version, you may not need anything specific.
 If some of the transitive dependencies are not wanted in your case, you can fine tune them using the `jvmDependencyConflicts.patch` DSL. E.g.:
 
-```
+```kotlin
 jvmDependencyConflicts {
     patch {
         module("com.google.guava:guava") {
@@ -56,7 +56,7 @@ jvmDependencyConflicts {
 
 If you need the previous behavior for older Guava versions, you can explicitly apply the `GuavaComponentRule`.
 
-```
+```kotlin
 dependencies.components {
     withModule<GuavaComponentRule>("com.google.guava:guava")
 }
