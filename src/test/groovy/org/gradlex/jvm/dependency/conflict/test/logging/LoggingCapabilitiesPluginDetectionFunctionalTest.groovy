@@ -23,10 +23,7 @@ import static org.gradle.testkit.runner.TaskOutcome.FAILED
 class LoggingCapabilitiesPluginDetectionFunctionalTest extends AbstractLoggingCapabilitiesPluginFunctionalTest {
 
     boolean conflictOnCapability(String output, String capability) {
-        // Error became lenient in Gradle 5.3, with a different error message:
-        // https://github.com/gradle/gradle/commit/0c10062f9c86192b2568b0035ec8885c75b024cc
-        return output.contains("conflict on capability '$capability'") || // Gradle >= 5.3
-               output.contains("provide the same capability: $capability") // Gradle <= 5.2
+        return output.contains("conflict on capability '$capability'")
     }
 
     @Unroll
@@ -45,6 +42,7 @@ class LoggingCapabilitiesPluginDetectionFunctionalTest extends AbstractLoggingCa
         first                           | second
         'org.slf4j:slf4j-simple:1.7.27' | 'ch.qos.logback:logback-classic:1.2.3'
         'org.slf4j:slf4j-simple:1.7.27' | 'org.slf4j:slf4j-log4j12:1.7.27'
+        'org.slf4j:slf4j-simple:1.7.27' | 'org.slf4j:slf4j-nop:1.7.27'
         'org.slf4j:slf4j-simple:1.7.27' | 'org.slf4j:slf4j-jcl:1.7.27'
         'org.slf4j:slf4j-simple:1.7.27' | 'org.slf4j:slf4j-jdk14:1.7.27'
         'org.slf4j:slf4j-simple:1.7.27' | 'org.apache.logging.log4j:log4j-slf4j-impl:2.17.0'
