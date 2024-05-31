@@ -25,58 +25,58 @@ import java.util.List;
 
 public enum AlignmentDefinition {
     LOG4J2("org.apache.logging.log4j:log4j-bom", Log4J2Alignment.class,
-        "org.apache.logging.log4j:log4j-api",
-        "org.apache.logging.log4j:log4j-core",
-        "org.apache.logging.log4j:log4j-1.2-api",
-        "org.apache.logging.log4j:log4j-jcl",
-        "org.apache.logging.log4j:log4j-flume-ng",
-        "org.apache.logging.log4j:log4j-taglib",
-        "org.apache.logging.log4j:log4j-jmx-gui",
-        "org.apache.logging.log4j:log4j-slf4j-impl",
-        "org.apache.logging.log4j:log4j-web",
-        "org.apache.logging.log4j:log4j-nosql"
+            "org.apache.logging.log4j:log4j-api",
+            "org.apache.logging.log4j:log4j-core",
+            "org.apache.logging.log4j:log4j-1.2-api",
+            "org.apache.logging.log4j:log4j-jcl",
+            "org.apache.logging.log4j:log4j-flume-ng",
+            "org.apache.logging.log4j:log4j-taglib",
+            "org.apache.logging.log4j:log4j-jmx-gui",
+            "org.apache.logging.log4j:log4j-slf4j-impl",
+            "org.apache.logging.log4j:log4j-web",
+            "org.apache.logging.log4j:log4j-nosql"
     ),
     SLF4J2("org.slf4j:slf4j-bom", Slf4J2Alignment.class,
-        "org.slf4j:slf4j-api",
-        "org.slf4j:slf4j-simple",
-        "org.slf4j:slf4j-nop",
-        "org.slf4j:slf4j-jdk14",
-        "org.slf4j:slf4j-jdk-platform-logging",
-        "org.slf4j:slf4j-log4j12",
-        "org.slf4j:slf4j-reload4j",
-        "org.slf4j:slf4j-ext",
-        "org.slf4j:jcl-over-slf4j",
-        "org.slf4j:log4j-over-slf4j",
-        "org.slf4j:jul-to-slf4j",
-        "org.slf4j:osgi-over-slf4j"
+            "org.slf4j:slf4j-api",
+            "org.slf4j:slf4j-simple",
+            "org.slf4j:slf4j-nop",
+            "org.slf4j:slf4j-jdk14",
+            "org.slf4j:slf4j-jdk-platform-logging",
+            "org.slf4j:slf4j-log4j12",
+            "org.slf4j:slf4j-reload4j",
+            "org.slf4j:slf4j-ext",
+            "org.slf4j:jcl-over-slf4j",
+            "org.slf4j:log4j-over-slf4j",
+            "org.slf4j:jul-to-slf4j",
+            "org.slf4j:osgi-over-slf4j"
     ),
     SLF4J(Slf4JAlignment.class,
-        // Ignored modules:
-        //   org.slf4j:slf4j-archetype
-        //   org.slf4j:slf4j-converter
-        //   org.slf4j:slf4j-log4j13
-        //   org.slf4j:slf4j-site
-        //   org.slf4j:slf4j-skin<
-        "org.slf4j:integration",
-        "org.slf4j:jcl-over-slf4j",
-        "org.slf4j:jcl104-over-slf4j",
-        "org.slf4j:jul-to-slf4j",
-        "org.slf4j:log4j-over-slf4j",
-        "org.slf4j:nlog4j",
-        "org.slf4j:osgi-over-slf4j",
-        "org.slf4j:slf4j-android",
-        "org.slf4j:slf4j-api",
-        "org.slf4j:slf4j-archetype",
-        "org.slf4j:slf4j-converter",
-        "org.slf4j:slf4j-ext",
-        "org.slf4j:slf4j-jcl",
-        "org.slf4j:slf4j-jdk-platform-logging",
-        "org.slf4j:slf4j-jdk14",
-        "org.slf4j:slf4j-log4j12",
-        "org.slf4j:slf4j-migrator",
-        "org.slf4j:slf4j-nop",
-        "org.slf4j:slf4j-reload4j",
-        "org.slf4j:slf4j-simple"
+            // Ignored modules:
+            //   org.slf4j:slf4j-archetype
+            //   org.slf4j:slf4j-converter
+            //   org.slf4j:slf4j-log4j13
+            //   org.slf4j:slf4j-site
+            //   org.slf4j:slf4j-skin<
+            "org.slf4j:integration",
+            "org.slf4j:jcl-over-slf4j",
+            "org.slf4j:jcl104-over-slf4j",
+            "org.slf4j:jul-to-slf4j",
+            "org.slf4j:log4j-over-slf4j",
+            "org.slf4j:nlog4j",
+            "org.slf4j:osgi-over-slf4j",
+            "org.slf4j:slf4j-android",
+            "org.slf4j:slf4j-api",
+            "org.slf4j:slf4j-archetype",
+            "org.slf4j:slf4j-converter",
+            "org.slf4j:slf4j-ext",
+            "org.slf4j:slf4j-jcl",
+            "org.slf4j:slf4j-jdk-platform-logging",
+            "org.slf4j:slf4j-jdk14",
+            "org.slf4j:slf4j-log4j12",
+            "org.slf4j:slf4j-migrator",
+            "org.slf4j:slf4j-nop",
+            "org.slf4j:slf4j-reload4j",
+            "org.slf4j:slf4j-simple"
     );
 
     private final String bom;
@@ -90,7 +90,7 @@ public enum AlignmentDefinition {
     }
 
     AlignmentDefinition(String bom, Class<? extends AlignmentDefinitionRule> ruleClass, String... modules) {
-        this.bom =  bom;
+        this.bom = bom;
         this.ruleClass = ruleClass;
         this.modules = Arrays.asList(modules);
     }
