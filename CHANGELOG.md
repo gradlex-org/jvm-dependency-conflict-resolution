@@ -1,6 +1,7 @@
 # JVM Dependency Conflict Resolution Gradle plugin - Changelog
 
 ## Version 2.1
+* [New] [102](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/102) Global consistent resolution feature
 * [New Rule] [#125](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/125) mysql:mysql-connector-java / com.mysql:mysql-connector-j (Thanks [Eduardo Acosta Miguens](https://github.com/eduacostam)!)
 * [New Rule] [#131](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/131) org.json:json / com.vaadin.external.google:android-json (Thanks [Piotr Kubowicz](https://github.com/pkubowicz)!)
 * [Adjusted Rule] [#130](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/130) javax-transaction-api rule now also covers jboss-transaction-api artifacts (Thanks [Piotr Kubowicz](https://github.com/pkubowicz) for reporting)

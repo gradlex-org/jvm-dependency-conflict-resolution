@@ -53,6 +53,11 @@ jvmDependencyConflicts {
         // Patch or extend wrong metadata
         module("com.googlecode.json-simple:json-simple") { removeDependency("junit:junit") }
     }
+
+    consistentResolution {
+        // The runtime classpath of ':app' is always respected in version conflict detection and resolution
+        providesVersions(":app")
+    }
 }
 ----
 
@@ -259,5 +264,41 @@ jvmDependencyConflicts {
 
 | `setStatusToIntegration(markerInVersion)`
 | Set the status of pre-release versions that are identified by one of the _marker string_ (e.g. `-rc`, `-m`) to `integration` (will then not be considered when using `latest.release` as version).
+
+|===
+
+
+[[consistent-resolution-block]]
+== Configure gloabl consistent resolution
+
+The `consistentResolution` section of `jvmDependencyConflicts` allows to configure
+https://docs.gradle.org/current/userguide/resolution_strategy_tuning.html#resolution_consistency[consistent resolution]
+for all modules (subprojects) of your build.
+By configuring which projects aggregate the final _software product_ (applications or services that are delivered) you make sure
+that the same versions of all third party dependencies you deliver as part of your product are also used when compiling and testing
+parts of your softare (single subprojects) in isolation.
+
+[source,groovy]
+----
+jvmDependencyConflicts {
+    consistentResolution {
+        // The runtime classpaths of the configured projects are always respected in
+        // version conflict detection and resolution
+        providesVersions(":app")
+        providesVersions(":service")
+        // If the build has a platform project, use it to provision additional version information
+        platform(":versions")
+    }
+}
+----
+
+|===
+| Method | Documentation
+
+| `providesVersions(dependency)`
+| Respect runtime classpaths of given project in all version conflict detection and resolution.
+
+| `platform(dependency)`
+| A platform/BOM to provide versions not available through consistent resolution alone.
 
 |===

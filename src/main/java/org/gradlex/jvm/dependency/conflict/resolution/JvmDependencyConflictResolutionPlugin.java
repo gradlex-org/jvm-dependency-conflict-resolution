@@ -24,6 +24,8 @@ import org.gradle.api.artifacts.ComponentVariantIdentifier;
 import org.gradle.api.artifacts.Configuration;
 import org.gradle.api.artifacts.ConfigurationContainer;
 import org.gradle.api.artifacts.component.ModuleComponentIdentifier;
+import org.gradle.api.plugins.JvmEcosystemPlugin;
+import org.gradle.api.tasks.SourceSetContainer;
 import org.gradlex.jvm.dependency.conflict.detection.rules.CapabilityDefinition;
 
 import java.util.Optional;
@@ -32,12 +34,21 @@ import static org.gradlex.jvm.dependency.conflict.resolution.DefaultResolutionSt
 import static org.gradlex.jvm.dependency.conflict.resolution.DefaultResolutionStrategy.HIGHEST_VERSION;
 
 public abstract class JvmDependencyConflictResolutionPlugin implements Plugin<Project> {
+    public static final String MAIN_RUNTIME_CLASSPATH_CONFIGURATION_NAME = "mainRuntimeClasspath";
+    public static final String INTERNAL_CONFIGURATION_NAME = "internal";
 
     @Override
     public void apply(Project project) {
         JvmDependencyConflictDetectionPluginApplication.of(project).handleRulesMode();
 
-        JvmDependencyConflictsExtension jvmDependencyConflicts = project.getExtensions().create("jvmDependencyConflicts", JvmDependencyConflictsExtension.class);
+        // Make sure 'jvm-ecosystem' is applied which adds the schemas for the attributes this plugin relies on
+        project.getPlugins().apply(JvmEcosystemPlugin.class);
+
+        JvmDependencyConflictsExtension jvmDependencyConflicts = project.getExtensions().create(
+                "jvmDependencyConflicts",
+                JvmDependencyConflictsExtension.class,
+                project.getExtensions().getByType(SourceSetContainer.class)
+        );
 
         configureResolutionStrategies(project.getConfigurations(), jvmDependencyConflicts);
     }
