@@ -24,6 +24,7 @@ import org.gradle.api.artifacts.ComponentVariantIdentifier;
 import org.gradle.api.artifacts.Configuration;
 import org.gradle.api.artifacts.ConfigurationContainer;
 import org.gradle.api.artifacts.component.ModuleComponentIdentifier;
+import org.gradle.api.plugins.JvmEcosystemPlugin;
 import org.gradle.api.tasks.SourceSetContainer;
 import org.gradlex.jvm.dependency.conflict.detection.rules.CapabilityDefinition;
 
@@ -39,6 +40,9 @@ public abstract class JvmDependencyConflictResolutionPlugin implements Plugin<Pr
     @Override
     public void apply(Project project) {
         JvmDependencyConflictDetectionPluginApplication.of(project).handleRulesMode();
+
+        // Make sure 'jvm-ecosystem' is applied which adds the schemas for the attributes this plugin relies on
+        project.getPlugins().apply(JvmEcosystemPlugin.class);
 
         JvmDependencyConflictsExtension jvmDependencyConflicts = project.getExtensions().create(
                 "jvmDependencyConflicts",

@@ -21,6 +21,7 @@ import org.gradle.api.Project;
 import org.gradle.api.artifacts.dsl.ComponentMetadataHandler;
 import org.gradle.api.initialization.Settings;
 import org.gradle.api.plugins.ExtensionAware;
+import org.gradle.api.plugins.JvmEcosystemPlugin;
 import org.gradle.util.GradleVersion;
 import org.gradlex.jvm.dependency.conflict.detection.rules.AlignmentDefinition;
 import org.gradlex.jvm.dependency.conflict.detection.rules.CapabilityDefinition;
@@ -40,7 +41,7 @@ public class JvmDependencyConflictDetectionPlugin implements Plugin<ExtensionAwa
         ComponentMetadataHandler components;
         if (projectOrSettings instanceof Project) {
             // Make sure 'jvm-ecosystem' is applied which adds the schemas for the attributes this plugin relies on
-            ((Project) projectOrSettings).getPlugins().apply("jvm-ecosystem");
+            ((Project) projectOrSettings).getPlugins().apply(JvmEcosystemPlugin.class);
             components = ((Project) projectOrSettings).getDependencies().getComponents();
         } else if (projectOrSettings instanceof Settings) {
             //noinspection UnstableApiUsage
