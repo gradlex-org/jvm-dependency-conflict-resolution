@@ -512,6 +512,7 @@ public enum CapabilityDefinition {
      * Slf4J provides an API, which requires an implementation.
      * Only one implementation can be on the classpath, selected between:
      * * `slf4j-simple`
+     * * `slf4j-nop`
      * * `logback-classic`
      * * `slf4j-log4j12` to use Log4J 1.2
      * * `slf4j-jcl` to use Jakarta Commons Logging
@@ -520,6 +521,7 @@ public enum CapabilityDefinition {
      */
     SLF4J_IMPL(NONE, FixedVersionCapabilityDefinitionRule.class,
             LoggingModuleIdentifiers.SLF4J_SIMPLE.moduleId,
+            LoggingModuleIdentifiers.SLF4J_NOP.moduleId,
             LoggingModuleIdentifiers.LOGBACK_CLASSIC.moduleId,
             LoggingModuleIdentifiers.SLF4J_LOG4J12.moduleId,
             LoggingModuleIdentifiers.SLF4J_JCL.moduleId,

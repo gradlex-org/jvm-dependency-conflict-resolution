@@ -226,6 +226,7 @@ dependencies {
     implementation("org.slf4j:jul-to-slf4j:2.0.12")
     implementation("org.slf4j:log4j-over-slf4j:2.0.12")
     implementation("org.slf4j:slf4j-simple:2.0.12")
+    implementation("org.slf4j:slf4j-nop:2.0.12")
     implementation("org.springframework:spring-aop:5.3.23")
     implementation("org.springframework:spring-jcl:6.1.4")
     implementation("postgresql:postgresql:9.1-901-1.jdbc4")

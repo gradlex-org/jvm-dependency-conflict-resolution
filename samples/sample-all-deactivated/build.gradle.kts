@@ -240,6 +240,7 @@ dependencies {
     implementation("org.slf4j:slf4j-jcl:1.7.9")
     implementation("org.slf4j:slf4j-jdk14:2.0.12")
     implementation("org.slf4j:slf4j-log4j12:2.0.12")
+    implementation("org.slf4j:slf4j-nop:2.0.12")
     implementation("org.slf4j:slf4j-simple:2.0.12")
     implementation("org.springframework:spring-aop:5.3.23")
     implementation("org.springframework:spring-jcl:6.1.4")

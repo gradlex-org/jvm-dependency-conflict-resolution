@@ -11,6 +11,7 @@ compileClasspath - Compile classpath for source set 'main'.
 |    |              |    \--- org.slf4j:slf4j-bom:2.0.12
 |    |              |         +--- org.slf4j:slf4j-api:2.0.12 (c)
 |    |              |         +--- org.slf4j:slf4j-simple:2.0.12 (c)
+|    |              |         +--- org.slf4j:slf4j-nop:2.0.12 -> org.slf4j:slf4j-simple:2.0.12 (c)
 |    |              |         +--- org.slf4j:jcl-over-slf4j:2.0.12 (c)
 |    |              |         +--- org.slf4j:log4j-over-slf4j:2.0.12 (c)
 |    |              |         \--- org.slf4j:jul-to-slf4j:2.0.12 (c)
@@ -274,6 +275,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.slf4j:jul-to-slf4j:2.0.12 (*)
 +--- org.slf4j:log4j-over-slf4j:2.0.12 (*)
 +--- org.slf4j:slf4j-simple:2.0.12 (*)
++--- org.slf4j:slf4j-nop:2.0.12 -> org.slf4j:slf4j-simple:2.0.12 (*)
 +--- org.springframework:spring-aop:5.3.23 (*)
 +--- org.springframework:spring-jcl:6.1.4 -> org.slf4j:jcl-over-slf4j:2.0.12 (*)
 +--- postgresql:postgresql:9.1-901-1.jdbc4 -> org.postgresql:postgresql:42.5.0
