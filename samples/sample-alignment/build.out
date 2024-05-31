@@ -1,0 +1,105 @@
+------------------------------------------------------------
+Root project 'sample-alignment_build.sample'
+------------------------------------------------------------
+
+compileClasspath - Compile classpath for source set 'main'.
++--- org.apache.sshd:sshd-common:2.8.0 -> 2.9.2
+|    +--- org.slf4j:slf4j-api:1.7.32 -> 2.0.5
+|    |    +--- org.slf4j:jcl-over-slf4j:2.0.5 (c)
+|    |    \--- org.slf4j:slf4j-api:2.0.5 (c)
+|    +--- org.slf4j:jcl-over-slf4j:1.7.32 -> 2.0.5
+|    |    +--- org.slf4j:slf4j-api:2.0.5 (*)
+|    |    +--- org.slf4j:jcl-over-slf4j:2.0.5 (c)
+|    |    \--- org.slf4j:slf4j-api:2.0.5 (c)
+|    +--- org.apache.sshd:sshd-common:2.9.2 (c)
+|    \--- org.apache.sshd:sshd-core:2.9.2 (c)
++--- org.apache.sshd:sshd-core:2.9.2
+|    +--- org.apache.sshd:sshd-common:2.9.2 (*)
+|    +--- org.slf4j:slf4j-api:1.7.32 -> 2.0.5 (*)
+|    +--- org.slf4j:jcl-over-slf4j:1.7.32 -> 2.0.5 (*)
+|    +--- org.apache.sshd:sshd-common:2.9.2 (c)
+|    \--- org.apache.sshd:sshd-core:2.9.2 (c)
++--- org.ow2.asm:asm:9.4
+|    \--- org.ow2.asm:asm-bom:9.4
+|         +--- org.ow2.asm:asm:9.4 (c)
+|         \--- org.ow2.asm:asm-tree:9.4 (c)
++--- org.ow2.asm:asm-tree:9.3 -> 9.4
+|    +--- org.ow2.asm:asm:9.4 (*)
+|    \--- org.ow2.asm:asm-bom:9.4 (*)
++--- org.eclipse.jetty:jetty-server:11.0.13
+|    +--- org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api:5.0.2
+|    +--- org.eclipse.jetty:jetty-http:11.0.13
+|    |    +--- org.eclipse.jetty:jetty-util:11.0.13
+|    |    |    +--- org.slf4j:slf4j-api:2.0.5 (*)
+|    |    |    \--- org.eclipse.jetty:jetty-bom:11.0.13
+|    |    |         +--- org.eclipse.jetty:jetty-http:11.0.13 (c)
+|    |    |         +--- org.eclipse.jetty:jetty-io:11.0.13 (c)
+|    |    |         +--- org.eclipse.jetty:jetty-server:11.0.13 (c)
+|    |    |         +--- org.eclipse.jetty:jetty-servlet:11.0.13 (c)
+|    |    |         +--- org.eclipse.jetty:jetty-util:11.0.13 (c)
+|    |    |         \--- org.eclipse.jetty:jetty-security:11.0.13 (c)
+|    |    +--- org.eclipse.jetty:jetty-io:11.0.13
+|    |    |    +--- org.slf4j:slf4j-api:2.0.5 (*)
+|    |    |    +--- org.eclipse.jetty:jetty-util:11.0.13 (*)
+|    |    |    \--- org.eclipse.jetty:jetty-bom:11.0.13 (*)
+|    |    +--- org.slf4j:slf4j-api:2.0.5 (*)
+|    |    \--- org.eclipse.jetty:jetty-bom:11.0.13 (*)
+|    +--- org.eclipse.jetty:jetty-io:11.0.13 (*)
+|    +--- org.slf4j:slf4j-api:2.0.5 (*)
+|    \--- org.eclipse.jetty:jetty-bom:11.0.13 (*)
++--- org.eclipse.jetty:jetty-servlet:11.0.0 -> 11.0.13
+|    +--- org.eclipse.jetty:jetty-security:11.0.13
+|    |    +--- org.eclipse.jetty:jetty-server:11.0.13 (*)
+|    |    +--- org.slf4j:slf4j-api:2.0.5 (*)
+|    |    \--- org.eclipse.jetty:jetty-bom:11.0.13 (*)
+|    \--- org.slf4j:slf4j-api:2.0.5 (*)
++--- org.eclipse.jetty.toolchain:jetty-test-helper:6.0
+|    +--- org.junit.jupiter:junit-jupiter:5.9.0
+|    |    +--- org.junit:junit-bom:5.9.0
+|    |    |    +--- org.junit.jupiter:junit-jupiter:5.9.0 (c)
+|    |    |    +--- org.junit.jupiter:junit-jupiter-api:5.9.0 (c)
+|    |    |    +--- org.junit.jupiter:junit-jupiter-params:5.9.0 (c)
+|    |    |    \--- org.junit.platform:junit-platform-commons:1.9.0 (c)
+|    |    +--- org.junit.jupiter:junit-jupiter-api:5.9.0
+|    |    |    +--- org.junit:junit-bom:5.9.0 (*)
+|    |    |    +--- org.opentest4j:opentest4j:1.2.0
+|    |    |    +--- org.junit.platform:junit-platform-commons:1.9.0
+|    |    |    |    +--- org.junit:junit-bom:5.9.0 (*)
+|    |    |    |    \--- org.apiguardian:apiguardian-api:1.1.2
+|    |    |    \--- org.apiguardian:apiguardian-api:1.1.2
+|    |    \--- org.junit.jupiter:junit-jupiter-params:5.9.0
+|    |         +--- org.junit:junit-bom:5.9.0 (*)
+|    |         +--- org.junit.jupiter:junit-jupiter-api:5.9.0 (*)
+|    |         \--- org.apiguardian:apiguardian-api:1.1.2
+|    \--- org.hamcrest:hamcrest:2.2
++--- org.glassfish.jersey.core:jersey-common:3.1.0
+|    +--- jakarta.ws.rs:jakarta.ws.rs-api:3.1.0
+|    +--- jakarta.annotation:jakarta.annotation-api:2.1.1
+|    +--- jakarta.inject:jakarta.inject-api:2.0.1
+|    +--- org.glassfish.hk2:osgi-resource-locator:1.0.3
+|    \--- org.eclipse.jetty:jetty-bom:3.1.0 -> 11.0.13 (*)
+\--- org.glassfish.jersey.media:jersey-media-json-jackson:3.0.6
+     +--- org.glassfish.jersey.core:jersey-common:3.0.6 -> 3.1.0 (*)
+     +--- org.glassfish.jersey.ext:jersey-entity-filtering:3.0.6
+     |    +--- jakarta.ws.rs:jakarta.ws.rs-api:3.0.0 -> 3.1.0
+     |    \--- org.eclipse.jetty:jetty-bom:3.0.6 -> 11.0.13 (*)
+     +--- com.fasterxml.jackson.core:jackson-annotations:2.13.3
+     |    \--- com.fasterxml.jackson:jackson-bom:2.13.3
+     |         +--- com.fasterxml.jackson.core:jackson-annotations:2.13.3 (c)
+     |         +--- com.fasterxml.jackson.core:jackson-core:2.13.3 (c)
+     |         +--- com.fasterxml.jackson.core:jackson-databind:2.13.3 (c)
+     |         \--- com.fasterxml.jackson.module:jackson-module-jakarta-xmlbind-annotations:2.13.3 (c)
+     +--- com.fasterxml.jackson.core:jackson-databind:2.13.3
+     |    +--- com.fasterxml.jackson.core:jackson-annotations:2.13.3 (*)
+     |    +--- com.fasterxml.jackson.core:jackson-core:2.13.3
+     |    |    \--- com.fasterxml.jackson:jackson-bom:2.13.3 (*)
+     |    \--- com.fasterxml.jackson:jackson-bom:2.13.3 (*)
+     +--- com.fasterxml.jackson.module:jackson-module-jakarta-xmlbind-annotations:2.13.3
+     |    +--- com.fasterxml.jackson.core:jackson-annotations:2.13.3 (*)
+     |    +--- com.fasterxml.jackson.core:jackson-core:2.13.3 (*)
+     |    +--- com.fasterxml.jackson.core:jackson-databind:2.13.3 (*)
+     |    +--- com.sun.activation:jakarta.activation:2.0.1
+     |    \--- com.fasterxml.jackson:jackson-bom:2.13.3 (*)
+     +--- jakarta.xml.bind:jakarta.xml.bind-api:3.0.1
+     |    \--- com.sun.activation:jakarta.activation:2.0.1
+     \--- org.eclipse.jetty:jetty-bom:3.0.6 -> 11.0.13 (*)

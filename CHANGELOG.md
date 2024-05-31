@@ -4,6 +4,7 @@
 * [New] [102](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/102) Global consistent resolution feature
 * [New Rule] [#125](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/125) mysql:mysql-connector-java / com.mysql:mysql-connector-j (Thanks [Eduardo Acosta Miguens](https://github.com/eduacostam)!)
 * [New Rule] [#131](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/131) org.json:json / com.vaadin.external.google:android-json (Thanks [Piotr Kubowicz](https://github.com/pkubowicz)!)
+* [New Rule] [#22](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/22) Alignment: Asm, Jersey, Jetty, SSHD (Thanks [Florian Dreier](https://github.com/DreierF)!)
 * [Adjusted Rule] [#130](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/130) javax-transaction-api rule now also covers jboss-transaction-api artifacts (Thanks [Piotr Kubowicz](https://github.com/pkubowicz) for reporting)
 * [Adjusted Rule] [#140](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/140) Add slf4j-nop to Slf4J implementations
 * [Fix] [#132](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/132) Failure when applying plugin with 'listenablefuture' on the classpath (Thanks [Sergii Gnatiuk](https://github.com/ajax-gnatiuk-s) for reporting)
