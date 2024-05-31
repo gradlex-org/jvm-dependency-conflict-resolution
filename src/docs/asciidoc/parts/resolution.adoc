@@ -286,7 +286,7 @@ jvmDependencyConflicts {
         // version conflict detection and resolution
         providesVersions(":app")
         providesVersions(":service")
-        // If the build has a platform project, use it to provision additional version information
+        // If the build has a platform project, use it for additional version information
         platform(":versions")
     }
 }
@@ -295,10 +295,10 @@ jvmDependencyConflicts {
 |===
 | Method | Documentation
 
-| `providesVersions(dependency)`
+| `providesVersions(project)`
 | Respect runtime classpaths of given project in all version conflict detection and resolution.
 
-| `platform(dependency)`
+| `platform(project)`
 | A platform/BOM to provide versions not available through consistent resolution alone.
 
 |===
