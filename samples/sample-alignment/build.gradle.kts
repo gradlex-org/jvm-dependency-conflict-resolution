@@ -1,5 +1,7 @@
+import org.gradlex.jvm.dependency.conflict.detection.rules.CapabilityDefinition
+
 plugins {
-    id("org.gradlex.jvm-dependency-conflict-detection")
+    id("org.gradlex.jvm-dependency-conflict-resolution")
     id("java-library")
 }
 
@@ -13,4 +15,10 @@ dependencies {
     implementation("org.eclipse.jetty.toolchain:jetty-test-helper:6.0")
     implementation("org.glassfish.jersey.core:jersey-common:3.1.0")
     implementation("org.glassfish.jersey.media:jersey-media-json-jackson:3.0.6")
+}
+
+jvmDependencyConflicts {
+    conflictResolution {
+        select(CapabilityDefinition.JAKARTA_ACTIVATION_API, "com.sun.activation:jakarta.activation")
+    }
 }
