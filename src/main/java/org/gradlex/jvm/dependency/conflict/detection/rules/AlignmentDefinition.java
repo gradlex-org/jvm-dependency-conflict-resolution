@@ -33,7 +33,7 @@ public enum AlignmentDefinition {
             "org.ow2.asm:asm-util",
             "org.ow2.asm:asm-commons"
     ),
-    JERSEY("org.eclipse.jetty:jetty-bom", AlignmentDefinitionRule.class,
+    JERSEY("org.glassfish.jersey:jersey-bom", AlignmentDefinitionRule.class,
             "org.glassfish.jersey.core:jersey-common",
             "org.glassfish.jersey.core:jersey-client",
             "org.glassfish.jersey.core:jersey-server",

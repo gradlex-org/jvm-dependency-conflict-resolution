@@ -77,12 +77,15 @@ compileClasspath - Compile classpath for source set 'main'.
 |    +--- jakarta.annotation:jakarta.annotation-api:2.1.1
 |    +--- jakarta.inject:jakarta.inject-api:2.0.1
 |    +--- org.glassfish.hk2:osgi-resource-locator:1.0.3
-|    \--- org.eclipse.jetty:jetty-bom:3.1.0 -> 11.0.13 (*)
-\--- org.glassfish.jersey.media:jersey-media-json-jackson:3.0.6
-     +--- org.glassfish.jersey.core:jersey-common:3.0.6 -> 3.1.0 (*)
-     +--- org.glassfish.jersey.ext:jersey-entity-filtering:3.0.6
-     |    +--- jakarta.ws.rs:jakarta.ws.rs-api:3.0.0 -> 3.1.0
-     |    \--- org.eclipse.jetty:jetty-bom:3.0.6 -> 11.0.13 (*)
+|    \--- org.glassfish.jersey:jersey-bom:3.1.0
+|         +--- org.glassfish.jersey.core:jersey-common:3.1.0 (c)
+|         +--- org.glassfish.jersey.media:jersey-media-json-jackson:3.1.0 (c)
+|         \--- org.glassfish.jersey.ext:jersey-entity-filtering:3.1.0 (c)
+\--- org.glassfish.jersey.media:jersey-media-json-jackson:3.0.6 -> 3.1.0
+     +--- org.glassfish.jersey.core:jersey-common:3.1.0 (*)
+     +--- org.glassfish.jersey.ext:jersey-entity-filtering:3.1.0
+     |    +--- jakarta.ws.rs:jakarta.ws.rs-api:3.1.0
+     |    \--- org.glassfish.jersey:jersey-bom:3.1.0 (*)
      +--- com.fasterxml.jackson.core:jackson-annotations:2.13.3
      |    \--- com.fasterxml.jackson:jackson-bom:2.13.3
      |         +--- com.fasterxml.jackson.core:jackson-annotations:2.13.3 (c)
@@ -100,6 +103,6 @@ compileClasspath - Compile classpath for source set 'main'.
      |    +--- com.fasterxml.jackson.core:jackson-databind:2.13.3 (*)
      |    +--- com.sun.activation:jakarta.activation:2.0.1
      |    \--- com.fasterxml.jackson:jackson-bom:2.13.3 (*)
-     +--- jakarta.xml.bind:jakarta.xml.bind-api:3.0.1
-     |    \--- com.sun.activation:jakarta.activation:2.0.1
-     \--- org.eclipse.jetty:jetty-bom:3.0.6 -> 11.0.13 (*)
+     +--- jakarta.xml.bind:jakarta.xml.bind-api:4.0.0
+     |    \--- jakarta.activation:jakarta.activation-api:2.1.0 -> com.sun.activation:jakarta.activation:2.0.1
+     \--- org.glassfish.jersey:jersey-bom:3.1.0 (*)
