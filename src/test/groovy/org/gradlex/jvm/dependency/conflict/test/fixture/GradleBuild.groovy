@@ -63,11 +63,15 @@ class GradleBuild {
     }
 
     GradleRunner runner(String... args) {
+        List<String> latestFeaturesArgs = GRADLE_VERSION_UNDER_TEST ? [] : [
+                '--configuration-cache',
+                '-Dorg.gradle.unsafe.isolated-projects=true'
+        ]
         GradleRunner.create()
                 .forwardOutput()
                 .withPluginClasspath()
                 .withProjectDir(projectDir)
-                .withArguments(Arrays.asList(args) + '-s' + '-q')
+                .withArguments(Arrays.asList(args) + latestFeaturesArgs + '-s' + '-q')
                 .withDebug(ManagementFactory.getRuntimeMXBean().getInputArguments().toString().contains("-agentlib:jdwp")).with {
             GRADLE_VERSION_UNDER_TEST ? it.withGradleVersion(GRADLE_VERSION_UNDER_TEST) : it
         }
