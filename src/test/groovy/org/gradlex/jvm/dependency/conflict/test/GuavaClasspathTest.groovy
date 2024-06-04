@@ -163,8 +163,9 @@ class GuavaClasspathTest extends Specification {
             }
 
             tasks.register("printJars") {
+                inputs.files(configurations.${classpath})
                 doLast {
-                    configurations.${classpath}.get().files.forEach { println(it.name) }
+                    inputs.files.forEach { println(it.name) }
                 }
             }
         """
