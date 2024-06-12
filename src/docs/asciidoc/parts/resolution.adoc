@@ -269,7 +269,7 @@ jvmDependencyConflicts {
 
 
 [[consistent-resolution-block]]
-== Configure gloabl consistent resolution
+== Configure global consistent resolution
 
 The `consistentResolution` section of `jvmDependencyConflicts` allows to configure
 https://docs.gradle.org/current/userguide/resolution_strategy_tuning.html#resolution_consistency[consistent resolution]
