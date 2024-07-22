@@ -27,7 +27,6 @@ import javax.inject.Inject;
 @CacheableRule
 public abstract class JakartaActivationImplementationRule extends CapabilityDefinitionRule {
 
-
     // Starting with this version the implementation moved to the 'org.eclipse' package and is no longer a conflict
     public static final String FIRST_ECLIPSE_VERSION = "2.0.0";
 
@@ -38,6 +37,16 @@ public abstract class JakartaActivationImplementationRule extends CapabilityDefi
 
     @Override
     protected boolean shouldApply(ModuleVersionIdentifier id) {
-        return "com.sun.activation".equals(id.getGroup()) || VersionNumber.parse(id.getVersion()).compareTo(VersionNumber.parse(FIRST_ECLIPSE_VERSION)) < 0;
+        return isSunJakartaActivationImpl(id) || isAngusJakartaActivationImpl(id);
+    }
+
+    private boolean isSunJakartaActivationImpl(ModuleVersionIdentifier id) {
+        return "com.sun.activation".equals(id.getGroup())
+                && VersionNumber.parse(id.getVersion()).compareTo(VersionNumber.parse(JavaxActivationApiRule.FIRST_JAKARTA_VERSION)) >= 0;
+    }
+
+    private boolean isAngusJakartaActivationImpl(ModuleVersionIdentifier id) {
+        return "org.eclipse.angus".equals(id.getGroup())
+                && VersionNumber.parse(id.getVersion()).compareTo(VersionNumber.parse(FIRST_ECLIPSE_VERSION)) < 0;
     }
 }

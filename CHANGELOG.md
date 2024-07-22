@@ -1,5 +1,8 @@
 # JVM Dependency Conflict Resolution Gradle plugin - Changelog
 
+## Version 2.1.2
+* [Adjusted Rule] [#152](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/152) No 'jakarta-activation-impl' capability for early 'c.sun.a:jakarta.activation' version (Thanks [lennartfricke](https://github.com/lennartfricke) for reporting)
+
 ## Version 2.1.1
 * [Fix] [#141](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/141) Jersey alignment rule points to wrong BOM
 
