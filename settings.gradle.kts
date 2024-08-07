@@ -5,7 +5,7 @@ pluginManagement {
 }
 
 plugins {
-    id("com.gradle.develocity") version "3.17.5"
+    id("com.gradle.develocity") version "3.17.6"
     id("gradlexbuild.build-parameters")
 }
 
