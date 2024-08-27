@@ -49,7 +49,7 @@ image::build-scan.png[link=https://scans.gradle.com/s/2pcbycndpf54c/dependencies
 [[conflict]]
 == I use the plugin and now there is a conflict - what now?
 
-TIP: You can apply the <<resolution-plugin,jvm-dependency-conflict-detection>> plugin to get some automatic conflict resolution.
+TIP: You can apply the <<resolution-plugin,jvm-dependency-conflict-resolution>> plugin to get some automatic conflict resolution.
 
 If you get an error like this:
 
