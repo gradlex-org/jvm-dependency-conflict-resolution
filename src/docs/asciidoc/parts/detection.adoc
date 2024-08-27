@@ -7,7 +7,8 @@ WARNING: Applying only the `jvm-dependency-conflict-detection` plugin will resul
 Conflict resolution is handled by the <<resolution-plugin,`jvm-dependency-conflict-resolution`>> plugin.
 
 == Plugin dependency
-Add this to the build file of your convention plugin's build (e.g. `build-logic/build.gradle(.kts)` or `buildSrc/build.gradle(.kts)`).
+Add the following to the build file of your convention plugin's build (e.g. `build-logic/build.gradle(.kts)` or `buildSrc/build.gradle(.kts)`).
+Note that the `jvm-dependency-conflict-resolution` dependency contains both the detection and the resolution plugins.
 
 [source,groovy]
 ----
