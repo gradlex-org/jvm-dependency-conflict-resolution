@@ -157,9 +157,9 @@ class GuavaClasspathTest extends Specification {
             }
 
             dependencies {
-                api("com.google.collections:google-collections:1.0")
-                api("com.google.guava:listenablefuture:1.0")
                 api("com.google.guava:guava:$guavaVersion${versionSuffix ? '-' : ''}$versionSuffix")
+                api("com.google.guava:listenablefuture:1.0")
+                api("com.google.collections:google-collections:1.0")
             }
 
             tasks.register("printJars") {
@@ -171,7 +171,7 @@ class GuavaClasspathTest extends Specification {
         """
 
         expect:
-        expectedClasspath(guavaVersion, jvmEnv, classpath, dependencyVersions) == printJars().output.split('\n') as TreeSet
+        printJars().output.split('\n') as TreeSet == expectedClasspath(guavaVersion, jvmEnv, classpath, dependencyVersions)
 
         where:
         [guavaVersion, versionSuffix, dependencyVersions, jvmEnv, classpath] << allGuavaCombinations(true)
