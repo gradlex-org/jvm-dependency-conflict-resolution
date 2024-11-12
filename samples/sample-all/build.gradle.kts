@@ -23,10 +23,12 @@ dependencies {
     implementation("com.intellij:annotations:12.0")
     implementation("com.jwebmp:javax.inject:1.1")
     implementation("com.mchange:c3p0:0.9.5.5")
+    implementation("com.mchange:mchange-commons-java:0.3.0")
     implementation("com.miglayout:miglayout-swing:5.0")
     implementation("com.miglayout:miglayout:3.7.4")
     implementation("com.mysql:mysql-connector-j:8.3.0")
     implementation("com.sun.activation:javax.activation:1.2.0")
+    implementation("com.sun.mail:jakarta.mail:2.0.1")
     implementation("com.sun.mail:javax.mail:1.6.2")
     implementation("com.sun.mail:mailapi:2.0.0")
     implementation("com.vaadin.external.google:android-json:0.0.20131108.vaadin1")
@@ -119,14 +121,18 @@ dependencies {
     implementation("org.apache.logging.log4j:log4j-core:2.23.0")
     implementation("org.apache.logging.log4j:log4j-jcl:2.23.0")
     implementation("org.apache.logging.log4j:log4j-jul:2.23.0")
+    implementation("org.apache.logging.log4j:log4j-slf4j-impl:2.23.0")
+    implementation("org.apache.logging.log4j:log4j-slf4j2-impl:2.23.0")
     implementation("org.apache.logging.log4j:log4j-to-slf4j:2.23.0")
     implementation("org.apache.solr:solr-commons-csv:3.5.0")
     implementation("org.apache.tomcat.embed:tomcat-embed-core:10.1.0")
+    implementation("org.apache.tomcat.embed:tomcat-embed-websocket:10.1.0")
     implementation("org.apache.tomcat:servlet-api:6.0.53")
     implementation("org.apache.tomcat:tomcat-annotations-api:10.1.1")
     implementation("org.apache.tomcat:tomcat-servlet-api:10.1.1")
     implementation("org.apache.tomcat:tomcat-websocket-api:10.1.0")
     implementation("org.apache.tomcat:tomcat-websocket-client-api:10.1.0")
+    implementation("org.apache.tomcat:tomcat-websocket:10.1.1")
     implementation("org.apache.velocity:velocity-engine-core:2.3")
     implementation("org.apache.velocity:velocity:1.7")
     implementation("org.bouncycastle:bcjmail-jdk15on:1.70")
@@ -194,6 +200,7 @@ dependencies {
     implementation("org.eclipse.angus:angus-activation:1.1.0")
     implementation("org.eclipse.angus:jakarta.mail:1.0.0")
     implementation("org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api:5.0.2")
+    implementation("org.eclipse.jetty.toolchain:jetty-jakarta-websocket-api:2.0.0")
     implementation("org.eclipse.jetty.toolchain:jetty-javax-websocket-api:1.1.2")
     implementation("org.glassfish.hk2.external:jakarta.inject:2.6.1")
     implementation("org.glassfish.hk2.external:javax.inject:2.4.0")
@@ -207,6 +214,8 @@ dependencies {
     implementation("org.hibernate.javax.persistence:hibernate-jpa-2.2-api:1.0.0.Beta2")
     implementation("org.javassist:javassist:3.29.1-GA")
     implementation("org.jboss.resteasy:jaxrs-api:2.0.0.GA")
+    implementation("org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:1.0.1.Final")
+    implementation("org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.1.1.Final")
     implementation("org.jboss.spec.javax.transaction:jboss-transaction-api_1.3_spec:2.0.0.Final")
     implementation("org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_1.1_spec:1.0.1.Final")
     implementation("org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.0_spec:1.0.1.Final")
@@ -224,8 +233,11 @@ dependencies {
     implementation("org.slf4j:jcl-over-slf4j:2.0.12")
     implementation("org.slf4j:jul-to-slf4j:2.0.12")
     implementation("org.slf4j:log4j-over-slf4j:2.0.12")
-    implementation("org.slf4j:slf4j-simple:2.0.12")
+    implementation("org.slf4j:slf4j-jcl:1.7.9")
+    implementation("org.slf4j:slf4j-jdk14:2.0.12")
+    implementation("org.slf4j:slf4j-log4j12:2.0.12")
     implementation("org.slf4j:slf4j-nop:2.0.12")
+    implementation("org.slf4j:slf4j-simple:2.0.12")
     implementation("org.springframework:spring-aop:5.3.23")
     implementation("org.springframework:spring-jcl:6.1.4")
     implementation("postgresql:postgresql:9.1-901-1.jdbc4")
@@ -236,9 +248,6 @@ dependencies {
     // implementation("woodstox:wstx-lgpl:3.2.7") - has no POM file
 
     // Declaration moved down here due to bug: https://github.com/gradle/gradle/issues/14220
-    // Also, some dependencies disappear completely in the result (instead of showing what they have been substituted with).
-    // E.g.: 'org.bouncycastle:bcprov-*' do not show up as direct dependencies in the ':dependencies' report (or build scan),
-    //       although they are declared in this file.
     implementation("com.google.collections:google-collections:1.0")
     implementation("com.sun.activation:jakarta.activation:2.0.1")
     implementation("org.bouncycastle:bc-fips-debug:1.0.2.3")
@@ -247,20 +256,6 @@ dependencies {
     implementation("org.bouncycastle:bcpg-fips:1.0.6")
     implementation("org.bouncycastle:bcpkix-fips:1.0.7")
     implementation("org.bouncycastle:bcpkix-jdk18on:1.72")
-
-    // DEACTIVATED DUE TO BUG https://github.com/gradle/gradle/issues/14220
-    // implementation("com.sun.mail:jakarta.mail:2.0.1")
-    // implementation("org.apache.logging.log4j:log4j-slf4j-impl:2.23.0")
-    // implementation("org.apache.logging.log4j:log4j-slf4j2-impl:2.23.0")
-    // implementation("org.apache.tomcat.embed:tomcat-embed-websocket:10.1.0")
-    // implementation("org.apache.tomcat:tomcat-websocket:10.1.1")
-    // implementation("org.eclipse.jetty.toolchain:jetty-jakarta-websocket-api:2.0.0")
-    // implementation("org.slf4j:slf4j-jcl:1.7.9")
-    // implementation("org.slf4j:slf4j-jdk14:2.0.12")
-    // implementation("org.slf4j:slf4j-log4j12:2.0.12")
-    // implementation("com.mchange:mchange-commons-java:0.3.0")
-    // implementation("org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:1.0.1.Final")
-    // implementation("org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.1.1.Final")
 }
 
 jvmDependencyConflicts {
