@@ -27,6 +27,7 @@ dependencies {
     implementation("com.miglayout:miglayout-swing:5.0")
     implementation("com.miglayout:miglayout:3.7.4")
     implementation("com.mysql:mysql-connector-j:8.3.0")
+    implementation("com.sun.activation:jakarta.activation:2.0.1")
     implementation("com.sun.activation:javax.activation:1.2.0")
     implementation("com.sun.mail:jakarta.mail:2.0.1")
     implementation("com.sun.mail:javax.mail:1.6.2")
@@ -135,6 +136,8 @@ dependencies {
     implementation("org.apache.tomcat:tomcat-websocket:10.1.1")
     implementation("org.apache.velocity:velocity-engine-core:2.3")
     implementation("org.apache.velocity:velocity:1.7")
+    implementation("org.bouncycastle:bc-fips-debug:1.0.2.3")
+    implementation("org.bouncycastle:bc-fips:1.0.2.3")
     implementation("org.bouncycastle:bcjmail-jdk15on:1.70")
     implementation("org.bouncycastle:bcjmail-jdk15to18:1.70")
     implementation("org.bouncycastle:bcjmail-jdk18on:1.72")
@@ -142,9 +145,11 @@ dependencies {
     implementation("org.bouncycastle:bcmail-jdk14:1.68")
     implementation("org.bouncycastle:bcmail-jdk15+:1.46")
     implementation("org.bouncycastle:bcmail-jdk15:1.46")
+    implementation("org.bouncycastle:bcmail-jdk15on:1.69")
     implementation("org.bouncycastle:bcmail-jdk15to18:1.70")
     implementation("org.bouncycastle:bcmail-jdk16:1.46")
     implementation("org.bouncycastle:bcmail-jdk18on:1.71")
+    implementation("org.bouncycastle:bcpg-fips:1.0.6")
     implementation("org.bouncycastle:bcpg-jdk12:130")
     implementation("org.bouncycastle:bcpg-jdk14:1.70")
     implementation("org.bouncycastle:bcpg-jdk15+:1.46")
@@ -153,9 +158,11 @@ dependencies {
     implementation("org.bouncycastle:bcpg-jdk15to18:1.70")
     implementation("org.bouncycastle:bcpg-jdk16:1.46")
     implementation("org.bouncycastle:bcpg-jdk18on:1.72")
+    implementation("org.bouncycastle:bcpkix-fips:1.0.7")
     implementation("org.bouncycastle:bcpkix-jdk14:1.70")
     implementation("org.bouncycastle:bcpkix-jdk15on:1.70")
     implementation("org.bouncycastle:bcpkix-jdk15to18:1.70")
+    implementation("org.bouncycastle:bcpkix-jdk18on:1.72")
     implementation("org.bouncycastle:bcprov-debug-jdk14:1.70")
     implementation("org.bouncycastle:bcprov-debug-jdk15on:1.70")
     implementation("org.bouncycastle:bcprov-debug-jdk15to18:1.70")
@@ -247,15 +254,8 @@ dependencies {
     implementation("woodstox:wstx-asl:2.9.3")
     // implementation("woodstox:wstx-lgpl:3.2.7") - has no POM file
 
-    // Declaration moved down here due to bug: https://github.com/gradle/gradle/issues/14220
+    // Declaration moved down here due to bug: https://github.com/gradle/gradle/issues/22326
     implementation("com.google.collections:google-collections:1.0")
-    implementation("com.sun.activation:jakarta.activation:2.0.1")
-    implementation("org.bouncycastle:bc-fips-debug:1.0.2.3")
-    implementation("org.bouncycastle:bc-fips:1.0.2.3")
-    implementation("org.bouncycastle:bcmail-jdk15on:1.69")
-    implementation("org.bouncycastle:bcpg-fips:1.0.6")
-    implementation("org.bouncycastle:bcpkix-fips:1.0.7")
-    implementation("org.bouncycastle:bcpkix-jdk18on:1.72")
 }
 
 jvmDependencyConflicts {
