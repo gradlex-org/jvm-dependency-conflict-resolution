@@ -43,7 +43,7 @@ dependencies {
     implementation("commons-io:commons-io:2.11.0")
     implementation("commons-logging:commons-logging:1.3.0")
     implementation("dom4j:dom4j:1.6.1")
-    implementation("jakarta.activation:jakarta.activation-api:2.0.0!!")
+    implementation("jakarta.activation:jakarta.activation-api:2.0.0")
     implementation("jakarta.annotation:jakarta.annotation-api:2.1.1")
     implementation("jakarta.ejb:jakarta.ejb-api:4.0.0")
     implementation("jakarta.el:jakarta.el-api:4.0.0")
