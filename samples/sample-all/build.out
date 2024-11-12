@@ -31,13 +31,12 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- com.github.stephenc.jcip:jcip-annotations:1.0-1 -> net.jcip:jcip-annotations:1.0
 +--- com.google.code.findbugs:annotations:3.0.1 -> com.github.spotbugs:spotbugs-annotations:4.8.3 (*)
 +--- com.google.code.findbugs:findbugs-annotations:3.0.1 -> com.github.spotbugs:spotbugs-annotations:4.8.3 (*)
-+--- com.google.collections:google-collections:1.0 -> com.google.guava:guava:33.0.0-jre
++--- com.google.guava:guava-jdk5:17.0 -> com.google.guava:guava:33.0.0-jre
 |    +--- com.google.guava:failureaccess:1.0.2
 |    +--- com.google.code.findbugs:jsr305:3.0.2
 |    +--- org.checkerframework:checker-qual:3.41.0
 |    +--- com.google.errorprone:error_prone_annotations:2.23.0
 |    \--- com.google.j2objc:j2objc-annotations:2.8
-+--- com.google.guava:guava-jdk5:17.0 -> com.google.guava:guava:33.0.0-jre (*)
 +--- com.google.guava:guava:33.0.0-jre (*)
 +--- com.google.guava:listenablefuture:1.0 -> com.google.guava:guava:33.0.0-jre (*)
 +--- com.intellij:annotations:12.0 -> org.jetbrains:annotations:24.0.0
@@ -282,6 +281,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- servletapi:servletapi:2.4 -> javax.servlet:javax.servlet-api:4.0.1
 +--- velocity:velocity:1.4 -> org.apache.velocity:velocity-engine-core:2.3 (*)
 +--- woodstox:wstx-asl:2.9.3 -> org.codehaus.woodstox:woodstox-core-asl:4.4.1 (*)
++--- com.google.collections:google-collections:1.0 -> com.google.guava:guava:33.0.0-jre (*)
 +--- com.sun.activation:jakarta.activation:2.0.1
 +--- org.bouncycastle:bc-fips-debug:1.0.2.3 -> org.bouncycastle:bcprov-jdk12:130
 +--- org.bouncycastle:bc-fips:1.0.2.3 -> org.bouncycastle:bcprov-jdk12:130

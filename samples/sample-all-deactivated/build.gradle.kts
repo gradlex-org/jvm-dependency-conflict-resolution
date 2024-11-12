@@ -14,7 +14,6 @@ dependencies {
     implementation("com.github.stephenc.jcip:jcip-annotations:1.0-1")
     implementation("com.google.code.findbugs:annotations:3.0.1")
     implementation("com.google.code.findbugs:findbugs-annotations:3.0.1")
-    implementation("com.google.collections:google-collections:1.0")
     implementation("com.google.guava:guava-jdk5:17.0")
     implementation("com.google.guava:guava:33.0.0-jre")
     implementation("com.google.guava:listenablefuture:1.0")
@@ -250,6 +249,7 @@ dependencies {
     implementation("velocity:velocity:1.4")
     implementation("woodstox:wstx-asl:2.9.3")
 
+    implementation("com.google.collections:google-collections:1.0")
     implementation("com.sun.activation:jakarta.activation:2.0.1")
     implementation("org.bouncycastle:bc-fips-debug:1.0.2.3")
     implementation("org.bouncycastle:bc-fips:1.0.2.3")
