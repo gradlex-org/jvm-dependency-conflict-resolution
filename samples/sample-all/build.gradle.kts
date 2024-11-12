@@ -280,6 +280,4 @@ tasks.detectCollisions {
     // With ALL variations of bouncycastle modules in all variations in one build it is not possible to avoid all collisions
     collisionFilter.exclude("org/bouncycastle/**")
     collisionFilter.exclude("javax/xml/namespace/QName.class")
-    collisionFilter.exclude("com/sun/activation/registries/*")
-    collisionFilter.exclude("javax/transaction/*")
 }

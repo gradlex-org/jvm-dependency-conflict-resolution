@@ -47,8 +47,11 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- com.miglayout:miglayout:3.7.4 -> com.miglayout:miglayout-swing:5.0 (*)
 +--- com.mysql:mysql-connector-j:8.3.0
 |    \--- com.google.protobuf:protobuf-java:3.25.1
++--- com.sun.activation:javax.activation:1.2.0 -> javax.activation:javax.activation-api:1.2.0
 +--- com.sun.mail:javax.mail:1.6.2
-|    \--- javax.activation:activation:1.1
+|    \--- javax.activation:activation:1.1 -> javax.activation:javax.activation-api:1.2.0
++--- com.sun.mail:mailapi:2.0.0 -> jakarta.mail:jakarta.mail-api:2.1.0
+|    \--- jakarta.activation:jakarta.activation-api:2.1.0 -> com.sun.activation:jakarta.activation:2.0.1
 +--- com.vaadin.external.google:android-json:0.0.20131108.vaadin1 -> org.json:json:20240303
 +--- com.vividsolutions:jts-core:1.14.0
 +--- com.vividsolutions:jts:1.13 -> com.vividsolutions:jts-core:1.14.0
@@ -71,6 +74,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- jakarta.inject:jakarta.inject-api:1.0.5 -> com.jwebmp:javax.inject:1.1
 +--- jakarta.json:jakarta.json-api:1.1.6
 +--- jakarta.jws:jakarta.jws-api:3.0.0
++--- jakarta.mail:jakarta.mail-api:2.1.0 (*)
 +--- jakarta.persistence:jakarta.persistence-api:3.0.0
 +--- jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:1.2.7
 +--- jakarta.servlet.jsp:jakarta.servlet.jsp-api:2.3.6
@@ -89,6 +93,8 @@ compileClasspath - Compile classpath for source set 'main'.
 |    +--- jakarta.xml.soap:jakarta.xml.soap-api:2.0.1 (*)
 |    \--- jakarta.jws:jakarta.jws-api:3.0.0
 +--- javassist:javassist:3.12.1.GA -> org.javassist:javassist:3.29.1-GA
++--- javax.activation:activation:1.1.1 -> javax.activation:javax.activation-api:1.2.0
++--- javax.activation:javax.activation-api:1.2.0
 +--- javax.annotation:javax.annotation-api:1.3.2
 +--- javax.annotation:jsr250-api:1.0 -> javax.annotation:javax.annotation-api:1.3.2
 +--- javax.ejb:ejb-api:3.0 -> javax.ejb:javax.ejb-api:3.2.2
@@ -119,9 +125,11 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- javax.ws.rs:javax.ws.rs-api:2.1.1
 +--- javax.ws.rs:jsr311-api:1.1.1 -> javax.ws.rs:javax.ws.rs-api:2.1.1
 +--- javax.xml.bind:jaxb-api:2.3.1
+|    \--- javax.activation:javax.activation-api:1.2.0
 +--- javax.xml.soap:javax.xml.soap-api:1.4.0
++--- javax.xml.stream:stax-api:1.0 -> stax:stax-api:1.0.1
 +--- javax.xml.ws:jaxws-api:2.3.1
-|    +--- javax.xml.bind:jaxb-api:2.3.1
+|    +--- javax.xml.bind:jaxb-api:2.3.1 (*)
 |    +--- javax.xml.soap:javax.xml.soap-api:1.4.0
 |    \--- javax.annotation:javax.annotation-api:1.3.2
 +--- jboss:javassist:3.8.0.GA -> org.javassist:javassist:3.29.1-GA
@@ -177,6 +185,23 @@ compileClasspath - Compile classpath for source set 'main'.
 |    +--- org.apache.commons:commons-lang3:3.11 -> 3.12.0
 |    \--- org.slf4j:slf4j-api:1.7.30 -> 2.0.12 (*)
 +--- org.apache.velocity:velocity:1.7 -> org.apache.velocity:velocity-engine-core:2.3 (*)
++--- org.bouncycastle:bcjmail-jdk15on:1.70 -> org.bouncycastle:bcjmail-jdk18on:1.72
+|    +--- org.bouncycastle:bcprov-jdk18on:1.72 -> org.bouncycastle:bcprov-jdk12:130
+|    +--- org.bouncycastle:bcutil-jdk18on:1.72
+|    |    \--- org.bouncycastle:bcprov-jdk18on:1.72 -> org.bouncycastle:bcprov-jdk12:130
+|    +--- org.bouncycastle:bcpkix-jdk18on:1.72
+|    |    +--- org.bouncycastle:bcprov-jdk18on:1.72 -> org.bouncycastle:bcprov-jdk12:130
+|    |    \--- org.bouncycastle:bcutil-jdk18on:1.72 (*)
+|    \--- com.sun.mail:jakarta.mail:[2.0,3.0) -> jakarta.mail:jakarta.mail-api:2.1.0 (*)
++--- org.bouncycastle:bcjmail-jdk15to18:1.70 -> org.bouncycastle:bcjmail-jdk18on:1.72 (*)
++--- org.bouncycastle:bcjmail-jdk18on:1.72 (*)
++--- org.bouncycastle:bcmail-fips:1.0.4 -> org.bouncycastle:bcjmail-jdk18on:1.72 (*)
++--- org.bouncycastle:bcmail-jdk14:1.68 -> org.bouncycastle:bcjmail-jdk18on:1.72 (*)
++--- org.bouncycastle:bcmail-jdk15+:1.46 -> org.bouncycastle:bcjmail-jdk18on:1.72 (*)
++--- org.bouncycastle:bcmail-jdk15:1.46 -> org.bouncycastle:bcjmail-jdk18on:1.72 (*)
++--- org.bouncycastle:bcmail-jdk15to18:1.70 -> org.bouncycastle:bcjmail-jdk18on:1.72 (*)
++--- org.bouncycastle:bcmail-jdk16:1.46 -> org.bouncycastle:bcjmail-jdk18on:1.72 (*)
++--- org.bouncycastle:bcmail-jdk18on:1.71 -> org.bouncycastle:bcjmail-jdk18on:1.72 (*)
 +--- org.bouncycastle:bcpg-jdk12:130
 |    \--- org.bouncycastle:bcprov-jdk12:130
 +--- org.bouncycastle:bcpg-jdk14:1.70 -> org.bouncycastle:bcpg-jdk12:130 (*)
@@ -186,29 +211,49 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.bouncycastle:bcpg-jdk15to18:1.70 -> org.bouncycastle:bcpg-jdk12:130 (*)
 +--- org.bouncycastle:bcpg-jdk16:1.46 -> org.bouncycastle:bcpg-jdk12:130 (*)
 +--- org.bouncycastle:bcpg-jdk18on:1.72 -> org.bouncycastle:bcpg-jdk12:130 (*)
-+--- org.bouncycastle:bcpkix-jdk14:1.70 -> org.bouncycastle:bcpkix-jdk18on:1.72
-|    +--- org.bouncycastle:bcprov-jdk18on:1.72 -> org.bouncycastle:bcprov-jdk12:130
-|    \--- org.bouncycastle:bcutil-jdk18on:1.72
-|         \--- org.bouncycastle:bcprov-jdk18on:1.72 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcpkix-jdk14:1.70 -> org.bouncycastle:bcpkix-jdk18on:1.72 (*)
 +--- org.bouncycastle:bcpkix-jdk15on:1.70 -> org.bouncycastle:bcpkix-jdk18on:1.72 (*)
 +--- org.bouncycastle:bcpkix-jdk15to18:1.70 -> org.bouncycastle:bcpkix-jdk18on:1.72 (*)
++--- org.bouncycastle:bcprov-debug-jdk14:1.70 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-debug-jdk15on:1.70 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-debug-jdk15to18:1.70 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-debug-jdk18on:1.71 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-ext-debug-jdk14:1.70 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-ext-debug-jdk15on:1.70 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-ext-debug-jdk15to18:1.70 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-ext-debug-jdk18on:1.71 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-ext-jdk14:1.70 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-ext-jdk15:1.46 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-ext-jdk15on:1.70 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-ext-jdk15to18:1.70 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-ext-jdk16:1.46 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-ext-jdk18on:1.71 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-jdk14:1.70 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-jdk15+:1.46 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-jdk15:1.46 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-jdk15on:1.70 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-jdk15to18:1.70 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-jdk16:1.46 -> org.bouncycastle:bcprov-jdk12:130
++--- org.bouncycastle:bcprov-jdk18on:1.71 -> org.bouncycastle:bcprov-jdk12:130
 +--- org.bouncycastle:bctls-fips:1.0.9 -> org.bouncycastle:bctls-jdk18on:1.72
-|    \--- org.bouncycastle:bcprov-jdk18on:1.72 -> org.bouncycastle:bcprov-jdk12:130
+|    +--- org.bouncycastle:bcprov-jdk18on:1.72 -> org.bouncycastle:bcprov-jdk12:130
+|    \--- org.bouncycastle:bcutil-jdk18on:1.72 (*)
 +--- org.bouncycastle:bctls-jdk14:1.70 -> org.bouncycastle:bctls-jdk18on:1.72 (*)
 +--- org.bouncycastle:bctls-jdk15on:1.69 -> org.bouncycastle:bctls-jdk18on:1.72 (*)
 +--- org.bouncycastle:bctls-jdk15to18:1.70 -> org.bouncycastle:bctls-jdk18on:1.72 (*)
 +--- org.bouncycastle:bctls-jdk18on:1.72 (*)
 +--- org.bouncycastle:bctsp-jdk14:1.45 -> org.bouncycastle:bctsp-jdk15on:1.46
 |    +--- org.bouncycastle:bcprov-jdk15on:1.46 -> org.bouncycastle:bcprov-jdk12:130
-|    \--- org.bouncycastle:bcmail-jdk15on:1.46 -> org.bouncycastle:bcjmail-jdk18on:1.72
-|         +--- org.bouncycastle:bcprov-jdk18on:1.72 -> org.bouncycastle:bcprov-jdk12:130
-|         +--- org.bouncycastle:bcutil-jdk18on:1.72 (*)
-|         +--- org.bouncycastle:bcpkix-jdk18on:1.72 (*)
-|         \--- com.sun.mail:jakarta.mail:[2.0,3.0) -> jakarta.mail:jakarta.mail-api:2.1.0
+|    \--- org.bouncycastle:bcmail-jdk15on:1.46 -> org.bouncycastle:bcjmail-jdk18on:1.72 (*)
 +--- org.bouncycastle:bctsp-jdk15+:1.46 -> org.bouncycastle:bctsp-jdk15on:1.46 (*)
 +--- org.bouncycastle:bctsp-jdk15:1.45 -> org.bouncycastle:bctsp-jdk15on:1.46 (*)
 +--- org.bouncycastle:bctsp-jdk15on:1.46 (*)
 +--- org.bouncycastle:bctsp-jdk16:1.45 -> org.bouncycastle:bctsp-jdk15on:1.46 (*)
++--- org.bouncycastle:bcutil-jdk14:1.70 -> org.bouncycastle:bcutil-jdk18on:1.72 (*)
++--- org.bouncycastle:bcutil-jdk15on:1.70 -> org.bouncycastle:bcutil-jdk18on:1.72 (*)
++--- org.bouncycastle:bcutil-jdk15to18:1.70 -> org.bouncycastle:bcutil-jdk18on:1.72 (*)
++--- org.bouncycastle:bcutil-jdk18on:1.72 (*)
 +--- org.codehaus.woodstox:woodstox-core-asl:4.4.1
 |    +--- javax.xml.stream:stax-api:1.0-2 -> stax:stax-api:1.0.1
 |    \--- org.codehaus.woodstox:stax2-api:3.1.4
@@ -217,6 +262,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.codehaus.woodstox:wstx-lgpl:3.2.9 -> org.codehaus.woodstox:woodstox-core-asl:4.4.1 (*)
 +--- org.dom4j:dom4j:2.1.3
 +--- org.eclipse.angus:angus-activation:1.1.0 -> com.sun.activation:jakarta.activation:2.0.1
++--- org.eclipse.angus:jakarta.mail:1.0.0 -> jakarta.mail:jakarta.mail-api:2.1.0 (*)
 +--- org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api:5.0.2 -> jakarta.servlet:jakarta.servlet-api:5.0.0
 +--- org.eclipse.jetty.toolchain:jetty-javax-websocket-api:1.1.2
 +--- org.glassfish.hk2.external:jakarta.inject:2.6.1 -> com.jwebmp:javax.inject:1.1
@@ -279,6 +325,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.springframework:spring-jcl:6.1.4 -> org.slf4j:jcl-over-slf4j:2.0.12 (*)
 +--- postgresql:postgresql:9.1-901-1.jdbc4 -> org.postgresql:postgresql:42.5.0
 +--- servletapi:servletapi:2.4 -> javax.servlet:javax.servlet-api:4.0.1
++--- stax:stax-api:1.0.1
 +--- velocity:velocity:1.4 -> org.apache.velocity:velocity-engine-core:2.3 (*)
 +--- woodstox:wstx-asl:2.9.3 -> org.codehaus.woodstox:woodstox-core-asl:4.4.1 (*)
 +--- com.google.collections:google-collections:1.0 -> com.google.guava:guava:33.0.0-jre (*)
