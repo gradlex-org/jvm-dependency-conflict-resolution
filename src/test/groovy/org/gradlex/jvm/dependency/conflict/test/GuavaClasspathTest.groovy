@@ -171,7 +171,7 @@ class GuavaClasspathTest extends Specification {
         """
 
         expect:
-        expectedClasspath(guavaVersion, jvmEnv, classpath, dependencyVersions) == printJars().output.split('\n') as TreeSet
+        printJars().output.split('\n') as TreeSet == expectedClasspath(guavaVersion, jvmEnv, classpath, dependencyVersions)
 
         where:
         [guavaVersion, versionSuffix, dependencyVersions, jvmEnv, classpath] << allGuavaCombinations(true)
