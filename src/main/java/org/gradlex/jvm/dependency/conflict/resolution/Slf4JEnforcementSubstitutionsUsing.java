@@ -31,6 +31,7 @@ class Slf4JEnforcementSubstitutionsUsing implements Action<Configuration> {
 
             substitution.substitute(substitution.module(LoggingModuleIdentifiers.LOG4J_JUL.moduleId)).using(substitution.module(LoggingModuleIdentifiers.JUL_TO_SLF4J.asFirstVersion()));
 
+            // TODO this is wrong, it cannot be a substitution for commons-logging. It must be a dependency addition
             ComponentSelector jclOverSlf4J = substitution.module(LoggingModuleIdentifiers.JCL_OVER_SLF4J.asFirstVersion());
             substitution.substitute(substitution.module(LoggingModuleIdentifiers.COMMONS_LOGGING.moduleId)).using(jclOverSlf4J);
             substitution.substitute(substitution.module(LoggingModuleIdentifiers.LOG4J_JCL.moduleId)).using(jclOverSlf4J);
