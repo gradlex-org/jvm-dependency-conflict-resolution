@@ -236,6 +236,10 @@ public enum CapabilityDefinition {
             "net.java.dev.jna:platform",
             "net.java.dev.jna:jna-platform"
     ),
+    JNA(HIGHEST_VERSION,
+            "net.java.dev.jna:jna",
+            "org.elasticsearch:jna"
+    ),
     JTS_CORE(HIGHEST_VERSION,
             "com.vividsolutions:jts",
             "com.vividsolutions:jts-core"
