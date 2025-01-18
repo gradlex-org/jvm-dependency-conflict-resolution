@@ -1,5 +1,8 @@
 # JVM Dependency Conflict Resolution Gradle plugin - Changelog
 
+## Version 2.2
+* [New Rule] [#174](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/174) org.elasticsearch:jna / net.java.dev.jna:jna (Thanks [Safeuq Mohamed](https://github.com/safeuq)!)
+
 ## Version 2.1.2
 * [Adjusted Rule] [#152](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/152) No jakarta-activation-impl capability for early c.sun.a:jakarta.activation (Thanks [lennartfricke](https://github.com/lennartfricke) for reporting)
 
