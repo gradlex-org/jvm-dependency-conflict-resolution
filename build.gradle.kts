@@ -70,7 +70,7 @@ gradlePlugin {
 
 dependencies {
     testImplementation("org.gradle.exemplar:samples-check:1.0.2")
-    testImplementation("org.spockframework:spock-core:2.3-groovy-3.0")
+    testImplementation("org.spockframework:spock-core:2.3-groovy-4.0")
     testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
 }
 
