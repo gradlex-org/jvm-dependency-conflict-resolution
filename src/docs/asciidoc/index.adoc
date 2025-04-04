@@ -29,7 +29,7 @@ image:https://onepiecesoftware.github.io/img/videos/11.png[width=400,link=https:
 
 NOTE: With these plugins, you enable your build to detect and automatically resolve typical capability conflicts in the JVM ecosystem.
 
-== Plugins
+== Plugins Overview
 
 TIP: These plugins require Gradle 6.8.3 at a minimum.
 
@@ -46,8 +46,11 @@ It adds a DSL to configure resolution strategies, select logging implementations
 
 See each plugin's documentation for more details.
 
-include::src/docs/asciidoc/parts/detection.adoc[leveloffset=+2]
-include::src/docs/asciidoc/parts/resolution.adoc[leveloffset=+2]
+TIP: The `org.gradlex.jvm-dependency-conflict-resolution` extends the `org.gradlex.jvm-dependency-conflict-detection` plugin.
+In most projects, you can apply only `org.gradlex.jvm-dependency-conflict-resolution` to get all functionality.
+
+include::src/docs/asciidoc/parts/detection.adoc[leveloffset=+1]
+include::src/docs/asciidoc/parts/resolution.adoc[leveloffset=+1]
 
 [[appendix]]
 == Appendix
