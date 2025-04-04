@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "org.gradlex"
-version = "2.1.2"
+version = "2.2"
 
 java {
     toolchain.languageVersion = JavaLanguageVersion.of(11) // to run tests that use Android with 11
