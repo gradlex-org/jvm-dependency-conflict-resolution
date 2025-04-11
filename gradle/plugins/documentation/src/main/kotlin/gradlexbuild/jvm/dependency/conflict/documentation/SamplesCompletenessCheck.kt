@@ -31,7 +31,7 @@ abstract class SamplesCompletenessCheck : DefaultTask() {
 
             val missing = definitions.enumConstants.map { rule ->
                 val modules = definitions.getDeclaredMethod("getModules").invoke(rule) as List<*>
-                modules.filter { module -> !testBuildFileContent.contains(module as String) }
+                modules.filter { module -> !testBuildFileContent.contains("$module:") }
             }.flatten().distinct()
 
             if (missing.isNotEmpty()) {

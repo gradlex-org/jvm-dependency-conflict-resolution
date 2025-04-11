@@ -70,7 +70,6 @@ public enum CapabilityDefinition {
             "org.ow2.asm:asm"
     ),
     BOUNCYCASTLE_BCMAIL(HIGHEST_VERSION,
-            "org.bouncycastle:bcmail",
             "org.bouncycastle:bcmail-fips",
             "org.bouncycastle:bcmail-jdk14",
             "org.bouncycastle:bcmail-jdk15",
@@ -84,7 +83,6 @@ public enum CapabilityDefinition {
             "org.bouncycastle:bcjmail-jdk18on"
     ),
     BOUNCYCASTLE_BCPG(HIGHEST_VERSION,
-            "org.bouncycastle:bcpg",
             "org.bouncycastle:bcpg-fips",
             "org.bouncycastle:bcpg-jdk12",
             "org.bouncycastle:bcpg-jdk14",
@@ -96,7 +94,6 @@ public enum CapabilityDefinition {
             "org.bouncycastle:bcpg-jdk18on"
     ),
     BOUNCYCASTLE_BCPKIX(HIGHEST_VERSION,
-            "org.bouncycastle:bcpkix",
             "org.bouncycastle:bcpkix-fips",
             "org.bouncycastle:bcpkix-jdk14",
             "org.bouncycastle:bcpkix-jdk15on",
@@ -104,7 +101,6 @@ public enum CapabilityDefinition {
             "org.bouncycastle:bcpkix-jdk18on"
     ),
     BOUNCYCASTLE_BCPROV(HIGHEST_VERSION,
-            "org.bouncycastle:bcprov",
             "org.bouncycastle:bcprov-debug-jdk14",
             "org.bouncycastle:bcprov-debug-jdk15on",
             "org.bouncycastle:bcprov-debug-jdk15to18",
@@ -131,7 +127,6 @@ public enum CapabilityDefinition {
             "org.bouncycastle:bc-fips-debug"
     ),
     BOUNCYCASTLE_BCTLS(HIGHEST_VERSION,
-            "org.bouncycastle:bctls",
             "org.bouncycastle:bctls-jdk14",
             "org.bouncycastle:bctls-jdk15on",
             "org.bouncycastle:bctls-jdk15to18",
@@ -139,7 +134,6 @@ public enum CapabilityDefinition {
             "org.bouncycastle:bctls-fips"
     ),
     BOUNCYCASTLE_BCTSP(HIGHEST_VERSION,
-            "org.bouncycastle:bctsp",
             "org.bouncycastle:bctsp-jdk14",
             "org.bouncycastle:bctsp-jdk15",
             "org.bouncycastle:bctsp-jdk15+",
@@ -147,7 +141,6 @@ public enum CapabilityDefinition {
             "org.bouncycastle:bctsp-jdk16"
     ),
     BOUNCYCASTLE_BCUTIL(HIGHEST_VERSION,
-            "org.bouncycastle:bcutil",
             "org.bouncycastle:bcutil-jdk14",
             "org.bouncycastle:bcutil-jdk15on",
             "org.bouncycastle:bcutil-jdk15to18",
