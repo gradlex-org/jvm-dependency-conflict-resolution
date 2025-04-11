@@ -255,9 +255,10 @@ dependencies {
     implementation("velocity:velocity:1.4")
     implementation("woodstox:wstx-asl:2.9.3")
 
-    implementation("com.google.collections:google-collections:1.0") // moved down: https://github.com/gradle/gradle/issues/22326
+    // moved down: https://github.com/gradle/gradle/issues/22326
+    implementation("com.google.collections:google-collections:1.0")
 
-    // implementation("woodstox:wstx-lgpl:3.2.7") - has no POM file
+    implementation("woodstox:wstx-lgpl:3.2.7")
 }
 
 jvmDependencyConflicts {
