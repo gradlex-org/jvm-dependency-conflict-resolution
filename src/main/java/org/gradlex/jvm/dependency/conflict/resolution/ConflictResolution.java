@@ -75,14 +75,14 @@ public abstract class ConflictResolution {
     }
 
     private void doSelectHighestVersion(String capability) {
-        getConfigurations().all(conf -> conf.getResolutionStrategy().getCapabilitiesResolution().withCapability(capability,
+        getConfigurations().configureEach(conf -> conf.getResolutionStrategy().getCapabilitiesResolution().withCapability(capability,
                 CapabilityResolutionDetails::selectHighestVersion));
     }
 
     private void doSelect(String capability, String module, boolean lenient) {
         String group = module.split(":")[0];
         String name = module.split(":")[1];
-        getConfigurations().all(conf -> conf.getResolutionStrategy().getCapabilitiesResolution().withCapability(capability, c -> {
+        getConfigurations().configureEach(conf -> conf.getResolutionStrategy().getCapabilitiesResolution().withCapability(capability, c -> {
             for (ComponentVariantIdentifier candidate : c.getCandidates()) {
                 ComponentIdentifier id = candidate.getId();
                 if (id instanceof ModuleComponentIdentifier
