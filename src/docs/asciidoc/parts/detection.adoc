@@ -67,7 +67,7 @@ This is best done in the place where you applied this plugin (e.g. one of your c
 
 [source,groovy]
 ----
-configurations.all {
+configurations.configureEach {
   resolutionStrategy.capabilitiesResolution {
     withCapability("javax.mail:mail") {        // Capability for which to make the decision
       select("com.sun.mail:jakarta.mail:0")    // The component to select

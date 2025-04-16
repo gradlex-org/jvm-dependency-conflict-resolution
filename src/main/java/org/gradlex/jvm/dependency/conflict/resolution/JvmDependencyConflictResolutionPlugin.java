@@ -54,7 +54,7 @@ public abstract class JvmDependencyConflictResolutionPlugin implements Plugin<Pr
     }
 
     private void configureResolutionStrategies(ConfigurationContainer configurations, JvmDependencyConflictsExtension jvmDependencyConflicts) {
-        configurations.all(configuration -> {
+        configurations.configureEach(configuration -> {
             for (CapabilityDefinition definition : CapabilityDefinition.values()) {
                 defineStrategy(definition, configuration, jvmDependencyConflicts);
             }

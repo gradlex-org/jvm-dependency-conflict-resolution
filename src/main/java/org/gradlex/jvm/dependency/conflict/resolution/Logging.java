@@ -420,7 +420,7 @@ public abstract class Logging {
         selectSlf4JLog4J2Interaction(LoggingModuleIdentifiers.LOG4J_TO_SLF4J.moduleId);
         selectLog4J2Implementation(LoggingModuleIdentifiers.LOG4J_TO_SLF4J.moduleId);
 
-        getConfigurations().all(new Slf4JEnforcementSubstitutionsUsing());
+        getConfigurations().configureEach(new Slf4JEnforcementSubstitutionsUsing());
     }
 
     private void enforceSlf4JImplementation(String configurationName) {
@@ -430,7 +430,7 @@ public abstract class Logging {
         selectSlf4JLog4J2Interaction(configurationName, LoggingModuleIdentifiers.LOG4J_TO_SLF4J.moduleId);
         selectLog4J2Implementation(configurationName, LoggingModuleIdentifiers.LOG4J_TO_SLF4J.moduleId);
 
-        getConfigurations().matching(conf -> conf.getName().equals(configurationName)).all(new Slf4JEnforcementSubstitutionsUsing());
+        getConfigurations().matching(conf -> conf.getName().equals(configurationName)).configureEach(new Slf4JEnforcementSubstitutionsUsing());
     }
 
     private ExternalDependency validateNotation(Object dependencyNotation) {
@@ -443,11 +443,11 @@ public abstract class Logging {
     }
 
     private void selectCapabilityConflict(String configuration, String capabilityId, ExternalDependency target, String because) {
-        getConfigurations().matching(conf -> conf.getName().equals(configuration)).all(conf -> conf.getResolutionStrategy().capabilitiesResolution(getCapabilitiesResolutionAction(capabilityId, target, because)));
+        getConfigurations().matching(conf -> conf.getName().equals(configuration)).configureEach(conf -> conf.getResolutionStrategy().capabilitiesResolution(getCapabilitiesResolutionAction(capabilityId, target, because)));
     }
 
     private void selectCapabilityConflict(String capabilityId, ExternalDependency target, String because) {
-        getConfigurations().all(conf -> conf.getResolutionStrategy().capabilitiesResolution(getCapabilitiesResolutionAction(capabilityId, target, because)));
+        getConfigurations().configureEach(conf -> conf.getResolutionStrategy().capabilitiesResolution(getCapabilitiesResolutionAction(capabilityId, target, because)));
     }
 
     private Action<CapabilitiesResolution> getCapabilitiesResolutionAction(String capabilityId, ExternalDependency target, String because) {
