@@ -16,6 +16,7 @@
 
 package org.gradlex.jvm.dependency.conflict.resolution;
 
+import org.gradle.api.NamedDomainObjectProvider;
 import org.gradle.api.artifacts.Configuration;
 import org.gradle.api.artifacts.ConfigurationContainer;
 import org.gradle.api.artifacts.Dependency;
@@ -56,8 +57,8 @@ public abstract class ConsistentResolution {
     /**
      * The runtime classpath of the given project always respected in version conflict detection and resolution.
      */
-    public Configuration providesVersions(String versionProvidingProject) {
-        Configuration mainRuntimeClasspath = maybeCreateMainRuntimeClasspathConfiguration();
+    public NamedDomainObjectProvider<Configuration> providesVersions(String versionProvidingProject) {
+        NamedDomainObjectProvider<Configuration> mainRuntimeClasspath = maybeCreateMainRuntimeClasspathConfiguration();
         getDependencies().add(mainRuntimeClasspath.getName(), createDependency(versionProvidingProject));
         return mainRuntimeClasspath;
     }
@@ -68,31 +69,31 @@ public abstract class ConsistentResolution {
      * Useful if additional dependencies are needed only for tests.
      */
     public void platform(String platform) {
-        Configuration internal = maybeCreateInternalConfiguration();
-        internal.withDependencies(d -> {
+        NamedDomainObjectProvider<Configuration> internal = maybeCreateInternalConfiguration();
+        internal.configure(conf -> conf.withDependencies(d -> {
             Dependency platformDependency = getDependencies().platform(createDependency(platform));
             d.add(platformDependency);
-        });
+        }));
 
         sourceSets.configureEach(sourceSet -> {
             ConfigurationContainer configurations = getConfigurations();
-            configurations.getByName(sourceSet.getRuntimeClasspathConfigurationName()).extendsFrom(internal);
-            configurations.getByName(sourceSet.getCompileClasspathConfigurationName()).extendsFrom(internal);
-            configurations.getByName(sourceSet.getAnnotationProcessorConfigurationName()).extendsFrom(internal);
+            configurations.named(sourceSet.getRuntimeClasspathConfigurationName(), c -> c.extendsFrom(internal.get()));
+            configurations.named(sourceSet.getCompileClasspathConfigurationName(), c -> c.extendsFrom(internal.get()));
+            configurations.named(sourceSet.getAnnotationProcessorConfigurationName(), c -> c.extendsFrom(internal.get()));
         });
     }
 
-    private Configuration maybeCreateMainRuntimeClasspathConfiguration() {
-        Configuration existing = getConfigurations().findByName(MAIN_RUNTIME_CLASSPATH_CONFIGURATION_NAME);
-        if (existing != null) {
-            return existing;
+    private NamedDomainObjectProvider<Configuration> maybeCreateMainRuntimeClasspathConfiguration() {
+        if (getConfigurations().getNames().contains(MAIN_RUNTIME_CLASSPATH_CONFIGURATION_NAME)) {
+            return getConfigurations().named(MAIN_RUNTIME_CLASSPATH_CONFIGURATION_NAME);
         }
 
-        Configuration mainRuntimeClasspath = getConfigurations().create(MAIN_RUNTIME_CLASSPATH_CONFIGURATION_NAME, c -> {
+        NamedDomainObjectProvider<Configuration> internal = maybeCreateInternalConfiguration();
+        NamedDomainObjectProvider<Configuration> mainRuntimeClasspath = getConfigurations().register(MAIN_RUNTIME_CLASSPATH_CONFIGURATION_NAME, c -> {
             ObjectFactory objects = getObjects();
             c.setCanBeResolved(true);
             c.setCanBeConsumed(false);
-            c.extendsFrom(maybeCreateInternalConfiguration());
+            c.extendsFrom(internal.get());
             c.getAttributes().attribute(Usage.USAGE_ATTRIBUTE, objects.named(Usage.class, Usage.JAVA_RUNTIME));
             c.getAttributes().attribute(Category.CATEGORY_ATTRIBUTE, objects.named(Category.class, Category.LIBRARY));
             c.getAttributes().attribute(LibraryElements.LIBRARY_ELEMENTS_ATTRIBUTE, objects.named(LibraryElements.class, LibraryElements.JAR));
@@ -104,22 +105,21 @@ public abstract class ConsistentResolution {
         });
         sourceSets.configureEach(sourceSet -> {
             ConfigurationContainer configurations = getConfigurations();
-            Configuration runtime = configurations.getByName(sourceSet.getRuntimeClasspathConfigurationName());
-            Configuration compile = configurations.getByName(sourceSet.getCompileClasspathConfigurationName());
-            Configuration processor = configurations.getByName(sourceSet.getAnnotationProcessorConfigurationName());
-            runtime.shouldResolveConsistentlyWith(mainRuntimeClasspath);
-            compile.shouldResolveConsistentlyWith(runtime);
-            processor.shouldResolveConsistentlyWith(runtime);
+            NamedDomainObjectProvider<Configuration> runtime = configurations.named(sourceSet.getRuntimeClasspathConfigurationName(),c ->
+                    c.shouldResolveConsistentlyWith(mainRuntimeClasspath.get()));
+            configurations.named(sourceSet.getCompileClasspathConfigurationName(), c ->
+                    c.shouldResolveConsistentlyWith(runtime.get()));
+            configurations.named(sourceSet.getAnnotationProcessorConfigurationName(), c ->
+                    c.shouldResolveConsistentlyWith(runtime.get()));
         });
         return mainRuntimeClasspath;
     }
 
-    private Configuration maybeCreateInternalConfiguration() {
-        Configuration internal = getConfigurations().findByName(INTERNAL_CONFIGURATION_NAME);
-        if (internal != null) {
-            return internal;
+    private NamedDomainObjectProvider<Configuration> maybeCreateInternalConfiguration() {
+        if (getConfigurations().getNames().contains(INTERNAL_CONFIGURATION_NAME)) {
+            return getConfigurations().named(INTERNAL_CONFIGURATION_NAME);
         }
-        return getConfigurations().create(INTERNAL_CONFIGURATION_NAME, c -> {
+        return getConfigurations().register(INTERNAL_CONFIGURATION_NAME, c -> {
             c.setCanBeResolved(false);
             c.setCanBeConsumed(false);
         });

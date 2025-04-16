@@ -22,8 +22,22 @@ import org.gradle.api.artifacts.component.ComponentSelector;
 import org.gradlex.jvm.dependency.conflict.detection.rules.logging.LoggingModuleIdentifiers;
 
 class Slf4JEnforcementSubstitutionsUsing implements Action<Configuration> {
+
+    private final String onlyApplyTo;
+
+    public Slf4JEnforcementSubstitutionsUsing() {
+        this.onlyApplyTo = null;
+    }
+
+    public Slf4JEnforcementSubstitutionsUsing(String onlyApplyTo) {
+        this.onlyApplyTo = onlyApplyTo;
+    }
+
     @Override
     public void execute(Configuration configuration) {
+        if (onlyApplyTo != null && !configuration.getName().equals(onlyApplyTo)) {
+            return;
+        }
         configuration.getResolutionStrategy().dependencySubstitution(substitution -> {
             ComponentSelector log4JOverSlf4J = substitution.module(LoggingModuleIdentifiers.LOG4J_OVER_SLF4J.asFirstVersion());
             substitution.substitute(substitution.module(LoggingModuleIdentifiers.LOG4J.moduleId)).using(log4JOverSlf4J);
