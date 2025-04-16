@@ -430,7 +430,7 @@ public abstract class Logging {
         selectSlf4JLog4J2Interaction(configurationName, LoggingModuleIdentifiers.LOG4J_TO_SLF4J.moduleId);
         selectLog4J2Implementation(configurationName, LoggingModuleIdentifiers.LOG4J_TO_SLF4J.moduleId);
 
-        getConfigurations().matching(conf -> conf.getName().equals(configurationName)).configureEach(new Slf4JEnforcementSubstitutionsUsing());
+        getConfigurations().configureEach(new Slf4JEnforcementSubstitutionsUsing(configurationName));
     }
 
     private ExternalDependency validateNotation(Object dependencyNotation) {
@@ -443,7 +443,11 @@ public abstract class Logging {
     }
 
     private void selectCapabilityConflict(String configuration, String capabilityId, ExternalDependency target, String because) {
-        getConfigurations().matching(conf -> conf.getName().equals(configuration)).configureEach(conf -> conf.getResolutionStrategy().capabilitiesResolution(getCapabilitiesResolutionAction(capabilityId, target, because)));
+        getConfigurations().configureEach(conf -> {
+            if (conf.getName().equals(configuration)) {
+                conf.getResolutionStrategy().capabilitiesResolution(getCapabilitiesResolutionAction(capabilityId, target, because));
+            }
+        });
     }
 
     private void selectCapabilityConflict(String capabilityId, ExternalDependency target, String because) {
