@@ -255,7 +255,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- servletapi:servletapi:2.4 FAILED
 +--- stax:stax-api:1.0.1 FAILED
 +--- velocity:velocity:1.5 FAILED
-+--- woodstox:wstx-asl:2.9.3 FAILED
++--- woodstox:wstx-asl:3.2.7 FAILED
 +--- woodstox:wstx-lgpl:2.9 FAILED
 \--- com.google.collections:google-collections:1.0 FAILED
 
