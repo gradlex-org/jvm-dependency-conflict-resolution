@@ -95,7 +95,7 @@ dependencies {
     implementation("javax.ws.rs:jsr311-api:1.1.1")
     implementation("javax.xml.bind:jaxb-api:2.3.1")
     implementation("javax.xml.soap:javax.xml.soap-api:1.4.0")
-    implementation("javax.xml.stream:stax-api:1.0")
+    implementation("javax.xml.stream:stax-api:1.0-2")
     implementation("javax.xml.ws:jaxws-api:2.3.1")
     implementation("jboss:javassist:3.8.0.GA")
     implementation("junit:junit-dep:4.11")
