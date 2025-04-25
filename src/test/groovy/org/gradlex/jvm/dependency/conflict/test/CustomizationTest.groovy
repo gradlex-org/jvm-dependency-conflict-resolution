@@ -42,7 +42,7 @@ class CustomizationTest extends Specification {
                  +--- org.ow2.asm:asm:7.0
                  \\--- org.apache.ant:ant:1.10.3
                       \\--- org.apache.ant:ant-launcher:1.10.3
-        '''.stripIndent()
+            '''.stripIndent()
     }
 
     def "can use own capability resolution strategies through Gradle standard API"() {
@@ -103,7 +103,7 @@ class CustomizationTest extends Specification {
             +--- com.sun.mail:mailapi:1.6.7 -> com.sun.mail:jakarta.mail:1.6.7 (*)
             +--- jakarta.servlet:jakarta.servlet-api:5.0.0
             \\--- org.apache.tomcat:tomcat-servlet-api:10.0.18 -> jakarta.servlet:jakarta.servlet-api:5.0.0
-        '''.stripIndent()
+            '''.stripIndent()
     }
 
     def "can use own capability resolution strategies through DSL"() {
@@ -149,6 +149,6 @@ class CustomizationTest extends Specification {
             +--- com.sun.mail:mailapi:1.6.7 -> com.sun.mail:jakarta.mail:1.6.7 (*)
             +--- jakarta.servlet:jakarta.servlet-api:5.0.0
             \\--- org.apache.tomcat:tomcat-servlet-api:10.0.18 -> jakarta.servlet:jakarta.servlet-api:5.0.0
-        '''.stripIndent()
+            '''.stripIndent()
     }
 }

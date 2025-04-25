@@ -66,6 +66,6 @@ class SettingsTest extends Specification {
             +--- com.sun.mail:mailapi:1.6.7 -> com.sun.mail:jakarta.mail:1.6.7 (*)
             +--- jakarta.servlet:jakarta.servlet-api:5.0.0
             \\--- org.apache.tomcat:tomcat-servlet-api:10.0.18 -> jakarta.servlet:jakarta.servlet-api:5.0.0
-        '''.stripIndent()
+            '''.stripIndent()
     }
 }
