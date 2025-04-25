@@ -252,7 +252,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.springframework:spring-aop:6.2.6 FAILED
 +--- org.springframework:spring-jcl:6.2.6 FAILED
 +--- postgresql:postgresql:9.1-901-1.jdbc4 FAILED
-+--- servletapi:servletapi:2.4 FAILED
++--- servletapi:servletapi:2.4-20040521 FAILED
 +--- stax:stax-api:1.0.1 FAILED
 +--- velocity:velocity:1.5 FAILED
 +--- woodstox:wstx-asl:2.9.3 FAILED
