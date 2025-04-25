@@ -19,7 +19,7 @@ dependencies {
     implementation("com.google.code.findbugs:findbugs-annotations:3.0.1")
     implementation("com.google.guava:guava-jdk5:17.0")
     implementation("com.google.guava:guava:33.4.8-jre")
-    implementation("com.google.guava:listenablefuture:1.0")
+    implementation("com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava")
     implementation("com.intellij:annotations:12.0")
     implementation("com.jwebmp:javax.inject:1.1")
     implementation("com.mchange:c3p0:0.11.0")
