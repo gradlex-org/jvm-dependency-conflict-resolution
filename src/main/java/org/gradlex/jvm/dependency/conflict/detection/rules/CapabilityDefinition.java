@@ -431,7 +431,6 @@ public enum CapabilityDefinition {
             "javax.websocket:javax.websocket-client-api", // in javax namespace, websocket-api and websocket-client-api overlap
             "jakarta.websocket:jakarta.websocket-client-api",
             "org.apache.tomcat:tomcat-websocket-api",
-            "org.apache.tomcat:tomcat-websocket",
             "org.apache.tomcat.embed:tomcat-embed-websocket",
             "org.eclipse.jetty.toolchain:jetty-javax-websocket-api"
     ),
