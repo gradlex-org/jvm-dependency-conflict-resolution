@@ -21,6 +21,7 @@ import org.gradlex.jvm.dependency.conflict.detection.rules.guava.GuavaListenable
 import org.gradlex.jvm.dependency.conflict.detection.rules.jakarta.JakartaActivationApiRule;
 import org.gradlex.jvm.dependency.conflict.detection.rules.jakarta.JakartaActivationImplementationRule;
 import org.gradlex.jvm.dependency.conflict.detection.rules.jakarta.JakartaAnnotationApiRule;
+import org.gradlex.jvm.dependency.conflict.detection.rules.jakarta.JakartaJwsApisRule;
 import org.gradlex.jvm.dependency.conflict.detection.rules.jakarta.JakartaMailApiRule;
 import org.gradlex.jvm.dependency.conflict.detection.rules.jakarta.JakartaServletApiRule;
 import org.gradlex.jvm.dependency.conflict.detection.rules.jakarta.JakartaWebsocketApiRule;
@@ -43,8 +44,6 @@ import org.gradlex.jvm.dependency.conflict.detection.rules.jakarta.JavaxTransact
 import org.gradlex.jvm.dependency.conflict.detection.rules.jakarta.JavaxValidationApiRule;
 import org.gradlex.jvm.dependency.conflict.detection.rules.jakarta.JavaxWebsocketApiRule;
 import org.gradlex.jvm.dependency.conflict.detection.rules.jakarta.JavaxWsRsApiRule;
-import org.gradlex.jvm.dependency.conflict.detection.rules.jakarta.JavaxXmlBindApiRule;
-import org.gradlex.jvm.dependency.conflict.detection.rules.jakarta.JavaxXmlWsApiRule;
 import org.gradlex.jvm.dependency.conflict.detection.rules.logging.LoggingModuleIdentifiers;
 import org.gradlex.jvm.dependency.conflict.resolution.DefaultResolutionStrategy;
 
@@ -362,7 +361,9 @@ public enum CapabilityDefinition {
     ),
     JAVAX_JWS_API(HIGHEST_VERSION, JavaxJwsApisRule.class,
             "javax.jws:javax.jws-api",
-            "jakarta.jws:jakarta.jws-api"
+            "javax.xml.ws:jaxws-api",
+            "jakarta.jws:jakarta.jws-api",
+            "jakarta.xml.ws:jakarta.xml.ws-api"
     ),
     JAVAX_MAIL_API(HIGHEST_VERSION, JavaxMailApiRule.class,
             "com.sun.mail:mailapi", // API only
@@ -445,12 +446,8 @@ public enum CapabilityDefinition {
             "jakarta.ws.rs:jakarta.ws.rs-api",
             "javax.ws.rs:javax.ws.rs-api"
     ),
-    JAVAX_XML_BIND_API(HIGHEST_VERSION, JavaxXmlBindApiRule.class,
-            "javax.xml.bind:jaxb-api",
-            "jakarta.xml.bind:jakarta.xml.bind-api"
-    ),
-    JAVAX_XML_WS_API(HIGHEST_VERSION, JavaxXmlWsApiRule.class,
-            "javax.xml.ws:jaxws-api",
+    JAKARTA_JWS_API(HIGHEST_VERSION, JakartaJwsApisRule.class,
+            "jakarta.jws:jakarta.jws-api",
             "jakarta.xml.ws:jakarta.xml.ws-api"
     ),
 
