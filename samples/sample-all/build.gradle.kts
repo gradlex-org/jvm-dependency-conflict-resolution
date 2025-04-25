@@ -8,7 +8,7 @@ plugins {
 
 dependencies {
     implementation("aopalliance:aopalliance:1.0")
-    implementation("asm:asm:3.3.1")
+    implementation("asm:asm:20041228.180559")
     implementation("c3p0:c3p0:0.9.1.2")
     implementation("cglib:cglib-nodep:3.3.0")
     implementation("cglib:cglib:3.3.0")
