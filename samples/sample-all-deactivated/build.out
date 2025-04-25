@@ -5,7 +5,7 @@ Root project 'sample-all-deactivated_build.sample'
 compileClasspath - Compile classpath for source set 'main'.
 +--- aopalliance:aopalliance:1.0 FAILED
 +--- asm:asm:3.3.1 FAILED
-+--- c3p0:c3p0:0.9.0.2 FAILED
++--- c3p0:c3p0:0.9.1.2 FAILED
 +--- cglib:cglib-nodep:3.3.0 FAILED
 +--- cglib:cglib:3.3.0 FAILED
 +--- ch.qos.logback:logback-classic:1.5.18 FAILED
