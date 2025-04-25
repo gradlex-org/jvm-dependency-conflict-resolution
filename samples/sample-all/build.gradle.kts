@@ -67,7 +67,7 @@ dependencies {
     implementation("javax.activation:activation:1.1.1")
     implementation("javax.activation:javax.activation-api:1.2.0")
     implementation("javax.annotation:javax.annotation-api:1.3.2")
-    implementation("javax.annotation:jsr250-api:1.0")
+    implementation("javax.annotation:jsr250-api:1.0-20050927.133100")
     implementation("javax.ejb:ejb-api:3.0")
     implementation("javax.ejb:javax.ejb-api:3.2.2")
     implementation("javax.el:el-api:2.2")
