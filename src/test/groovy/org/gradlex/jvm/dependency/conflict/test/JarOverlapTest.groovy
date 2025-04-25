@@ -89,6 +89,10 @@ class JarOverlapTest extends Specification {
                 return ["jakarta.ejb:jakarta.ejb-api:3.2.6"]
             case JAVAX_EL_API:
                 return ["jakarta.el:jakarta.el-api:3.0.3"]
+            case JAVAX_INJECT_API:
+                return ["jakarta.inject:jakarta.inject-api:1.0.5"]
+            case JAVAX_JSON_API:
+                return ["jakarta.json:jakarta.json-api:1.1.6"]
             case JAVAX_MAIL_API:
                 return ["com.sun.mail:mailapi:1.6.7", "jakarta.mail:jakarta.mail-api:1.6.7", "com.sun.mail:jakarta.mail:1.6.7"]
             case JAVAX_PERSISTENCE_API:
@@ -96,8 +100,14 @@ class JarOverlapTest extends Specification {
             case JAVAX_SERVLET_API:
                 return ["jakarta.servlet:jakarta.servlet-api:4.0.4", "org.apache.tomcat:servlet-api:6.0.53",
                         "org.apache.tomcat:tomcat-servlet-api:9.0.104", "org.apache.tomcat.embed:tomcat-embed-core:9.0.104"]
+            case JAVAX_SERVLET_JSP:
+                return ["jakarta.servlet.jsp:jakarta.servlet.jsp-api:2.3.6"]
+            case JAVAX_SERVLET_JSTL:
+                return ["jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:1.2.7"]
             case JAVAX_TRANSACTION_API:
                 return ["jakarta.transaction:jakarta.transaction-api:1.3.3"]
+            case JAVAX_VALIDATION_API:
+                return ["jakarta.validation:jakarta.validation-api:2.0.2"]
             case JAVAX_WEBSOCKET_API_RULE:
                 return ["jakarta.websocket:jakarta.websocket-api:1.1.2", "jakarta.websocket:jakarta.websocket-client-api:1.1.2",
                         "org.apache.tomcat:tomcat-websocket-api:9.0.104", "org.apache.tomcat:tomcat-websocket:9.0.104",
