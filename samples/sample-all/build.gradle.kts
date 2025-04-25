@@ -3,7 +3,7 @@ import org.gradlex.jvm.dependency.conflict.detection.rules.CapabilityDefinition
 plugins {
     id("org.gradlex.jvm-dependency-conflict-resolution")
     id("java-library")
-    id("io.fuchs.gradle.classpath-collision-detector") version "0.3"
+    id("io.fuchs.gradle.classpath-collision-detector") version "1.0.0"
 }
 
 dependencies {
