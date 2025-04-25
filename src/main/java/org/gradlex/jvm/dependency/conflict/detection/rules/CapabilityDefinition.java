@@ -337,7 +337,6 @@ public enum CapabilityDefinition {
             "org.apache.tomcat:tomcat-annotations-api"
     ),
     JAVAX_EJB_API(HIGHEST_VERSION, JavaxEjbApiRule.class,
-            "javax.ejb:ejb",
             "jakarta.ejb:jakarta.ejb-api",
             "javax.ejb:javax.ejb-api",
             "javax.ejb:ejb-api"

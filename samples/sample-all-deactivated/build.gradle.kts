@@ -66,7 +66,6 @@ dependencies {
     implementation("javax.annotation:javax.annotation-api:1.3.2")
     implementation("javax.annotation:jsr250-api:1.0")
     implementation("javax.ejb:ejb-api:3.0")
-    implementation("javax.ejb:ejb:2.1")
     implementation("javax.ejb:javax.ejb-api:3.2.2")
     implementation("javax.el:el-api:2.2")
     implementation("javax.el:javax.el-api:3.0.0")
