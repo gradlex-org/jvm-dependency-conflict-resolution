@@ -97,7 +97,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- javax.xml.bind:jaxb-api:2.3.1
 |    \--- javax.activation:javax.activation-api:1.2.0 FAILED
 +--- javax.xml.soap:javax.xml.soap-api:1.4.0
-+--- javax.xml.stream:stax-api:1.0 FAILED
++--- javax.xml.stream:stax-api:1.0-2 FAILED
 +--- javax.xml.ws:jaxws-api:2.3.1 FAILED
 +--- jboss:javassist:3.8.0.GA FAILED
 +--- junit:junit-dep:4.11 FAILED
