@@ -248,6 +248,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- stax:stax-api:1.0.1 FAILED
 +--- velocity:velocity:1.4 FAILED
 +--- woodstox:wstx-asl:2.9.3 FAILED
++--- woodstox:wstx-lgpl:3.2.7 FAILED
 \--- com.google.collections:google-collections:1.0 FAILED
 
 A web-based, searchable dependency report is available by adding the --scan option.

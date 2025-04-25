@@ -250,8 +250,8 @@ dependencies {
     implementation("stax:stax-api:1.0.1")
     implementation("velocity:velocity:1.4")
     implementation("woodstox:wstx-asl:2.9.3")
+    implementation("woodstox:wstx-lgpl:3.2.7")
 
-    implementation("com.google.collections:google-collections:1.0") // moved down: https://github.com/gradle/gradle/issues/22326
-
-    // implementation("woodstox:wstx-lgpl:3.2.7") - has no POM file
+    // moved down: https://github.com/gradle/gradle/issues/22326
+    implementation("com.google.collections:google-collections:1.0")
 }
