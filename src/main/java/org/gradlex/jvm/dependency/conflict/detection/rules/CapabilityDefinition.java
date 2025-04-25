@@ -274,7 +274,8 @@ public enum CapabilityDefinition {
             "org.codehaus.woodstox:woodstox-core-lgpl",
             "org.codehaus.woodstox:wstx-asl",
             "org.codehaus.woodstox:wstx-lgpl",
-            "woodstox:wstx-asl"
+            "woodstox:wstx-asl",
+            "woodstox:wstx-lgpl"
     ),
     JAKARTA_ACTIVATION_API(HIGHEST_VERSION, JakartaActivationApiRule.class,
             "jakarta.activation:jakarta.activation-api",
