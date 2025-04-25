@@ -9,8 +9,14 @@ pluginManagement {
 
 dependencyResolutionManagement {
     repositories {
-        mavenCentral()
-        maven("https://maven.scijava.org/content/repositories/releases")
-        maven("https://maven.scijava.org/content/groups/public")
+        maven("https://maven.scijava.org/content/groups/public") {
+            mavenContent {
+                includeGroup("org.jzy3d")
+                includeGroup("org.smurn")
+            }
+        }
+        mavenCentral() {
+            metadataSources.artifact() // woodstox/wstx-lgpl/3.2.7
+        }
     }
 }
