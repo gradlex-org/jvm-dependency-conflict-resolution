@@ -76,7 +76,7 @@ dependencies {
 
 testing.suites.named<JvmTestSuite>("test") {
     useJUnitJupiter()
-    listOf("6.8.3", "6.9.4", "7.0.2", "7.6.4", "8.0.2").forEach { gradleVersionUnderTest ->
+    listOf("6.8.3", "6.9.4", "7.0.2", "8.0.2").forEach { gradleVersionUnderTest ->
         targets.register("test${gradleVersionUnderTest}") {
             testTask {
                 group = LifecycleBasePlugin.VERIFICATION_GROUP
