@@ -246,7 +246,7 @@ dependencies {
     implementation("org.springframework:spring-aop:6.2.6")
     implementation("org.springframework:spring-jcl:6.2.6")
     implementation("postgresql:postgresql:9.1-901-1.jdbc4")
-    implementation("servletapi:servletapi:2.4")
+    implementation("servletapi:servletapi:2.4-20040521")
     implementation("stax:stax-api:1.0.1")
     implementation("velocity:velocity:1.5")
     implementation("woodstox:wstx-asl:2.9.3")
