@@ -372,14 +372,16 @@ public enum CapabilityDefinition {
             "com.sun.mail:javax.mail", // API + Implementation
             "com.sun.mail:jakarta.mail", // API + Implementation
             "org.apache.geronimo.javamail:geronimo-javamail_1.3.1_mail",
-            "org.apache.geronimo.javamail:geronimo-javamail_1.3.1_provider",
             "org.apache.geronimo.specs:geronimo-javamail_1.3.1_spec",
             "org.apache.geronimo.javamail:geronimo-javamail_1.4_mail",
-            "org.apache.geronimo.javamail:geronimo-javamail_1.4_provider",
             "org.apache.geronimo.specs:geronimo-javamail_1.4_spec",
             "org.apache.geronimo.javamail:geronimo-javamail_1.6_mail",
-            "org.apache.geronimo.javamail:geronimo-javamail_1.6_provider",
             "org.apache.geronimo.specs:geronimo-javamail_1.6_spec"
+    ),
+    JAVAX_MAIL_PROVIDER(HIGHEST_VERSION, JavaxMailApiRule.class,
+            "org.apache.geronimo.javamail:geronimo-javamail_1.3.1_provider",
+            "org.apache.geronimo.javamail:geronimo-javamail_1.4_provider",
+            "org.apache.geronimo.javamail:geronimo-javamail_1.6_provider"
     ),
     JAVAX_PERSISTENCE_API(HIGHEST_VERSION, JavaxPersistenceApiRule.class,
             "javax.persistence:javax.persistence-api",
