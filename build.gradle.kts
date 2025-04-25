@@ -9,7 +9,7 @@ group = "org.gradlex"
 version = "2.2"
 
 java {
-    toolchain.languageVersion = JavaLanguageVersion.of(11) // to run tests that use Android with 11
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
 }
 
 tasks.withType<JavaCompile>().configureEach {
