@@ -55,7 +55,8 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- jakarta.validation:jakarta.validation-api:2.0.1 FAILED
 +--- jakarta.websocket:jakarta.websocket-client-api:2.1.1 FAILED
 +--- jakarta.ws.rs:jakarta.ws.rs-api:3.1.0 FAILED
-+--- jakarta.xml.bind:jakarta.xml.bind-api:2.3.3 FAILED
++--- jakarta.xml.bind:jakarta.xml.bind-api:2.3.3
+|    \--- jakarta.activation:jakarta.activation-api:1.2.2 FAILED
 +--- jakarta.xml.soap:jakarta.xml.soap-api:1.4.2 FAILED
 +--- jakarta.xml.ws:jakarta.xml.ws-api:2.3.3 FAILED
 +--- javassist:javassist:3.12.1.GA FAILED
@@ -88,7 +89,8 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- javax.websocket:javax.websocket-client-api:1.0 FAILED
 +--- javax.ws.rs:javax.ws.rs-api:2.1.1 FAILED
 +--- javax.ws.rs:jsr311-api:1.1.1 FAILED
-+--- javax.xml.bind:jaxb-api:2.3.1 FAILED
++--- javax.xml.bind:jaxb-api:2.3.1
+|    \--- javax.activation:javax.activation-api:1.2.0 FAILED
 +--- javax.xml.soap:javax.xml.soap-api:1.4.0 FAILED
 +--- javax.xml.stream:stax-api:1.0 FAILED
 +--- javax.xml.ws:jaxws-api:2.3.1 FAILED
@@ -250,5 +252,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- woodstox:wstx-asl:2.9.3 FAILED
 +--- woodstox:wstx-lgpl:3.2.7 FAILED
 \--- com.google.collections:google-collections:1.0 FAILED
+
+(*) - Indicates repeated occurrences of a transitive dependency subtree. Gradle expands transitive dependency subtrees only once per project; repeat occurrences only display the root of the subtree, followed by this annotation.
 
 A web-based, searchable dependency report is available by adding the --scan option.

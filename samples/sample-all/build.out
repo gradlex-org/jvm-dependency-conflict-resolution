@@ -78,7 +78,12 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- jakarta.el:jakarta.el-api:4.0.0
 +--- jakarta.inject:jakarta.inject-api:1.0.5 -> com.jwebmp:javax.inject:1.1
 +--- jakarta.json:jakarta.json-api:1.1.6
-+--- jakarta.jws:jakarta.jws-api:3.0.0
++--- jakarta.jws:jakarta.jws-api:3.0.0 -> jakarta.xml.ws:jakarta.xml.ws-api:3.0.1
+|    +--- jakarta.xml.bind:jakarta.xml.bind-api:3.0.1
+|    |    \--- com.sun.activation:jakarta.activation:2.0.1 -> jakarta.activation:jakarta.activation-api:2.1.1
+|    +--- jakarta.xml.soap:jakarta.xml.soap-api:2.0.1
+|    |    \--- com.sun.activation:jakarta.activation:2.0.1 -> jakarta.activation:jakarta.activation-api:2.1.1
+|    \--- jakarta.jws:jakarta.jws-api:3.0.0 -> jakarta.xml.ws:jakarta.xml.ws-api:3.0.1 (*)
 +--- jakarta.mail:jakarta.mail-api:2.1.0 (*)
 +--- jakarta.persistence:jakarta.persistence-api:3.0.0
 +--- jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:1.2.7
@@ -89,14 +94,9 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- jakarta.websocket:jakarta.websocket-api:2.1.1
 +--- jakarta.websocket:jakarta.websocket-client-api:2.1.1
 +--- jakarta.ws.rs:jakarta.ws.rs-api:3.1.0
-+--- jakarta.xml.bind:jakarta.xml.bind-api:3.0.1
-|    \--- com.sun.activation:jakarta.activation:2.0.1 -> jakarta.activation:jakarta.activation-api:2.1.1
-+--- jakarta.xml.soap:jakarta.xml.soap-api:2.0.1
-|    \--- com.sun.activation:jakarta.activation:2.0.1 -> jakarta.activation:jakarta.activation-api:2.1.1
-+--- jakarta.xml.ws:jakarta.xml.ws-api:3.0.1
-|    +--- jakarta.xml.bind:jakarta.xml.bind-api:3.0.1 (*)
-|    +--- jakarta.xml.soap:jakarta.xml.soap-api:2.0.1 (*)
-|    \--- jakarta.jws:jakarta.jws-api:3.0.0
++--- jakarta.xml.bind:jakarta.xml.bind-api:3.0.1 (*)
++--- jakarta.xml.soap:jakarta.xml.soap-api:2.0.1 (*)
++--- jakarta.xml.ws:jakarta.xml.ws-api:3.0.1 (*)
 +--- javassist:javassist:3.12.1.GA -> org.javassist:javassist:3.29.1-GA
 +--- javax.activation:activation:1.1.1 -> javax.activation:javax.activation-api:1.2.0
 +--- javax.activation:javax.activation-api:1.2.0
@@ -109,7 +109,11 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- javax.el:javax.el-api:3.0.0
 +--- javax.inject:javax.inject:1 -> com.jwebmp:javax.inject:1.1
 +--- javax.json:javax.json-api:1.1.4 -> jakarta.json:jakarta.json-api:1.1.6
-+--- javax.jws:javax.jws-api:1.1
++--- javax.jws:javax.jws-api:1.1 -> javax.xml.ws:jaxws-api:2.3.1
+|    +--- javax.xml.bind:jaxb-api:2.3.1
+|    |    \--- javax.activation:javax.activation-api:1.2.0
+|    +--- javax.xml.soap:javax.xml.soap-api:1.4.0
+|    \--- javax.annotation:javax.annotation-api:1.3.2
 +--- javax.mail:javax.mail-api:1.4.7 -> com.sun.mail:javax.mail:1.6.2 (*)
 +--- javax.mail:mail:1.4.7 -> com.sun.mail:javax.mail:1.6.2 (*)
 +--- javax.persistence:javax.persistence-api:2.2
@@ -128,14 +132,10 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- javax.websocket:javax.websocket-client-api:1.0 -> org.eclipse.jetty.toolchain:jetty-javax-websocket-api:1.1.2
 +--- javax.ws.rs:javax.ws.rs-api:2.1.1
 +--- javax.ws.rs:jsr311-api:1.1.1 -> javax.ws.rs:javax.ws.rs-api:2.1.1
-+--- javax.xml.bind:jaxb-api:2.3.1
-|    \--- javax.activation:javax.activation-api:1.2.0
++--- javax.xml.bind:jaxb-api:2.3.1 (*)
 +--- javax.xml.soap:javax.xml.soap-api:1.4.0
 +--- javax.xml.stream:stax-api:1.0 -> stax:stax-api:1.0.1
-+--- javax.xml.ws:jaxws-api:2.3.1
-|    +--- javax.xml.bind:jaxb-api:2.3.1 (*)
-|    +--- javax.xml.soap:javax.xml.soap-api:1.4.0
-|    \--- javax.annotation:javax.annotation-api:1.3.2
++--- javax.xml.ws:jaxws-api:2.3.1 (*)
 +--- jboss:javassist:3.8.0.GA -> org.javassist:javassist:3.29.1-GA
 +--- junit:junit-dep:4.8 -> junit:junit:4.12
 |    \--- org.hamcrest:hamcrest-core:1.3 -> org.hamcrest:hamcrest:2.2
