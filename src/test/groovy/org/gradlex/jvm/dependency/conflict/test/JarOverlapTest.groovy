@@ -15,12 +15,14 @@ class JarOverlapTest extends Specification {
 
     // Some Jars do not have overlapping classes, but contain conflicting implementations of the same service.
     static def expectedToOverlap = values() - [
-            SLF4J_VS_JCL, // bridge vs. replacement
-            SLF4J_VS_LOG4J2_FOR_JCL, // SLF4J replaces JCL, while LOG4J depends on JCL
-            SLF4J_IMPL, // register conflicting service implementations
-            SLF4J_VS_LOG4J2_FOR_JUL, // register conflicting handler implementations
             HAMCREST_CORE, // contains 'IsDeprecated.class' and forwards to HAMCREST
-            HAMCREST_LIBRARY // contains 'IsDeprecated.class' and forwards to HAMCREST
+            HAMCREST_LIBRARY, // contains 'IsDeprecated.class' and forwards to HAMCREST
+            LOG4J2_IMPL,
+            SLF4J_IMPL, // register conflicting service implementations
+            SLF4J_VS_JCL, // bridge vs. replacement
+            SLF4J_VS_JUL,
+            SLF4J_VS_LOG4J2_FOR_JCL, // SLF4J replaces JCL, while LOG4J depends on JCL
+            SLF4J_VS_LOG4J2_FOR_JUL // register conflicting handler implementations
     ]
 
     def latestVersions = []
@@ -65,7 +67,7 @@ class JarOverlapTest extends Specification {
         List<Tuple2<String, Set<String>>> jarClassFiles = conf.files.collect { jar ->
             def jarName = jar.name
             new Tuple2(jarName, new ZipFile(jar).withCloseable {
-                it.entries().collect { entry -> entry.name }.findAll { it.endsWith(".class") } as Set
+                it.entries().collect { entry -> entry.name }.findAll { it.endsWith(".class") && !it.endsWith("module-info.class") } as Set
             })
         }
 
@@ -92,7 +94,9 @@ class JarOverlapTest extends Specification {
             case JAVAX_INJECT_API:
                 return ["jakarta.inject:jakarta.inject-api:1.0.5"]
             case JAVAX_JSON_API:
-                return ["jakarta.json:jakarta.json-api:1.1.6"]
+                return ["jakarta.json:jakarta.json-api:1.1.6", "org.glassfish:jakarta.json:1.1.6"]
+            case JAVAX_JWS_API:
+                return ["jakarta.jws:jakarta.jws-api:1.1.1"]
             case JAVAX_MAIL_API:
                 return ["com.sun.mail:mailapi:1.6.7", "jakarta.mail:jakarta.mail-api:1.6.7", "com.sun.mail:jakarta.mail:1.6.7"]
             case JAVAX_PERSISTENCE_API:
@@ -104,6 +108,8 @@ class JarOverlapTest extends Specification {
                 return ["jakarta.servlet.jsp:jakarta.servlet.jsp-api:2.3.6"]
             case JAVAX_SERVLET_JSTL:
                 return ["jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:1.2.7"]
+            case JAVAX_SOAP_API:
+                return ["jakarta.xml.soap:jakarta.xml.soap-api:1.4.2"]
             case JAVAX_TRANSACTION_API:
                 return ["jakarta.transaction:jakarta.transaction-api:1.3.3"]
             case JAVAX_VALIDATION_API:
@@ -114,6 +120,10 @@ class JarOverlapTest extends Specification {
                         "org.apache.tomcat.embed:tomcat-embed-websocket:9.0.104"]
             case JAVAX_WS_RS_API:
                 return ["jakarta.ws.rs:jakarta.ws.rs-api:2.1.6"]
+            case JAVAX_XML_BIND_API:
+                return ["jakarta.xml.bind:jakarta.xml.bind-api:2.3.3"]
+            case JAVAX_XML_WS_API:
+                return ["jakarta.xml.ws:jakarta.xml.ws-api:2.3.3"]
             default:
                 return []
         }
