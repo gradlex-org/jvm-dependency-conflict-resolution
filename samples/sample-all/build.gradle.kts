@@ -72,7 +72,7 @@ dependencies {
     implementation("javax.ejb:javax.ejb-api:3.2.2")
     implementation("javax.el:el-api:2.2")
     implementation("javax.el:javax.el-api:3.0.0")
-    implementation("javax.inject:javax.inject:1")
+    implementation("javax.inject:javax.inject:1.0-PFD-1")
     implementation("javax.json:javax.json-api:1.1.4")
     implementation("javax.jws:javax.jws-api:1.1")
     implementation("javax.mail:javax.mail-api:1.6.2")
