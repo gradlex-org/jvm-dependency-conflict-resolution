@@ -25,15 +25,17 @@ import org.gradlex.jvm.dependency.conflict.detection.util.VersionNumber;
 import javax.inject.Inject;
 
 @CacheableRule
-public abstract class JakartaJwsApisRule extends CapabilityDefinitionRule {
+public abstract class JavaxXmlBindApiRule extends CapabilityDefinitionRule {
+
+    static final String FIRST_JAKARTA_VERSION = "3.0.0";
 
     @Inject
-    public JakartaJwsApisRule(CapabilityDefinition rule) {
+    public JavaxXmlBindApiRule(CapabilityDefinition rule) {
         super(rule);
     }
 
     @Override
     protected boolean shouldApply(ModuleVersionIdentifier id) {
-        return VersionNumber.parse(getVersion(id)).compareTo(VersionNumber.parse(JavaxJwsApisRule.FIRST_JAKARTA_VERSION)) >= 0;
+        return VersionNumber.parse(id.getVersion()).compareTo(VersionNumber.parse(FIRST_JAKARTA_VERSION)) < 0;
     }
 }
