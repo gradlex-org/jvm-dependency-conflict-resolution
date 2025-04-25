@@ -249,7 +249,7 @@ dependencies {
     implementation("servletapi:servletapi:2.4-20040521")
     implementation("stax:stax-api:1.0.1")
     implementation("velocity:velocity:1.5")
-    implementation("woodstox:wstx-asl:2.9.3")
+    implementation("woodstox:wstx-asl:3.2.7")
     implementation("woodstox:wstx-lgpl:2.9")
 
     // moved down: https://github.com/gradle/gradle/issues/22326
