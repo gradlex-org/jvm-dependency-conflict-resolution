@@ -3,101 +3,103 @@ Root project 'sample-all_build.sample'
 ------------------------------------------------------------
 
 compileClasspath - Compile classpath for source set 'main'.
-+--- aopalliance:aopalliance:1.0 -> org.springframework:spring-aop:5.3.23
-|    +--- org.springframework:spring-beans:5.3.23
-|    |    \--- org.springframework:spring-core:5.3.23
-|    |         \--- org.springframework:spring-jcl:5.3.23 -> org.slf4j:jcl-over-slf4j:2.0.12
-|    |              +--- org.slf4j:slf4j-api:2.0.12
-|    |              |    \--- org.slf4j:slf4j-bom:2.0.12
-|    |              |         +--- org.slf4j:slf4j-api:2.0.12 (c)
-|    |              |         +--- org.slf4j:slf4j-simple:2.0.12 (c)
-|    |              |         +--- org.slf4j:slf4j-nop:2.0.12 -> org.slf4j:slf4j-simple:2.0.12 (c)
-|    |              |         +--- org.slf4j:slf4j-jdk14:2.0.12 -> org.slf4j:slf4j-simple:2.0.12 (c)
-|    |              |         +--- org.slf4j:slf4j-log4j12:2.0.12 -> org.slf4j:slf4j-simple:2.0.12 (c)
-|    |              |         +--- org.slf4j:jcl-over-slf4j:2.0.12 (c)
-|    |              |         +--- org.slf4j:log4j-over-slf4j:2.0.12 (c)
-|    |              |         \--- org.slf4j:jul-to-slf4j:2.0.12 (c)
-|    |              \--- org.slf4j:slf4j-bom:2.0.12 (*)
-|    \--- org.springframework:spring-core:5.3.23 (*)
-+--- asm:asm:3.3.1 -> org.ow2.asm:asm:9.2
-+--- c3p0:c3p0:0.9.1.2 -> com.mchange:c3p0:0.9.5.5
-|    \--- com.mchange:mchange-commons-java:0.2.19 -> 0.3.0
-+--- cglib:cglib-nodep:3.2.12 -> cglib:cglib:3.3.0
-|    \--- org.ow2.asm:asm:7.1 -> 9.2
++--- aopalliance:aopalliance:1.0 -> org.springframework:spring-aop:6.2.6
+|    +--- org.springframework:spring-beans:6.2.6
+|    |    \--- org.springframework:spring-core:6.2.6
+|    |         \--- org.springframework:spring-jcl:6.2.6 -> org.slf4j:jcl-over-slf4j:2.0.17
+|    |              +--- org.slf4j:slf4j-api:2.0.17
+|    |              |    \--- org.slf4j:slf4j-bom:2.0.17
+|    |              |         +--- org.slf4j:slf4j-api:2.0.17 (c)
+|    |              |         +--- org.slf4j:slf4j-simple:2.0.17 (c)
+|    |              |         +--- org.slf4j:slf4j-nop:2.0.17 -> org.slf4j:slf4j-simple:2.0.17 (c)
+|    |              |         +--- org.slf4j:slf4j-jdk14:2.0.17 -> org.slf4j:slf4j-simple:2.0.17 (c)
+|    |              |         +--- org.slf4j:slf4j-log4j12:2.0.17 -> org.slf4j:slf4j-simple:2.0.17 (c)
+|    |              |         +--- org.slf4j:jcl-over-slf4j:2.0.17 (c)
+|    |              |         +--- org.slf4j:log4j-over-slf4j:2.0.17 (c)
+|    |              |         \--- org.slf4j:jul-to-slf4j:2.0.17 (c)
+|    |              \--- org.slf4j:slf4j-bom:2.0.17 (*)
+|    \--- org.springframework:spring-core:6.2.6 (*)
++--- asm:asm:3.3.1 -> org.ow2.asm:asm:9.8
+|    \--- org.ow2.asm:asm-bom:9.8
+|         \--- org.ow2.asm:asm:9.8 (c)
++--- c3p0:c3p0:0.9.0.2 -> com.mchange:c3p0:0.11.0
+|    \--- com.mchange:mchange-commons-java:0.3.2
++--- cglib:cglib-nodep:3.3.0 -> cglib:cglib:3.3.0
+|    \--- org.ow2.asm:asm:7.1 -> 9.8 (*)
 +--- cglib:cglib:3.3.0 (*)
-+--- ch.qos.logback:logback-classic:1.5.0 -> org.slf4j:slf4j-simple:2.0.12
-|    +--- org.slf4j:slf4j-api:2.0.12 (*)
-|    \--- org.slf4j:slf4j-bom:2.0.12 (*)
-+--- com.github.spotbugs:spotbugs-annotations:4.8.3
++--- ch.qos.logback:logback-classic:1.5.18 -> org.slf4j:slf4j-simple:2.0.17
+|    +--- org.slf4j:slf4j-api:2.0.17 (*)
+|    \--- org.slf4j:slf4j-bom:2.0.17 (*)
++--- com.github.spotbugs:spotbugs-annotations:4.9.3
 |    \--- com.google.code.findbugs:jsr305:3.0.2
 +--- com.github.stephenc.jcip:jcip-annotations:1.0-1 -> net.jcip:jcip-annotations:1.0
-+--- com.google.code.findbugs:annotations:3.0.1 -> com.github.spotbugs:spotbugs-annotations:4.8.3 (*)
-+--- com.google.code.findbugs:findbugs-annotations:3.0.1 -> com.github.spotbugs:spotbugs-annotations:4.8.3 (*)
-+--- com.google.guava:guava-jdk5:17.0 -> com.google.guava:guava:33.0.0-jre
-|    +--- com.google.guava:failureaccess:1.0.2
-|    +--- com.google.code.findbugs:jsr305:3.0.2
-|    +--- org.checkerframework:checker-qual:3.41.0
-|    +--- com.google.errorprone:error_prone_annotations:2.23.0
-|    \--- com.google.j2objc:j2objc-annotations:2.8
-+--- com.google.guava:guava:33.0.0-jre (*)
-+--- com.google.guava:listenablefuture:1.0 -> com.google.guava:guava:33.0.0-jre (*)
-+--- com.intellij:annotations:12.0 -> org.jetbrains:annotations:24.0.0
++--- com.google.code.findbugs:annotations:3.0.1 -> com.github.spotbugs:spotbugs-annotations:4.9.3 (*)
++--- com.google.code.findbugs:findbugs-annotations:3.0.1 -> com.github.spotbugs:spotbugs-annotations:4.9.3 (*)
++--- com.google.guava:guava-jdk5:17.0 -> com.google.guava:guava:33.4.8-jre
+|    +--- com.google.guava:failureaccess:1.0.3
+|    +--- org.jspecify:jspecify:1.0.0
+|    +--- com.google.errorprone:error_prone_annotations:2.36.0
+|    \--- com.google.j2objc:j2objc-annotations:3.0.0
++--- com.google.guava:guava:33.4.8-jre (*)
++--- com.google.guava:listenablefuture:1.0 -> com.google.guava:guava:33.4.8-jre (*)
++--- com.intellij:annotations:12.0 -> org.jetbrains:annotations:26.0.2
 +--- com.jwebmp:javax.inject:1.1
-+--- com.mchange:c3p0:0.9.5.5 (*)
-+--- com.mchange:mchange-commons-java:0.3.0
-+--- com.miglayout:miglayout-swing:5.0
-|    \--- com.miglayout:miglayout-core:5.0
-+--- com.miglayout:miglayout:3.7.4 -> com.miglayout:miglayout-swing:5.0 (*)
-+--- com.mysql:mysql-connector-j:8.3.0
-|    \--- com.google.protobuf:protobuf-java:3.25.1
-+--- com.sun.activation:jakarta.activation:2.0.1 -> jakarta.activation:jakarta.activation-api:2.1.1
++--- com.mchange:c3p0:0.11.0 (*)
++--- com.mchange:mchange-commons-java:0.3.2
++--- com.miglayout:miglayout-swing:11.4.2
+|    \--- com.miglayout:miglayout-core:11.4.2
++--- com.miglayout:miglayout:3.7.4 -> com.miglayout:miglayout-swing:11.4.2 (*)
++--- com.mysql:mysql-connector-j:9.2.0
+|    \--- com.google.protobuf:protobuf-java:4.29.0
++--- com.sun.activation:jakarta.activation:2.0.1 -> jakarta.activation:jakarta.activation-api:2.1.3
 +--- com.sun.activation:javax.activation:1.2.0 -> javax.activation:javax.activation-api:1.2.0
-+--- com.sun.mail:jakarta.mail:2.0.1 -> jakarta.mail:jakarta.mail-api:2.1.0
-|    \--- jakarta.activation:jakarta.activation-api:2.1.0 -> 2.1.1
++--- com.sun.mail:jakarta.mail:2.0.1 -> jakarta.mail:jakarta.mail-api:2.1.3
+|    \--- jakarta.activation:jakarta.activation-api:2.1.3
 +--- com.sun.mail:javax.mail:1.6.2
 |    \--- javax.activation:activation:1.1 -> javax.activation:javax.activation-api:1.2.0
-+--- com.sun.mail:mailapi:2.0.0 -> jakarta.mail:jakarta.mail-api:2.1.0 (*)
-+--- com.vaadin.external.google:android-json:0.0.20131108.vaadin1 -> org.json:json:20240303
++--- com.sun.mail:mailapi:2.0.1 -> jakarta.mail:jakarta.mail-api:2.1.3 (*)
++--- com.vaadin.external.google:android-json:0.0.20131108.vaadin1 -> org.json:json:20250107
 +--- com.vividsolutions:jts-core:1.14.0
 +--- com.vividsolutions:jts:1.13 -> com.vividsolutions:jts-core:1.14.0
-+--- com.zaxxer:HikariCP-java6:2.3.9 -> com.zaxxer:HikariCP:5.0.1
-|    \--- org.slf4j:slf4j-api:1.7.30 -> 2.0.12 (*)
-+--- com.zaxxer:HikariCP-java7:2.4.9 -> com.zaxxer:HikariCP:5.0.1 (*)
-+--- com.zaxxer:HikariCP:5.0.1 (*)
-+--- commons-beanutils:commons-beanutils-core:1.8.3 -> commons-beanutils:commons-beanutils:1.9.4
-|    +--- commons-logging:commons-logging:1.2 -> org.slf4j:jcl-over-slf4j:2.0.12 (*)
++--- com.zaxxer:HikariCP-java6:2.3.13 -> com.zaxxer:HikariCP:6.3.0
+|    \--- org.slf4j:slf4j-api:1.7.36 -> 2.0.17 (*)
++--- com.zaxxer:HikariCP-java7:2.4.13 -> com.zaxxer:HikariCP:6.3.0 (*)
++--- com.zaxxer:HikariCP:6.3.0 (*)
++--- commons-beanutils:commons-beanutils-core:1.8.3 -> commons-beanutils:commons-beanutils:1.10.1
+|    +--- commons-logging:commons-logging:1.3.4 -> org.slf4j:jcl-over-slf4j:2.0.17 (*)
 |    \--- commons-collections:commons-collections:3.2.2
-+--- commons-beanutils:commons-beanutils:1.9.4 (*)
-+--- commons-io:commons-io:2.11.0
-+--- commons-logging:commons-logging:1.3.0 -> org.slf4j:jcl-over-slf4j:2.0.12 (*)
-+--- dom4j:dom4j:1.6.1 -> org.dom4j:dom4j:2.1.3
-+--- jakarta.activation:jakarta.activation-api:2.0.0 -> 2.1.1
-+--- jakarta.annotation:jakarta.annotation-api:2.1.1
-+--- jakarta.ejb:jakarta.ejb-api:4.0.0
++--- commons-beanutils:commons-beanutils:1.10.1 (*)
++--- commons-io:commons-io:2.19.0
++--- commons-logging:commons-logging:1.3.5 -> org.slf4j:jcl-over-slf4j:2.0.17 (*)
++--- dom4j:dom4j:1.6.1 -> org.dom4j:dom4j:2.1.4
++--- jakarta.activation:jakarta.activation-api:2.1.3
++--- jakarta.annotation:jakarta.annotation-api:3.0.0
++--- jakarta.ejb:jakarta.ejb-api:4.0.1
 |    \--- jakarta.transaction:jakarta.transaction-api:2.0.0 -> 2.0.1
-+--- jakarta.el:jakarta.el-api:4.0.0
-+--- jakarta.inject:jakarta.inject-api:1.0.5 -> com.jwebmp:javax.inject:1.1
-+--- jakarta.json:jakarta.json-api:1.1.6
-+--- jakarta.jws:jakarta.jws-api:3.0.0 -> jakarta.xml.ws:jakarta.xml.ws-api:3.0.1
-|    +--- jakarta.xml.bind:jakarta.xml.bind-api:3.0.1
-|    |    \--- com.sun.activation:jakarta.activation:2.0.1 -> jakarta.activation:jakarta.activation-api:2.1.1
-|    +--- jakarta.xml.soap:jakarta.xml.soap-api:2.0.1
-|    |    \--- com.sun.activation:jakarta.activation:2.0.1 -> jakarta.activation:jakarta.activation-api:2.1.1
-|    \--- jakarta.jws:jakarta.jws-api:3.0.0 -> jakarta.xml.ws:jakarta.xml.ws-api:3.0.1 (*)
-+--- jakarta.mail:jakarta.mail-api:2.1.0 (*)
-+--- jakarta.persistence:jakarta.persistence-api:3.0.0
-+--- jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:1.2.7
-+--- jakarta.servlet.jsp:jakarta.servlet.jsp-api:2.3.6
-+--- jakarta.servlet:jakarta.servlet-api:5.0.0
++--- jakarta.el:jakarta.el-api:6.0.1
++--- jakarta.inject:jakarta.inject-api:2.0.1
++--- jakarta.json:jakarta.json-api:2.1.3
++--- jakarta.jws:jakarta.jws-api:3.0.0 -> jakarta.xml.ws:jakarta.xml.ws-api:4.0.2
+|    +--- jakarta.xml.bind:jakarta.xml.bind-api:4.0.2
+|    |    \--- jakarta.activation:jakarta.activation-api:2.1.3
+|    \--- jakarta.xml.soap:jakarta.xml.soap-api:3.0.2
+|         \--- jakarta.activation:jakarta.activation-api:2.1.3
++--- jakarta.mail:jakarta.mail-api:2.1.3 (*)
++--- jakarta.persistence:jakarta.persistence-api:3.2.0
++--- jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.2
+|    +--- jakarta.servlet:jakarta.servlet-api:6.0.0 -> 6.1.0
+|    \--- jakarta.el:jakarta.el-api:5.0.0 -> 6.0.1
++--- jakarta.servlet.jsp:jakarta.servlet.jsp-api:4.0.0
++--- jakarta.servlet:jakarta.servlet-api:6.1.0
 +--- jakarta.transaction:jakarta.transaction-api:2.0.1
-+--- jakarta.validation:jakarta.validation-api:2.0.1
-+--- jakarta.websocket:jakarta.websocket-api:2.1.1
-+--- jakarta.websocket:jakarta.websocket-client-api:2.1.1
-+--- jakarta.ws.rs:jakarta.ws.rs-api:3.1.0
-+--- jakarta.xml.bind:jakarta.xml.bind-api:3.0.1 (*)
-+--- jakarta.xml.soap:jakarta.xml.soap-api:2.0.1 (*)
-+--- jakarta.xml.ws:jakarta.xml.ws-api:3.0.1 (*)
-+--- javassist:javassist:3.12.1.GA -> org.javassist:javassist:3.29.1-GA
++--- jakarta.validation:jakarta.validation-api:3.1.1
++--- jakarta.websocket:jakarta.websocket-api:2.2.0
++--- jakarta.websocket:jakarta.websocket-client-api:2.2.0
++--- jakarta.ws.rs:jakarta.ws.rs-api:4.0.0
++--- jakarta.xml.bind:jakarta.xml.bind-api:4.0.2 (*)
++--- jakarta.xml.soap:jakarta.xml.soap-api:3.0.2 (*)
++--- jakarta.xml.ws:jakarta.xml.ws-api:4.0.2 (*)
++--- javassist:javassist:3.12.1.GA -> org.javassist:javassist:3.30.2-GA
 +--- javax.activation:activation:1.1.1 -> javax.activation:javax.activation-api:1.2.0
 +--- javax.activation:javax.activation-api:1.2.0
 +--- javax.annotation:javax.annotation-api:1.3.2
@@ -108,254 +110,250 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- javax.el:el-api:2.2 -> javax.el:javax.el-api:3.0.0
 +--- javax.el:javax.el-api:3.0.0
 +--- javax.inject:javax.inject:1 -> com.jwebmp:javax.inject:1.1
-+--- javax.json:javax.json-api:1.1.4 -> jakarta.json:jakarta.json-api:1.1.6
++--- javax.json:javax.json-api:1.1.4
 +--- javax.jws:javax.jws-api:1.1 -> javax.xml.ws:jaxws-api:2.3.1
 |    +--- javax.xml.bind:jaxb-api:2.3.1
 |    |    \--- javax.activation:javax.activation-api:1.2.0
 |    +--- javax.xml.soap:javax.xml.soap-api:1.4.0
 |    \--- javax.annotation:javax.annotation-api:1.3.2
-+--- javax.mail:javax.mail-api:1.4.7 -> com.sun.mail:javax.mail:1.6.2 (*)
++--- javax.mail:javax.mail-api:1.6.2 -> com.sun.mail:javax.mail:1.6.2 (*)
 +--- javax.mail:mail:1.4.7 -> com.sun.mail:javax.mail:1.6.2 (*)
 +--- javax.persistence:javax.persistence-api:2.2
-+--- javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api:1.2.2 -> jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:1.2.7
-+--- javax.servlet.jsp.jstl:jstl-api:1.2 -> jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:1.2.7
-+--- javax.servlet.jsp:javax.servlet.jsp-api:2.3.3 -> jakarta.servlet.jsp:jakarta.servlet.jsp-api:2.3.6
-+--- javax.servlet.jsp:jsp-api:2.2 -> jakarta.servlet.jsp:jakarta.servlet.jsp-api:2.3.6
++--- javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api:1.2.2
++--- javax.servlet.jsp.jstl:jstl-api:1.2 -> javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api:1.2.2
++--- javax.servlet.jsp:javax.servlet.jsp-api:2.3.3
++--- javax.servlet.jsp:jsp-api:2.2 -> javax.servlet.jsp:javax.servlet.jsp-api:2.3.3
 +--- javax.servlet:javax.servlet-api:4.0.1
-+--- javax.servlet:jsp-api:2.0 -> jakarta.servlet.jsp:jakarta.servlet.jsp-api:2.3.6
-+--- javax.servlet:jstl:1.2 -> jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:1.2.7
++--- javax.servlet:jsp-api:2.0 -> javax.servlet.jsp:javax.servlet.jsp-api:2.3.3
++--- javax.servlet:jstl:1.2 -> javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api:1.2.2
 +--- javax.servlet:servlet-api:2.5 -> javax.servlet:javax.servlet-api:4.0.1
 +--- javax.transaction:javax.transaction-api:1.3
 +--- javax.transaction:jta:1.1 -> javax.transaction:javax.transaction-api:1.3
-+--- javax.validation:validation-api:2.0.1.Final -> jakarta.validation:jakarta.validation-api:2.0.1
++--- javax.validation:validation-api:2.0.1.Final
 +--- javax.websocket:javax.websocket-api:1.1 -> org.eclipse.jetty.toolchain:jetty-javax-websocket-api:1.1.2
-+--- javax.websocket:javax.websocket-client-api:1.0 -> org.eclipse.jetty.toolchain:jetty-javax-websocket-api:1.1.2
-+--- javax.ws.rs:javax.ws.rs-api:2.1.1
-+--- javax.ws.rs:jsr311-api:1.1.1 -> javax.ws.rs:javax.ws.rs-api:2.1.1
++--- javax.websocket:javax.websocket-client-api:1.1 -> org.eclipse.jetty.toolchain:jetty-javax-websocket-api:1.1.2
++--- javax.ws.rs:javax.ws.rs-api:2.1.1 -> org.jboss.resteasy:jaxrs-api:3.0.12.Final
++--- javax.ws.rs:jsr311-api:1.1.1 -> org.jboss.resteasy:jaxrs-api:3.0.12.Final
 +--- javax.xml.bind:jaxb-api:2.3.1 (*)
 +--- javax.xml.soap:javax.xml.soap-api:1.4.0
 +--- javax.xml.stream:stax-api:1.0 -> stax:stax-api:1.0.1
 +--- javax.xml.ws:jaxws-api:2.3.1 (*)
-+--- jboss:javassist:3.8.0.GA -> org.javassist:javassist:3.29.1-GA
-+--- junit:junit-dep:4.8 -> junit:junit:4.12
-|    \--- org.hamcrest:hamcrest-core:1.3 -> org.hamcrest:hamcrest:2.2
-+--- junit:junit:4.12 (*)
-+--- log4j:log4j:1.2.17 -> org.slf4j:log4j-over-slf4j:2.0.12
-|    +--- org.slf4j:slf4j-api:2.0.12 (*)
-|    \--- org.slf4j:slf4j-bom:2.0.12 (*)
-+--- mysql:mysql-connector-java:8.0.33 -> com.mysql:mysql-connector-j:8.3.0 (*)
-+--- net.java.dev.jna:jna:5.10.0
-+--- net.java.dev.jna:jna-platform:5.10.0
-|    \--- net.java.dev.jna:jna:5.10.0
-+--- net.java.dev.jna:platform:3.4.0 -> net.java.dev.jna:jna-platform:5.10.0 (*)
++--- jboss:javassist:3.8.0.GA -> org.javassist:javassist:3.30.2-GA
++--- junit:junit-dep:4.11 -> junit:junit:4.13.2
+|    \--- org.hamcrest:hamcrest-core:1.3 -> org.hamcrest:hamcrest:3.0
++--- junit:junit:4.13.2 (*)
++--- log4j:log4j:1.2.17 -> org.slf4j:log4j-over-slf4j:2.0.17
+|    +--- org.slf4j:slf4j-api:2.0.17 (*)
+|    \--- org.slf4j:slf4j-bom:2.0.17 (*)
++--- mysql:mysql-connector-java:8.0.33 -> com.mysql:mysql-connector-j:9.2.0 (*)
++--- net.java.dev.jna:jna:5.17.0
++--- net.java.dev.jna:jna-platform:5.17.0
+|    \--- net.java.dev.jna:jna:5.17.0
++--- net.java.dev.jna:platform:3.5.2 -> net.java.dev.jna:jna-platform:5.17.0 (*)
 +--- net.jcip:jcip-annotations:1.0
-+--- net.jpountz.lz4:lz4:1.3.0 -> org.lz4:lz4-java:1.8.0
-+--- org.apache.commons:commons-csv:1.10.0 -> org.apache.solr:solr-commons-csv:3.5.0
-|    \--- org.slf4j:slf4j-api:1.6.1 -> 2.0.12 (*)
-+--- org.apache.commons:commons-io:1.3.2 -> commons-io:commons-io:2.11.0
++--- net.jpountz.lz4:lz4:1.3 -> org.lz4:lz4-java:1.8.0
++--- org.apache.commons:commons-csv:1.14.0 -> org.apache.solr:solr-commons-csv:3.5.0
+|    \--- org.slf4j:slf4j-api:1.6.1 -> 2.0.17 (*)
++--- org.apache.commons:commons-io:1.3.2 -> commons-io:commons-io:2.19.0
 +--- org.apache.geronimo.javamail:geronimo-javamail_1.3.1_mail:1.1 -> com.sun.mail:javax.mail:1.6.2 (*)
 +--- org.apache.geronimo.javamail:geronimo-javamail_1.3.1_provider:1.1 -> org.apache.geronimo.javamail:geronimo-javamail_1.6_provider:1.0.1
 |    \--- org.apache.geronimo.specs:geronimo-javamail_1.6_spec:1.0.1 -> com.sun.mail:javax.mail:1.6.2 (*)
 +--- org.apache.geronimo.javamail:geronimo-javamail_1.4_mail:1.8.4 -> com.sun.mail:javax.mail:1.6.2 (*)
-+--- org.apache.geronimo.javamail:geronimo-javamail_1.4_provider:1.8.3 -> org.apache.geronimo.javamail:geronimo-javamail_1.6_provider:1.0.1 (*)
++--- org.apache.geronimo.javamail:geronimo-javamail_1.4_provider:1.8.4 -> org.apache.geronimo.javamail:geronimo-javamail_1.6_provider:1.0.1 (*)
 +--- org.apache.geronimo.javamail:geronimo-javamail_1.6_mail:1.0.1 -> com.sun.mail:javax.mail:1.6.2 (*)
 +--- org.apache.geronimo.javamail:geronimo-javamail_1.6_provider:1.0.1 (*)
 +--- org.apache.geronimo.specs:geronimo-javamail_1.3.1_spec:1.3 -> com.sun.mail:javax.mail:1.6.2 (*)
-+--- org.apache.geronimo.specs:geronimo-javamail_1.4_spec:1.6 -> com.sun.mail:javax.mail:1.6.2 (*)
++--- org.apache.geronimo.specs:geronimo-javamail_1.4_spec:1.7.1 -> com.sun.mail:javax.mail:1.6.2 (*)
 +--- org.apache.geronimo.specs:geronimo-javamail_1.6_spec:1.0.1 -> com.sun.mail:javax.mail:1.6.2 (*)
-+--- org.apache.logging.log4j:log4j-1.2-api:2.23.0 -> org.slf4j:log4j-over-slf4j:2.0.12 (*)
-+--- org.apache.logging.log4j:log4j-core:2.23.0 -> org.apache.logging.log4j:log4j-to-slf4j:2.23.0
-|    +--- org.apache.logging.log4j:log4j-api:2.23.0
-|    |    \--- org.apache.logging.log4j:log4j-bom:2.23.0
-|    |         +--- com.github.spotbugs:spotbugs-annotations:4.8.3 (c)
-|    |         +--- org.apache.logging.log4j:log4j-1.2-api:2.23.0 -> org.slf4j:log4j-over-slf4j:2.0.12 (c)
-|    |         +--- org.apache.logging.log4j:log4j-api:2.23.0 (c)
-|    |         +--- org.apache.logging.log4j:log4j-core:2.23.0 -> org.apache.logging.log4j:log4j-to-slf4j:2.23.0 (c)
-|    |         +--- org.apache.logging.log4j:log4j-jcl:2.23.0 -> org.slf4j:jcl-over-slf4j:2.0.12 (c)
-|    |         +--- org.apache.logging.log4j:log4j-jul:2.23.0 -> org.slf4j:jul-to-slf4j:2.0.12 (c)
-|    |         +--- org.apache.logging.log4j:log4j-slf4j2-impl:2.23.0 -> org.slf4j:slf4j-simple:2.0.12 (c)
-|    |         +--- org.apache.logging.log4j:log4j-slf4j-impl:2.23.0 -> org.slf4j:slf4j-simple:2.0.12 (c)
-|    |         \--- org.apache.logging.log4j:log4j-to-slf4j:2.23.0 (c)
-|    \--- org.slf4j:slf4j-api:2.0.9 -> 2.0.12 (*)
-+--- org.apache.logging.log4j:log4j-jcl:2.23.0 -> org.slf4j:jcl-over-slf4j:2.0.12 (*)
-+--- org.apache.logging.log4j:log4j-jul:2.23.0 -> org.slf4j:jul-to-slf4j:2.0.12
-|    +--- org.slf4j:slf4j-api:2.0.12 (*)
-|    \--- org.slf4j:slf4j-bom:2.0.12 (*)
-+--- org.apache.logging.log4j:log4j-slf4j-impl:2.23.0 -> org.slf4j:slf4j-simple:2.0.12 (*)
-+--- org.apache.logging.log4j:log4j-slf4j2-impl:2.23.0 -> org.slf4j:slf4j-simple:2.0.12 (*)
-+--- org.apache.logging.log4j:log4j-to-slf4j:2.23.0 (*)
++--- org.apache.logging.log4j:log4j-1.2-api:2.24.3 -> org.slf4j:log4j-over-slf4j:2.0.17 (*)
++--- org.apache.logging.log4j:log4j-core:2.24.3 -> org.apache.logging.log4j:log4j-to-slf4j:2.24.3
+|    +--- org.apache.logging.log4j:log4j-api:2.24.3
+|    |    \--- org.apache.logging.log4j:log4j-bom:2.24.3
+|    |         +--- com.github.spotbugs:spotbugs-annotations:4.8.6 -> 4.9.3 (c)
+|    |         +--- org.apache.logging.log4j:log4j-1.2-api:2.24.3 -> org.slf4j:log4j-over-slf4j:2.0.17 (c)
+|    |         +--- org.apache.logging.log4j:log4j-api:2.24.3 (c)
+|    |         +--- org.apache.logging.log4j:log4j-core:2.24.3 -> org.apache.logging.log4j:log4j-to-slf4j:2.24.3 (c)
+|    |         +--- org.apache.logging.log4j:log4j-jcl:2.24.3 -> org.slf4j:jcl-over-slf4j:2.0.17 (c)
+|    |         +--- org.apache.logging.log4j:log4j-jul:2.24.3 -> org.slf4j:jul-to-slf4j:2.0.17 (c)
+|    |         +--- org.apache.logging.log4j:log4j-slf4j2-impl:2.24.3 -> org.slf4j:slf4j-simple:2.0.17 (c)
+|    |         +--- org.apache.logging.log4j:log4j-slf4j-impl:2.24.3 -> org.slf4j:slf4j-simple:2.0.17 (c)
+|    |         +--- org.apache.logging.log4j:log4j-to-slf4j:2.24.3 (c)
+|    |         \--- org.jspecify:jspecify:1.0.0 (c)
+|    \--- org.slf4j:slf4j-api:2.0.16 -> 2.0.17 (*)
++--- org.apache.logging.log4j:log4j-jcl:2.24.3 -> org.slf4j:jcl-over-slf4j:2.0.17 (*)
++--- org.apache.logging.log4j:log4j-jul:2.24.3 -> org.slf4j:jul-to-slf4j:2.0.17
+|    +--- org.slf4j:slf4j-api:2.0.17 (*)
+|    \--- org.slf4j:slf4j-bom:2.0.17 (*)
++--- org.apache.logging.log4j:log4j-slf4j-impl:2.24.3 -> org.slf4j:slf4j-simple:2.0.17 (*)
++--- org.apache.logging.log4j:log4j-slf4j2-impl:2.24.3 -> org.slf4j:slf4j-simple:2.0.17 (*)
++--- org.apache.logging.log4j:log4j-to-slf4j:2.24.3 (*)
 +--- org.apache.solr:solr-commons-csv:3.5.0 (*)
-+--- org.apache.tomcat.embed:tomcat-embed-core:10.1.0 -> jakarta.servlet:jakarta.servlet-api:5.0.0
-+--- org.apache.tomcat.embed:tomcat-embed-websocket:10.1.0 -> jakarta.websocket:jakarta.websocket-api:2.1.1
++--- org.apache.tomcat.embed:tomcat-embed-core:11.0.6 -> jakarta.servlet:jakarta.servlet-api:6.1.0
++--- org.apache.tomcat.embed:tomcat-embed-websocket:11.0.6 -> jakarta.websocket:jakarta.websocket-api:2.2.0
 +--- org.apache.tomcat:servlet-api:6.0.53 -> javax.servlet:javax.servlet-api:4.0.1
-+--- org.apache.tomcat:tomcat-annotations-api:10.1.1 -> jakarta.annotation:jakarta.annotation-api:2.1.1
-+--- org.apache.tomcat:tomcat-servlet-api:10.1.1 -> jakarta.servlet:jakarta.servlet-api:5.0.0
-+--- org.apache.tomcat:tomcat-websocket-api:10.1.0 -> jakarta.websocket:jakarta.websocket-api:2.1.1
-+--- org.apache.tomcat:tomcat-websocket-client-api:10.1.0 -> jakarta.websocket:jakarta.websocket-client-api:2.1.1
-+--- org.apache.tomcat:tomcat-websocket:10.1.1 -> jakarta.websocket:jakarta.websocket-api:2.1.1
-+--- org.apache.velocity:velocity-engine-core:2.3
-|    +--- org.apache.commons:commons-lang3:3.11 -> 3.12.0
-|    \--- org.slf4j:slf4j-api:1.7.30 -> 2.0.12 (*)
-+--- org.apache.velocity:velocity:1.7 -> org.apache.velocity:velocity-engine-core:2.3 (*)
-+--- org.bouncycastle:bc-fips-debug:1.0.2.3 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bc-fips:1.0.2.3 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcjmail-jdk15on:1.70 -> org.bouncycastle:bcjmail-jdk18on:1.72
-|    +--- org.bouncycastle:bcprov-jdk18on:1.72 -> org.bouncycastle:bcprov-jdk12:130
-|    +--- org.bouncycastle:bcutil-jdk18on:1.72
-|    |    \--- org.bouncycastle:bcprov-jdk18on:1.72 -> org.bouncycastle:bcprov-jdk12:130
-|    +--- org.bouncycastle:bcpkix-jdk18on:1.72
-|    |    +--- org.bouncycastle:bcprov-jdk18on:1.72 -> org.bouncycastle:bcprov-jdk12:130
-|    |    \--- org.bouncycastle:bcutil-jdk18on:1.72 (*)
-|    \--- com.sun.mail:jakarta.mail:[2.0,3.0) -> jakarta.mail:jakarta.mail-api:2.1.0 (*)
-+--- org.bouncycastle:bcjmail-jdk15to18:1.70 -> org.bouncycastle:bcjmail-jdk18on:1.72 (*)
-+--- org.bouncycastle:bcjmail-jdk18on:1.72 (*)
-+--- org.bouncycastle:bcmail-fips:1.0.4 -> org.bouncycastle:bcjmail-jdk18on:1.72 (*)
-+--- org.bouncycastle:bcmail-jdk14:1.68 -> org.bouncycastle:bcjmail-jdk18on:1.72 (*)
-+--- org.bouncycastle:bcmail-jdk15+:1.46 -> org.bouncycastle:bcjmail-jdk18on:1.72 (*)
-+--- org.bouncycastle:bcmail-jdk15:1.46 -> org.bouncycastle:bcjmail-jdk18on:1.72 (*)
-+--- org.bouncycastle:bcmail-jdk15on:1.69 -> org.bouncycastle:bcjmail-jdk18on:1.72 (*)
-+--- org.bouncycastle:bcmail-jdk15to18:1.70 -> org.bouncycastle:bcjmail-jdk18on:1.72 (*)
-+--- org.bouncycastle:bcmail-jdk16:1.46 -> org.bouncycastle:bcjmail-jdk18on:1.72 (*)
-+--- org.bouncycastle:bcmail-jdk18on:1.71 -> org.bouncycastle:bcjmail-jdk18on:1.72 (*)
-+--- org.bouncycastle:bcpg-fips:1.0.6 -> org.bouncycastle:bcpg-jdk12:130
-|    \--- org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcpg-jdk12:130 (*)
-+--- org.bouncycastle:bcpg-jdk14:1.70 -> org.bouncycastle:bcpg-jdk12:130 (*)
-+--- org.bouncycastle:bcpg-jdk15+:1.46 -> org.bouncycastle:bcpg-jdk12:130 (*)
-+--- org.bouncycastle:bcpg-jdk15:1.46 -> org.bouncycastle:bcpg-jdk12:130 (*)
-+--- org.bouncycastle:bcpg-jdk15on:1.70 -> org.bouncycastle:bcpg-jdk12:130 (*)
-+--- org.bouncycastle:bcpg-jdk15to18:1.70 -> org.bouncycastle:bcpg-jdk12:130 (*)
-+--- org.bouncycastle:bcpg-jdk16:1.46 -> org.bouncycastle:bcpg-jdk12:130 (*)
-+--- org.bouncycastle:bcpg-jdk18on:1.72 -> org.bouncycastle:bcpg-jdk12:130 (*)
-+--- org.bouncycastle:bcpkix-fips:1.0.7 -> org.bouncycastle:bcpkix-jdk18on:1.72 (*)
-+--- org.bouncycastle:bcpkix-jdk14:1.70 -> org.bouncycastle:bcpkix-jdk18on:1.72 (*)
-+--- org.bouncycastle:bcpkix-jdk15on:1.70 -> org.bouncycastle:bcpkix-jdk18on:1.72 (*)
-+--- org.bouncycastle:bcpkix-jdk15to18:1.70 -> org.bouncycastle:bcpkix-jdk18on:1.72 (*)
-+--- org.bouncycastle:bcpkix-jdk18on:1.72 (*)
-+--- org.bouncycastle:bcprov-debug-jdk14:1.70 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-debug-jdk15on:1.70 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-debug-jdk15to18:1.70 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-debug-jdk18on:1.71 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-ext-debug-jdk14:1.70 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-ext-debug-jdk15on:1.70 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-ext-debug-jdk15to18:1.70 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-ext-debug-jdk18on:1.71 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-ext-jdk14:1.70 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-ext-jdk15:1.46 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-ext-jdk15on:1.70 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-ext-jdk15to18:1.70 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-ext-jdk16:1.46 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-ext-jdk18on:1.71 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-jdk14:1.70 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-jdk15+:1.46 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-jdk15:1.46 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-jdk15on:1.70 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-jdk15to18:1.70 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-jdk16:1.46 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bcprov-jdk18on:1.71 -> org.bouncycastle:bcprov-jdk12:130
-+--- org.bouncycastle:bctls-fips:1.0.9 -> org.bouncycastle:bctls-jdk18on:1.72
-|    +--- org.bouncycastle:bcprov-jdk18on:1.72 -> org.bouncycastle:bcprov-jdk12:130
-|    \--- org.bouncycastle:bcutil-jdk18on:1.72 (*)
-+--- org.bouncycastle:bctls-jdk14:1.70 -> org.bouncycastle:bctls-jdk18on:1.72 (*)
-+--- org.bouncycastle:bctls-jdk15on:1.69 -> org.bouncycastle:bctls-jdk18on:1.72 (*)
-+--- org.bouncycastle:bctls-jdk15to18:1.70 -> org.bouncycastle:bctls-jdk18on:1.72 (*)
-+--- org.bouncycastle:bctls-jdk18on:1.72 (*)
-+--- org.bouncycastle:bctsp-jdk14:1.45 -> org.bouncycastle:bctsp-jdk15on:1.46
-|    +--- org.bouncycastle:bcprov-jdk15on:1.46 -> org.bouncycastle:bcprov-jdk12:130
-|    \--- org.bouncycastle:bcmail-jdk15on:1.46 -> org.bouncycastle:bcjmail-jdk18on:1.72 (*)
++--- org.apache.tomcat:tomcat-annotations-api:11.0.6 -> jakarta.annotation:jakarta.annotation-api:3.0.0
++--- org.apache.tomcat:tomcat-servlet-api:11.0.6 -> jakarta.servlet:jakarta.servlet-api:6.1.0
++--- org.apache.tomcat:tomcat-websocket-api:11.0.6 -> jakarta.websocket:jakarta.websocket-api:2.2.0
++--- org.apache.tomcat:tomcat-websocket-client-api:11.0.6 -> jakarta.websocket:jakarta.websocket-client-api:2.2.0
++--- org.apache.tomcat:tomcat-websocket:11.0.6 -> jakarta.websocket:jakarta.websocket-api:2.2.0
++--- org.apache.velocity:velocity-engine-core:2.4.1
+|    +--- org.apache.commons:commons-lang3:3.17.0
+|    \--- org.slf4j:slf4j-api:1.7.36 -> 2.0.17 (*)
++--- org.apache.velocity:velocity:1.7 -> org.apache.velocity:velocity-engine-core:2.4.1 (*)
++--- org.bouncycastle:bc-fips-debug:2.1.0 -> org.bouncycastle:bcprov-jdk18on:1.80
++--- org.bouncycastle:bc-fips:2.1.0 -> org.bouncycastle:bcprov-jdk18on:1.80
++--- org.bouncycastle:bcjmail-jdk15on:1.70 -> org.bouncycastle:bcmail-jdk18on:1.80
+|    \--- org.bouncycastle:bcpkix-jdk18on:[1.80,1.81) -> 1.80
+|         \--- org.bouncycastle:bcutil-jdk18on:[1.80,1.81) -> 1.80
+|              \--- org.bouncycastle:bcprov-jdk18on:[1.80,1.81) -> 1.80
++--- org.bouncycastle:bcjmail-jdk15to18:1.80 -> org.bouncycastle:bcmail-jdk18on:1.80 (*)
++--- org.bouncycastle:bcjmail-jdk18on:1.80 -> org.bouncycastle:bcmail-jdk18on:1.80 (*)
++--- org.bouncycastle:bcmail-fips:2.1.6 -> org.bouncycastle:bcmail-jdk18on:1.80 (*)
++--- org.bouncycastle:bcmail-jdk14:1.80 -> org.bouncycastle:bcmail-jdk18on:1.80 (*)
++--- org.bouncycastle:bcmail-jdk15+:1.46 -> org.bouncycastle:bcmail-jdk18on:1.80 (*)
++--- org.bouncycastle:bcmail-jdk15:1.46 -> org.bouncycastle:bcmail-jdk18on:1.80 (*)
++--- org.bouncycastle:bcmail-jdk15on:1.70 -> org.bouncycastle:bcmail-jdk18on:1.80 (*)
++--- org.bouncycastle:bcmail-jdk15to18:1.80 -> org.bouncycastle:bcmail-jdk18on:1.80 (*)
++--- org.bouncycastle:bcmail-jdk16:1.46 -> org.bouncycastle:bcmail-jdk18on:1.80 (*)
++--- org.bouncycastle:bcmail-jdk18on:1.80 (*)
++--- org.bouncycastle:bcpg-fips:2.1.11 -> org.bouncycastle:bcpg-jdk18on:1.80
+|    \--- org.bouncycastle:bcprov-jdk18on:[1.80,1.81) -> 1.80
++--- org.bouncycastle:bcpg-jdk12:130 -> org.bouncycastle:bcpg-jdk18on:1.80 (*)
++--- org.bouncycastle:bcpg-jdk14:1.80 -> org.bouncycastle:bcpg-jdk18on:1.80 (*)
++--- org.bouncycastle:bcpg-jdk15+:1.46 -> org.bouncycastle:bcpg-jdk18on:1.80 (*)
++--- org.bouncycastle:bcpg-jdk15:1.46 -> org.bouncycastle:bcpg-jdk18on:1.80 (*)
++--- org.bouncycastle:bcpg-jdk15on:1.70 -> org.bouncycastle:bcpg-jdk18on:1.80 (*)
++--- org.bouncycastle:bcpg-jdk15to18:1.80 -> org.bouncycastle:bcpg-jdk18on:1.80 (*)
++--- org.bouncycastle:bcpg-jdk16:1.46 -> org.bouncycastle:bcpg-jdk18on:1.80 (*)
++--- org.bouncycastle:bcpg-jdk18on:1.80 (*)
++--- org.bouncycastle:bcpkix-fips:2.1.9 -> org.bouncycastle:bcpkix-jdk18on:1.80 (*)
++--- org.bouncycastle:bcpkix-jdk14:1.80 -> org.bouncycastle:bcpkix-jdk18on:1.80 (*)
++--- org.bouncycastle:bcpkix-jdk15on:1.70 -> org.bouncycastle:bcpkix-jdk18on:1.80 (*)
++--- org.bouncycastle:bcpkix-jdk15to18:1.80 -> org.bouncycastle:bcpkix-jdk18on:1.80 (*)
++--- org.bouncycastle:bcpkix-jdk18on:1.80 (*)
++--- org.bouncycastle:bcprov-debug-jdk14:1.80 -> org.bouncycastle:bcprov-jdk18on:1.80
++--- org.bouncycastle:bcprov-debug-jdk15on:1.70 -> org.bouncycastle:bcprov-jdk18on:1.80
++--- org.bouncycastle:bcprov-debug-jdk15to18:1.79 -> org.bouncycastle:bcprov-jdk18on:1.80
++--- org.bouncycastle:bcprov-debug-jdk18on:1.79 -> org.bouncycastle:bcprov-jdk18on:1.80
++--- org.bouncycastle:bcprov-ext-debug-jdk14:1.74 -> org.bouncycastle:bcprov-jdk18on:1.80
++--- org.bouncycastle:bcprov-ext-debug-jdk15on:1.70 -> org.bouncycastle:bcprov-jdk18on:1.80
++--- org.bouncycastle:bcprov-ext-debug-jdk15to18:1.77 -> org.bouncycastle:bcprov-jdk18on:1.80
++--- org.bouncycastle:bcprov-ext-debug-jdk18on:1.77 -> org.bouncycastle:bcprov-jdk18on:1.80
++--- org.bouncycastle:bcprov-ext-jdk14:1.78.1 -> org.bouncycastle:bcprov-jdk18on:1.80
++--- org.bouncycastle:bcprov-ext-jdk15:1.46 -> org.bouncycastle:bcprov-jdk18on:1.80
++--- org.bouncycastle:bcprov-ext-jdk15on:1.70 -> org.bouncycastle:bcprov-jdk18on:1.80
++--- org.bouncycastle:bcprov-ext-jdk15to18:1.78.1 -> org.bouncycastle:bcprov-jdk18on:1.80
++--- org.bouncycastle:bcprov-ext-jdk16:1.46 -> org.bouncycastle:bcprov-jdk18on:1.80
++--- org.bouncycastle:bcprov-ext-jdk18on:1.78.1 -> org.bouncycastle:bcprov-jdk18on:1.80
++--- org.bouncycastle:bcprov-jdk12:130 -> org.bouncycastle:bcprov-jdk18on:1.80
++--- org.bouncycastle:bcprov-jdk14:1.80 -> org.bouncycastle:bcprov-jdk18on:1.80
++--- org.bouncycastle:bcprov-jdk15+:1.46 -> org.bouncycastle:bcprov-jdk18on:1.80
++--- org.bouncycastle:bcprov-jdk15:1.46 -> org.bouncycastle:bcprov-jdk18on:1.80
++--- org.bouncycastle:bcprov-jdk15on:1.70 -> org.bouncycastle:bcprov-jdk18on:1.80
++--- org.bouncycastle:bcprov-jdk15to18:1.80 -> org.bouncycastle:bcprov-jdk18on:1.80
++--- org.bouncycastle:bcprov-jdk16:1.46 -> org.bouncycastle:bcprov-jdk18on:1.80
++--- org.bouncycastle:bcprov-jdk18on:1.80
++--- org.bouncycastle:bctls-fips:2.1.20 -> org.bouncycastle:bctls-jdk18on:1.80
+|    \--- org.bouncycastle:bcutil-jdk18on:[1.80,1.81) -> 1.80 (*)
++--- org.bouncycastle:bctls-jdk14:1.80 -> org.bouncycastle:bctls-jdk18on:1.80 (*)
++--- org.bouncycastle:bctls-jdk15on:1.70 -> org.bouncycastle:bctls-jdk18on:1.80 (*)
++--- org.bouncycastle:bctls-jdk15to18:1.80 -> org.bouncycastle:bctls-jdk18on:1.80 (*)
++--- org.bouncycastle:bctls-jdk18on:1.80 (*)
++--- org.bouncycastle:bctsp-jdk14:1.46 -> org.bouncycastle:bctsp-jdk15on:1.46
+|    +--- org.bouncycastle:bcprov-jdk15on:1.46 -> org.bouncycastle:bcprov-jdk18on:1.80
+|    \--- org.bouncycastle:bcmail-jdk15on:1.46 -> org.bouncycastle:bcmail-jdk18on:1.80 (*)
 +--- org.bouncycastle:bctsp-jdk15+:1.46 -> org.bouncycastle:bctsp-jdk15on:1.46 (*)
-+--- org.bouncycastle:bctsp-jdk15:1.45 -> org.bouncycastle:bctsp-jdk15on:1.46 (*)
++--- org.bouncycastle:bctsp-jdk15:1.46 -> org.bouncycastle:bctsp-jdk15on:1.46 (*)
 +--- org.bouncycastle:bctsp-jdk15on:1.46 (*)
-+--- org.bouncycastle:bctsp-jdk16:1.45 -> org.bouncycastle:bctsp-jdk15on:1.46 (*)
-+--- org.bouncycastle:bcutil-jdk14:1.70 -> org.bouncycastle:bcutil-jdk18on:1.72 (*)
-+--- org.bouncycastle:bcutil-jdk15on:1.70 -> org.bouncycastle:bcutil-jdk18on:1.72 (*)
-+--- org.bouncycastle:bcutil-jdk15to18:1.70 -> org.bouncycastle:bcutil-jdk18on:1.72 (*)
-+--- org.bouncycastle:bcutil-jdk18on:1.72 (*)
++--- org.bouncycastle:bctsp-jdk16:1.46 -> org.bouncycastle:bctsp-jdk15on:1.46 (*)
++--- org.bouncycastle:bcutil-jdk14:1.80 -> org.bouncycastle:bcutil-jdk18on:1.80 (*)
++--- org.bouncycastle:bcutil-jdk15on:1.70 -> org.bouncycastle:bcutil-jdk18on:1.80 (*)
++--- org.bouncycastle:bcutil-jdk15to18:1.80 -> org.bouncycastle:bcutil-jdk18on:1.80 (*)
++--- org.bouncycastle:bcutil-jdk18on:1.80 (*)
 +--- org.codehaus.woodstox:woodstox-core-asl:4.4.1
 |    +--- javax.xml.stream:stax-api:1.0-2 -> stax:stax-api:1.0.1
 |    \--- org.codehaus.woodstox:stax2-api:3.1.4
-+--- org.codehaus.woodstox:woodstox-core-lgpl:4.4.0 -> org.codehaus.woodstox:woodstox-core-asl:4.4.1 (*)
++--- org.codehaus.woodstox:woodstox-core-lgpl:4.4.1 -> org.codehaus.woodstox:woodstox-core-asl:4.4.1 (*)
 +--- org.codehaus.woodstox:wstx-asl:4.0.6 -> org.codehaus.woodstox:woodstox-core-asl:4.4.1 (*)
 +--- org.codehaus.woodstox:wstx-lgpl:3.2.9 -> org.codehaus.woodstox:woodstox-core-asl:4.4.1 (*)
-+--- org.dom4j:dom4j:2.1.3
-+--- org.eclipse.angus:angus-activation:1.1.0
-|    \--- jakarta.activation:jakarta.activation-api:2.1.1
-+--- org.eclipse.angus:jakarta.mail:1.0.0 -> jakarta.mail:jakarta.mail-api:2.1.0 (*)
-+--- org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api:5.0.2 -> jakarta.servlet:jakarta.servlet-api:5.0.0
-+--- org.eclipse.jetty.toolchain:jetty-jakarta-websocket-api:2.0.0 -> jakarta.websocket:jakarta.websocket-api:2.1.1
++--- org.dom4j:dom4j:2.1.4
++--- org.eclipse.angus:angus-activation:2.0.2
+|    \--- jakarta.activation:jakarta.activation-api:2.1.3
++--- org.eclipse.angus:jakarta.mail:2.0.3 -> jakarta.mail:jakarta.mail-api:2.1.3 (*)
++--- org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api:5.0.2 -> jakarta.servlet:jakarta.servlet-api:6.1.0
++--- org.eclipse.jetty.toolchain:jetty-jakarta-websocket-api:2.0.0 -> jakarta.websocket:jakarta.websocket-api:2.2.0
 +--- org.eclipse.jetty.toolchain:jetty-javax-websocket-api:1.1.2
-+--- org.elasticsearch:jna:5.7.0-1 -> net.java.dev.jna:jna:5.10.0
++--- org.elasticsearch:jna:5.7.0-1 -> net.java.dev.jna:jna:5.17.0
 +--- org.glassfish.hk2.external:jakarta.inject:2.6.1 -> com.jwebmp:javax.inject:1.1
 +--- org.glassfish.hk2.external:javax.inject:2.4.0 -> com.jwebmp:javax.inject:1.1
-+--- org.glassfish:jakarta.json:1.1.5 -> jakarta.json:jakarta.json-api:1.1.6
-+--- org.glassfish:javax.json:1.1.4 -> jakarta.json:jakarta.json-api:1.1.6
-+--- org.hamcrest:hamcrest-core:2.2 -> org.hamcrest:hamcrest:2.2
-+--- org.hamcrest:hamcrest-library:2.2 -> org.hamcrest:hamcrest:2.2
-+--- org.hamcrest:hamcrest:2.2
++--- org.glassfish:jakarta.json:2.0.1 -> jakarta.json:jakarta.json-api:2.1.3
++--- org.glassfish:javax.json:1.1.4 -> javax.json:javax.json-api:1.1.4
++--- org.hamcrest:hamcrest-core:3.0 -> org.hamcrest:hamcrest:3.0
++--- org.hamcrest:hamcrest-library:3.0 -> org.hamcrest:hamcrest:3.0
++--- org.hamcrest:hamcrest:3.0
 +--- org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.Final -> javax.persistence:javax.persistence-api:2.2
 +--- org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final -> javax.persistence:javax.persistence-api:2.2
 +--- org.hibernate.javax.persistence:hibernate-jpa-2.2-api:1.0.0.Beta2 -> javax.persistence:javax.persistence-api:2.2
-+--- org.javassist:javassist:3.29.1-GA
-+--- org.jboss.resteasy:jaxrs-api:2.0.0.GA -> javax.ws.rs:javax.ws.rs-api:2.1.1
++--- org.javassist:javassist:3.30.2-GA
++--- org.jboss.resteasy:jaxrs-api:3.0.12.Final
 +--- org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:1.0.1.Final -> javax.transaction:javax.transaction-api:1.3
 +--- org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.1.1.Final -> javax.transaction:javax.transaction-api:1.3
 +--- org.jboss.spec.javax.transaction:jboss-transaction-api_1.3_spec:2.0.0.Final -> javax.transaction:javax.transaction-api:1.3
-+--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_1.1_spec:1.0.1.Final -> javax.ws.rs:javax.ws.rs-api:2.1.1
-+--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.0_spec:1.0.1.Final -> javax.ws.rs:javax.ws.rs-api:2.1.1
-+--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.1_spec:2.0.2.Final -> javax.ws.rs:javax.ws.rs-api:2.1.1
-+--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_3.0_spec:1.0.1.Final -> jakarta.ws.rs:jakarta.ws.rs-api:3.1.0
-+--- org.jetbrains:annotations:24.0.0
-+--- org.json:json:20240303
++--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_1.1_spec:1.0.1.Final -> org.jboss.resteasy:jaxrs-api:3.0.12.Final
++--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.0_spec:1.0.1.Final -> org.jboss.resteasy:jaxrs-api:3.0.12.Final
++--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.1_spec:2.0.2.Final -> org.jboss.resteasy:jaxrs-api:3.0.12.Final
++--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_3.0_spec:1.0.1.Final -> jakarta.ws.rs:jakarta.ws.rs-api:4.0.0
++--- org.jetbrains:annotations:26.0.2
++--- org.json:json:20250107
 +--- org.jzy3d:jGL:2.5
 +--- org.jzy3d:jzy3d-emul-gl-awt:2.2.1
 |    +--- org.jzy3d:jzy3d-core:2.2.1
 |    |    +--- org.jzy3d:jzy3d-jdt-core:2.2.1
-|    |    |    +--- commons-io:commons-io:2.7 -> 2.11.0
-|    |    |    +--- org.apache.commons:commons-lang3:3.12.0
-|    |    |    +--- org.apache.logging.log4j:log4j-api:2.17.1 -> 2.23.0 (*)
-|    |    |    \--- org.apache.logging.log4j:log4j-core:2.17.1 -> org.apache.logging.log4j:log4j-to-slf4j:2.23.0 (*)
+|    |    |    +--- commons-io:commons-io:2.7 -> 2.19.0
+|    |    |    +--- org.apache.commons:commons-lang3:3.12.0 -> 3.17.0
+|    |    |    +--- org.apache.logging.log4j:log4j-api:2.17.1 -> 2.24.3 (*)
+|    |    |    \--- org.apache.logging.log4j:log4j-core:2.17.1 -> org.apache.logging.log4j:log4j-to-slf4j:2.24.3 (*)
 |    |    +--- org.smurn:jply:0.2.1
-|    |    |    \--- org.apache.commons:commons-lang3:3.1 -> 3.12.0
+|    |    |    \--- org.apache.commons:commons-lang3:3.1 -> 3.17.0
 |    |    +--- net.sf.opencsv:opencsv:2.1
 |    |    +--- org.tallison:jmatio:1.5
-|    |    |    \--- org.slf4j:slf4j-api:1.7.25 -> 2.0.12 (*)
-|    |    +--- com.google.guava:guava:30.1.1-jre -> 33.0.0-jre (*)
+|    |    |    \--- org.slf4j:slf4j-api:1.7.25 -> 2.0.17 (*)
+|    |    +--- com.google.guava:guava:30.1.1-jre -> 33.4.8-jre (*)
 |    |    +--- org.apache.commons:commons-collections4:4.4
 |    |    +--- com.diogonunes:JColor:5.2.0
-|    |    |    +--- net.java.dev.jna:jna:5.8.0 -> 5.10.0
-|    |    |    \--- net.java.dev.jna:jna-platform:5.8.0 -> 5.10.0 (*)
-|    |    +--- org.apache.logging.log4j:log4j-api:2.17.1 -> 2.23.0 (*)
-|    |    \--- org.apache.logging.log4j:log4j-core:2.17.1 -> org.apache.logging.log4j:log4j-to-slf4j:2.23.0 (*)
+|    |    |    +--- net.java.dev.jna:jna:5.8.0 -> 5.17.0
+|    |    |    \--- net.java.dev.jna:jna-platform:5.8.0 -> 5.17.0 (*)
+|    |    +--- org.apache.logging.log4j:log4j-api:2.17.1 -> 2.24.3 (*)
+|    |    \--- org.apache.logging.log4j:log4j-core:2.17.1 -> org.apache.logging.log4j:log4j-to-slf4j:2.24.3 (*)
 |    +--- org.jzy3d:jzy3d-core-awt:2.2.1
 |    |    +--- org.jzy3d:jzy3d-core:2.2.1 (*)
-|    |    +--- org.apache.logging.log4j:log4j-api:2.17.1 -> 2.23.0 (*)
-|    |    \--- org.apache.logging.log4j:log4j-core:2.17.1 -> org.apache.logging.log4j:log4j-to-slf4j:2.23.0 (*)
+|    |    +--- org.apache.logging.log4j:log4j-api:2.17.1 -> 2.24.3 (*)
+|    |    \--- org.apache.logging.log4j:log4j-core:2.17.1 -> org.apache.logging.log4j:log4j-to-slf4j:2.24.3 (*)
 |    +--- org.jzy3d:jzy3d-jGL-awt:2.2.1 -> org.jzy3d:jGL:2.5
-|    +--- org.apache.logging.log4j:log4j-api:2.17.1 -> 2.23.0 (*)
-|    \--- org.apache.logging.log4j:log4j-core:2.17.1 -> org.apache.logging.log4j:log4j-to-slf4j:2.23.0 (*)
+|    +--- org.apache.logging.log4j:log4j-api:2.17.1 -> 2.24.3 (*)
+|    \--- org.apache.logging.log4j:log4j-core:2.17.1 -> org.apache.logging.log4j:log4j-to-slf4j:2.24.3 (*)
 +--- org.jzy3d:jzy3d-emul-gl:2.0.0 -> org.jzy3d:jzy3d-emul-gl-awt:2.2.1 (*)
 +--- org.jzy3d:jzy3d-jGL-awt:2.2.1 -> org.jzy3d:jGL:2.5
 +--- org.lz4:lz4-java:1.8.0
-+--- org.ow2.asm:asm:9.2
-+--- org.postgresql:postgresql:42.5.0
-+--- org.slf4j:jcl-over-slf4j:2.0.12 (*)
-+--- org.slf4j:jul-to-slf4j:2.0.12 (*)
-+--- org.slf4j:log4j-over-slf4j:2.0.12 (*)
-+--- org.slf4j:slf4j-jcl:1.7.9 -> org.slf4j:slf4j-simple:2.0.12 (*)
-+--- org.slf4j:slf4j-jdk14:2.0.12 -> org.slf4j:slf4j-simple:2.0.12 (*)
-+--- org.slf4j:slf4j-log4j12:2.0.12 -> org.slf4j:slf4j-simple:2.0.12 (*)
-+--- org.slf4j:slf4j-nop:2.0.12 -> org.slf4j:slf4j-simple:2.0.12 (*)
-+--- org.slf4j:slf4j-simple:2.0.12 (*)
-+--- org.springframework:spring-aop:5.3.23 (*)
-+--- org.springframework:spring-jcl:6.1.4 -> org.slf4j:jcl-over-slf4j:2.0.12 (*)
-+--- postgresql:postgresql:9.1-901-1.jdbc4 -> org.postgresql:postgresql:42.5.0
++--- org.ow2.asm:asm:9.8 (*)
++--- org.postgresql:postgresql:42.7.5
++--- org.slf4j:jcl-over-slf4j:2.0.17 (*)
++--- org.slf4j:jul-to-slf4j:2.0.17 (*)
++--- org.slf4j:log4j-over-slf4j:2.0.17 (*)
++--- org.slf4j:slf4j-jcl:1.7.36 -> org.slf4j:slf4j-simple:2.0.17 (*)
++--- org.slf4j:slf4j-jdk14:2.0.17 -> org.slf4j:slf4j-simple:2.0.17 (*)
++--- org.slf4j:slf4j-log4j12:2.0.17 -> org.slf4j:slf4j-simple:2.0.17 (*)
++--- org.slf4j:slf4j-nop:2.0.17 -> org.slf4j:slf4j-simple:2.0.17 (*)
++--- org.slf4j:slf4j-simple:2.0.17 (*)
++--- org.springframework:spring-aop:6.2.6 (*)
++--- org.springframework:spring-jcl:6.2.6 -> org.slf4j:jcl-over-slf4j:2.0.17 (*)
++--- postgresql:postgresql:9.1-901-1.jdbc4 -> org.postgresql:postgresql:42.7.5
 +--- servletapi:servletapi:2.4 -> javax.servlet:javax.servlet-api:4.0.1
 +--- stax:stax-api:1.0.1
-+--- velocity:velocity:1.4 -> org.apache.velocity:velocity-engine-core:2.3 (*)
++--- velocity:velocity:1.5 -> org.apache.velocity:velocity-engine-core:2.4.1 (*)
 +--- woodstox:wstx-asl:2.9.3 -> org.codehaus.woodstox:woodstox-core-asl:4.4.1 (*)
-+--- woodstox:wstx-lgpl:3.2.7 -> org.codehaus.woodstox:woodstox-core-asl:4.4.1 (*)
-\--- com.google.collections:google-collections:1.0 -> com.google.guava:guava:33.0.0-jre (*)
++--- woodstox:wstx-lgpl:2.9 -> org.codehaus.woodstox:woodstox-core-asl:4.4.1 (*)
+\--- com.google.collections:google-collections:1.0 -> com.google.guava:guava:33.4.8-jre (*)
 
 (c) - A dependency constraint, not a dependency. The dependency affected by the constraint occurs elsewhere in the tree.
 (*) - Indicates repeated occurrences of a transitive dependency subtree. Gradle expands transitive dependency subtrees only once per project; repeat occurrences only display the root of the subtree, followed by this annotation.

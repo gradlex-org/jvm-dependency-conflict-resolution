@@ -3,5 +3,8 @@
   "extends": [
     "config:recommended"
   ],
-  "ignorePaths": ["samples/**"]
+  "ignorePaths": [
+    "samples/sample-alignment/**",
+    "samples/sample-javax-and-jakarta/**"
+  ]
 }
