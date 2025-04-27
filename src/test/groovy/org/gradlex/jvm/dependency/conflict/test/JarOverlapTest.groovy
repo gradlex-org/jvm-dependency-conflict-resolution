@@ -12,6 +12,7 @@ import static org.gradlex.jvm.dependency.conflict.detection.rules.CapabilityDefi
  * Test that checks that the Jar files behind each CapabilityDefinition actually have overlapping classes.
  */
 class JarOverlapTest extends Specification {
+    private static final String SAMPLE_ALL_BUILD_FILE = "samples/sample-all/build.gradle.kts"
 
     // Some Jars do not have overlapping classes, but contain conflicting implementations of the same service.
     static def expectedToOverlap = values() - [
@@ -28,7 +29,7 @@ class JarOverlapTest extends Specification {
     def latestVersions = []
 
     void setup() {
-        latestVersions = new File("samples/sample-all/build.gradle.kts")
+        latestVersions = new File(SAMPLE_ALL_BUILD_FILE)
                 .readLines()
                 .findAll { it.contains("implementation(") }
                 .collect { it.trim() }
@@ -56,7 +57,11 @@ class JarOverlapTest extends Specification {
             if (specific) {
                 dependencies.create(specific)
             } else {
-                dependencies.create(latestVersions.find { it.startsWith(module + ":") })
+                def moduleForSample = latestVersions.find { it.startsWith(module + ":") }
+                if (!moduleForSample) {
+                    throw new RuntimeException("Missing entry for " + module + " in " + SAMPLE_ALL_BUILD_FILE)
+                }
+                dependencies.create(moduleForSample)
             }
         }
 
