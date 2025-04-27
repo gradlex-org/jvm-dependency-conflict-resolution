@@ -78,9 +78,11 @@ public enum CapabilityDefinition {
             "org.bouncycastle:bcmail-jdk15to18",
             "org.bouncycastle:bcmail-jdk16",
             "org.bouncycastle:bcmail-jdk18on",
+            "org.bouncycastle:bcmail-lts8on",
             "org.bouncycastle:bcjmail-jdk15on",
             "org.bouncycastle:bcjmail-jdk15to18",
-            "org.bouncycastle:bcjmail-jdk18on"
+            "org.bouncycastle:bcjmail-jdk18on",
+            "org.bouncycastle:bcjmail-lts8on"
     ),
     BOUNCYCASTLE_BCPG(HIGHEST_VERSION,
             "org.bouncycastle:bcpg-fips",
@@ -91,14 +93,16 @@ public enum CapabilityDefinition {
             "org.bouncycastle:bcpg-jdk15on",
             "org.bouncycastle:bcpg-jdk15to18",
             "org.bouncycastle:bcpg-jdk16",
-            "org.bouncycastle:bcpg-jdk18on"
+            "org.bouncycastle:bcpg-jdk18on",
+            "org.bouncycastle:bcpg-lts8on"
     ),
     BOUNCYCASTLE_BCPKIX(HIGHEST_VERSION,
             "org.bouncycastle:bcpkix-fips",
             "org.bouncycastle:bcpkix-jdk14",
             "org.bouncycastle:bcpkix-jdk15on",
             "org.bouncycastle:bcpkix-jdk15to18",
-            "org.bouncycastle:bcpkix-jdk18on"
+            "org.bouncycastle:bcpkix-jdk18on",
+            "org.bouncycastle:bcpkix-lts8on"
     ),
     BOUNCYCASTLE_BCPROV(HIGHEST_VERSION,
             "org.bouncycastle:bcprov-debug-jdk14",
@@ -123,6 +127,7 @@ public enum CapabilityDefinition {
             "org.bouncycastle:bcprov-jdk15to18",
             "org.bouncycastle:bcprov-jdk16",
             "org.bouncycastle:bcprov-jdk18on",
+            "org.bouncycastle:bcprov-lts8on",
             "org.bouncycastle:bc-fips",
             "org.bouncycastle:bc-fips-debug"
     ),
@@ -131,6 +136,7 @@ public enum CapabilityDefinition {
             "org.bouncycastle:bctls-jdk15on",
             "org.bouncycastle:bctls-jdk15to18",
             "org.bouncycastle:bctls-jdk18on",
+            "org.bouncycastle:bctls-lts8on",
             "org.bouncycastle:bctls-fips"
     ),
     BOUNCYCASTLE_BCTSP(HIGHEST_VERSION,
@@ -144,7 +150,8 @@ public enum CapabilityDefinition {
             "org.bouncycastle:bcutil-jdk14",
             "org.bouncycastle:bcutil-jdk15on",
             "org.bouncycastle:bcutil-jdk15to18",
-            "org.bouncycastle:bcutil-jdk18on"
+            "org.bouncycastle:bcutil-jdk18on",
+            "org.bouncycastle:bcutil-lts8on"
     ),
     C3P0(HIGHEST_VERSION,
             "c3p0:c3p0",
