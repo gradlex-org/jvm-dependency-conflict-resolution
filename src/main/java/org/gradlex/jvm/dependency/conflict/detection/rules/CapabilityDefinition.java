@@ -166,6 +166,10 @@ public enum CapabilityDefinition {
             "commons-io:commons-io",
             "org.apache.commons:commons-io"
     ),
+    DK_BRICS_AUTOMATON(HIGHEST_VERSION,
+            "dk.brics.automaton:automaton",
+            "dk.brics:automaton"
+    ),
     DOM4J(HIGHEST_VERSION,
             "dom4j:dom4j",
             "org.dom4j:dom4j"

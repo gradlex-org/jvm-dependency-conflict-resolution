@@ -39,6 +39,8 @@ dependencies {
     implementation("commons-beanutils:commons-beanutils:1.10.1")
     implementation("commons-io:commons-io:2.19.0")
     implementation("commons-logging:commons-logging:1.3.5")
+    implementation("dk.brics.automaton:automaton:1.11-8")
+    implementation("dk.brics:automaton:1.12-4")
     implementation("dom4j:dom4j:1.6.1")
     implementation("jakarta.activation:jakarta.activation-api:2.1.3")
     implementation("jakarta.annotation:jakarta.annotation-api:3.0.0")
