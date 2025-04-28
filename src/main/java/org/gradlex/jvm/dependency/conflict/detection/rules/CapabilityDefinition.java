@@ -17,6 +17,7 @@
 package org.gradlex.jvm.dependency.conflict.detection.rules;
 
 import org.gradlex.jvm.dependency.conflict.detection.rules.aopalliance.AopallianceRule;
+import org.gradlex.jvm.dependency.conflict.detection.rules.bouncycastle.BouncyCastleRule;
 import org.gradlex.jvm.dependency.conflict.detection.rules.guava.GuavaListenableFutureRule;
 import org.gradlex.jvm.dependency.conflict.detection.rules.jakarta.JakartaActivationApiRule;
 import org.gradlex.jvm.dependency.conflict.detection.rules.jakarta.JakartaAnnotationApiRule;
@@ -69,7 +70,7 @@ public enum CapabilityDefinition {
             "asm:asm",
             "org.ow2.asm:asm"
     ),
-    BOUNCYCASTLE_BCMAIL(HIGHEST_VERSION,
+    BOUNCYCASTLE_BCMAIL(HIGHEST_VERSION, BouncyCastleRule.class,
             "org.bouncycastle:bcmail-fips",
             "org.bouncycastle:bcmail-jdk14",
             "org.bouncycastle:bcmail-jdk15",
@@ -84,7 +85,7 @@ public enum CapabilityDefinition {
             "org.bouncycastle:bcjmail-jdk18on",
             "org.bouncycastle:bcjmail-lts8on"
     ),
-    BOUNCYCASTLE_BCPG(HIGHEST_VERSION,
+    BOUNCYCASTLE_BCPG(HIGHEST_VERSION, BouncyCastleRule.class,
             "org.bouncycastle:bcpg-fips",
             "org.bouncycastle:bcpg-jdk12",
             "org.bouncycastle:bcpg-jdk14",
@@ -96,7 +97,7 @@ public enum CapabilityDefinition {
             "org.bouncycastle:bcpg-jdk18on",
             "org.bouncycastle:bcpg-lts8on"
     ),
-    BOUNCYCASTLE_BCPKIX(HIGHEST_VERSION,
+    BOUNCYCASTLE_BCPKIX(HIGHEST_VERSION, BouncyCastleRule.class,
             "org.bouncycastle:bcpkix-fips",
             "org.bouncycastle:bcpkix-jdk14",
             "org.bouncycastle:bcpkix-jdk15on",
@@ -104,7 +105,7 @@ public enum CapabilityDefinition {
             "org.bouncycastle:bcpkix-jdk18on",
             "org.bouncycastle:bcpkix-lts8on"
     ),
-    BOUNCYCASTLE_BCPROV(HIGHEST_VERSION,
+    BOUNCYCASTLE_BCPROV(HIGHEST_VERSION, BouncyCastleRule.class,
             "org.bouncycastle:bcprov-debug-jdk14",
             "org.bouncycastle:bcprov-debug-jdk15on",
             "org.bouncycastle:bcprov-debug-jdk15to18",
@@ -131,7 +132,7 @@ public enum CapabilityDefinition {
             "org.bouncycastle:bc-fips",
             "org.bouncycastle:bc-fips-debug"
     ),
-    BOUNCYCASTLE_BCTLS(HIGHEST_VERSION,
+    BOUNCYCASTLE_BCTLS(HIGHEST_VERSION, BouncyCastleRule.class,
             "org.bouncycastle:bctls-jdk14",
             "org.bouncycastle:bctls-jdk15on",
             "org.bouncycastle:bctls-jdk15to18",
@@ -139,14 +140,14 @@ public enum CapabilityDefinition {
             "org.bouncycastle:bctls-lts8on",
             "org.bouncycastle:bctls-fips"
     ),
-    BOUNCYCASTLE_BCTSP(HIGHEST_VERSION,
+    BOUNCYCASTLE_BCTSP(HIGHEST_VERSION, BouncyCastleRule.class,
             "org.bouncycastle:bctsp-jdk14",
             "org.bouncycastle:bctsp-jdk15",
             "org.bouncycastle:bctsp-jdk15+",
             "org.bouncycastle:bctsp-jdk15on",
             "org.bouncycastle:bctsp-jdk16"
     ),
-    BOUNCYCASTLE_BCUTIL(HIGHEST_VERSION,
+    BOUNCYCASTLE_BCUTIL(HIGHEST_VERSION, BouncyCastleRule.class,
             "org.bouncycastle:bcutil-jdk14",
             "org.bouncycastle:bcutil-jdk15on",
             "org.bouncycastle:bcutil-jdk15to18",
