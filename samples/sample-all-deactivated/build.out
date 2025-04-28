@@ -9,6 +9,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- cglib:cglib-nodep:3.3.0 FAILED
 +--- cglib:cglib:3.3.0 FAILED
 +--- ch.qos.logback:logback-classic:1.5.18 FAILED
++--- com.github.librepdf:openpdf:2.0.3 FAILED
 +--- com.github.spotbugs:spotbugs-annotations:4.9.3 FAILED
 +--- com.github.stephenc.jcip:jcip-annotations:1.0-1 FAILED
 +--- com.google.code.findbugs:annotations:3.0.1 FAILED
@@ -18,6 +19,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- com.google.guava:listenablefuture:1.0 FAILED
 +--- com.intellij:annotations:12.0 FAILED
 +--- com.jwebmp:javax.inject:1.1 FAILED
++--- com.lowagie:itext:4.2.2 FAILED
 +--- com.mchange:c3p0:0.11.0 FAILED
 +--- com.mchange:mchange-commons-java:0.3.2 FAILED
 +--- com.miglayout:miglayout-swing:11.4.2 FAILED
@@ -41,6 +43,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- dk.brics.automaton:automaton:1.11-8 FAILED
 +--- dk.brics:automaton:1.12-4 FAILED
 +--- dom4j:dom4j:1.6.1 FAILED
++--- itext:itext:1.3.1 FAILED
 +--- jakarta.activation:jakarta.activation-api:2.1.3 FAILED
 +--- jakarta.annotation:jakarta.annotation-api:3.0.0 FAILED
 +--- jakarta.ejb:jakarta.ejb-api:4.0.1

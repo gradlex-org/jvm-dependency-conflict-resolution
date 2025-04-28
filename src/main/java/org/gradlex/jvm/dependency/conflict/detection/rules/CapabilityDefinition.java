@@ -227,6 +227,11 @@ public enum CapabilityDefinition {
             "org.jetbrains:annotations",
             "com.intellij:annotations"
     ),
+    ITEXT(HIGHEST_VERSION,
+            "itext:itext",
+            "com.lowagie:itext",
+            "com.github.librepdf:openpdf"
+    ),
     JAVA_ASSIST(HIGHEST_VERSION,
             "javassist:javassist",
             "org.javassist:javassist",
