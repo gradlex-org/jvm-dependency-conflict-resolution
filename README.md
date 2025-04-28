@@ -36,6 +36,11 @@ These plugins join, unify and extend functionalities that were previously part o
 - https://plugins.gradle.org/plugin/de.jjohannes.java-ecosystem-capabilities
 - https://plugins.gradle.org/plugin/de.jjohannes.missing-metadata-guava
 
+If you are migrating from one of these plugins, you can find some information in the following issue.
+For further questions, please ask in a comment on the issue.
+
+[**Migration Guide Issue**](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/107)
+
 **NOTE on Guava**:
 Some of these plugins are used to patch older versions of Guava.
 This functionality is discontinued.
