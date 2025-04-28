@@ -13,6 +13,7 @@ import static org.gradlex.jvm.dependency.conflict.detection.rules.CapabilityDefi
  */
 class JarOverlapTest extends Specification {
     private static final String SAMPLE_ALL_BUILD_FILE = "samples/sample-all/build.gradle.kts"
+    private static final String SAMPLE_ALL_DEACTIVATED_BUILD_FILE = "samples/sample-all-deactivated/build.gradle.kts"
 
     // Some Jars do not have overlapping classes, but contain conflicting implementations of the same service.
     static def expectedToOverlap = values() - [
@@ -26,10 +27,11 @@ class JarOverlapTest extends Specification {
             SLF4J_VS_LOG4J2_FOR_JUL // register conflicting handler implementations
     ]
 
-    def latestVersions = []
+    def allSample = parse(SAMPLE_ALL_BUILD_FILE)
+    def allDeactivatedSample = parse(SAMPLE_ALL_DEACTIVATED_BUILD_FILE)
 
-    void setup() {
-        latestVersions = new File(SAMPLE_ALL_BUILD_FILE)
+    private static List<String> parse(String buildFilr) {
+        new File(buildFilr)
                 .readLines()
                 .findAll { it.contains("implementation(") }
                 .collect { it.trim() }
@@ -52,17 +54,34 @@ class JarOverlapTest extends Specification {
             it.metadataSources.ignoreGradleMetadataRedirection()
         }
 
+        def missingInAll = []
+        def missingInAllDeactivated = []
+
         def modules = definition.modules.collect { module ->
             def specific = specificVersions.find { it.startsWith(module + ":") }
+            def moduleInAllSample = allSample.find { it.startsWith(module + ":") }
+            def moduleInAllDeactivatedSample = allDeactivatedSample.find { it.startsWith(module + ":") }
+            if (!moduleInAllSample) {
+                missingInAll.add(module)
+            }
+            if (!moduleInAllDeactivatedSample) {
+                missingInAllDeactivated.add(module)
+            }
+
             if (specific) {
                 dependencies.create(specific)
+            } else if (moduleInAllSample !=null ) {
+                dependencies.create(moduleInAllSample)
             } else {
-                def moduleForSample = latestVersions.find { it.startsWith(module + ":") }
-                if (!moduleForSample) {
-                    throw new RuntimeException("Missing entry for " + module + " in " + SAMPLE_ALL_BUILD_FILE)
-                }
-                dependencies.create(moduleForSample)
+                null
             }
+        }
+
+        if (!missingInAll.isEmpty() || !missingInAllDeactivated.isEmpty()) {
+            throw new RuntimeException(
+                    "Missing in $SAMPLE_ALL_BUILD_FILE:\n" + missingInAll.collect { "implementation(\"$it:+\")\n" }.join("") +
+                    "Missing in $SAMPLE_ALL_DEACTIVATED_BUILD_FILE:\n" + missingInAllDeactivated.collect { "implementation(\"$it:+\")\n" }.join("")
+            )
         }
 
         def conf = project.getConfigurations().detachedConfiguration(*modules)

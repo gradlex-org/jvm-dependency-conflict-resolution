@@ -1,7 +1,7 @@
 plugins {
     id("groovy")
     id("gradlexbuild.lifecycle")
-    id("gradlexbuild.jvm-dependency-conflict-detection-documentation")
+    id("gradlexbuild.asciidoctor-conventions")
     id("org.gradlex.internal.plugin-publish-conventions") version "0.6"
 }
 
