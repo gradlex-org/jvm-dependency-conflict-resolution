@@ -13,7 +13,7 @@ Note that the `jvm-dependency-conflict-resolution` dependency contains both the 
 [source,groovy]
 ----
 dependencies {
-    implementation("org.gradlex:jvm-dependency-conflict-resolution:2.2")
+    implementation("org.gradlex:jvm-dependency-conflict-resolution:2.3")
 }
 ----
 

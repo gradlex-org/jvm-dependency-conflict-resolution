@@ -7,7 +7,7 @@ Add this to the build file of your convention plugin's build (e.g. `build-logic/
 [source,groovy]
 ----
 dependencies {
-    implementation("org.gradlex:jvm-dependency-conflict-resolution:2.2")
+    implementation("org.gradlex:jvm-dependency-conflict-resolution:2.3")
 }
 ----
 

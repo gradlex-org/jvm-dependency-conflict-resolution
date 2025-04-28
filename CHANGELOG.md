@@ -1,5 +1,15 @@
 # JVM Dependency Conflict Resolution Gradle plugin - Changelog
 
+## Version 2.3
+* [New Rule] [#66](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/66) itext:itext / com.lowagie:itext (Thanks [Björn Kautler](https://github.com/Vampire) for reporting)
+* [New Rule] [#222](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/222) dk.brics.automaton:automaton / dk.brics:automaton (Thanks Ketan Padegaonkar (https://github.com/ketan) for reporting)
+* [New Rule] [#203](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/203) org.apache.geronimo.javamail:geronimo-javamail_*_provider
+* [Adjusted Rule] [#188](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/188) Bouncy Castle rule supports LTS versions (Thanks [Björn Kautler](https://github.com/Vampire) for reporting)
+* [Adjusted Rule] [#174](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/174) jakarta.xml.ws-api and jakarta.xml.ws-api merger is now considered (Thanks [KO](https://github.com/ko-at-work) for reporting)
+* [Adjusted Rule] [#201](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/201) Add woodstox:wstx-lgpl to WOODSTOX
+* [Adjusted Rule] [#202](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/202) Remove org.apache.tomcat:tomcat-websocket from JAVAX_WEBSOCKET_API
+* [Fix] [#196](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/196) No longer call eager methods on configurations container (Thanks [Ian Brandt](https://github.com/ianbrandt) for reporting)
+
 ## Version 2.2
 * [New Rule] [#174](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/174) org.elasticsearch:jna / net.java.dev.jna:jna (Thanks [Safeuq Mohamed](https://github.com/safeuq)!)
 
