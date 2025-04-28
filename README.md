@@ -27,7 +27,55 @@ See the [documentation](https://gradlex.org/jvm-dependency-conflict-resolution/)
 Note: There are rules in this plugin (in particular for _Guava_) which work _better_ with Gradle `7+`.
 This is because Gradle 7 added support for the `org.gradle.jvm.environment` attribute that allows Gradle to better distinguish between _standard-jvm_ and _android_ projects.
 
-### Notes on the Plugins history
+## Contributing new capability rules
+
+This plugin collects information for libraries available on Maven Central to allow capability conflict detection.
+If you discover that information is missing, we appreciate a contribution to the plugin.
+An indication that such information is missing, is that you have duplicated classes on your classpath although this plugin is active.
+
+### (1) Use patch DSL to add rule in your build
+
+You can use the [patch DSL](https://gradlex.org/jvm-dependency-conflict-resolution/#patch-dsl-block) to add the missing rule without modifying the plugin. Do this first and verify that it behaves as expected:
+
+```kotlin
+// Assuming 'org.example:name' and 'org.example.new:new-name' are in conflict
+jvmDependencyConflicts {
+  patch {
+    module("org.example:name") { addCapability("org.mydomain:name") }
+    module("org.example.new:new-name") { addCapability("org.mydomain:name") }
+    conflictResolution {
+      selectHighestVersion("com.mydomain:name")
+    }
+}
+```
+
+### (2) Contribute rule
+
+Once you confirmed that the rule is working as expected, you can open a PR in this repository to contribute your findings back to the plugin.
+This is done as follows:
+
+1. Add a new entry to the [CapabilityDefinition](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/blob/main/src/main/java/org/gradlex/jvm/dependency/conflict/detection/rules/CapabilityDefinition.java) enum.
+   You can use the [ASM](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/blob/main/src/main/java/org/gradlex/jvm/dependency/conflict/detection/rules/CapabilityDefinition.java#L69-L72) entry as orientation.
+2. Run the `JarOverlapTest`.
+   The test will tell you that you need to add dependencies to `samples/sample-all/build.gradle.kts` and `samples/sample-all-deactivated/build.gradle.kts`.
+   Lookup the latest versions of the dependencies and add them to the files.
+   This is so that the plugin's test suite can automatically verify that the new entry is valid in the sense that the Jars overlap.
+   Make sue `JarOverlapTest` passes after you made the changes.
+3. Run the `SamplesTest`. 
+   It will tell you that `samples/sample-all/build.out` and `samples/sample-all-deactivated/build.out` do not have the expected content.
+   Update these files accordingly (you may copy the new expected output from the failed test's output).
+   This is the output of Gradle's `dependencies` task. Check that the changes are what you would expect. 
+   Make sue `SamplesTest` passes after you made the changes.
+
+Create a PR with the changes to the files:
+- [CapabilityDefinition.java](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/blob/main/src/main/java/org/gradlex/jvm/dependency/conflict/detection/rules/CapabilityDefinition.java)
+- [samples/sample-all/build.gradle.kts](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/blob/main/samples/sample-all/build.gradle.kts)
+- [samples/sample-all/build.out](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/blob/main/samples/sample-all/build.out)
+- [samples/sample-all-deactivated/build.gradle.kts](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/blob/main/samples/sample-all-deactivated/build.gradle.kts)
+- [samples/sample-all-deactivated/build.out](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/blob/main/samples/sample-all-deactivated/build.out)
+
+
+## Notes on the Plugins history
 
 These plugins join, unify and extend functionalities that were previously part of the following discontinued plugins:
 
