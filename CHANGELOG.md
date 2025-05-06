@@ -8,6 +8,7 @@
 * [Adjusted Rule] [#174](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/174) jakarta.xml.ws-api and jakarta.xml.ws-api merger is now considered (Thanks [KO](https://github.com/ko-at-work) for reporting)
 * [Adjusted Rule] [#201](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/201) Add woodstox:wstx-lgpl to WOODSTOX
 * [Adjusted Rule] [#202](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/202) Remove org.apache.tomcat:tomcat-websocket from JAVAX_WEBSOCKET_API
+* [New] [#229](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/229) Patching: addTargetPlatformVariant optionally accepts a feature name
 * [Fix] [#196](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/196) No longer call eager methods on configurations container (Thanks [Ian Brandt](https://github.com/ianbrandt) for reporting)
 
 ## Version 2.2

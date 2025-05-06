@@ -38,6 +38,7 @@ import static org.gradle.nativeplatform.OperatingSystemFamily.OPERATING_SYSTEM_A
 @CacheableRule
 public abstract class AddTargetPlatformVariantsMetadataRule implements ComponentMetadataRule {
 
+    private final String feature;
     private final String classifier;
     private final String operatingSystem;
     private final String architecture;
@@ -46,7 +47,8 @@ public abstract class AddTargetPlatformVariantsMetadataRule implements Component
     abstract protected ObjectFactory getObjects();
 
     @Inject
-    public AddTargetPlatformVariantsMetadataRule(String classifier, String operatingSystem, String architecture) {
+    public AddTargetPlatformVariantsMetadataRule(String feature, String classifier, String operatingSystem, String architecture) {
+        this.feature = feature;
         this.classifier = classifier;
         this.operatingSystem = operatingSystem;
         this.architecture = architecture;
@@ -56,6 +58,9 @@ public abstract class AddTargetPlatformVariantsMetadataRule implements Component
     public void execute(ComponentMetadataContext context) {
         ComponentMetadataDetails details = context.getDetails();
         if (classifier.isEmpty()) {
+            if (!feature.isEmpty()) {
+                throw new IllegalStateException("if classifier is empty, feature must be empty too.");
+            }
             details.withVariant("compile", this::configureAttributes);
             details.withVariant("runtime", this::configureAttributes);
         } else {
@@ -65,10 +70,17 @@ public abstract class AddTargetPlatformVariantsMetadataRule implements Component
     }
 
     private void addTargetPlatformVariant(ComponentMetadataDetails details, String nameSuffix, String baseVariant) {
+        String group = details.getId().getGroup();
         String name = details.getId().getName();
         String version = details.getId().getVersion();
 
         details.addVariant(classifier + nameSuffix, baseVariant, variant -> {
+            if (!feature.isEmpty()) {
+                variant.withCapabilities(c -> {
+                    c.removeCapability(group, name);
+                    c.addCapability(group, name + "-" + feature, version);
+                });
+            }
             configureAttributes(variant);
             variant.withFiles(files -> {
                 files.removeAllFiles();
