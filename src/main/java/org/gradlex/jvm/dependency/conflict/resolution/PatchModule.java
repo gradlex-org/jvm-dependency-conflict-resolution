@@ -145,7 +145,17 @@ public abstract class PatchModule {
      * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#adding_variants_for_native_jars">component_metadata_rules.html#adding_variants_for_native_jars</a>
      */
     public void addTargetPlatformVariant(String classifier, String operatingSystem, String architecture) {
-        getDependencies().getComponents().withModule(module, AddTargetPlatformVariantsMetadataRule.class, r -> r.params(classifier, operatingSystem, architecture));
+        getDependencies().getComponents().withModule(module, AddTargetPlatformVariantsMetadataRule.class, r -> r.params("", classifier, operatingSystem, architecture));
+    }
+
+    /**
+     * Make the Jar with the give 'classifier' known as additional variant with the
+     * OperatingSystemFamily and MachineArchitecture attributes set.
+     * A 'feature' (aka Capability) can optionally be defined to require the variant to be addressed by it.
+     * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#adding_variants_for_native_jars">component_metadata_rules.html#adding_variants_for_native_jars</a>
+     */
+    public void addTargetPlatformVariant(String feature, String classifier, String operatingSystem, String architecture) {
+        getDependencies().getComponents().withModule(module, AddTargetPlatformVariantsMetadataRule.class, r -> r.params(feature, classifier, operatingSystem, architecture));
     }
 
     /**
