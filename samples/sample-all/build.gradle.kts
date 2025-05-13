@@ -134,7 +134,7 @@ dependencies {
     implementation("org.apache.tomcat.embed:tomcat-embed-core:11.0.6")
     implementation("org.apache.tomcat.embed:tomcat-embed-websocket:11.0.6")
     implementation("org.apache.tomcat:servlet-api:6.0.53")
-    implementation("org.apache.tomcat:tomcat-annotations-api:11.0.6")
+    implementation("org.apache.tomcat:tomcat-annotations-api:11.0.7")
     implementation("org.apache.tomcat:tomcat-servlet-api:11.0.6")
     implementation("org.apache.tomcat:tomcat-websocket-api:11.0.6")
     implementation("org.apache.tomcat:tomcat-websocket-client-api:11.0.6")
