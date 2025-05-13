@@ -2,7 +2,7 @@
 
 ## Version 2.3
 * [New Rule] [#66](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/66) itext:itext / com.lowagie:itext (Thanks [Björn Kautler](https://github.com/Vampire) for reporting)
-* [New Rule] [#222](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/222) dk.brics.automaton:automaton / dk.brics:automaton (Thanks Ketan Padegaonkar (https://github.com/ketan) for reporting)
+* [New Rule] [#222](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/222) dk.brics.automaton:automaton / dk.brics:automaton (Thanks [Ketan Padegaonkar](https://github.com/ketan) for reporting)
 * [New Rule] [#203](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/203) org.apache.geronimo.javamail:geronimo-javamail_*_provider
 * [Adjusted Rule] [#188](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/188) Bouncy Castle rule supports LTS versions (Thanks [Björn Kautler](https://github.com/Vampire) for reporting)
 * [Adjusted Rule] [#174](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/174) jakarta.xml.ws-api and jakarta.xml.ws-api merger is now considered (Thanks [KO](https://github.com/ko-at-work) for reporting)
