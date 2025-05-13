@@ -137,7 +137,7 @@ dependencies {
     implementation("org.apache.tomcat:tomcat-annotations-api:11.0.6")
     implementation("org.apache.tomcat:tomcat-servlet-api:11.0.6")
     implementation("org.apache.tomcat:tomcat-websocket-api:11.0.6")
-    implementation("org.apache.tomcat:tomcat-websocket-client-api:11.0.6")
+    implementation("org.apache.tomcat:tomcat-websocket-client-api:11.0.7")
     implementation("org.apache.velocity:velocity-engine-core:2.4.1")
     implementation("org.apache.velocity:velocity:1.7")
     implementation("org.bouncycastle:bc-fips-debug:2.1.0")
