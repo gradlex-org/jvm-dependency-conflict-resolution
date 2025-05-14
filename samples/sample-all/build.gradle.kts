@@ -131,7 +131,7 @@ dependencies {
     implementation("org.apache.logging.log4j:log4j-slf4j2-impl:2.24.3")
     implementation("org.apache.logging.log4j:log4j-to-slf4j:2.24.3")
     implementation("org.apache.solr:solr-commons-csv:3.5.0")
-    implementation("org.apache.tomcat.embed:tomcat-embed-core:11.0.6")
+    implementation("org.apache.tomcat.embed:tomcat-embed-core:11.0.7")
     implementation("org.apache.tomcat.embed:tomcat-embed-websocket:11.0.6")
     implementation("org.apache.tomcat:servlet-api:6.0.53")
     implementation("org.apache.tomcat:tomcat-annotations-api:11.0.6")
