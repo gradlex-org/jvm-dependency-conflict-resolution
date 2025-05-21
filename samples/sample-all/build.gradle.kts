@@ -188,7 +188,7 @@ dependencies {
     implementation("org.bouncycastle:bcprov-jdk12:130")
     implementation("org.bouncycastle:bcprov-jdk14:1.80")
     implementation("org.bouncycastle:bcprov-jdk15+:1.46")
-    implementation("org.bouncycastle:bcprov-jdk15:1.46")
+    implementation("org.bouncycastle:bcprov-jdk15:138")
     implementation("org.bouncycastle:bcprov-jdk15on:1.70")
     implementation("org.bouncycastle:bcprov-jdk15to18:1.80")
     implementation("org.bouncycastle:bcprov-jdk16:1.46")
