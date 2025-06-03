@@ -245,7 +245,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.1_spec:2.0.2.Final FAILED
 +--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_3.0_spec:1.0.1.Final FAILED
 +--- org.jetbrains:annotations:26.0.2 FAILED
-+--- org.json:json:20250107 FAILED
++--- org.json:json:20250517 FAILED
 +--- org.jzy3d:jGL:2.5 FAILED
 +--- org.jzy3d:jzy3d-emul-gl-awt:2.2.1 FAILED
 +--- org.jzy3d:jzy3d-emul-gl:2.0.0 FAILED
