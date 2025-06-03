@@ -6,5 +6,11 @@
   "ignorePaths": [
     "samples/sample-alignment/**",
     "samples/sample-javax-and-jakarta/**"
+  ],
+  "packageRules": [
+    {
+      "groupName": "Tomcat",
+      "matchPackageNames": ["org.apache.tomcat**"]
+    }
   ]
 }
