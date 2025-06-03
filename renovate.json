@@ -11,6 +11,10 @@
     {
       "groupName": "Tomcat",
       "matchPackageNames": ["org.apache.tomcat**"]
+    },
+    {
+      "groupName": "Bouncy Castle",
+      "matchPackageNames": ["org.bouncycastle**"]
     }
   ]
 }
