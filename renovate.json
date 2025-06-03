@@ -15,6 +15,24 @@
     {
       "groupName": "Bouncy Castle",
       "matchPackageNames": ["org.bouncycastle**"]
+    },
+    {
+      "description": ["Do not suggest replacements"],
+      "matchPackageNames": [
+        "com.lowagie:itext",
+        "itext:itext",
+        "junit:junit-dep",
+        "mysql:mysql-connector-java",
+        "org.apache.commons:commons-io",
+        "org.bouncycastle:bcprov-ext-jdk14",
+        "org.bouncycastle:bcprov-ext-jdk15to18",
+        "org.bouncycastle:bcprov-ext-jdk18on",
+        "org.codehaus.woodstox:wstx-asl",
+        "org.hibernate.javax.persistence:hibernate-jpa-2.2-api",
+        "org.slf4j:slf4j-log4j12",
+        "servletapi:servletapi"
+      ],
+      "enabled": false
     }
   ]
 }
