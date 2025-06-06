@@ -31,19 +31,17 @@ import java.util.List;
  * Might be removed in future versions.
  *
  * @deprecated use patch DSL:
- * <p>
- *     <pre>
- *         jvmDependencyConflicts {
- *           patch {
- *             module("com.google.guava:guava") {
- *               reduceToCompileOnlyApiDependency("com.google.errorprone:error_prone_annotations")
- *               reduceToCompileOnlyApiDependency("com.google.j2objc:j2objc-annotations")
- *               reduceToCompileOnlyApiDependency("org.jspecify:jspecify")
- *             }
- *           }
+ * <pre>
+ *     jvmDependencyConflicts {
+ *       patch {
+ *         module("com.google.guava:guava") {
+ *           reduceToCompileOnlyApiDependency("com.google.errorprone:error_prone_annotations")
+ *           reduceToCompileOnlyApiDependency("com.google.j2objc:j2objc-annotations")
+ *           reduceToCompileOnlyApiDependency("org.jspecify:jspecify")
  *         }
- *     </pre>
- * </p>
+ *       }
+ *     }
+ * </pre>
  */
 @CacheableRule
 @Deprecated
