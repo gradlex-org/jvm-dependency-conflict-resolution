@@ -38,7 +38,7 @@ dependencies {
     implementation("com.zaxxer:HikariCP-java7:2.4.13")
     implementation("com.zaxxer:HikariCP:6.3.0")
     implementation("commons-beanutils:commons-beanutils-core:1.8.3")
-    implementation("commons-beanutils:commons-beanutils:1.10.1")
+    implementation("commons-beanutils:commons-beanutils:1.11.0")
     implementation("commons-io:commons-io:2.19.0")
     implementation("commons-logging:commons-logging:1.3.5")
     implementation("dk.brics.automaton:automaton:1.11-8")
