@@ -36,7 +36,7 @@ public abstract class JakartaJwsApiRule extends CapabilityDefinitionRule {
 
     @Override
     protected boolean shouldApply(ModuleVersionIdentifier id) {
-        if (id.getName().equals("jakarta.xml.ws:jakarta.xml.ws-api")) {
+        if (id.getName().equals("jakarta.xml.ws-api")) {
             return VersionNumber.parse(getVersion(id)).compareTo(VersionNumber.parse(JWS_MERGER_VERSION)) >= 0;
         }
         return true;
