@@ -29,8 +29,24 @@ import java.util.List;
 /**
  * Kept for individual usage to get the patch functionality for older Guava versions.
  * Might be removed in future versions.
+ *
+ * @deprecated use patch DSL:
+ * <p>
+ *     <pre>
+ *         jvmDependencyConflicts {
+ *           patch {
+ *             module("com.google.guava:guava") {
+ *               reduceToCompileOnlyApiDependency("com.google.errorprone:error_prone_annotations")
+ *               reduceToCompileOnlyApiDependency("com.google.j2objc:j2objc-annotations")
+ *               reduceToCompileOnlyApiDependency("org.jspecify:jspecify")
+ *             }
+ *           }
+ *         }
+ *     </pre>
+ * </p>
  */
 @CacheableRule
+@Deprecated
 abstract public class GuavaComponentRule implements ComponentMetadataRule {
 
     private final static Attribute<String> TARGET_JVM_ENVIRONMENT_ATTRIBUTE =

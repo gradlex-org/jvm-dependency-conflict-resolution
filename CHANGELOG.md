@@ -2,6 +2,7 @@
 
 ## Version 2.4
 * [Fix] [#238](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/238) Patch DSL now works for dependencies with non-standard variant names (e.g. com.google.guava).
+* [Deprecation] [#251](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/251) Deprecate GuavaComponentRule in favor of more general patch DSL.
 
 ## Version 2.3
 * [New Rule] [#66](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/66) itext:itext / com.lowagie:itext (Thanks [Björn Kautler](https://github.com/Vampire) for reporting)
