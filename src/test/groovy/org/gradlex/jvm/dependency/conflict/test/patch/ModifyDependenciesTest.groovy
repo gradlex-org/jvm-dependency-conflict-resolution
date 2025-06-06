@@ -4,15 +4,18 @@ import org.gradlex.jvm.dependency.conflict.test.fixture.GradleBuild
 
 class ModifyDependenciesTest extends AbstractPatchTest {
 
-    def "can remove dependencies"() {
-        given:
+    def setup() {
         if (GradleBuild.GRADLE6_TEST) {
             buildFile << """
-                configurations.compileClasspath {
+                configurations.configureEach {
                     attributes.attribute(Attribute.of("org.gradle.jvm.environment", String::class.java), "standard-jvm")
                 }
             """
         }
+    }
+
+    def "can remove dependencies"() {
+        given:
         buildFile << """
             jvmDependencyConflicts {
                 patch {
@@ -67,7 +70,7 @@ runtimeClasspath - Runtime classpath of source set 'main'.
 '''
     }
 
-    def "can reduce dependency scope to compile only"() {
+    def "can reduce dependency scope to compile only for standard variants"() {
         given:
         buildFile << """
             jvmDependencyConflicts {
@@ -93,6 +96,41 @@ compileClasspath - Compile classpath for source set 'main'.
 runtimeClasspath - Runtime classpath of source set 'main'.
 \\--- org.apache.commons:commons-text:1.11.0
 
+'''
+    }
+
+    def "can reduce dependency scope to compile only for non-standard variants"() {
+        given:
+        buildFile << """
+            jvmDependencyConflicts {
+                patch {
+                    module("com.google.guava:guava") {
+                       reduceToCompileOnlyApiDependency("com.google.errorprone:error_prone_annotations")
+                       reduceToCompileOnlyApiDependency("org.jspecify:jspecify")
+                       reduceToCompileOnlyApiDependency("com.google.j2objc:j2objc-annotations")
+                    }
+                }
+            }
+            dependencies {
+                implementation("com.google.guava:guava:33.4.8-jre")
+            }
+        """
+
+        expect: 'All dependencies are present on the compile classpath'
+        dependenciesCompile().output.contains '''
+compileClasspath - Compile classpath for source set 'main'.
+\\--- com.google.guava:guava:33.4.8-jre
+     +--- com.google.guava:failureaccess:1.0.3
+     +--- org.jspecify:jspecify:1.0.0
+     +--- com.google.errorprone:error_prone_annotations:2.36.0
+     \\--- com.google.j2objc:j2objc-annotations:3.0.0
+'''
+
+        and: 'Annotation libraries are not present on the runtime classpath'
+        dependenciesRuntime().output.contains '''
+runtimeClasspath - Runtime classpath of source set 'main'.
+\\--- com.google.guava:guava:33.4.8-jre
+     \\--- com.google.guava:failureaccess:1.0.3
 '''
     }
 
