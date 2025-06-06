@@ -41,7 +41,7 @@ compileClasspath - Compile classpath for source set 'main'.
 '''
     }
 
-    def "can reduce dependency scope to runtime only"() {
+    def "can reduce dependency scope to runtime only for pom-only metadata attributes"() {
         given:
         buildFile << """
             jvmDependencyConflicts {
@@ -70,7 +70,42 @@ runtimeClasspath - Runtime classpath of source set 'main'.
 '''
     }
 
-    def "can reduce dependency scope to compile only for standard variants"() {
+    def "can remove runtime only dependency for Gradle metadata attributes"() {
+        given:
+        buildFile << """
+            jvmDependencyConflicts {
+                patch {
+                    module("com.google.guava:guava") {
+                        reduceToRuntimeOnlyDependency("com.google.errorprone:error_prone_annotations")
+                        reduceToRuntimeOnlyDependency("org.jspecify:jspecify")
+                        reduceToRuntimeOnlyDependency("com.google.j2objc:j2objc-annotations")
+                    }
+                }
+            }
+            dependencies {
+                implementation("com.google.guava:guava:33.4.8-jre")
+            }
+        """
+
+        expect: 'Dependencies are removed from compile classpath'
+        dependenciesCompile().output.contains '''
+compileClasspath - Compile classpath for source set 'main'.
+\\--- com.google.guava:guava:33.4.8-jre
+     \\--- com.google.guava:failureaccess:1.0.3
+'''
+
+        and: 'Annotation libraries are present on the runtime classpath'
+        dependenciesRuntime().output.contains '''
+runtimeClasspath - Runtime classpath of source set 'main'.
+\\--- com.google.guava:guava:33.4.8-jre
+     +--- com.google.guava:failureaccess:1.0.3
+     +--- org.jspecify:jspecify:1.0.0
+     +--- com.google.errorprone:error_prone_annotations:2.36.0
+     \\--- com.google.j2objc:j2objc-annotations:3.0.0
+'''
+    }
+
+    def "can reduce dependency scope to compile only for pom-only metadata variants"() {
         given:
         buildFile << """
             jvmDependencyConflicts {
@@ -99,7 +134,7 @@ runtimeClasspath - Runtime classpath of source set 'main'.
 '''
     }
 
-    def "can reduce dependency scope to compile only for non-standard variants"() {
+    def "can reduce dependency scope to compile only for Gradle metadata variants"() {
         given:
         buildFile << """
             jvmDependencyConflicts {
