@@ -5,6 +5,7 @@
 tasks.register("quickCheck") {
     group = LifecycleBasePlugin.VERIFICATION_GROUP
     description = "Runs the default test task as well as code verifications such as Checkstyle"
+    dependsOn(tasks.named("assemble"))
     dependsOn(tasks.named("test"))
     dependsOn(tasks.named("checkstyleMain"))
     dependsOn(tasks.named("checkstyleTest"))
