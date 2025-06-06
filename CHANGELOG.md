@@ -1,5 +1,10 @@
 # JVM Dependency Conflict Resolution Gradle plugin - Changelog
 
+## Version 2.4
+* [Fix] [#238](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/238) Patch DSL now works for dependencies with non-standard variant names (e.g. com.google.guava).
+* [Fix] [#243](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/243) jakarta.xml.ws:jakarta.xml.ws-api no longer clashes with jakarta.jws:jakarta.jws-api for versions <= 4.0
+* [Deprecation] [#251](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/251) Deprecate GuavaComponentRule in favor of more general patch DSL.
+
 ## Version 2.3
 * [New Rule] [#66](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/66) itext:itext / com.lowagie:itext (Thanks [Björn Kautler](https://github.com/Vampire) for reporting)
 * [New Rule] [#222](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/222) dk.brics.automaton:automaton / dk.brics:automaton (Thanks [Ketan Padegaonkar](https://github.com/ketan) for reporting)
