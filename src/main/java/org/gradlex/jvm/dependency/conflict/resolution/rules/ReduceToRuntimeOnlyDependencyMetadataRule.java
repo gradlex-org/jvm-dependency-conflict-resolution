@@ -19,9 +19,13 @@ package org.gradlex.jvm.dependency.conflict.resolution.rules;
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataRule;
+import org.gradle.api.attributes.Category;
+import org.gradle.api.attributes.Usage;
 
 import javax.inject.Inject;
 import java.util.stream.Collectors;
+
+import static org.gradlex.jvm.dependency.conflict.resolution.rules.VariantSelection.allVariantsMatching;
 
 /**
  * See:
@@ -40,7 +44,8 @@ public abstract class ReduceToRuntimeOnlyDependencyMetadataRule implements Compo
 
     @Override
     public void execute(ComponentMetadataContext context) {
-        context.getDetails().withVariant("compile", v -> v.withDependencies(d -> d.removeAll(d.stream().filter(it -> dependency.equals(it.getModule().toString())).collect(Collectors.toList())))); // .pom
-        context.getDetails().withVariant("apiElements", v -> v.withDependencies(d -> d.removeAll(d.stream().filter(it -> dependency.equals(it.getModule().toString())).collect(Collectors.toList())))); // .module
+        allVariantsMatching(context,
+                id -> id.matches(Usage.USAGE_ATTRIBUTE, Usage.JAVA_API) && id.matches(Category.CATEGORY_ATTRIBUTE, Category.LIBRARY),
+                v -> v.withDependencies(d -> d.removeAll(d.stream().filter(it -> dependency.equals(it.getModule().toString())).collect(Collectors.toList())))); // .module
     }
 }
