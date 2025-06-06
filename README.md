@@ -100,18 +100,11 @@ If some of the transitive dependencies are not wanted in your case, you can fine
 jvmDependencyConflicts {
     patch {
         module("com.google.guava:guava") {
-            removeDependency("com.google.code.findbugs:jsr305")
             reduceToCompileOnlyApiDependency("com.google.errorprone:error_prone_annotations")
+            reduceToCompileOnlyApiDependency("com.google.j2objc:j2objc-annotations")
+            reduceToCompileOnlyApiDependency("org.jspecify:jspecify")
         }
     }
-}
-```
-
-If you need the previous behavior for older Guava versions, you can explicitly apply the `GuavaComponentRule`.
-
-```kotlin
-dependencies.components {
-    withModule<GuavaComponentRule>("com.google.guava:guava")
 }
 ```
 

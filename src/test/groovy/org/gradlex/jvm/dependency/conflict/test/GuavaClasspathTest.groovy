@@ -121,12 +121,8 @@ class GuavaClasspathTest extends Specification {
                 result.add([it[0], it[1], it[2], 'standard-jvm', 'runtimeClasspath'])
             }
         }
-        if (System.getProperty("gradleVersionUnderTest") == "7.6.4") {
-            // only do all permutations for one Gradle version
-            return result
-        }
-        // reduced amount of permutations
-        return result.subList(0, 80)
+        // The rule we are testing is Deprecated, until we remove it just test one permutation
+        return result.subList(0, 4)
     }
 
     @Unroll
