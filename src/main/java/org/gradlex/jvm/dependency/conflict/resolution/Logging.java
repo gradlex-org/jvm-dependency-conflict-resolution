@@ -395,6 +395,8 @@ public abstract class Logging {
         selectJCLImplementation(LoggingModuleIdentifiers.LOG4J_JCL.moduleId);
         selectLog4J12Implementation(LoggingModuleIdentifiers.LOG4J12API.moduleId);
 
+        getConfigurations().all(new Log4J2EnforcementSubstitutionsUsing());
+
     }
 
     /**
