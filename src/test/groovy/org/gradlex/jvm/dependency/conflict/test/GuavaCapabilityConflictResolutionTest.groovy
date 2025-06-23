@@ -66,7 +66,7 @@ class GuavaCapabilityConflictResolutionTest extends Specification {
         buildFile << """
             plugins {
                 id("org.gradlex.jvm-dependency-conflict-resolution")
-                id("com.android.library") version "7.4.0"
+                id("com.android.library") version "8.10.1"
             }
             
             repositories {
@@ -75,6 +75,7 @@ class GuavaCapabilityConflictResolutionTest extends Specification {
             }
 
             android {
+                namespace = "com.example.myapp"
                 compileSdk = 30
             }
             
