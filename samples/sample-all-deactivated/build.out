@@ -9,7 +9,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- cglib:cglib-nodep:3.3.0 FAILED
 +--- cglib:cglib:3.3.0 FAILED
 +--- ch.qos.logback:logback-classic:1.5.18 FAILED
-+--- com.github.librepdf:openpdf:2.0.5 FAILED
++--- com.github.librepdf:openpdf:2.2.2 FAILED
 +--- com.github.spotbugs:spotbugs-annotations:4.9.3 FAILED
 +--- com.github.stephenc.jcip:jcip-annotations:1.0-1 FAILED
 +--- com.google.code.findbugs:annotations:3.0.1 FAILED
@@ -136,13 +136,13 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.apache.logging.log4j:log4j-slf4j2-impl:2.24.3 FAILED
 +--- org.apache.logging.log4j:log4j-to-slf4j:2.24.3 FAILED
 +--- org.apache.solr:solr-commons-csv:3.5.0 FAILED
-+--- org.apache.tomcat.embed:tomcat-embed-core:11.0.7 FAILED
-+--- org.apache.tomcat.embed:tomcat-embed-websocket:11.0.7 FAILED
++--- org.apache.tomcat.embed:tomcat-embed-core:11.0.8 FAILED
++--- org.apache.tomcat.embed:tomcat-embed-websocket:11.0.8 FAILED
 +--- org.apache.tomcat:servlet-api:6.0.53 FAILED
-+--- org.apache.tomcat:tomcat-annotations-api:11.0.7 FAILED
-+--- org.apache.tomcat:tomcat-servlet-api:11.0.7 FAILED
-+--- org.apache.tomcat:tomcat-websocket-api:11.0.7 FAILED
-+--- org.apache.tomcat:tomcat-websocket-client-api:11.0.7 FAILED
++--- org.apache.tomcat:tomcat-annotations-api:11.0.8 FAILED
++--- org.apache.tomcat:tomcat-servlet-api:11.0.8 FAILED
++--- org.apache.tomcat:tomcat-websocket-api:11.0.8 FAILED
++--- org.apache.tomcat:tomcat-websocket-client-api:11.0.8 FAILED
 +--- org.apache.velocity:velocity-engine-core:2.4.1 FAILED
 +--- org.apache.velocity:velocity:1.7 FAILED
 +--- org.bouncycastle:bc-fips-debug:2.1.0 FAILED
@@ -252,7 +252,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.jzy3d:jzy3d-jGL-awt:2.2.1 FAILED
 +--- org.lz4:lz4-java:1.8.0 FAILED
 +--- org.ow2.asm:asm:9.8 FAILED
-+--- org.postgresql:postgresql:42.7.6 FAILED
++--- org.postgresql:postgresql:42.7.7 FAILED
 +--- org.slf4j:jcl-over-slf4j:2.0.17 FAILED
 +--- org.slf4j:jul-to-slf4j:2.0.17 FAILED
 +--- org.slf4j:log4j-over-slf4j:2.0.17 FAILED
