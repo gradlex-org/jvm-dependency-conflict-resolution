@@ -46,8 +46,18 @@ class JarOverlapTest extends Specification {
         def dependencies = project.dependencies
         project.plugins.apply("jvm-ecosystem")
         project.repositories.maven {
+            url = "https://maven.jzy3d.org/releases"
+            mavenContent {
+                it.includeModule("org.jzy3d", "jGL")
+                it.includeModule("org.jzy3d", "jzy3d-jGL")
+                it.includeModule("org.jzy3d", "jzy3d-jGL-awt")
+            }
+        }
+        project.repositories.maven {
             url = "https://maven.scijava.org/content/groups/public"
-            mavenContent { it.includeGroup("org.jzy3d") }
+            mavenContent {
+                it.includeGroup("org.jzy3d")
+            }
         }
         project.repositories.mavenCentral {
             it.metadataSources.artifact() // woodstox/wstx-lgpl/3.2.7
