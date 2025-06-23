@@ -9,6 +9,13 @@ pluginManagement {
 
 dependencyResolutionManagement {
     repositories {
+        maven("https://maven.jzy3d.org/releases") {
+            mavenContent {
+                includeModule("org.jzy3d", "jGL")
+                includeModule("org.jzy3d", "jzy3d-jGL")
+                includeModule("org.jzy3d", "jzy3d-jGL-awt")
+            }
+        }
         maven("https://maven.scijava.org/content/groups/public") {
             mavenContent {
                 includeGroup("org.jzy3d")
