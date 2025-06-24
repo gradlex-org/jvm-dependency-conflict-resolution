@@ -70,13 +70,13 @@ gradlePlugin {
 
 dependencies {
     testImplementation("org.gradle.exemplar:samples-check:1.0.3")
-    testImplementation("org.spockframework:spock-core:2.3-groovy-3.0")
+    testImplementation("org.spockframework:spock-core:2.3-groovy-4.0")
     testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
 }
 
 testing.suites.named<JvmTestSuite>("test") {
     useJUnitJupiter()
-    listOf("6.8.3", "6.9.4", "7.0.2", "8.0.2").forEach { gradleVersionUnderTest ->
+    listOf("6.8.3", "6.9.4", "7.0.2", "8.0.2", "8.14.2").forEach { gradleVersionUnderTest ->
         targets.register("test${gradleVersionUnderTest}") {
             testTask {
                 group = LifecycleBasePlugin.VERIFICATION_GROUP
