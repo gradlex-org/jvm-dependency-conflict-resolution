@@ -107,6 +107,8 @@ dependencies {
     implementation("junit:junit:4.13.2")
     implementation("log4j:log4j:1.2.17")
     implementation("mysql:mysql-connector-java:8.0.33")
+    implementation("net.java.dev.jna:jna-jpms:5.17.0")
+    implementation("net.java.dev.jna:jna-platform-jpms:5.17.0")
     implementation("net.java.dev.jna:jna-platform:5.17.0")
     implementation("net.java.dev.jna:jna:5.17.0")
     implementation("net.java.dev.jna:platform:3.5.2")
@@ -288,6 +290,8 @@ jvmDependencyConflicts {
         select(CapabilityDefinition.JAVAX_MAIL_API, "com.sun.mail:javax.mail");
         select(CapabilityDefinition.JAVAX_SERVLET_API, "javax.servlet:javax.servlet-api")
         select(CapabilityDefinition.JAVAX_TRANSACTION_API, "javax.transaction:javax.transaction-api")
+        select(CapabilityDefinition.JNA, "net.java.dev.jna:jna-jpms")
+        select(CapabilityDefinition.JNA_PLATFORM, "net.java.dev.jna:jna-platform-jpms")
         select(CapabilityDefinition.WOODSTOX_ASL, "org.codehaus.woodstox:woodstox-core-asl")
     }
 }
