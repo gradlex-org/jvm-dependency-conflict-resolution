@@ -112,6 +112,8 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- junit:junit:4.13.2 FAILED
 +--- log4j:log4j:1.2.17 FAILED
 +--- mysql:mysql-connector-java:8.0.33 FAILED
++--- net.java.dev.jna:jna-jpms:5.17.0 FAILED
++--- net.java.dev.jna:jna-platform-jpms:5.17.0 FAILED
 +--- net.java.dev.jna:jna-platform:5.17.0 FAILED
 +--- net.java.dev.jna:jna:5.17.0 FAILED
 +--- net.java.dev.jna:platform:3.5.2 FAILED

@@ -1,5 +1,8 @@
 # JVM Dependency Conflict Resolution Gradle plugin - Changelog
 
+## Version 2.5
+* [Adjusted Rule] [#270](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/270) add net.java.dev.jna:jna-jpms and net.java.dev.jna:jna-platform-jpms to JNA rules
+
 ## Version 2.4
 * [Fix] [#238](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/238) Patch DSL now works for dependencies with non-standard variant names (e.g. com.google.guava).
 * [Fix] [#243](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/243) jakarta.xml.ws:jakarta.xml.ws-api no longer clashes with jakarta.jws:jakarta.jws-api for versions <= 4.0
