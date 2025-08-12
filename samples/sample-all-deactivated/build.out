@@ -29,7 +29,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- com.sun.activation:javax.activation:1.2.0 FAILED
 +--- com.sun.mail:jakarta.mail:2.0.1 FAILED
 +--- com.sun.mail:javax.mail:1.6.2 FAILED
-+--- com.sun.mail:mailapi:2.0.1 FAILED
++--- com.sun.mail:mailapi:2.0.2 FAILED
 +--- com.vaadin.external.google:android-json:0.0.20131108.vaadin1 FAILED
 +--- com.vividsolutions:jts-core:1.14.0 FAILED
 +--- com.vividsolutions:jts:1.13 FAILED
