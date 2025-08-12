@@ -30,7 +30,7 @@ dependencies {
     implementation("com.sun.activation:javax.activation:1.2.0")
     implementation("com.sun.mail:jakarta.mail:2.0.1")
     implementation("com.sun.mail:javax.mail:1.6.2")
-    implementation("com.sun.mail:mailapi:2.0.1")
+    implementation("com.sun.mail:mailapi:2.0.2")
     implementation("com.vaadin.external.google:android-json:0.0.20131108.vaadin1")
     implementation("com.vividsolutions:jts-core:1.14.0")
     implementation("com.vividsolutions:jts:1.13")
