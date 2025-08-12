@@ -31,7 +31,7 @@ dependencies {
     implementation("com.mysql:mysql-connector-j:9.3.0")
     implementation("com.sun.activation:jakarta.activation:2.0.1")
     implementation("com.sun.activation:javax.activation:1.2.0")
-    implementation("com.sun.mail:jakarta.mail:2.0.1")
+    implementation("com.sun.mail:jakarta.mail:2.0.2")
     implementation("com.sun.mail:javax.mail:1.6.2")
     implementation("com.sun.mail:mailapi:2.0.2")
     implementation("com.vaadin.external.google:android-json:0.0.20131108.vaadin1")
