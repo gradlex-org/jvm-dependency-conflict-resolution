@@ -221,7 +221,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.codehaus.woodstox:woodstox-core-lgpl:4.4.1 FAILED
 +--- org.codehaus.woodstox:wstx-asl:4.0.6 FAILED
 +--- org.codehaus.woodstox:wstx-lgpl:3.2.9 FAILED
-+--- org.dom4j:dom4j:2.1.4 FAILED
++--- org.dom4j:dom4j:2.2.0 FAILED
 +--- org.eclipse.angus:jakarta.mail:2.0.3 FAILED
 +--- org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api:5.0.2 FAILED
 +--- org.eclipse.jetty.toolchain:jetty-jakarta-websocket-api:2.0.0 FAILED
