@@ -222,8 +222,8 @@ compileClasspath - Compile classpath for source set 'main'.
 |    +--- org.apache.commons:commons-lang3:3.17.0
 |    \--- org.slf4j:slf4j-api:1.7.36 -> 2.0.17 (*)
 +--- org.apache.velocity:velocity:1.7 -> org.apache.velocity:velocity-engine-core:2.4.1 (*)
-+--- org.bouncycastle:bc-fips-debug:2.1.0 -> org.bouncycastle:bcprov-jdk18on:1.81
-+--- org.bouncycastle:bc-fips:2.1.0 -> org.bouncycastle:bcprov-jdk18on:1.81
++--- org.bouncycastle:bc-fips-debug:2.1.1 -> org.bouncycastle:bcprov-jdk18on:1.81
++--- org.bouncycastle:bc-fips:2.1.1 -> org.bouncycastle:bcprov-jdk18on:1.81
 +--- org.bouncycastle:bcjmail-jdk15on:1.70 -> org.bouncycastle:bcmail-jdk18on:1.81
 |    \--- org.bouncycastle:bcpkix-jdk18on:[1.81,1.82) -> 1.81
 |         \--- org.bouncycastle:bcutil-jdk18on:[1.81,1.82) -> 1.81
