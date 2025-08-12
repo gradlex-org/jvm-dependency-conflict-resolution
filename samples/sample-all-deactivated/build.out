@@ -20,7 +20,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- com.intellij:annotations:12.0 FAILED
 +--- com.jwebmp:javax.inject:1.1 FAILED
 +--- com.lowagie:itext:4.2.2 FAILED
-+--- com.mchange:c3p0:0.11.1 FAILED
++--- com.mchange:c3p0:0.11.2 FAILED
 +--- com.mchange:mchange-commons-java:0.3.2 FAILED
 +--- com.miglayout:miglayout-swing:11.4.2 FAILED
 +--- com.miglayout:miglayout:3.7.4 FAILED
