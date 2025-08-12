@@ -111,7 +111,7 @@ dependencies {
     implementation("net.java.dev.jna:platform:3.5.2")
     implementation("net.jcip:jcip-annotations:1.0")
     implementation("net.jpountz.lz4:lz4:1.3")
-    implementation("org.apache.commons:commons-csv:1.14.0")
+    implementation("org.apache.commons:commons-csv:1.14.1")
     implementation("org.apache.commons:commons-io:1.3.2")
     implementation("org.apache.geronimo.javamail:geronimo-javamail_1.3.1_mail:1.1")
     implementation("org.apache.geronimo.javamail:geronimo-javamail_1.3.1_provider:1.1")
