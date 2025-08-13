@@ -119,7 +119,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- net.java.dev.jna:platform:3.5.2 FAILED
 +--- net.jcip:jcip-annotations:1.0 FAILED
 +--- net.jpountz.lz4:lz4:1.3 FAILED
-+--- org.apache.commons:commons-csv:1.14.0 FAILED
++--- org.apache.commons:commons-csv:1.14.1 FAILED
 +--- org.apache.commons:commons-io:1.3.2 FAILED
 +--- org.apache.geronimo.javamail:geronimo-javamail_1.3.1_mail:1.1 FAILED
 +--- org.apache.geronimo.javamail:geronimo-javamail_1.3.1_provider:1.1 FAILED
