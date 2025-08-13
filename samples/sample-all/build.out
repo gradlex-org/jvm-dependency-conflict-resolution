@@ -3,10 +3,10 @@ Root project 'sample-all_build.sample'
 ------------------------------------------------------------
 
 compileClasspath - Compile classpath for source set 'main'.
-+--- aopalliance:aopalliance:1.0 -> org.springframework:spring-aop:6.2.8
-|    +--- org.springframework:spring-beans:6.2.8
-|    |    \--- org.springframework:spring-core:6.2.8
-|    |         \--- org.springframework:spring-jcl:6.2.8 -> org.slf4j:jcl-over-slf4j:2.0.17
++--- aopalliance:aopalliance:1.0 -> org.springframework:spring-aop:6.2.9
+|    +--- org.springframework:spring-beans:6.2.9
+|    |    \--- org.springframework:spring-core:6.2.9
+|    |         \--- org.springframework:spring-jcl:6.2.9 -> org.slf4j:jcl-over-slf4j:2.0.17
 |    |              +--- org.slf4j:slf4j-api:2.0.17
 |    |              |    \--- org.slf4j:slf4j-bom:2.0.17
 |    |              |         +--- org.slf4j:slf4j-api:2.0.17 (c)
@@ -18,7 +18,7 @@ compileClasspath - Compile classpath for source set 'main'.
 |    |              |         +--- org.slf4j:log4j-over-slf4j:2.0.17 (c)
 |    |              |         \--- org.slf4j:jul-to-slf4j:2.0.17 (c)
 |    |              \--- org.slf4j:slf4j-bom:2.0.17 (*)
-|    \--- org.springframework:spring-core:6.2.8 (*)
+|    \--- org.springframework:spring-core:6.2.9 (*)
 +--- asm:asm:3.3.1 -> org.ow2.asm:asm:9.8
 |    \--- org.ow2.asm:asm-bom:9.8
 |         \--- org.ow2.asm:asm:9.8 (c)
@@ -373,8 +373,8 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.slf4j:slf4j-log4j12:2.0.17 -> org.slf4j:slf4j-simple:2.0.17 (*)
 +--- org.slf4j:slf4j-nop:2.0.17 -> org.slf4j:slf4j-simple:2.0.17 (*)
 +--- org.slf4j:slf4j-simple:2.0.17 (*)
-+--- org.springframework:spring-aop:6.2.8 (*)
-+--- org.springframework:spring-jcl:6.2.8 -> org.slf4j:jcl-over-slf4j:2.0.17 (*)
++--- org.springframework:spring-aop:6.2.9 (*)
++--- org.springframework:spring-jcl:6.2.9 -> org.slf4j:jcl-over-slf4j:2.0.17 (*)
 +--- postgresql:postgresql:9.1-901-1.jdbc4 -> org.postgresql:postgresql:42.7.7
 +--- servletapi:servletapi:2.4-20040521 -> javax.servlet:javax.servlet-api:4.0.1
 +--- stax:stax-api:1.0.1
