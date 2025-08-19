@@ -39,7 +39,7 @@ dependencies {
     implementation("com.vividsolutions:jts:1.13")
     implementation("com.zaxxer:HikariCP-java6:2.3.13")
     implementation("com.zaxxer:HikariCP-java7:2.4.13")
-    implementation("com.zaxxer:HikariCP:7.0.1")
+    implementation("com.zaxxer:HikariCP:7.0.2")
     implementation("commons-beanutils:commons-beanutils-core:1.8.3")
     implementation("commons-beanutils:commons-beanutils:1.11.0")
     implementation("commons-io:commons-io:2.20.0")
