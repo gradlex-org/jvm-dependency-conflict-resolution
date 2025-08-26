@@ -55,7 +55,7 @@ dependencies {
     implementation("jakarta.inject:jakarta.inject-api:2.0.1")
     implementation("jakarta.json:jakarta.json-api:2.1.3")
     implementation("jakarta.jws:jakarta.jws-api:3.0.0")
-    implementation("jakarta.mail:jakarta.mail-api:2.1.3")
+    implementation("jakarta.mail:jakarta.mail-api:2.1.4")
     implementation("jakarta.persistence:jakarta.persistence-api:3.2.0")
     implementation("jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.2")
     implementation("jakarta.servlet.jsp:jakarta.servlet.jsp-api:4.0.0")
