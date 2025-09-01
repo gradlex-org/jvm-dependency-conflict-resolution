@@ -241,7 +241,7 @@ dependencies {
     implementation("org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.0_spec:1.0.1.Final")
     implementation("org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.1_spec:2.0.2.Final")
     implementation("org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_3.0_spec:1.0.1.Final")
-    implementation("org.jetbrains:annotations:26.0.2")
+    implementation("org.jetbrains:annotations:26.0.2-1")
     implementation("org.json:json:20250517")
     implementation("org.jzy3d:jGL:2.5")
     implementation("org.jzy3d:jzy3d-emul-gl-awt:2.2.1")
