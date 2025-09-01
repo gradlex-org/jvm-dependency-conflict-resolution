@@ -228,7 +228,7 @@ compileClasspath - Compile classpath for source set 'main'.
 |              \--- org.bouncycastle:bcprov-jdk18on:[1.81,1.82) -> 1.81
 +--- org.bouncycastle:bcjmail-jdk15to18:1.81 -> org.bouncycastle:bcmail-jdk18on:1.81 (*)
 +--- org.bouncycastle:bcjmail-jdk18on:1.81 -> org.bouncycastle:bcmail-jdk18on:1.81 (*)
-+--- org.bouncycastle:bcjmail-lts8on:2.73.7 -> org.bouncycastle:bcmail-jdk18on:1.81 (*)
++--- org.bouncycastle:bcjmail-lts8on:2.73.8 -> org.bouncycastle:bcmail-jdk18on:1.81 (*)
 +--- org.bouncycastle:bcmail-fips:2.1.6 -> org.bouncycastle:bcmail-jdk18on:1.81 (*)
 +--- org.bouncycastle:bcmail-jdk14:1.81 -> org.bouncycastle:bcmail-jdk18on:1.81 (*)
 +--- org.bouncycastle:bcmail-jdk15+:1.46 -> org.bouncycastle:bcmail-jdk18on:1.81 (*)
@@ -237,7 +237,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.bouncycastle:bcmail-jdk15to18:1.81 -> org.bouncycastle:bcmail-jdk18on:1.81 (*)
 +--- org.bouncycastle:bcmail-jdk16:1.46 -> org.bouncycastle:bcmail-jdk18on:1.81 (*)
 +--- org.bouncycastle:bcmail-jdk18on:1.81 (*)
-+--- org.bouncycastle:bcmail-lts8on:2.73.7 -> org.bouncycastle:bcmail-jdk18on:1.81 (*)
++--- org.bouncycastle:bcmail-lts8on:2.73.8 -> org.bouncycastle:bcmail-jdk18on:1.81 (*)
 +--- org.bouncycastle:bcpg-fips:2.1.11 -> org.bouncycastle:bcpg-jdk18on:1.81
 |    +--- org.bouncycastle:bcprov-jdk18on:[1.81,1.82) -> 1.81
 |    \--- org.bouncycastle:bcutil-jdk18on:[1.81,1.82) -> 1.81 (*)
@@ -249,13 +249,13 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.bouncycastle:bcpg-jdk15to18:1.81 -> org.bouncycastle:bcpg-jdk18on:1.81 (*)
 +--- org.bouncycastle:bcpg-jdk16:1.46 -> org.bouncycastle:bcpg-jdk18on:1.81 (*)
 +--- org.bouncycastle:bcpg-jdk18on:1.81 (*)
-+--- org.bouncycastle:bcpg-lts8on:2.73.7 -> org.bouncycastle:bcpg-jdk18on:1.81 (*)
++--- org.bouncycastle:bcpg-lts8on:2.73.8 -> org.bouncycastle:bcpg-jdk18on:1.81 (*)
 +--- org.bouncycastle:bcpkix-fips:2.1.9 -> org.bouncycastle:bcpkix-jdk18on:1.81 (*)
 +--- org.bouncycastle:bcpkix-jdk14:1.81 -> org.bouncycastle:bcpkix-jdk18on:1.81 (*)
 +--- org.bouncycastle:bcpkix-jdk15on:1.70 -> org.bouncycastle:bcpkix-jdk18on:1.81 (*)
 +--- org.bouncycastle:bcpkix-jdk15to18:1.81 -> org.bouncycastle:bcpkix-jdk18on:1.81 (*)
 +--- org.bouncycastle:bcpkix-jdk18on:1.81 (*)
-+--- org.bouncycastle:bcpkix-lts8on:2.73.7 -> org.bouncycastle:bcpkix-jdk18on:1.81 (*)
++--- org.bouncycastle:bcpkix-lts8on:2.73.8 -> org.bouncycastle:bcpkix-jdk18on:1.81 (*)
 +--- org.bouncycastle:bcprov-debug-jdk14:1.81 -> org.bouncycastle:bcprov-jdk18on:1.81
 +--- org.bouncycastle:bcprov-debug-jdk15on:1.70 -> org.bouncycastle:bcprov-jdk18on:1.81
 +--- org.bouncycastle:bcprov-debug-jdk15to18:1.81 -> org.bouncycastle:bcprov-jdk18on:1.81
@@ -278,14 +278,14 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.bouncycastle:bcprov-jdk15to18:1.81 -> org.bouncycastle:bcprov-jdk18on:1.81
 +--- org.bouncycastle:bcprov-jdk16:1.46 -> org.bouncycastle:bcprov-jdk18on:1.81
 +--- org.bouncycastle:bcprov-jdk18on:1.81
-+--- org.bouncycastle:bcprov-lts8on:2.73.7 -> org.bouncycastle:bcprov-jdk18on:1.81
++--- org.bouncycastle:bcprov-lts8on:2.73.8 -> org.bouncycastle:bcprov-jdk18on:1.81
 +--- org.bouncycastle:bctls-fips:2.1.20 -> org.bouncycastle:bctls-jdk18on:1.81
 |    \--- org.bouncycastle:bcutil-jdk18on:[1.81,1.82) -> 1.81 (*)
 +--- org.bouncycastle:bctls-jdk14:1.81 -> org.bouncycastle:bctls-jdk18on:1.81 (*)
 +--- org.bouncycastle:bctls-jdk15on:1.70 -> org.bouncycastle:bctls-jdk18on:1.81 (*)
 +--- org.bouncycastle:bctls-jdk15to18:1.81 -> org.bouncycastle:bctls-jdk18on:1.81 (*)
 +--- org.bouncycastle:bctls-jdk18on:1.81 (*)
-+--- org.bouncycastle:bctls-lts8on:2.73.7 -> org.bouncycastle:bctls-jdk18on:1.81 (*)
++--- org.bouncycastle:bctls-lts8on:2.73.8 -> org.bouncycastle:bctls-jdk18on:1.81 (*)
 +--- org.bouncycastle:bctsp-jdk14:1.46 -> org.bouncycastle:bctsp-jdk15on:1.46
 |    +--- org.bouncycastle:bcprov-jdk15on:1.46 -> org.bouncycastle:bcprov-jdk18on:1.81
 |    \--- org.bouncycastle:bcmail-jdk15on:1.46 -> org.bouncycastle:bcmail-jdk18on:1.81 (*)
@@ -297,7 +297,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.bouncycastle:bcutil-jdk15on:1.70 -> org.bouncycastle:bcutil-jdk18on:1.81 (*)
 +--- org.bouncycastle:bcutil-jdk15to18:1.81 -> org.bouncycastle:bcutil-jdk18on:1.81 (*)
 +--- org.bouncycastle:bcutil-jdk18on:1.81 (*)
-+--- org.bouncycastle:bcutil-lts8on:2.73.7 -> org.bouncycastle:bcutil-jdk18on:1.81 (*)
++--- org.bouncycastle:bcutil-lts8on:2.73.8 -> org.bouncycastle:bcutil-jdk18on:1.81 (*)
 +--- org.codehaus.woodstox:woodstox-core-asl:4.4.1
 |    +--- javax.xml.stream:stax-api:1.0-2 -> stax:stax-api:1.0.1
 |    \--- org.codehaus.woodstox:stax2-api:3.1.4
