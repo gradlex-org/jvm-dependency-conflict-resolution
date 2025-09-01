@@ -64,10 +64,10 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- com.vaadin.external.google:android-json:0.0.20131108.vaadin1 -> org.json:json:20250517
 +--- com.vividsolutions:jts-core:1.14.0
 +--- com.vividsolutions:jts:1.13 -> com.vividsolutions:jts-core:1.14.0
-+--- com.zaxxer:HikariCP-java6:2.3.13 -> com.zaxxer:HikariCP:7.0.1
++--- com.zaxxer:HikariCP-java6:2.3.13 -> com.zaxxer:HikariCP:7.0.2
 |    \--- org.slf4j:slf4j-api:2.0.17 (*)
-+--- com.zaxxer:HikariCP-java7:2.4.13 -> com.zaxxer:HikariCP:7.0.1 (*)
-+--- com.zaxxer:HikariCP:7.0.1 (*)
++--- com.zaxxer:HikariCP-java7:2.4.13 -> com.zaxxer:HikariCP:7.0.2 (*)
++--- com.zaxxer:HikariCP:7.0.2 (*)
 +--- commons-beanutils:commons-beanutils-core:1.8.3 -> commons-beanutils:commons-beanutils:1.11.0
 |    +--- commons-logging:commons-logging:1.3.5 -> org.slf4j:jcl-over-slf4j:2.0.17 (*)
 |    \--- commons-collections:commons-collections:3.2.2

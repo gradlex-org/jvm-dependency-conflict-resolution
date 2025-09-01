@@ -35,7 +35,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- com.vividsolutions:jts:1.13 FAILED
 +--- com.zaxxer:HikariCP-java6:2.3.13 FAILED
 +--- com.zaxxer:HikariCP-java7:2.4.13 FAILED
-+--- com.zaxxer:HikariCP:7.0.1 FAILED
++--- com.zaxxer:HikariCP:7.0.2 FAILED
 +--- commons-beanutils:commons-beanutils-core:1.8.3 FAILED
 +--- commons-beanutils:commons-beanutils:1.11.0 FAILED
 +--- commons-io:commons-io:2.20.0 FAILED
