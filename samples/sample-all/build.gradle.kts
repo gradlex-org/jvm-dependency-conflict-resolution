@@ -48,7 +48,7 @@ dependencies {
     implementation("dk.brics:automaton:1.12-4")
     implementation("dom4j:dom4j:1.6.1")
     implementation("itext:itext:1.3.1")
-    implementation("jakarta.activation:jakarta.activation-api:2.1.3")
+    implementation("jakarta.activation:jakarta.activation-api:2.1.4")
     implementation("jakarta.annotation:jakarta.annotation-api:3.0.0")
     implementation("jakarta.ejb:jakarta.ejb-api:4.0.1")
     implementation("jakarta.el:jakarta.el-api:6.0.1")
