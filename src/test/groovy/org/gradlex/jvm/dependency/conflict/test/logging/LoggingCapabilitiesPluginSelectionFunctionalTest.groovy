@@ -328,4 +328,42 @@ ${additional.collect { "                runtimeOnly(\"$it\")" }.join("\n")}
         then:
         outcomeOf(result, ':doIt') == SUCCESS
     }
+
+    def "issue 119"() {
+        given:
+        withBuildScript("""
+            plugins {
+                `java-library`
+                id("org.gradlex.jvm-dependency-conflict-resolution")
+            }
+
+            repositories {
+                mavenCentral()
+            }
+            
+            jvmDependencyConflicts.logging {
+                enforceLog4J2()
+            }
+            
+            dependencies {
+                implementation("log4j:log4j:1.2.17")
+                implementation("ch.qos.reload4j:reload4j:1.2.25")
+                implementation("org.slf4j:slf4j-api:2.0.13")
+                implementation("commons-logging:commons-logging:1.3.1")
+                implementation("org.apache.logging.log4j:log4j-api:2.23.1")
+                implementation("org.apache.logging.log4j:log4j-slf4j-impl:2.23.1")
+            }
+
+            tasks.register("doIt") {
+                doLast {
+                    println(configurations["runtimeClasspath"].files)
+                }
+            }
+""")
+        when:
+        def result = build(['doIt', 'dependencies', '--configuration', 'runtimeClasspath'])
+
+        then:
+        outcomeOf(result, ':doIt') == SUCCESS
+    }
 }
