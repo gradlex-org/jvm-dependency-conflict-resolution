@@ -37,13 +37,13 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- com.github.stephenc.jcip:jcip-annotations:1.0-1 -> net.jcip:jcip-annotations:1.0
 +--- com.google.code.findbugs:annotations:3.0.1 -> com.github.spotbugs:spotbugs-annotations:4.9.4 (*)
 +--- com.google.code.findbugs:findbugs-annotations:3.0.1 -> com.github.spotbugs:spotbugs-annotations:4.9.4 (*)
-+--- com.google.guava:guava-jdk5:17.0 -> com.google.guava:guava:33.4.8-jre
++--- com.google.guava:guava-jdk5:17.0 -> com.google.guava:guava:33.5.0-jre
 |    +--- com.google.guava:failureaccess:1.0.3
 |    +--- org.jspecify:jspecify:1.0.0
-|    +--- com.google.errorprone:error_prone_annotations:2.36.0 -> 2.38.0
-|    \--- com.google.j2objc:j2objc-annotations:3.0.0
-+--- com.google.guava:guava:33.4.8-jre (*)
-+--- com.google.guava:listenablefuture:1.0 -> com.google.guava:guava:33.4.8-jre (*)
+|    +--- com.google.errorprone:error_prone_annotations:2.41.0
+|    \--- com.google.j2objc:j2objc-annotations:3.1
++--- com.google.guava:guava:33.5.0-jre (*)
++--- com.google.guava:listenablefuture:1.0 -> com.google.guava:guava:33.5.0-jre (*)
 +--- com.intellij:annotations:12.0 -> org.jetbrains:annotations:26.0.2
 +--- com.jwebmp:javax.inject:1.1
 +--- com.lowagie:itext:4.2.2 (*)
@@ -180,7 +180,7 @@ compileClasspath - Compile classpath for source set 'main'.
 |    |    +--- biz.aQute.bnd:biz.aQute.bnd.annotation:7.1.0
 |    |    |    +--- org.osgi:org.osgi.resource:1.0.0
 |    |    |    \--- org.osgi:org.osgi.service.serviceloader:1.0.0
-|    |    +--- com.google.errorprone:error_prone_annotations:2.38.0
+|    |    +--- com.google.errorprone:error_prone_annotations:2.38.0 -> 2.41.0
 |    |    +--- org.osgi:org.osgi.annotation.bundle:2.0.0
 |    |    |    \--- org.osgi:org.osgi.annotation.versioning:1.1.2
 |    |    +--- org.osgi:org.osgi.annotation.versioning:1.1.2
@@ -197,7 +197,7 @@ compileClasspath - Compile classpath for source set 'main'.
 |    +--- org.slf4j:slf4j-api:2.0.17 (*)
 |    +--- org.jspecify:jspecify:1.0.0
 |    +--- biz.aQute.bnd:biz.aQute.bnd.annotation:7.1.0 (*)
-|    +--- com.google.errorprone:error_prone_annotations:2.38.0
+|    +--- com.google.errorprone:error_prone_annotations:2.38.0 -> 2.41.0
 |    +--- org.osgi:org.osgi.annotation.bundle:2.0.0 (*)
 |    +--- org.osgi:org.osgi.annotation.versioning:1.1.2
 |    \--- com.github.spotbugs:spotbugs-annotations:4.8.6 -> 4.9.4 (*)
@@ -344,7 +344,7 @@ compileClasspath - Compile classpath for source set 'main'.
 |    |    +--- net.sf.opencsv:opencsv:2.1
 |    |    +--- org.tallison:jmatio:1.5
 |    |    |    \--- org.slf4j:slf4j-api:1.7.25 -> 2.0.17 (*)
-|    |    +--- com.google.guava:guava:30.1.1-jre -> 33.4.8-jre (*)
+|    |    +--- com.google.guava:guava:30.1.1-jre -> 33.5.0-jre (*)
 |    |    +--- org.apache.commons:commons-collections4:4.4
 |    |    +--- com.diogonunes:JColor:5.2.0
 |    |    |    +--- net.java.dev.jna:jna:5.8.0 -> net.java.dev.jna:jna-jpms:5.17.0
@@ -379,7 +379,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- velocity:velocity:1.5 -> org.apache.velocity:velocity-engine-core:2.4.1 (*)
 +--- woodstox:wstx-asl:3.2.7 -> org.codehaus.woodstox:woodstox-core-asl:4.4.1 (*)
 +--- woodstox:wstx-lgpl:2.9 -> org.codehaus.woodstox:woodstox-core-asl:4.4.1 (*)
-\--- com.google.collections:google-collections:1.0 -> com.google.guava:guava:33.4.8-jre (*)
+\--- com.google.collections:google-collections:1.0 -> com.google.guava:guava:33.5.0-jre (*)
 
 (c) - A dependency constraint, not a dependency. The dependency affected by the constraint occurs elsewhere in the tree.
 (*) - Indicates repeated occurrences of a transitive dependency subtree. Gradle expands transitive dependency subtrees only once per project; repeat occurrences only display the root of the subtree, followed by this annotation.

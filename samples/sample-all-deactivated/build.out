@@ -15,7 +15,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- com.google.code.findbugs:annotations:3.0.1 FAILED
 +--- com.google.code.findbugs:findbugs-annotations:3.0.1 FAILED
 +--- com.google.guava:guava-jdk5:17.0 FAILED
-+--- com.google.guava:guava:33.4.8-jre FAILED
++--- com.google.guava:guava:33.5.0-jre FAILED
 +--- com.google.guava:listenablefuture:1.0 FAILED
 +--- com.intellij:annotations:12.0 FAILED
 +--- com.jwebmp:javax.inject:1.1 FAILED
