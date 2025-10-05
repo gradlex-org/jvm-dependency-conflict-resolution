@@ -56,11 +56,11 @@ compileClasspath - Compile classpath for source set 'main'.
 |    \--- com.google.protobuf:protobuf-java:4.31.1
 +--- com.sun.activation:jakarta.activation:2.0.1 -> jakarta.activation:jakarta.activation-api:2.1.4
 +--- com.sun.activation:javax.activation:1.2.0 -> javax.activation:javax.activation-api:1.2.0
-+--- com.sun.mail:jakarta.mail:2.0.2 -> jakarta.mail:jakarta.mail-api:2.1.4
-|    \--- jakarta.activation:jakarta.activation-api:2.1.3 -> 2.1.4
++--- com.sun.mail:jakarta.mail:2.0.2 -> jakarta.mail:jakarta.mail-api:2.1.5
+|    \--- jakarta.activation:jakarta.activation-api:2.1.4
 +--- com.sun.mail:javax.mail:1.6.2
 |    \--- javax.activation:activation:1.1 -> javax.activation:javax.activation-api:1.2.0
-+--- com.sun.mail:mailapi:2.0.2 -> jakarta.mail:jakarta.mail-api:2.1.4 (*)
++--- com.sun.mail:mailapi:2.0.2 -> jakarta.mail:jakarta.mail-api:2.1.5 (*)
 +--- com.vaadin.external.google:android-json:0.0.20131108.vaadin1 -> org.json:json:20250517
 +--- com.vividsolutions:jts-core:1.14.0
 +--- com.vividsolutions:jts:1.13 -> com.vividsolutions:jts-core:1.14.0
@@ -86,11 +86,11 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- jakarta.inject:jakarta.inject-api:2.0.1
 +--- jakarta.json:jakarta.json-api:2.1.3
 +--- jakarta.jws:jakarta.jws-api:3.0.0 -> jakarta.xml.ws:jakarta.xml.ws-api:4.0.2
-|    +--- jakarta.xml.bind:jakarta.xml.bind-api:4.0.2
-|    |    \--- jakarta.activation:jakarta.activation-api:2.1.3 -> 2.1.4
+|    +--- jakarta.xml.bind:jakarta.xml.bind-api:4.0.2 -> 4.0.4
+|    |    \--- jakarta.activation:jakarta.activation-api:2.1.4
 |    \--- jakarta.xml.soap:jakarta.xml.soap-api:3.0.2
 |         \--- jakarta.activation:jakarta.activation-api:2.1.3 -> 2.1.4
-+--- jakarta.mail:jakarta.mail-api:2.1.4 (*)
++--- jakarta.mail:jakarta.mail-api:2.1.5 (*)
 +--- jakarta.persistence:jakarta.persistence-api:3.2.0
 +--- jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.2
 |    +--- jakarta.servlet:jakarta.servlet-api:6.0.0 -> 6.1.0
@@ -102,7 +102,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- jakarta.websocket:jakarta.websocket-api:2.2.0
 +--- jakarta.websocket:jakarta.websocket-client-api:2.2.0
 +--- jakarta.ws.rs:jakarta.ws.rs-api:4.0.0
-+--- jakarta.xml.bind:jakarta.xml.bind-api:4.0.2 (*)
++--- jakarta.xml.bind:jakarta.xml.bind-api:4.0.4 (*)
 +--- jakarta.xml.soap:jakarta.xml.soap-api:3.0.2 (*)
 +--- jakarta.xml.ws:jakarta.xml.ws-api:4.0.2 (*)
 +--- javassist:javassist:3.12.1.GA -> org.javassist:javassist:3.30.2-GA
@@ -305,7 +305,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.codehaus.woodstox:wstx-asl:4.0.6 -> org.codehaus.woodstox:woodstox-core-asl:4.4.1 (*)
 +--- org.codehaus.woodstox:wstx-lgpl:3.2.9 -> org.codehaus.woodstox:woodstox-core-asl:4.4.1 (*)
 +--- org.dom4j:dom4j:2.2.0
-+--- org.eclipse.angus:jakarta.mail:2.0.4 -> jakarta.mail:jakarta.mail-api:2.1.4 (*)
++--- org.eclipse.angus:jakarta.mail:2.0.5 -> jakarta.mail:jakarta.mail-api:2.1.5 (*)
 +--- org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api:5.0.2 -> jakarta.servlet:jakarta.servlet-api:6.1.0
 +--- org.eclipse.jetty.toolchain:jetty-jakarta-websocket-api:2.0.0 -> jakarta.websocket:jakarta.websocket-api:2.2.0
 +--- org.eclipse.jetty.toolchain:jetty-javax-websocket-api:1.1.2
