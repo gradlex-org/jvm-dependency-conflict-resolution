@@ -214,7 +214,7 @@ dependencies {
     implementation("org.codehaus.woodstox:wstx-asl:4.0.6")
     implementation("org.codehaus.woodstox:wstx-lgpl:3.2.9")
     implementation("org.dom4j:dom4j:2.2.0")
-    implementation("org.eclipse.angus:jakarta.mail:2.0.4")
+    implementation("org.eclipse.angus:jakarta.mail:2.0.5")
     implementation("org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api:5.0.2")
     implementation("org.eclipse.jetty.toolchain:jetty-jakarta-websocket-api:2.0.0")
     implementation("org.eclipse.jetty.toolchain:jetty-javax-websocket-api:1.1.2")
