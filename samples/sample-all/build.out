@@ -27,7 +27,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- cglib:cglib-nodep:3.3.0 -> cglib:cglib:3.3.0
 |    \--- org.ow2.asm:asm:7.1 -> 9.8 (*)
 +--- cglib:cglib:3.3.0 (*)
-+--- ch.qos.logback:logback-classic:1.5.18 -> org.slf4j:slf4j-simple:2.0.17
++--- ch.qos.logback:logback-classic:1.5.19 -> org.slf4j:slf4j-simple:2.0.17
 |    +--- org.slf4j:slf4j-api:2.0.17 (*)
 |    \--- org.slf4j:slf4j-bom:2.0.17 (*)
 +--- com.github.librepdf:openpdf:3.0.0 -> com.lowagie:itext:4.2.2
