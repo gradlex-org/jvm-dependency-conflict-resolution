@@ -1,29 +1,5 @@
-import buildparameters.BuildParametersExtension
+pluginManagement { includeBuild("build/plugin-publish-conventions") }
 
-pluginManagement {
-    includeBuild("gradle/plugins")
-}
-
-plugins {
-    id("com.gradle.develocity") version "4.2.2"
-    id("gradlexbuild.build-parameters")
-}
+plugins { id("org.gradlex.internal.gradlex-build-conventions") version "0.7" }
 
 rootProject.name = "jvm-dependency-conflict-resolution"
-
-dependencyResolutionManagement {
-    repositories.mavenCentral()
-}
-
-develocity {
-    buildScan {
-        // required until we can upgrade to Gradle 8.8
-        val buildParameters = the<BuildParametersExtension>()
-        if (buildParameters.ci) {
-            termsOfUseUrl = "https://gradle.com/help/legal-terms-of-use"
-            termsOfUseAgree = "yes"
-        } else {
-            publishing.onlyIf { false }
-        }
-    }
-}
