@@ -12,6 +12,12 @@ jobs:
     steps:
       - name: git clone
         uses: actions/checkout@v5
+      - name: git clone gradlex-build-conventions
+        uses: actions/checkout@v5
+        with:
+          repository: gradlex-org/plugin-publish-conventions
+          path: build/plugin-publish-conventions
+          ref: new-convention-plugins
       - name: Set up JDK
         uses: actions/setup-java@v5
         with:
@@ -19,4 +25,4 @@ jobs:
           java-version: 17
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v5
-      - run: "./gradlew quickCheck"
+      - run: "./gradlew qualityCheck test"

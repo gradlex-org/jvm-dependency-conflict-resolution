@@ -1,39 +1,26 @@
-/*
- * Copyright the GradleX team.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
+// SPDX-License-Identifier: Apache-2.0
 package org.gradlex.jvm.dependency.conflict.detection.rules;
 
+import java.util.Arrays;
+import java.util.List;
 import org.gradlex.jvm.dependency.conflict.detection.rules.asm.AsmAlignmentRule;
 import org.gradlex.jvm.dependency.conflict.detection.rules.jetty.JettyAlignmentRule;
 import org.gradlex.jvm.dependency.conflict.detection.rules.logging.Log4J2Alignment;
 import org.gradlex.jvm.dependency.conflict.detection.rules.logging.Slf4J2Alignment;
 import org.gradlex.jvm.dependency.conflict.detection.rules.logging.Slf4JAlignment;
 
-import java.util.Arrays;
-import java.util.List;
-
 public enum AlignmentDefinition {
-    ASM("org.ow2.asm:asm-bom", AsmAlignmentRule.class,
+    ASM(
+            "org.ow2.asm:asm-bom",
+            AsmAlignmentRule.class,
             "org.ow2.asm:asm",
             "org.ow2.asm:asm-tree",
             "org.ow2.asm:asm-analysis",
             "org.ow2.asm:asm-util",
-            "org.ow2.asm:asm-commons"
-    ),
-    JERSEY("org.glassfish.jersey:jersey-bom", AlignmentDefinitionRule.class,
+            "org.ow2.asm:asm-commons"),
+    JERSEY(
+            "org.glassfish.jersey:jersey-bom",
+            AlignmentDefinitionRule.class,
             "org.glassfish.jersey.core:jersey-common",
             "org.glassfish.jersey.core:jersey-client",
             "org.glassfish.jersey.core:jersey-server",
@@ -111,9 +98,10 @@ public enum AlignmentDefinition {
             "org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-jetty",
             "org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-jetty-http2",
             "org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-netty",
-            "org.glassfish.jersey.test-framework:jersey-test-framework-util"
-    ),
-    JETTY("org.eclipse.jetty:jetty-bom", JettyAlignmentRule.class,
+            "org.glassfish.jersey.test-framework:jersey-test-framework-util"),
+    JETTY(
+            "org.eclipse.jetty:jetty-bom",
+            JettyAlignmentRule.class,
             "org.eclipse.jetty:jetty-alpn-client",
             "org.eclipse.jetty:jetty-alpn-conscrypt-client",
             "org.eclipse.jetty:jetty-alpn-conscrypt-server",
@@ -169,9 +157,10 @@ public enum AlignmentDefinition {
             "org.eclipse.jetty.websocket:jetty-websocket-jetty-api",
             "org.eclipse.jetty.websocket:jetty-websocket-jetty-client",
             "org.eclipse.jetty.websocket:jetty-websocket-jetty-common",
-            "org.eclipse.jetty.websocket:jetty-websocket-jetty-server"
-    ),
-    LOG4J2("org.apache.logging.log4j:log4j-bom", Log4J2Alignment.class,
+            "org.eclipse.jetty.websocket:jetty-websocket-jetty-server"),
+    LOG4J2(
+            "org.apache.logging.log4j:log4j-bom",
+            Log4J2Alignment.class,
             "org.apache.logging.log4j:log4j-api",
             "org.apache.logging.log4j:log4j-core",
             "org.apache.logging.log4j:log4j-1.2-api",
@@ -181,9 +170,9 @@ public enum AlignmentDefinition {
             "org.apache.logging.log4j:log4j-jmx-gui",
             "org.apache.logging.log4j:log4j-slf4j-impl",
             "org.apache.logging.log4j:log4j-web",
-            "org.apache.logging.log4j:log4j-nosql"
-    ),
-    SSHD(AlignmentDefinitionRule.class,
+            "org.apache.logging.log4j:log4j-nosql"),
+    SSHD(
+            AlignmentDefinitionRule.class,
             "org.apache.sshd:sshd-cli",
             "org.apache.sshd:sshd-common",
             "org.apache.sshd:sshd-contrib",
@@ -198,9 +187,10 @@ public enum AlignmentDefinition {
             "org.apache.sshd:sshd-putty",
             "org.apache.sshd:sshd-scp",
             "org.apache.sshd:sshd-sftp",
-            "org.apache.sshd:sshd-spring-sftp"
-    ),
-    SLF4J2("org.slf4j:slf4j-bom", Slf4J2Alignment.class,
+            "org.apache.sshd:sshd-spring-sftp"),
+    SLF4J2(
+            "org.slf4j:slf4j-bom",
+            Slf4J2Alignment.class,
             "org.slf4j:slf4j-api",
             "org.slf4j:slf4j-simple",
             "org.slf4j:slf4j-nop",
@@ -212,9 +202,9 @@ public enum AlignmentDefinition {
             "org.slf4j:jcl-over-slf4j",
             "org.slf4j:log4j-over-slf4j",
             "org.slf4j:jul-to-slf4j",
-            "org.slf4j:osgi-over-slf4j"
-    ),
-    SLF4J(Slf4JAlignment.class,
+            "org.slf4j:osgi-over-slf4j"),
+    SLF4J(
+            Slf4JAlignment.class,
             // Ignored modules:
             //   org.slf4j:slf4j-archetype
             //   org.slf4j:slf4j-converter
@@ -240,8 +230,7 @@ public enum AlignmentDefinition {
             "org.slf4j:slf4j-migrator",
             "org.slf4j:slf4j-nop",
             "org.slf4j:slf4j-reload4j",
-            "org.slf4j:slf4j-simple"
-    );
+            "org.slf4j:slf4j-simple");
 
     private final String bom;
     private final List<String> modules;
