@@ -16,7 +16,8 @@
 
 package org.gradlex.jvm.dependency.conflict.detection.util;
 
-import javax.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
+
 import java.util.Objects;
 
 /**
@@ -87,12 +88,12 @@ public class VersionNumber implements Comparable<VersionNumber> {
     }
 
     public static VersionNumber parse(String versionString) {
-        if (versionString == null || versionString.length() == 0) {
+        if (versionString == null || versionString.isEmpty()) {
             return UNKNOWN;
         }
         Scanner scanner = new Scanner(versionString);
 
-        int major = 0;
+        int major;
         int minor = 0;
         int micro = 0;
         int patch = 0;
