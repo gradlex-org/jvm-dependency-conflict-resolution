@@ -3,6 +3,7 @@ package org.gradlex.jvm.dependency.conflict.test
 import org.gradle.testfixtures.ProjectBuilder
 import org.gradlex.jvm.dependency.conflict.detection.rules.CapabilityDefinition
 import spock.lang.Specification
+import spock.lang.Tag
 
 import java.util.zip.ZipFile
 
@@ -39,6 +40,7 @@ class JarOverlapTest extends Specification {
                 .collect { it.replace("\")", "") }
     }
 
+    @Tag("no-cross-version")
     def "capability definition is valid"(CapabilityDefinition definition) {
         given:
         def specificVersions = definitionSpecificVersions(definition)
@@ -96,6 +98,7 @@ class JarOverlapTest extends Specification {
 
         def conf = project.getConfigurations().detachedConfiguration(*modules)
         conf.transitive = false
+        conf.resolutionStrategy.disableDependencyVerification()
 
         when:
         List<Tuple2<String, Set<String>>> jarClassFiles = conf.files.collect { jar ->
