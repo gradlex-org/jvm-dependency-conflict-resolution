@@ -9,6 +9,10 @@
   ],
   "packageRules": [
     {
+      "matchManagers": "gradle-wrapper",
+      "ignoreUnstable": false
+    },
+    {
       "groupName": "Tomcat",
       "matchPackageNames": ["org.apache.tomcat**"]
     },
