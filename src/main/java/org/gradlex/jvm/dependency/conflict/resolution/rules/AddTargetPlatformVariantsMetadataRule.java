@@ -1,21 +1,10 @@
-/*
- * Copyright the GradleX team.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
+// SPDX-License-Identifier: Apache-2.0
 package org.gradlex.jvm.dependency.conflict.resolution.rules;
 
+import static org.gradle.nativeplatform.MachineArchitecture.ARCHITECTURE_ATTRIBUTE;
+import static org.gradle.nativeplatform.OperatingSystemFamily.OPERATING_SYSTEM_ATTRIBUTE;
+
+import javax.inject.Inject;
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataDetails;
@@ -24,11 +13,6 @@ import org.gradle.api.artifacts.VariantMetadata;
 import org.gradle.api.model.ObjectFactory;
 import org.gradle.nativeplatform.MachineArchitecture;
 import org.gradle.nativeplatform.OperatingSystemFamily;
-
-import javax.inject.Inject;
-
-import static org.gradle.nativeplatform.MachineArchitecture.ARCHITECTURE_ATTRIBUTE;
-import static org.gradle.nativeplatform.OperatingSystemFamily.OPERATING_SYSTEM_ATTRIBUTE;
 
 /**
  * See:
@@ -44,10 +28,11 @@ public abstract class AddTargetPlatformVariantsMetadataRule implements Component
     private final String architecture;
 
     @Inject
-    abstract protected ObjectFactory getObjects();
+    protected abstract ObjectFactory getObjects();
 
     @Inject
-    public AddTargetPlatformVariantsMetadataRule(String feature, String classifier, String operatingSystem, String architecture) {
+    public AddTargetPlatformVariantsMetadataRule(
+            String feature, String classifier, String operatingSystem, String architecture) {
         this.feature = feature;
         this.classifier = classifier;
         this.operatingSystem = operatingSystem;
@@ -91,7 +76,8 @@ public abstract class AddTargetPlatformVariantsMetadataRule implements Component
 
     private void configureAttributes(VariantMetadata variant) {
         variant.attributes(attributes -> {
-            attributes.attribute(OPERATING_SYSTEM_ATTRIBUTE, getObjects().named(OperatingSystemFamily.class, operatingSystem));
+            attributes.attribute(
+                    OPERATING_SYSTEM_ATTRIBUTE, getObjects().named(OperatingSystemFamily.class, operatingSystem));
             attributes.attribute(ARCHITECTURE_ATTRIBUTE, getObjects().named(MachineArchitecture.class, architecture));
         });
     }

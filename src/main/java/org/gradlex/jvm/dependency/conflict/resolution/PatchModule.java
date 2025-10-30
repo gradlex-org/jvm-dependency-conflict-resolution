@@ -1,21 +1,8 @@
-/*
- * Copyright the GradleX team.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
+// SPDX-License-Identifier: Apache-2.0
 package org.gradlex.jvm.dependency.conflict.resolution;
 
+import java.util.Arrays;
+import javax.inject.Inject;
 import org.gradle.api.artifacts.dsl.DependencyHandler;
 import org.gradlex.jvm.dependency.conflict.detection.rules.CapabilityDefinition;
 import org.gradlex.jvm.dependency.conflict.resolution.rules.AddApiDependencyMetadataRule;
@@ -29,9 +16,6 @@ import org.gradlex.jvm.dependency.conflict.resolution.rules.ReduceToCompileOnlyA
 import org.gradlex.jvm.dependency.conflict.resolution.rules.ReduceToRuntimeOnlyDependencyMetadataRule;
 import org.gradlex.jvm.dependency.conflict.resolution.rules.RemoveCapabilityMetadataRule;
 import org.gradlex.jvm.dependency.conflict.resolution.rules.RemoveDependencyMetadataRule;
-
-import javax.inject.Inject;
-import java.util.Arrays;
 
 public abstract class PatchModule {
 
@@ -50,7 +34,9 @@ public abstract class PatchModule {
      * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#fixing_wrong_dependency_details">component_metadata_rules.html#fixing_wrong_dependency_details</a>
      */
     public void addApiDependency(String dependency) {
-        getDependencies().getComponents().withModule(module, AddApiDependencyMetadataRule.class, r -> r.params(dependency));
+        getDependencies()
+                .getComponents()
+                .withModule(module, AddApiDependencyMetadataRule.class, r -> r.params(dependency));
     }
 
     /**
@@ -58,7 +44,9 @@ public abstract class PatchModule {
      * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#fixing_wrong_dependency_details">component_metadata_rules.html#fixing_wrong_dependency_details</a>
      */
     public void addRuntimeOnlyDependency(String dependency) {
-        getDependencies().getComponents().withModule(module, AddRuntimeOnlyDependencyMetadataRule.class, r -> r.params(dependency));
+        getDependencies()
+                .getComponents()
+                .withModule(module, AddRuntimeOnlyDependencyMetadataRule.class, r -> r.params(dependency));
     }
 
     /**
@@ -66,7 +54,9 @@ public abstract class PatchModule {
      * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#fixing_wrong_dependency_details">component_metadata_rules.html#fixing_wrong_dependency_details</a>
      */
     public void addCompileOnlyApiDependency(String dependency) {
-        getDependencies().getComponents().withModule(module, AddCompileOnlyApiDependencyMetadataRule.class, r -> r.params(dependency));
+        getDependencies()
+                .getComponents()
+                .withModule(module, AddCompileOnlyApiDependencyMetadataRule.class, r -> r.params(dependency));
     }
 
     /**
@@ -74,7 +64,9 @@ public abstract class PatchModule {
      * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#fixing_wrong_dependency_details">component_metadata_rules.html#fixing_wrong_dependency_details</a>
      */
     public void removeDependency(String dependency) {
-        getDependencies().getComponents().withModule(module, RemoveDependencyMetadataRule.class, r -> r.params(dependency));
+        getDependencies()
+                .getComponents()
+                .withModule(module, RemoveDependencyMetadataRule.class, r -> r.params(dependency));
     }
 
     /**
@@ -82,7 +74,9 @@ public abstract class PatchModule {
      * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#fixing_wrong_dependency_details">component_metadata_rules.html#fixing_wrong_dependency_details</a>
      */
     public void reduceToRuntimeOnlyDependency(String dependency) {
-        getDependencies().getComponents().withModule(module, ReduceToRuntimeOnlyDependencyMetadataRule.class, r -> r.params(dependency));
+        getDependencies()
+                .getComponents()
+                .withModule(module, ReduceToRuntimeOnlyDependencyMetadataRule.class, r -> r.params(dependency));
     }
 
     /**
@@ -90,7 +84,9 @@ public abstract class PatchModule {
      * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#fixing_wrong_dependency_details">component_metadata_rules.html#fixing_wrong_dependency_details</a>
      */
     public void reduceToCompileOnlyApiDependency(String dependency) {
-        getDependencies().getComponents().withModule(module, ReduceToCompileOnlyApiDependencyMetadataRule.class, r -> r.params(dependency));
+        getDependencies()
+                .getComponents()
+                .withModule(module, ReduceToCompileOnlyApiDependencyMetadataRule.class, r -> r.params(dependency));
     }
 
     /**
@@ -108,7 +104,9 @@ public abstract class PatchModule {
      * See: <a href="https://blog.gradle.org/addressing-logging-complexity-capabilities">blog.gradle.org/addressing-logging-complexity-capabilities</a>
      */
     public void addCapability(String capability) {
-        getDependencies().getComponents().withModule(module, AddCapabilityMetadataRule.class, r -> r.params(capability));
+        getDependencies()
+                .getComponents()
+                .withModule(module, AddCapabilityMetadataRule.class, r -> r.params(capability));
     }
 
     /**
@@ -126,7 +124,9 @@ public abstract class PatchModule {
      * See: <a href="https://blog.gradle.org/addressing-logging-complexity-capabilities">blog.gradle.org/addressing-logging-complexity-capabilities</a>
      */
     public void removeCapability(String capability) {
-        getDependencies().getComponents().withModule(module, RemoveCapabilityMetadataRule.class, r -> r.params(capability));
+        getDependencies()
+                .getComponents()
+                .withModule(module, RemoveCapabilityMetadataRule.class, r -> r.params(capability));
     }
 
     /**
@@ -145,7 +145,12 @@ public abstract class PatchModule {
      * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#adding_variants_for_native_jars">component_metadata_rules.html#adding_variants_for_native_jars</a>
      */
     public void addTargetPlatformVariant(String classifier, String operatingSystem, String architecture) {
-        getDependencies().getComponents().withModule(module, AddTargetPlatformVariantsMetadataRule.class, r -> r.params("", classifier, operatingSystem, architecture));
+        getDependencies()
+                .getComponents()
+                .withModule(
+                        module,
+                        AddTargetPlatformVariantsMetadataRule.class,
+                        r -> r.params("", classifier, operatingSystem, architecture));
     }
 
     /**
@@ -154,8 +159,14 @@ public abstract class PatchModule {
      * A 'feature' (aka Capability) can optionally be defined to require the variant to be addressed by it.
      * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#adding_variants_for_native_jars">component_metadata_rules.html#adding_variants_for_native_jars</a>
      */
-    public void addTargetPlatformVariant(String feature, String classifier, String operatingSystem, String architecture) {
-        getDependencies().getComponents().withModule(module, AddTargetPlatformVariantsMetadataRule.class, r -> r.params(feature, classifier, operatingSystem, architecture));
+    public void addTargetPlatformVariant(
+            String feature, String classifier, String operatingSystem, String architecture) {
+        getDependencies()
+                .getComponents()
+                .withModule(
+                        module,
+                        AddTargetPlatformVariantsMetadataRule.class,
+                        r -> r.params(feature, classifier, operatingSystem, architecture));
     }
 
     /**
@@ -164,7 +175,8 @@ public abstract class PatchModule {
      * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#sec:custom_status_scheme">component_metadata_rules.html#sec:custom_status_scheme</a>
      */
     public void setStatusToIntegration(String... markerInVersion) {
-        getDependencies().getComponents().withModule(module, ComponentStatusRule.class, r -> r.params(Arrays.asList(markerInVersion)));
+        getDependencies()
+                .getComponents()
+                .withModule(module, ComponentStatusRule.class, r -> r.params(Arrays.asList(markerInVersion)));
     }
-
 }

@@ -1,30 +1,14 @@
-/*
- * Copyright the GradleX team.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
+// SPDX-License-Identifier: Apache-2.0
 package org.gradlex.jvm.dependency.conflict.resolution.rules;
 
+import java.util.Arrays;
+import java.util.List;
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataDetails;
 import org.gradle.api.artifacts.ComponentMetadataRule;
 import org.gradle.api.artifacts.VariantMetadata;
 import org.gradle.api.attributes.Attribute;
-
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Kept for individual usage to get the patch functionality for older Guava versions.
@@ -45,9 +29,9 @@ import java.util.List;
  */
 @CacheableRule
 @Deprecated
-abstract public class GuavaComponentRule implements ComponentMetadataRule {
+public abstract class GuavaComponentRule implements ComponentMetadataRule {
 
-    private final static Attribute<String> TARGET_JVM_ENVIRONMENT_ATTRIBUTE =
+    private static final Attribute<String> TARGET_JVM_ENVIRONMENT_ATTRIBUTE =
             Attribute.of("org.gradle.jvm.environment", String.class);
 
     private final List<String> RUNTIME_VARIANT_NAMES =
@@ -58,7 +42,8 @@ abstract public class GuavaComponentRule implements ComponentMetadataRule {
         // if (majorVersion <= 32) // May add this check should https://github.com/google/guava/pull/6606 be done
         removeAnnotationProcessorDependenciesFromRuntime(ctx.getDetails());
 
-        if ((majorVersion >= 22 && majorVersion <= 31) || ctx.getDetails().getId().getVersion().startsWith("32.0")) {
+        if ((majorVersion >= 22 && majorVersion <= 31)
+                || ctx.getDetails().getId().getVersion().startsWith("32.0")) {
             removeAnimalSnifferAnnotations(ctx.getDetails());
 
             addOtherJvmVariant("Compile", ctx.getDetails());
@@ -76,8 +61,10 @@ abstract public class GuavaComponentRule implements ComponentMetadataRule {
         // everything outside the 'com.google.guava' group is an annotation processor
         String guavaGroup = details.getId().getGroup();
         for (String runtime : RUNTIME_VARIANT_NAMES) {
-            details.withVariant(runtime, variant -> variant.withDependencies(dependencies ->
-                    dependencies.removeIf(dependency -> !guavaGroup.equals(dependency.getGroup()))));
+            details.withVariant(
+                    runtime,
+                    variant -> variant.withDependencies(dependencies ->
+                            dependencies.removeIf(dependency -> !guavaGroup.equals(dependency.getGroup()))));
         }
     }
 
@@ -105,28 +92,37 @@ abstract public class GuavaComponentRule implements ComponentMetadataRule {
 
         String env = isAndroidVariantVersion ? "android" : "standard-jvm";
 
-        String otherJarSuffix = isAndroidVariantVersion ?
-                "22.0".equals(version) || "23.0".equals(version) ? "" : "-jre" : "-android";
+        String otherJarSuffix =
+                isAndroidVariantVersion ? "22.0".equals(version) || "23.0".equals(version) ? "" : "-jre" : "-android";
         String otherEnv = isAndroidVariantVersion ? "standard-jvm" : "android";
         String otherVariantName = isAndroidVariantVersion ? "standardJvm" : "android";
 
-        details.withVariant(baseVariantName.toLowerCase(), variant -> variant.attributes(a -> {
-            a.attribute(TARGET_JVM_ENVIRONMENT_ATTRIBUTE, env);
-        }));
+        details.withVariant(
+                baseVariantName.toLowerCase(),
+                variant -> variant.attributes(a -> {
+                    a.attribute(TARGET_JVM_ENVIRONMENT_ATTRIBUTE, env);
+                }));
         details.addVariant(otherVariantName + baseVariantName, baseVariantName.toLowerCase(), variant -> {
             variant.attributes(a -> {
                 a.attribute(TARGET_JVM_ENVIRONMENT_ATTRIBUTE, otherEnv);
             });
-            adjustDependenciesForGuava31AndLower(variant, baseVariantName, version, majorVersion, isAndroidVariantVersion);
+            adjustDependenciesForGuava31AndLower(
+                    variant, baseVariantName, version, majorVersion, isAndroidVariantVersion);
             variant.withFiles(files -> {
                 files.removeAllFiles();
-                files.addFile("guava-" + version + otherJarSuffix + ".jar",
+                files.addFile(
+                        "guava-" + version + otherJarSuffix + ".jar",
                         "../" + version + otherJarSuffix + "/guava-" + version + otherJarSuffix + ".jar");
             });
         });
     }
 
-    private void adjustDependenciesForGuava31AndLower(VariantMetadata variant, String baseVariantName, String version, int majorVersion, boolean isAndroidVariantVersion) {
+    private void adjustDependenciesForGuava31AndLower(
+            VariantMetadata variant,
+            String baseVariantName,
+            String version,
+            int majorVersion,
+            boolean isAndroidVariantVersion) {
         if ((majorVersion >= 26 && majorVersion < 31) || version.startsWith("31.0") || "25.1".equals(version)) {
             variant.withDependencies(dependencies -> {
                 if (majorVersion < 31 || isAndroidVariantVersion) {
@@ -145,7 +141,10 @@ abstract public class GuavaComponentRule implements ComponentMetadataRule {
         if (androidVariant) {
             if (guavaVersion.equals("25.1")) {
                 version = "2.0.0";
-            } else if (guavaVersion.startsWith("28.") || guavaVersion.startsWith("29.") || guavaVersion.startsWith("30.") || guavaVersion.startsWith("31.")) {
+            } else if (guavaVersion.startsWith("28.")
+                    || guavaVersion.startsWith("29.")
+                    || guavaVersion.startsWith("30.")
+                    || guavaVersion.startsWith("31.")) {
                 version = "2.5.5";
             } else {
                 version = "2.5.2";
@@ -163,7 +162,7 @@ abstract public class GuavaComponentRule implements ComponentMetadataRule {
                 version = "2.10.0";
             } else if (guavaVersion.startsWith("28.")) {
                 version = "2.8.1";
-            } else  if (guavaVersion.startsWith("26.") || guavaVersion.startsWith("27.")) {
+            } else if (guavaVersion.startsWith("26.") || guavaVersion.startsWith("27.")) {
                 version = "2.5.2";
             } else if (guavaVersion.startsWith("25.")) {
                 version = "2.0.0";
