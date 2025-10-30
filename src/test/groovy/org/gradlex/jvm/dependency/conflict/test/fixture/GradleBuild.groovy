@@ -2,6 +2,7 @@ package org.gradlex.jvm.dependency.conflict.test.fixture
 
 import org.gradle.testkit.runner.BuildResult
 import org.gradle.testkit.runner.GradleRunner
+import org.gradle.util.GradleVersion
 
 import java.lang.management.ManagementFactory
 import java.nio.file.Files
@@ -16,6 +17,8 @@ class GradleBuild {
     final static String GRADLE_VERSION_UNDER_TEST = System.getProperty("gradleVersionUnderTest")
     final static boolean GRADLE6_TEST = GRADLE_VERSION_UNDER_TEST?.startsWith("6.")
     final static boolean GRADLE7_TEST = GRADLE_VERSION_UNDER_TEST?.startsWith("7.")
+    final static boolean GRADLE9_1_TEST = !GRADLE_VERSION_UNDER_TEST ||
+            GradleVersion.version(GRADLE_VERSION_UNDER_TEST) >= GradleVersion.version("9.1")
 
     GradleBuild(File projectDir = Files.createTempDirectory("gradle-build").toFile()) {
         this.projectDir = projectDir

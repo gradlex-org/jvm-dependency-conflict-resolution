@@ -47,7 +47,9 @@ compileClasspath - Compile classpath for source set 'main'.
         """
 
         expect:
-        fail().output.contains "Cannot select module with conflict on capability 'commons-lang:commons-lang:2.6' also provided by [org.apache.commons:commons-lang3:3.11(compile)]"
+        GradleBuild.GRADLE9_1_TEST
+                ? fail().output.contains("Cannot select module with conflict on capability 'commons-lang:commons-lang:3.11' also provided by ['commons-lang:commons-lang:2.6' (compile)]")
+                : fail().output.contains("Cannot select module with conflict on capability 'commons-lang:commons-lang:2.6' also provided by [org.apache.commons:commons-lang3:3.11(compile)]")
     }
 
     def "can remove capability by enum"() {
