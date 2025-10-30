@@ -11,7 +11,7 @@ import java.nio.file.Path
 
 abstract class AbstractLoggingCapabilitiesPluginFunctionalTest extends Specification {
 
-    static GradleVersion testGradleVersion = System.getProperty("test.gradle-version")?.with { GradleVersion.version(it) } ?: GradleVersion.current()
+    static GradleVersion testGradleVersion = System.getProperty("gradleVersionUnderTest")?.with { GradleVersion.version(it) } ?: GradleVersion.current()
 
     @TempDir
     Path testFolder
