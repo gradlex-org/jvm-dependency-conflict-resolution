@@ -60,8 +60,6 @@ publishingConventions {
 
 testingConventions { testGradleVersions("6.8.3", "6.9.4", "7.0.2", "8.0.2", "8.14.3") }
 
-tasks.compileTestJava { options.release = 11 } // allow tests to run against 6.x
-
 val generateCapabilitiesList =
     tasks.register<CapabilityListing>("generateCapabilitiesList") {
         pluginClasses.from(tasks.jar)
