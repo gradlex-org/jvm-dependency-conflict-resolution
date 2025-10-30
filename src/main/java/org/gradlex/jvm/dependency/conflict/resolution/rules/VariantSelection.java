@@ -1,21 +1,16 @@
-/*
- * Copyright the GradleX team.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
+// SPDX-License-Identifier: Apache-2.0
 package org.gradlex.jvm.dependency.conflict.resolution.rules;
 
+import static java.util.Objects.requireNonNull;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import org.gradle.api.Action;
 import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.VariantMetadata;
@@ -26,17 +21,6 @@ import org.gradle.api.attributes.LibraryElements;
 import org.gradle.api.attributes.Usage;
 import org.gradle.internal.component.external.model.ModuleComponentResolveMetadata;
 import org.gradle.internal.component.model.VariantResolveMetadata;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import static java.util.Objects.requireNonNull;
 
 final class VariantSelection {
 
@@ -63,10 +47,12 @@ final class VariantSelection {
             .attribute(Category.CATEGORY_ATTRIBUTE.getName(), Category.LIBRARY)
             .attribute(LibraryElements.LIBRARY_ELEMENTS_ATTRIBUTE.getName(), LibraryElements.JAR);
 
+    private VariantSelection() {}
 
-    private VariantSelection() { }
-
-    static void allVariantsMatching(ComponentMetadataContext context, Predicate<VariantIdentification> id, Action<? super VariantMetadata> action) {
+    static void allVariantsMatching(
+            ComponentMetadataContext context,
+            Predicate<VariantIdentification> id,
+            Action<? super VariantMetadata> action) {
         List<String> variantNames = discoverNames(context, id);
         variantNames.forEach(variantName -> context.getDetails().withVariant(variantName, action));
     }
@@ -89,8 +75,9 @@ final class VariantSelection {
     }
 
     private static Map<String, String> toMap(AttributeContainer attributes) {
-        return attributes.keySet().stream().collect(Collectors
-                .toMap(Attribute::getName, k -> requireNonNull(attributes.getAttribute(k)).toString()));
+        return attributes.keySet().stream()
+                .collect(Collectors.toMap(Attribute::getName, k -> requireNonNull(attributes.getAttribute(k))
+                        .toString()));
     }
 
     private static AttributeContainer getAttributes(VariantResolveMetadata metadata) {
