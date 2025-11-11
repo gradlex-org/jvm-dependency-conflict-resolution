@@ -145,6 +145,10 @@
          <trusted-key id="34441E504A937F43EB0DAEF96A65176A0FB1CD0B" group="org.apache.groovy" name="groovy"/>
          <!-- ✅ Signed Spockframework -->
          <trusted-key id="76E94E8FF0AB5AF3B6F8366972FEFD1572EB75E1" group="org.spockframework" name="spock-core"/>
+
+         <!-- TestLens -->
+         <!-- ✅ Signed by TestLens Team -->
+         <trusted-key id="C7C5042998FCB6E396E8D262BA19949FA2609216" group="app.testlens" name="junit-platform-instrumentation"/>
       </trusted-keys>
    </configuration>
    <components>
