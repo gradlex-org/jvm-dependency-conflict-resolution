@@ -19,4 +19,4 @@ jobs:
           java-version: 17
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v5
-      - run: "./gradlew qualityCheck test"
+      - run: "./gradlew qualityCheck test testSamples"
