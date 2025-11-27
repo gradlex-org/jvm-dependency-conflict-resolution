@@ -255,7 +255,7 @@ dependencies {
     implementation("org.slf4j:slf4j-log4j12:2.0.17")
     implementation("org.slf4j:slf4j-nop:2.0.17")
     implementation("org.slf4j:slf4j-simple:2.0.17")
-    implementation("org.springframework:spring-aop:6.2.11")
+    implementation("org.springframework:spring-aop:7.0.1")
     implementation("org.springframework:spring-jcl:6.2.11")
     implementation("postgresql:postgresql:9.1-901-1.jdbc4")
     implementation("servletapi:servletapi:2.4-20040521")
