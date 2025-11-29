@@ -157,7 +157,7 @@ public enum CapabilityDefinition {
     GUAVA(HIGHEST_VERSION, "com.google.guava:guava", "com.google.guava:guava-jdk5"),
     JZY3D_EMUL_GL(HIGHEST_VERSION, "org.jzy3d:jzy3d-emul-gl", "org.jzy3d:jzy3d-emul-gl-awt"),
     JZY3D_JGL(HIGHEST_VERSION, "org.jzy3d:jGL", "org.jzy3d:jzy3d-jGL-awt"),
-    LZ4(HIGHEST_VERSION, "net.jpountz.lz4:lz4", "org.lz4:lz4-java"),
+    LZ4(HIGHEST_VERSION, "net.jpountz.lz4:lz4", "org.lz4:lz4-java", "at.yawk.lz4:lz4-java"),
     LISTENABLEFUTURE(
             FIRST_MODULE,
             "com.google.guava",
