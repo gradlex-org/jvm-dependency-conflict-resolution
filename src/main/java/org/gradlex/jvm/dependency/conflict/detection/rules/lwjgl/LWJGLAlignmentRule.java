@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-package org.gradlex.jvm.dependency.conflict.detection.rules.lwjgl.jetty;
+package org.gradlex.jvm.dependency.conflict.detection.rules.lwjgl;
 
 import javax.inject.Inject;
 import org.gradle.api.artifacts.CacheableRule;

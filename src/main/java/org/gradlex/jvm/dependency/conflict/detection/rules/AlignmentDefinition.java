@@ -8,7 +8,7 @@ import org.gradlex.jvm.dependency.conflict.detection.rules.jetty.JettyAlignmentR
 import org.gradlex.jvm.dependency.conflict.detection.rules.logging.Log4J2Alignment;
 import org.gradlex.jvm.dependency.conflict.detection.rules.logging.Slf4J2Alignment;
 import org.gradlex.jvm.dependency.conflict.detection.rules.logging.Slf4JAlignment;
-import org.gradlex.jvm.dependency.conflict.detection.rules.lwjgl.jetty.LWJGLAlignmentRule;
+import org.gradlex.jvm.dependency.conflict.detection.rules.lwjgl.LWJGLAlignmentRule;
 import org.jspecify.annotations.Nullable;
 
 public enum AlignmentDefinition {
