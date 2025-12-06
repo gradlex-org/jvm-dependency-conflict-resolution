@@ -10,6 +10,7 @@ import org.gradle.api.plugins.JvmEcosystemPlugin;
 import org.gradle.util.GradleVersion;
 import org.gradlex.jvm.dependency.conflict.detection.rules.AlignmentDefinition;
 import org.gradlex.jvm.dependency.conflict.detection.rules.CapabilityDefinition;
+import org.gradlex.jvm.dependency.conflict.resolution.rules.LWJGLTargetPlatformRule;
 
 public class JvmDependencyConflictDetectionPlugin implements Plugin<ExtensionAware> {
 
@@ -51,6 +52,20 @@ public class JvmDependencyConflictDetectionPlugin implements Plugin<ExtensionAwa
         }
         for (AlignmentDefinition definition : AlignmentDefinition.values()) {
             registerAlignmentRule(definition, components);
+        }
+        if (GradleVersion.current().compareTo(MINIMUM_SUPPORTED_VERSION_DEPENDENCY_CAPABILITY) >= 0) {
+            for (String module : AlignmentDefinition.LWJGL.getModules()) {
+                switch (module) {
+                    case "org.lwjgl:lwjgl-cuda":
+                    case "org.lwjgl:lwjgl-egl":
+                    case "org.lwjgl:lwjgl-fmod":
+                    case "org.lwjgl:lwjgl-jawt":
+                    case "org.lwjgl:lwjgl-odbc":
+                    case "org.lwjgl:lwjgl-opencl":
+                        continue;
+                }
+                components.withModule(module, LWJGLTargetPlatformRule.class);
+            }
         }
     }
 
