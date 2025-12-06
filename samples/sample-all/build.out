@@ -374,7 +374,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.slf4j:slf4j-nop:2.0.17 -> org.slf4j:slf4j-simple:2.0.17 (*)
 +--- org.slf4j:slf4j-simple:2.0.17 (*)
 +--- org.springframework:spring-aop:7.0.1 (*)
-+--- org.springframework:spring-jcl:7.0.1 -> org.slf4j:jcl-over-slf4j:2.0.17 (*)
++--- org.springframework:spring-jcl:6.2.14 -> org.slf4j:jcl-over-slf4j:2.0.17 (*)
 +--- postgresql:postgresql:9.1-901-1.jdbc4 -> org.postgresql:postgresql:42.7.8
 +--- servletapi:servletapi:2.4-20040521 -> javax.servlet:javax.servlet-api:4.0.1
 +--- stax:stax-api:1.0.1
