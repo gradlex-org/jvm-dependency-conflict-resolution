@@ -1,7 +1,7 @@
 import java.net.URLClassLoader
 import org.asciidoctor.gradle.base.AsciidoctorAttributeProvider
 
-version = "2.4"
+version = "2.5"
 
 publishingConventions {
     pluginPortal("org.gradlex.jvm-dependency-conflict-resolution") {
