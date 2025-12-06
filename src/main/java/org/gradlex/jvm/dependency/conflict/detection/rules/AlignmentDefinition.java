@@ -8,6 +8,8 @@ import org.gradlex.jvm.dependency.conflict.detection.rules.jetty.JettyAlignmentR
 import org.gradlex.jvm.dependency.conflict.detection.rules.logging.Log4J2Alignment;
 import org.gradlex.jvm.dependency.conflict.detection.rules.logging.Slf4J2Alignment;
 import org.gradlex.jvm.dependency.conflict.detection.rules.logging.Slf4JAlignment;
+import org.gradlex.jvm.dependency.conflict.detection.rules.lwjgl.jetty.LWJGLAlignmentRule;
+import org.jspecify.annotations.Nullable;
 
 public enum AlignmentDefinition {
     ASM(
@@ -171,6 +173,56 @@ public enum AlignmentDefinition {
             "org.apache.logging.log4j:log4j-slf4j-impl",
             "org.apache.logging.log4j:log4j-web",
             "org.apache.logging.log4j:log4j-nosql"),
+    LWJGL(
+            "org.lwjgl:lwjgl-bom",
+            LWJGLAlignmentRule.class,
+            "org.lwjgl:lwjgl",
+            "org.lwjgl:lwjgl-assimp",
+            "org.lwjgl:lwjgl-bgfx",
+            "org.lwjgl:lwjgl-cuda",
+            "org.lwjgl:lwjgl-egl",
+            "org.lwjgl:lwjgl-fmod",
+            "org.lwjgl:lwjgl-freetype",
+            "org.lwjgl:lwjgl-glfw",
+            "org.lwjgl:lwjgl-harfbuzz",
+            "org.lwjgl:lwjgl-hwloc",
+            "org.lwjgl:lwjgl-jawt",
+            "org.lwjgl:lwjgl-jemalloc",
+            "org.lwjgl:lwjgl-ktx",
+            "org.lwjgl:lwjgl-libdivide",
+            "org.lwjgl:lwjgl-llvm",
+            "org.lwjgl:lwjgl-lmdb",
+            "org.lwjgl:lwjgl-lz4",
+            "org.lwjgl:lwjgl-meow",
+            "org.lwjgl:lwjgl-meshoptimizer",
+            "org.lwjgl:lwjgl-msdfgen",
+            "org.lwjgl:lwjgl-nanovg",
+            "org.lwjgl:lwjgl-nfd",
+            "org.lwjgl:lwjgl-nuklear",
+            "org.lwjgl:lwjgl-odbc",
+            "org.lwjgl:lwjgl-openal",
+            "org.lwjgl:lwjgl-opencl",
+            "org.lwjgl:lwjgl-opengl",
+            "org.lwjgl:lwjgl-opengles",
+            "org.lwjgl:lwjgl-openvr",
+            "org.lwjgl:lwjgl-openxr",
+            "org.lwjgl:lwjgl-opus",
+            "org.lwjgl:lwjgl-ovr",
+            "org.lwjgl:lwjgl-par",
+            "org.lwjgl:lwjgl-remotery",
+            "org.lwjgl:lwjgl-rpmalloc",
+            "org.lwjgl:lwjgl-shaderc",
+            "org.lwjgl:lwjgl-spvc",
+            "org.lwjgl:lwjgl-sse",
+            "org.lwjgl:lwjgl-stb",
+            "org.lwjgl:lwjgl-tinyexr",
+            "org.lwjgl:lwjgl-tinyfd",
+            "org.lwjgl:lwjgl-tootle",
+            "org.lwjgl:lwjgl-vma",
+            "org.lwjgl:lwjgl-vulkan",
+            "org.lwjgl:lwjgl-xxhash",
+            "org.lwjgl:lwjgl-yoga",
+            "org.lwjgl:lwjgl-zstd"),
     SSHD(
             AlignmentDefinitionRule.class,
             "org.apache.sshd:sshd-cli",
@@ -232,7 +284,9 @@ public enum AlignmentDefinition {
             "org.slf4j:slf4j-reload4j",
             "org.slf4j:slf4j-simple");
 
+    @Nullable
     private final String bom;
+
     private final List<String> modules;
     private final Class<? extends AlignmentDefinitionRule> ruleClass;
 
@@ -242,12 +296,13 @@ public enum AlignmentDefinition {
         this.modules = Arrays.asList(modules);
     }
 
-    AlignmentDefinition(String bom, Class<? extends AlignmentDefinitionRule> ruleClass, String... modules) {
+    AlignmentDefinition(@Nullable String bom, Class<? extends AlignmentDefinitionRule> ruleClass, String... modules) {
         this.bom = bom;
         this.ruleClass = ruleClass;
         this.modules = Arrays.asList(modules);
     }
 
+    @Nullable
     public String getBom() {
         return bom;
     }
