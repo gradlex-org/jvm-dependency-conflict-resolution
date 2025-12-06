@@ -81,28 +81,215 @@ compileClasspath - Compile classpath for source set 'main'.
 |         +--- org.glassfish.jersey.core:jersey-common:3.1.0 (c)
 |         +--- org.glassfish.jersey.media:jersey-media-json-jackson:3.1.0 (c)
 |         \--- org.glassfish.jersey.ext:jersey-entity-filtering:3.1.0 (c)
-\--- org.glassfish.jersey.media:jersey-media-json-jackson:3.0.6 -> 3.1.0
-     +--- org.glassfish.jersey.core:jersey-common:3.1.0 (*)
-     +--- org.glassfish.jersey.ext:jersey-entity-filtering:3.1.0
-     |    +--- jakarta.ws.rs:jakarta.ws.rs-api:3.1.0
-     |    \--- org.glassfish.jersey:jersey-bom:3.1.0 (*)
-     +--- com.fasterxml.jackson.core:jackson-annotations:2.13.3
-     |    \--- com.fasterxml.jackson:jackson-bom:2.13.3
-     |         +--- com.fasterxml.jackson.core:jackson-annotations:2.13.3 (c)
-     |         +--- com.fasterxml.jackson.core:jackson-core:2.13.3 (c)
-     |         +--- com.fasterxml.jackson.core:jackson-databind:2.13.3 (c)
-     |         \--- com.fasterxml.jackson.module:jackson-module-jakarta-xmlbind-annotations:2.13.3 (c)
-     +--- com.fasterxml.jackson.core:jackson-databind:2.13.3
-     |    +--- com.fasterxml.jackson.core:jackson-annotations:2.13.3 (*)
-     |    +--- com.fasterxml.jackson.core:jackson-core:2.13.3
-     |    |    \--- com.fasterxml.jackson:jackson-bom:2.13.3 (*)
-     |    \--- com.fasterxml.jackson:jackson-bom:2.13.3 (*)
-     +--- com.fasterxml.jackson.module:jackson-module-jakarta-xmlbind-annotations:2.13.3
-     |    +--- com.fasterxml.jackson.core:jackson-annotations:2.13.3 (*)
-     |    +--- com.fasterxml.jackson.core:jackson-core:2.13.3 (*)
-     |    +--- com.fasterxml.jackson.core:jackson-databind:2.13.3 (*)
-     |    +--- com.sun.activation:jakarta.activation:2.0.1
-     |    \--- com.fasterxml.jackson:jackson-bom:2.13.3 (*)
-     +--- jakarta.xml.bind:jakarta.xml.bind-api:4.0.0
-     |    \--- jakarta.activation:jakarta.activation-api:2.1.0 -> com.sun.activation:jakarta.activation:2.0.1
-     \--- org.glassfish.jersey:jersey-bom:3.1.0 (*)
++--- org.glassfish.jersey.media:jersey-media-json-jackson:3.0.6 -> 3.1.0
+|    +--- org.glassfish.jersey.core:jersey-common:3.1.0 (*)
+|    +--- org.glassfish.jersey.ext:jersey-entity-filtering:3.1.0
+|    |    +--- jakarta.ws.rs:jakarta.ws.rs-api:3.1.0
+|    |    \--- org.glassfish.jersey:jersey-bom:3.1.0 (*)
+|    +--- com.fasterxml.jackson.core:jackson-annotations:2.13.3
+|    |    \--- com.fasterxml.jackson:jackson-bom:2.13.3
+|    |         +--- com.fasterxml.jackson.core:jackson-annotations:2.13.3 (c)
+|    |         +--- com.fasterxml.jackson.core:jackson-core:2.13.3 (c)
+|    |         +--- com.fasterxml.jackson.core:jackson-databind:2.13.3 (c)
+|    |         \--- com.fasterxml.jackson.module:jackson-module-jakarta-xmlbind-annotations:2.13.3 (c)
+|    +--- com.fasterxml.jackson.core:jackson-databind:2.13.3
+|    |    +--- com.fasterxml.jackson.core:jackson-annotations:2.13.3 (*)
+|    |    +--- com.fasterxml.jackson.core:jackson-core:2.13.3
+|    |    |    \--- com.fasterxml.jackson:jackson-bom:2.13.3 (*)
+|    |    \--- com.fasterxml.jackson:jackson-bom:2.13.3 (*)
+|    +--- com.fasterxml.jackson.module:jackson-module-jakarta-xmlbind-annotations:2.13.3
+|    |    +--- com.fasterxml.jackson.core:jackson-annotations:2.13.3 (*)
+|    |    +--- com.fasterxml.jackson.core:jackson-core:2.13.3 (*)
+|    |    +--- com.fasterxml.jackson.core:jackson-databind:2.13.3 (*)
+|    |    +--- com.sun.activation:jakarta.activation:2.0.1
+|    |    \--- com.fasterxml.jackson:jackson-bom:2.13.3 (*)
+|    +--- jakarta.xml.bind:jakarta.xml.bind-api:4.0.0
+|    |    \--- jakarta.activation:jakarta.activation-api:2.1.0 -> com.sun.activation:jakarta.activation:2.0.1
+|    \--- org.glassfish.jersey:jersey-bom:3.1.0 (*)
++--- org.lwjgl:lwjgl:3.3.6
+|    \--- org.lwjgl:lwjgl-bom:3.3.6
+|         +--- org.lwjgl:lwjgl:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-assimp:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-bgfx:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-cuda:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-egl:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-fmod:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-freetype:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-glfw:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-harfbuzz:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-hwloc:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-jawt:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-jemalloc:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-ktx:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-libdivide:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-llvm:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-lmdb:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-lz4:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-meow:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-meshoptimizer:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-msdfgen:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-nanovg:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-nfd:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-nuklear:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-odbc:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-openal:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-opencl:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-opengl:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-opengles:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-openvr:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-openxr:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-opus:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-ovr:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-par:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-remotery:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-rpmalloc:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-shaderc:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-spvc:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-sse:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-stb:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-tinyexr:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-tinyfd:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-tootle:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-vma:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-vulkan:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-xxhash:3.3.6 (c)
+|         +--- org.lwjgl:lwjgl-yoga:3.3.6 (c)
+|         \--- org.lwjgl:lwjgl-zstd:3.3.6 (c)
++--- org.lwjgl:lwjgl-assimp -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-bgfx -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-cuda -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-egl -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-fmod -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-freetype -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-glfw -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-harfbuzz -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-hwloc -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-jawt -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-jemalloc -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-ktx -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-libdivide -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-llvm -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-lmdb -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-lz4 -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-meow -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-meshoptimizer -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-msdfgen -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-nanovg -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-nfd -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-nuklear -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-odbc -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-openal -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-opencl -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-opengl -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-opengles -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-openvr -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-openxr -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-opus -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-ovr -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-par -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-remotery -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-rpmalloc -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-shaderc -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-spvc -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-sse -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-stb -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-tinyexr -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-tinyfd -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-tootle -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-vma -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-vulkan -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-xxhash -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
++--- org.lwjgl:lwjgl-yoga -> 3.3.6
+|    +--- org.lwjgl:lwjgl:3.3.6 (*)
+|    \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
+\--- org.lwjgl:lwjgl-zstd -> 3.3.6
+     +--- org.lwjgl:lwjgl:3.3.6 (*)
+     \--- org.lwjgl:lwjgl-bom:3.3.6 (*)
