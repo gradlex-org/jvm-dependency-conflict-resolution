@@ -14,7 +14,7 @@ dependencies {
     implementation("cglib:cglib:3.3.0")
     implementation("ch.qos.logback:logback-classic:1.5.21")
     implementation("com.github.librepdf:openpdf:3.0.0")
-    implementation("com.github.spotbugs:spotbugs-annotations:4.9.6")
+    implementation("com.github.spotbugs:spotbugs-annotations:4.9.8")
     implementation("com.github.stephenc.jcip:jcip-annotations:1.0-1")
     implementation("com.google.code.findbugs:annotations:3.0.1")
     implementation("com.google.code.findbugs:findbugs-annotations:3.0.1")
