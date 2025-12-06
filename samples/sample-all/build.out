@@ -52,7 +52,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- com.miglayout:miglayout-swing:11.4.2
 |    \--- com.miglayout:miglayout-core:11.4.2
 +--- com.miglayout:miglayout:3.7.4 -> com.miglayout:miglayout-swing:11.4.2 (*)
-+--- com.mysql:mysql-connector-j:9.4.0
++--- com.mysql:mysql-connector-j:9.5.0
 |    \--- com.google.protobuf:protobuf-java:4.31.1
 +--- com.sun.activation:jakarta.activation:2.0.1 -> jakarta.activation:jakarta.activation-api:2.1.4
 +--- com.sun.activation:javax.activation:1.2.0 -> javax.activation:javax.activation-api:1.2.0
@@ -151,7 +151,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- log4j:log4j:1.2.17 -> org.slf4j:log4j-over-slf4j:2.0.17
 |    +--- org.slf4j:slf4j-api:2.0.17 (*)
 |    \--- org.slf4j:slf4j-bom:2.0.17 (*)
-+--- mysql:mysql-connector-java:8.0.33 -> com.mysql:mysql-connector-j:9.4.0 (*)
++--- mysql:mysql-connector-java:8.0.33 -> com.mysql:mysql-connector-j:9.5.0 (*)
 +--- net.java.dev.jna:jna-jpms:5.18.1
 +--- net.java.dev.jna:jna-platform-jpms:5.18.1
 |    \--- net.java.dev.jna:jna-jpms:5.18.1
