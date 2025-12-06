@@ -1,6 +1,7 @@
 package org.gradlex.jvm.dependency.conflict.test.patch
 
 import org.gradlex.jvm.dependency.conflict.test.fixture.GradleBuild
+import spock.lang.IgnoreIf
 
 /**
  * All tests in this class come in two flavors:
@@ -279,6 +280,40 @@ runtimeClasspath - Runtime classpath of source set 'main'.
 '''
     }
 
+    @IgnoreIf({ GradleBuild.GRADLE6_TEST || GradleBuild.GRADLE7_TEST || GradleBuild.GRADLE8_0_TEST })
+    def "can add api dependency with capability"() {
+        given:
+        buildFile << """
+            jvmDependencyConflicts {
+                patch {
+                    module("org.apache.commons:commons-lang3") {
+                        addApiDependency("commons-io:commons-io:2.21.0", "com.example:unknown-capability")
+                    }
+                }
+            }
+            dependencies {
+                implementation("org.apache.commons:commons-lang3:3.20.0")
+            }
+        """
+
+        expect:
+        dependenciesCompile().output.contains '''
+compileClasspath - Compile classpath for source set 'main'.
+\\--- org.apache.commons:commons-lang3:3.20.0
+     \\--- commons-io:commons-io:2.21.0 FAILED
+
+'''
+        dependenciesRuntime().output.contains '''
+runtimeClasspath - Runtime classpath of source set 'main'.
+\\--- org.apache.commons:commons-lang3:3.20.0
+     \\--- commons-io:commons-io:2.21.0 FAILED
+
+'''
+        def result = fail()
+        result.output.contains "'com.example:unknown-capability':"
+        result.output.contains "- Variant 'compile' provides 'commons-io:commons-io:2.21.0' and 'org.gradlex:commons-io:2.21.0"
+    }
+
     def "can add runtime only dependency for pom-only metadata variants"() {
         given:
         buildFile << """
@@ -341,6 +376,36 @@ runtimeClasspath - Runtime classpath of source set 'main'.
      +--- com.google.errorprone:error_prone_annotations:2.36.0
      +--- com.google.j2objc:j2objc-annotations:3.0.0
      \\--- io.projectreactor.tools:blockhound:1.0.8.RELEASE
+
+'''
+    }
+
+    @IgnoreIf({ GradleBuild.GRADLE6_TEST || GradleBuild.GRADLE7_TEST || GradleBuild.GRADLE8_0_TEST })
+    def "can add runtime only dependency with capability"() {
+        given:
+        buildFile << """
+            jvmDependencyConflicts {
+                patch {
+                    module("org.apache.commons:commons-lang3") {
+                        addRuntimeOnlyDependency("commons-io:commons-io:2.21.0", "com.example:unknown-capability")
+                    }
+                }
+            }
+            dependencies {
+                implementation("org.apache.commons:commons-lang3:3.20.0")
+            }
+        """
+
+        expect:
+        dependenciesCompile().output.contains '''
+compileClasspath - Compile classpath for source set 'main'.
+\\--- org.apache.commons:commons-lang3:3.20.0
+
+'''
+        dependenciesRuntime().output.contains '''
+runtimeClasspath - Runtime classpath of source set 'main'.
+\\--- org.apache.commons:commons-lang3:3.20.0
+     \\--- commons-io:commons-io:2.21.0 FAILED
 
 '''
     }
@@ -409,5 +474,38 @@ runtimeClasspath - Runtime classpath of source set 'main'.
      \\--- com.google.j2objc:j2objc-annotations:3.0.0
 
 '''
+    }
+
+    @IgnoreIf({ GradleBuild.GRADLE6_TEST || GradleBuild.GRADLE7_TEST || GradleBuild.GRADLE8_0_TEST })
+    def "can add compile only dependency with capability"() {
+        given:
+        buildFile << """
+            jvmDependencyConflicts {
+                patch {
+                    module("org.apache.commons:commons-lang3") {
+                        addCompileOnlyApiDependency("commons-io:commons-io:2.21.0", "com.example:unknown-capability")
+                    }
+                }
+            }
+            dependencies {
+                implementation("org.apache.commons:commons-lang3:3.20.0")
+            }
+        """
+
+        expect:
+        dependenciesCompile().output.contains '''
+compileClasspath - Compile classpath for source set 'main'.
+\\--- org.apache.commons:commons-lang3:3.20.0
+     \\--- commons-io:commons-io:2.21.0 FAILED
+
+'''
+        dependenciesRuntime().output.contains '''
+runtimeClasspath - Runtime classpath of source set 'main'.
+\\--- org.apache.commons:commons-lang3:3.20.0
+
+'''
+        def result = fail()
+        result.output.contains "'com.example:unknown-capability':"
+        result.output.contains "- Variant 'compile' provides 'commons-io:commons-io:2.21.0' and 'org.gradlex:commons-io:2.21.0"
     }
 }

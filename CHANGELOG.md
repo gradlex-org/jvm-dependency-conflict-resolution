@@ -1,6 +1,8 @@
 # JVM Dependency Conflict Resolution Gradle plugin - Changelog
 
 ## Version 2.5
+* [New] [#339](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/339) Patching: add(Api|RuntimeOnly|CompileOnlyApi)Dependency optionally accepts a capability
+* [New Rule] [#328](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/328) Alignment: LWJGL
 * [Adjusted Rule] [#270](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/270) add net.java.dev.jna:jna-jpms and net.java.dev.jna:jna-platform-jpms to JNA rules
 * [Adjusted Rule] [#335](https://github.com/gradlex-org/jvm-dependency-conflict-resolution/issues/335) add at.yawk.lz4:lz4-java to LZ4 rule (Thanks [Florian Dreier](https://github.com/DreierF)!)
 

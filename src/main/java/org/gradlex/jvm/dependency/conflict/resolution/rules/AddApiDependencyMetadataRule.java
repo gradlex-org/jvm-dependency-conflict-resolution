@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 package org.gradlex.jvm.dependency.conflict.resolution.rules;
 
+import static org.gradlex.jvm.dependency.conflict.resolution.rules.DependencyModification.addCapability;
 import static org.gradlex.jvm.dependency.conflict.resolution.rules.VariantSelection.allVariantsMatching;
 
 import javax.inject.Inject;
@@ -19,10 +20,12 @@ import org.gradle.api.attributes.Usage;
 public abstract class AddApiDependencyMetadataRule implements ComponentMetadataRule {
 
     private final String dependency;
+    private final String capability;
 
     @Inject
-    public AddApiDependencyMetadataRule(String dependency) {
+    public AddApiDependencyMetadataRule(String dependency, String capability) {
         this.dependency = dependency;
+        this.capability = capability;
     }
 
     @Override
@@ -32,6 +35,8 @@ public abstract class AddApiDependencyMetadataRule implements ComponentMetadataR
                 id -> (id.matches(Usage.USAGE_ATTRIBUTE, Usage.JAVA_API)
                                 || id.matches(Usage.USAGE_ATTRIBUTE, Usage.JAVA_RUNTIME))
                         && id.matches(Category.CATEGORY_ATTRIBUTE, Category.LIBRARY),
-                v -> v.withDependencies(d -> d.add(dependency)));
+                v -> v.withDependencies(dependencies -> dependencies.add(dependency, d -> {
+                    if (!capability.isEmpty()) addCapability(d, capability);
+                })));
     }
 }

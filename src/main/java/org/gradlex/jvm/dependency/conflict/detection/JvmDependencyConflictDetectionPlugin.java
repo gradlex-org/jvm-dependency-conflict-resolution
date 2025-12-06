@@ -17,6 +17,10 @@ public class JvmDependencyConflictDetectionPlugin implements Plugin<ExtensionAwa
     // and has rulesMode setting in dependencyResolutionManagement
     private static final GradleVersion MINIMUM_SUPPORTED_VERSION = GradleVersion.version("6.8.3");
 
+    // Minimal version that supports the current solution of adding dependencies with capability.
+    // For more detail see: https://github.com/gradle/gradle/issues/30088
+    public static final GradleVersion MINIMUM_SUPPORTED_VERSION_DEPENDENCY_CAPABILITY = GradleVersion.version("8.11.1");
+
     @Override
     public void apply(ExtensionAware projectOrSettings) {
         if (GradleVersion.current().compareTo(MINIMUM_SUPPORTED_VERSION) < 0) {

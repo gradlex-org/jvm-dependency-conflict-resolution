@@ -1,9 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
 package org.gradlex.jvm.dependency.conflict.resolution;
 
+import static org.gradlex.jvm.dependency.conflict.detection.JvmDependencyConflictDetectionPlugin.MINIMUM_SUPPORTED_VERSION_DEPENDENCY_CAPABILITY;
+
 import java.util.Arrays;
 import javax.inject.Inject;
 import org.gradle.api.artifacts.dsl.DependencyHandler;
+import org.gradle.util.GradleVersion;
 import org.gradlex.jvm.dependency.conflict.detection.rules.CapabilityDefinition;
 import org.gradlex.jvm.dependency.conflict.resolution.rules.AddApiDependencyMetadataRule;
 import org.gradlex.jvm.dependency.conflict.resolution.rules.AddCapabilityMetadataRule;
@@ -34,9 +37,18 @@ public abstract class PatchModule {
      * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#fixing_wrong_dependency_details">component_metadata_rules.html#fixing_wrong_dependency_details</a>
      */
     public void addApiDependency(String dependency) {
+        addApiDependency(dependency, "");
+    }
+
+    /**
+     * Add a dependency in 'api' scope (visible at runtime and compile time).
+     * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#fixing_wrong_dependency_details">component_metadata_rules.html#fixing_wrong_dependency_details</a>
+     */
+    public void addApiDependency(String dependency, String capability) {
+        checkGradleVersion(capability);
         getDependencies()
                 .getComponents()
-                .withModule(module, AddApiDependencyMetadataRule.class, r -> r.params(dependency));
+                .withModule(module, AddApiDependencyMetadataRule.class, r -> r.params(dependency, capability));
     }
 
     /**
@@ -44,9 +56,18 @@ public abstract class PatchModule {
      * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#fixing_wrong_dependency_details">component_metadata_rules.html#fixing_wrong_dependency_details</a>
      */
     public void addRuntimeOnlyDependency(String dependency) {
+        addRuntimeOnlyDependency(dependency, "");
+    }
+
+    /**
+     * Add a dependency in 'runtimeOnly' scope (visible at runtime).
+     * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#fixing_wrong_dependency_details">component_metadata_rules.html#fixing_wrong_dependency_details</a>
+     */
+    public void addRuntimeOnlyDependency(String dependency, String capability) {
+        checkGradleVersion(capability);
         getDependencies()
                 .getComponents()
-                .withModule(module, AddRuntimeOnlyDependencyMetadataRule.class, r -> r.params(dependency));
+                .withModule(module, AddRuntimeOnlyDependencyMetadataRule.class, r -> r.params(dependency, capability));
     }
 
     /**
@@ -54,9 +75,19 @@ public abstract class PatchModule {
      * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#fixing_wrong_dependency_details">component_metadata_rules.html#fixing_wrong_dependency_details</a>
      */
     public void addCompileOnlyApiDependency(String dependency) {
+        addCompileOnlyApiDependency(dependency, "");
+    }
+
+    /**
+     * Add a dependency in 'compileOnlyApi' scope (visible at compile time).
+     * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#fixing_wrong_dependency_details">component_metadata_rules.html#fixing_wrong_dependency_details</a>
+     */
+    public void addCompileOnlyApiDependency(String dependency, String capability) {
+        checkGradleVersion(capability);
         getDependencies()
                 .getComponents()
-                .withModule(module, AddCompileOnlyApiDependencyMetadataRule.class, r -> r.params(dependency));
+                .withModule(
+                        module, AddCompileOnlyApiDependencyMetadataRule.class, r -> r.params(dependency, capability));
     }
 
     /**
@@ -178,5 +209,14 @@ public abstract class PatchModule {
         getDependencies()
                 .getComponents()
                 .withModule(module, ComponentStatusRule.class, r -> r.params(Arrays.asList(markerInVersion)));
+    }
+
+    private void checkGradleVersion(String capability) {
+        if (!capability.isEmpty()
+                && GradleVersion.current().compareTo(MINIMUM_SUPPORTED_VERSION_DEPENDENCY_CAPABILITY) < 0) {
+            throw new IllegalStateException(
+                    "Using add(Api|RuntimeOnly|CompileOnlyApi)Dependency with capability requires at least Gradle "
+                            + MINIMUM_SUPPORTED_VERSION_DEPENDENCY_CAPABILITY.getVersion());
+        }
     }
 }
