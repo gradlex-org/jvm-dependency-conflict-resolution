@@ -17,6 +17,7 @@ class GradleBuild {
     final static String GRADLE_VERSION_UNDER_TEST = System.getProperty("gradleVersionUnderTest")
     final static boolean GRADLE6_TEST = GRADLE_VERSION_UNDER_TEST?.startsWith("6.")
     final static boolean GRADLE7_TEST = GRADLE_VERSION_UNDER_TEST?.startsWith("7.")
+    final static boolean GRADLE8_0_TEST = GRADLE_VERSION_UNDER_TEST?.startsWith("8.0")
     final static boolean GRADLE9_1_TEST = !GRADLE_VERSION_UNDER_TEST ||
             GradleVersion.version(GRADLE_VERSION_UNDER_TEST) >= GradleVersion.version("9.1")
 

@@ -58,7 +58,7 @@ publishingConventions {
     }
 }
 
-testingConventions { testGradleVersions("6.8.3", "6.9.4", "7.0.2", "8.0.2", "8.14.3") }
+testingConventions { testGradleVersions("6.8.3", "6.9.4", "7.0.2", "8.0.2", "8.11.1", "8.14.3") }
 
 val generateCapabilitiesList =
     tasks.register<CapabilityListing>("generateCapabilitiesList") {

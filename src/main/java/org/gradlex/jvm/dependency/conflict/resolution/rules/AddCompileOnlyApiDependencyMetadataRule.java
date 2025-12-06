@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 package org.gradlex.jvm.dependency.conflict.resolution.rules;
 
+import static org.gradlex.jvm.dependency.conflict.resolution.rules.DependencyModification.addCapability;
 import static org.gradlex.jvm.dependency.conflict.resolution.rules.VariantSelection.allVariantsMatching;
 
 import javax.inject.Inject;
@@ -19,10 +20,12 @@ import org.gradle.api.attributes.Usage;
 public abstract class AddCompileOnlyApiDependencyMetadataRule implements ComponentMetadataRule {
 
     private final String dependency;
+    private final String capability;
 
     @Inject
-    public AddCompileOnlyApiDependencyMetadataRule(String dependency) {
+    public AddCompileOnlyApiDependencyMetadataRule(String dependency, String capability) {
         this.dependency = dependency;
+        this.capability = capability;
     }
 
     @Override
@@ -31,6 +34,8 @@ public abstract class AddCompileOnlyApiDependencyMetadataRule implements Compone
                 context,
                 id -> (id.matches(Usage.USAGE_ATTRIBUTE, Usage.JAVA_API)
                         && id.matches(Category.CATEGORY_ATTRIBUTE, Category.LIBRARY)),
-                v -> v.withDependencies(d -> d.add(dependency)));
+                v -> v.withDependencies(dependencies -> dependencies.add(dependency, d -> {
+                    if (!capability.isEmpty()) addCapability(d, capability);
+                })));
     }
 }
