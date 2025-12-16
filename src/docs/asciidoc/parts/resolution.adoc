@@ -241,6 +241,15 @@ jvmDependencyConflicts {
 | `addCompileOnlyApiDependency(dependency)`
 | Add a dependency in 'compileOnlyApi' scope (visible at compile time).
 
+| `addApiDependency(dependency, capability)`
+| Add a dependency in 'api' scope (visible at runtime and compile time). Select a variant with the given capability.
+
+| `addRuntimeOnlyDependency(dependency, capability)`
+| Add a dependency in 'runtimeOnly' scope (visible at runtime). Select a variant with the given capability.
+
+| `addCompileOnlyApiDependency(dependency, capability)`
+| Add a dependency in 'compileOnlyApi' scope (visible at compile time). Select a variant with the given capability.
+
 | `removeDependency(dependency)`
 | Remove the given dependency from all scopes.
 
