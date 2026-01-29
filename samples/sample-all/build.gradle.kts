@@ -28,7 +28,7 @@ dependencies {
     implementation("com.mchange:mchange-commons-java:0.3.2")
     implementation("com.miglayout:miglayout-swing:11.4.2")
     implementation("com.miglayout:miglayout:3.7.4")
-    implementation("com.mysql:mysql-connector-j:9.5.0")
+    implementation("com.mysql:mysql-connector-j:9.6.0")
     implementation("com.sun.activation:jakarta.activation:2.0.1")
     implementation("com.sun.activation:javax.activation:1.2.0")
     implementation("com.sun.mail:jakarta.mail:2.0.2")
