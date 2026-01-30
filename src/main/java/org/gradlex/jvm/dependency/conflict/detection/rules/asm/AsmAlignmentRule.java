@@ -7,7 +7,9 @@ import org.gradle.api.artifacts.ModuleVersionIdentifier;
 import org.gradlex.jvm.dependency.conflict.detection.rules.AlignmentDefinition;
 import org.gradlex.jvm.dependency.conflict.detection.rules.AlignmentDefinitionRule;
 import org.gradlex.jvm.dependency.conflict.detection.util.VersionNumber;
+import org.jspecify.annotations.NullMarked;
 
+@NullMarked
 @CacheableRule
 public abstract class AsmAlignmentRule extends AlignmentDefinitionRule {
 

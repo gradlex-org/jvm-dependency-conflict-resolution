@@ -2,7 +2,9 @@
 package org.gradlex.jvm.dependency.conflict.detection.rules.logging;
 
 import org.gradle.api.artifacts.Dependency;
+import org.jspecify.annotations.NullMarked;
 
+@NullMarked
 public enum LoggingModuleIdentifiers {
     LOG4J_SLF4J_IMPL("org.apache.logging.log4j", "log4j-slf4j-impl", "2.0"),
     LOG4J_SLF4J2_IMPL("org.apache.logging.log4j", "log4j-slf4j2-impl", "2.19.0"),

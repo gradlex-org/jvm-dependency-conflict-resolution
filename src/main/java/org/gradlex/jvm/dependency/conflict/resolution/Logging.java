@@ -12,10 +12,12 @@ import org.gradle.api.artifacts.component.ModuleComponentIdentifier;
 import org.gradle.api.artifacts.dsl.DependencyHandler;
 import org.gradlex.jvm.dependency.conflict.detection.rules.CapabilityDefinition;
 import org.gradlex.jvm.dependency.conflict.detection.rules.logging.LoggingModuleIdentifiers;
+import org.jspecify.annotations.NullMarked;
 
 /**
  * Project extension that enables expressing preference over potential logging capabilities conflicts.
  */
+@NullMarked
 public abstract class Logging {
 
     @Inject

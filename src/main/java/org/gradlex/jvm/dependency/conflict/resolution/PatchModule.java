@@ -19,7 +19,9 @@ import org.gradlex.jvm.dependency.conflict.resolution.rules.ReduceToCompileOnlyA
 import org.gradlex.jvm.dependency.conflict.resolution.rules.ReduceToRuntimeOnlyDependencyMetadataRule;
 import org.gradlex.jvm.dependency.conflict.resolution.rules.RemoveCapabilityMetadataRule;
 import org.gradlex.jvm.dependency.conflict.resolution.rules.RemoveDependencyMetadataRule;
+import org.jspecify.annotations.NullMarked;
 
+@NullMarked
 public abstract class PatchModule {
 
     @Inject

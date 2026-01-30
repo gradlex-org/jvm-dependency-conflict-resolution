@@ -11,7 +11,9 @@ import org.gradle.api.artifacts.component.ComponentIdentifier;
 import org.gradle.api.artifacts.component.ModuleComponentIdentifier;
 import org.gradle.api.provider.SetProperty;
 import org.gradlex.jvm.dependency.conflict.detection.rules.CapabilityDefinition;
+import org.jspecify.annotations.NullMarked;
 
+@NullMarked
 public abstract class ConflictResolution {
 
     @Inject
