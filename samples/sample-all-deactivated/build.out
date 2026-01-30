@@ -9,7 +9,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- c3p0:c3p0:0.9.1.2 FAILED
 +--- cglib:cglib-nodep:3.3.0 FAILED
 +--- cglib:cglib:3.3.0 FAILED
-+--- ch.qos.logback:logback-classic:1.5.21 FAILED
++--- ch.qos.logback:logback-classic:1.5.26 FAILED
 +--- com.github.librepdf:openpdf:3.0.0 FAILED
 +--- com.github.spotbugs:spotbugs-annotations:4.9.8 FAILED
 +--- com.github.stephenc.jcip:jcip-annotations:1.0-1 FAILED
