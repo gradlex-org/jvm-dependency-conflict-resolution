@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataRule;
+import org.jspecify.annotations.NullMarked;
 
 /**
  * Sets status of component versions that are not final releases to 'integration' instead of 'release'.
@@ -13,6 +14,7 @@ import org.gradle.api.artifacts.ComponentMetadataRule;
  * POM metadata does not support the 'status' concept and thus Gradle assumes everything is a 'release' by default.
  * See: <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#sec:custom_status_scheme">component_metadata_rules.html#sec:custom_status_scheme</a>
  */
+@NullMarked
 @CacheableRule
 public abstract class ComponentStatusRule implements ComponentMetadataRule {
 

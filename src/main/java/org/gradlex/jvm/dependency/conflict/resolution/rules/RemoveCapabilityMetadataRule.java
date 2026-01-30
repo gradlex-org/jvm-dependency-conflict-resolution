@@ -6,6 +6,7 @@ import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataRule;
 import org.gradle.api.artifacts.ModuleVersionIdentifier;
+import org.jspecify.annotations.NullMarked;
 
 /**
  * See:
@@ -13,6 +14,7 @@ import org.gradle.api.artifacts.ModuleVersionIdentifier;
  *     component_metadata_rules.html#adding_missing_capabilities_to_detect_conflicts</a>,
  * <a href="https://blog.gradle.org/addressing-logging-complexity-capabilities">blog.gradle.org/addressing-logging-complexity-capabilities</a>
  */
+@NullMarked
 @CacheableRule
 public abstract class RemoveCapabilityMetadataRule implements ComponentMetadataRule {
 

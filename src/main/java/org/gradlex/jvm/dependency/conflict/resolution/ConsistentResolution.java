@@ -19,7 +19,9 @@ import org.gradle.api.attributes.java.TargetJvmEnvironment;
 import org.gradle.api.model.ObjectFactory;
 import org.gradle.api.tasks.SourceSetContainer;
 import org.gradle.util.GradleVersion;
+import org.jspecify.annotations.NullMarked;
 
+@NullMarked
 public abstract class ConsistentResolution {
 
     private final SourceSetContainer sourceSets;

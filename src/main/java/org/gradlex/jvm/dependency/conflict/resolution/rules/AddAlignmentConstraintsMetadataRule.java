@@ -6,11 +6,13 @@ import javax.inject.Inject;
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataRule;
+import org.jspecify.annotations.NullMarked;
 
 /**
  * See:
  * <a href="https://blog.gradle.org/alignment-with-gradle-module-metadata">blog.gradle.org/alignment-with-gradle-module-metadata</a>
  */
+@NullMarked
 @CacheableRule
 public abstract class AddAlignmentConstraintsMetadataRule implements ComponentMetadataRule {
 

@@ -2,11 +2,13 @@
 package org.gradlex.jvm.dependency.conflict.detection.util;
 
 import java.util.Objects;
+import org.jspecify.annotations.NullMarked;
 import org.jspecify.annotations.Nullable;
 
 /**
  * Inspired by: org.gradle.util.internal.VersionNumber
  */
+@NullMarked
 public class VersionNumber implements Comparable<VersionNumber> {
 
     private static final VersionNumber UNKNOWN = version(0, 0);
@@ -15,7 +17,7 @@ public class VersionNumber implements Comparable<VersionNumber> {
     private final int minor;
     private final int micro;
     private final int patch;
-    private final String qualifier;
+    private final @Nullable String qualifier;
 
     private VersionNumber(int major, int minor, int micro, int patch, @Nullable String qualifier) {
         this.major = major;
@@ -70,7 +72,7 @@ public class VersionNumber implements Comparable<VersionNumber> {
         return new VersionNumber(major, minor, 0, 0, null);
     }
 
-    public static VersionNumber parse(String versionString) {
+    public static VersionNumber parse(@Nullable String versionString) {
         if (versionString == null || versionString.isEmpty()) {
             return UNKNOWN;
         }

@@ -110,6 +110,34 @@ abstract class CapabilityListing : DefaultTask() {
     private fun String.asRepoLink() = "https://search.maven.org/artifact/${replace(":", "/")}[$this]"
 }
 
+// Task to update expectations in 'all' samples
+tasks.register<UpdateSampleExpectation>("updateSampleAllExpectations") {
+    samples = layout.projectDirectory.dir("samples")
+}
+
+abstract class UpdateSampleExpectation : DefaultTask() {
+
+    @get:Inject abstract val exec: ExecOperations
+
+    @get:Internal abstract val samples: DirectoryProperty
+
+    @TaskAction
+    fun update() {
+        exec.exec {
+            workingDir = samples.get().dir("sample-all").asFile
+            executable = "../../gradlew"
+            args("dependencies", "--configuration=compileClasspath", "-q")
+            standardOutput = File(workingDir, "build.out").outputStream()
+        }
+        exec.exec {
+            workingDir = samples.get().dir("sample-all-deactivated").asFile
+            executable = "../../gradlew"
+            args("dependencies", "--configuration=compileClasspath", "-q")
+            standardOutput = File(workingDir, "build.out").outputStream()
+        }
+    }
+}
+
 // === the following custom configuration should be removed once tests are migrated to Java
 apply(plugin = "groovy")
 
