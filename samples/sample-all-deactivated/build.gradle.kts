@@ -247,7 +247,7 @@ dependencies {
     implementation("org.lz4:lz4-java:1.8.0")
     implementation("at.yawk.lz4:lz4-java:1.10.1")
     implementation("org.ow2.asm:asm:9.9")
-    implementation("org.postgresql:postgresql:42.7.8")
+    implementation("org.postgresql:postgresql:42.7.9")
     implementation("org.slf4j:jcl-over-slf4j:2.0.17")
     implementation("org.slf4j:jul-to-slf4j:2.0.17")
     implementation("org.slf4j:log4j-over-slf4j:2.0.17")

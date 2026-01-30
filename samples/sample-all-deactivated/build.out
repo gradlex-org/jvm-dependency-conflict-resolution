@@ -256,7 +256,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.lz4:lz4-java:1.8.0 FAILED
 +--- at.yawk.lz4:lz4-java:1.10.1 FAILED
 +--- org.ow2.asm:asm:9.9 FAILED
-+--- org.postgresql:postgresql:42.7.8 FAILED
++--- org.postgresql:postgresql:42.7.9 FAILED
 +--- org.slf4j:jcl-over-slf4j:2.0.17 FAILED
 +--- org.slf4j:jul-to-slf4j:2.0.17 FAILED
 +--- org.slf4j:log4j-over-slf4j:2.0.17 FAILED
