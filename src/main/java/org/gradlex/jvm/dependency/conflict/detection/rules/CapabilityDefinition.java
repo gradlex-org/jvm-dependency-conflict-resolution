@@ -39,7 +39,9 @@ import org.gradlex.jvm.dependency.conflict.detection.rules.jakarta.JavaxXmlBindA
 import org.gradlex.jvm.dependency.conflict.detection.rules.jakarta.JavaxXmlWsApiRule;
 import org.gradlex.jvm.dependency.conflict.detection.rules.logging.LoggingModuleIdentifiers;
 import org.gradlex.jvm.dependency.conflict.resolution.DefaultResolutionStrategy;
+import org.jspecify.annotations.NullMarked;
 
+@NullMarked
 public enum CapabilityDefinition {
     AOPALLIANCE(HIGHEST_VERSION, AopallianceRule.class, "aopalliance:aopalliance", "org.springframework:spring-aop"),
     APACHE_CSV(HIGHEST_VERSION, "org.apache.solr:solr-commons-csv", "org.apache.commons:commons-csv"),

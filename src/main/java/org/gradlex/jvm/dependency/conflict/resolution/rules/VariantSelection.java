@@ -21,7 +21,9 @@ import org.gradle.api.attributes.LibraryElements;
 import org.gradle.api.attributes.Usage;
 import org.gradle.internal.component.external.model.ModuleComponentResolveMetadata;
 import org.gradle.internal.component.model.VariantResolveMetadata;
+import org.jspecify.annotations.NullMarked;
 
+@NullMarked
 final class VariantSelection {
 
     static class MavenVariant {

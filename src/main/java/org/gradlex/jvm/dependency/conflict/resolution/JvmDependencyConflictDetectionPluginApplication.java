@@ -6,7 +6,9 @@ import org.gradle.api.initialization.resolve.RulesMode;
 import org.gradle.api.internal.GradleInternal;
 import org.gradle.api.internal.SettingsInternal;
 import org.gradlex.jvm.dependency.conflict.detection.JvmDependencyConflictDetectionPlugin;
+import org.jspecify.annotations.NullMarked;
 
+@NullMarked
 final class JvmDependencyConflictDetectionPluginApplication {
 
     private static final String PLUGIN_ID = "org.gradlex.jvm-dependency-conflict-detection";
@@ -26,7 +28,7 @@ final class JvmDependencyConflictDetectionPluginApplication {
         RulesMode rulesMode = getRulesMode();
         String settingsFileName = getSettings().getSettingsScript().getFileName();
         switch (rulesMode) {
-                // PREFER_PROJECT is the default if the user did not configure something else
+            // PREFER_PROJECT is the default if the user did not configure something else
             case PREFER_PROJECT:
                 project.getPlugins().apply(JvmDependencyConflictDetectionPlugin.class);
                 break;
