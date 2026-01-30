@@ -13,7 +13,9 @@ import org.gradle.api.internal.artifacts.repositories.resolver.DirectDependencyM
 import org.gradle.internal.component.external.model.DefaultImmutableCapability;
 import org.gradle.internal.component.external.model.DefaultModuleComponentSelector;
 import org.gradle.internal.component.external.model.ModuleDependencyMetadata;
+import org.jspecify.annotations.NullMarked;
 
+@NullMarked
 class DependencyModification {
 
     static void addCapability(DirectDependencyMetadata dependency, String capability) {

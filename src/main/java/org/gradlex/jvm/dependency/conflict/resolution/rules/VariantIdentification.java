@@ -5,7 +5,9 @@ import java.util.Map;
 import java.util.Objects;
 import org.gradle.api.Named;
 import org.gradle.api.attributes.Attribute;
+import org.jspecify.annotations.NullMarked;
 
+@NullMarked
 class VariantIdentification {
 
     private final Map<String, String> attributes;

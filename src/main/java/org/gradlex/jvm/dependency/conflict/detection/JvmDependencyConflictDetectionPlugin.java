@@ -11,7 +11,9 @@ import org.gradle.util.GradleVersion;
 import org.gradlex.jvm.dependency.conflict.detection.rules.AlignmentDefinition;
 import org.gradlex.jvm.dependency.conflict.detection.rules.CapabilityDefinition;
 import org.gradlex.jvm.dependency.conflict.resolution.rules.LWJGLTargetPlatformRule;
+import org.jspecify.annotations.NullMarked;
 
+@NullMarked
 public class JvmDependencyConflictDetectionPlugin implements Plugin<ExtensionAware> {
 
     // Minimal version that works reliably with alignment, has the substitution rules `using` API
@@ -35,7 +37,6 @@ public class JvmDependencyConflictDetectionPlugin implements Plugin<ExtensionAwa
             ((Project) projectOrSettings).getPlugins().apply(JvmEcosystemPlugin.class);
             components = ((Project) projectOrSettings).getDependencies().getComponents();
         } else if (projectOrSettings instanceof Settings) {
-            //noinspection UnstableApiUsage
             components = ((Settings) projectOrSettings)
                     .getDependencyResolutionManagement()
                     .getComponents();

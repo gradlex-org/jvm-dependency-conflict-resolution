@@ -5,10 +5,13 @@ import org.gradle.api.Action;
 import org.gradle.api.artifacts.Configuration;
 import org.gradle.api.artifacts.component.ComponentSelector;
 import org.gradlex.jvm.dependency.conflict.detection.rules.logging.LoggingModuleIdentifiers;
+import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
 
+@NullMarked
 class Slf4JEnforcementSubstitutionsUsing implements Action<Configuration> {
 
-    private final String onlyApplyTo;
+    private final @Nullable String onlyApplyTo;
 
     public Slf4JEnforcementSubstitutionsUsing() {
         this.onlyApplyTo = null;

@@ -4,10 +4,12 @@ package org.gradlex.jvm.dependency.conflict.detection.rules;
 import javax.inject.Inject;
 import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ModuleVersionIdentifier;
+import org.jspecify.annotations.NullMarked;
 
 /**
  * Rule adding a capability with a hard coded version.
  */
+@NullMarked
 @CacheableRule
 public abstract class FixedVersionCapabilityDefinitionRule extends CapabilityDefinitionRule {
 

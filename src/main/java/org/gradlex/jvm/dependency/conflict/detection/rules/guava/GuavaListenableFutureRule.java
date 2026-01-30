@@ -7,7 +7,9 @@ import org.gradle.api.artifacts.ModuleVersionIdentifier;
 import org.gradle.api.artifacts.VariantMetadata;
 import org.gradlex.jvm.dependency.conflict.detection.rules.CapabilityDefinition;
 import org.gradlex.jvm.dependency.conflict.detection.rules.CapabilityDefinitionRule;
+import org.jspecify.annotations.NullMarked;
 
+@NullMarked
 @CacheableRule
 public abstract class GuavaListenableFutureRule extends CapabilityDefinitionRule {
 
