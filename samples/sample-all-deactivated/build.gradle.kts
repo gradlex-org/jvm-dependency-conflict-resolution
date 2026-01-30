@@ -9,7 +9,7 @@ dependencies {
     implementation("c3p0:c3p0:0.9.1.2")
     implementation("cglib:cglib-nodep:3.3.0")
     implementation("cglib:cglib:3.3.0")
-    implementation("ch.qos.logback:logback-classic:1.5.26")
+    implementation("ch.qos.logback:logback-classic:1.5.27")
     implementation("com.github.librepdf:openpdf:3.0.0")
     implementation("com.github.spotbugs:spotbugs-annotations:4.9.8")
     implementation("com.github.stephenc.jcip:jcip-annotations:1.0-1")
