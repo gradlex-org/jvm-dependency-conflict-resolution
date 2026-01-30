@@ -6,6 +6,7 @@ import org.gradle.api.artifacts.CacheableRule;
 import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataRule;
 import org.gradle.api.artifacts.ModuleVersionIdentifier;
+import org.jspecify.annotations.NullMarked;
 
 /**
  * See:
@@ -13,6 +14,7 @@ import org.gradle.api.artifacts.ModuleVersionIdentifier;
  *     component_metadata_rules.html#making_different_flavors_of_a_library_available_through_capabilities</a>,
  * <a href="https://blog.gradle.org/optional-dependencies">blog.gradle.org/optional-dependencies</a>
  */
+@NullMarked
 @CacheableRule
 public abstract class AddFeatureMetadataRule implements ComponentMetadataRule {
 

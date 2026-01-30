@@ -9,7 +9,9 @@ import org.gradle.api.artifacts.ComponentMetadataRule;
 import org.gradle.api.artifacts.ModuleVersionIdentifier;
 import org.gradle.api.attributes.Category;
 import org.gradle.api.model.ObjectFactory;
+import org.jspecify.annotations.NullMarked;
 
+@NullMarked
 @CacheableRule
 public abstract class AlignmentDefinitionRule implements ComponentMetadataRule {
 

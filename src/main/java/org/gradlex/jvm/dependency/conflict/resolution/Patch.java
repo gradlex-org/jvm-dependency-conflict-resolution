@@ -8,7 +8,9 @@ import org.gradle.api.artifacts.dsl.DependencyHandler;
 import org.gradle.api.model.ObjectFactory;
 import org.gradlex.jvm.dependency.conflict.resolution.rules.AddAlignmentConstraintsMetadataRule;
 import org.gradlex.jvm.dependency.conflict.resolution.rules.AddBomDependencyMetadataRule;
+import org.jspecify.annotations.NullMarked;
 
+@NullMarked
 public abstract class Patch {
 
     @Inject
