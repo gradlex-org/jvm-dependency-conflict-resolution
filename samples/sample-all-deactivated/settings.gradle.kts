@@ -27,3 +27,5 @@ dependencyResolutionManagement {
         }
     }
 }
+
+rootProject.name = "sample-all-deactivated"

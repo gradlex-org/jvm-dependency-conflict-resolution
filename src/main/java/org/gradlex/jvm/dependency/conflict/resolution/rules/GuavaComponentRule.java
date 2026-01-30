@@ -9,6 +9,7 @@ import org.gradle.api.artifacts.ComponentMetadataDetails;
 import org.gradle.api.artifacts.ComponentMetadataRule;
 import org.gradle.api.artifacts.VariantMetadata;
 import org.gradle.api.attributes.Attribute;
+import org.jspecify.annotations.NullMarked;
 
 /**
  * Kept for individual usage to get the patch functionality for older Guava versions.
@@ -27,6 +28,7 @@ import org.gradle.api.attributes.Attribute;
  *     }
  * </pre>
  */
+@NullMarked
 @CacheableRule
 @Deprecated
 public abstract class GuavaComponentRule implements ComponentMetadataRule {

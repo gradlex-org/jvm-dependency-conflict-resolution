@@ -9,8 +9,10 @@ import org.gradlex.jvm.dependency.conflict.detection.rules.logging.Log4J2Alignme
 import org.gradlex.jvm.dependency.conflict.detection.rules.logging.Slf4J2Alignment;
 import org.gradlex.jvm.dependency.conflict.detection.rules.logging.Slf4JAlignment;
 import org.gradlex.jvm.dependency.conflict.detection.rules.lwjgl.LWJGLAlignmentRule;
+import org.jspecify.annotations.NullMarked;
 import org.jspecify.annotations.Nullable;
 
+@NullMarked
 public enum AlignmentDefinition {
     ASM(
             "org.ow2.asm:asm-bom",

@@ -10,12 +10,14 @@ import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataRule;
 import org.gradle.api.attributes.Category;
 import org.gradle.api.attributes.Usage;
+import org.jspecify.annotations.NullMarked;
 
 /**
  * See:
  * <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#fixing_wrong_dependency_details">
  * component_metadata_rules.html#fixing_wrong_dependency_details</a>
  */
+@NullMarked
 @CacheableRule
 public abstract class AddApiDependencyMetadataRule implements ComponentMetadataRule {
 
