@@ -7,7 +7,9 @@ import org.gradle.api.artifacts.ComponentMetadataContext;
 import org.gradle.api.artifacts.ComponentMetadataRule;
 import org.gradle.api.artifacts.ModuleVersionIdentifier;
 import org.gradle.api.artifacts.VariantMetadata;
+import org.jspecify.annotations.NullMarked;
 
+@NullMarked
 @CacheableRule
 public abstract class CapabilityDefinitionRule implements ComponentMetadataRule {
 

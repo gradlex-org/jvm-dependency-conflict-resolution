@@ -13,12 +13,14 @@ import org.gradle.api.artifacts.VariantMetadata;
 import org.gradle.api.model.ObjectFactory;
 import org.gradle.nativeplatform.MachineArchitecture;
 import org.gradle.nativeplatform.OperatingSystemFamily;
+import org.jspecify.annotations.NullMarked;
 
 /**
  * See:
  * <a href="https://docs.gradle.org/current/userguide/component_metadata_rules.html#adding_variants_for_native_jars">
  *     component_metadata_rules.html#adding_variants_for_native_jars</a>
  */
+@NullMarked
 @CacheableRule
 public abstract class AddTargetPlatformVariantsMetadataRule implements ComponentMetadataRule {
 

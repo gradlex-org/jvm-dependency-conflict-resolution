@@ -5,7 +5,9 @@ import javax.inject.Inject;
 import org.gradle.api.Action;
 import org.gradle.api.model.ObjectFactory;
 import org.gradle.api.tasks.SourceSetContainer;
+import org.jspecify.annotations.NullMarked;
 
+@NullMarked
 public abstract class JvmDependencyConflictsExtension {
 
     private final ConflictResolution conflictResolution;
