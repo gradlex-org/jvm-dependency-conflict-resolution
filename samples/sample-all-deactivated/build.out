@@ -23,7 +23,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- com.lowagie:itext:4.2.2 FAILED
 +--- com.mchange:c3p0:0.12.0 FAILED
 +--- com.mchange:mchange-commons-java:0.4.0 FAILED
-+--- com.miglayout:miglayout-swing:11.4.2 FAILED
++--- com.miglayout:miglayout-swing:11.4.3 FAILED
 +--- com.miglayout:miglayout:3.7.4 FAILED
 +--- com.mysql:mysql-connector-j:9.6.0 FAILED
 +--- com.sun.activation:jakarta.activation:2.0.1 FAILED
