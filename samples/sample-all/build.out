@@ -104,7 +104,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- jakarta.websocket:jakarta.websocket-api:2.2.0
 +--- jakarta.websocket:jakarta.websocket-client-api:2.2.0
 +--- jakarta.ws.rs:jakarta.ws.rs-api:4.0.0
-+--- jakarta.xml.bind:jakarta.xml.bind-api:4.0.4 -> 4.0.5 (*)
++--- jakarta.xml.bind:jakarta.xml.bind-api:4.0.5 (*)
 +--- jakarta.xml.soap:jakarta.xml.soap-api:3.0.2 (*)
 +--- jakarta.xml.ws:jakarta.xml.ws-api:4.0.3 (*)
 +--- javassist:javassist:3.12.1.GA -> org.javassist:javassist:3.30.2-GA
