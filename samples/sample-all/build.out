@@ -51,9 +51,9 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- com.lowagie:itext:4.2.2 (*)
 +--- com.mchange:c3p0:0.12.0 (*)
 +--- com.mchange:mchange-commons-java:0.4.0
-+--- com.miglayout:miglayout-swing:11.4.2
-|    \--- com.miglayout:miglayout-core:11.4.2
-+--- com.miglayout:miglayout:3.7.4 -> com.miglayout:miglayout-swing:11.4.2 (*)
++--- com.miglayout:miglayout-swing:11.4.3
+|    \--- com.miglayout:miglayout-core:11.4.3
++--- com.miglayout:miglayout:3.7.4 -> com.miglayout:miglayout-swing:11.4.3 (*)
 +--- com.mysql:mysql-connector-j:9.6.0
 |    \--- com.google.protobuf:protobuf-java:4.31.1
 +--- com.sun.activation:jakarta.activation:2.0.1 -> jakarta.activation:jakarta.activation-api:2.1.4
