@@ -43,7 +43,7 @@ dependencies {
     implementation("commons-beanutils:commons-beanutils-core:1.8.3")
     implementation("commons-beanutils:commons-beanutils:1.11.0")
     implementation("commons-io:commons-io:2.21.0")
-    implementation("commons-logging:commons-logging:1.3.5")
+    implementation("commons-logging:commons-logging:1.3.6")
     implementation("dk.brics.automaton:automaton:1.11-8")
     implementation("dk.brics:automaton:1.12-4")
     implementation("dom4j:dom4j:1.6.1")

@@ -75,7 +75,7 @@ compileClasspath - Compile classpath for source set 'main'.
 |    \--- commons-collections:commons-collections:3.2.2
 +--- commons-beanutils:commons-beanutils:1.11.0 (*)
 +--- commons-io:commons-io:2.21.0
-+--- commons-logging:commons-logging:1.3.5 -> org.slf4j:jcl-over-slf4j:2.0.17 (*)
++--- commons-logging:commons-logging:1.3.6 -> org.slf4j:jcl-over-slf4j:2.0.17 (*)
 +--- dk.brics.automaton:automaton:1.11-8 -> dk.brics:automaton:1.12-4
 +--- dk.brics:automaton:1.12-4
 +--- dom4j:dom4j:1.6.1 -> org.dom4j:dom4j:2.2.0
