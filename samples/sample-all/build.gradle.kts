@@ -67,7 +67,7 @@ dependencies {
     implementation("jakarta.ws.rs:jakarta.ws.rs-api:4.0.0")
     implementation("jakarta.xml.bind:jakarta.xml.bind-api:4.0.4")
     implementation("jakarta.xml.soap:jakarta.xml.soap-api:3.0.2")
-    implementation("jakarta.xml.ws:jakarta.xml.ws-api:4.0.2")
+    implementation("jakarta.xml.ws:jakarta.xml.ws-api:4.0.3")
     implementation("javassist:javassist:3.12.1.GA")
     implementation("javax.activation:activation:1.1.1")
     implementation("javax.activation:javax.activation-api:1.2.0")
