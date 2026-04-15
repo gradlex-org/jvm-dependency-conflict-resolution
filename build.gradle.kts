@@ -1,5 +1,5 @@
 import java.net.URLClassLoader
-import org.asciidoctor.gradle.base.AsciidoctorAttributeProvider
+import org.asciidoctor.gradle.model5.core.tasks.AsciidoctorTask
 
 version = "2.5"
 
@@ -66,10 +66,13 @@ val generateCapabilitiesList =
         outputFile = layout.buildDirectory.file("generated/docs/asciidoc/parts/capabilities-listing.adoc")
     }
 
-tasks.asciidoctor {
-    dependsOn(generateCapabilitiesList)
-    attributeProviders += AsciidoctorAttributeProvider {
-        mapOf("capabilities-listing" to generateCapabilitiesList.get().outputFile.get().asFile.absolutePath)
+tasks.withType<AsciidoctorTask> { dependsOn(generateCapabilitiesList) }
+
+asciidoc {
+    publications.named("main") {
+        sourceSet.attributes {
+            add("capabilities-listing", generateCapabilitiesList.get().outputFile.get().asFile.absolutePath)
+        }
     }
 }
 
