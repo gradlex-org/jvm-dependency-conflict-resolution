@@ -49,8 +49,8 @@ See each plugin's documentation for more details.
 TIP: The `org.gradlex.jvm-dependency-conflict-resolution` extends the `org.gradlex.jvm-dependency-conflict-detection` plugin.
 In most projects, you can apply only `org.gradlex.jvm-dependency-conflict-resolution` to get all functionality.
 
-include::src/docs/asciidoc/parts/detection.adoc[leveloffset=+1]
-include::src/docs/asciidoc/parts/resolution.adoc[leveloffset=+1]
+include::parts/detection.adoc[leveloffset=+1]
+include::parts/resolution.adoc[leveloffset=+1]
 
 [[appendix]]
 == Appendix
