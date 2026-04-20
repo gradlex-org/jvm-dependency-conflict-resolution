@@ -13,6 +13,14 @@
       "ignoreUnstable": false
     },
     {
+      "matchDatasources": "maven",
+      "registryUrls": [
+        "https://plugins.gradle.org/m2",
+        "https://maven.jzy3d.org/releases",
+        "https://maven.scijava.org/content/groups/public"
+      ]
+    },
+    {
       "groupName": "Tomcat",
       "matchPackageNames": ["org.apache.tomcat**"]
     },
@@ -25,8 +33,10 @@
       "matchPackageNames": [
         "com.lowagie:itext",
         "itext:itext",
+        "javax.xml.stream:stax-api",
         "junit:junit-dep",
         "mysql:mysql-connector-java",
+        "net.jcip:jcip-annotations",
         "org.apache.commons:commons-io",
         "org.bouncycastle:bcprov-ext-jdk14",
         "org.bouncycastle:bcprov-ext-jdk15to18",
@@ -34,6 +44,7 @@
         "org.bouncycastle:bcprov-jdk15",
         "org.codehaus.woodstox:wstx-asl",
         "org.hibernate.javax.persistence:hibernate-jpa-2.2-api",
+        "org.lz4:lz4-java",
         "org.slf4j:slf4j-log4j12",
         "servletapi:servletapi"
       ],
