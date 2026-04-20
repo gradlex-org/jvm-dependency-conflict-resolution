@@ -17,7 +17,7 @@ jobs:
           build-scan-terms-of-use-url: https://gradle.com/help/legal-terms-of-use
           build-scan-terms-of-use-agree: yes
       - uses: gradle/actions/setup-gradle@v6
-      - run: "./gradlew :publishPlugin --no-configuration-cache"
+      - run: "./gradlew publishPlugin"
         env:
           SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
           SIGNING_PASSPHRASE: ${{ secrets.SIGNING_PASSPHRASE }}
