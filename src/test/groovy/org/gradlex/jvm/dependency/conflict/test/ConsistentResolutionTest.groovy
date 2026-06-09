@@ -55,7 +55,7 @@ class ConsistentResolutionTest extends Specification {
         '''
 
         expect:
-        dependenciesComponent('runtimeClasspath').output.contains '''
+        dependenciesComponent('runtimeClasspath').output.replace("project ':component'", "project :component").contains '''
 runtimeClasspath - Runtime classpath of source set 'main'.
 +--- project :component (*)
 +--- org.apache.commons:commons-lang3:3.9 -> 3.11
@@ -103,7 +103,10 @@ runtimeClasspath - Runtime classpath of source set 'main'.
         '''
 
         expect:
-        dependenciesComponent('testCompileClasspath').output.contains '''
+        dependenciesComponent('testCompileClasspath').output
+                .replace("project ':component'", "project :component")
+                .replace("project ':versions'", "project :versions")
+                .contains '''
 testCompileClasspath - Compile classpath for source set 'test'.
 +--- project :component (*)
 +--- org.apache.commons:commons-lang3 -> 3.11
@@ -131,7 +134,10 @@ testCompileClasspath - Compile classpath for source set 'test'.
 \\--- org.junit.platform:junit-platform-commons:{strictly 1.9.2} -> 1.9.2 (c)
 '''
 
-        dependenciesComponent('testRuntimeClasspath').output.contains '''
+        dependenciesComponent('testRuntimeClasspath').output
+                .replace("project ':component'", "project :component")
+                .replace("project ':versions'", "project :versions")
+                .contains '''
 testRuntimeClasspath - Runtime classpath of source set 'test'.
 +--- project :component (*)
 +--- org.apache.commons:commons-lang3 -> 3.11
@@ -151,7 +157,10 @@ testRuntimeClasspath - Runtime classpath of source set 'test'.
 +--- org.junit.jupiter:junit-jupiter-api -> 5.9.2 (*)
 \\--- org.apache.commons:commons-lang3:{strictly 3.11} -> 3.11 (c)
 '''
-        dependenciesApp('testRuntimeClasspath').output.contains '''
+        dependenciesApp('testRuntimeClasspath').output
+                .replace("project ':component'", "project :component")
+                .replace("project ':versions'", "project :versions")
+                .contains '''
 testRuntimeClasspath - Runtime classpath of source set 'test'.
 +--- project :component
 |    +--- project :component (*)

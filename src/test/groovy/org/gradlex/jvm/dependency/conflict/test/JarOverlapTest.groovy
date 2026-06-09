@@ -18,6 +18,8 @@ class JarOverlapTest extends Specification {
 
     // Some Jars do not have overlapping classes, but contain conflicting implementations of the same service.
     static def expectedToOverlap = values() - [
+            JZY3D_EMUL_GL, // Exclude from testing as 'maven.scijava.org' is constantly down
+            JZY3D_JGL, // Exclude from testing as 'maven.scijava.org' is constantly down
             HAMCREST_CORE, // contains 'IsDeprecated.class' and forwards to HAMCREST
             HAMCREST_LIBRARY, // contains 'IsDeprecated.class' and forwards to HAMCREST
             LOG4J2_IMPL,

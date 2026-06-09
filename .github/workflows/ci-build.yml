@@ -11,6 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        if: github.event_name == 'push'
+      - uses: actions/checkout@v6
+        if: github.event_name == 'pull_request'
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
       - uses: actions/setup-java@v5
         with:
           distribution: temurin
@@ -20,4 +25,14 @@ jobs:
           build-scan-terms-of-use-url: https://gradle.com/help/legal-terms-of-use
           build-scan-terms-of-use-agree: yes
       - uses: testlens-app/setup-testlens@v1.9.2
+      - run: "./gradlew updateSampleAllExpectations"
+        if: github.event_name == 'pull_request'
+      - name: update sample expectations
+        if: github.event_name == 'pull_request'
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git add .
+          git diff --staged --quiet || git commit -m 'Update sample test expectations'
+          git push
       - run: "./gradlew qualityCheck test testSamples"
