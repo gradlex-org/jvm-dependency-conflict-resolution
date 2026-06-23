@@ -232,7 +232,7 @@ dependencies {
     implementation("org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.Final")
     implementation("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final")
     implementation("org.hibernate.javax.persistence:hibernate-jpa-2.2-api:1.0.0.Beta2")
-    implementation("org.javassist:javassist:3.31.0-GA")
+    implementation("org.javassist:javassist:3.32.0-GA")
     implementation("org.jboss.resteasy:jaxrs-api:3.0.12.Final")
     implementation("org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:1.0.1.Final")
     implementation("org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.1.1.Final")
