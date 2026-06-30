@@ -334,7 +334,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.lz4:lz4-java:1.8.0 -> at.yawk.lz4:lz4-java:1.11.0
 +--- at.yawk.lz4:lz4-java:1.11.0
 +--- org.ow2.asm:asm:9.10.1 (*)
-+--- org.postgresql:postgresql:42.7.11
++--- org.postgresql:postgresql:42.7.12
 +--- org.slf4j:jcl-over-slf4j:2.0.18 (*)
 +--- org.slf4j:jul-to-slf4j:2.0.18 (*)
 +--- org.slf4j:log4j-over-slf4j:2.0.18 (*)
@@ -345,7 +345,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.slf4j:slf4j-simple:2.0.18 (*)
 +--- org.springframework:spring-aop:7.0.8 (*)
 +--- org.springframework:spring-jcl:6.2.19 -> org.slf4j:jcl-over-slf4j:2.0.18 (*)
-+--- postgresql:postgresql:9.1-901-1.jdbc4 -> org.postgresql:postgresql:42.7.11
++--- postgresql:postgresql:9.1-901-1.jdbc4 -> org.postgresql:postgresql:42.7.12
 +--- servletapi:servletapi:2.4-20040521 -> javax.servlet:javax.servlet-api:4.0.1
 +--- stax:stax-api:1.0.1
 +--- velocity:velocity:1.5 -> org.apache.velocity:velocity-engine-core:2.4.1 (*)
