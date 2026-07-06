@@ -161,7 +161,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- net.java.dev.jna:jna:5.19.1 -> net.java.dev.jna:jna-jpms:5.19.1
 +--- net.java.dev.jna:platform:3.5.2 -> net.java.dev.jna:jna-platform-jpms:5.19.1 (*)
 +--- net.jcip:jcip-annotations:1.0
-+--- net.jpountz.lz4:lz4:1.3 -> at.yawk.lz4:lz4-java:1.11.0
++--- net.jpountz.lz4:lz4:1.3 -> at.yawk.lz4:lz4-java:1.11.1
 +--- org.apache.commons:commons-csv:1.14.1 -> org.apache.solr:solr-commons-csv:3.5.0
 |    \--- org.slf4j:slf4j-api:1.6.1 -> 2.0.18 (*)
 +--- org.apache.commons:commons-io:1.3.2 -> commons-io:commons-io:2.22.0
@@ -331,8 +331,8 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_3.0_spec:1.0.1.Final -> jakarta.ws.rs:jakarta.ws.rs-api:4.0.0
 +--- org.jetbrains:annotations:26.1.0
 +--- org.json:json:20250517
-+--- org.lz4:lz4-java:1.8.0 -> at.yawk.lz4:lz4-java:1.11.0
-+--- at.yawk.lz4:lz4-java:1.11.0
++--- org.lz4:lz4-java:1.8.0 -> at.yawk.lz4:lz4-java:1.11.1
++--- at.yawk.lz4:lz4-java:1.11.1
 +--- org.ow2.asm:asm:9.10.1 (*)
 +--- org.postgresql:postgresql:42.7.12
 +--- org.slf4j:jcl-over-slf4j:2.0.18 (*)
