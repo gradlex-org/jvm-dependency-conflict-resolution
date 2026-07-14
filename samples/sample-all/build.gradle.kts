@@ -256,7 +256,7 @@ dependencies {
     implementation("org.slf4j:log4j-over-slf4j:2.0.18")
     implementation("org.slf4j:slf4j-jcl:1.7.36")
     implementation("org.slf4j:slf4j-jdk14:2.0.18")
-    implementation("org.slf4j:slf4j-log4j12:2.0.17")
+    implementation("org.slf4j:slf4j-log4j12:2.0.18")
     implementation("org.slf4j:slf4j-nop:2.0.18")
     implementation("org.slf4j:slf4j-simple:2.0.18")
     implementation("org.springframework:spring-aop:7.0.8")
