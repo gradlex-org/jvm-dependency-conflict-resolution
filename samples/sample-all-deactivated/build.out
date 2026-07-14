@@ -159,7 +159,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.bouncycastle:bcmail-jdk15+:1.46 FAILED
 +--- org.bouncycastle:bcmail-jdk15:1.46 FAILED
 +--- org.bouncycastle:bcmail-jdk15on:1.70 FAILED
-+--- org.bouncycastle:bcmail-jdk15to18:1.84 FAILED
++--- org.bouncycastle:bcmail-jdk15to18:1.85 FAILED
 +--- org.bouncycastle:bcmail-jdk16:1.46 FAILED
 +--- org.bouncycastle:bcmail-jdk18on:1.84 FAILED
 +--- org.bouncycastle:bcmail-lts8on:2.73.11 FAILED
