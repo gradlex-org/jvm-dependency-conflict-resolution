@@ -11,7 +11,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- cglib:cglib:3.3.0 FAILED
 +--- ch.qos.logback:logback-classic:1.5.38 FAILED
 +--- com.github.librepdf:openpdf:3.0.5 FAILED
-+--- com.github.spotbugs:spotbugs-annotations:4.10.2 FAILED
++--- com.github.spotbugs:spotbugs-annotations:4.10.3 FAILED
 +--- com.github.stephenc.jcip:jcip-annotations:1.0-1 FAILED
 +--- com.google.code.findbugs:annotations:3.0.1 FAILED
 +--- com.google.code.findbugs:findbugs-annotations:3.0.1 FAILED
