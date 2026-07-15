@@ -173,7 +173,7 @@ dependencies {
     implementation("org.bouncycastle:bcpkix-jdk15to18:1.84")
     implementation("org.bouncycastle:bcpkix-jdk18on:1.84")
     implementation("org.bouncycastle:bcpkix-lts8on:2.73.11")
-    implementation("org.bouncycastle:bcprov-debug-jdk14:1.84")
+    implementation("org.bouncycastle:bcprov-debug-jdk14:1.85")
     implementation("org.bouncycastle:bcprov-debug-jdk15on:1.70")
     implementation("org.bouncycastle:bcprov-debug-jdk15to18:1.85")
     implementation("org.bouncycastle:bcprov-debug-jdk18on:1.85")
