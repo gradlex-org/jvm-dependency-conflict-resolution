@@ -173,7 +173,7 @@ dependencies {
     implementation("org.bouncycastle:bcprov-debug-jdk14:1.84")
     implementation("org.bouncycastle:bcprov-debug-jdk15on:1.70")
     implementation("org.bouncycastle:bcprov-debug-jdk15to18:1.85")
-    implementation("org.bouncycastle:bcprov-debug-jdk18on:1.84")
+    implementation("org.bouncycastle:bcprov-debug-jdk18on:1.85")
     implementation("org.bouncycastle:bcprov-ext-debug-jdk14:1.74")
     implementation("org.bouncycastle:bcprov-ext-debug-jdk15on:1.70")
     implementation("org.bouncycastle:bcprov-ext-debug-jdk15to18:1.77")
