@@ -204,7 +204,7 @@ dependencies {
     implementation("org.bouncycastle:bctsp-jdk15:1.46")
     implementation("org.bouncycastle:bctsp-jdk15on:1.46")
     implementation("org.bouncycastle:bctsp-jdk16:1.46")
-    implementation("org.bouncycastle:bcutil-jdk14:1.84")
+    implementation("org.bouncycastle:bcutil-jdk14:1.85")
     implementation("org.bouncycastle:bcutil-jdk15on:1.70")
     implementation("org.bouncycastle:bcutil-jdk15to18:1.84")
     implementation("org.bouncycastle:bcutil-jdk18on:1.84")
