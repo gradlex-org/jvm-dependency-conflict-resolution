@@ -253,7 +253,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.bouncycastle:bcpkix-fips:2.1.12 -> org.bouncycastle:bcpkix-jdk18on:1.84 (*)
 +--- org.bouncycastle:bcpkix-jdk14:1.85 -> org.bouncycastle:bcpkix-jdk18on:1.84 (*)
 +--- org.bouncycastle:bcpkix-jdk15on:1.70 -> org.bouncycastle:bcpkix-jdk18on:1.84 (*)
-+--- org.bouncycastle:bcpkix-jdk15to18:1.84 -> org.bouncycastle:bcpkix-jdk18on:1.84 (*)
++--- org.bouncycastle:bcpkix-jdk15to18:1.85 -> org.bouncycastle:bcpkix-jdk18on:1.84 (*)
 +--- org.bouncycastle:bcpkix-jdk18on:1.84 (*)
 +--- org.bouncycastle:bcpkix-lts8on:2.73.11 -> org.bouncycastle:bcpkix-jdk18on:1.84 (*)
 +--- org.bouncycastle:bcprov-debug-jdk14:1.85 -> org.bouncycastle:bcprov-jdk18on:1.84
