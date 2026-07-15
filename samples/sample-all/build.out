@@ -227,7 +227,7 @@ compileClasspath - Compile classpath for source set 'main'.
 |         \--- org.bouncycastle:bcutil-jdk18on:1.84
 |              \--- org.bouncycastle:bcprov-jdk18on:1.84
 +--- org.bouncycastle:bcjmail-jdk15to18:1.85 -> org.bouncycastle:bcmail-jdk18on:1.84 (*)
-+--- org.bouncycastle:bcjmail-jdk18on:1.84 -> org.bouncycastle:bcmail-jdk18on:1.84 (*)
++--- org.bouncycastle:bcjmail-jdk18on:1.85 -> org.bouncycastle:bcmail-jdk18on:1.84 (*)
 +--- org.bouncycastle:bcjmail-lts8on:2.73.11 -> org.bouncycastle:bcmail-jdk18on:1.84 (*)
 +--- org.bouncycastle:bcmail-fips:2.1.7 -> org.bouncycastle:bcmail-jdk18on:1.84 (*)
 +--- org.bouncycastle:bcmail-jdk14:1.85 -> org.bouncycastle:bcmail-jdk18on:1.84 (*)
