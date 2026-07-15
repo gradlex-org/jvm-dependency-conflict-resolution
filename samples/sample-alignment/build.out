@@ -3,22 +3,22 @@ Root project 'sample-alignment_build.sample'
 ------------------------------------------------------------
 
 compileClasspath - Compile classpath for source set 'main'.
-+--- org.apache.sshd:sshd-common:2.8.0 -> 2.9.2
-|    +--- org.slf4j:slf4j-api:1.7.32 -> 2.0.13
++--- org.apache.sshd:sshd-common:2.8.0 -> 2.19.0
+|    +--- org.slf4j:slf4j-api:1.7.36 -> 2.0.13
 |    |    \--- org.slf4j:slf4j-bom:2.0.13
 |    |         +--- org.slf4j:slf4j-api:2.0.13 (c)
 |    |         \--- org.slf4j:jcl-over-slf4j:2.0.13 (c)
-|    +--- org.slf4j:jcl-over-slf4j:1.7.32 -> 2.0.13
+|    +--- org.slf4j:jcl-over-slf4j:1.7.36 -> 2.0.13
 |    |    +--- org.slf4j:slf4j-api:2.0.13 (*)
 |    |    \--- org.slf4j:slf4j-bom:2.0.13 (*)
-|    +--- org.apache.sshd:sshd-common:2.9.2 (c)
-|    \--- org.apache.sshd:sshd-core:2.9.2 (c)
-+--- org.apache.sshd:sshd-core:2.9.2
-|    +--- org.apache.sshd:sshd-common:2.9.2 (*)
-|    +--- org.slf4j:slf4j-api:1.7.32 -> 2.0.13 (*)
-|    +--- org.slf4j:jcl-over-slf4j:1.7.32 -> 2.0.13 (*)
-|    +--- org.apache.sshd:sshd-common:2.9.2 (c)
-|    \--- org.apache.sshd:sshd-core:2.9.2 (c)
+|    +--- org.apache.sshd:sshd-common:2.19.0 (c)
+|    \--- org.apache.sshd:sshd-core:2.19.0 (c)
++--- org.apache.sshd:sshd-core:2.19.0
+|    +--- org.apache.sshd:sshd-common:2.19.0 (*)
+|    +--- org.slf4j:slf4j-api:1.7.36 -> 2.0.13 (*)
+|    +--- org.slf4j:jcl-over-slf4j:1.7.36 -> 2.0.13 (*)
+|    +--- org.apache.sshd:sshd-common:2.19.0 (c)
+|    \--- org.apache.sshd:sshd-core:2.19.0 (c)
 +--- org.ow2.asm:asm:9.4
 |    \--- org.ow2.asm:asm-bom:9.4
 |         +--- org.ow2.asm:asm:9.4 (c)

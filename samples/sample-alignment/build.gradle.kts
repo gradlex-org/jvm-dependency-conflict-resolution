@@ -7,7 +7,7 @@ plugins {
 
 dependencies {
     implementation("org.apache.sshd:sshd-common:2.8.0")
-    implementation("org.apache.sshd:sshd-core:2.9.2")
+    implementation("org.apache.sshd:sshd-core:2.19.0")
     implementation("org.ow2.asm:asm:9.4")
     implementation("org.ow2.asm:asm-tree:9.3")
     implementation("org.eclipse.jetty:jetty-server:11.0.26")
