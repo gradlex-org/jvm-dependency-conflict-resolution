@@ -194,7 +194,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.bouncycastle:bcprov-ext-jdk16:1.46 FAILED
 +--- org.bouncycastle:bcprov-ext-jdk18on:1.78.1 FAILED
 +--- org.bouncycastle:bcprov-jdk12:130 FAILED
-+--- org.bouncycastle:bcprov-jdk14:1.84 FAILED
++--- org.bouncycastle:bcprov-jdk14:1.85 FAILED
 +--- org.bouncycastle:bcprov-jdk15+:1.46 FAILED
 +--- org.bouncycastle:bcprov-jdk15:1.46 FAILED
 +--- org.bouncycastle:bcprov-jdk15on:1.70 FAILED
