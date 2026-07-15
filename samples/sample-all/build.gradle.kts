@@ -145,7 +145,7 @@ dependencies {
     implementation("org.bouncycastle:bc-fips-debug:2.1.2")
     implementation("org.bouncycastle:bc-fips:2.1.2")
     implementation("org.bouncycastle:bcjmail-jdk15on:1.70")
-    implementation("org.bouncycastle:bcjmail-jdk15to18:1.84")
+    implementation("org.bouncycastle:bcjmail-jdk15to18:1.85")
     implementation("org.bouncycastle:bcjmail-jdk18on:1.84")
     implementation("org.bouncycastle:bcjmail-lts8on:2.73.11")
     implementation("org.bouncycastle:bcmail-fips:2.1.7")

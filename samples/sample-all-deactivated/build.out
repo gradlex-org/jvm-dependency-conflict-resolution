@@ -151,7 +151,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.bouncycastle:bc-fips-debug:2.1.2 FAILED
 +--- org.bouncycastle:bc-fips:2.1.2 FAILED
 +--- org.bouncycastle:bcjmail-jdk15on:1.70 FAILED
-+--- org.bouncycastle:bcjmail-jdk15to18:1.84 FAILED
++--- org.bouncycastle:bcjmail-jdk15to18:1.85 FAILED
 +--- org.bouncycastle:bcjmail-jdk18on:1.84 FAILED
 +--- org.bouncycastle:bcjmail-lts8on:2.73.11 FAILED
 +--- org.bouncycastle:bcmail-fips:2.1.7 FAILED
