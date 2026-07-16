@@ -215,7 +215,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.bouncycastle:bctsp-jdk16:1.46 FAILED
 +--- org.bouncycastle:bcutil-jdk14:1.85 FAILED
 +--- org.bouncycastle:bcutil-jdk15on:1.70 FAILED
-+--- org.bouncycastle:bcutil-jdk15to18:1.84 FAILED
++--- org.bouncycastle:bcutil-jdk15to18:1.85 FAILED
 +--- org.bouncycastle:bcutil-jdk18on:1.84 FAILED
 +--- org.bouncycastle:bcutil-lts8on:2.73.11 FAILED
 +--- org.codehaus.woodstox:woodstox-core-asl:4.4.1 FAILED
