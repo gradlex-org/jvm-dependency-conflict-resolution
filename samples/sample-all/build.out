@@ -278,7 +278,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.bouncycastle:bcprov-jdk15to18:1.85.1 -> org.bouncycastle:bcprov-jdk18on:1.85
 +--- org.bouncycastle:bcprov-jdk16:1.46 -> org.bouncycastle:bcprov-jdk18on:1.85
 +--- org.bouncycastle:bcprov-jdk18on:1.85
-+--- org.bouncycastle:bcprov-lts8on:2.73.12 -> org.bouncycastle:bcprov-jdk18on:1.85
++--- org.bouncycastle:bcprov-lts8on:2.73.12.1 -> org.bouncycastle:bcprov-jdk18on:1.85
 +--- org.bouncycastle:bctls-fips:2.1.24 -> org.bouncycastle:bctls-jdk18on:1.85
 |    \--- org.bouncycastle:bcutil-jdk18on:1.85 (*)
 +--- org.bouncycastle:bctls-jdk14:1.85 -> org.bouncycastle:bctls-jdk18on:1.85 (*)
