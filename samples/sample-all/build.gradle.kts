@@ -210,7 +210,7 @@ dependencies {
     implementation("org.bouncycastle:bcutil-jdk14:1.85")
     implementation("org.bouncycastle:bcutil-jdk15on:1.70")
     implementation("org.bouncycastle:bcutil-jdk15to18:1.85")
-    implementation("org.bouncycastle:bcutil-jdk18on:1.84")
+    implementation("org.bouncycastle:bcutil-jdk18on:1.85")
     implementation("org.bouncycastle:bcutil-lts8on:2.73.11")
     implementation("org.codehaus.woodstox:woodstox-core-asl:4.4.1")
     implementation("org.codehaus.woodstox:woodstox-core-lgpl:4.4.1")
