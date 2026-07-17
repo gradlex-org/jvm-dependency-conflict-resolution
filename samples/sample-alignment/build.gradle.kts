@@ -15,7 +15,7 @@ dependencies {
     implementation("org.eclipse.jetty.toolchain:jetty-test-helper:6.0")
     implementation("org.glassfish.jersey.core:jersey-common:3.1.0")
     implementation("org.glassfish.jersey.media:jersey-media-json-jackson:3.0.6")
-    implementation("org.lwjgl:lwjgl:3.3.6")
+    implementation("org.lwjgl:lwjgl:3.4.2")
     implementation("org.lwjgl:lwjgl-assimp")
     implementation("org.lwjgl:lwjgl-bgfx")
     implementation("org.lwjgl:lwjgl-cuda")
