@@ -197,7 +197,7 @@ dependencies {
     implementation("org.bouncycastle:bctls-jdk14:1.85")
     implementation("org.bouncycastle:bctls-jdk15on:1.70")
     implementation("org.bouncycastle:bctls-jdk15to18:1.85")
-    implementation("org.bouncycastle:bctls-jdk18on:1.84")
+    implementation("org.bouncycastle:bctls-jdk18on:1.85")
     implementation("org.bouncycastle:bctls-lts8on:2.73.11")
     implementation("org.bouncycastle:bctsp-jdk14:1.46")
     implementation("org.bouncycastle:bctsp-jdk15+:1.46")
