@@ -3,19 +3,54 @@
   extends: [
     'github>gradlex-org/renovate-config'
   ],
+  // These samples pin specific (often intentionally old) versions to exercise the
+  // conflict-resolution rules, so Renovate must not try to update them.
+  ignorePaths: [
+    'samples/sample-alignment/**',
+    'samples/sample-javax-and-jakarta/**',
+  ],
   packageRules: [
-    // The Bouncy Castle modules are released in lockstep, so batch them into a
-    // single PR instead of one per artifact. The FIPS artifacts follow their own
-    // version line, so they get their own group.
     {
-      matchDatasources: ['maven'],
-      matchPackageNames: ['org.bouncycastle:*', '!org.bouncycastle:*-fips'],
-      groupName: 'Bouncy Castle',
+      matchManagers: ['gradle-wrapper'],
+      ignoreUnstable: false,
     },
     {
       matchDatasources: ['maven'],
-      matchPackageNames: ['org.bouncycastle:*-fips'],
-      groupName: 'Bouncy Castle FIPS',
+      registryUrls: [
+        'https://plugins.gradle.org/m2',
+        'https://maven.jzy3d.org/releases',
+        'https://maven.scijava.org/content/groups/public',
+      ],
+    },
+    {
+      groupName: 'Tomcat',
+      matchPackageNames: ['org.apache.tomcat**'],
+    },
+    {
+      groupName: 'Bouncy Castle',
+      matchPackageNames: ['org.bouncycastle**'],
+    },
+    {
+      description: 'Do not suggest replacements',
+      matchPackageNames: [
+        'com.lowagie:itext',
+        'itext:itext',
+        'javax.xml.stream:stax-api',
+        'junit:junit-dep',
+        'mysql:mysql-connector-java',
+        'net.jcip:jcip-annotations',
+        'org.apache.commons:commons-io',
+        'org.bouncycastle:bcprov-ext-jdk14',
+        'org.bouncycastle:bcprov-ext-jdk15to18',
+        'org.bouncycastle:bcprov-ext-jdk18on',
+        'org.bouncycastle:bcprov-jdk15',
+        'org.codehaus.woodstox:wstx-asl',
+        'org.hibernate.javax.persistence:hibernate-jpa-2.2-api',
+        'org.lz4:lz4-java',
+        'org.slf4j:slf4j-log4j12',
+        'servletapi:servletapi',
+      ],
+      enabled: false,
     },
   ],
 }

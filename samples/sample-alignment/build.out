@@ -3,22 +3,22 @@ Root project 'sample-alignment_build.sample'
 ------------------------------------------------------------
 
 compileClasspath - Compile classpath for source set 'main'.
-+--- org.apache.sshd:sshd-common:2.8.0 -> 2.19.0
-|    +--- org.slf4j:slf4j-api:1.7.36 -> 2.0.13
-|    |    \--- org.slf4j:slf4j-bom:2.0.13
-|    |         +--- org.slf4j:slf4j-api:2.0.13 (c)
-|    |         \--- org.slf4j:jcl-over-slf4j:2.0.13 (c)
-|    +--- org.slf4j:jcl-over-slf4j:1.7.36 -> 2.0.13
-|    |    +--- org.slf4j:slf4j-api:2.0.13 (*)
-|    |    \--- org.slf4j:slf4j-bom:2.0.13 (*)
-|    +--- org.apache.sshd:sshd-common:2.19.0 (c)
-|    \--- org.apache.sshd:sshd-core:2.19.0 (c)
-+--- org.apache.sshd:sshd-core:2.19.0
-|    +--- org.apache.sshd:sshd-common:2.19.0 (*)
-|    +--- org.slf4j:slf4j-api:1.7.36 -> 2.0.13 (*)
-|    +--- org.slf4j:jcl-over-slf4j:1.7.36 -> 2.0.13 (*)
-|    +--- org.apache.sshd:sshd-common:2.19.0 (c)
-|    \--- org.apache.sshd:sshd-core:2.19.0 (c)
++--- org.apache.sshd:sshd-common:2.8.0 -> 2.9.2
+|    +--- org.slf4j:slf4j-api:1.7.32 -> 2.0.5
+|    |    +--- org.slf4j:jcl-over-slf4j:2.0.5 (c)
+|    |    \--- org.slf4j:slf4j-api:2.0.5 (c)
+|    +--- org.slf4j:jcl-over-slf4j:1.7.32 -> 2.0.5
+|    |    +--- org.slf4j:slf4j-api:2.0.5 (*)
+|    |    +--- org.slf4j:jcl-over-slf4j:2.0.5 (c)
+|    |    \--- org.slf4j:slf4j-api:2.0.5 (c)
+|    +--- org.apache.sshd:sshd-common:2.9.2 (c)
+|    \--- org.apache.sshd:sshd-core:2.9.2 (c)
++--- org.apache.sshd:sshd-core:2.9.2
+|    +--- org.apache.sshd:sshd-common:2.9.2 (*)
+|    +--- org.slf4j:slf4j-api:1.7.32 -> 2.0.5 (*)
+|    +--- org.slf4j:jcl-over-slf4j:1.7.32 -> 2.0.5 (*)
+|    +--- org.apache.sshd:sshd-common:2.9.2 (c)
+|    \--- org.apache.sshd:sshd-core:2.9.2 (c)
 +--- org.ow2.asm:asm:9.4
 |    \--- org.ow2.asm:asm-bom:9.4
 |         +--- org.ow2.asm:asm:9.4 (c)
@@ -26,33 +26,33 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.ow2.asm:asm-tree:9.3 -> 9.4
 |    +--- org.ow2.asm:asm:9.4 (*)
 |    \--- org.ow2.asm:asm-bom:9.4 (*)
-+--- org.eclipse.jetty:jetty-server:11.0.26
-|    +--- org.eclipse.jetty:jetty-http:11.0.26
-|    |    +--- org.eclipse.jetty:jetty-io:11.0.26
-|    |    |    +--- org.eclipse.jetty:jetty-util:11.0.26
-|    |    |    |    +--- org.slf4j:slf4j-api:2.0.13 (*)
-|    |    |    |    \--- org.eclipse.jetty:jetty-bom:11.0.26
-|    |    |    |         +--- org.eclipse.jetty:jetty-http:11.0.26 (c)
-|    |    |    |         +--- org.eclipse.jetty:jetty-io:11.0.26 (c)
-|    |    |    |         +--- org.eclipse.jetty:jetty-security:11.0.26 (c)
-|    |    |    |         +--- org.eclipse.jetty:jetty-server:11.0.26 (c)
-|    |    |    |         +--- org.eclipse.jetty:jetty-servlet:11.0.26 (c)
-|    |    |    |         \--- org.eclipse.jetty:jetty-util:11.0.26 (c)
-|    |    |    +--- org.slf4j:slf4j-api:2.0.13 (*)
-|    |    |    \--- org.eclipse.jetty:jetty-bom:11.0.26 (*)
-|    |    +--- org.eclipse.jetty:jetty-util:11.0.26 (*)
-|    |    +--- org.slf4j:slf4j-api:2.0.13 (*)
-|    |    \--- org.eclipse.jetty:jetty-bom:11.0.26 (*)
-|    +--- org.eclipse.jetty:jetty-io:11.0.26 (*)
++--- org.eclipse.jetty:jetty-server:11.0.13
 |    +--- org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api:5.0.2
-|    +--- org.slf4j:slf4j-api:2.0.13 (*)
-|    \--- org.eclipse.jetty:jetty-bom:11.0.26 (*)
-+--- org.eclipse.jetty:jetty-servlet:11.0.26
-|    +--- org.eclipse.jetty:jetty-security:11.0.26
-|    |    +--- org.eclipse.jetty:jetty-server:11.0.26 (*)
-|    |    +--- org.slf4j:slf4j-api:2.0.13 (*)
-|    |    \--- org.eclipse.jetty:jetty-bom:11.0.26 (*)
-|    \--- org.slf4j:slf4j-api:2.0.13 (*)
+|    +--- org.eclipse.jetty:jetty-http:11.0.13
+|    |    +--- org.eclipse.jetty:jetty-util:11.0.13
+|    |    |    +--- org.slf4j:slf4j-api:2.0.5 (*)
+|    |    |    \--- org.eclipse.jetty:jetty-bom:11.0.13
+|    |    |         +--- org.eclipse.jetty:jetty-http:11.0.13 (c)
+|    |    |         +--- org.eclipse.jetty:jetty-io:11.0.13 (c)
+|    |    |         +--- org.eclipse.jetty:jetty-server:11.0.13 (c)
+|    |    |         +--- org.eclipse.jetty:jetty-servlet:11.0.13 (c)
+|    |    |         +--- org.eclipse.jetty:jetty-util:11.0.13 (c)
+|    |    |         \--- org.eclipse.jetty:jetty-security:11.0.13 (c)
+|    |    +--- org.eclipse.jetty:jetty-io:11.0.13
+|    |    |    +--- org.slf4j:slf4j-api:2.0.5 (*)
+|    |    |    +--- org.eclipse.jetty:jetty-util:11.0.13 (*)
+|    |    |    \--- org.eclipse.jetty:jetty-bom:11.0.13 (*)
+|    |    +--- org.slf4j:slf4j-api:2.0.5 (*)
+|    |    \--- org.eclipse.jetty:jetty-bom:11.0.13 (*)
+|    +--- org.eclipse.jetty:jetty-io:11.0.13 (*)
+|    +--- org.slf4j:slf4j-api:2.0.5 (*)
+|    \--- org.eclipse.jetty:jetty-bom:11.0.13 (*)
++--- org.eclipse.jetty:jetty-servlet:11.0.0 -> 11.0.13
+|    +--- org.eclipse.jetty:jetty-security:11.0.13
+|    |    +--- org.eclipse.jetty:jetty-server:11.0.13 (*)
+|    |    +--- org.slf4j:slf4j-api:2.0.5 (*)
+|    |    \--- org.eclipse.jetty:jetty-bom:11.0.13 (*)
+|    \--- org.slf4j:slf4j-api:2.0.5 (*)
 +--- org.eclipse.jetty.toolchain:jetty-test-helper:6.0
 |    +--- org.junit.jupiter:junit-jupiter:5.9.0
 |    |    +--- org.junit:junit-bom:5.9.0
