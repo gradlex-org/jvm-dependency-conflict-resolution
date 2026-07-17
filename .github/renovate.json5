@@ -2,5 +2,20 @@
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   extends: [
     'github>gradlex-org/renovate-config'
-  ]
+  ],
+  packageRules: [
+    // The Bouncy Castle modules are released in lockstep, so batch them into a
+    // single PR instead of one per artifact. The FIPS artifacts follow their own
+    // version line, so they get their own group.
+    {
+      matchDatasources: ['maven'],
+      matchPackageNames: ['org.bouncycastle:*', '!org.bouncycastle:*-fips'],
+      groupName: 'Bouncy Castle',
+    },
+    {
+      matchDatasources: ['maven'],
+      matchPackageNames: ['org.bouncycastle:*-fips'],
+      groupName: 'Bouncy Castle FIPS',
+    },
+  ],
 }
