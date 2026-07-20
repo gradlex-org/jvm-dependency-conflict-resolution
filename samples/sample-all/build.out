@@ -220,8 +220,8 @@ compileClasspath - Compile classpath for source set 'main'.
 |    +--- org.apache.commons:commons-lang3:3.17.0
 |    \--- org.slf4j:slf4j-api:1.7.36 -> 2.0.18 (*)
 +--- org.apache.velocity:velocity:1.7 -> org.apache.velocity:velocity-engine-core:2.4.1 (*)
-+--- org.bouncycastle:bc-fips-debug:2.1.2 -> org.bouncycastle:bcprov-jdk18on:1.85
-+--- org.bouncycastle:bc-fips:2.1.2 -> org.bouncycastle:bcprov-jdk18on:1.85
++--- org.bouncycastle:bc-fips-debug:2.1.3 -> org.bouncycastle:bcprov-jdk18on:1.85
++--- org.bouncycastle:bc-fips:2.1.3 -> org.bouncycastle:bcprov-jdk18on:1.85
 +--- org.bouncycastle:bcjmail-jdk15on:1.70 -> org.bouncycastle:bcmail-jdk18on:1.85
 |    \--- org.bouncycastle:bcpkix-jdk18on:1.85
 |         \--- org.bouncycastle:bcutil-jdk18on:1.85
@@ -278,7 +278,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.bouncycastle:bcprov-jdk15to18:1.85.1 -> org.bouncycastle:bcprov-jdk18on:1.85
 +--- org.bouncycastle:bcprov-jdk16:1.46 -> org.bouncycastle:bcprov-jdk18on:1.85
 +--- org.bouncycastle:bcprov-jdk18on:1.85
-+--- org.bouncycastle:bcprov-lts8on:2.73.12 -> org.bouncycastle:bcprov-jdk18on:1.85
++--- org.bouncycastle:bcprov-lts8on:2.73.12.1 -> org.bouncycastle:bcprov-jdk18on:1.85
 +--- org.bouncycastle:bctls-fips:2.1.24 -> org.bouncycastle:bctls-jdk18on:1.85
 |    \--- org.bouncycastle:bcutil-jdk18on:1.85 (*)
 +--- org.bouncycastle:bctls-jdk14:1.85 -> org.bouncycastle:bctls-jdk18on:1.85 (*)
