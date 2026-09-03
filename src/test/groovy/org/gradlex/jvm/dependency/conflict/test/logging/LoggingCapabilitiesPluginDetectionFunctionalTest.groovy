@@ -23,7 +23,7 @@ import static org.gradle.testkit.runner.TaskOutcome.FAILED
 class LoggingCapabilitiesPluginDetectionFunctionalTest extends AbstractLoggingCapabilitiesPluginFunctionalTest {
 
     boolean conflictOnCapability(String output, String capability) {
-        return output.contains("conflict on capability '$capability'")
+        return output.contains("conflict on capability '$capability'") || output.contains("Both provide capability '$capability'")
     }
 
     @Unroll
