@@ -20,6 +20,8 @@ class GradleBuild {
     final static boolean GRADLE8_0_TEST = GRADLE_VERSION_UNDER_TEST?.startsWith("8.0")
     final static boolean GRADLE9_1_TEST = !GRADLE_VERSION_UNDER_TEST ||
             GradleVersion.version(GRADLE_VERSION_UNDER_TEST) >= GradleVersion.version("9.1")
+    final static boolean GRADLE9_8_TEST = (GRADLE_VERSION_UNDER_TEST &&
+            GradleVersion.version(GRADLE_VERSION_UNDER_TEST) >= GradleVersion.version("9.8")) || GradleVersion.current() >= GradleVersion.version("9.8")
 
     GradleBuild(File projectDir = Files.createTempDirectory("gradle-build").toFile()) {
         this.projectDir = projectDir
