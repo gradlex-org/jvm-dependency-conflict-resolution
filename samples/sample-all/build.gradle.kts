@@ -26,7 +26,7 @@ dependencies {
     implementation("com.lowagie:itext:4.2.2")
     implementation("com.mchange:c3p0:0.14.1")
     implementation("com.mchange:mchange-commons-java:0.6.1")
-    implementation("com.miglayout:miglayout-swing:11.4.3")
+    implementation("com.miglayout:miglayout-swing:11.5.0")
     implementation("com.miglayout:miglayout:3.7.4")
     implementation("com.mysql:mysql-connector-j:26.7.0")
     implementation("com.sun.activation:jakarta.activation:2.0.1")
