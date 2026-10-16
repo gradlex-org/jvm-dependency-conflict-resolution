@@ -279,13 +279,13 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.bouncycastle:bcprov-jdk16:1.46 -> org.bouncycastle:bcprov-jdk18on:1.86
 +--- org.bouncycastle:bcprov-jdk18on:1.86
 +--- org.bouncycastle:bcprov-lts8on:2.73.13 -> org.bouncycastle:bcprov-jdk18on:1.86
-+--- org.bouncycastle:bctls-fips:2.1.25 -> org.bouncycastle:bctls-jdk18on:1.86.1
++--- org.bouncycastle:bctls-fips:2.1.25 -> org.bouncycastle:bctls-jdk18on:1.86.2
 |    \--- org.bouncycastle:bcutil-jdk18on:1.86 (*)
-+--- org.bouncycastle:bctls-jdk14:1.86 -> org.bouncycastle:bctls-jdk18on:1.86.1 (*)
-+--- org.bouncycastle:bctls-jdk15on:1.70 -> org.bouncycastle:bctls-jdk18on:1.86.1 (*)
-+--- org.bouncycastle:bctls-jdk15to18:1.86 -> org.bouncycastle:bctls-jdk18on:1.86.1 (*)
-+--- org.bouncycastle:bctls-jdk18on:1.86.1 (*)
-+--- org.bouncycastle:bctls-lts8on:2.73.13 -> org.bouncycastle:bctls-jdk18on:1.86.1 (*)
++--- org.bouncycastle:bctls-jdk14:1.86 -> org.bouncycastle:bctls-jdk18on:1.86.2 (*)
++--- org.bouncycastle:bctls-jdk15on:1.70 -> org.bouncycastle:bctls-jdk18on:1.86.2 (*)
++--- org.bouncycastle:bctls-jdk15to18:1.86 -> org.bouncycastle:bctls-jdk18on:1.86.2 (*)
++--- org.bouncycastle:bctls-jdk18on:1.86.2 (*)
++--- org.bouncycastle:bctls-lts8on:2.73.13 -> org.bouncycastle:bctls-jdk18on:1.86.2 (*)
 +--- org.bouncycastle:bctsp-jdk14:1.46 -> org.bouncycastle:bctsp-jdk15on:1.46
 |    +--- org.bouncycastle:bcprov-jdk15on:1.46 -> org.bouncycastle:bcprov-jdk18on:1.86
 |    \--- org.bouncycastle:bcmail-jdk15on:1.46 -> org.bouncycastle:bcmail-jdk18on:1.86 (*)
