@@ -42,7 +42,7 @@ dependencies {
     implementation("commons-io:commons-io:2.22.0")
     implementation("commons-logging:commons-logging:1.4.0")
     implementation("dk.brics.automaton:automaton:1.11-8")
-    implementation("dk.brics:automaton:1.12-4")
+    implementation("dk.brics:automaton:1.13-1")
     implementation("dom4j:dom4j:1.6.1")
     implementation("itext:itext:1.3.1")
     implementation("jakarta.activation:jakarta.activation-api:2.1.4")
