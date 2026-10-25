@@ -21,13 +21,13 @@ compileClasspath - Compile classpath for source set 'main'.
 |    |         |    \--- org.slf4j:slf4j-bom:2.0.20 (*)
 |    |         \--- org.jspecify:jspecify:1.0.1
 |    \--- org.springframework:spring-core:7.0.10 (*)
-+--- asm:asm:3.3.1 -> org.ow2.asm:asm:9.10.1
-|    \--- org.ow2.asm:asm-bom:9.10.1
-|         \--- org.ow2.asm:asm:9.10.1 (c)
++--- asm:asm:3.3.1 -> org.ow2.asm:asm:9.11.1
+|    \--- org.ow2.asm:asm-bom:9.11.1
+|         \--- org.ow2.asm:asm:9.11.1 (c)
 +--- c3p0:c3p0:0.9.1.2 -> com.mchange:c3p0:0.14.1
 |    \--- com.mchange:mchange-commons-java:0.6.1
 +--- cglib:cglib-nodep:3.3.0 -> cglib:cglib:3.3.0
-|    \--- org.ow2.asm:asm:7.1 -> 9.10.1 (*)
+|    \--- org.ow2.asm:asm:7.1 -> 9.11.1 (*)
 +--- cglib:cglib:3.3.0 (*)
 +--- ch.qos.logback:logback-classic:1.6.3 -> org.slf4j:slf4j-simple:2.0.20
 |    +--- org.slf4j:slf4j-api:2.0.20 (*)
@@ -333,7 +333,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- org.json:json:20250517
 +--- org.lz4:lz4-java:1.8.0 -> at.yawk.lz4:lz4-java:1.11.2
 +--- at.yawk.lz4:lz4-java:1.11.2
-+--- org.ow2.asm:asm:9.10.1 (*)
++--- org.ow2.asm:asm:9.11.1 (*)
 +--- org.postgresql:postgresql:42.7.13
 +--- org.slf4j:jcl-over-slf4j:2.0.20 (*)
 +--- org.slf4j:jul-to-slf4j:2.0.20 (*)
