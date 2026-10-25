@@ -42,7 +42,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- commons-io:commons-io:2.22.0 FAILED
 +--- commons-logging:commons-logging:1.4.0 FAILED
 +--- dk.brics.automaton:automaton:1.11-8 FAILED
-+--- dk.brics:automaton:1.12-4 FAILED
++--- dk.brics:automaton:1.13-1 FAILED
 +--- dom4j:dom4j:1.6.1 FAILED
 +--- itext:itext:1.3.1 FAILED
 +--- jakarta.activation:jakarta.activation-api:2.1.4 FAILED
