@@ -25,7 +25,7 @@ compileClasspath - Compile classpath for source set 'main'.
 |    \--- org.ow2.asm:asm-bom:9.11.1
 |         \--- org.ow2.asm:asm:9.11.1 (c)
 +--- c3p0:c3p0:0.9.1.2 -> com.mchange:c3p0:0.14.2
-|    \--- com.mchange:mchange-commons-java:0.6.1
+|    \--- com.mchange:mchange-commons-java:0.6.1 -> 0.7.0
 +--- cglib:cglib-nodep:3.3.0 -> cglib:cglib:3.3.0
 |    \--- org.ow2.asm:asm:7.1 -> 9.11.1 (*)
 +--- cglib:cglib:3.3.0 (*)
@@ -50,7 +50,7 @@ compileClasspath - Compile classpath for source set 'main'.
 +--- com.jwebmp:javax.inject:1.1
 +--- com.lowagie:itext:4.2.2 (*)
 +--- com.mchange:c3p0:0.14.2 (*)
-+--- com.mchange:mchange-commons-java:0.6.1
++--- com.mchange:mchange-commons-java:0.7.0
 +--- com.miglayout:miglayout-swing:11.5.2
 |    \--- com.miglayout:miglayout-core:11.5.2
 +--- com.miglayout:miglayout:3.7.4 -> com.miglayout:miglayout-swing:11.5.2 (*)
