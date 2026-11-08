@@ -22,7 +22,7 @@ dependencies {
     implementation("com.jwebmp:javax.inject:1.1")
     implementation("com.lowagie:itext:4.2.2")
     implementation("com.mchange:c3p0:0.14.2")
-    implementation("com.mchange:mchange-commons-java:0.6.1")
+    implementation("com.mchange:mchange-commons-java:0.7.0")
     implementation("com.miglayout:miglayout-swing:11.5.2")
     implementation("com.miglayout:miglayout:3.7.4")
     implementation("com.mysql:mysql-connector-j:26.10.0")
